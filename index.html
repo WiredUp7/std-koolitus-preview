@@ -262,6 +262,12 @@
   .calc-break .r{display:flex;justify-content:space-between;gap:12px}
   .calc-break .r b{color:#fff;font-weight:500}
   .calc-note{font-size:11.5px;color:var(--on-dark-mut);margin-top:16px;line-height:1.5}
+  .billing{display:flex;gap:4px;background:rgba(255,255,255,.06);border:1px solid var(--line-dark);border-radius:11px;padding:4px;margin-bottom:20px}
+  .bopt{flex:1;border:0;background:transparent;color:var(--on-dark-mut);font-family:var(--f);font-size:13px;font-weight:500;padding:9px 6px;border-radius:8px;cursor:pointer;transition:.2s;white-space:nowrap}
+  .bopt span{font-size:11px;opacity:.85}
+  .bopt.on{background:var(--accent);color:#04231a}
+  .was{font-size:24px;font-weight:300;color:var(--on-dark-mut);-webkit-text-fill-color:var(--on-dark-mut);text-decoration:line-through;margin-right:9px}
+  .calc-save{font-size:12.5px;font-weight:500;color:#34e89e;margin:-12px 0 16px;min-height:15px}
   .cfg-label{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--on-dark-mut);margin:28px 0 14px}
   .mods{display:flex;flex-direction:column;gap:10px}
   .modrow{display:flex;align-items:center;gap:13px;width:100%;text-align:left;padding:13px 15px;border:1px solid rgba(255,255,255,.1);border-radius:12px;background:rgba(255,255,255,.02);color:#fff;cursor:pointer;font-family:var(--f);transition:.2s}
@@ -313,6 +319,18 @@
   .reveal{opacity:0;transform:translateY(24px);transition:.7s cubic-bezier(.2,.7,.3,1)}
   .reveal.in{opacity:1;transform:none}
 
+  /* MOBILE MENU */
+  .burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:46px;height:46px;flex-shrink:0;border:1px solid var(--line-dark);border-radius:12px;background:rgba(255,255,255,.05);cursor:pointer;padding:0 12px}
+  .burger span{display:block;height:2px;width:100%;background:#fff;border-radius:2px;transition:.25s}
+  .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .burger.open span:nth-child(2){opacity:0}
+  .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .mobile-menu{display:none;flex-direction:column;gap:4px;padding:10px 24px 22px;background:rgba(10,11,14,.97);backdrop-filter:blur(14px);border-bottom:1px solid var(--line-dark)}
+  .mobile-menu.open{display:flex}
+  .mobile-menu a:not(.btn){padding:14px 6px;color:var(--on-dark);font-size:16px;font-weight:500;border-bottom:1px solid var(--line-dark)}
+  .mobile-menu .btn{margin-top:8px;justify-content:center;width:100%}
+  .mobile-menu .btn-out.on-dark{margin-top:14px}
+
   @media(max-width:900px){
     .show{grid-template-columns:1fr;gap:42px}
     .pillars{grid-template-columns:1fr}
@@ -320,14 +338,14 @@
     .steps{grid-template-columns:repeat(2,1fr)}
     .port,.price-top{grid-template-columns:1fr}
     .calc{grid-template-columns:1fr;gap:32px;padding:30px}
-    .nav-links{display:none}
-    .logo .tag{display:none}
+    .nav-links,.nav-r{display:none}
+    .burger{display:flex}
   }
   @media(max-width:560px){
     .cards{grid-template-columns:1fr}
     .steps{grid-template-columns:1fr}
     section{padding:74px 0}
-    .nav-r .btn-out{display:none}
+    .logo .tag{display:none}
     .hero-stats .s{border-right:0;border-bottom:1px solid var(--line-dark);padding:16px 0}
   }
 </style>
@@ -351,6 +369,15 @@
       <a href="#hinnad" class="btn btn-out on-dark">Hinnapaketid</a>
       <a href="#kontakt" class="btn btn-grad">Võta ühendust</a>
     </div>
+    <button class="burger" id="burger" aria-label="Ava menüü" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#tugi">Kolm sammast</a>
+    <a href="#teenused">Teenused</a>
+    <a href="#platvorm">Platvorm</a>
+    <a href="#portfoolio">Portfoolio</a>
+    <a href="#hinnad" class="btn btn-out on-dark">Hinnapaketid</a>
+    <a href="#kontakt" class="btn btn-grad">Võta ühendust</a>
   </div>
 </header>
 
@@ -563,8 +590,13 @@
         </div>
       </div>
       <div class="calc-r">
+        <div class="billing" id="billing">
+          <button type="button" class="bopt on" data-mode="month">Kuumakse</button>
+          <button type="button" class="bopt" data-mode="year">Aastamakse <span>−2 kuud</span></button>
+        </div>
         <div class="calc-price-lab">Sinu kuutasu</div>
-        <div class="calc-price">€<span id="calcPrice">0</span><small>/kuus</small></div>
+        <div class="calc-price"><span class="was" id="calcWas"></span>€<span id="calcPrice">0</span><small id="calcSuffix">/kuus</small></div>
+        <div class="calc-save" id="calcSave"></div>
         <div class="calc-break" id="calcBreak"></div>
         <a href="#kontakt" class="btn btn-grad" id="joinBtn" style="width:100%;justify-content:center">Liitu kohe →</a>
         <div class="calc-note">Sisaldab seirepaneeli, igahommikust raportit ja hoiatusi. Tühista igal ajal. Hinnad esialgsed.</div>
@@ -629,6 +661,15 @@
 const nav=document.getElementById('nav');
 addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>12),{passive:true});
 
+/* mobile menu */
+(function(){
+  const b=document.getElementById('burger'),mm=document.getElementById('mobileMenu');
+  if(!b)return;
+  const close=()=>{mm.classList.remove('open');b.classList.remove('open');b.setAttribute('aria-expanded','false')};
+  b.addEventListener('click',()=>{const o=!mm.classList.contains('open');mm.classList.toggle('open',o);b.classList.toggle('open',o);b.setAttribute('aria-expanded',o)});
+  mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',close));
+})();
+
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
@@ -664,29 +705,35 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
 
 /* paketi konfiguraator — ühikuhinnad ja moodulihinnad esialgsed, lihtne muuta */
 (function(){
-  const FB_UNIT=1, WEB_UNIT=5;
+  const FB_UNIT=1, WEB_UNIT=5, FREE_MONTHS=2;   // aastamaksega FREE_MONTHS kuud tasuta
   const fb=document.getElementById('fbRange'),web=document.getElementById('webRange');
   const fbV=document.getElementById('fbVal'),webV=document.getElementById('webVal');
-  const out=document.getElementById('calcPrice'),brk=document.getElementById('calcBreak'),join=document.getElementById('joinBtn');
-  const mods=[...document.querySelectorAll('.modrow')];
+  const out=document.getElementById('calcPrice'),suf=document.getElementById('calcSuffix'),was=document.getElementById('calcWas'),save=document.getElementById('calcSave');
+  const brk=document.getElementById('calcBreak'),join=document.getElementById('joinBtn');
+  const mods=[...document.querySelectorAll('.modrow')],bopts=[...document.querySelectorAll('.bopt')];
   function fill(el){const p=(el.value-el.min)/(el.max-el.min)*100;el.style.background=`linear-gradient(90deg,var(--accent) ${p}%,rgba(255,255,255,.16) ${p}%)`}
   function upd(){
     const f=+fb.value,w=+web.value;fbV.textContent=f;webV.textContent=w;
-    let total=0,quote=false;const lines=[];
-    if(f>0){total+=f*FB_UNIT;lines.push([`${f} konkurenti Facebookis`,`€${f*FB_UNIT}`]);}
-    if(w>0){total+=w*WEB_UNIT;lines.push([`${w} e-poodi hinna+laoseires`,`€${w*WEB_UNIT}`]);}
-    mods.forEach(m=>{
-      if(!m.classList.contains('on'))return;
-      if(m.dataset.quote){quote=true;lines.push([m.dataset.label,'pakkumisel']);}
-      else{const p=+m.dataset.price;total+=p;lines.push([m.dataset.label,`€${p}`]);}
+    let m=0,quote=false;const lines=[];
+    if(f>0){m+=f*FB_UNIT;lines.push([`${f} konkurenti Facebookis`,`€${f*FB_UNIT}`]);}
+    if(w>0){m+=w*WEB_UNIT;lines.push([`${w} e-poodi hinna+laoseires`,`€${w*WEB_UNIT}`]);}
+    mods.forEach(x=>{
+      if(!x.classList.contains('on'))return;
+      if(x.dataset.quote){quote=true;lines.push([x.dataset.label,'pakkumisel']);}
+      else{const p=+x.dataset.price;m+=p;lines.push([x.dataset.label,`€${p}`]);}
     });
-    out.textContent=total;
+    const annual=document.querySelector('.bopt[data-mode="year"]').classList.contains('on');
+    const yr=m*(12-FREE_MONTHS),eff=Math.round(yr/12);
+    if(annual){was.textContent=m>0?`€${m}`:'';out.textContent=eff;suf.textContent='/kuus';save.textContent=m>0?`${FREE_MONTHS} kuud tasuta — arve kord aastas (€${yr}/a)`:'';}
+    else{was.textContent='';out.textContent=m;suf.textContent='/kuus';save.textContent='';}
     brk.innerHTML=lines.length?lines.map(l=>`<div class="r"><span>${l[0]}</span><b>${l[1]}</b></div>`).join(''):`<div class="r"><span>Vali vähemalt üks moodul</span></div>`;
-    const body=encodeURIComponent('Soovin liituda STD Koolituse seirega.\n\nValitud:\n'+lines.map(l=>`- ${l[0]} (${l[1]})`).join('\n')+`\n\nKuutasu kokku: €${total}/kuus`+(quote?'\n\nNB: soovin ka tellitud automaatikat — palun pakkumist.':''));
+    const bill=annual?`\nArveldus: aastamakse €${yr}/aastas (≈€${eff}/kuus, ${FREE_MONTHS} kuud tasuta)`:`\nArveldus: kuumakse €${m}/kuus`;
+    const body=encodeURIComponent('Soovin liituda STD Koolituse seirega.\n\nValitud:\n'+lines.map(l=>`- ${l[0]} (${l[1]})`).join('\n')+bill+(quote?'\n\nNB: soovin ka tellitud automaatikat — palun pakkumist.':''));
     join.href=`mailto:info@stdkoolitus.ee?subject=${encodeURIComponent('Liitumissoov — STD Koolitus')}&body=${body}`;
     fill(fb);fill(web);
   }
-  mods.forEach(m=>m.addEventListener('click',()=>{m.classList.toggle('on');upd();}));
+  mods.forEach(x=>x.addEventListener('click',()=>{x.classList.toggle('on');upd();}));
+  bopts.forEach(b=>b.addEventListener('click',()=>{bopts.forEach(o=>o.classList.remove('on'));b.classList.add('on');upd();}));
   fb.addEventListener('input',upd);web.addEventListener('input',upd);upd();
 })();
 </script>
