@@ -485,6 +485,52 @@
   </div>
 </section>
 
+<!-- PRICING -->
+<section id="hinnad">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <div class="eyebrow"><span class="dot"></span> Hinnad</div>
+      <h2>Pane oma pakett kokku</h2>
+      <p>Vali moodulid ja mahud — kuutasu kujuneb kohe. Ei mingeid ettemääratud pakette ega üllatusi.</p>
+    </div>
+    <div class="calc reveal" id="calc">
+      <div class="calc-l">
+        <div class="cfg-label" style="margin-top:0">1 · Seire mahud</div>
+        <div class="slider">
+          <div class="slider-head"><span>Konkurente Facebookis</span><span class="cnt" id="fbVal">8</span></div>
+          <input type="range" class="rng" id="fbRange" min="0" max="40" value="8" aria-label="Konkurente Facebookis">
+        </div>
+        <div class="slider">
+          <div class="slider-head"><span>E-poode hinna- ja laoseires</span><span class="cnt" id="webVal">3</span></div>
+          <input type="range" class="rng" id="webRange" min="0" max="25" value="3" aria-label="E-poode hinna- ja laoseires">
+        </div>
+
+        <div class="cfg-label">2 · Lisamoodulid</div>
+        <div class="mods">
+          <button type="button" class="modrow" data-price="19" data-label="E-poe tervisekontroll"><span class="sw"></span><span class="mtx"><b>E-poe tervisekontroll</b><span>Katkised pildid, puuduvad alt-tekstid, hinnavead</span></span><span class="mprice">+19€</span></button>
+          <button type="button" class="modrow" data-price="15" data-label="SEO &amp; sisulünga seire"><span class="sw"></span><span class="mtx"><b>SEO &amp; sisulünga seire</b><span>Märksõnade positsioonid + content-gap leidja</span></span><span class="mprice">+15€</span></button>
+          <button type="button" class="modrow" data-price="9" data-label="Veebilehe töökindluse seire"><span class="sw"></span><span class="mtx"><b>Veebilehe töökindluse seire</b><span>Uptime-jälgimine + hoiatus kui pood maas</span></span><span class="mprice">+9€</span></button>
+          <button type="button" class="modrow" data-price="29" data-label="ERP–e-pood liidestus"><span class="sw"></span><span class="mtx"><b>ERP–e-pood liidestus</b><span>Directo ↔ WooCommerce automaatne sünk</span></span><span class="mprice">+29€</span></button>
+          <button type="button" class="modrow" data-price="39" data-label="Koolitus tiimile"><span class="sw"></span><span class="mtx"><b>Koolitus tiimile</b><span>Õpetame tööriistu ja automaatikat ise kasutama</span></span><span class="mprice">+39€</span></button>
+          <button type="button" class="modrow" data-price="0" data-quote="1" data-label="Tellitud automaatika"><span class="sw"></span><span class="mtx"><b>Tellitud automaatika</b><span>Eriülesanne — plugin, skript, dashboard</span></span><span class="mprice">pakkumisel</span></button>
+        </div>
+      </div>
+      <div class="calc-r">
+        <div class="billing" id="billing">
+          <button type="button" class="bopt on" data-mode="month">Kuumakse</button>
+          <button type="button" class="bopt" data-mode="year">Aastamakse <span>−2 kuud</span></button>
+        </div>
+        <div class="calc-price-lab">Sinu kuutasu</div>
+        <div class="calc-price"><span class="was" id="calcWas"></span>€<span id="calcPrice">0</span><small id="calcSuffix">/kuus</small></div>
+        <div class="calc-save" id="calcSave"></div>
+        <div class="calc-break" id="calcBreak"></div>
+        <a href="#kontakt" class="btn btn-grad" id="joinBtn" style="width:100%;justify-content:center">Liitu kohe →</a>
+        <div class="calc-note">Sisaldab seirepaneeli, igahommikust raportit ja hoiatusi. Tühista igal ajal. Hinnad esialgsed.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PLATFORM (dark) -->
 <section id="platvorm" class="dark">
   <div class="wrap show">
@@ -555,52 +601,6 @@
       <div class="pcard"><div class="tag">Liidestus</div><h3>Directo ↔ WooCommerce</h3><p>Tellimused liiguvad e-poest ERP-i ning laoseis ja hinnad tagasi — automaatselt, ilma käsisisestuseta.</p><div class="kpi"><div><div class="v">Auto</div><div class="l">sünk</div></div><div><div class="v">0</div><div class="l">käsitööd</div></div></div></div>
       <div class="pcard"><div class="tag">Plugin</div><h3>Kaugveotasu lahendus</h3><p>Suuremate seadmete kaugveotasu arvutatakse kassas automaatselt vahemaa ja piirkonna järgi. Uueneb ise.</p><div class="kpi"><div><div class="v">Live</div><div class="l">tootmises</div></div><div><div class="v">Auto</div><div class="l">uuendus</div></div></div></div>
       <div class="pcard"><div class="tag">Tööriist</div><h3>Laoseis ostutellimusel</h3><p>Hankija reaalajas laoseis kuvatakse otse ostutellimuse vaates, et tellida õige kogus esimese korraga.</p><div class="kpi"><div><div class="v">Reaalaeg</div><div class="l">laoseis</div></div><div><div class="v">1 vaade</div><div class="l">kõik koos</div></div></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- PRICING -->
-<section id="hinnad">
-  <div class="wrap">
-    <div class="sec-head center reveal">
-      <div class="eyebrow"><span class="dot"></span> Hinnad</div>
-      <h2>Pane oma pakett kokku</h2>
-      <p>Vali moodulid ja mahud — kuutasu kujuneb kohe. Ei mingeid ettemääratud pakette ega üllatusi.</p>
-    </div>
-    <div class="calc reveal" id="calc">
-      <div class="calc-l">
-        <div class="cfg-label" style="margin-top:0">1 · Seire mahud</div>
-        <div class="slider">
-          <div class="slider-head"><span>Konkurente Facebookis</span><span class="cnt" id="fbVal">8</span></div>
-          <input type="range" class="rng" id="fbRange" min="0" max="40" value="8" aria-label="Konkurente Facebookis">
-        </div>
-        <div class="slider">
-          <div class="slider-head"><span>E-poode hinna- ja laoseires</span><span class="cnt" id="webVal">3</span></div>
-          <input type="range" class="rng" id="webRange" min="0" max="25" value="3" aria-label="E-poode hinna- ja laoseires">
-        </div>
-
-        <div class="cfg-label">2 · Lisamoodulid</div>
-        <div class="mods">
-          <button type="button" class="modrow" data-price="19" data-label="E-poe tervisekontroll"><span class="sw"></span><span class="mtx"><b>E-poe tervisekontroll</b><span>Katkised pildid, puuduvad alt-tekstid, hinnavead</span></span><span class="mprice">+19€</span></button>
-          <button type="button" class="modrow" data-price="15" data-label="SEO &amp; sisulünga seire"><span class="sw"></span><span class="mtx"><b>SEO &amp; sisulünga seire</b><span>Märksõnade positsioonid + content-gap leidja</span></span><span class="mprice">+15€</span></button>
-          <button type="button" class="modrow" data-price="9" data-label="Veebilehe töökindluse seire"><span class="sw"></span><span class="mtx"><b>Veebilehe töökindluse seire</b><span>Uptime-jälgimine + hoiatus kui pood maas</span></span><span class="mprice">+9€</span></button>
-          <button type="button" class="modrow" data-price="29" data-label="ERP–e-pood liidestus"><span class="sw"></span><span class="mtx"><b>ERP–e-pood liidestus</b><span>Directo ↔ WooCommerce automaatne sünk</span></span><span class="mprice">+29€</span></button>
-          <button type="button" class="modrow" data-price="39" data-label="Koolitus tiimile"><span class="sw"></span><span class="mtx"><b>Koolitus tiimile</b><span>Õpetame tööriistu ja automaatikat ise kasutama</span></span><span class="mprice">+39€</span></button>
-          <button type="button" class="modrow" data-price="0" data-quote="1" data-label="Tellitud automaatika"><span class="sw"></span><span class="mtx"><b>Tellitud automaatika</b><span>Eriülesanne — plugin, skript, dashboard</span></span><span class="mprice">pakkumisel</span></button>
-        </div>
-      </div>
-      <div class="calc-r">
-        <div class="billing" id="billing">
-          <button type="button" class="bopt on" data-mode="month">Kuumakse</button>
-          <button type="button" class="bopt" data-mode="year">Aastamakse <span>−2 kuud</span></button>
-        </div>
-        <div class="calc-price-lab">Sinu kuutasu</div>
-        <div class="calc-price"><span class="was" id="calcWas"></span>€<span id="calcPrice">0</span><small id="calcSuffix">/kuus</small></div>
-        <div class="calc-save" id="calcSave"></div>
-        <div class="calc-break" id="calcBreak"></div>
-        <a href="#kontakt" class="btn btn-grad" id="joinBtn" style="width:100%;justify-content:center">Liitu kohe →</a>
-        <div class="calc-note">Sisaldab seirepaneeli, igahommikust raportit ja hoiatusi. Tühista igal ajal. Hinnad esialgsed.</div>
-      </div>
     </div>
   </div>
 </section>
