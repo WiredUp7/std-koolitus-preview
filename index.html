@@ -244,7 +244,7 @@
   .tier .btn{margin-top:auto;justify-content:center;width:100%}
 
   /* CALCULATOR */
-  .calc{background:var(--ink);color:#fff;border-radius:24px;padding:44px;display:grid;grid-template-columns:1.25fr .9fr;gap:46px;align-items:center;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+  .calc{background:var(--ink);color:#fff;border-radius:24px;padding:44px;display:grid;grid-template-columns:1.25fr .9fr;gap:46px;align-items:start;position:relative;overflow:hidden;box-shadow:var(--shadow)}
   .calc-l h3{font-weight:300;font-size:clamp(24px,3vw,34px);letter-spacing:-.02em;line-height:1.12;margin:16px 0 12px;color:#fff}
   .calc-l p{color:var(--on-dark-mut);font-size:15.5px;font-weight:300;line-height:1.6;margin-bottom:32px;max-width:440px}
   .slider{margin-bottom:26px}
@@ -262,6 +262,20 @@
   .calc-break .r{display:flex;justify-content:space-between;gap:12px}
   .calc-break .r b{color:#fff;font-weight:500}
   .calc-note{font-size:11.5px;color:var(--on-dark-mut);margin-top:16px;line-height:1.5}
+  .cfg-label{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--on-dark-mut);margin:28px 0 14px}
+  .mods{display:flex;flex-direction:column;gap:10px}
+  .modrow{display:flex;align-items:center;gap:13px;width:100%;text-align:left;padding:13px 15px;border:1px solid rgba(255,255,255,.1);border-radius:12px;background:rgba(255,255,255,.02);color:#fff;cursor:pointer;font-family:var(--f);transition:.2s}
+  .modrow:hover{border-color:rgba(255,255,255,.26)}
+  .modrow.on{border-color:var(--accent);background:rgba(23,184,106,.1)}
+  .sw{flex-shrink:0;width:38px;height:22px;border-radius:99px;background:rgba(255,255,255,.16);position:relative;transition:.2s}
+  .sw::after{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:.2s}
+  .modrow.on .sw{background:var(--accent)}
+  .modrow.on .sw::after{left:19px}
+  .mtx{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+  .mtx b{font-weight:500;color:#fff;font-size:14.5px}
+  .mtx span{font-size:12px;color:var(--on-dark-mut);line-height:1.35}
+  .mprice{flex-shrink:0;font-family:var(--mono);font-size:13px;font-weight:500;color:var(--on-dark-mut)}
+  .modrow.on .mprice{color:#fff}
 
   /* FAQ */
   .faq{max-width:760px;margin:0 auto}
@@ -523,29 +537,37 @@
   <div class="wrap">
     <div class="sec-head center reveal">
       <div class="eyebrow"><span class="dot"></span> Hinnad</div>
-      <h2>Lihtne kuutasu, ilma üllatusteta</h2>
-      <p>Maksad ainult selle eest, mida jälgime. Liiguta slaidereid ja näed oma kuutasu kohe.</p>
+      <h2>Pane oma pakett kokku</h2>
+      <p>Vali moodulid ja mahud — kuutasu kujuneb kohe. Ei mingeid ettemääratud pakette ega üllatusi.</p>
     </div>
     <div class="calc reveal" id="calc">
       <div class="calc-l">
-        <div class="eyebrow on-dark"><span class="dot"></span> Hinnakalkulaator</div>
-        <h3>Sina valid, mille kohta hoiame silma peal</h3>
-        <p>Liiguta slaidereid — kuutasu kujuneb automaatselt selle järgi, mitut firmat soovid jälgida Facebookis ja mitut kodulehtede kaudu.</p>
+        <div class="cfg-label" style="margin-top:0">1 · Seire mahud</div>
         <div class="slider">
-          <div class="slider-head"><span>Firmasid Facebookis</span><span class="cnt" id="fbVal">8</span></div>
-          <input type="range" class="rng" id="fbRange" min="1" max="40" value="8" aria-label="Firmasid Facebookis">
+          <div class="slider-head"><span>Konkurente Facebookis</span><span class="cnt" id="fbVal">8</span></div>
+          <input type="range" class="rng" id="fbRange" min="0" max="40" value="8" aria-label="Konkurente Facebookis">
         </div>
         <div class="slider">
-          <div class="slider-head"><span>Firmasid kodulehe kaudu</span><span class="cnt" id="webVal">3</span></div>
-          <input type="range" class="rng" id="webRange" min="0" max="25" value="3" aria-label="Firmasid kodulehe kaudu">
+          <div class="slider-head"><span>E-poode hinna- ja laoseires</span><span class="cnt" id="webVal">3</span></div>
+          <input type="range" class="rng" id="webRange" min="0" max="25" value="3" aria-label="E-poode hinna- ja laoseires">
+        </div>
+
+        <div class="cfg-label">2 · Lisamoodulid</div>
+        <div class="mods">
+          <button type="button" class="modrow" data-price="19" data-label="E-poe tervisekontroll"><span class="sw"></span><span class="mtx"><b>E-poe tervisekontroll</b><span>Katkised pildid, puuduvad alt-tekstid, hinnavead</span></span><span class="mprice">+19€</span></button>
+          <button type="button" class="modrow" data-price="15" data-label="SEO &amp; sisulünga seire"><span class="sw"></span><span class="mtx"><b>SEO &amp; sisulünga seire</b><span>Märksõnade positsioonid + content-gap leidja</span></span><span class="mprice">+15€</span></button>
+          <button type="button" class="modrow" data-price="9" data-label="Veebilehe töökindluse seire"><span class="sw"></span><span class="mtx"><b>Veebilehe töökindluse seire</b><span>Uptime-jälgimine + hoiatus kui pood maas</span></span><span class="mprice">+9€</span></button>
+          <button type="button" class="modrow" data-price="29" data-label="ERP–e-pood liidestus"><span class="sw"></span><span class="mtx"><b>ERP–e-pood liidestus</b><span>Directo ↔ WooCommerce automaatne sünk</span></span><span class="mprice">+29€</span></button>
+          <button type="button" class="modrow" data-price="39" data-label="Koolitus tiimile"><span class="sw"></span><span class="mtx"><b>Koolitus tiimile</b><span>Õpetame tööriistu ja automaatikat ise kasutama</span></span><span class="mprice">+39€</span></button>
+          <button type="button" class="modrow" data-price="0" data-quote="1" data-label="Tellitud automaatika"><span class="sw"></span><span class="mtx"><b>Tellitud automaatika</b><span>Eriülesanne — plugin, skript, dashboard</span></span><span class="mprice">pakkumisel</span></button>
         </div>
       </div>
       <div class="calc-r">
         <div class="calc-price-lab">Sinu kuutasu</div>
         <div class="calc-price">€<span id="calcPrice">0</span><small>/kuus</small></div>
         <div class="calc-break" id="calcBreak"></div>
-        <a href="#kontakt" class="btn btn-grad" style="width:100%;justify-content:center">Telli seire</a>
-        <div class="calc-note">Sisaldab seirepaneeli, igahommikust raportit ja hoiatusi. Hinnad esialgsed.</div>
+        <a href="#kontakt" class="btn btn-grad" id="joinBtn" style="width:100%;justify-content:center">Liitu kohe →</a>
+        <div class="calc-note">Sisaldab seirepaneeli, igahommikust raportit ja hoiatusi. Tühista igal ajal. Hinnad esialgsed.</div>
       </div>
     </div>
   </div>
@@ -640,20 +662,31 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
   if(!open){qa.classList.add('open');ans.style.maxHeight=ans.scrollHeight+'px'}
 }));
 
-/* price calculator — ühikuhinnad esialgsed, lihtne muuta */
+/* paketi konfiguraator — ühikuhinnad ja moodulihinnad esialgsed, lihtne muuta */
 (function(){
   const FB_UNIT=1, WEB_UNIT=5;
   const fb=document.getElementById('fbRange'),web=document.getElementById('webRange');
   const fbV=document.getElementById('fbVal'),webV=document.getElementById('webVal');
-  const out=document.getElementById('calcPrice'),brk=document.getElementById('calcBreak');
-  function fill(el){const p=(el.value-el.min)/(el.max-el.min)*100;el.style.background=`linear-gradient(90deg,var(--accent) ${p}%,rgba(255,255,255,.14) ${p}%)`}
+  const out=document.getElementById('calcPrice'),brk=document.getElementById('calcBreak'),join=document.getElementById('joinBtn');
+  const mods=[...document.querySelectorAll('.modrow')];
+  function fill(el){const p=(el.value-el.min)/(el.max-el.min)*100;el.style.background=`linear-gradient(90deg,var(--accent) ${p}%,rgba(255,255,255,.16) ${p}%)`}
   function upd(){
     const f=+fb.value,w=+web.value;fbV.textContent=f;webV.textContent=w;
-    const fbCost=f*FB_UNIT,webCost=w*WEB_UNIT;
-    out.textContent=fbCost+webCost;
-    brk.innerHTML=`<div class="r"><span>${f} firmat Facebookis</span><b>€${fbCost}</b></div><div class="r"><span>${w} koduleht-seiret</span><b>€${webCost}</b></div>`;
+    let total=0,quote=false;const lines=[];
+    if(f>0){total+=f*FB_UNIT;lines.push([`${f} konkurenti Facebookis`,`€${f*FB_UNIT}`]);}
+    if(w>0){total+=w*WEB_UNIT;lines.push([`${w} e-poodi hinna+laoseires`,`€${w*WEB_UNIT}`]);}
+    mods.forEach(m=>{
+      if(!m.classList.contains('on'))return;
+      if(m.dataset.quote){quote=true;lines.push([m.dataset.label,'pakkumisel']);}
+      else{const p=+m.dataset.price;total+=p;lines.push([m.dataset.label,`€${p}`]);}
+    });
+    out.textContent=total;
+    brk.innerHTML=lines.length?lines.map(l=>`<div class="r"><span>${l[0]}</span><b>${l[1]}</b></div>`).join(''):`<div class="r"><span>Vali vähemalt üks moodul</span></div>`;
+    const body=encodeURIComponent('Soovin liituda STD Koolituse seirega.\n\nValitud:\n'+lines.map(l=>`- ${l[0]} (${l[1]})`).join('\n')+`\n\nKuutasu kokku: €${total}/kuus`+(quote?'\n\nNB: soovin ka tellitud automaatikat — palun pakkumist.':''));
+    join.href=`mailto:info@stdkoolitus.ee?subject=${encodeURIComponent('Liitumissoov — STD Koolitus')}&body=${body}`;
     fill(fb);fill(web);
   }
+  mods.forEach(m=>m.addEventListener('click',()=>{m.classList.toggle('on');upd();}));
   fb.addEventListener('input',upd);web.addEventListener('input',upd);upd();
 })();
 </script>
