@@ -63,9 +63,11 @@
   /* NAV */
   header.nav{position:fixed;top:0;left:0;right:0;z-index:60;transition:.3s}
   header.nav.scrolled{background:rgba(10,11,14,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line-dark)}
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:88px}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:88px;gap:30px}
   .logo{display:flex;align-items:center;gap:14px}
-  .logo .eye{height:52px;width:auto;flex-shrink:0;filter:drop-shadow(0 2px 10px rgba(23,184,106,.35))}
+  .logo .eye{height:54px;width:auto;flex-shrink:0;transform:scaleX(-1);filter:drop-shadow(0 3px 8px rgba(0,0,0,.4))}
+  .glint{transform-box:fill-box;transform-origin:center;animation:irisGlint 5s linear infinite}
+  @keyframes irisGlint{0%{transform:translateX(-26px) rotate(20deg);opacity:0}2%{opacity:1}16%{transform:translateX(26px) rotate(20deg);opacity:1}18%{opacity:0}18.01%,100%{transform:translateX(-26px) rotate(20deg);opacity:0}}
   .logo .tag{display:flex;gap:7px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--on-dark-mut);font-weight:600}
   .logo .tag span{animation:tagrun 3.6s ease-in-out infinite}
   .logo .tag span:nth-of-type(2){animation-delay:.4s}
@@ -121,7 +123,7 @@
   .blip b{position:absolute;left:15px;top:-9px;font-family:var(--mono);font-size:11px;font-weight:600;color:#ff7070;background:rgba(255,59,59,.13);border:1px solid rgba(255,90,90,.4);padding:2px 7px;border-radius:6px;white-space:nowrap;box-shadow:0 4px 14px rgba(0,0,0,.4)}
   @keyframes blip{0%{opacity:0;transform:translate(-50%,-50%) scale(.3)}4%{opacity:1;transform:translate(-50%,-50%) scale(1.2)}9%{transform:translate(-50%,-50%) scale(1)}55%{opacity:.95}88%{opacity:.12}100%{opacity:0;transform:translate(-50%,-50%) scale(.3)}}
   @keyframes blipring{0%{transform:scale(.3);opacity:.85}5%{opacity:.85}55%{transform:scale(2.8);opacity:0}100%{opacity:0}}
-  @media(prefers-reduced-motion:reduce){.radar-sweep,.blip,.blip::after,.tag span,.hero-glow{animation:none}.blip{opacity:.9}}
+  @media(prefers-reduced-motion:reduce){.radar-sweep,.blip,.blip::after,.tag span,.hero-glow,.glint{animation:none}.blip{opacity:.9}}
   .hero-inner{position:relative;z-index:2;text-align:center;width:100%}
   .badge-live{display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.05);border:1px solid var(--line-dark);border-radius:999px;padding:7px 16px 7px 12px;font-size:13px;color:var(--on-dark-mut);margin-bottom:30px}
   .ldot{width:7px;height:7px;border-radius:50%;background:var(--accent);position:relative}
@@ -321,7 +323,7 @@
 <header class="nav" id="nav">
   <div class="wrap nav-inner">
     <a href="#" class="logo" aria-label="STD Koolitus">
-      <svg class="eye" viewBox="0 0 72 56" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="eL1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#46ec9f"/><stop offset="1" stop-color="#0bd1c4"/></linearGradient><linearGradient id="eD1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#17b86a"/><stop offset="1" stop-color="#0a7d56"/></linearGradient></defs><path d="M7 30 C 17 9, 45 2, 69 25 C 50 15, 27 19, 7 30 Z" fill="url(#eL1)"/><circle cx="28" cy="30" r="11.5" fill="url(#eD1)"/><circle cx="28" cy="30" r="5.5" fill="#06281c"/><circle cx="31.5" cy="26.5" r="2.1" fill="#eafff4"/><path d="M56 34 C 43 48, 20 48, 7 33" stroke="url(#eL1)" stroke-width="3" stroke-linecap="round"/><path d="M43 43 C 32 50, 18 50, 9 41" stroke="url(#eL1)" stroke-width="2.6" stroke-linecap="round" opacity=".82"/><path d="M32 48 C 24 52, 17 52, 13 46" stroke="url(#eL1)" stroke-width="2.2" stroke-linecap="round" opacity=".62"/></svg>
+      <svg class="eye" viewBox="0 0 76 62" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="gGrey1" x1="0" y1="0" x2="1" y2="0.7"><stop offset="0" stop-color="#686d72"/><stop offset="1" stop-color="#a6a9ad"/></linearGradient><linearGradient id="gGlint1" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="0.36" stop-color="#fff" stop-opacity="0"/><stop offset="0.5" stop-color="#fff" stop-opacity="0.92"/><stop offset="0.64" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient><clipPath id="clipIris1"><circle cx="27" cy="39" r="14"/></clipPath></defs><path d="M5 35 C 18 14, 47 6, 72 9 C 53 16, 31 23, 5 35 Z" fill="url(#gGrey1)"/><path d="M9 47 C 24 58, 47 56, 67 45 C 50 51, 29 53, 9 47 Z" fill="url(#gGrey1)" opacity="0.9"/><circle cx="27" cy="39" r="14" fill="#2061a7"/><g clip-path="url(#clipIris1)"><circle cx="37" cy="38" r="13" fill="#2fa8e6"/></g><g clip-path="url(#clipIris1)"><circle cx="19" cy="46" r="11" fill="#17508f" opacity="0.55"/></g><circle cx="22.5" cy="33.5" r="3.2" fill="#ffffff"/><circle cx="31" cy="45" r="1.5" fill="#dff1fe"/><g clip-path="url(#clipIris1)"><rect class="glint" x="3" y="16" width="18" height="46" fill="url(#gGlint1)"/></g></svg>
       <span class="tag"><span>Seire</span> · <span>Automaatika</span> · <span>Koolitus</span></span>
     </a>
     <nav class="nav-links">
@@ -329,7 +331,6 @@
       <a href="#teenused">Teenused</a>
       <a href="#platvorm">Platvorm</a>
       <a href="#portfoolio">Portfoolio</a>
-      <a href="#hinnad">Hinnad</a>
     </nav>
     <div class="nav-r">
       <a href="#hinnad" class="btn btn-out on-dark">Hinnapaketid</a>
@@ -588,7 +589,7 @@
   <div class="wrap">
     <div class="foot">
       <div>
-        <a href="#" class="logo"><svg class="eye" viewBox="0 0 72 56" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="eL2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#46ec9f"/><stop offset="1" stop-color="#0bd1c4"/></linearGradient><linearGradient id="eD2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#17b86a"/><stop offset="1" stop-color="#0a7d56"/></linearGradient></defs><path d="M7 30 C 17 9, 45 2, 69 25 C 50 15, 27 19, 7 30 Z" fill="url(#eL2)"/><circle cx="28" cy="30" r="11.5" fill="url(#eD2)"/><circle cx="28" cy="30" r="5.5" fill="#06281c"/><circle cx="31.5" cy="26.5" r="2.1" fill="#eafff4"/><path d="M56 34 C 43 48, 20 48, 7 33" stroke="url(#eL2)" stroke-width="3" stroke-linecap="round"/><path d="M43 43 C 32 50, 18 50, 9 41" stroke="url(#eL2)" stroke-width="2.6" stroke-linecap="round" opacity=".82"/><path d="M32 48 C 24 52, 17 52, 13 46" stroke="url(#eL2)" stroke-width="2.2" stroke-linecap="round" opacity=".62"/></svg><span class="foot-name">STD Koolitus OÜ</span></a>
+        <a href="#" class="logo"><svg class="eye" viewBox="0 0 76 62" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="gGrey2" x1="0" y1="0" x2="1" y2="0.7"><stop offset="0" stop-color="#686d72"/><stop offset="1" stop-color="#a6a9ad"/></linearGradient><linearGradient id="gGlint2" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="0.36" stop-color="#fff" stop-opacity="0"/><stop offset="0.5" stop-color="#fff" stop-opacity="0.92"/><stop offset="0.64" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient><clipPath id="clipIris2"><circle cx="27" cy="39" r="14"/></clipPath></defs><path d="M5 35 C 18 14, 47 6, 72 9 C 53 16, 31 23, 5 35 Z" fill="url(#gGrey2)"/><path d="M9 47 C 24 58, 47 56, 67 45 C 50 51, 29 53, 9 47 Z" fill="url(#gGrey2)" opacity="0.9"/><circle cx="27" cy="39" r="14" fill="#2061a7"/><g clip-path="url(#clipIris2)"><circle cx="37" cy="38" r="13" fill="#2fa8e6"/></g><g clip-path="url(#clipIris2)"><circle cx="19" cy="46" r="11" fill="#17508f" opacity="0.55"/></g><circle cx="22.5" cy="33.5" r="3.2" fill="#ffffff"/><circle cx="31" cy="45" r="1.5" fill="#dff1fe"/><g clip-path="url(#clipIris2)"><rect class="glint" x="3" y="16" width="18" height="46" fill="url(#gGlint2)"/></g></svg><span class="foot-name">STD Koolitus OÜ</span></a>
         <p class="desc">Seire-, automaatika- ja koolitusteenused Eesti ettevõtetele. Igakuine teenus, mis töötab sinu eest.</p>
       </div>
       <div class="foot-cols">
