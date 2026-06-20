@@ -129,7 +129,7 @@
   @keyframes blipring{0%{transform:scale(.3);opacity:.85}5%{opacity:.85}55%{transform:scale(2.8);opacity:0}100%{opacity:0}}
   @media(prefers-reduced-motion:reduce){.radar-sweep,.blip,.blip::after,.tag span,.hero-glow,.glint{animation:none}.blip{opacity:.9}}
   .hero-inner{position:relative;z-index:2;text-align:center;width:100%}
-  .badge-live{display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.05);border:1px solid var(--line-dark);border-radius:999px;padding:7px 16px 7px 12px;font-size:13px;color:var(--on-dark-mut);margin-bottom:30px}
+  .badge-live{display:inline-flex;align-items:center;gap:9px;background:rgba(10,11,14,.62);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid var(--line-dark);border-radius:999px;padding:7px 16px 7px 12px;font-size:13px;color:var(--on-dark);margin-bottom:30px}
   .ldot{width:7px;height:7px;border-radius:50%;background:var(--accent);position:relative}
   .ldot::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--accent);animation:ping 1.9s cubic-bezier(0,0,.2,1) infinite}
   @keyframes ping{0%{transform:scale(1);opacity:.7}80%,100%{transform:scale(2.8);opacity:0}}
@@ -352,6 +352,131 @@
     .logo .tag{display:none}
     .hero-stats .s{border-right:0;border-bottom:1px solid var(--line-dark);padding:16px 0}
   }
+
+  /* === ERISTUS (G) === */
+  .why{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .why .w{padding:28px 24px;border:1px solid var(--line);border-radius:18px;background:var(--paper);transition:.25s}
+  .why .w:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+  .why .w .ic{width:46px;height:46px;border-radius:13px;background:var(--accent-soft);color:var(--accent-ink);display:grid;place-items:center;margin-bottom:16px}
+  .why .w .ic svg{width:23px;height:23px}
+  .why .w h4{font-weight:600;font-size:16.5px;margin-bottom:8px;letter-spacing:-.01em}
+  .why .w p{color:var(--muted);font-size:14px;font-weight:300;line-height:1.55}
+  .replace{margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+  .replace>div{background:var(--paper);padding:30px 28px}
+  .replace .old{background:var(--paper-2)}
+  .replace h5{font-size:12px;text-transform:uppercase;letter-spacing:.08em;font-weight:600;margin-bottom:18px;color:var(--muted)}
+  .replace .new h5{color:var(--accent-ink)}
+  .replace ul{list-style:none;display:flex;flex-direction:column;gap:13px}
+  .replace li{display:flex;gap:11px;font-size:14.5px;font-weight:300;line-height:1.5;color:var(--text-2)}
+  .replace li svg{width:17px;height:17px;flex-shrink:0;margin-top:2px}
+  .replace .old li svg{color:#c0556b}
+  .replace .new li svg{color:var(--accent)}
+
+  /* === USALDUS / TUGI (F) === */
+  .rely{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .rely .r{padding:32px 28px;border:1px solid var(--line);border-radius:18px;background:var(--paper)}
+  .rely .r .big{font-weight:300;font-size:42px;letter-spacing:-.02em;color:var(--text);line-height:1;margin-bottom:4px}
+  .rely .r .big .u{font-size:17px;color:var(--accent-ink);font-weight:500}
+  .rely .r h4{font-weight:600;font-size:16px;margin:12px 0 7px}
+  .rely .r p{color:var(--muted);font-size:14px;font-weight:300;line-height:1.55}
+
+  /* preset + ankur (E) */
+  .preset-btn{display:inline-flex;align-items:center;gap:9px;background:rgba(23,184,106,.12);border:1px solid rgba(23,184,106,.42);color:#7af0b6;font-family:var(--f);font-weight:500;font-size:13px;padding:9px 15px;border-radius:10px;cursor:pointer;margin-bottom:22px;transition:.2s}
+  .preset-btn:hover{background:rgba(23,184,106,.2)}
+  .preset-btn svg{width:15px;height:15px}
+  .calc-anchor{font-size:12.5px;color:var(--on-dark-mut);margin:-8px 0 18px}
+  .calc-anchor b{color:#fff;font-weight:500}
+
+  /* === TELLIMUSVOOG (modaal) === */
+  body.modal-open{overflow:hidden}
+  .order-ov{position:fixed;inset:0;z-index:200;background:rgba(8,9,12,.66);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:none;align-items:flex-start;justify-content:center;overflow-y:auto;padding:30px 14px}
+  .order-ov.open{display:flex}
+  .order{width:100%;max-width:720px;background:var(--paper);border-radius:22px;box-shadow:var(--shadow-lg);overflow:hidden;animation:omod .35s cubic-bezier(.2,.7,.3,1)}
+  @keyframes omod{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+  .ord-head{display:flex;align-items:center;gap:13px;padding:18px 24px;background:var(--ink);color:#fff}
+  .ord-head .eye{height:36px;width:auto;transform:scaleX(-1)}
+  .ord-head .ht{font-weight:600;font-size:16px;line-height:1.15}
+  .ord-head .ht span{display:block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--on-dark-mut);font-weight:600;margin-top:3px}
+  .ord-x{margin-left:auto;width:36px;height:36px;border-radius:10px;border:1px solid rgba(255,255,255,.18);background:transparent;color:#fff;cursor:pointer;font-size:20px;line-height:1;display:grid;place-items:center;transition:.2s}
+  .ord-x:hover{background:rgba(255,255,255,.1)}
+  .ord-steps{display:flex;align-items:center;gap:8px;padding:13px 24px;border-bottom:1px solid var(--line);font-size:12px;font-family:var(--mono);color:var(--muted);flex-wrap:wrap}
+  .ord-steps .s{display:flex;align-items:center;gap:7px;opacity:.45;transition:.2s}
+  .ord-steps .s.on{opacity:1;color:var(--accent-ink);font-weight:500}
+  .ord-steps .s.done{opacity:.85}
+  .ord-steps .s .n{width:21px;height:21px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-size:11px;background:#fff}
+  .ord-steps .s.on .n,.ord-steps .s.done .n{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .ord-steps .sep{opacity:.35}
+  .ord-body{padding:24px;max-height:60vh;overflow-y:auto}
+  .ord-view{display:none}
+  .ord-view.on{display:block;animation:ofade .3s ease}
+  @keyframes ofade{from{opacity:0}to{opacity:1}}
+  .ord-h{font-weight:600;font-size:20px;letter-spacing:-.02em;margin-bottom:5px}
+  .ord-sub{color:var(--muted);font-size:14px;font-weight:300;margin-bottom:22px;line-height:1.5}
+  .ord-lab{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:24px 0 12px}
+  .ord-lab:first-child{margin-top:0}
+  .ofield{margin-bottom:15px}
+  .ofield label{display:block;font-size:13px;font-weight:500;color:var(--text-2);margin-bottom:6px}
+  .ofield input,.ofield textarea{width:100%;font-family:var(--f);font-size:15px;padding:12px 14px;border:1px solid var(--line);border-radius:11px;background:#fff;color:var(--text);transition:.2s}
+  .ofield input:focus,.ofield textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+  .orow2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .comp{border:1px solid var(--line);border-radius:14px;padding:15px 14px 13px;margin-bottom:12px;background:var(--paper-2);position:relative}
+  .comp .cx{position:absolute;top:9px;right:9px;width:27px;height:27px;border:0;background:transparent;color:var(--muted);cursor:pointer;font-size:17px;border-radius:8px;line-height:1}
+  .comp .cx:hover{background:#fff;color:#c0556b}
+  .comp input{width:100%;font-family:var(--f);font-size:14px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;margin-bottom:9px}
+  .comp input:focus{outline:none;border-color:var(--accent)}
+  .comp .crow{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+  .comp .chint{font-size:11.5px;color:var(--muted);font-family:var(--mono);min-height:14px}
+  .comp .chint b{color:var(--accent-ink);font-weight:500}
+  .add-comp{width:100%;border:1px dashed var(--line);background:#fff;color:var(--accent-ink);font-family:var(--f);font-weight:500;font-size:14px;padding:13px;border-radius:12px;cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center;gap:8px}
+  .add-comp:hover{border-color:var(--accent);background:var(--accent-soft)}
+  .add-comp svg{width:16px;height:16px}
+  .omod-toggle{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--text);cursor:pointer;font-family:var(--f);transition:.2s;margin-bottom:9px}
+  .omod-toggle:hover{border-color:#c9cdd4}
+  .omod-toggle.on{border-color:var(--accent);background:var(--accent-soft)}
+  .omod-toggle .sw{flex-shrink:0;width:38px;height:22px;border-radius:99px;background:#d7dbe1;position:relative;transition:.2s}
+  .omod-toggle .sw::after{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:.2s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+  .omod-toggle.on .sw{background:var(--accent)}
+  .omod-toggle.on .sw::after{left:19px}
+  .omod-toggle .mt{flex:1;min-width:0}
+  .omod-toggle .mt b{font-weight:500;font-size:14px;display:block}
+  .omod-toggle .mt span{font-size:12px;color:var(--muted);line-height:1.3}
+  .omod-toggle .mp{flex-shrink:0;font-family:var(--mono);font-size:13px;font-weight:500;color:var(--muted)}
+  .omod-toggle.on .mp{color:var(--accent-ink)}
+  .obill{display:flex;gap:4px;background:var(--paper-2);border:1px solid var(--line);border-radius:11px;padding:4px;margin-bottom:6px}
+  .obill button{flex:1;border:0;background:transparent;color:var(--muted);font-family:var(--f);font-size:13px;font-weight:500;padding:9px 6px;border-radius:8px;cursor:pointer;transition:.2s}
+  .obill button span{font-size:11px;opacity:.85}
+  .obill button.on{background:var(--accent);color:#04231a}
+  /* kinnitus + makse */
+  .osum{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:18px}
+  .osum .sr{display:flex;justify-content:space-between;gap:14px;padding:12px 16px;border-bottom:1px solid var(--line);font-size:14px}
+  .osum .sr:last-child{border-bottom:0}
+  .osum .sr span{color:var(--text-2);font-weight:300}
+  .osum .sr b{font-weight:500;font-family:var(--mono)}
+  .osum .sr.tot{background:var(--paper-2);font-size:16px}
+  .osum .sr.tot b{color:var(--accent-ink);font-size:18px}
+  .osec{display:flex;gap:11px;background:var(--accent-soft);border:1px solid #cdeadd;border-radius:13px;padding:14px 16px;margin-bottom:18px}
+  .osec svg{width:20px;height:20px;color:var(--accent-ink);flex-shrink:0;margin-top:1px}
+  .osec p{font-size:13px;color:#22614a;font-weight:300;line-height:1.5}
+  .osec b{font-weight:500}
+  .pay-demo{display:flex;gap:10px;align-items:flex-start;background:var(--amber-soft);color:var(--amber);border:1px solid #f0dcb8;border-radius:11px;padding:11px 14px;font-size:13px;font-weight:400;margin-bottom:18px;line-height:1.45}
+  .pay-demo svg{width:18px;height:18px;flex-shrink:0;margin-top:1px}
+  .pay-logos{display:flex;gap:8px;align-items:center;margin-bottom:16px;flex-wrap:wrap}
+  .pay-logos .pl{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--muted);border:1px solid var(--line);border-radius:7px;padding:5px 10px;background:#fff}
+  .ord-done{text-align:center;padding:14px 6px 6px}
+  .ord-done .chk{width:72px;height:72px;border-radius:50%;background:var(--accent-soft);color:var(--accent-ink);display:grid;place-items:center;margin:0 auto 22px}
+  .ord-done .chk svg{width:38px;height:38px}
+  .ord-done h3{font-weight:600;font-size:22px;letter-spacing:-.02em;margin-bottom:10px}
+  .ord-done p{color:var(--muted);font-size:15px;font-weight:300;line-height:1.6;max-width:420px;margin:0 auto 8px}
+  .ord-foot{display:flex;align-items:center;gap:13px;padding:15px 24px;border-top:1px solid var(--line);background:#fafbfc;flex-wrap:wrap}
+  .ord-foot .oprice{margin-right:auto}
+  .ord-foot .oprice .l{font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-family:var(--mono)}
+  .ord-foot .oprice .a{font-weight:500;font-size:23px;line-height:1.1}
+  .ord-foot .oprice .a small{font-size:13px;color:var(--muted);font-weight:400}
+  .ord-foot .oprice .a .save{font-size:11px;color:var(--accent-ink);font-weight:500;margin-left:6px}
+  .ord-err{color:#c0556b;font-size:13px;margin-top:4px;display:none}
+  .ord-err.show{display:block}
+  @media(max-width:900px){.why{grid-template-columns:repeat(2,1fr)}.rely{grid-template-columns:1fr}}
+  @media(max-width:560px){.why{grid-template-columns:1fr}.replace{grid-template-columns:1fr}.orow2,.comp .crow{grid-template-columns:1fr}.ord-steps .lbl{display:none}.ord-foot{gap:10px}.ord-foot .btn{flex:1;justify-content:center}}
 </style>
 </head>
 <body>
@@ -371,7 +496,7 @@
     </nav>
     <div class="nav-r">
       <a href="#kontakt" class="btn btn-out on-dark">Broneeri tutvustus</a>
-      <a href="#hinnad" class="btn btn-grad">Liitu</a>
+      <a href="#hinnad" class="btn btn-grad js-order">Liitu</a>
       <a href="https://expenses-destruct-snowboard.ngrok-free.dev/accounts/login/" class="login-link" style="color:#cbd3da;text-decoration:none;font-weight:600;font-size:14px;display:flex;align-items:center;gap:5px">Logi sisse <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
     <button class="burger" id="burger" aria-label="Ava menüü" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -383,7 +508,7 @@
     <a href="#portfoolio">Portfoolio</a>
     <a href="https://expenses-destruct-snowboard.ngrok-free.dev/accounts/login/">Logi sisse</a>
     <a href="#kontakt" class="btn btn-out on-dark">Broneeri tutvustus</a>
-    <a href="#hinnad" class="btn btn-grad">Liitu</a>
+    <a href="#hinnad" class="btn btn-grad js-order">Liitu</a>
   </div>
 </header>
 
@@ -408,7 +533,7 @@
           <span class="blip" style="left:10%;top:58%;animation-delay:3.1s"><b>-18%</b></span>
           <span class="blip" style="left:68%;top:60%;animation-delay:3.7s"><b>-40%</b></span>
           <span class="blip" style="left:20%;top:80%;animation-delay:4.3s"><b>-28%</b></span>
-          <span class="blip up" style="left:60%;top:8%;animation-delay:1.2s"><b>+20%</b></span>
+          <span class="blip up" style="left:78%;top:9%;animation-delay:1.2s"><b>+20%</b></span>
           <span class="blip up" style="left:30%;top:8%;animation-delay:2.2s"><b>+15%</b></span>
           <span class="blip up" style="left:80%;top:74%;animation-delay:3.4s"><b>+18%</b></span>
         </div>
@@ -421,7 +546,7 @@
     <h1>Hoiame su äril<br><span class="g">silma peal.</span></h1>
     <p class="lead">STD Koolitus – seire<sup>1</sup>, automaatika<sup>2</sup> ja koolitus<sup>3</sup> ühe katuse all. Konkurendid, hinnad, laoseis, e-pood ja SEO koondatud ühte raportisse, mis hoiatab, enne kui midagi katki läheb.</p>
     <div class="hero-actions">
-      <a href="#hinnad" class="btn btn-grad">Liitu kohe <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="#hinnad" class="btn btn-grad js-order">Liitu kohe <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       <a href="#kontakt" class="btn btn-out on-dark">Broneeri tutvustus</a>
     </div>
     <div class="hero-stats">
@@ -496,16 +621,70 @@
   </div>
 </section>
 
+<!-- ERISTUS (G) -->
+<section id="miks" class="alt" style="border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <div class="eyebrow"><span class="dot"></span> Miks meie</div>
+      <h2>Tehtud sinu eest, kohalikult</h2>
+      <p>Sa ei osta tööriista, mida pead ise õppima ja hooldama. Sa ostad tulemuse - meie ehitame, jälgime ja hoiame töös.</p>
+    </div>
+    <div class="why reveal">
+      <div class="w">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20.5 7.3 12 11.9 3.5 7.3M12 11.9V21M12 3 3.5 7.6v8.8L12 21l8.5-4.6V7.6L12 3Z" stroke-linejoin="round"/></svg></div>
+        <h4>Tehtud sinu eest</h4>
+        <p>Sina ei paigalda ega halda midagi. Seadistame, majutame ja hoiame kõik töös - sina saad valmis tulemuse.</p>
+      </div>
+      <div class="w">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-7-4.5-7-10a7 7 0 0 1 14 0c0 5.5-7 10-7 10Z" stroke-linejoin="round"/><circle cx="12" cy="11" r="2.4"/></svg></div>
+        <h4>Eesti tugi, päris inimene</h4>
+        <p>Vastame eesti keeles ja tunneme kohalikku turgu - sinu konkurendid, su tarnijad ja Eesti e-kaubandus on meile tuttavad.</p>
+      </div>
+      <div class="w">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="7" cy="7" r="3"/><circle cx="17" cy="17" r="3"/><path d="M9.5 9.5 14.5 14.5" stroke-linecap="round"/></svg></div>
+        <h4>Directo-natiivne</h4>
+        <p>Liidestus ja laoseis töötavad Eesti Directo ERP-iga, mitte ainult kallite välistööriistadega. Üks meie tugevamaid külgi.</p>
+      </div>
+      <div class="w">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3.5" y="4" width="17" height="12" rx="2"/><path d="M3.5 9h17M8 20h8M12 16v4" stroke-linecap="round"/></svg></div>
+        <h4>Üks paneel, kogu pilt</h4>
+        <p>Kümne tööriista lahtihoidmise asemel üks vaade ja üks hommikukiri. Meie koondame andmed, sina näed olulist.</p>
+      </div>
+    </div>
+    <div class="replace reveal">
+      <div class="old">
+        <h5>Ilma meieta</h5>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12" stroke-linecap="round"/></svg>Käid konkurentide lehti käsitsi läbi - kui üldse jõuad</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12" stroke-linecap="round"/></svg>Hinnalanguse märkad alles siis, kui müük on juba kadunud</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12" stroke-linecap="round"/></svg>Katkise toote leiab klient enne sind</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12" stroke-linecap="round"/></svg>Andmed laiali kümnes tööriistas ja Exceli failis</li>
+        </ul>
+      </div>
+      <div class="new">
+        <h5>Meiega</h5>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg>Ööpäevaringne automaatne seire - sina ei pea midagi kontrollima</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg>Hoiatus kohe, kui konkurent hinda või laoseisu muudab</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg>Vead su poes leitud enne, kui klient need näeb</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg>Kõik ühes paneelis ja ühes hommikukirjas</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PRICING -->
 <section id="hinnad">
   <div class="wrap">
     <div class="sec-head center reveal">
       <div class="eyebrow"><span class="dot"></span> Hinnad</div>
       <h2>Pane oma pakett kokku</h2>
-      <p>Vali moodulid ja mahud – kuutasu kujuneb kohe. Ei mingeid ettemääratud pakette ega üllatusi.</p>
+      <p>Konkurendi Facebook-seire alates 1 €/kuus, e-poe hinna- ja laoseire 5 €/kuus poe kohta. Vali moodulid ja mahud - kuutasu kujuneb kohe, ühtegi peidetud tasu pole.</p>
     </div>
     <div class="calc reveal" id="calc">
       <div class="calc-l">
+        <button type="button" class="preset-btn" id="presetBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 12h18" stroke-linecap="round"/></svg>Pane mulle soovituslik stardipakett</button>
         <div class="cfg-label" style="margin-top:0">1 · Seire mahud</div>
         <div class="slider">
           <div class="slider-head"><span>Konkurente Facebookis</span><span class="cnt" id="fbVal">8</span></div>
@@ -535,7 +714,7 @@
         <div class="calc-price"><span class="was" id="calcWas"></span>€<span id="calcPrice">0</span><small id="calcSuffix">/kuus</small></div>
         <div class="calc-save" id="calcSave"></div>
         <div class="calc-break" id="calcBreak"></div>
-        <a href="#kontakt" class="btn btn-grad" id="joinBtn" style="width:100%;justify-content:center">Liitu kohe →</a>
+        <button type="button" class="btn btn-grad js-order" id="joinBtn" data-prefill="1" style="width:100%;justify-content:center">Liitu kohe →</button>
         <div class="calc-note">Sisaldab seirepaneeli, igahommikust raportit ja hoiatusi. Tühista igal ajal. Hinnad esialgsed.</div>
       </div>
     </div>
@@ -597,6 +776,34 @@
   </div>
 </section>
 
+<!-- USALDUS / TUGI (F) -->
+<section id="usaldus">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <div class="eyebrow"><span class="dot"></span> Usaldusväärsus</div>
+      <h2>Seire-firma, kellele saab kindel olla</h2>
+      <p>Meie pakume töökindlust - seega peame ise olema kõige usaldusväärsem lüli. Vaata, mida lubame.</p>
+    </div>
+    <div class="rely reveal">
+      <div class="r">
+        <div class="big">24/7</div>
+        <h4>Seire ei maga</h4>
+        <p>Süsteemid jälgivad ööpäev läbi, ka nädalavahetusel ja pühade ajal. Sina ei pea midagi käsitsi kontrollima ega meeles pidama.</p>
+      </div>
+      <div class="r">
+        <div class="big">1 <span class="u">tööpäev</span></div>
+        <h4>Tugi päris inimeselt</h4>
+        <p>Küsimuse või mure korral vastame eesti keeles ühe tööpäeva jooksul - päris inimene, mitte automaatvastus ega välismaa tugiliin.</p>
+      </div>
+      <div class="r">
+        <div class="big">Meie<span class="u"> mure</span></div>
+        <h4>Probleemi lahendame ära</h4>
+        <p>Kui midagi läheb katki, ei saada me sulle vealogi. Paneme asja korda ja anname teada, mis juhtus - lahendus, mitte ülesanne sulle.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PORTFOLIO -->
 <section id="portfoolio" class="alt" style="border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
   <div class="wrap">
@@ -643,7 +850,7 @@
       <h2>Pane pakett kokku ja<br><span class="g">liitu juba täna.</span></h2>
       <p>Vali moodulid, näe kohe kuutasu ja liitu. Või broneeri 30-minutiline tutvustus, kui tahad enne rääkida – ilma kohustuseta.</p>
       <div class="hero-actions">
-        <a href="#hinnad" class="btn btn-grad">Liitu kohe <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="#hinnad" class="btn btn-grad js-order">Liitu kohe <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <a href="mailto:info@stdkoolitus.ee?subject=Soovin%20tutvustust" class="btn btn-out on-dark">Broneeri tutvustus</a>
       </div>
     </div>
