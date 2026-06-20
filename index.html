@@ -108,7 +108,9 @@
     -webkit-mask-image:radial-gradient(circle at 50% 50%,#000 46%,transparent 92%);
     mask-image:radial-gradient(circle at 50% 50%,#000 46%,transparent 92%)}
   .radar-field{position:absolute;left:50%;top:58%;transform:translate(-50%,-50%);width:min(92vw,1240px);aspect-ratio:1.62/1}
-  .radar-map{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:1;filter:drop-shadow(0 0 20px rgba(23,184,106,.5))}
+  .radar-map{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;filter:drop-shadow(0 0 20px rgba(23,184,106,.5));animation:mapcycle 25s linear infinite both}
+  @keyframes mapcycle{0%{opacity:0}3%{opacity:1}18%{opacity:1}21%{opacity:0}100%{opacity:0}}
+  @media(prefers-reduced-motion:reduce){.radar-map{animation:none;opacity:0}.radar-map.m0{opacity:1}}
   .radar-rings{position:absolute;inset:0;width:100%;height:100%}
   .radar-rings circle{fill:none;stroke:rgba(23,184,106,.18);stroke-width:.25}
   .radar-rings line{stroke:rgba(23,184,106,.12);stroke-width:.25}
@@ -523,7 +525,11 @@
       </svg>
       <div class="radar-sweep"></div>
       <div class="radar-field">
-        <img class="radar-map" src="estonia.svg" alt="">
+        <img class="radar-map m0" src="estonia.svg" alt="" style="animation-delay:0s">
+        <img class="radar-map m1" src="finland.svg" alt="" style="animation-delay:5s">
+        <img class="radar-map m2" src="sweden.svg" alt="" style="animation-delay:10s">
+        <img class="radar-map m3" src="latvia.svg" alt="" style="animation-delay:15s">
+        <img class="radar-map m4" src="lithuania.svg" alt="" style="animation-delay:20s">
         <div class="blips">
           <span class="blip" style="left:42%;top:16%;animation-delay:0s"><b>-25%</b></span>
           <span class="blip" style="left:13%;top:40%;animation-delay:.5s"><b>-20%</b></span>
