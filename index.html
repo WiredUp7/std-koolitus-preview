@@ -104,15 +104,16 @@
   @keyframes glowpulse{0%,100%{opacity:.65;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.07)}}
   /* RADAR HERO */
   .radar{position:absolute;inset:0;z-index:0;display:grid;place-items:center;overflow:hidden}
-  .radar-stage{position:relative;width:min(96vw,660px);aspect-ratio:1/1;
-    -webkit-mask-image:radial-gradient(circle at 50% 50%,#000 58%,transparent 82%);
-    mask-image:radial-gradient(circle at 50% 50%,#000 58%,transparent 82%)}
-  .radar-map{position:absolute;inset:7%;width:86%;height:86%;object-fit:contain;opacity:.9;filter:drop-shadow(0 0 14px rgba(23,184,106,.3))}
+  .radar-stage{position:relative;width:min(118vw,2000px);aspect-ratio:1/1;
+    -webkit-mask-image:radial-gradient(circle at 50% 50%,#000 46%,transparent 92%);
+    mask-image:radial-gradient(circle at 50% 50%,#000 46%,transparent 92%)}
+  .radar-field{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(92vw,1240px);aspect-ratio:1.62/1}
+  .radar-map{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:.9;filter:drop-shadow(0 0 14px rgba(23,184,106,.3))}
   .radar-rings{position:absolute;inset:0;width:100%;height:100%}
   .radar-rings circle{fill:none;stroke:rgba(23,184,106,.18);stroke-width:.25}
   .radar-rings line{stroke:rgba(23,184,106,.12);stroke-width:.25}
   .radar-sweep{position:absolute;left:50%;top:50%;width:132%;height:132%;transform:translate(-50%,-50%);border-radius:50%;
-    background:conic-gradient(from 0deg,rgba(23,184,106,0) 200deg,rgba(23,184,106,.07) 285deg,rgba(31,208,122,.4) 330deg,rgba(31,208,122,.46) 340deg,rgba(23,184,106,.14) 353deg,rgba(23,184,106,0) 360deg);
+    background:conic-gradient(from 0deg,rgba(23,184,106,0) 160deg,rgba(23,184,106,.05) 265deg,rgba(31,208,122,.32) 320deg,rgba(31,208,122,.38) 333deg,rgba(23,184,106,.1) 351deg,rgba(23,184,106,0) 360deg);
     -webkit-mask-image:radial-gradient(circle,#000 56%,transparent 73%);
     mask-image:radial-gradient(circle,#000 56%,transparent 73%);
     animation:radarspin 5s linear infinite}
@@ -387,22 +388,24 @@
 <section class="hero">
   <div class="radar" aria-hidden="true">
     <div class="radar-stage">
-      <img class="radar-map" src="estonia.svg" alt="">
       <svg class="radar-rings" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
         <circle cx="50" cy="50" r="47"/><circle cx="50" cy="50" r="33"/><circle cx="50" cy="50" r="19"/>
         <line x1="50" y1="3" x2="50" y2="97"/><line x1="3" y1="50" x2="97" y2="50"/>
         <circle cx="50" cy="50" r="1.4" fill="#17b86a" stroke="none"/>
       </svg>
       <div class="radar-sweep"></div>
-      <div class="blips">
-        <span class="blip" style="left:44%;top:16%;animation-delay:0s"><b>-25%</b></span>
-        <span class="blip" style="left:65%;top:27%;animation-delay:.5s"></span>
-        <span class="blip" style="left:88%;top:26%;animation-delay:.9s"><b>-30%</b></span>
-        <span class="blip" style="left:61%;top:57%;animation-delay:1.9s"></span>
-        <span class="blip" style="left:74%;top:79%;animation-delay:2.5s"><b>-15%</b></span>
-        <span class="blip" style="left:47%;top:65%;animation-delay:3.1s"></span>
-        <span class="blip" style="left:34%;top:59%;animation-delay:3.7s"><b>-40%</b></span>
-        <span class="blip" style="left:20%;top:45%;animation-delay:4.3s"></span>
+      <div class="radar-field">
+        <img class="radar-map" src="estonia.svg" alt="">
+        <div class="blips">
+          <span class="blip" style="left:42%;top:16%;animation-delay:0s"><b>-25%</b></span>
+          <span class="blip" style="left:13%;top:40%;animation-delay:.5s"></span>
+          <span class="blip" style="left:80%;top:30%;animation-delay:.9s"><b>-30%</b></span>
+          <span class="blip" style="left:54%;top:44%;animation-delay:1.9s"></span>
+          <span class="blip" style="left:30%;top:72%;animation-delay:2.5s"><b>-15%</b></span>
+          <span class="blip" style="left:10%;top:58%;animation-delay:3.1s"></span>
+          <span class="blip" style="left:68%;top:60%;animation-delay:3.7s"><b>-40%</b></span>
+          <span class="blip" style="left:60%;top:84%;animation-delay:4.3s"></span>
+        </div>
       </div>
     </div>
   </div>
