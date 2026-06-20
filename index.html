@@ -736,25 +736,8 @@
       </ul>
     </div>
     <div class="show-r reveal">
-      <div class="mock">
-        <div class="mock-bar">
-          <span class="d" style="background:#ec6a5e"></span><span class="d" style="background:#f4bf4f"></span><span class="d" style="background:#61c554"></span>
-          <span class="title">seirepaneel.std</span>
-          <span class="badge"><span class="ldot"></span> Reaalajas</span>
-        </div>
-        <div class="mock-body">
-          <div class="mock-top">
-            <div class="mstat"><div class="l">Allikat jälgitud</div><div class="v"><span data-count="24">0</span></div></div>
-            <div class="mstat"><div class="l">Muutust täna</div><div class="v"><span data-count="7">0</span><span class="delta">↑ 3 hinda</span></div></div>
-          </div>
-          <svg class="spark" id="spark" viewBox="0 0 320 52" preserveAspectRatio="none">
-            <defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgba(23,184,106,.18)"/><stop offset="1" stop-color="rgba(23,184,106,0)"/></linearGradient></defs>
-            <path id="sparkfill" fill="url(#sg)" d=""/>
-            <path id="sparkline" fill="none" stroke="#17b86a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d=""/>
-          </svg>
-          <div class="mlist" id="mlist"></div>
-        </div>
-      </div>
+      <img src="seirepaneel.png" alt="STD seirepaneel — kliendi seirevaade" loading="lazy"
+           style="width:100%;display:block;border-radius:14px;box-shadow:var(--shadow-lg);border:1px solid rgba(255,255,255,.12)">
     </div>
   </div>
 </section>
@@ -994,24 +977,7 @@ function countUp(el){const t=+el.dataset.count;let c=0;const s=Math.max(1,t/55);
 const cio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){countUp(e.target);cio.unobserve(e.target)}}),{threshold:.6});
 document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
 
-/* sparkline */
-(function(){
-  const pts=[6,10,8,14,11,18,15,22,19,26,21,30,27,34,31,40],W=320,H=52,max=44,step=W/(pts.length-1);
-  const xy=pts.map((p,i)=>[i*step,H-4-(p/max)*(H-8)]);
-  const line=xy.map((p,i)=>(i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1)).join(' ');
-  const ln=document.getElementById('sparkline'),fl=document.getElementById('sparkfill');
-  ln.setAttribute('d',line);fl.setAttribute('d',line+` L${W} ${H} L0 ${H} Z`);
-  const len=ln.getTotalLength();ln.style.strokeDasharray=len;ln.style.strokeDashoffset=len;fl.style.opacity=0;
-  const sio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){ln.style.transition='stroke-dashoffset 1.6s ease';ln.style.strokeDashoffset=0;fl.style.transition='opacity 1.2s ease .4s';fl.style.opacity=1;sio.disconnect()}}),{threshold:.5});
-  sio.observe(document.getElementById('spark'));
-})();
-
-/* mock feed */
-const rowsData=[['radar','Konkurent A','hind langes -8%','warn','Vaata'],['box','Laoseis · EGO AURA','tagasi lattu','ok','OK'],['search','SEO märksõnad','3 tõusis','ok','▲'],['health','Veebileht','vastab 99,9%','ok','OK'],['tag','Uus reklaam','tuvastatud','ok','UUS']];
-const ICONS={radar:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="2"/><path d="M16.2 7.8a6 6 0 0 1 0 8.5m-8.4 0a6 6 0 0 1 0-8.5"/></svg>',box:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 16V8l-9-4-9 4v8l9 4 9-4z"/><path d="M3 8l9 4 9-4"/></svg>',search:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>',health:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12h4l2 6 4-12 2 6h6"/></svg>',tag:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 12V7a2 2 0 0 0-2-2h-5L3 15l6 6 11-9z"/></svg>'};
-const ml=document.getElementById('mlist');let ri=0;
-function render(){ml.innerHTML='';for(let k=0;k<4;k++){const[ic,t,s,cls,tag]=rowsData[(ri+k)%rowsData.length];const r=document.createElement('div');r.className='mrow';r.innerHTML=`<span class="mic">${ICONS[ic]}</span><span class="tx"><b>${t}</b><span>${s}</span></span><span class="pill ${cls}">${tag}</span>`;ml.appendChild(r)}}
-render();setInterval(()=>{ri++;render()},2800);
+/* (platvormi-makett asendatud paris screenshot'iga) */
 
 /* faq */
 document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()=>{
