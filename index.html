@@ -875,6 +875,105 @@
   </div>
 </footer>
 
+<!-- TELLIMUSVOOG (modaal) -->
+<div class="order-ov" id="orderOv" aria-hidden="true">
+  <div class="order" role="dialog" aria-modal="true" aria-label="Telli seire">
+    <div class="ord-head">
+      <svg class="eye" viewBox="0 0 76 62" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="gLid3" x1="0" y1="0" x2="1" y2="0.7"><stop offset="0" stop-color="#46ec9f"/><stop offset="1" stop-color="#0bc8c8"/></linearGradient><clipPath id="clipIris3"><circle cx="27" cy="39" r="14"/></clipPath></defs><path d="M5 35 C 18 14, 47 6, 72 9 C 53 16, 31 23, 5 35 Z" fill="url(#gLid3)"/><path d="M9 47 C 24 58, 47 56, 67 45 C 50 51, 29 53, 9 47 Z" fill="url(#gLid3)" opacity="0.92"/><circle cx="27" cy="39" r="14" fill="#0c8f5f"/><g clip-path="url(#clipIris3)"><circle cx="37" cy="38" r="13" fill="#37e3a2"/></g><circle cx="22.5" cy="33.5" r="3.2" fill="#ffffff"/></svg>
+      <div class="ht">Telli seire<span>STD Koolitus</span></div>
+      <button class="ord-x" id="ordX" type="button" aria-label="Sulge">&times;</button>
+    </div>
+    <div class="ord-steps">
+      <div class="s on" data-s="1"><span class="n">1</span><span class="lbl">Seire</span></div>
+      <span class="sep">›</span>
+      <div class="s" data-s="2"><span class="n">2</span><span class="lbl">Sinu andmed</span></div>
+      <span class="sep">›</span>
+      <div class="s" data-s="3"><span class="n">3</span><span class="lbl">Kinnita</span></div>
+      <span class="sep">›</span>
+      <div class="s" data-s="4"><span class="n">4</span><span class="lbl">Makse</span></div>
+    </div>
+    <div class="ord-body" id="ordBody">
+      <!-- VIEW 1: mida jälgida -->
+      <div class="ord-view on" data-v="1">
+        <div class="ord-h">Mida soovid jälgida?</div>
+        <div class="ord-sub">Lisa firmad, keda jälgida, ja vali oma poe moodulid. Kuutasu arvutub kohe sisestatud firmade järgi.</div>
+
+        <div class="ord-lab">Sinu e-pood</div>
+        <div class="ofield"><label>Sinu poe veebiaadress</label><input type="text" id="ownSite" placeholder="nt minupood.ee"></div>
+
+        <div class="ord-lab">Keda jälgida — konkurendid</div>
+        <div id="compList"></div>
+        <button type="button" class="add-comp" id="addComp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg>Lisa konkurent</button>
+
+        <div class="ord-lab">Lisamoodulid sinu poele</div>
+        <div id="omods">
+          <button type="button" class="omod-toggle" data-price="19" data-label="E-poe tervisekontroll"><span class="sw"></span><span class="mt"><b>E-poe tervisekontroll</b><span>Katkised pildid, alt-tekstid, hinnavead</span></span><span class="mp">+19 €</span></button>
+          <button type="button" class="omod-toggle" data-price="15" data-label="SEO & sisulünga seire"><span class="sw"></span><span class="mt"><b>SEO &amp; sisulünga seire</b><span>Märksõnade positsioonid + sisulüngad</span></span><span class="mp">+15 €</span></button>
+          <button type="button" class="omod-toggle" data-price="9" data-label="Veebilehe töökindluse seire"><span class="sw"></span><span class="mt"><b>Veebilehe töökindluse seire</b><span>Uptime + hoiatus, kui pood on maas</span></span><span class="mp">+9 €</span></button>
+          <button type="button" class="omod-toggle" data-price="29" data-label="ERP–e-pood liidestus"><span class="sw"></span><span class="mt"><b>ERP–e-pood liidestus</b><span>Directo ↔ WooCommerce sünk</span></span><span class="mp">+29 €</span></button>
+          <button type="button" class="omod-toggle" data-price="39" data-label="Koolitus tiimile"><span class="sw"></span><span class="mt"><b>Koolitus tiimile</b><span>Õpetame tööriistu ise kasutama</span></span><span class="mp">+39 €</span></button>
+          <button type="button" class="omod-toggle" data-price="0" data-quote="1" data-label="Tellitud automaatika"><span class="sw"></span><span class="mt"><b>Tellitud automaatika</b><span>Eriülesanne — plugin, skript, dashboard</span></span><span class="mp">pakkumisel</span></button>
+        </div>
+
+        <div class="ord-lab">Arveldus</div>
+        <div class="obill" id="obill">
+          <button type="button" class="on" data-mode="month">Kuumakse</button>
+          <button type="button" data-mode="year">Aastamakse <span>−2 kuud</span></button>
+        </div>
+        <div class="ord-err" id="err1">Lisa vähemalt üks jälgitav firma (koduleht või FB-leht) või vali moodul.</div>
+      </div>
+
+      <!-- VIEW 2: sinu andmed -->
+      <div class="ord-view" data-v="2">
+        <div class="ord-h">Sinu andmed</div>
+        <div class="ord-sub">Kuhu saadame seirepaneeli ligipääsu ja igahommikuse raporti.</div>
+        <div class="ofield"><label>Ettevõtte nimi *</label><input type="text" id="cName" placeholder="Sinu ettevõte OÜ"></div>
+        <div class="orow2">
+          <div class="ofield"><label>Kontaktisik *</label><input type="text" id="cContact" placeholder="Ees- ja perekonnanimi"></div>
+          <div class="ofield"><label>Telefon</label><input type="tel" id="cPhone" placeholder="+372 …"></div>
+        </div>
+        <div class="ofield"><label>E-post *</label><input type="email" id="cEmail" placeholder="sina@ettevote.ee"></div>
+        <div class="ord-err" id="err2">Palun täida ettevõtte nimi, kontaktisik ja korrektne e-post.</div>
+      </div>
+
+      <!-- VIEW 3: kinnita -->
+      <div class="ord-view" data-v="3">
+        <div class="ord-h">Kinnita tellimus</div>
+        <div class="ord-sub">Vaata üle, mida tellid. Pikaajalist kohustust pole — tühistad lihtsa etteteatamisega.</div>
+        <div class="osum" id="osum"></div>
+        <div class="osec">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 5 6v5c0 4.2 2.8 7.3 7 8.8 4.2-1.5 7-4.6 7-8.8V6l-7-3Z" stroke-linejoin="round"/><path d="m9 11.5 2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p><b>Sinu andmed on kaitstud.</b> Kasutame ainult lugemisõigusega ligipääsu, andmed jäävad sinu omaks ega lähe kolmandatele. Sõlmime andmetöötluslepingu (GDPR) ja saad ligipääsu igal hetkel tühistada.</p>
+        </div>
+      </div>
+
+      <!-- VIEW 4: makse (mock) -->
+      <div class="ord-view" data-v="4">
+        <div id="payForm">
+          <div class="ord-h">Makse</div>
+          <div class="ord-sub">Turvaline makse pangalingi või kaardiga.</div>
+          <div class="pay-demo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01" stroke-linecap="round"/></svg><span>Näidismakse — päris makset ei toimu. Tellimus saadetakse meile ülevaatamiseks ja võtame ühendust.</span></div>
+          <div class="pay-logos"><span class="pl">Swedbank</span><span class="pl">SEB</span><span class="pl">LHV</span><span class="pl">Visa</span><span class="pl">Mastercard</span></div>
+          <div class="ofield"><label>Nimi kaardil</label><input type="text" id="payName" placeholder="Demo Maksja"></div>
+          <div class="ofield"><label>Kaardinumber</label><input type="text" id="payCard" placeholder="4242 4242 4242 4242"></div>
+          <div class="orow2"><div class="ofield"><label>Aegumine</label><input type="text" placeholder="12/28"></div><div class="ofield"><label>CVC</label><input type="text" placeholder="123"></div></div>
+        </div>
+        <div class="ord-done" id="payDone" style="display:none">
+          <div class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m5 13 4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Aitäh! Tellimus on vastu võetud</h3>
+          <p>Võtame sinuga ühe tööpäeva jooksul ühendust, seadistame seire ja saadame esimese raporti. Sina ei pea midagi paigaldama.</p>
+          <p style="margin-top:16px"><a href="#" id="mailCopy" class="btn btn-out">Saada tellimusest koopia e-postiga</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="ord-foot" id="ordFoot">
+      <div class="oprice"><div class="l">Kuutasu</div><div class="a" id="ordPrice">0 €<small>/kuus</small></div></div>
+      <button type="button" class="btn btn-out" id="ordBack" style="display:none">Tagasi</button>
+      <button type="button" class="btn btn-grad" id="ordNext">Edasi →</button>
+    </div>
+  </div>
+</div>
+
 <script>
 const nav=document.getElementById('nav');
 addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>12),{passive:true});
@@ -952,7 +1051,143 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
   }
   mods.forEach(x=>x.addEventListener('click',()=>{x.classList.toggle('on');upd();}));
   bopts.forEach(b=>b.addEventListener('click',()=>{bopts.forEach(o=>o.classList.remove('on'));b.classList.add('on');upd();}));
+  // E: soovituslik stardipakett
+  const presetBtn=document.getElementById('presetBtn');
+  if(presetBtn)presetBtn.addEventListener('click',()=>{
+    fb.value=8;web.value=3;
+    const want=['E-poe tervisekontroll','Veebilehe töökindluse seire'];
+    mods.forEach(x=>x.classList.toggle('on',want.includes(x.dataset.label)));
+    bopts.forEach(o=>o.classList.toggle('on',o.dataset.mode==='month'));
+    upd();
+  });
   fb.addEventListener('input',upd);web.addEventListener('input',upd);upd();
+})();
+
+/* === TELLIMUSVOOG (modaal) === */
+(function(){
+  const FB_UNIT=1, WEB_UNIT=5, FREE_MONTHS=2;
+  const ov=document.getElementById('orderOv');
+  if(!ov)return;
+  const bodyEl=document.getElementById('ordBody');
+  const views=[...ov.querySelectorAll('.ord-view')];
+  const stepsEl=[...ov.querySelectorAll('.ord-steps .s')];
+  const compList=document.getElementById('compList');
+  const omods=[...ov.querySelectorAll('#omods .omod-toggle')];
+  const obill=[...ov.querySelectorAll('#obill button')];
+  const priceEl=document.getElementById('ordPrice');
+  const backBtn=document.getElementById('ordBack'), nextBtn=document.getElementById('ordNext'), foot=document.getElementById('ordFoot');
+  let step=1, done=false;
+  const isYear=()=>obill.some(b=>b.classList.contains('on')&&b.dataset.mode==='year');
+
+  function calc(){
+    let web=0,fb=0; const lines=[];
+    compList.querySelectorAll('.comp').forEach(c=>{
+      if(c.querySelector('.c-web').value.trim())web++;
+      if(c.querySelector('.c-fb').value.trim())fb++;
+    });
+    let m=web*WEB_UNIT+fb*FB_UNIT;
+    if(web)lines.push([`${web} e-poodi hinna- ja laoseires`,`€${web*WEB_UNIT}`]);
+    if(fb)lines.push([`${fb} konkurenti Facebookis`,`€${fb*FB_UNIT}`]);
+    let quote=false;
+    omods.forEach(x=>{if(x.classList.contains('on')){if(x.dataset.quote){quote=true;lines.push([x.dataset.label,'pakkumisel']);}else{const p=+x.dataset.price;m+=p;lines.push([x.dataset.label,`€${p}`]);}}});
+    return {m,web,fb,lines,quote};
+  }
+  function fmtPrice(){
+    if(done)return;
+    const {m}=calc();
+    if(isYear()){const yr=m*(12-FREE_MONTHS),eff=Math.round(yr/12);priceEl.innerHTML=`${eff} €<small>/kuus</small>${m>0?'<span class="save">2 kuud tasuta</span>':''}`;}
+    else priceEl.innerHTML=`${m} €<small>/kuus</small>`;
+  }
+  function rowHint(c){
+    const w=c.querySelector('.c-web').value.trim(), f=c.querySelector('.c-fb').value.trim();
+    const p=[]; if(w)p.push('veeb +5 €'); if(f)p.push('FB +1 €');
+    c.querySelector('.chint').innerHTML=p.length?`<b>${p.join(' · ')}</b> / kuus`:'Lisa koduleht või FB-leht, et seda firmat jälgida';
+  }
+  function addRow(){
+    const c=document.createElement('div');c.className='comp';
+    c.innerHTML='<button type="button" class="cx" aria-label="Eemalda">&times;</button>'
+      +'<input class="c-name" placeholder="Konkurendi nimi">'
+      +'<div class="crow"><input class="c-web" placeholder="Koduleht (nt konkurent.ee)"><input class="c-fb" placeholder="Facebooki leht (URL)"></div>'
+      +'<div class="chint"></div>';
+    compList.appendChild(c);
+    c.querySelector('.cx').addEventListener('click',()=>{c.remove();fmtPrice();});
+    c.querySelectorAll('input').forEach(i=>i.addEventListener('input',()=>{rowHint(c);fmtPrice();}));
+    rowHint(c);
+  }
+  function buildSummary(){
+    const {lines,m}=calc();
+    let h=lines.length?lines.map(l=>`<div class="sr"><span>${l[0]}</span><b>${l[1]}</b></div>`).join(''):'<div class="sr"><span>Midagi pole veel valitud</span><b></b></div>';
+    const y=isYear();const yr=m*(12-FREE_MONTHS),eff=Math.round(yr/12);
+    h+=`<div class="sr tot"><span>Kokku${y?' · aastamakse (2 kuud tasuta)':''}</span><b>${y?`${eff} €/kuus`:`${m} €/kuus`}</b></div>`;
+    document.getElementById('osum').innerHTML=h;
+  }
+  function buildMail(){
+    const {lines,m}=calc();const y=isYear();const yr=m*(12-FREE_MONTHS),eff=Math.round(yr/12);
+    const own=document.getElementById('ownSite').value.trim();
+    const comps=[...compList.querySelectorAll('.comp')].map(c=>{
+      const n=c.querySelector('.c-name').value.trim(),w=c.querySelector('.c-web').value.trim(),f=c.querySelector('.c-fb').value.trim();
+      if(!n&&!w&&!f)return null;
+      return `- ${n||'(nimeta)'}${w?` | veeb: ${w}`:''}${f?` | FB: ${f}`:''}`;
+    }).filter(Boolean).join('\n');
+    const lns=lines.map(l=>`- ${l[0]} (${l[1]})`).join('\n');
+    const tot=y?`aastamakse €${yr}/aastas (≈€${eff}/kuus, 2 kuud tasuta)`:`kuumakse €${m}/kuus`;
+    const body=`Soovin liituda STD Koolituse seirega.\n\nEttevõte: ${document.getElementById('cName').value.trim()}\nKontakt: ${document.getElementById('cContact').value.trim()}\nTelefon: ${document.getElementById('cPhone').value.trim()}\nE-post: ${document.getElementById('cEmail').value.trim()}\n${own?`Oma pood: ${own}\n`:''}\nJälgida:\n${comps||'-'}\n\nPakett:\n${lns}\n\nArveldus: ${tot}`;
+    return `mailto:info@stdkoolitus.ee?subject=${encodeURIComponent('Liitumissoov – STD Koolitus')}&body=${encodeURIComponent(body)}`;
+  }
+  function valid(n){
+    if(n===1){const {m,web,fb,quote}=calc();const ok=(web+fb)>0||m>0||quote;document.getElementById('err1').classList.toggle('show',!ok);return ok;}
+    if(n===2){const nm=document.getElementById('cName').value.trim(),co=document.getElementById('cContact').value.trim(),em=document.getElementById('cEmail').value.trim();const ok=!!nm&&!!co&&/^\S+@\S+\.\S+$/.test(em);document.getElementById('err2').classList.toggle('show',!ok);return ok;}
+    return true;
+  }
+  function setStep(n){
+    step=n;
+    views.forEach(v=>v.classList.toggle('on',+v.dataset.v===n));
+    stepsEl.forEach(s=>{const sn=+s.dataset.s;s.classList.toggle('on',sn===n);s.classList.toggle('done',sn<n);});
+    backBtn.style.display=n>1?'inline-flex':'none';
+    if(n===3){buildSummary();nextBtn.textContent='Jätka maksma →';}
+    else if(n===4){nextBtn.textContent='Maksa';}
+    else nextBtn.textContent='Edasi →';
+    bodyEl.scrollTop=0;
+  }
+  function open(prefill){
+    done=false;
+    compList.innerHTML='';addRow();addRow();
+    if(prefill){
+      const onLabels=[...document.querySelectorAll('#calc .modrow.on')].map(x=>x.dataset.label);
+      omods.forEach(x=>x.classList.toggle('on',onLabels.includes(x.dataset.label)));
+      const calcYear=!!document.querySelector('#billing .bopt.on[data-mode="year"]');
+      obill.forEach(b=>b.classList.toggle('on',(b.dataset.mode==='year')===calcYear));
+    }else{
+      omods.forEach(x=>x.classList.remove('on'));
+      obill.forEach(b=>b.classList.toggle('on',b.dataset.mode==='month'));
+    }
+    document.getElementById('payForm').style.display='';
+    document.getElementById('payDone').style.display='none';
+    foot.style.display='';
+    document.getElementById('err1').classList.remove('show');document.getElementById('err2').classList.remove('show');
+    setStep(1);fmtPrice();
+    document.body.classList.add('modal-open');ov.classList.add('open');ov.setAttribute('aria-hidden','false');
+  }
+  function close(){document.body.classList.remove('modal-open');ov.classList.remove('open');ov.setAttribute('aria-hidden','true');}
+
+  document.querySelectorAll('.js-order').forEach(el=>el.addEventListener('click',e=>{e.preventDefault();open(el.dataset.prefill==='1');}));
+  document.getElementById('ordX').addEventListener('click',close);
+  ov.addEventListener('click',e=>{if(e.target===ov)close();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&ov.classList.contains('open'))close();});
+  document.getElementById('addComp').addEventListener('click',addRow);
+  omods.forEach(x=>x.addEventListener('click',()=>{x.classList.toggle('on');fmtPrice();}));
+  obill.forEach(b=>b.addEventListener('click',()=>{obill.forEach(o=>o.classList.remove('on'));b.classList.add('on');fmtPrice();}));
+  backBtn.addEventListener('click',()=>{if(step>1)setStep(step-1);});
+  nextBtn.addEventListener('click',()=>{
+    if(step<4){if(!valid(step))return;setStep(step+1);}
+    else{
+      document.getElementById('mailCopy').setAttribute('href',buildMail());
+      document.getElementById('payForm').style.display='none';
+      document.getElementById('payDone').style.display='block';
+      foot.style.display='none';done=true;
+      stepsEl.forEach(s=>s.classList.add('done'));
+    }
+  });
 })();
 </script>
 </body>
