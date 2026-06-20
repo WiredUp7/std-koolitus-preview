@@ -122,6 +122,9 @@
   .blip{position:absolute;width:11px;height:11px;border-radius:50%;background:#ff3b3b;transform:translate(-50%,-50%);box-shadow:0 0 12px 2px rgba(255,59,59,.55);opacity:0;animation:blip 5s linear infinite}
   .blip::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:1.5px solid rgba(255,90,90,.75);opacity:0;animation:blipring 5s linear infinite;animation-delay:inherit}
   .blip b{position:absolute;left:15px;top:-9px;font-family:var(--mono);font-size:11px;font-weight:600;color:#ff7070;background:rgba(255,59,59,.13);border:1px solid rgba(255,90,90,.4);padding:2px 7px;border-radius:6px;white-space:nowrap;box-shadow:0 4px 14px rgba(0,0,0,.4)}
+  .blip.up{background:#1fd07a;box-shadow:0 0 12px 2px rgba(31,208,122,.55)}
+  .blip.up::after{border-color:rgba(70,236,159,.75)}
+  .blip.up b{color:#46ec9f;background:rgba(31,208,122,.14);border-color:rgba(70,236,159,.45)}
   @keyframes blip{0%{opacity:0;transform:translate(-50%,-50%) scale(.3)}4%{opacity:1;transform:translate(-50%,-50%) scale(1.2)}9%{transform:translate(-50%,-50%) scale(1)}55%{opacity:.95}88%{opacity:.12}100%{opacity:0;transform:translate(-50%,-50%) scale(.3)}}
   @keyframes blipring{0%{transform:scale(.3);opacity:.85}5%{opacity:.85}55%{transform:scale(2.8);opacity:0}100%{opacity:0}}
   @media(prefers-reduced-motion:reduce){.radar-sweep,.blip,.blip::after,.tag span,.hero-glow,.glint{animation:none}.blip{opacity:.9}}
@@ -405,6 +408,9 @@
           <span class="blip" style="left:10%;top:58%;animation-delay:3.1s"><b>-18%</b></span>
           <span class="blip" style="left:68%;top:60%;animation-delay:3.7s"><b>-40%</b></span>
           <span class="blip" style="left:20%;top:80%;animation-delay:4.3s"><b>-28%</b></span>
+          <span class="blip up" style="left:60%;top:8%;animation-delay:1.2s"><b>+20%</b></span>
+          <span class="blip up" style="left:50%;top:50%;animation-delay:2.2s"><b>+15%</b></span>
+          <span class="blip up" style="left:84%;top:68%;animation-delay:3.4s"><b>+18%</b></span>
         </div>
       </div>
     </div>
