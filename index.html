@@ -104,11 +104,11 @@
   @keyframes glowpulse{0%,100%{opacity:.65;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.07)}}
   /* RADAR HERO */
   .radar{position:absolute;inset:0;z-index:0;display:grid;place-items:center;overflow:hidden}
-  .radar-stage{position:relative;width:min(118vw,2000px);aspect-ratio:1/1;
+  .radar-stage{position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);width:min(118vw,1700px);aspect-ratio:1/1;
     -webkit-mask-image:radial-gradient(circle at 50% 50%,#000 46%,transparent 92%);
     mask-image:radial-gradient(circle at 50% 50%,#000 46%,transparent 92%)}
   .radar-field{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(92vw,1240px);aspect-ratio:1.62/1}
-  .radar-map{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:.9;filter:drop-shadow(0 0 14px rgba(23,184,106,.3))}
+  .radar-map{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:1;filter:drop-shadow(0 0 20px rgba(23,184,106,.5))}
   .radar-rings{position:absolute;inset:0;width:100%;height:100%}
   .radar-rings circle{fill:none;stroke:rgba(23,184,106,.18);stroke-width:.25}
   .radar-rings line{stroke:rgba(23,184,106,.12);stroke-width:.25}
