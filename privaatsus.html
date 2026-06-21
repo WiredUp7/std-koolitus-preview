@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- AUTO-GENEREERITUD failist privaatsus.template.html (build_i18n.py). Ara muuda seda faili otse - muuda malli voi i18n_*.json ja jooksuta uuesti. -->
 <html lang="et">
 <head>
 <meta charset="UTF-8">
@@ -6,6 +7,17 @@
 <title>Privaatsuspoliitika – Radar360+</title>
 <meta name="description" content="Radar360+ (STD Koolitus OÜ) privaatsuspoliitika – kuidas töötleme ja kaitseme sinu andmeid.">
 <meta name="robots" content="index,follow">
+<link rel="alternate" hreflang="et" href="https://wiredup7.github.io/std-koolitus-preview/privaatsus.html">
+<link rel="alternate" hreflang="en" href="https://wiredup7.github.io/std-koolitus-preview/privaatsus-en.html">
+<link rel="alternate" hreflang="fi" href="https://wiredup7.github.io/std-koolitus-preview/privaatsus-fi.html">
+<link rel="alternate" hreflang="sv" href="https://wiredup7.github.io/std-koolitus-preview/privaatsus-sv.html">
+<link rel="alternate" hreflang="no" href="https://wiredup7.github.io/std-koolitus-preview/privaatsus-no.html">
+<link rel="alternate" hreflang="da" href="https://wiredup7.github.io/std-koolitus-preview/privaatsus-da.html">
+<link rel="alternate" hreflang="lv" href="https://wiredup7.github.io/std-koolitus-preview/privaatsus-lv.html">
+<link rel="alternate" hreflang="lt" href="https://wiredup7.github.io/std-koolitus-preview/privaatsus-lt.html">
+<link rel="alternate" hreflang="pl" href="https://wiredup7.github.io/std-koolitus-preview/privaatsus-pl.html">
+<link rel="alternate" hreflang="uk" href="https://wiredup7.github.io/std-koolitus-preview/privaatsus-uk.html">
+<link rel="alternate" hreflang="x-default" href="https://wiredup7.github.io/std-koolitus-preview/privaatsus-en.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -48,6 +60,18 @@
   footer a{color:var(--on-dark-mut);text-decoration:none}
   footer a:hover{color:#fff}
   @media(max-width:560px){header.top nav{display:none}}
+  .langsel{position:relative;margin-left:auto}
+  .flag{display:block;width:22px;height:15px;border-radius:3px;overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.22)}
+  .flag svg{display:block;width:100%;height:100%}
+  .langbtn{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.07);border:1px solid var(--line-dark);padding:6px 9px;border-radius:10px;cursor:pointer;transition:.2s}
+  .langbtn:hover{background:rgba(255,255,255,.14)}
+  .langbtn .chev{width:12px;height:12px;color:var(--on-dark-mut);transition:.2s;flex-shrink:0}
+  .langbtn[aria-expanded="true"] .chev{transform:rotate(180deg)}
+  .langmenu{position:absolute;top:calc(100% + 9px);right:0;background:#14161d;border:1px solid var(--line-dark);border-radius:13px;padding:8px;box-shadow:0 22px 54px -14px rgba(0,0,0,.75);display:none;grid-template-columns:repeat(2,1fr);gap:5px;z-index:90}
+  .langmenu.open{display:grid}
+  .langmenu a{display:grid;place-items:center;padding:7px 9px;border-radius:8px;cursor:pointer;transition:.15s;border:1px solid transparent}
+  .langmenu a:hover{background:rgba(255,255,255,.08)}
+  .langmenu a.on{border-color:var(--accent);background:rgba(23,184,106,.16)}
 </style>
 </head>
 <body>
@@ -58,6 +82,7 @@
       <span class="wm">Radar360<i>+</i></span>
     </a>
     <nav><a href="index.html">Avaleht</a><a href="tingimused.html">Tingimused</a></nav>
+    <div class="langsel" id="langsel"></div>
   </div>
 </header>
 
@@ -122,7 +147,8 @@
       <li>võtta tagasi nõusolek ja katkestada teenus igal ajal.</li>
     </ul>
     <div class="box green"><p style="margin:0"><strong>Ligipääsu saad alati ise tühistada.</strong> Kuna kasutame ainult lugemisõigusega ligipääsu, saad selle oma süsteemis (WooCommerce, Directo, Google) igal hetkel kehtetuks teha.</p></div>
-    <p>Õiguste teostamiseks kirjuta <a href="mailto:info@radar360.ee">info@radar360.ee</a>. Kui leiad, et oleme rikkunud sinu õigusi, on sul õigus pöörduda <strong>Andmekaitse Inspektsiooni</strong> poole (<a href="https://www.aki.ee" target="_blank" rel="noopener">aki.ee</a>).</p>
+    <p>Õiguste teostamiseks kirjuta <a href="mailto:info@radar360.ee">info@radar360.ee</a>.</p>
+    <p>Kui leiad, et oleme rikkunud sinu õigusi, võid pöörduda Andmekaitse Inspektsiooni poole: <a href="https://www.aki.ee" target="_blank" rel="noopener">aki.ee</a>.</p>
 
     <h2><span class="n">8.</span>Küpsised</h2>
     <p>Radar360+ veebileht kasutab ainult tehniliselt vajalikke küpsiseid (nt sisselogimise sessioon). Analüütika- või turundusküpsiseid kasutame ainult sinu nõusolekul. Nõusoleku saad igal ajal muuta.</p>
@@ -141,5 +167,7 @@
     <span><a href="index.html">Avaleht</a> · <a href="tingimused.html">Kasutustingimused</a></span>
   </div>
 </footer>
+<script>window.LANGFILES={"et": "privaatsus.html", "en": "privaatsus-en.html", "fi": "privaatsus-fi.html", "sv": "privaatsus-sv.html", "no": "privaatsus-no.html", "da": "privaatsus-da.html", "lv": "privaatsus-lv.html", "lt": "privaatsus-lt.html", "pl": "privaatsus-pl.html", "uk": "privaatsus-uk.html"};</script>
+<script src="lang.js"></script>
 </body>
 </html>
