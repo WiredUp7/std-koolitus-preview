@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="{{LANG}}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kasutustingimused – Radar360+</title>
+<meta name="description" content="Radar360+ (STD Koolitus OÜ) teenuse kasutustingimused.">
+<meta name="robots" content="index,follow">
+<!--HREFLANG-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#0a0b0e;--paper:#fff;--paper-2:#f4f5f7;--text:#15171c;--text-2:#3c424d;--muted:#6b7280;--on-dark-mut:#9aa1ad;--line:#e7e9ee;--line-dark:rgba(255,255,255,.09);--accent:#17b86a;--accent-ink:#0c8f4f;--accent-soft:#e7f6ee;--maxw:820px;--f:"Poppins",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--f);background:var(--paper);color:var(--text);line-height:1.7;font-weight:400;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent-ink)}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  header.top{background:var(--ink);color:#fff;padding:18px 0}
+  header.top .wrap{display:flex;align-items:center;gap:13px}
+  .eye{height:38px;width:auto;transform:scaleX(-1);flex-shrink:0;filter:drop-shadow(0 2px 9px rgba(23,184,106,.45))}
+  .wm{font-weight:700;font-size:20px;letter-spacing:-.01em;color:#fff}
+  .wm i{color:var(--accent);font-style:normal}
+  header.top nav{margin-left:auto;display:flex;gap:20px;font-size:14px}
+  header.top nav a{color:var(--on-dark-mut);text-decoration:none}
+  header.top nav a:hover{color:#fff}
+  .hero{background:var(--ink);color:#fff;padding:18px 0 54px;border-bottom:1px solid var(--line-dark)}
+  .hero h1{font-weight:600;font-size:clamp(28px,5vw,40px);letter-spacing:-.02em;line-height:1.1}
+  .hero .upd{color:var(--on-dark-mut);font-size:14px;margin-top:12px}
+  main{padding:48px 0 70px}
+  main .lead{font-size:17px;color:var(--text-2);font-weight:300;margin-bottom:34px}
+  h2{font-weight:600;font-size:21px;letter-spacing:-.01em;margin:38px 0 12px;padding-top:10px}
+  h2 .n{color:var(--accent-ink);font-weight:600;margin-right:8px}
+  h3{font-weight:600;font-size:16px;margin:20px 0 6px}
+  p{margin:10px 0;color:var(--text-2);font-weight:300}
+  ul{margin:10px 0 10px 4px;padding-left:22px}
+  li{margin:7px 0;color:var(--text-2);font-weight:300}
+  strong{font-weight:600;color:var(--text)}
+  .box{background:var(--paper-2);border:1px solid var(--line);border-radius:14px;padding:20px 24px;margin:20px 0}
+  .draft{background:#fdf4e3;border:1px solid #f3e0bb;color:#9a6206;border-radius:12px;padding:13px 18px;font-size:13.5px;margin:24px 0;font-weight:400}
+  footer{background:var(--ink);color:var(--on-dark-mut);padding:40px 0;font-size:14px;font-weight:300}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
+  footer a{color:var(--on-dark-mut);text-decoration:none}
+  footer a:hover{color:#fff}
+  @media(max-width:560px){header.top nav{display:none}}
+  .langsel{position:relative;margin-left:auto}
+  .flag{display:block;width:22px;height:15px;border-radius:3px;overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.22)}
+  .flag svg{display:block;width:100%;height:100%}
+  .langbtn{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.07);border:1px solid var(--line-dark);padding:6px 9px;border-radius:10px;cursor:pointer;transition:.2s}
+  .langbtn:hover{background:rgba(255,255,255,.14)}
+  .langbtn .chev{width:12px;height:12px;color:var(--on-dark-mut);transition:.2s;flex-shrink:0}
+  .langbtn[aria-expanded="true"] .chev{transform:rotate(180deg)}
+  .langmenu{position:absolute;top:calc(100% + 9px);right:0;background:#14161d;border:1px solid var(--line-dark);border-radius:13px;padding:8px;box-shadow:0 22px 54px -14px rgba(0,0,0,.75);display:none;grid-template-columns:repeat(2,1fr);gap:5px;z-index:90}
+  .langmenu.open{display:grid}
+  .langmenu a{display:grid;place-items:center;padding:7px 9px;border-radius:8px;cursor:pointer;transition:.15s;border:1px solid transparent}
+  .langmenu a:hover{background:rgba(255,255,255,.08)}
+  .langmenu a.on{border-color:var(--accent);background:rgba(23,184,106,.16)}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a href="index.html" style="display:flex;align-items:center;gap:13px;text-decoration:none">
+      <svg class="eye" viewBox="0 0 76 62" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="gL" x1="0" y1="0" x2="1" y2="0.7"><stop offset="0" stop-color="#46ec9f"/><stop offset="1" stop-color="#0bc8c8"/></linearGradient><clipPath id="cI"><circle cx="27" cy="39" r="14"/></clipPath></defs><path d="M5 35 C 18 14, 47 6, 72 9 C 53 16, 31 23, 5 35 Z" fill="url(#gL)"/><path d="M9 47 C 24 58, 47 56, 67 45 C 50 51, 29 53, 9 47 Z" fill="url(#gL)" opacity="0.92"/><circle cx="27" cy="39" r="14" fill="#0c8f5f"/><g clip-path="url(#cI)"><circle cx="37" cy="38" r="13" fill="#37e3a2"/></g><circle cx="22.5" cy="33.5" r="3.2" fill="#ffffff"/></svg>
+      <span class="wm">Radar360<i>+</i></span>
+    </a>
+    <nav><a href="index.html">Avaleht</a><a href="privaatsus.html">Privaatsus</a></nav>
+    <div class="langsel" id="langsel"></div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <h1>Kasutustingimused</h1>
+    <div class="upd">Viimati uuendatud: 21.06.2026</div>
+  </div>
+</section>
+
+<main>
+  <div class="wrap">
+    <p class="lead">Need tingimused reguleerivad Radar360+ seire-, automaatika- ja koolitusteenuse kasutamist. Teenust osutab STD Koolitus OÜ. Teenust tellides nõustud nende tingimustega.</p>
+
+    <div class="draft">Mustand ülevaatamiseks. Enne avalikku kasutust laseb STD Koolitus OÜ selle juristil üle vaadata ja täidab tegelikud registriandmed ning lõplikud hinnad.</div>
+
+    <h2><span class="n">1.</span>Teenuse kirjeldus</h2>
+    <p>Radar360+ on igakuine seireteenus, mis koondab ühte vaatesse ja igahommikusse raportisse info sinu valitud allikatest: konkurentide hinnad ja laoseis, konkurentide sotsiaalmeedia (Facebook), sinu e-poe tervis, SEO-positsioonid ja veebilehe töökindlus. Lisaks pakume automaatikat (nt ERP-liidestus, tellitud lahendused) ja koolitust. Klient valib, milliseid mooduleid ja mahte ta tellib.</p>
+
+    <h2><span class="n">2.</span>Liitumine ja konto</h2>
+    <p>Teenuse tellimisel esitad õiged kontaktandmed ja annad meile lugemisõigusega ligipääsu nendele süsteemidele, mida soovid jälgida. Vastutad selle eest, et sul on õigus seda ligipääsu anda. Sinu seirepaneeli konto on isiklik; hoia sisselogimisandmed turvaliselt.</p>
+
+    <h2><span class="n">3.</span>Hinnad ja arveldus</h2>
+    <ul>
+      <li>Kuutasu kujuneb valitud moodulitest ja mahtudest, mis on näha hinnakalkulaatoris.</li>
+      <li>Arveldus toimub kuu- või aastapõhiselt; aastamaksega saad 2 kuud tasuta.</li>
+      <li><strong>Esimene raport on tasuta</strong> – näed teenuse väärtust enne, kui kohustud.</li>
+      <li>Hinnad on käibemaksuta, kui pole märgitud teisiti. Arved esitatakse e-postiga.</li>
+    </ul>
+    <p>Jätame õiguse hindu muuta, teatades sellest ette vähemalt 30 päeva.</p>
+
+    <h2><span class="n">4.</span>Mida me lubame</h2>
+    <ul>
+      <li>seire töötab ööpäev läbi ja koondab muutused igahommikusse raportisse;</li>
+      <li>vastame su päringutele eesti keeles <strong>3 tunni jooksul</strong> (tööpäeviti);</li>
+      <li>tehnilise probleemi korral lahendame selle ise ja anname teada.</li>
+    </ul>
+
+    <h2><span class="n">5.</span>Kliendi kohustused</h2>
+    <p>Kohustud mitte kasutama teenust ebaseaduslikult ega koguma andmeid viisil, mis rikub kolmandate isikute õigusi. Konkurentide seire piirdub avalikult kättesaadava teabega.</p>
+
+    <h2><span class="n">6.</span>Vastutuse piirang</h2>
+    <div class="box"><p style="margin:0">Seire põhineb avalikel ja kolmandate osapoolte andmeallikatel ning on osutatud <strong>mõistliku parima pingutusena</strong>. Mõned allikad (nt Facebook) võivad andmete kättesaadavust piirata, mistõttu me ei garanteeri 100% katvust ega katkestusteta seiret. Radar360+ on otsustustugi – lõplikud äriotsused (nt hinnamuudatused) teeb klient ise. Me ei vastuta kaudse kahju ega saamata jäänud tulu eest. Meie koguvastutus on piiratud viimase 3 kuu teenustasuga.</p></div>
+
+    <h2><span class="n">7.</span>Lepingu lõpetamine</h2>
+    <p>Pikaajalist kohustust ei ole. Saad teenuse lõpetada, teatades sellest ette vähemalt 30 päeva enne järgmist arveldusperioodi. Lõpetamisel peatame seire ja kustutame sinu seireandmed vastavalt privaatsuspoliitikale.</p>
+
+    <h2><span class="n">8.</span>Intellektuaalomand</h2>
+    <p>Radar360+ tarkvara, seirepaneel, raportite kujundus ja metoodika kuuluvad STD Koolitus OÜ-le. Sinu andmed jäävad sinu omaks.</p>
+
+    <h2><span class="n">9.</span>Kohaldatav õigus</h2>
+    <p>Tingimustele kohaldub Eesti õigus. Vaidlused lahendatakse läbirääkimiste teel; kokkuleppe puudumisel Tartu Maakohtus.</p>
+
+    <h2><span class="n">10.</span>Kontakt</h2>
+    <p>STD Koolitus OÜ (Radar360+), registrikood 16234567, Riia 15b, 51010 Tartu. E-post <a href="mailto:info@radar360.ee">info@radar360.ee</a>, telefon +372 5123 4567.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Radar360+ · STD Koolitus OÜ · Registrikood 16234567</span>
+    <span><a href="index.html">Avaleht</a> · <a href="privaatsus.html">Privaatsuspoliitika</a></span>
+  </div>
+</footer>
+<script>window.LANGFILES={{LANGFILES}};</script>
+<script src="lang.js"></script>
+</body>
+</html>
