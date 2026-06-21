@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- AUTO-GENEREERITUD failist index.template.html (build_i18n.py). Ara muuda seda faili otse - muuda malli voi i18n_*.json ja jooksuta uuesti. -->
 <html lang="et">
 <head>
 <meta charset="UTF-8">
@@ -17,6 +18,17 @@
 <meta name="twitter:title" content="Radar360+ – Hoiame su äril silma peal">
 <meta name="twitter:description" content="Seire, automaatika ja koolitus kuutasul. Üks raport, mis hoiatab enne kui midagi katki läheb.">
 <meta name="twitter:image" content="https://wiredup7.github.io/std-koolitus-preview/og-cover.png">
+<link rel="alternate" hreflang="et" href="https://wiredup7.github.io/std-koolitus-preview/index.html">
+<link rel="alternate" hreflang="en" href="https://wiredup7.github.io/std-koolitus-preview/en.html">
+<link rel="alternate" hreflang="fi" href="https://wiredup7.github.io/std-koolitus-preview/fi.html">
+<link rel="alternate" hreflang="sv" href="https://wiredup7.github.io/std-koolitus-preview/sv.html">
+<link rel="alternate" hreflang="no" href="https://wiredup7.github.io/std-koolitus-preview/no.html">
+<link rel="alternate" hreflang="da" href="https://wiredup7.github.io/std-koolitus-preview/da.html">
+<link rel="alternate" hreflang="lv" href="https://wiredup7.github.io/std-koolitus-preview/lv.html">
+<link rel="alternate" hreflang="lt" href="https://wiredup7.github.io/std-koolitus-preview/lt.html">
+<link rel="alternate" hreflang="pl" href="https://wiredup7.github.io/std-koolitus-preview/pl.html">
+<link rel="alternate" hreflang="uk" href="https://wiredup7.github.io/std-koolitus-preview/uk.html">
+<link rel="alternate" hreflang="x-default" href="https://wiredup7.github.io/std-koolitus-preview/en.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -494,6 +506,20 @@
   .ord-err.show{display:block}
   @media(max-width:900px){.why{grid-template-columns:repeat(2,1fr)}.rely{grid-template-columns:1fr}}
   @media(max-width:560px){.why{grid-template-columns:1fr}.replace{grid-template-columns:1fr}.orow2,.comp .crow{grid-template-columns:1fr}.ord-steps .lbl{display:none}.ord-foot{gap:10px}.ord-foot .btn{flex:1;justify-content:center}}
+
+  /* LANG SWITCHER (lipud) */
+  .langsel{position:relative;flex-shrink:0}
+  .flag{display:block;width:22px;height:15px;border-radius:3px;overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.22)}
+  .flag svg{display:block;width:100%;height:100%}
+  .langbtn{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.06);border:1px solid var(--line-dark);padding:7px 9px;border-radius:10px;cursor:pointer;transition:.2s}
+  .langbtn:hover{background:rgba(255,255,255,.13)}
+  .langbtn .chev{width:12px;height:12px;color:var(--on-dark-mut);transition:.2s;flex-shrink:0}
+  .langbtn[aria-expanded="true"] .chev{transform:rotate(180deg)}
+  .langmenu{position:absolute;top:calc(100% + 9px);right:0;background:#14161d;border:1px solid var(--line-dark);border-radius:13px;padding:8px;box-shadow:0 22px 54px -14px rgba(0,0,0,.75);display:none;grid-template-columns:repeat(2,1fr);gap:5px;z-index:90}
+  .langmenu.open{display:grid}
+  .langmenu a{display:grid;place-items:center;padding:7px 9px;border-radius:8px;cursor:pointer;transition:.15s;border:1px solid transparent}
+  .langmenu a:hover{background:rgba(255,255,255,.08)}
+  .langmenu a.on{border-color:var(--accent);background:rgba(23,184,106,.16)}
 </style>
 </head>
 <body>
@@ -515,6 +541,7 @@
       <a href="#hinnad" class="btn btn-grad js-order">Liitu alates 1€</a>
       <a href="https://expenses-destruct-snowboard.ngrok-free.dev/accounts/login/" class="login-link" style="color:#cbd3da;text-decoration:none;font-weight:600;font-size:14px;display:flex;align-items:center;gap:5px">Logi sisse <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
+    <div class="langsel" id="langsel"></div>
     <button class="burger" id="burger" aria-label="Ava menüü" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
   <div class="mobile-menu" id="mobileMenu">
@@ -984,6 +1011,53 @@
 const nav=document.getElementById('nav');
 addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>12),{passive:true});
 
+/* === i18n: keele-stringid (build_i18n.py asendab {"locale": "et-EE", "fbLine": "{n} konkurenti Facebookis", "webLineCalc": "{n} e-poodi hinna+laoseires", "webLineModal": "{n} e-poodi hinna- ja laoseires", "perMonth": "/kuus", "saveAnnual": "{m} kuud tasuta – arve kord aastas (€{yr}/a)", "chooseOne": "Vali vähemalt üks moodul", "billYear": "Arveldus: aastamakse €{yr}/aastas (≈€{eff}/kuus, {m} kuud tasuta)", "billMonth": "Arveldus: kuumakse €{m}/kuus", "mailIntro": "Soovin liituda Radar360+ seirega.", "mailChosen": "Valitud:", "mailQuote": "NB: soovin ka tellitud automaatikat – palun pakkumist.", "mailSubject": "Liitumissoov – Radar360+", "quotePrice": "pakkumisel", "hintWeb": "veeb +5 €", "hintFb": "FB +1 €", "perMonthSpaced": " / kuus", "hintEmpty": "Lisa koduleht või FB-leht, et seda firmat jälgida", "phName": "Konkurendi nimi", "phWeb": "Koduleht (nt konkurent.ee)", "phFb": "Facebooki leht (URL)", "remove": "Eemalda", "sumEmpty": "Midagi pole veel valitud", "sumTotal": "Kokku", "sumYearSuffix": " · aastamakse (2 kuud tasuta)", "perMonthUnit": " €/kuus", "twoMonthsFree": "2 kuud tasuta", "mlCompany": "Ettevõte", "mlContact": "Kontakt", "mlPhone": "Telefon", "mlEmail": "E-post", "mlOwnShop": "Oma pood", "mlWatch": "Jälgida", "mlPackage": "Pakett", "mlBilling": "Arveldus", "unnamed": "(nimeta)", "mlWeb": "veeb", "totYear": "aastamakse €{yr}/aastas (≈€{eff}/kuus, 2 kuud tasuta)", "totMonth": "kuumakse €{m}/kuus", "btnContinuePay": "Jätka maksma →", "btnPay": "Maksa", "btnNext": "Edasi →"} keele kaupa) === */
+const T = {"locale": "et-EE", "fbLine": "{n} konkurenti Facebookis", "webLineCalc": "{n} e-poodi hinna+laoseires", "webLineModal": "{n} e-poodi hinna- ja laoseires", "perMonth": "/kuus", "saveAnnual": "{m} kuud tasuta – arve kord aastas (€{yr}/a)", "chooseOne": "Vali vähemalt üks moodul", "billYear": "Arveldus: aastamakse €{yr}/aastas (≈€{eff}/kuus, {m} kuud tasuta)", "billMonth": "Arveldus: kuumakse €{m}/kuus", "mailIntro": "Soovin liituda Radar360+ seirega.", "mailChosen": "Valitud:", "mailQuote": "NB: soovin ka tellitud automaatikat – palun pakkumist.", "mailSubject": "Liitumissoov – Radar360+", "quotePrice": "pakkumisel", "hintWeb": "veeb +5 €", "hintFb": "FB +1 €", "perMonthSpaced": " / kuus", "hintEmpty": "Lisa koduleht või FB-leht, et seda firmat jälgida", "phName": "Konkurendi nimi", "phWeb": "Koduleht (nt konkurent.ee)", "phFb": "Facebooki leht (URL)", "remove": "Eemalda", "sumEmpty": "Midagi pole veel valitud", "sumTotal": "Kokku", "sumYearSuffix": " · aastamakse (2 kuud tasuta)", "perMonthUnit": " €/kuus", "twoMonthsFree": "2 kuud tasuta", "mlCompany": "Ettevõte", "mlContact": "Kontakt", "mlPhone": "Telefon", "mlEmail": "E-post", "mlOwnShop": "Oma pood", "mlWatch": "Jälgida", "mlPackage": "Pakett", "mlBilling": "Arveldus", "unnamed": "(nimeta)", "mlWeb": "veeb", "totYear": "aastamakse €{yr}/aastas (≈€{eff}/kuus, 2 kuud tasuta)", "totMonth": "kuumakse €{m}/kuus", "btnContinuePay": "Jätka maksma →", "btnPay": "Maksa", "btnNext": "Edasi →"};
+function fmt(s,o){return String(s).replace(/\{(\w+)\}/g,(_,k)=>o[k]!=null?o[k]:'')}
+
+/* === keelevaheti (lipud) + IP-suunaja (Cloudflare trace) === */
+(function(){
+  const LANGS=[['et','index.html'],['en','en.html'],['fi','fi.html'],['sv','sv.html'],['no','no.html'],['da','da.html'],['lv','lv.html'],['lt','lt.html'],['pl','pl.html'],['uk','uk.html']];
+  const NAME={et:'Eesti',en:'English',fi:'Suomi',sv:'Svenska',no:'Norsk',da:'Dansk',lv:'Latviešu',lt:'Lietuvių',pl:'Polski',uk:'Українська'};
+  const CC={EE:'et',FI:'fi',SE:'sv',NO:'no',DK:'da',LV:'lv',LT:'lt',PL:'pl',UA:'uk'};
+  const FLAGS={
+    et:'<svg viewBox="0 0 24 16"><rect width="24" height="16" fill="#0072CE"/><rect y="5.33" width="24" height="5.34" fill="#000"/><rect y="10.67" width="24" height="5.33" fill="#fff"/></svg>',
+    en:'<svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#012169"/><path d="M0 0 30 20M30 0 0 20" stroke="#fff" stroke-width="4"/><path d="M0 0 30 20M30 0 0 20" stroke="#C8102E" stroke-width="2"/><rect x="12" width="6" height="20" fill="#fff"/><rect y="7" width="30" height="6" fill="#fff"/><rect x="13.5" width="3" height="20" fill="#C8102E"/><rect y="8.5" width="30" height="3" fill="#C8102E"/></svg>',
+    fi:'<svg viewBox="0 0 24 16"><rect width="24" height="16" fill="#fff"/><rect x="7" width="4" height="16" fill="#003580"/><rect y="6" width="24" height="4" fill="#003580"/></svg>',
+    sv:'<svg viewBox="0 0 24 16"><rect width="24" height="16" fill="#006AA7"/><rect x="7" width="4" height="16" fill="#FECC00"/><rect y="6" width="24" height="4" fill="#FECC00"/></svg>',
+    no:'<svg viewBox="0 0 24 16"><rect width="24" height="16" fill="#EF2B2D"/><rect x="6" width="6" height="16" fill="#fff"/><rect y="5" width="24" height="6" fill="#fff"/><rect x="7.5" width="3" height="16" fill="#002868"/><rect y="6.5" width="24" height="3" fill="#002868"/></svg>',
+    da:'<svg viewBox="0 0 24 16"><rect width="24" height="16" fill="#C8102E"/><rect x="7" width="4" height="16" fill="#fff"/><rect y="6" width="24" height="4" fill="#fff"/></svg>',
+    lv:'<svg viewBox="0 0 24 16"><rect width="24" height="16" fill="#9E3039"/><rect y="6.4" width="24" height="3.2" fill="#fff"/></svg>',
+    lt:'<svg viewBox="0 0 24 16"><rect width="24" height="16" fill="#FDB913"/><rect y="5.33" width="24" height="5.34" fill="#006A44"/><rect y="10.67" width="24" height="5.33" fill="#C1272D"/></svg>',
+    pl:'<svg viewBox="0 0 24 16"><rect width="24" height="16" fill="#fff"/><rect y="8" width="24" height="8" fill="#DC143C"/></svg>',
+    uk:'<svg viewBox="0 0 24 16"><rect width="24" height="16" fill="#0057B7"/><rect y="8" width="24" height="8" fill="#FFD700"/></svg>'
+  };
+  const KEY='radar_lang', GK='radar_geo';
+  const cur=(document.documentElement.lang||'et').toLowerCase();
+  const fileFor=c=>{const x=LANGS.find(l=>l[0]===c);return x?x[1]:'en.html'};
+  const go=c=>{try{localStorage.setItem(KEY,c)}catch(e){} if(c!==cur)location.href=fileFor(c)};
+  const host=document.getElementById('langsel');
+  if(host){
+    host.innerHTML='<button type="button" class="langbtn" id="langBtn" aria-haspopup="true" aria-expanded="false" aria-label="'+(NAME[cur]||cur)+'"><span class="flag">'+(FLAGS[cur]||FLAGS.en)+'</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg></button>'
+      +'<div class="langmenu" id="langMenu">'+LANGS.map(l=>'<a data-c="'+l[0]+'" title="'+NAME[l[0]]+'" aria-label="'+NAME[l[0]]+'" class="'+(l[0]===cur?'on':'')+'"><span class="flag">'+FLAGS[l[0]]+'</span></a>').join('')+'</div>';
+    const btn=document.getElementById('langBtn'), menu=document.getElementById('langMenu');
+    btn.addEventListener('click',e=>{e.stopPropagation();const o=!menu.classList.contains('open');menu.classList.toggle('open',o);btn.setAttribute('aria-expanded',o)});
+    document.addEventListener('click',()=>{menu.classList.remove('open');btn.setAttribute('aria-expanded','false')});
+    menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>go(a.dataset.c)));
+  }
+  const params=new URLSearchParams(location.search), forced=(params.get('lang')||'').toLowerCase();
+  if(forced){const fc=CC[forced.toUpperCase()]||forced; if(LANGS.some(l=>l[0]===fc)&&fc!==cur){go(fc);return} }
+  let stored=null;try{stored=localStorage.getItem(KEY)}catch(e){}
+  if(stored){if(stored!==cur&&LANGS.some(l=>l[0]===stored))go(stored);return}
+  let did=null;try{did=sessionStorage.getItem(GK)}catch(e){}
+  if(did)return;
+  try{sessionStorage.setItem(GK,'1')}catch(e){}
+  fetch('https://www.cloudflare.com/cdn-cgi/trace',{cache:'no-store'}).then(r=>r.text()).then(t=>{
+    const m=t.match(/loc=([A-Z]{2})/), want=m?(CC[m[1]]||'en'):'en';
+    if(want!==cur)location.replace(fileFor(want));
+  }).catch(()=>{});
+})();
+
 /* mobile menu */
 (function(){
   const b=document.getElementById('burger'),mm=document.getElementById('mobileMenu');
@@ -996,7 +1070,7 @@ addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>12),{passi
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-function countUp(el){const t=+el.dataset.count;let c=0;const s=Math.max(1,t/55);const iv=setInterval(()=>{c+=s;if(c>=t){c=t;clearInterval(iv)}el.textContent=Math.floor(c).toLocaleString('et-EE')},22)}
+function countUp(el){const t=+el.dataset.count;let c=0;const s=Math.max(1,t/55);const iv=setInterval(()=>{c+=s;if(c>=t){c=t;clearInterval(iv)}el.textContent=Math.floor(c).toLocaleString(T.locale)},22)}
 const cio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){countUp(e.target);cio.unobserve(e.target)}}),{threshold:.6});
 document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
 
@@ -1021,21 +1095,21 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
   function upd(){
     const f=+fb.value,w=+web.value;fbV.textContent=f;webV.textContent=w;
     let m=0,quote=false;const lines=[];
-    if(f>0){m+=f*FB_UNIT;lines.push([`${f} konkurenti Facebookis`,`€${f*FB_UNIT}`]);}
-    if(w>0){m+=w*WEB_UNIT;lines.push([`${w} e-poodi hinna+laoseires`,`€${w*WEB_UNIT}`]);}
+    if(f>0){m+=f*FB_UNIT;lines.push([fmt(T.fbLine,{n:f}),`€${f*FB_UNIT}`]);}
+    if(w>0){m+=w*WEB_UNIT;lines.push([fmt(T.webLineCalc,{n:w}),`€${w*WEB_UNIT}`]);}
     mods.forEach(x=>{
       if(!x.classList.contains('on'))return;
-      if(x.dataset.quote){quote=true;lines.push([x.dataset.label,'pakkumisel']);}
+      if(x.dataset.quote){quote=true;lines.push([x.dataset.label,T.quotePrice]);}
       else{const p=+x.dataset.price;m+=p;lines.push([x.dataset.label,`€${p}`]);}
     });
     const annual=document.querySelector('.bopt[data-mode="year"]').classList.contains('on');
     const yr=m*(12-FREE_MONTHS),eff=Math.round(yr/12);
-    if(annual){was.textContent=m>0?`€${m}`:'';out.textContent=eff;suf.textContent='/kuus';save.textContent=m>0?`${FREE_MONTHS} kuud tasuta – arve kord aastas (€${yr}/a)`:'';}
-    else{was.textContent='';out.textContent=m;suf.textContent='/kuus';save.textContent='';}
-    brk.innerHTML=lines.length?lines.map(l=>`<div class="r"><span>${l[0]}</span><b>${l[1]}</b></div>`).join(''):`<div class="r"><span>Vali vähemalt üks moodul</span></div>`;
-    const bill=annual?`\nArveldus: aastamakse €${yr}/aastas (≈€${eff}/kuus, ${FREE_MONTHS} kuud tasuta)`:`\nArveldus: kuumakse €${m}/kuus`;
-    const body=encodeURIComponent('Soovin liituda Radar360+ seirega.\n\nValitud:\n'+lines.map(l=>`- ${l[0]} (${l[1]})`).join('\n')+bill+(quote?'\n\nNB: soovin ka tellitud automaatikat – palun pakkumist.':''));
-    join.href=`mailto:info@radar360.ee?subject=${encodeURIComponent('Liitumissoov – Radar360+')}&body=${body}`;
+    if(annual){was.textContent=m>0?`€${m}`:'';out.textContent=eff;suf.textContent=T.perMonth;save.textContent=m>0?fmt(T.saveAnnual,{m:FREE_MONTHS,yr}):'';}
+    else{was.textContent='';out.textContent=m;suf.textContent=T.perMonth;save.textContent='';}
+    brk.innerHTML=lines.length?lines.map(l=>`<div class="r"><span>${l[0]}</span><b>${l[1]}</b></div>`).join(''):`<div class="r"><span>${T.chooseOne}</span></div>`;
+    const bill=annual?'\n'+fmt(T.billYear,{yr,eff,m:FREE_MONTHS}):'\n'+fmt(T.billMonth,{m});
+    const body=encodeURIComponent(T.mailIntro+'\n\n'+T.mailChosen+'\n'+lines.map(l=>`- ${l[0]} (${l[1]})`).join('\n')+bill+(quote?'\n\n'+T.mailQuote:''));
+    join.href=`mailto:info@radar360.ee?subject=${encodeURIComponent(T.mailSubject)}&body=${body}`;
     fill(fb);fill(web);
   }
   mods.forEach(x=>x.addEventListener('click',()=>{x.classList.toggle('on');upd();}));
@@ -1044,8 +1118,8 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
   const presetBtn=document.getElementById('presetBtn');
   if(presetBtn)presetBtn.addEventListener('click',()=>{
     fb.value=8;web.value=3;
-    const want=['E-poe tervisekontroll','Veebilehe töökindluse seire'];
-    mods.forEach(x=>x.classList.toggle('on',want.includes(x.dataset.label)));
+    const want=[19,9]; // E-poe tervisekontroll + Veebilehe töökindluse seire (data-price jargi - keelekindel)
+    mods.forEach(x=>x.classList.toggle('on',want.includes(+x.dataset.price)));
     bopts.forEach(o=>o.classList.toggle('on',o.dataset.mode==='month'));
     upd();
   });
@@ -1075,28 +1149,28 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
       if(c.querySelector('.c-fb').value.trim())fb++;
     });
     let m=web*WEB_UNIT+fb*FB_UNIT;
-    if(web)lines.push([`${web} e-poodi hinna- ja laoseires`,`€${web*WEB_UNIT}`]);
-    if(fb)lines.push([`${fb} konkurenti Facebookis`,`€${fb*FB_UNIT}`]);
+    if(web)lines.push([fmt(T.webLineModal,{n:web}),`€${web*WEB_UNIT}`]);
+    if(fb)lines.push([fmt(T.fbLine,{n:fb}),`€${fb*FB_UNIT}`]);
     let quote=false;
-    omods.forEach(x=>{if(x.classList.contains('on')){if(x.dataset.quote){quote=true;lines.push([x.dataset.label,'pakkumisel']);}else{const p=+x.dataset.price;m+=p;lines.push([x.dataset.label,`€${p}`]);}}});
+    omods.forEach(x=>{if(x.classList.contains('on')){if(x.dataset.quote){quote=true;lines.push([x.dataset.label,T.quotePrice]);}else{const p=+x.dataset.price;m+=p;lines.push([x.dataset.label,`€${p}`]);}}});
     return {m,web,fb,lines,quote};
   }
   function fmtPrice(){
     if(done)return;
     const {m}=calc();
-    if(isYear()){const yr=m*(12-FREE_MONTHS),eff=Math.round(yr/12);priceEl.innerHTML=`${eff} €<small>/kuus</small>${m>0?'<span class="save">2 kuud tasuta</span>':''}`;}
-    else priceEl.innerHTML=`${m} €<small>/kuus</small>`;
+    if(isYear()){const yr=m*(12-FREE_MONTHS),eff=Math.round(yr/12);priceEl.innerHTML=`${eff} €<small>${T.perMonth}</small>${m>0?'<span class="save">'+T.twoMonthsFree+'</span>':''}`;}
+    else priceEl.innerHTML=`${m} €<small>${T.perMonth}</small>`;
   }
   function rowHint(c){
     const w=c.querySelector('.c-web').value.trim(), f=c.querySelector('.c-fb').value.trim();
-    const p=[]; if(w)p.push('veeb +5 €'); if(f)p.push('FB +1 €');
-    c.querySelector('.chint').innerHTML=p.length?`<b>${p.join(' · ')}</b> / kuus`:'Lisa koduleht või FB-leht, et seda firmat jälgida';
+    const p=[]; if(w)p.push(T.hintWeb); if(f)p.push(T.hintFb);
+    c.querySelector('.chint').innerHTML=p.length?`<b>${p.join(' · ')}</b>${T.perMonthSpaced}`:T.hintEmpty;
   }
   function addRow(){
     const c=document.createElement('div');c.className='comp';
-    c.innerHTML='<button type="button" class="cx" aria-label="Eemalda">&times;</button>'
-      +'<input class="c-name" placeholder="Konkurendi nimi">'
-      +'<div class="crow"><input class="c-web" placeholder="Koduleht (nt konkurent.ee)"><input class="c-fb" placeholder="Facebooki leht (URL)"></div>'
+    c.innerHTML=`<button type="button" class="cx" aria-label="${T.remove}">&times;</button>`
+      +`<input class="c-name" placeholder="${T.phName}">`
+      +`<div class="crow"><input class="c-web" placeholder="${T.phWeb}"><input class="c-fb" placeholder="${T.phFb}"></div>`
       +'<div class="chint"></div>';
     compList.appendChild(c);
     c.querySelector('.cx').addEventListener('click',()=>{c.remove();fmtPrice();});
@@ -1105,9 +1179,9 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
   }
   function buildSummary(){
     const {lines,m}=calc();
-    let h=lines.length?lines.map(l=>`<div class="sr"><span>${l[0]}</span><b>${l[1]}</b></div>`).join(''):'<div class="sr"><span>Midagi pole veel valitud</span><b></b></div>';
+    let h=lines.length?lines.map(l=>`<div class="sr"><span>${l[0]}</span><b>${l[1]}</b></div>`).join(''):`<div class="sr"><span>${T.sumEmpty}</span><b></b></div>`;
     const y=isYear();const yr=m*(12-FREE_MONTHS),eff=Math.round(yr/12);
-    h+=`<div class="sr tot"><span>Kokku${y?' · aastamakse (2 kuud tasuta)':''}</span><b>${y?`${eff} €/kuus`:`${m} €/kuus`}</b></div>`;
+    h+=`<div class="sr tot"><span>${T.sumTotal}${y?T.sumYearSuffix:''}</span><b>${y?`${eff}${T.perMonthUnit}`:`${m}${T.perMonthUnit}`}</b></div>`;
     document.getElementById('osum').innerHTML=h;
   }
   function buildMail(){
@@ -1116,12 +1190,38 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
     const comps=[...compList.querySelectorAll('.comp')].map(c=>{
       const n=c.querySelector('.c-name').value.trim(),w=c.querySelector('.c-web').value.trim(),f=c.querySelector('.c-fb').value.trim();
       if(!n&&!w&&!f)return null;
-      return `- ${n||'(nimeta)'}${w?` | veeb: ${w}`:''}${f?` | FB: ${f}`:''}`;
+      return `- ${n||T.unnamed}${w?` | ${T.mlWeb}: ${w}`:''}${f?` | FB: ${f}`:''}`;
     }).filter(Boolean).join('\n');
     const lns=lines.map(l=>`- ${l[0]} (${l[1]})`).join('\n');
-    const tot=y?`aastamakse €${yr}/aastas (≈€${eff}/kuus, 2 kuud tasuta)`:`kuumakse €${m}/kuus`;
-    const body=`Soovin liituda Radar360+ seirega.\n\nEttevõte: ${document.getElementById('cName').value.trim()}\nKontakt: ${document.getElementById('cContact').value.trim()}\nTelefon: ${document.getElementById('cPhone').value.trim()}\nE-post: ${document.getElementById('cEmail').value.trim()}\n${own?`Oma pood: ${own}\n`:''}\nJälgida:\n${comps||'-'}\n\nPakett:\n${lns}\n\nArveldus: ${tot}`;
-    return `mailto:info@radar360.ee?subject=${encodeURIComponent('Liitumissoov – Radar360+')}&body=${encodeURIComponent(body)}`;
+    const tot=y?fmt(T.totYear,{yr,eff}):fmt(T.totMonth,{m});
+    const body=`${T.mailIntro}\n\n${T.mlCompany}: ${document.getElementById('cName').value.trim()}\n${T.mlContact}: ${document.getElementById('cContact').value.trim()}\n${T.mlPhone}: ${document.getElementById('cPhone').value.trim()}\n${T.mlEmail}: ${document.getElementById('cEmail').value.trim()}\n${own?`${T.mlOwnShop}: ${own}\n`:''}\n${T.mlWatch}:\n${comps||'-'}\n\n${T.mlPackage}:\n${lns}\n\n${T.mlBilling}: ${tot}`;
+    return `mailto:info@radar360.ee?subject=${encodeURIComponent(T.mailSubject)}&body=${encodeURIComponent(body)}`;
+  }
+  var ORDER_ENDPOINT='https://expenses-destruct-snowboard.ngrok-free.dev/api/tellimus/';
+  function buildOrder(){
+    const {m}=calc();const y=isYear();
+    const konkurendid=[...compList.querySelectorAll('.comp')].map(c=>({
+      nimi:c.querySelector('.c-name').value.trim(),
+      veeb:c.querySelector('.c-web').value.trim(),
+      fb:c.querySelector('.c-fb').value.trim()
+    })).filter(c=>c.nimi||c.veeb||c.fb);
+    const moodulid=omods.filter(x=>x.classList.contains('on')).map(x=>x.dataset.label);
+    return {ettevote:document.getElementById('cName').value.trim(),
+      kontakt:document.getElementById('cContact').value.trim(),
+      telefon:document.getElementById('cPhone').value.trim(),
+      epost:document.getElementById('cEmail').value.trim(),
+      oma_pood:document.getElementById('ownSite').value.trim(),
+      konkurendid:konkurendid, moodulid:moodulid,
+      arveldus:y?'aasta':'kuu', kuutasu:m, keel:T.locale};
+  }
+  function postOrder(){
+    // Saadab tellimuse Radar360+ otspunkti (salvestab + teavitab operaatorit).
+    // Parim-pingutus: mailto-koopia nupp jääb varuks, kui POST ebaõnnestub.
+    try{
+      fetch(ORDER_ENDPOINT,{method:'POST',mode:'cors',
+        headers:{'Content-Type':'application/json','ngrok-skip-browser-warning':'1'},
+        body:JSON.stringify(buildOrder())}).catch(function(){});
+    }catch(e){}
   }
   function valid(n){
     if(n===1){const {m,web,fb,quote}=calc();const ok=(web+fb)>0||m>0||quote;document.getElementById('err1').classList.toggle('show',!ok);return ok;}
@@ -1133,9 +1233,9 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
     views.forEach(v=>v.classList.toggle('on',+v.dataset.v===n));
     stepsEl.forEach(s=>{const sn=+s.dataset.s;s.classList.toggle('on',sn===n);s.classList.toggle('done',sn<n);});
     backBtn.style.display=n>1?'inline-flex':'none';
-    if(n===3){buildSummary();nextBtn.textContent='Jätka maksma →';}
-    else if(n===4){nextBtn.textContent='Maksa';}
-    else nextBtn.textContent='Edasi →';
+    if(n===3){buildSummary();nextBtn.textContent=T.btnContinuePay;}
+    else if(n===4){nextBtn.textContent=T.btnPay;}
+    else nextBtn.textContent=T.btnNext;
     bodyEl.scrollTop=0;
   }
   function open(prefill){
@@ -1170,6 +1270,7 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
   nextBtn.addEventListener('click',()=>{
     if(step<4){if(!valid(step))return;setStep(step+1);}
     else{
+      postOrder();
       document.getElementById('mailCopy').setAttribute('href',buildMail());
       document.getElementById('payForm').style.display='none';
       document.getElementById('payDone').style.display='block';
