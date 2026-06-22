@@ -985,13 +985,13 @@
 
         <div class="ord-lab">Tilleggsmoduler for butikken din</div>
         <div id="omods">
-          <button type="button" class="omod-toggle" data-price="19" data-label="Helsesjekk av nettbutikken"><span class="sw"></span><span class="mt"><b>Helsesjekk av nettbutikken</b><span>Ødelagte bilder, alt-tekster, prisfeil</span></span><span class="mp">+19 €</span></button>
-          <button type="button" class="omod-toggle" data-price="15" data-label="SEO & innholdsgap-overvåking"><span class="sw"></span><span class="mt"><b>SEO &amp; innholdsgap-overvåking</b><span>Søkeordposisjoner + innholdsgap</span></span><span class="mp">+15 €</span></button>
-          <button type="button" class="omod-toggle" data-price="9" data-label="Oppetidsovervåking av nettstedet"><span class="sw"></span><span class="mt"><b>Oppetidsovervåking av nettstedet</b><span>Oppetid + varsel hvis butikken er nede</span></span><span class="mp">+9 €</span></button>
-          <button type="button" class="omod-toggle" data-price="29" data-label="ERP–nettbutikk-integrasjon"><span class="sw"></span><span class="mt"><b>ERP–nettbutikk-integrasjon</b><span>Directo ↔ WooCommerce synk</span></span><span class="mp">+29 €</span></button>
-          <button type="button" class="omod-toggle" data-price="29" data-label="Omprising av priser"><span class="sw"></span><span class="mt"><b>Omprising av priser</b><span>Konkurrentbaserte prisforslag, godkjenn med ett klikk</span></span><span class="mp">+29 €</span></button>
-          <button type="button" class="omod-toggle" data-price="39" data-label="Opplæring for teamet"><span class="sw"></span><span class="mt"><b>Opplæring for teamet</b><span>Vi lærer deg å bruke verktøyene selv</span></span><span class="mp">+39 €</span></button>
-          <button type="button" class="omod-toggle" data-price="0" data-quote="1" data-label="Skreddersydd automatisering"><span class="sw"></span><span class="mt"><b>Skreddersydd automatisering</b><span>En spesialoppgave — plugin, skript, dashbord</span></span><span class="mp">på forespørsel</span></button>
+          <button type="button" class="omod-toggle" data-price="19" data-kood="epoe_tervis" data-label="Helsesjekk av nettbutikken"><span class="sw"></span><span class="mt"><b>Helsesjekk av nettbutikken</b><span>Ødelagte bilder, alt-tekster, prisfeil</span></span><span class="mp">+19 €</span></button>
+          <button type="button" class="omod-toggle" data-price="15" data-kood="seo_seire" data-label="SEO & innholdsgap-overvåking"><span class="sw"></span><span class="mt"><b>SEO &amp; innholdsgap-overvåking</b><span>Søkeordposisjoner + innholdsgap</span></span><span class="mp">+15 €</span></button>
+          <button type="button" class="omod-toggle" data-price="9" data-kood="uptime" data-label="Oppetidsovervåking av nettstedet"><span class="sw"></span><span class="mt"><b>Oppetidsovervåking av nettstedet</b><span>Oppetid + varsel hvis butikken er nede</span></span><span class="mp">+9 €</span></button>
+          <button type="button" class="omod-toggle" data-price="29" data-kood="erp_liidestus" data-label="ERP–nettbutikk-integrasjon"><span class="sw"></span><span class="mt"><b>ERP–nettbutikk-integrasjon</b><span>Directo ↔ WooCommerce synk</span></span><span class="mp">+29 €</span></button>
+          <button type="button" class="omod-toggle" data-price="29" data-kood="hinnastus" data-label="Omprising av priser"><span class="sw"></span><span class="mt"><b>Omprising av priser</b><span>Konkurrentbaserte prisforslag, godkjenn med ett klikk</span></span><span class="mp">+29 €</span></button>
+          <button type="button" class="omod-toggle" data-price="39" data-kood="koolitus" data-label="Opplæring for teamet"><span class="sw"></span><span class="mt"><b>Opplæring for teamet</b><span>Vi lærer deg å bruke verktøyene selv</span></span><span class="mp">+39 €</span></button>
+          <button type="button" class="omod-toggle" data-price="0" data-quote="1" data-kood="automaatika" data-label="Skreddersydd automatisering"><span class="sw"></span><span class="mt"><b>Skreddersydd automatisering</b><span>En spesialoppgave — plugin, skript, dashbord</span></span><span class="mp">på forespørsel</span></button>
         </div>
 
         <div class="ord-lab">Fakturering</div>
@@ -1295,14 +1295,16 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
       veeb:c.querySelector('.c-web').value.trim(),
       fb:c.querySelector('.c-fb').value.trim()
     })).filter(c=>c.nimi||c.veeb||c.fb);
-    const moodulid=omods.filter(x=>x.classList.contains('on')).map(x=>x.dataset.label);
+    const valitud=omods.filter(x=>x.classList.contains('on'));
+    const moodulid=valitud.map(x=>x.dataset.label);                 // tõlgitud sildid (kuva)
+    const mooduli_koodid=valitud.map(x=>x.dataset.kood).filter(Boolean); // keele-sõltumatud koodid (auto-provisjoneerimine)
     return {ettevote:document.getElementById('cName').value.trim(),
       reg_kood:document.getElementById('cReg').value.trim(),
       kontakt:document.getElementById('cContact').value.trim(),
       telefon:document.getElementById('cPhone').value.trim(),
       epost:document.getElementById('cEmail').value.trim(),
       oma_pood:document.getElementById('ownSite').value.trim(),
-      konkurendid:konkurendid, moodulid:moodulid,
+      konkurendid:konkurendid, moodulid:moodulid, mooduli_koodid:mooduli_koodid,
       arveldus:y?'aasta':'kuu', kuutasu:m, keel:T.locale};
   }
   function postOrder(){
