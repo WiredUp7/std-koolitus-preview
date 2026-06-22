@@ -985,13 +985,13 @@
 
         <div class="ord-lab">Lisamoodulid sinu poele</div>
         <div id="omods">
-          <button type="button" class="omod-toggle" data-price="19" data-label="E-poe tervisekontroll"><span class="sw"></span><span class="mt"><b>E-poe tervisekontroll</b><span>Katkised pildid, alt-tekstid, hinnavead</span></span><span class="mp">+19 €</span></button>
-          <button type="button" class="omod-toggle" data-price="15" data-label="SEO & sisulünga seire"><span class="sw"></span><span class="mt"><b>SEO &amp; sisulünga seire</b><span>Märksõnade positsioonid + sisulüngad</span></span><span class="mp">+15 €</span></button>
-          <button type="button" class="omod-toggle" data-price="9" data-label="Veebilehe töökindluse seire"><span class="sw"></span><span class="mt"><b>Veebilehe töökindluse seire</b><span>Uptime + hoiatus, kui pood on maas</span></span><span class="mp">+9 €</span></button>
-          <button type="button" class="omod-toggle" data-price="29" data-label="ERP–e-pood liidestus"><span class="sw"></span><span class="mt"><b>ERP–e-pood liidestus</b><span>Directo ↔ WooCommerce sünk</span></span><span class="mp">+29 €</span></button>
-          <button type="button" class="omod-toggle" data-price="29" data-label="Hindade ümberhinnastus"><span class="sw"></span><span class="mt"><b>Hindade ümberhinnastus</b><span>Konkurentsipõhised hinnasoovitused, kinnitad ühe klikiga</span></span><span class="mp">+29 €</span></button>
-          <button type="button" class="omod-toggle" data-price="39" data-label="Koolitus tiimile"><span class="sw"></span><span class="mt"><b>Koolitus tiimile</b><span>Õpetame tööriistu ise kasutama</span></span><span class="mp">+39 €</span></button>
-          <button type="button" class="omod-toggle" data-price="0" data-quote="1" data-label="Tellitud automaatika"><span class="sw"></span><span class="mt"><b>Tellitud automaatika</b><span>Eriülesanne — plugin, skript, dashboard</span></span><span class="mp">pakkumisel</span></button>
+          <button type="button" class="omod-toggle" data-price="19" data-kood="epoe_tervis" data-label="E-poe tervisekontroll"><span class="sw"></span><span class="mt"><b>E-poe tervisekontroll</b><span>Katkised pildid, alt-tekstid, hinnavead</span></span><span class="mp">+19 €</span></button>
+          <button type="button" class="omod-toggle" data-price="15" data-kood="seo_seire" data-label="SEO & sisulünga seire"><span class="sw"></span><span class="mt"><b>SEO &amp; sisulünga seire</b><span>Märksõnade positsioonid + sisulüngad</span></span><span class="mp">+15 €</span></button>
+          <button type="button" class="omod-toggle" data-price="9" data-kood="uptime" data-label="Veebilehe töökindluse seire"><span class="sw"></span><span class="mt"><b>Veebilehe töökindluse seire</b><span>Uptime + hoiatus, kui pood on maas</span></span><span class="mp">+9 €</span></button>
+          <button type="button" class="omod-toggle" data-price="29" data-kood="erp_liidestus" data-label="ERP–e-pood liidestus"><span class="sw"></span><span class="mt"><b>ERP–e-pood liidestus</b><span>Directo ↔ WooCommerce sünk</span></span><span class="mp">+29 €</span></button>
+          <button type="button" class="omod-toggle" data-price="29" data-kood="hinnastus" data-label="Hindade ümberhinnastus"><span class="sw"></span><span class="mt"><b>Hindade ümberhinnastus</b><span>Konkurentsipõhised hinnasoovitused, kinnitad ühe klikiga</span></span><span class="mp">+29 €</span></button>
+          <button type="button" class="omod-toggle" data-price="39" data-kood="koolitus" data-label="Koolitus tiimile"><span class="sw"></span><span class="mt"><b>Koolitus tiimile</b><span>Õpetame tööriistu ise kasutama</span></span><span class="mp">+39 €</span></button>
+          <button type="button" class="omod-toggle" data-price="0" data-quote="1" data-kood="automaatika" data-label="Tellitud automaatika"><span class="sw"></span><span class="mt"><b>Tellitud automaatika</b><span>Eriülesanne — plugin, skript, dashboard</span></span><span class="mp">pakkumisel</span></button>
         </div>
 
         <div class="ord-lab">Arveldus</div>
@@ -1295,14 +1295,16 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
       veeb:c.querySelector('.c-web').value.trim(),
       fb:c.querySelector('.c-fb').value.trim()
     })).filter(c=>c.nimi||c.veeb||c.fb);
-    const moodulid=omods.filter(x=>x.classList.contains('on')).map(x=>x.dataset.label);
+    const valitud=omods.filter(x=>x.classList.contains('on'));
+    const moodulid=valitud.map(x=>x.dataset.label);                 // tõlgitud sildid (kuva)
+    const mooduli_koodid=valitud.map(x=>x.dataset.kood).filter(Boolean); // keele-sõltumatud koodid (auto-provisjoneerimine)
     return {ettevote:document.getElementById('cName').value.trim(),
       reg_kood:document.getElementById('cReg').value.trim(),
       kontakt:document.getElementById('cContact').value.trim(),
       telefon:document.getElementById('cPhone').value.trim(),
       epost:document.getElementById('cEmail').value.trim(),
       oma_pood:document.getElementById('ownSite').value.trim(),
-      konkurendid:konkurendid, moodulid:moodulid,
+      konkurendid:konkurendid, moodulid:moodulid, mooduli_koodid:mooduli_koodid,
       arveldus:y?'aasta':'kuu', kuutasu:m, keel:T.locale};
   }
   function postOrder(){
