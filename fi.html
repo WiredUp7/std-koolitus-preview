@@ -462,6 +462,14 @@
   .ofield label{display:block;font-size:13px;font-weight:500;color:var(--text-2);margin-bottom:6px}
   .ofield input,.ofield textarea{width:100%;font-family:var(--f);font-size:15px;padding:12px 14px;border:1px solid var(--line);border-radius:11px;background:#fff;color:var(--text);transition:.2s}
   .ofield input:focus,.ofield textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+  /* firma-nime autocomplete (Eesti äriregister, ainult et) */
+  .ac-ddn{position:absolute;z-index:60;left:0;right:0;top:calc(100% + 4px);margin:0;padding:5px;list-style:none;
+    background:#fff;border:1px solid var(--line);border-radius:11px;box-shadow:0 12px 32px rgba(13,22,38,.18);max-height:260px;overflow-y:auto}
+  .ac-ddn li{display:flex;flex-direction:column;gap:1px;padding:8px 10px;border-radius:8px;cursor:pointer}
+  .ac-ddn li .acn{font-size:14px;color:var(--text)}
+  .ac-ddn li .acn b{color:var(--accent);font-weight:700}
+  .ac-ddn li .acm{font-size:11.5px;color:var(--text-2)}
+  .ac-ddn li[aria-selected="true"],.ac-ddn li:hover{background:var(--accent-soft)}
   .orow2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
   .comp{border:1px solid var(--line);border-radius:14px;padding:15px 14px 13px;margin-bottom:12px;background:var(--paper-2);position:relative}
   .comp .cx{position:absolute;top:9px;right:9px;width:27px;height:27px;border:0;background:transparent;color:var(--muted);cursor:pointer;font-size:17px;border-radius:8px;line-height:1}
@@ -998,7 +1006,7 @@
       <div class="ord-view" data-v="2">
         <div class="ord-h">Sinun tietosi</div>
         <div class="ord-sub">Minne lähetämme seurantapaneelin pääsyn ja joka-aamuisen raportin.</div>
-        <div class="ofield"><label>Yrityksen nimi *</label><input type="text" id="cName" placeholder="Sinun yrityksesi Oy"></div>
+        <div class="ofield" style="position:relative"><label>Yrityksen nimi *</label><input type="text" id="cName" autocomplete="off" placeholder="Sinun yrityksesi Oy" role="combobox" aria-autocomplete="list" aria-expanded="false"><input type="hidden" id="cReg"></div>
         <div class="orow2">
           <div class="ofield"><label>Yhteyshenkilö *</label><input type="text" id="cContact" placeholder="Etu- ja sukunimi"></div>
           <div class="ofield"><label>Puhelin</label><input type="tel" id="cPhone" placeholder="+372 …"></div>
@@ -1213,6 +1221,7 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
     compList.appendChild(c);
     c.querySelector('.cx').addEventListener('click',()=>{c.remove();fmtPrice();});
     c.querySelectorAll('input').forEach(i=>i.addEventListener('input',()=>{rowHint(c);fmtPrice();}));
+    if(window.L360auto)window.L360auto(c.querySelector('.c-name'));   // firma-nime autocomplete (ainult et)
     rowHint(c);
   }
   function buildSummary(){
@@ -1236,6 +1245,49 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
     return `mailto:info@look360.eu?subject=${encodeURIComponent(T.mailSubject)}&body=${encodeURIComponent(body)}`;
   }
   var ORDER_ENDPOINT='https://expenses-destruct-snowboard.ngrok-free.dev/api/tellimus/';
+  // Firma-nime autocomplete (Eesti äriregister) - AINULT eestikeelne sait.
+  // Taaskasutatav: nii kliendi enda ettevõtte nimi (#cName) kui konkurentide
+  // nimed (.c-name, dünaamilised read - vt addRow + window.L360auto).
+  if(T.locale==='et-EE'){(function(){
+    var OTSING=ORDER_ENDPOINT.replace('/api/tellimus/','/api/firma-otsing-avalik/');
+    function mkAuto(inp,reg){
+      if(!inp||inp.dataset.acOn)return; inp.dataset.acOn='1'; inp.setAttribute('autocomplete','off');
+      var wrap=document.createElement('span'); wrap.style.cssText='position:relative;display:block';
+      inp.parentNode.insertBefore(wrap,inp); wrap.appendChild(inp);
+      var list=document.createElement('ul'); list.className='ac-ddn'; list.hidden=true; list.setAttribute('role','listbox'); wrap.appendChild(list);
+      var items=[],aktiiv=-1,viimaneQ=null,tmr=null,ctrl=null;
+      function peida(){list.hidden=true;list.innerHTML='';items=[];aktiiv=-1;inp.setAttribute('aria-expanded','false');}
+      function esc(s){return (s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+      function rasvi(n,q){var i=n.toLowerCase().indexOf(q.toLowerCase());if(i<0)return esc(n);return esc(n.slice(0,i))+'<b>'+esc(n.slice(i,i+q.length))+'</b>'+esc(n.slice(i+q.length));}
+      function naita(res,q){items=res;aktiiv=-1;list.innerHTML='';if(!res.length){peida();return;}
+        res.forEach(function(r,idx){var li=document.createElement('li');li.setAttribute('role','option');
+          var n=document.createElement('div');n.className='acn';n.innerHTML=rasvi(r.nimi,q);li.appendChild(n);
+          var meta=[];if(r.reg_kood)meta.push(r.reg_kood);if(r.aadress)meta.push(r.aadress);
+          if(meta.length){var m=document.createElement('div');m.className='acm';m.textContent=meta.join(' · ');li.appendChild(m);}
+          li.addEventListener('mousedown',function(e){e.preventDefault();vali(idx);});list.appendChild(li);});
+        list.hidden=false;inp.setAttribute('aria-expanded','true');}
+      function vali(idx){var r=items[idx];if(!r)return;inp.value=r.nimi;if(reg)reg.value=r.reg_kood||'';viimaneQ=r.nimi;peida();}
+      function markeeri(){[].forEach.call(list.children,function(li,i){li.setAttribute('aria-selected',i===aktiiv?'true':'false');});
+        if(aktiiv>=0&&list.children[aktiiv])list.children[aktiiv].scrollIntoView({block:'nearest'});}
+      function otsi(){var q=inp.value.trim();if(reg)reg.value='';
+        if(q.length<2){peida();viimaneQ=null;return;}
+        if(q===viimaneQ)return;viimaneQ=q;
+        if(ctrl)try{ctrl.abort();}catch(e){}
+        ctrl=('AbortController'in window)?new AbortController():null;
+        fetch(OTSING+'?q='+encodeURIComponent(q),{mode:'cors',signal:ctrl?ctrl.signal:undefined,headers:{'ngrok-skip-browser-warning':'1'}})
+          .then(function(r){return r.json();}).then(function(d){if(inp.value.trim()===q)naita(d.tulemused||[],q);})
+          .catch(function(){});}
+      inp.addEventListener('input',function(){clearTimeout(tmr);tmr=setTimeout(otsi,140);});
+      inp.addEventListener('keydown',function(e){if(list.hidden)return;
+        if(e.key==='ArrowDown'){e.preventDefault();aktiiv=Math.min(aktiiv+1,items.length-1);markeeri();}
+        else if(e.key==='ArrowUp'){e.preventDefault();aktiiv=Math.max(aktiiv-1,0);markeeri();}
+        else if(e.key==='Enter'){if(aktiiv>=0){e.preventDefault();vali(aktiiv);}}
+        else if(e.key==='Escape'){peida();}});
+      inp.addEventListener('blur',function(){setTimeout(peida,120);});
+    }
+    window.L360auto=mkAuto;                                     // konkurendi-read kasutavad (addRow)
+    mkAuto(document.getElementById('cName'),document.getElementById('cReg'));
+  })();}
   function buildOrder(){
     const {m}=calc();const y=isYear();
     const konkurendid=[...compList.querySelectorAll('.comp')].map(c=>({
@@ -1245,6 +1297,7 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
     })).filter(c=>c.nimi||c.veeb||c.fb);
     const moodulid=omods.filter(x=>x.classList.contains('on')).map(x=>x.dataset.label);
     return {ettevote:document.getElementById('cName').value.trim(),
+      reg_kood:document.getElementById('cReg').value.trim(),
       kontakt:document.getElementById('cContact').value.trim(),
       telefon:document.getElementById('cPhone').value.trim(),
       epost:document.getElementById('cEmail').value.trim(),
