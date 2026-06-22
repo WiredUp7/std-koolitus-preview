@@ -985,13 +985,13 @@
 
         <div class="ord-lab">Papildmoduļi Jūsu veikalam</div>
         <div id="omods">
-          <button type="button" class="omod-toggle" data-price="19" data-label="E-veikala veselības pārbaude"><span class="sw"></span><span class="mt"><b>E-veikala veselības pārbaude</b><span>Bojāti attēli, alt teksti, cenu kļūdas</span></span><span class="mp">+19 €</span></button>
-          <button type="button" class="omod-toggle" data-price="15" data-label="SEO & satura iztrūkumu uzraudzība"><span class="sw"></span><span class="mt"><b>SEO &amp; satura iztrūkumu uzraudzība</b><span>Atslēgvārdu pozīcijas + satura iztrūkumi</span></span><span class="mp">+15 €</span></button>
-          <button type="button" class="omod-toggle" data-price="9" data-label="Mājaslapas darbspējas uzraudzība"><span class="sw"></span><span class="mt"><b>Mājaslapas darbspējas uzraudzība</b><span>Uptime + brīdinājums, ja veikals nedarbojas</span></span><span class="mp">+9 €</span></button>
-          <button type="button" class="omod-toggle" data-price="29" data-label="ERP–e-veikala integrācija"><span class="sw"></span><span class="mt"><b>ERP–e-veikala integrācija</b><span>Directo ↔ WooCommerce sinhronizācija</span></span><span class="mp">+29 €</span></button>
-          <button type="button" class="omod-toggle" data-price="29" data-label="Cenu pārcenošana"><span class="sw"></span><span class="mt"><b>Cenu pārcenošana</b><span>Uz konkurentiem balstīti cenu ieteikumi, apstipriniet ar vienu klikšķi</span></span><span class="mp">+29 €</span></button>
-          <button type="button" class="omod-toggle" data-price="39" data-label="Apmācība komandai"><span class="sw"></span><span class="mt"><b>Apmācība komandai</b><span>Mēs apmācām pašiem izmantot rīkus</span></span><span class="mp">+39 €</span></button>
-          <button type="button" class="omod-toggle" data-price="0" data-quote="1" data-label="Individuāla automatizācija"><span class="sw"></span><span class="mt"><b>Individuāla automatizācija</b><span>Īpašs uzdevums — spraudnis, skripts, informācijas panelis</span></span><span class="mp">pēc pieprasījuma</span></button>
+          <button type="button" class="omod-toggle" data-price="19" data-kood="epoe_tervis" data-label="E-veikala veselības pārbaude"><span class="sw"></span><span class="mt"><b>E-veikala veselības pārbaude</b><span>Bojāti attēli, alt teksti, cenu kļūdas</span></span><span class="mp">+19 €</span></button>
+          <button type="button" class="omod-toggle" data-price="15" data-kood="seo_seire" data-label="SEO & satura iztrūkumu uzraudzība"><span class="sw"></span><span class="mt"><b>SEO &amp; satura iztrūkumu uzraudzība</b><span>Atslēgvārdu pozīcijas + satura iztrūkumi</span></span><span class="mp">+15 €</span></button>
+          <button type="button" class="omod-toggle" data-price="9" data-kood="uptime" data-label="Mājaslapas darbspējas uzraudzība"><span class="sw"></span><span class="mt"><b>Mājaslapas darbspējas uzraudzība</b><span>Uptime + brīdinājums, ja veikals nedarbojas</span></span><span class="mp">+9 €</span></button>
+          <button type="button" class="omod-toggle" data-price="29" data-kood="erp_liidestus" data-label="ERP–e-veikala integrācija"><span class="sw"></span><span class="mt"><b>ERP–e-veikala integrācija</b><span>Directo ↔ WooCommerce sinhronizācija</span></span><span class="mp">+29 €</span></button>
+          <button type="button" class="omod-toggle" data-price="29" data-kood="hinnastus" data-label="Cenu pārcenošana"><span class="sw"></span><span class="mt"><b>Cenu pārcenošana</b><span>Uz konkurentiem balstīti cenu ieteikumi, apstipriniet ar vienu klikšķi</span></span><span class="mp">+29 €</span></button>
+          <button type="button" class="omod-toggle" data-price="39" data-kood="koolitus" data-label="Apmācība komandai"><span class="sw"></span><span class="mt"><b>Apmācība komandai</b><span>Mēs apmācām pašiem izmantot rīkus</span></span><span class="mp">+39 €</span></button>
+          <button type="button" class="omod-toggle" data-price="0" data-quote="1" data-kood="automaatika" data-label="Individuāla automatizācija"><span class="sw"></span><span class="mt"><b>Individuāla automatizācija</b><span>Īpašs uzdevums — spraudnis, skripts, informācijas panelis</span></span><span class="mp">pēc pieprasījuma</span></button>
         </div>
 
         <div class="ord-lab">Norēķini</div>
@@ -1295,14 +1295,16 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
       veeb:c.querySelector('.c-web').value.trim(),
       fb:c.querySelector('.c-fb').value.trim()
     })).filter(c=>c.nimi||c.veeb||c.fb);
-    const moodulid=omods.filter(x=>x.classList.contains('on')).map(x=>x.dataset.label);
+    const valitud=omods.filter(x=>x.classList.contains('on'));
+    const moodulid=valitud.map(x=>x.dataset.label);                 // tõlgitud sildid (kuva)
+    const mooduli_koodid=valitud.map(x=>x.dataset.kood).filter(Boolean); // keele-sõltumatud koodid (auto-provisjoneerimine)
     return {ettevote:document.getElementById('cName').value.trim(),
       reg_kood:document.getElementById('cReg').value.trim(),
       kontakt:document.getElementById('cContact').value.trim(),
       telefon:document.getElementById('cPhone').value.trim(),
       epost:document.getElementById('cEmail').value.trim(),
       oma_pood:document.getElementById('ownSite').value.trim(),
-      konkurendid:konkurendid, moodulid:moodulid,
+      konkurendid:konkurendid, moodulid:moodulid, mooduli_koodid:mooduli_koodid,
       arveldus:y?'aasta':'kuu', kuutasu:m, keel:T.locale};
   }
   function postOrder(){
