@@ -985,13 +985,13 @@
 
         <div class="ord-lab">Moduły dodatkowe dla Państwa sklepu</div>
         <div id="omods">
-          <button type="button" class="omod-toggle" data-price="19" data-label="Kontrola kondycji e-sklepu"><span class="sw"></span><span class="mt"><b>Kontrola kondycji e-sklepu</b><span>Uszkodzone zdjęcia, teksty alternatywne, błędy cen</span></span><span class="mp">+19 €</span></button>
-          <button type="button" class="omod-toggle" data-price="15" data-label="Monitoring SEO & luk treści"><span class="sw"></span><span class="mt"><b>Monitoring SEO &amp; luk treści</b><span>Pozycje słów kluczowych + luki treści</span></span><span class="mp">+15 €</span></button>
-          <button type="button" class="omod-toggle" data-price="9" data-label="Monitoring niezawodności strony"><span class="sw"></span><span class="mt"><b>Monitoring niezawodności strony</b><span>Uptime + ostrzeżenie, gdy sklep nie działa</span></span><span class="mp">+9 €</span></button>
-          <button type="button" class="omod-toggle" data-price="29" data-label="Integracja ERP–e-sklep"><span class="sw"></span><span class="mt"><b>Integracja ERP–e-sklep</b><span>Directo ↔ WooCommerce synchronizacja</span></span><span class="mp">+29 €</span></button>
-          <button type="button" class="omod-toggle" data-price="29" data-label="Zmiana cen (repricing)"><span class="sw"></span><span class="mt"><b>Zmiana cen (repricing)</b><span>Propozycje cen oparte na konkurencji, zatwierdzane jednym kliknięciem</span></span><span class="mp">+29 €</span></button>
-          <button type="button" class="omod-toggle" data-price="39" data-label="Szkolenie dla zespołu"><span class="sw"></span><span class="mt"><b>Szkolenie dla zespołu</b><span>Uczymy samodzielnego korzystania z narzędzi</span></span><span class="mp">+39 €</span></button>
-          <button type="button" class="omod-toggle" data-price="0" data-quote="1" data-label="Automatyzacja na zamówienie"><span class="sw"></span><span class="mt"><b>Automatyzacja na zamówienie</b><span>Specjalne zadanie — wtyczka, skrypt, panel</span></span><span class="mp">na zapytanie</span></button>
+          <button type="button" class="omod-toggle" data-price="19" data-kood="epoe_tervis" data-label="Kontrola kondycji e-sklepu"><span class="sw"></span><span class="mt"><b>Kontrola kondycji e-sklepu</b><span>Uszkodzone zdjęcia, teksty alternatywne, błędy cen</span></span><span class="mp">+19 €</span></button>
+          <button type="button" class="omod-toggle" data-price="15" data-kood="seo_seire" data-label="Monitoring SEO & luk treści"><span class="sw"></span><span class="mt"><b>Monitoring SEO &amp; luk treści</b><span>Pozycje słów kluczowych + luki treści</span></span><span class="mp">+15 €</span></button>
+          <button type="button" class="omod-toggle" data-price="9" data-kood="uptime" data-label="Monitoring niezawodności strony"><span class="sw"></span><span class="mt"><b>Monitoring niezawodności strony</b><span>Uptime + ostrzeżenie, gdy sklep nie działa</span></span><span class="mp">+9 €</span></button>
+          <button type="button" class="omod-toggle" data-price="29" data-kood="erp_liidestus" data-label="Integracja ERP–e-sklep"><span class="sw"></span><span class="mt"><b>Integracja ERP–e-sklep</b><span>Directo ↔ WooCommerce synchronizacja</span></span><span class="mp">+29 €</span></button>
+          <button type="button" class="omod-toggle" data-price="29" data-kood="hinnastus" data-label="Zmiana cen (repricing)"><span class="sw"></span><span class="mt"><b>Zmiana cen (repricing)</b><span>Propozycje cen oparte na konkurencji, zatwierdzane jednym kliknięciem</span></span><span class="mp">+29 €</span></button>
+          <button type="button" class="omod-toggle" data-price="39" data-kood="koolitus" data-label="Szkolenie dla zespołu"><span class="sw"></span><span class="mt"><b>Szkolenie dla zespołu</b><span>Uczymy samodzielnego korzystania z narzędzi</span></span><span class="mp">+39 €</span></button>
+          <button type="button" class="omod-toggle" data-price="0" data-quote="1" data-kood="automaatika" data-label="Automatyzacja na zamówienie"><span class="sw"></span><span class="mt"><b>Automatyzacja na zamówienie</b><span>Specjalne zadanie — wtyczka, skrypt, panel</span></span><span class="mp">na zapytanie</span></button>
         </div>
 
         <div class="ord-lab">Rozliczenie</div>
@@ -1295,14 +1295,16 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
       veeb:c.querySelector('.c-web').value.trim(),
       fb:c.querySelector('.c-fb').value.trim()
     })).filter(c=>c.nimi||c.veeb||c.fb);
-    const moodulid=omods.filter(x=>x.classList.contains('on')).map(x=>x.dataset.label);
+    const valitud=omods.filter(x=>x.classList.contains('on'));
+    const moodulid=valitud.map(x=>x.dataset.label);                 // tõlgitud sildid (kuva)
+    const mooduli_koodid=valitud.map(x=>x.dataset.kood).filter(Boolean); // keele-sõltumatud koodid (auto-provisjoneerimine)
     return {ettevote:document.getElementById('cName').value.trim(),
       reg_kood:document.getElementById('cReg').value.trim(),
       kontakt:document.getElementById('cContact').value.trim(),
       telefon:document.getElementById('cPhone').value.trim(),
       epost:document.getElementById('cEmail').value.trim(),
       oma_pood:document.getElementById('ownSite').value.trim(),
-      konkurendid:konkurendid, moodulid:moodulid,
+      konkurendid:konkurendid, moodulid:moodulid, mooduli_koodid:mooduli_koodid,
       arveldus:y?'aasta':'kuu', kuutasu:m, keel:T.locale};
   }
   function postOrder(){
