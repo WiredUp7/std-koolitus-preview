@@ -985,13 +985,13 @@
 
         <div class="ord-lab">Додаткові модулі для вашого магазину</div>
         <div id="omods">
-          <button type="button" class="omod-toggle" data-price="19" data-label="Перевірка стану інтернет-магазину"><span class="sw"></span><span class="mt"><b>Перевірка стану інтернет-магазину</b><span>Биті зображення, alt-тексти, помилки в цінах</span></span><span class="mp">+19 €</span></button>
-          <button type="button" class="omod-toggle" data-price="15" data-label="Моніторинг SEO & контент-прогалин"><span class="sw"></span><span class="mt"><b>Моніторинг SEO &amp; контент-прогалин</b><span>Позиції ключових слів + контент-прогалини</span></span><span class="mp">+15 €</span></button>
-          <button type="button" class="omod-toggle" data-price="9" data-label="Моніторинг надійності сайту"><span class="sw"></span><span class="mt"><b>Моніторинг надійності сайту</b><span>Uptime + сповіщення, якщо магазин не працює</span></span><span class="mp">+9 €</span></button>
-          <button type="button" class="omod-toggle" data-price="29" data-label="Інтеграція ERP–інтернет-магазин"><span class="sw"></span><span class="mt"><b>Інтеграція ERP–інтернет-магазин</b><span>Directo ↔ WooCommerce синхронізація</span></span><span class="mp">+29 €</span></button>
-          <button type="button" class="omod-toggle" data-price="29" data-label="Перецінювання цін"><span class="sw"></span><span class="mt"><b>Перецінювання цін</b><span>Цінові пропозиції на основі конкурентів, підтвердження одним кліком</span></span><span class="mp">+29 €</span></button>
-          <button type="button" class="omod-toggle" data-price="39" data-label="Навчання для команди"><span class="sw"></span><span class="mt"><b>Навчання для команди</b><span>Навчаємо самостійно користуватися інструментами</span></span><span class="mp">+39 €</span></button>
-          <button type="button" class="omod-toggle" data-price="0" data-quote="1" data-label="Індивідуальна автоматизація"><span class="sw"></span><span class="mt"><b>Індивідуальна автоматизація</b><span>Особливе завдання — плагін, скрипт, панель</span></span><span class="mp">за запитом</span></button>
+          <button type="button" class="omod-toggle" data-price="19" data-kood="epoe_tervis" data-label="Перевірка стану інтернет-магазину"><span class="sw"></span><span class="mt"><b>Перевірка стану інтернет-магазину</b><span>Биті зображення, alt-тексти, помилки в цінах</span></span><span class="mp">+19 €</span></button>
+          <button type="button" class="omod-toggle" data-price="15" data-kood="seo_seire" data-label="Моніторинг SEO & контент-прогалин"><span class="sw"></span><span class="mt"><b>Моніторинг SEO &amp; контент-прогалин</b><span>Позиції ключових слів + контент-прогалини</span></span><span class="mp">+15 €</span></button>
+          <button type="button" class="omod-toggle" data-price="9" data-kood="uptime" data-label="Моніторинг надійності сайту"><span class="sw"></span><span class="mt"><b>Моніторинг надійності сайту</b><span>Uptime + сповіщення, якщо магазин не працює</span></span><span class="mp">+9 €</span></button>
+          <button type="button" class="omod-toggle" data-price="29" data-kood="erp_liidestus" data-label="Інтеграція ERP–інтернет-магазин"><span class="sw"></span><span class="mt"><b>Інтеграція ERP–інтернет-магазин</b><span>Directo ↔ WooCommerce синхронізація</span></span><span class="mp">+29 €</span></button>
+          <button type="button" class="omod-toggle" data-price="29" data-kood="hinnastus" data-label="Перецінювання цін"><span class="sw"></span><span class="mt"><b>Перецінювання цін</b><span>Цінові пропозиції на основі конкурентів, підтвердження одним кліком</span></span><span class="mp">+29 €</span></button>
+          <button type="button" class="omod-toggle" data-price="39" data-kood="koolitus" data-label="Навчання для команди"><span class="sw"></span><span class="mt"><b>Навчання для команди</b><span>Навчаємо самостійно користуватися інструментами</span></span><span class="mp">+39 €</span></button>
+          <button type="button" class="omod-toggle" data-price="0" data-quote="1" data-kood="automaatika" data-label="Індивідуальна автоматизація"><span class="sw"></span><span class="mt"><b>Індивідуальна автоматизація</b><span>Особливе завдання — плагін, скрипт, панель</span></span><span class="mp">за запитом</span></button>
         </div>
 
         <div class="ord-lab">Оплата</div>
@@ -1295,14 +1295,16 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
       veeb:c.querySelector('.c-web').value.trim(),
       fb:c.querySelector('.c-fb').value.trim()
     })).filter(c=>c.nimi||c.veeb||c.fb);
-    const moodulid=omods.filter(x=>x.classList.contains('on')).map(x=>x.dataset.label);
+    const valitud=omods.filter(x=>x.classList.contains('on'));
+    const moodulid=valitud.map(x=>x.dataset.label);                 // tõlgitud sildid (kuva)
+    const mooduli_koodid=valitud.map(x=>x.dataset.kood).filter(Boolean); // keele-sõltumatud koodid (auto-provisjoneerimine)
     return {ettevote:document.getElementById('cName').value.trim(),
       reg_kood:document.getElementById('cReg').value.trim(),
       kontakt:document.getElementById('cContact').value.trim(),
       telefon:document.getElementById('cPhone').value.trim(),
       epost:document.getElementById('cEmail').value.trim(),
       oma_pood:document.getElementById('ownSite').value.trim(),
-      konkurendid:konkurendid, moodulid:moodulid,
+      konkurendid:konkurendid, moodulid:moodulid, mooduli_koodid:mooduli_koodid,
       arveldus:y?'aasta':'kuu', kuutasu:m, keel:T.locale};
   }
   function postOrder(){
