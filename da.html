@@ -579,6 +579,8 @@
   </div>
 </header>
 
+<main id="sisu">
+
 <!-- HERO -->
 <section class="hero">
   <div class="radar" aria-hidden="true">
@@ -900,6 +902,8 @@
 </section>
 
 <!-- FOOTER -->
+</main>
+
 <footer>
   <div class="wrap">
     <div class="foot">
@@ -962,7 +966,7 @@
         <div class="ord-sub">Tilføj de virksomheder, du vil overvåge, og vælg moduler til din shop. Den månedlige pris beregnes med det samme ud fra de indtastede virksomheder.</div>
 
         <div class="ord-lab">Din webshop</div>
-        <div class="ofield"><label>Din shops webadresse</label><input type="text" id="ownSite" placeholder="f.eks. minshop.dk"></div>
+        <div class="ofield"><label for="ownSite">Din shops webadresse</label><input type="text" id="ownSite" placeholder="f.eks. minshop.dk"></div>
 
         <div class="ord-lab">Hvem skal overvåges — konkurrenter</div>
         <div id="compList"></div>
@@ -991,12 +995,12 @@
       <div class="ord-view" data-v="2">
         <div class="ord-h">Dine oplysninger</div>
         <div class="ord-sub">Hvor vi sender adgang til overvågningspanelet og morgenrapporten hen.</div>
-        <div class="ofield" style="position:relative"><label>Virksomhedens navn *</label><input type="text" id="cName" autocomplete="off" placeholder="Din virksomhed ApS" role="combobox" aria-autocomplete="list" aria-expanded="false"><input type="hidden" id="cReg"></div>
+        <div class="ofield" style="position:relative"><label for="cName">Virksomhedens navn *</label><input type="text" id="cName" autocomplete="off" placeholder="Din virksomhed ApS" role="combobox" aria-autocomplete="list" aria-expanded="false"><input type="hidden" id="cReg"></div>
         <div class="orow2">
-          <div class="ofield"><label>Kontaktperson *</label><input type="text" id="cContact" placeholder="For- og efternavn"></div>
-          <div class="ofield"><label>Telefon</label><input type="tel" id="cPhone" placeholder="+372 …"></div>
+          <div class="ofield"><label for="cContact">Kontaktperson *</label><input type="text" id="cContact" placeholder="For- og efternavn"></div>
+          <div class="ofield"><label for="cPhone">Telefon</label><input type="tel" id="cPhone" placeholder="+372 …"></div>
         </div>
-        <div class="ofield"><label>E-mail *</label><input type="email" id="cEmail" placeholder="dig@virksomhed.dk"></div>
+        <div class="ofield"><label for="cEmail">E-mail *</label><input type="email" id="cEmail" placeholder="dig@virksomhed.dk"></div>
         <div class="ord-err" id="err2">Udfyld venligst virksomhedens navn, kontaktperson og en korrekt e-mail.</div>
       </div>
 
@@ -1018,17 +1022,20 @@
           <div class="ord-sub">Sikker betaling med banklink eller kort.</div>
           <div class="pay-demo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01" stroke-linecap="round"/></svg><span>Demobetaling — der trækkes ingen rigtig betaling. Bestillingen sendes til os til gennemgang, og vi tager kontakt.</span></div>
           <div class="pay-logos"><span class="pl">Swedbank</span><span class="pl">SEB</span><span class="pl">LHV</span><span class="pl">Visa</span><span class="pl">Mastercard</span></div>
-          <div class="ofield"><label>Navn på kortet</label><input type="text" id="payName" placeholder="Demobetaler"></div>
-          <div class="ofield"><label>Kortnummer</label><input type="text" id="payCard" placeholder="4242 4242 4242 4242"></div>
-          <div class="orow2"><div class="ofield"><label>Udløb</label><input type="text" placeholder="12/28"></div><div class="ofield"><label>CVC</label><input type="text" placeholder="123"></div></div>
+          <div class="ofield"><label for="payName">Navn på kortet</label><input type="text" id="payName" placeholder="Demobetaler"></div>
+          <div class="ofield"><label for="payCard">Kortnummer</label><input type="text" id="payCard" placeholder="4242 4242 4242 4242"></div>
+          <div class="orow2"><div class="ofield"><label for="payExp">Udløb</label><input type="text" id="payExp" placeholder="12/28"></div><div class="ofield"><label for="payCvc">CVC</label><input type="text" id="payCvc" placeholder="123"></div></div>
         </div>
         <div class="ord-done" id="payDone" style="display:none">
+          <div id="payOk">
           <div class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m5 13 4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           <h3>Tak! Din bestilling er modtaget</h3>
           <p>Seadistame seire ja saadame esimese raporti. Sina ei pea midagi paigaldama.</p>
+          </div>
+          <div class="ord-err" id="payFail" style="margin:6px auto 14px;max-width:360px">Vi kunne ikke bekræfte din bestilling automatisk. Send kopien via e-mail (knappen nedenfor), så kontakter vi dig.</div>
           <div class="acct-create" id="acctCreate" style="margin:20px auto 0;max-width:360px;text-align:left;padding-top:18px;border-top:1px solid var(--line)">
             <div class="ord-sub" style="margin-bottom:10px">Loo endale ligipääs, et oma seiret jälgida:</div>
-            <div class="ofield"><label>Parool (vähemalt 8 märki)</label><input type="password" id="acctPass" autocomplete="new-password" placeholder="Vali parool"></div>
+            <div class="ofield"><label for="acctPass">Parool (vähemalt 8 märki)</label><input type="password" id="acctPass" autocomplete="new-password" placeholder="Vali parool"></div>
             <div class="ord-err" id="acctErr"></div>
             <button type="button" class="btn btn-grad" id="acctBtn" style="width:100%;justify-content:center;margin-top:8px">Loo konto ja logi sisse</button>
           </div>
@@ -1210,8 +1217,8 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
   function addRow(){
     const c=document.createElement('div');c.className='comp';
     c.innerHTML=`<button type="button" class="cx" aria-label="${T.remove}">&times;</button>`
-      +`<input class="c-name" placeholder="${T.phName}">`
-      +`<div class="crow"><input class="c-web" placeholder="${T.phWeb}"><input class="c-fb" placeholder="${T.phFb}"></div>`
+      +`<input class="c-name" aria-label="${T.phName}" placeholder="${T.phName}">`
+      +`<div class="crow"><input class="c-web" aria-label="${T.phWeb}" placeholder="${T.phWeb}"><input class="c-fb" aria-label="${T.phFb}" placeholder="${T.phFb}"></div>`
       +'<div class="chint"></div>';
     compList.appendChild(c);
     c.querySelector('.cx').addEventListener('click',()=>{c.remove();fmtPrice();});
@@ -1302,14 +1309,15 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
       konkurendid:konkurendid, moodulid:moodulid, mooduli_koodid:mooduli_koodid,
       arveldus:y?'aasta':'kuu', kuutasu:m, keel:T.locale};
   }
-  function postOrder(){
+  async function postOrder(){
     // Saadab tellimuse Look360 otspunkti (salvestab + teavitab operaatorit).
-    // Parim-pingutus: mailto-koopia nupp jääb varuks, kui POST ebaõnnestub.
+    // Tagastab true AINULT serveri kinnitusel; ebaõnnestumisel false (mailto-varu).
     try{
-      fetch(ORDER_ENDPOINT,{method:'POST',mode:'cors',
+      const r=await fetch(ORDER_ENDPOINT,{method:'POST',mode:'cors',
         headers:{'Content-Type':'application/json','ngrok-skip-browser-warning':'1'},
-        body:JSON.stringify(buildOrder())}).catch(function(){});
-    }catch(e){}
+        body:JSON.stringify(buildOrder())});
+      return !!(r&&r.ok);
+    }catch(e){return false;}
   }
   function valid(n){
     if(n===1){const {m,web,fb,quote}=calc();const ok=(web+fb)>0||m>0||quote;document.getElementById('err1').classList.toggle('show',!ok);return ok;}
@@ -1358,15 +1366,21 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
   omods.forEach(x=>x.addEventListener('click',()=>{x.classList.toggle('on');fmtPrice();}));
   obill.forEach(b=>b.addEventListener('click',()=>{obill.forEach(o=>o.classList.remove('on'));b.classList.add('on');fmtPrice();}));
   backBtn.addEventListener('click',()=>{if(step>1)setStep(step-1);});
-  nextBtn.addEventListener('click',()=>{
+  nextBtn.addEventListener('click',async ()=>{
     if(step<4){if(!valid(step))return;setStep(step+1);}
     else{
-      postOrder();
+      if(nextBtn.disabled)return;                 // väldi topelt-esitamist
+      nextBtn.disabled=true;
+      const ok=await postOrder();                 // oota serveri kinnitust, ära valeta "vastu võetud"
+      nextBtn.disabled=false;
       document.getElementById('mailCopy').setAttribute('href',buildMail());
       document.getElementById('payForm').style.display='none';
       document.getElementById('payDone').style.display='block';
       foot.style.display='none';done=true;
       stepsEl.forEach(s=>s.classList.add('done'));
+      var payOk=document.getElementById('payOk'),payFail=document.getElementById('payFail'),ac=document.getElementById('acctCreate');
+      if(ok){ if(payOk)payOk.style.display=''; if(payFail)payFail.classList.remove('show'); if(ac)ac.style.display=''; }
+      else  { if(payOk)payOk.style.display='none'; if(payFail)payFail.classList.add('show'); if(ac)ac.style.display='none'; }
     }
   });
 
