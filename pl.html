@@ -919,7 +919,7 @@
       <div class="foot-cols">
         <div class="foot-col"><h5>Usługi</h5><a href="#teenused">Monitoring konkurencji</a><a href="#teenused">Monitoring cen</a><a href="#teenused">Kontrola kondycji e-sklepu</a><a href="#teenused">Integracja z ERP</a></div>
         <div class="foot-col"><h5>Firma</h5><a href="#tugi">Trzy filary</a><a href="#platvorm">Platforma</a><a href="#portfoolio">Portfolio</a><a href="#hinnad">Cennik</a><a href="privaatsus-pl.html">Polityka prywatności</a><a href="tingimused-pl.html">Warunki korzystania</a></div>
-        <div class="foot-col"><h5>Kontakt</h5><a href="mailto:info@look360.eu">info@look360.eu</a><a href="tel:+37251234567">+372 5123 4567</a><a href="https://www.google.com/maps?q=Riia+15b,+Tartu" target="_blank" rel="noopener">Riia 15b, 51010 Tartu</a></div>
+        <div class="foot-col"><h5>Kontakt</h5><a href="mailto:watchdog.oy@gmail.com">watchdog.oy@gmail.com</a><a href="tel:+37253031309">+372 5303 1309</a><a href="https://www.google.com/maps?q=Sepa+tn+4-2,+Viljandi" target="_blank" rel="noopener">Sepa tn 4-2, 71003 Viljandi</a></div>
       </div>
     </div>
     <div class="foot-compat">
@@ -938,7 +938,7 @@
       </div>
       <span class="fc-more">Działa również z większością innych sklepów internetowych</span>
     </div>
-    <div class="foot-bottom"><span>© 2026 Look360 · Nr rej. 16234567 · NIP EE102345678</span><span><a href="privaatsus-pl.html" style="color:inherit;text-decoration:underline">Prywatność</a> · <a href="tingimused-pl.html" style="color:inherit;text-decoration:underline">Warunki</a> · Wyprodukowano w Estonii</span></div>
+    <div class="foot-bottom"><span>© 2026 Look360 · OÜ Watchdog · Nr rej. 17537572</span><span><a href="privaatsus-pl.html" style="color:inherit;text-decoration:underline">Prywatność</a> · <a href="tingimused-pl.html" style="color:inherit;text-decoration:underline">Warunki</a> · Wyprodukowano w Estonii</span></div>
   </div>
 </footer>
 
@@ -1157,7 +1157,7 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
     brk.innerHTML=lines.length?lines.map(l=>`<div class="r"><span>${l[0]}</span><b>${l[1]}</b></div>`).join(''):`<div class="r"><span>${T.chooseOne}</span></div>`;
     const bill=annual?'\n'+fmt(T.billYear,{yr,eff,m:FREE_MONTHS}):'\n'+fmt(T.billMonth,{m});
     const body=encodeURIComponent(T.mailIntro+'\n\n'+T.mailChosen+'\n'+lines.map(l=>`- ${l[0]} (${l[1]})`).join('\n')+bill+(quote?'\n\n'+T.mailQuote:''));
-    join.href=`mailto:info@look360.eu?subject=${encodeURIComponent(T.mailSubject)}&body=${body}`;
+    join.href=`mailto:watchdog.oy@gmail.com?subject=${encodeURIComponent(T.mailSubject)}&body=${body}`;
     fill(fb);fill(web);
   }
   mods.forEach(x=>x.addEventListener('click',()=>{x.classList.toggle('on');upd();}));
@@ -1244,7 +1244,7 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
     const lns=lines.map(l=>`- ${l[0]} (${l[1]})`).join('\n');
     const tot=y?fmt(T.totYear,{yr,eff}):fmt(T.totMonth,{m});
     const body=`${T.mailIntro}\n\n${T.mlCompany}: ${document.getElementById('cName').value.trim()}\n${T.mlContact}: ${document.getElementById('cContact').value.trim()}\n${T.mlPhone}: ${document.getElementById('cPhone').value.trim()}\n${T.mlEmail}: ${document.getElementById('cEmail').value.trim()}\n${own?`${T.mlOwnShop}: ${own}\n`:''}\n${T.mlWatch}:\n${comps||'-'}\n\n${T.mlPackage}:\n${lns}\n\n${T.mlBilling}: ${tot}`;
-    return `mailto:info@look360.eu?subject=${encodeURIComponent(T.mailSubject)}&body=${encodeURIComponent(body)}`;
+    return `mailto:watchdog.oy@gmail.com?subject=${encodeURIComponent(T.mailSubject)}&body=${encodeURIComponent(body)}`;
   }
   var ORDER_ENDPOINT='https://expenses-destruct-snowboard.ngrok-free.dev/api/tellimus/';
   // Firma-nime autocomplete (Eesti äriregister) - AINULT eestikeelne sait.
