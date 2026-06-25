@@ -563,7 +563,7 @@
     </nav>
     <div class="nav-r">
       <a href="#hinnad" class="btn btn-grad js-order">Prisijunkite nuo 1 €</a>
-      <a href="https://seire.look360.eu/accounts/login/" class="login-link" style="color:#cbd3da;text-decoration:none;font-weight:600;font-size:14px;display:flex;align-items:center;gap:5px">Prisijungti <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="https://scan.look360.eu/accounts/login/" class="login-link" style="color:#cbd3da;text-decoration:none;font-weight:600;font-size:14px;display:flex;align-items:center;gap:5px">Prisijungti <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
     <div class="langsel" id="langsel"></div>
     <button class="burger" id="burger" aria-label="Atidaryti meniu" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -574,7 +574,7 @@
     <a href="#platvorm">Platforma</a>
     <a href="#portfoolio">Portfelis</a>
     <a href="#hinnad">Kainos</a>
-    <a href="https://seire.look360.eu/accounts/login/">Prisijungti</a>
+    <a href="https://scan.look360.eu/accounts/login/">Prisijungti</a>
     <a href="#hinnad" class="btn btn-grad js-order">Prisijungimas nuo 1 € mėnesinio mokesčio</a>
   </div>
 </header>
@@ -1246,7 +1246,7 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
     const body=`${T.mailIntro}\n\n${T.mlCompany}: ${document.getElementById('cName').value.trim()}\n${T.mlContact}: ${document.getElementById('cContact').value.trim()}\n${T.mlPhone}: ${document.getElementById('cPhone').value.trim()}\n${T.mlEmail}: ${document.getElementById('cEmail').value.trim()}\n${own?`${T.mlOwnShop}: ${own}\n`:''}\n${T.mlWatch}:\n${comps||'-'}\n\n${T.mlPackage}:\n${lns}\n\n${T.mlBilling}: ${tot}`;
     return `mailto:watchdog.oy@gmail.com?subject=${encodeURIComponent(T.mailSubject)}&body=${encodeURIComponent(body)}`;
   }
-  var ORDER_ENDPOINT='https://seire.look360.eu/api/tellimus/';
+  var ORDER_ENDPOINT='https://scan.look360.eu/api/tellimus/';
   // Firma-nime autocomplete (Eesti äriregister) - AINULT eestikeelne sait.
   // Taaskasutatav: nii kliendi enda ettevõtte nimi (#cName) kui konkurentide
   // nimed (.c-name, dünaamilised read - vt addRow + window.L360auto).
