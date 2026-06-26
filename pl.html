@@ -1151,16 +1151,13 @@
         </div>
       </div>
 
-      <!-- VIEW 4: makse (mock) -->
+      <!-- VIEW 4: makse -->
       <div class="ord-view" data-v="4">
         <div id="payForm">
           <div class="ord-h">Płatność</div>
-          <div class="ord-sub">Bezpieczna płatność przez link bankowy lub kartą.</div>
-          <div class="pay-demo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01" stroke-linecap="round"/></svg><span>Płatność demonstracyjna — żadne rzeczywiste obciążenie nie następuje. Zamówienie zostaje przesłane do nas do weryfikacji i skontaktujemy się z Państwem.</span></div>
+          <div class="ord-sub">Turvaline makse pangalingi või kaardiga. „Maksa" suunab sind turvalisele makselehele.</div>
+          <div class="pay-demo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 5 6v5c0 4.2 2.8 7.3 7 8.8 4.2-1.5 7-4.6 7-8.8V6l-7-3Z" stroke-linejoin="round"/><path d="m9 11.5 2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Maksad ainult esimese kuu tasu. Kaart jääb turvaliselt seotuks, järgmised kuud arveldatakse automaatselt — saad igal hetkel tühistada.</span></div>
           <div class="pay-logos"><span class="pl">Swedbank</span><span class="pl">SEB</span><span class="pl">LHV</span><span class="pl">Visa</span><span class="pl">Mastercard</span></div>
-          <div class="ofield"><label for="payName">Imię i nazwisko na karcie</label><input type="text" id="payName" placeholder="Płatnik Demo"></div>
-          <div class="ofield"><label for="payCard">Numer karty</label><input type="text" id="payCard" placeholder="4242 4242 4242 4242"></div>
-          <div class="orow2"><div class="ofield"><label for="payExp">Data ważności</label><input type="text" id="payExp" placeholder="12/28"></div><div class="ofield"><label for="payCvc">CVC</label><input type="text" id="payCvc" placeholder="123"></div></div>
         </div>
         <div class="ord-done" id="payDone" style="display:none">
           <div id="payOk">
@@ -1455,6 +1452,32 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
       return !!(r&&r.ok);
     }catch(e){return false;}
   }
+  var MAKSE_ALUSTA=ORDER_ENDPOINT.replace('/api/tellimus/','/api/makse-alusta/');
+  async function alustaMakse(){
+    // Saadab tellimuse + alustab PÄRIS makse (esmatasu kohe signupil). Tagastab:
+    //   {redirect:url} -> suuna Stripe Checkout'i;
+    //   {demo:true}    -> demorežiim/seadistamata: näita payDone kohe (nagu postOrder);
+    //   {fail:true}    -> viga (näita payFail + mailto-varu).
+    try{
+      const r=await fetch(MAKSE_ALUSTA,{method:'POST',mode:'cors',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(buildOrder())});
+      const j=await r.json().catch(()=>null);
+      if(j&&j.ok&&j.checkout_url)return {redirect:j.checkout_url};
+      if(j&&j.ok)return {demo:true};                 // demo / seadistamata / summa 0
+      return {fail:true};
+    }catch(e){return {fail:true};}
+  }
+  function naitaPayDone(ok){
+    document.getElementById('mailCopy').setAttribute('href',buildMail());
+    document.getElementById('payForm').style.display='none';
+    document.getElementById('payDone').style.display='block';
+    foot.style.display='none';done=true;
+    stepsEl.forEach(s=>s.classList.add('done'));
+    var payOk=document.getElementById('payOk'),payFail=document.getElementById('payFail'),ac=document.getElementById('acctCreate');
+    if(ok){ if(payOk)payOk.style.display=''; if(payFail)payFail.classList.remove('show'); if(ac)ac.style.display=''; }
+    else  { if(payOk)payOk.style.display='none'; if(payFail)payFail.classList.add('show'); if(ac)ac.style.display='none'; }
+  }
   function valid(n){
     if(n===1){const {m,web,fb,quote}=calc();const ok=(web+fb)>0||m>0||quote;document.getElementById('err1').classList.toggle('show',!ok);return ok;}
     if(n===2){const nm=document.getElementById('cName').value.trim(),co=document.getElementById('cContact').value.trim(),em=document.getElementById('cEmail').value.trim();const ok=!!nm&&!!co&&/^\S+@\S+\.\S+$/.test(em);document.getElementById('err2').classList.toggle('show',!ok);return ok;}
@@ -1507,16 +1530,11 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
     else{
       if(nextBtn.disabled)return;                 // väldi topelt-esitamist
       nextBtn.disabled=true;
-      const ok=await postOrder();                 // oota serveri kinnitust, ära valeta "vastu võetud"
+      const res=await alustaMakse();
+      if(res.redirect){window.location.href=res.redirect;return;}  // Stripe Checkout
       nextBtn.disabled=false;
-      document.getElementById('mailCopy').setAttribute('href',buildMail());
-      document.getElementById('payForm').style.display='none';
-      document.getElementById('payDone').style.display='block';
-      foot.style.display='none';done=true;
-      stepsEl.forEach(s=>s.classList.add('done'));
-      var payOk=document.getElementById('payOk'),payFail=document.getElementById('payFail'),ac=document.getElementById('acctCreate');
-      if(ok){ if(payOk)payOk.style.display=''; if(payFail)payFail.classList.remove('show'); if(ac)ac.style.display=''; }
-      else  { if(payOk)payOk.style.display='none'; if(payFail)payFail.classList.add('show'); if(ac)ac.style.display='none'; }
+      // demo/seadistamata -> "vastu võetud"; viga -> payFail + mailto-varu
+      naitaPayDone(!res.fail);
     }
   });
 
@@ -1554,6 +1572,21 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
         });
     });
   }
+
+  /* === Stripe-tagasitulek (?makse=ok / ?makse=katki) === */
+  /* Avalik maksevoog suunab kliendi peale Stripe-makset siia tagasi. Ava modaal
+     payDone-seisus (ok=payOk + konto-loomine; katki=payFail) ja eeltäida e-post
+     ?epost-ist (konto-loomine vajab seda). Puhasta URL (history.replaceState). */
+  (function(){
+    var p=new URLSearchParams(location.search), m=p.get('makse');
+    if(m!=='ok'&&m!=='katki')return;
+    var em=(p.get('epost')||'').trim();
+    try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
+    open(false);                                   // ava modaal (lähtesta)
+    if(em){var ce=document.getElementById('cEmail');if(ce)ce.value=em;}
+    setStep(4);                                     // makse-vaade aktiivseks
+    naitaPayDone(m==='ok');                         // payForm peita, payDone (payOk/payFail)
+  })();
 })();
 </script>
 </body>
