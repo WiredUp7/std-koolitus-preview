@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<!-- Look360 kliendi kasutusjuhend. Kaesitsi hooldatav, eestikeelne (mitte build_i18n.py kaudu). -->
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Käyttöopas – Look360-seurantapaneeli</title>
+<meta name="description" content="Look360-seurantapaneelin käyttöopas asiakkaalle: kirjautuminen, työpöytä, yritysten lisääminen, tuoteluettelo, palvelut, maksut ja raportit – vaihe vaiheelta, mikä painike tekee mitä.">
+<meta name="robots" content="index,follow">
+<link rel="alternate" hreflang="et" href="https://wiredup7.github.io/std-koolitus-preview/kasutusjuhend.html">
+<link rel="alternate" hreflang="en" href="https://wiredup7.github.io/std-koolitus-preview/kasutusjuhend-en.html">
+<link rel="alternate" hreflang="fi" href="https://wiredup7.github.io/std-koolitus-preview/kasutusjuhend-fi.html">
+<link rel="alternate" hreflang="sv" href="https://wiredup7.github.io/std-koolitus-preview/kasutusjuhend-sv.html">
+<link rel="alternate" hreflang="no" href="https://wiredup7.github.io/std-koolitus-preview/kasutusjuhend-no.html">
+<link rel="alternate" hreflang="da" href="https://wiredup7.github.io/std-koolitus-preview/kasutusjuhend-da.html">
+<link rel="alternate" hreflang="lv" href="https://wiredup7.github.io/std-koolitus-preview/kasutusjuhend-lv.html">
+<link rel="alternate" hreflang="lt" href="https://wiredup7.github.io/std-koolitus-preview/kasutusjuhend-lt.html">
+<link rel="alternate" hreflang="pl" href="https://wiredup7.github.io/std-koolitus-preview/kasutusjuhend-pl.html">
+<link rel="alternate" hreflang="uk" href="https://wiredup7.github.io/std-koolitus-preview/kasutusjuhend-uk.html">
+<link rel="alternate" hreflang="x-default" href="https://wiredup7.github.io/std-koolitus-preview/kasutusjuhend-en.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0a0b0e;--paper:#fff;--paper-2:#f4f5f7;--text:#15171c;--text-2:#3c424d;--muted:#6b7280;
+    --on-dark-mut:#9aa1ad;--line:#e7e9ee;--line-dark:rgba(255,255,255,.09);
+    --accent:#17b86a;--accent-ink:#0c8f4f;--accent-soft:#e7f6ee;
+    --warn:#b9760a;--warn-soft:#fdf4e6;--warn-line:#f1ddb6;
+    --err:#c0392b;--err-soft:#fcecec;--err-line:#f3cfcf;
+    --grad:linear-gradient(120deg,#1fd07a,#06b6b6);--maxw:1080px;
+    --f:"Poppins",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--f);background:var(--paper);color:var(--text);line-height:1.7;font-weight:400;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent-ink)}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  /* Header */
+  header.top{background:var(--ink);color:#fff;padding:18px 0;position:sticky;top:0;z-index:80}
+  header.top .wrap{display:flex;align-items:center;gap:13px}
+  .eye{height:38px;width:auto;flex-shrink:0;filter:drop-shadow(0 2px 9px rgba(23,184,106,.45))}
+  .wm{font-weight:700;font-size:20px;letter-spacing:-.01em;color:#fff}
+  .wm i{color:var(--accent);font-style:normal}
+  header.top nav{margin-left:auto;display:flex;gap:20px;font-size:14px;align-items:center}
+  header.top nav a{color:var(--on-dark-mut);text-decoration:none;transition:.2s}
+  header.top nav a:hover{color:#fff}
+  header.top nav a.login{display:inline-flex;align-items:center;gap:6px;color:#fff;border:1px solid var(--line-dark);padding:7px 13px;border-radius:10px}
+  header.top nav a.login:hover{border-color:var(--accent)}
+  header.top nav a.login svg{width:14px;height:14px}
+
+  /* Hero */
+  .hero{background:var(--ink);color:#fff;padding:14px 0 56px;border-bottom:1px solid var(--line-dark)}
+  .hero .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--accent);margin-bottom:14px}
+  .hero .eyebrow .pip{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(23,184,106,.2)}
+  .hero h1{font-weight:600;font-size:clamp(28px,5vw,42px);letter-spacing:-.02em;line-height:1.1}
+  .hero p{color:var(--on-dark-mut);font-size:17px;font-weight:300;margin-top:14px;max-width:680px}
+
+  /* Layout: sticky TOC + content */
+  main{padding:40px 0 80px}
+  .layout{display:grid;grid-template-columns:230px 1fr;gap:48px;align-items:start}
+  .toc{position:sticky;top:90px;font-size:14px}
+  .toc h4{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:12px}
+  .toc a{display:block;color:var(--text-2);text-decoration:none;padding:6px 11px;border-radius:9px;border-left:2px solid transparent;font-weight:300;transition:.15s}
+  .toc a:hover{background:var(--paper-2);color:var(--text)}
+  .toc a.on{color:var(--accent-ink);border-left-color:var(--accent);font-weight:500;background:var(--accent-soft)}
+
+  .content{min-width:0}
+  .lead{font-size:17px;color:var(--text-2);font-weight:300;margin-bottom:30px}
+  section.doc{padding-top:14px;margin-bottom:18px;scroll-margin-top:90px}
+  section.doc h2{font-weight:600;font-size:23px;letter-spacing:-.01em;margin:34px 0 8px;display:flex;align-items:center;gap:11px}
+  section.doc h2 .num{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:9px;background:var(--accent-soft);color:var(--accent-ink);font-size:14px;font-weight:600;flex:0 0 auto}
+  section.doc h3{font-weight:600;font-size:16.5px;margin:24px 0 6px}
+  section.doc p{margin:9px 0;color:var(--text-2);font-weight:300}
+  section.doc strong{font-weight:600;color:var(--text)}
+
+  /* Numbered steps */
+  ol.steps{list-style:none;counter-reset:s;margin:14px 0;padding:0}
+  ol.steps>li{counter-increment:s;position:relative;padding:4px 0 16px 44px;color:var(--text-2);font-weight:300}
+  ol.steps>li::before{content:counter(s);position:absolute;left:0;top:0;width:30px;height:30px;border-radius:50%;background:var(--accent);color:#fff;font-weight:600;font-size:14px;display:flex;align-items:center;justify-content:center}
+  ol.steps>li:not(:last-child)::after{content:"";position:absolute;left:14px;top:32px;bottom:2px;width:2px;background:var(--line)}
+  ol.steps>li b{color:var(--text);font-weight:600}
+
+  ul.plain{margin:10px 0 12px;padding-left:20px}
+  ul.plain li{margin:7px 0;color:var(--text-2);font-weight:300}
+  ul.plain li b{color:var(--text);font-weight:600}
+
+  /* Button chip – replicates a real dashboard button */
+  .chip{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;padding:5px 11px;border-radius:9px;
+    border:1px solid var(--line);background:var(--paper-2);color:var(--text);white-space:nowrap;vertical-align:1px;line-height:1.3}
+  .chip svg{width:14px;height:14px;flex:0 0 auto}
+  .chip.go{background:var(--grad);color:#04231a;border-color:transparent}
+  .chip.fb{background:#eaf1fb;color:#1b62c4;border-color:#d6e3f6}
+
+  /* Status legend / pills */
+  .pill{display:inline-flex;align-items:center;gap:5px;border-radius:999px;padding:2px 10px;font-size:12.5px;font-weight:600;vertical-align:1px}
+  .pill .dot{width:8px;height:8px;border-radius:50%;flex:0 0 auto}
+  .pill.ok{background:var(--accent-soft);color:var(--accent-ink)}
+  .pill.ok .dot{background:var(--accent)}
+  .pill.warn{background:var(--warn-soft);color:var(--warn)}
+  .pill.warn .dot{background:var(--warn)}
+  .pill.err{background:var(--err-soft);color:var(--err)}
+  .pill.err .dot{background:var(--err)}
+  .pill.sec{background:#eef1f5;color:var(--muted)}
+  .pill.sec .dot{background:#9aa6b2}
+
+  .legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:18px 0}
+  .legend .lg{display:flex;gap:11px;align-items:flex-start;background:var(--paper-2);border:1px solid var(--line);border-radius:13px;padding:13px 15px}
+  .legend .lg .sw{width:13px;height:13px;border-radius:50%;flex:0 0 auto;margin-top:4px}
+  .legend .lg b{display:block;color:var(--text);font-weight:600;font-size:14px}
+  .legend .lg span{font-size:13px;color:var(--text-2);font-weight:300}
+
+  /* Callouts */
+  .box{background:var(--paper-2);border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin:18px 0}
+  .box.green{background:var(--accent-soft);border-color:#cdeadd}
+  .box.warn{background:var(--warn-soft);border-color:var(--warn-line)}
+  .box .bt{display:flex;align-items:center;gap:8px;font-weight:600;color:var(--text);margin-bottom:4px;font-size:14.5px}
+  .box .bt svg{width:17px;height:17px;flex:0 0 auto}
+  .box p{margin:4px 0 0;font-size:14px}
+
+  /* Screenshot figure */
+  figure{margin:22px 0}
+  figure img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 40px -22px rgba(13,22,38,.4)}
+  figure figcaption{font-size:13px;color:var(--muted);margin-top:9px;font-weight:300;text-align:center}
+
+  /* Definition rows (column / field meaning) */
+  .deflist{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:16px 0}
+  .deflist .dr{display:grid;grid-template-columns:200px 1fr;gap:16px;padding:12px 16px;border-bottom:1px solid var(--line);font-size:14px}
+  .deflist .dr:last-child{border-bottom:0}
+  .deflist .dr:nth-child(odd){background:var(--paper-2)}
+  .deflist .dr .k{font-weight:600;color:var(--text)}
+  .deflist .dr .v{color:var(--text-2);font-weight:300}
+
+  footer{background:var(--ink);color:var(--on-dark-mut);padding:40px 0;font-size:14px;font-weight:300;margin-top:20px}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
+  footer a{color:var(--on-dark-mut);text-decoration:none}
+  footer a:hover{color:#fff}
+
+  @media(max-width:860px){
+    .layout{grid-template-columns:1fr;gap:0}
+    .toc{position:static;margin-bottom:24px;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--paper-2)}
+    .toc a{border-left:0;padding:5px 0}
+    .toc a.on{background:none}
+    .deflist .dr{grid-template-columns:1fr;gap:2px}
+    header.top nav a:not(.login){display:none}
+  }
+  /* Keelevaheti (lipud) – jagatud lang.js-iga */
+  .langsel{position:relative;margin-left:6px}
+  .flag{display:block;width:22px;height:15px;border-radius:3px;overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.22)}
+  .flag svg{display:block;width:100%;height:100%}
+  .langbtn{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.07);border:1px solid var(--line-dark);padding:6px 9px;border-radius:10px;cursor:pointer;transition:.2s}
+  .langbtn:hover{background:rgba(255,255,255,.14)}
+  .langbtn .chev{width:12px;height:12px;color:var(--on-dark-mut);transition:.2s;flex-shrink:0}
+  .langbtn[aria-expanded="true"] .chev{transform:rotate(180deg)}
+  .langmenu{position:absolute;top:calc(100% + 9px);right:0;background:#14161d;border:1px solid var(--line-dark);border-radius:13px;padding:8px;box-shadow:0 22px 54px -14px rgba(0,0,0,.75);display:none;grid-template-columns:repeat(2,1fr);gap:5px;z-index:90}
+  .langmenu.open{display:grid}
+  .langmenu a{display:grid;place-items:center;padding:7px 9px;border-radius:8px;cursor:pointer;transition:.15s;border:1px solid transparent}
+  .langmenu a:hover{background:rgba(255,255,255,.08)}
+  .langmenu a.on{border-color:var(--accent);background:rgba(23,184,106,.16)}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a href="index.html" style="display:flex;align-items:center;gap:13px;text-decoration:none">
+      <svg class="eye" viewBox="0 0 76 62" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="gL" x1="0" y1="0" x2="1" y2="0.7"><stop offset="0" stop-color="#46ec9f"/><stop offset="1" stop-color="#0bc8c8"/></linearGradient><clipPath id="cI"><circle cx="27" cy="39" r="14"/></clipPath></defs><path d="M5 35 C 18 14, 47 6, 72 9 C 53 16, 31 23, 5 35 Z" fill="url(#gL)"/><path d="M9 47 C 24 58, 47 56, 67 45 C 50 51, 29 53, 9 47 Z" fill="url(#gL)" opacity="0.92"/><circle cx="27" cy="39" r="14" fill="#0c8f5f"/><g clip-path="url(#cI)"><circle cx="37" cy="38" r="13" fill="#37e3a2"/></g><circle cx="22.5" cy="33.5" r="3.2" fill="#ffffff"/></svg>
+      <span class="wm">Look<i>360</i></span>
+    </a>
+    <nav>
+      <a href="index.html">Etusivu</a>
+      <a href="index.html#kkk">UKK</a>
+      <a class="login" href="https://expenses-destruct-snowboard.ngrok-free.dev/accounts/login/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><path d="M10 17l5-5-5-5M15 12H3"/></svg> Kirjaudu sisään</a>
+      <div class="langsel" id="langsel"></div>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow"><span class="pip"></span> Käyttöopas</div>
+    <h1>Seurantapaneelin käyttöopas</h1>
+    <p>Vaiheittainen yleiskatsaus kaikkeen, mitä näet ja voit tehdä asiakkaana: kirjautumisesta työpöytään, seurattaviin yrityksiin, tuoteluetteloon, palveluihin, maksuihin ja raportteihin. Jokaisen painikkeen kohdalla kerrotaan, mitä se tekee ja mistä näet tuloksen.</p>
+  </div>
+</section>
+
+<main>
+  <div class="wrap layout">
+    <aside class="toc" id="toc">
+      <h4>Sisältö</h4>
+      <a href="#algus">1. Mikä seurantapaneeli on</a>
+      <a href="#logimine">2. Kirjautuminen</a>
+      <a href="#menuu">3. Valikko ja yleisnäkymä</a>
+      <a href="#toolaud">4. Seurantatyöpöytä</a>
+      <a href="#lisafirma">5. Yrityksen lisääminen</a>
+      <a href="#firmavaade">6. Yritysnäkymä ja luettelo</a>
+      <a href="#kategooriad">7. Kategorioiden valinta</a>
+      <a href="#teenused">8. Palvelut ja kuukausimaksu</a>
+      <a href="#maksed">9. Miten maksu toimii</a>
+      <a href="#hinnastamine">10. Hinnoittelu</a>
+      <a href="#raportid">11. Raportit</a>
+      <a href="#seaded">12. Tumma tila ja puhelin</a>
+      <a href="#abi">13. Apu ja yhteystiedot</a>
+    </aside>
+
+    <div class="content">
+      <p class="lead">Look360-seurantapaneeli kokoaa yhteen paikkaan kaiken, mitä seuraamme puolestasi – kilpailijoiden hinnat ja varastotilanteen, Facebook-julkaisut, oman verkkokauppasi kunnon. Sinun ei tarvitse asentaa mitään: kirjaudut sisään, näet tilanteen yhdellä silmäyksellä ja saat tärkeät muutokset myös joka-aamuisella sähköpostilla. Tämä opas käy läpi jokaisen näkymän ja painikkeen.</p>
+
+      <!-- 1 -->
+      <section class="doc" id="algus">
+        <h2><span class="num">1</span> Mikä seurantapaneeli on</h2>
+        <p>Seurantapaneeli on yksityinen työpöytäsi osoitteessa, johon kirjaudut sisään sähköpostiosoitteellasi ja salasanallasi. Siellä näet kaikki seurattavat yritykset – sekä oman verkkokauppasi että kilpailijat – ja jokaisen muutoksen, jonka järjestelmä on havainnut: hinnanlasku, varaston loppuminen, uusi Facebook-julkaisu, verkkokaupan häiriö.</p>
+        <p>Kaikki toimii <strong>värilogiikan</strong> mukaan. Samat kolme väriä toistuvat kaikkialla – työpöydällä, yrityskortilla, taulukossa:</p>
+        <div class="legend">
+          <div class="lg"><span class="sw" style="background:var(--accent)"></span><span><b>Vihreä – kaikki kunnossa</b>Muutoksia ei ole tai kaikki on odotetusti. Mitään ei tarvitse tehdä.</span></div>
+          <div class="lg"><span class="sw" style="background:var(--warn)"></span><span><b>Keltainen – vaatii huomiota</b>Varoitus: esim. kilpailijan hinnanmuutos, varaston loppuminen tai vanhentuneet tiedot.</span></div>
+          <div class="lg"><span class="sw" style="background:var(--err)"></span><span><b>Punainen – häiriö</b>Tietolähde jäi hetkeksi tavoittamattomiin. Yleensä palautuu itsestään tai operaattori tarkistaa.</span></div>
+        </div>
+        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z"/></svg> Postilaatikkoa ei tarvitse vahtia</div><p>Tärkeimmät muutokset lähetämme myös joka-aamuisella koontiviestillä. Paneelin avaat silloin, kun haluat nähdä enemmän tai muuttaa jotain.</p></div>
+      </section>
+
+      <!-- 2 -->
+      <section class="doc" id="logimine">
+        <h2><span class="num">2</span> Kirjautuminen</h2>
+        <ol class="steps">
+          <li>Avaa <b>Kirjaudu sisään</b> – joko etusivun ylänurkasta, tämän oppaan yläreunasta tai suoralinkistä, jonka sinulle lähetimme.</li>
+          <li>Syötä <b>käyttäjätunnus</b> – se on <b>sähköpostiosoitteesi</b> (esim. sinä@yritys.fi).</li>
+          <li>Syötä <b>salasana</b> ja paina <span class="chip go">Kirjaudu</span></li>
+        </ol>
+        <ul class="plain">
+          <li><b>Unohditko salasanan?</b> – alla olevasta linkistä lähetämme sähköpostilla linkin uuden salasanan asettamiseen.</li>
+          <li><b>Eikö sinulla ole vielä tiliä?</b> – painike <span class="chip">Rekisteröidy</span> vie etusivun hinnastoon, josta voit koota paketin ja liittyä.</li>
+          <li><b>Takaisin etusivulle</b> – ylin linkki vie takaisin look360.eu-sivulle.</li>
+        </ul>
+        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg> Hyvä tietää</div><p>Tili on sidottu yritykseesi. Kirjautumisen jälkeen näet vasemmalla ylhäällä vihreällä palkilla yrityksesi nimen – niin tiedät olevasi oikealla tilillä.</p></div>
+      </section>
+
+      <!-- 3 -->
+      <section class="doc" id="menuu">
+        <h2><span class="num">3</span> Valikko ja yleisnäkymä</h2>
+        <p>Jokaisella sivulla on sama rakenne: <strong>vasen valikko</strong>, <strong>yläpalkki</strong> ja sisältö keskellä.</p>
+        <h3>Vasen valikko</h3>
+        <ul class="plain">
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="5" rx="1.5"/><rect x="13" y="11" width="8" height="10" rx="1.5"/><rect x="3" y="14" width="8" height="7" rx="1.5"/></svg> Seuranta</span> – päätyöpöytä, jossa ovat kaikki seurattavat yritykset ja havainnot.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M20 7H4M20 12H4M20 17H4"/></svg> Palvelut</span> – tilaamasi palvelut, kuukausimaksu ja mahdollisuus tilata lisää.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Hinnoittelu</span> – näkyy vain silloin, kun sinulla on tilattuna <b>hintojen uudelleenhinnoittelun</b> palvelu.</li>
+          <li>Alareunassa ovat käyttäjätunnuksesi, rooli <b>Asiakas</b> ja <b>uloskirjautumisen</b> kuvake (ulos ovesta).</li>
+        </ul>
+        <h3>Yläpalkki</h3>
+        <ul class="plain">
+          <li>Vasemmalla <b>sivun otsikko</b> (esim. yrityksesi nimi) ja sen alla pienellä tekstillä <b>milloin viimeksi päivitettiin</b>.</li>
+          <li>Oikealla <b>tumma/vaalea-kytkin</b> (aurinko/kuu) ja kyseisen sivun <b>toimintopainikkeet</b>.</li>
+          <li>Puhelimessa vasemman valikon avaa ylänurkan <b>☰-painike</b>.</li>
+        </ul>
+      </section>
+
+      <!-- 4 -->
+      <section class="doc" id="toolaud">
+        <h2><span class="num">4</span> Seurantatyöpöytä</h2>
+        <p>Tämä on kotinäkymä. Yläreunasta löydät tärkeimmät painikkeet, alla on yleiskatsaus ja yritysten luettelo.</p>
+        <figure>
+          <img src="l360-seirepaneel.png" alt="Look360-seurantatyöpöytä: trendikäyrä, yhteenveto ja yritystaulukko" loading="lazy">
+          <figcaption>Seurantatyöpöytä – trendikäyrä, yhteenveto ja seurattavien yritysten taulukko.</figcaption>
+        </figure>
+        <h3>Yläpalkin painikkeet</h3>
+        <ul class="plain">
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Lisää yritys</span> – lisää uusi seurattava yritys (ks. <a href="#lisafirma">luku 5</a>).</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 7H4M20 12H4M20 17H4"/></svg> Palvelut</span> – avaa palveluiden ja kuukausimaksun näkymä.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-2.6-6.4L21 8"/><path d="M21 3v5h-5"/></svg> Päivitä näkymä</span> – lukee viimeisimmät tiedot uudelleen ja päivittää näytön. <b>Ei kaavi</b> sivustoja, vain päivittää näkymän.</li>
+          <li><span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg> Skannaa kaikki uudelleen</span> – näkyy, kun seuraat verkkokauppoja tai Facebookia. Käynnistää <b>oikeat skannaukset</b> (kaapii sivustot), kestää muutaman minuutin. Tämän voi tehdä <b>1 kerran vuorokaudessa</b>.</li>
+        </ul>
+        <h3>Miten seuranta toimii? – apupalkki</h3>
+        <p>Työpöydän yläosassa on avautuva palkki <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .8-1 1.7M12 17h.01"/></svg> Miten seuranta toimii?</span> Klikkaa lukeaksesi lyhyen väriselityksen. Ensimmäisellä kerralla, kun yhtään yritystä ei vielä ole, se on auki.</p>
+        <h3>Varoitusten trendi</h3>
+        <p>Käyrä näyttää, miten varoitusten määrä on viimeisten seurantojen aikana muuttunut – rauhoittuvatko asiat vai vaativatko ne enemmän huomiota.</p>
+        <h3>Yhteenveto</h3>
+        <p>Oikealla on neljä lukua ja tilarivi:</p>
+        <div class="deflist">
+          <div class="dr"><span class="k">Yritystä seurannassa</span><span class="v">Kuinka montaa yritystä parhaillaan seuraat.</span></div>
+          <div class="dr"><span class="k">Aktiivista varoitusta</span><span class="v">Kuinka moni asia vaatii huomiota (keltainen).</span></div>
+          <div class="dr"><span class="k">Lähdettä häiriöllä</span><span class="v">Kuinka moni tietolähde on tällä hetkellä tavoittamattomissa (punainen).</span></div>
+          <div class="dr"><span class="k">Vanhentuneet tiedot</span><span class="v">Kuinka monen yrityksen tiedot ovat vanhentuneet ja vaativat päivitystä.</span></div>
+        </div>
+        <h3>Välilehdet, näkymät ja vienti</h3>
+        <ul class="plain">
+          <li><b>Välilehdet</b> <span class="pill sec"><span class="dot"></span>Kaikki</span> <span class="pill sec"><span class="dot"></span>Oma yritys</span> <span class="pill sec"><span class="dot"></span>Kilpailijat</span> – suodattavat luetteloa.</li>
+          <li><b>Taulukko / Kortit</b> – vaihda luettelon muotoa. Taulukko on tiivis, kortit näyttävät jokaisen yrityksen kanavat heti auki.</li>
+          <li><b>Lajittele</b> – järjestä varoitusten, havaintojen, kunnon tai nimen mukaan.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg> Vie CSV</span> – lataa näkyvän taulukon Excelissä avattavana tiedostona.</li>
+        </ul>
+        <h3>Yritystaulukko</h3>
+        <p>Jokainen rivi on yksi seurattava yritys. <b>Klikkaa riviä</b> avataksesi sen yrityksen koko näkymän. Sarakkeet:</p>
+        <div class="deflist">
+          <div class="dr"><span class="k">Yritys</span><span class="v">Nimi ja se, onko kyseessä oma yrityksesi vai kilpailija.</span></div>
+          <div class="dr"><span class="k">Tila</span><span class="v"><span class="pill ok"><span class="dot"></span>Kaikki kunnossa</span> · <span class="pill warn"><span class="dot"></span>N varoitusta</span> · <span class="pill err"><span class="dot"></span>Häiriö</span> · <span class="pill sec"><span class="dot"></span>Vanhentunut / Ei ajettu</span></span></div>
+          <div class="dr"><span class="k">Kanavia</span><span class="v">Kuinka montaa lähdettä tämän yrityksen kohdalla seurataan (verkko, Facebook jne.).</span></div>
+          <div class="dr"><span class="k">Havaintoja</span><span class="v">Kuinka monta muutosta viimeisimmässä seurannassa löytyi.</span></div>
+          <div class="dr"><span class="k">Varoituksia</span><span class="v">Kuinka moni havainto vaatii huomiota.</span></div>
+          <div class="dr"><span class="k">Tuoreus</span><span class="v">Milloin tämän yrityksen tiedot viimeksi päivitettiin.</span></div>
+          <div class="dr"><span class="k">Kunto</span><span class="v">Yleinen tilapalkki 0–100 % (vihreä hyvä, keltainen keskinkertainen, punainen heikko).</span></div>
+        </div>
+        <h3>Itse lisäämäsi seurattavat</h3>
+        <p>Jos olet itse lisännyt yrityksen, näet sen tilan erillisessä osiossa. Mahdolliset tilat:</p>
+        <ul class="plain">
+          <li><span class="pill warn"><span class="dot"></span>Odottaa</span> – odottaa operaattorin vahvistusta.</li>
+          <li><span class="pill sec"><span class="dot"></span>Rakennan… / AI tunnistaa…</span> – verkkokaupan lukijaa määritetään automaattisesti.</li>
+          <li><span class="pill warn"><span class="dot"></span>Maksu odottaa</span> – tiedot ovat valmiina, kuukausimaksu täytyy vahvistaa (ks. <a href="#firmavaade">luku 6</a>).</li>
+          <li><span class="pill err"><span class="dot"></span>Hylätty</span> – pyyntö hylättiin (syy on kirjattu).</li>
+          <li><span class="pill ok"><span class="dot"></span>Aktiivinen</span> – yritys on seurannassa.</li>
+        </ul>
+        <h3>Facebook-seuranta</h3>
+        <p>Erillisellä kortilla ovat seurattavien kilpailijoiden viimeisimmät Facebook-julkaisut, uusimmat ja uudet korostettuina. Julkaisun klikkaus vie alkuperäisen luo Facebookiin.</p>
+        <h3>Kaikki havainnot ja raporttien historia</h3>
+        <ul class="plain">
+          <li><b>Kaikki havainnot</b> – viimeisimmän seurannan kaikki muutokset yhtenä listana. Valinta <b>Vain varoitukset</b> piilottaa rauhallisen osan.</li>
+          <li><b>Raporttien historia</b> – aiemmat koontiraportit. Klikkaus avaa arkistoidun raportin.</li>
+        </ul>
+      </section>
+
+      <!-- 5 -->
+      <section class="doc" id="lisafirma">
+        <h2><span class="num">5</span> Yrityksen lisääminen</h2>
+        <p>Paina työpöydällä <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Lisää yritys</span>. Avautuu yksinkertainen lomake.</p>
+        <ol class="steps">
+          <li><b>Yrityksen nimi</b> – ala kirjoittaa ja valitse luettelosta Viron kaupparekisterin yritys (tai kirjoita nimi käsin).</li>
+          <li><b>Verkkosivu</b> – riittää nimi ilman https://-alkua, esim. <b>weekend.ee</b>.</li>
+          <li>Halutessasi kytke päälle <b>seuraa verkkokaupan hintoja ja varastoa</b> ja/tai <b>seuraa myös Facebookia</b>.</li>
+          <li>Paina <span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Lisää seurattava yritys</span></li>
+        </ol>
+        <h3>Verkkokaupan seuranta</h3>
+        <p>Jos valitset verkkokaupan seurannan, järjestelmä yrittää lukea kaupan tuotteet itse. Onnistuessaan seuranta käynnistyy automaattisesti; muutoin operaattori tarkistaa. Lisäksi voit avata <b>avainsanasuodattimen</b>: kirjoita avainsana ja paina Enter tai <b>+</b> lisätäksesi chipin (esim. <i>ruohonleikkuri</i>). Tyhjäksi jättäessäsi seuraamme kaikkia tuotteita.</p>
+        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg> Hinnoittelumalli</div><p>Verkkokaupan seuranta maksaa <strong>5 € / kk jokaista enintään 2000 seurattavaa tuotetta kohti</strong>. Kun järjestelmä on lukenut kaupan tuotteet, valitset itse kategoriat, joita seurataan – se määrittää tuotteiden määrän ja kuukausimaksun. Näytämme tarkan summan ja pyydämme vahvistusta ennen kuin avaamme tiedot.</p></div>
+        <h3>Facebookin seuranta</h3>
+        <p>Syötä Facebook-sivun osoite – riittää sivun nimi tai osoite (esim. <b>facebook.com/konkurent</b> tai pelkkä <b>kilpailija</b>). Jos sivu ei vielä ole seurantalistalla, se menee operaattorille vahvistettavaksi.</p>
+      </section>
+
+      <!-- 6 -->
+      <section class="doc" id="firmavaade">
+        <h2><span class="num">6</span> Yritysnäkymä ja tuoteluettelo</h2>
+        <p>Klikkaus työpöydällä yrityksen nimellä avaa sen koko näkymän: kaikki kanavat, havainnot ja – verkkokaupan tapauksessa – koko tuoteluettelo.</p>
+        <figure>
+          <img src="l360-kataloog.png" alt="Yritysnäkymä: tuoteluettelo kategorioineen, hintoineen ja varastotilanteineen" loading="lazy">
+          <figcaption>Yritysnäkymä – haettava tuoteluettelo kategorioineen, hintoineen ja varastotilanteineen.</figcaption>
+        </figure>
+        <h3>Otsikkorivin painikkeet</h3>
+        <ul class="plain">
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Valitse kategoriat</span> – valitse, mitä kaupan kategorioita seurata (ks. <a href="#kategooriad">luku 7</a>).</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 6H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4"/><path d="M14 4h6v6m0-6L10 14"/></svg> Avaa sivusto</span> – avaa kilpailijan verkkokaupan uudessa ikkunassa.</li>
+        </ul>
+        <h3>Tilailmoitukset</h3>
+        <p>Näkymän yläreunassa voi olla ilmoitus: <b>odottaa operaattorin vahvistusta</b>, <b>scraperia rakennetaan</b>, <b>tunnistamme kategorioita</b>, <b>automaattinen määritys ei onnistunut</b> (operaattori tarkistaa) tai <b>pyyntö hylättiin</b>.</p>
+        <h3>Kuukausimaksun vahvistaminen</h3>
+        <p>Kun kaupan tuotteet on luettu, näet laskurin: <b>tuotteiden määrä</b>, <b>portaita</b> (× enintään 2000 tuotetta), <b>perushinta 5 €</b>, mahdollinen lisämaksu ja <b>kuukausimaksu yhteensä</b>. Vahvistamiseen asti luettelo on esimerkkinä <b>sumennettuna</b> (blur). Vaihtoehdot:</p>
+        <ul class="plain">
+          <li><span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg> Maksa ja avaa tiedot</span> – ohjaamme turvalliseen maksuväylään (pankkilinkki tai kortti); tiedot avautuvat heti.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg> Maksa tilisiirtolaskulla</span> – lähetämme laskun sähköpostilla; sisältö avautuu maksun saavuttua.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Valitse kategoriat</span> – vähennä tuotteita, jotta kuukausimaksu laskee.</li>
+        </ul>
+        <p>Facebook-seurannan vahvistaminen toimii samalla tavalla (1 €/kk).</p>
+        <h3>Tuoteluettelo</h3>
+        <ul class="plain">
+          <li><b>Haku</b> – kirjoita tuotteen nimi suodattaaksesi luetteloa.</li>
+          <li><b>Kategoriat</b> – klikkaa kategoriaa avataksesi alakategoriat ja tuotteet.</li>
+          <li><b>Varastotilanne</b> – jokaisen tuotteen kohdalla <span class="pill ok"><span class="dot"></span>varastossa</span>, <span class="pill err"><span class="dot"></span>loppu</span> tai <span class="pill sec"><span class="dot"></span>tuntematon</span>.</li>
+          <li><b>Hinta</b> – alennushinnan tapauksessa näet normaalihinnan yliviivattuna ja alennushinnan punaisella.</li>
+          <li><b>Ulkoinen linkki</b> (nuoli) vie tuotteen luo kaupassa.</li>
+          <li><b>Klikkaus tuoteriviltä</b> avaa <b>hinnan ja varastotilanteen historiakäyrän</b>: nykyinen hinta ja alennus, normaalihinta katkoviivana, varastotilanne ajassa palkkina sekä selite.</li>
+        </ul>
+      </section>
+
+      <!-- 7 -->
+      <section class="doc" id="kategooriad">
+        <h2><span class="num">7</span> Kategorioiden valinta</h2>
+        <p>Painike <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Valitse kategoriat</span> avaa luettelon kaikista kaupan kategorioista. Mitä vähemmän tuotteita valitset, sitä pienempi on kuukausimaksu.</p>
+        <ol class="steps">
+          <li>Merkitse valinnalla kategoriat, joita haluat seurata. Apuna ovat <b>Valitse kaikki</b>, <b>Tyhjennä valinta</b> ja <b>haku</b>.</li>
+          <li>Seuraa alla <b>laskuria</b>: valitut tuotteet → portaat (× enintään 2000) → kuukausimaksu päivittyy heti.</li>
+          <li>Paina <span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg> Tallenna valinta</span></li>
+        </ol>
+        <p>Voit muuttaa valintaa myöhemmin milloin tahansa – kuukausimaksu mukautuu vastaavasti.</p>
+      </section>
+
+      <!-- 8 -->
+      <section class="doc" id="teenused">
+        <h2><span class="num">8</span> Palvelut ja kuukausimaksu</h2>
+        <p>Valikon kohdasta <b>Palvelut</b> näet kaiken, mistä maksat, ja voit tilata lisää.</p>
+        <ul class="plain">
+          <li><b>Kuukausimaksusi yhteensä</b> – iso luku ylhäällä. Summa muodostuu kaikista aktiivisista palveluista. Vieressä on seuraavan laskutuksen päivämäärä.</li>
+          <li><b>Maksettu – odottaa aktivointia</b> – tilaukset, joiden ensimaksu on maksettu ja jotka operaattori pian kytkee päälle.</li>
+          <li><b>Sinun palvelusi</b> – kaikki aktiiviset palvelut (vihreällä), mukaan lukien kilpailijoiden Facebook- ja verkkoseuranta. <b>Peruuta</b> lopettaa palvelun; kilpailijoiden seurantaa hallitaan <b>Lisää yritys</b> -kohdasta (painike <b>Hallinnoi</b>).</li>
+          <li><b>Tilaa lisää</b> – jokaisen palvelun kohdalla on hinta €/kk ja ensimaksu. Paina <span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Tilaa</span>, vahvista ikkunassa ja maksa ensimaksu. Erityistehtävissä on painike <span class="chip">Pyydä tarjous</span>.</li>
+          <li><b>Paketit</b> – tilaavat kerralla useita palveluita samalla maksuvirralla.</li>
+        </ul>
+        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Miten ensimaksu lasketaan</div><p>Uutta palvelua tilatessasi maksat heti <strong>suhteutetun ensimaksun</strong> – vain seuraavaan laskutuspäivään asti. Sen jälkeen operaattori kytkee palvelun päälle ja jatkossa kaikki palvelut laskutetaan yhdessä.</p></div>
+      </section>
+
+      <!-- 9 -->
+      <section class="doc" id="maksed">
+        <h2><span class="num">9</span> Miten maksu toimii</h2>
+        <p>Jokainen maksu alkaa <strong>vahvistusikkunasta</strong>, jossa on kirjattuna summa ja se, mistä maksat. Voit aina valita <b>Peruuta</b>.</p>
+        <ul class="plain">
+          <li><b>Heti maksaessasi</b> ohjaamme turvalliseen maksuväylään – maksat <b>pankkilinkillä</b> tai <b>kortilla</b>, ja tiedot/palvelu avautuvat heti maksun jälkeen.</li>
+          <li><b>Tilisiirtolaskulla</b> – lähetämme laskun sähköpostilla. Sisältö avautuu täydessä laajuudessaan, kun maksu on saapunut.</li>
+          <li><b>Ensimaksu</b> on aina suhteutettu seuraavaan laskutuspäivään asti; jatkossa peritään täysi kuukausimaksu.</li>
+          <li><b>Laskutus</b> tapahtuu kaikista palveluista kerralla, liittymispäiväsi vuosipäivän mukaan.</li>
+        </ul>
+      </section>
+
+      <!-- 10 -->
+      <section class="doc" id="hinnastamine">
+        <h2><span class="num">10</span> Hinnoittelu</h2>
+        <p>Valikkokohta <b>Hinnoittelu</b> näkyy vain silloin, kun sinulla on tilattuna <strong>hintojen uudelleenhinnoittelun</strong> palvelu. Siellä näet kilpailupohjaisia hintasuosituksia omalle kaupallesi.</p>
+        <ul class="plain">
+          <li><b>Suositustaulukko</b> – tuote, nykyinen hinta, suositeltu hinta, erotus ja syy.</li>
+          <li><span class="chip">Luo uudelleen</span> laskee suositukset tuoreeltaan; <span class="chip">Säännöt</span> ja <span class="chip">Historia</span> näyttävät asetukset ja aiemmat muutokset.</li>
+          <li>Kun palvelu on <b>aktivoitu</b>, suosituksen voi yhdellä klikkauksella kirjoittaa omaan WooCommerce-kauppaasi; <b>Jätä ennalleen</b> jättää hinnan ja ohittaa tuotteen valittujen päivien ajaksi, <b>Ohita</b> jättää suosituksen väliin.</li>
+        </ul>
+        <div class="box warn"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg> Turvallisesti</div><p>Hinnanmuutoksen kirjoittamisen kauppaan kytkee päälle Look360 yhdessä kanssasi. Oletuksena kaikki on <b>kuiva ajo</b> (mitään ei muuteta), kunnes sovimme live-tilasta.</p></div>
+      </section>
+
+      <!-- 11 -->
+      <section class="doc" id="raportid">
+        <h2><span class="num">11</span> Raportit</h2>
+        <ul class="plain">
+          <li><b>Joka-aamuinen sähköposti</b> – tärkeimmät muutokset saapuvat sinun (ja sovittujen yhteyshenkilöiden) postilaatikkoon automaattisesti.</li>
+          <li><b>Reaaliaikaiset varoitukset</b> – kriittisin (esim. kilpailijan hinnanlasku, verkkokaupan häiriö, varaston loppuminen) saapuu heti, loput kootaan aamuraporttiin.</li>
+          <li><b>Raporttien historia</b> – työpöydällä voit avata jokaisen aiemman koontiraportin ja nähdä, mikä silloin muuttui.</li>
+        </ul>
+      </section>
+
+      <!-- 12 -->
+      <section class="doc" id="seaded">
+        <h2><span class="num">12</span> Tumma tila ja puhelin</h2>
+        <ul class="plain">
+          <li><b>Tumma / vaalea tila</b> – yläpalkin kytkin (aurinko/kuu) vaihtaa teeman. Valinta jää muistiin.</li>
+          <li><b>Puhelimessa</b> – valikko on piilossa ☰-painikkeen takana ylänurkassa; sisältö mukautuu näytön leveyteen.</li>
+          <li><b>Uloskirjautuminen</b> – vasemmalla alhaalla käyttäjätunnuksen vieressä oleva ulos-ovesta-kuvake.</li>
+        </ul>
+      </section>
+
+      <!-- 13 -->
+      <section class="doc" id="abi">
+        <h2><span class="num">13</span> Apu ja yhteystiedot</h2>
+        <p>Kysymyksen tai huolen tullessa vastaamme suomeksi – oikea ihminen, ei automaattivastaus.</p>
+        <ul class="plain">
+          <li>Sähköposti: <a href="mailto:info@look360.eu">info@look360.eu</a></li>
+          <li>Puhelin: <a href="tel:+37253620246">+372 5362 0246</a></li>
+          <li>Usein kysytyt kysymykset: <a href="index.html#kkk">etusivun UKK</a></li>
+        </ul>
+        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Lyhyesti</div><p>Kirjaudu sisään → katso työpöydältä vihreää/keltaista/punaista → lisää yrityksiä ja palveluita → tärkeät muutokset saapuvat sinulle myös sähköpostilla. Enempää ei tarvitse tehdä.</p></div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Look360 · Watchdog OÜ · Y-tunnus 17537572 · ALV-tunnus EE103000237</span>
+    <span><a href="index.html">Etusivu</a> · <a href="index.html#kkk">UKK</a> · <a href="privaatsus.html">Tietosuoja</a> · <a href="tingimused.html">Ehdot</a></span>
+  </div>
+</footer>
+
+<script>
+  // Sisukord: too esile parajasti nahtav peatukk.
+  (function(){
+    var links=[].slice.call(document.querySelectorAll('#toc a'));
+    var map={}; links.forEach(function(a){ map[a.getAttribute('href').slice(1)]=a; });
+    var secs=[].slice.call(document.querySelectorAll('section.doc'));
+    if(!('IntersectionObserver' in window)) return;
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){
+        links.forEach(function(a){a.classList.remove('on');});
+        var a=map[e.target.id]; if(a)a.classList.add('on');
+      }});
+    },{rootMargin:'-45% 0px -50% 0px',threshold:0});
+    secs.forEach(function(s){io.observe(s);});
+  })();
+</script>
+<script>window.LANGFILES={"et":"kasutusjuhend.html","en":"kasutusjuhend-en.html","fi":"kasutusjuhend-fi.html","sv":"kasutusjuhend-sv.html","no":"kasutusjuhend-no.html","da":"kasutusjuhend-da.html","lv":"kasutusjuhend-lv.html","lt":"kasutusjuhend-lt.html","pl":"kasutusjuhend-pl.html","uk":"kasutusjuhend-uk.html"};</script>
+<script src="lang.js"></script>
+</body>
+</html>
