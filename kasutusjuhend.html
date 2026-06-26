@@ -7,6 +7,17 @@
 <title>Kasutusjuhend – Look360 seirepaneel</title>
 <meta name="description" content="Look360 seirepaneeli kasutusjuhend kliendile: sisselogimine, töölaud, firmade lisamine, tootekataloog, teenused, maksed ja raportid – samm-sammult, mis nupp mida teeb.">
 <meta name="robots" content="index,follow">
+<link rel="alternate" hreflang="et" href="https://wiredup7.github.io/std-koolitus-preview/kasutusjuhend.html">
+<link rel="alternate" hreflang="en" href="https://wiredup7.github.io/std-koolitus-preview/kasutusjuhend-en.html">
+<link rel="alternate" hreflang="fi" href="https://wiredup7.github.io/std-koolitus-preview/kasutusjuhend-fi.html">
+<link rel="alternate" hreflang="sv" href="https://wiredup7.github.io/std-koolitus-preview/kasutusjuhend-sv.html">
+<link rel="alternate" hreflang="no" href="https://wiredup7.github.io/std-koolitus-preview/kasutusjuhend-no.html">
+<link rel="alternate" hreflang="da" href="https://wiredup7.github.io/std-koolitus-preview/kasutusjuhend-da.html">
+<link rel="alternate" hreflang="lv" href="https://wiredup7.github.io/std-koolitus-preview/kasutusjuhend-lv.html">
+<link rel="alternate" hreflang="lt" href="https://wiredup7.github.io/std-koolitus-preview/kasutusjuhend-lt.html">
+<link rel="alternate" hreflang="pl" href="https://wiredup7.github.io/std-koolitus-preview/kasutusjuhend-pl.html">
+<link rel="alternate" hreflang="uk" href="https://wiredup7.github.io/std-koolitus-preview/kasutusjuhend-uk.html">
+<link rel="alternate" hreflang="x-default" href="https://wiredup7.github.io/std-koolitus-preview/kasutusjuhend-en.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -134,6 +145,19 @@
     .deflist .dr{grid-template-columns:1fr;gap:2px}
     header.top nav a:not(.login){display:none}
   }
+  /* Keelevaheti (lipud) – jagatud lang.js-iga */
+  .langsel{position:relative;margin-left:6px}
+  .flag{display:block;width:22px;height:15px;border-radius:3px;overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.22)}
+  .flag svg{display:block;width:100%;height:100%}
+  .langbtn{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.07);border:1px solid var(--line-dark);padding:6px 9px;border-radius:10px;cursor:pointer;transition:.2s}
+  .langbtn:hover{background:rgba(255,255,255,.14)}
+  .langbtn .chev{width:12px;height:12px;color:var(--on-dark-mut);transition:.2s;flex-shrink:0}
+  .langbtn[aria-expanded="true"] .chev{transform:rotate(180deg)}
+  .langmenu{position:absolute;top:calc(100% + 9px);right:0;background:#14161d;border:1px solid var(--line-dark);border-radius:13px;padding:8px;box-shadow:0 22px 54px -14px rgba(0,0,0,.75);display:none;grid-template-columns:repeat(2,1fr);gap:5px;z-index:90}
+  .langmenu.open{display:grid}
+  .langmenu a{display:grid;place-items:center;padding:7px 9px;border-radius:8px;cursor:pointer;transition:.15s;border:1px solid transparent}
+  .langmenu a:hover{background:rgba(255,255,255,.08)}
+  .langmenu a.on{border-color:var(--accent);background:rgba(23,184,106,.16)}
 </style>
 </head>
 <body>
@@ -147,6 +171,7 @@
       <a href="index.html">Avaleht</a>
       <a href="index.html#kkk">KKK</a>
       <a class="login" href="https://expenses-destruct-snowboard.ngrok-free.dev/accounts/login/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><path d="M10 17l5-5-5-5M15 12H3"/></svg> Logi sisse</a>
+      <div class="langsel" id="langsel"></div>
     </nav>
   </div>
 </header>
@@ -451,5 +476,7 @@
     secs.forEach(function(s){io.observe(s);});
   })();
 </script>
+<script>window.LANGFILES={"et":"kasutusjuhend.html","en":"kasutusjuhend-en.html","fi":"kasutusjuhend-fi.html","sv":"kasutusjuhend-sv.html","no":"kasutusjuhend-no.html","da":"kasutusjuhend-da.html","lv":"kasutusjuhend-lv.html","lt":"kasutusjuhend-lt.html","pl":"kasutusjuhend-pl.html","uk":"kasutusjuhend-uk.html"};</script>
+<script src="lang.js"></script>
 </body>
 </html>
