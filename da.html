@@ -562,8 +562,8 @@
       <a href="#hinnad">Priser</a>
     </nav>
     <div class="nav-r">
-      <a href="#hinnad" class="btn btn-grad js-order">Tilmeld dig fra €1</a>
-      <a href="https://scan.look360.eu/accounts/login/" class="login-link" style="color:#cbd3da;text-decoration:none;font-weight:600;font-size:14px;display:flex;align-items:center;gap:5px">Log ind <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="#hinnad" class="btn btn-grad js-order">Tilmeld dig fra €2</a>
+      <a href="https://expenses-destruct-snowboard.ngrok-free.dev/accounts/login/" class="login-link" style="color:#cbd3da;text-decoration:none;font-weight:600;font-size:14px;display:flex;align-items:center;gap:5px">Log ind <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
     <div class="langsel" id="langsel"></div>
     <button class="burger" id="burger" aria-label="Åbn menu" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -574,8 +574,8 @@
     <a href="#platvorm">Platform</a>
     <a href="#portfoolio">Portfolio</a>
     <a href="#hinnad">Priser</a>
-    <a href="https://scan.look360.eu/accounts/login/">Log ind</a>
-    <a href="#hinnad" class="btn btn-grad js-order">Tilmeld dig fra €1 om måneden</a>
+    <a href="https://expenses-destruct-snowboard.ngrok-free.dev/accounts/login/">Log ind</a>
+    <a href="#hinnad" class="btn btn-grad js-order">Tilmeld dig fra €2 om måneden</a>
   </div>
 </header>
 
@@ -624,7 +624,7 @@
     <h1 style="font-size:clamp(30px,5.2vw,60px);line-height:1.07;max-width:1020px;margin-left:auto;margin-right:auto">Vi opdager prisændringer, lagerproblemer og fejl i webshoppen <span class="g">før de rammer dit salg.</span></h1>
     <p class="lead">Løbende overvågning af dine konkurrenter, priser, lagerbeholdning, webshop og SEO — samlet i én visning og én rapport hver morgen. Du ser ændringen samme dag, ikke når kunden allerede er gået et andet sted hen.</p>
     <div class="hero-actions">
-      <a href="#hinnad" class="btn btn-grad js-order">Tilmeld dig fra €1 om måneden <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="#hinnad" class="btn btn-grad js-order">Tilmeld dig fra €2 om måneden <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
     <div class="hero-stats">
       <div class="s reveal"><div class="v"><span data-count="20">0</span>+</div><div class="l">overvågede kilder</div></div>
@@ -691,7 +691,7 @@
       </ul>
     </div>
     <div class="show-r reveal">
-      <img src="seirepaneel.png" alt="Look360 overvågningspanel — kundens overvågningsvisning" loading="lazy"
+      <img src="l360-seirepaneel.png" alt="Look360 overvågningspanel — kundens overvågningsvisning" loading="lazy"
            style="width:100%;display:block;border-radius:14px;box-shadow:var(--shadow-lg);border:1px solid rgba(255,255,255,.12)">
     </div>
   </div>
@@ -819,13 +819,81 @@
   </div>
 </section>
 
+<!-- TÖÖ SEES / SCREENSHOTID -->
+<style>
+  #toosees{background:var(--ink);border-top:1px solid var(--line-dark)}
+  #toosees .sec-head h2{color:#fff}
+  #toosees .sec-head p{color:var(--on-dark-mut)}
+  #toosees .shots{display:grid;gap:30px}
+  #toosees .shot-row{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+  #toosees .frame{border:1px solid var(--line-dark);border-radius:16px;overflow:hidden;background:var(--dark-card);box-shadow:var(--shadow-lg)}
+  #toosees .frame .bar{display:flex;align-items:center;gap:7px;padding:12px 16px;border-bottom:1px solid var(--line-dark);background:#1d2029}
+  #toosees .frame .bdot{width:11px;height:11px;border-radius:50%;flex:0 0 auto}
+  #toosees .frame .burl{margin-left:10px;font:500 12px/1 var(--mono);color:var(--on-dark-mut);background:rgba(255,255,255,.05);border:1px solid var(--line-dark);border-radius:8px;padding:7px 13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  #toosees .frame img{display:block;width:100%;height:auto}
+  #toosees .cap{display:flex;gap:13px;align-items:flex-start;margin-top:18px}
+  #toosees .cap .cic{width:36px;height:36px;border-radius:11px;background:rgba(23,184,106,.16);color:#39d98a;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+  #toosees .cap .cic svg{width:19px;height:19px}
+  #toosees .cap h3{font-size:17px;font-weight:600;margin:3px 0 5px;letter-spacing:-.01em;color:#fff}
+  #toosees .cap p{font-size:14px;color:var(--on-dark-mut);margin:0;line-height:1.55;font-weight:300}
+  #toosees .shots-note{display:inline-flex;align-items:center;gap:10px;margin-top:42px;font-size:13.5px;color:var(--on-dark-mut);background:rgba(23,184,106,.10);border:1px solid rgba(23,184,106,.22);border-radius:999px;padding:10px 18px}
+  #toosees .shots-note svg{width:16px;height:16px;color:#39d98a;flex:0 0 auto}
+  @media(max-width:820px){#toosees .shot-row{grid-template-columns:1fr;gap:30px}}
+</style>
+<section id="toosees">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <div class="eyebrow on-dark"><span class="dot"></span> Produktet i praksis</div>
+      <h2>Se hvad der sker inde i overvågningen</h2>
+      <p>Ægte overvågningsvisninger fra arbejdsfladen. Kundernes og de overvågede virksomheders navne er sløret i eksemplet.</p>
+    </div>
+    <div class="shots reveal">
+      <div>
+        <div class="frame">
+          <div class="bar"><span class="bdot" style="background:#ff5f57"></span><span class="bdot" style="background:#febc2e"></span><span class="bdot" style="background:#28c840"></span><span class="burl">seire.look360.eu/operaator/naidikud</span></div>
+          <img src="l360-naidikud.png" alt="Look360 mission control — kõigi klientide seired ühe pilguga" loading="lazy">
+        </div>
+        <div class="cap">
+          <span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 14a8 8 0 0 1 8-8M12 14l4-4"/><path d="M4.9 18.5a9 9 0 1 1 14.2 0"/><circle cx="12" cy="14" r="1.4"/></svg></span>
+          <div><h3>Mission control</h3><p>Hundredvis af overvågninger på én gang. Grønt betyder alt i orden, gult kræver et kig, rødt kræver handling nu.</p></div>
+        </div>
+      </div>
+      <div class="shot-row">
+        <div>
+          <div class="frame">
+            <div class="bar"><span class="bdot" style="background:#ff5f57"></span><span class="bdot" style="background:#febc2e"></span><span class="bdot" style="background:#28c840"></span><span class="burl">seire.look360.eu</span></div>
+            <img src="l360-seirepaneel.png" alt="Look360 seirepaneel — konkurendid, hinnad ja hoiatused ühes vaates" loading="lazy">
+          </div>
+          <div class="cap">
+            <span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="5" rx="1.5"/><rect x="13" y="11" width="8" height="10" rx="1.5"/><rect x="3" y="14" width="8" height="7" rx="1.5"/></svg></span>
+            <div><h3>Ét overvågningspanel</h3><p>Alle konkurrenter, priser, lager og advarsler i én visning, plus et morgensammendrag hver dag.</p></div>
+          </div>
+        </div>
+        <div>
+          <div class="frame">
+            <div class="bar"><span class="bdot" style="background:#ff5f57"></span><span class="bdot" style="background:#febc2e"></span><span class="bdot" style="background:#28c840"></span><span class="burl">seire.look360.eu/firma</span></div>
+            <img src="l360-kataloog.png" alt="Look360 tootekataloog — iga konkurendi toode, hind ja laoseis" loading="lazy">
+          </div>
+          <div class="cap">
+            <span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12.7 3H18a3 3 0 0 1 3 3v5.3a2 2 0 0 1-.6 1.4l-7.2 7.2a2 2 0 0 1-2.8 0l-5.3-5.3a2 2 0 0 1 0-2.8l7.2-7.2A2 2 0 0 1 12.7 3Z"/><circle cx="16.3" cy="7.7" r="1.5" fill="currentColor"/></svg></span>
+            <div><h3>Pris og lager per produkt</h3><p>Hver konkurrents produkt, pris og lager. Vi opdager prisfald og udsolgte varer med det samme.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center">
+      <span class="shots-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg> Eksempelbilleder. Rigtige kunde- og firmanavne er sløret.</span>
+    </div>
+  </div>
+</section>
+
 <!-- PRICING -->
 <section id="hinnad">
   <div class="wrap">
     <div class="sec-head center reveal">
       <div class="eyebrow"><span class="dot"></span> Priser</div>
       <h2>Sæt din egen pakke sammen</h2>
-      <p>Facebook-overvågning af konkurrenter fra €1/md., pris- og lagerovervågning af webshops €5/md. pr. shop. Vælg moduler og mængder - din månedlige pris beregnes med det samme, uden skjulte gebyrer.</p>
+      <p>Facebook-overvågning af konkurrenter fra €2/md., pris- og lagerovervågning af webshops €6/md. pr. shop. Vælg moduler og mængder - din månedlige pris beregnes med det samme, uden skjulte gebyrer.</p>
     </div>
     <div class="calc reveal" id="calc">
       <div class="calc-l">
@@ -842,12 +910,12 @@
 
         <div class="cfg-label">2 · Tillægsmoduler</div>
         <div class="mods">
-          <button type="button" class="modrow" data-price="19" data-label="Sundhedstjek af webshop"><span class="sw"></span><span class="mtx"><b>Sundhedstjek af webshop</b><span>Ødelagte billeder, manglende alt-tekster, prisfejl</span></span><span class="mprice">+19€</span></button>
-          <button type="button" class="modrow" data-price="15" data-label="SEO &amp; content gap-overvågning"><span class="sw"></span><span class="mtx"><b>SEO &amp; content gap-overvågning</b><span>Søgeordspositioner + content gap-finder</span></span><span class="mprice">+15€</span></button>
-          <button type="button" class="modrow" data-price="9" data-label="Overvågning af hjemmesidens driftssikkerhed"><span class="sw"></span><span class="mtx"><b>Overvågning af hjemmesidens driftssikkerhed</b><span>Oppetidsovervågning + advarsel, hvis shoppen er nede</span></span><span class="mprice">+9€</span></button>
-          <button type="button" class="modrow" data-price="29" data-label="ERP–webshop-integration"><span class="sw"></span><span class="mtx"><b>ERP–webshop-integration</b><span>ERP ↔ webshop automatisk synk</span></span><span class="mprice">+29€</span></button>
-          <button type="button" class="modrow" data-price="29" data-label="Genprissætning"><span class="sw"></span><span class="mtx"><b>Genprissætning</b><span>Konkurrentbaserede prisforslag, godkend med ét klik</span></span><span class="mprice">+29€</span></button>
-          <button type="button" class="modrow" data-price="39" data-label="Kursus til teamet"><span class="sw"></span><span class="mtx"><b>Kursus til teamet</b><span>Vi lærer dig selv at bruge værktøjerne og automatiseringen</span></span><span class="mprice">+39€</span></button>
+          <button type="button" class="modrow" data-price="20" data-label="Sundhedstjek af webshop"><span class="sw"></span><span class="mtx"><b>Sundhedstjek af webshop</b><span>Ødelagte billeder, manglende alt-tekster, prisfejl</span></span><span class="mprice">+20€</span></button>
+          <button type="button" class="modrow" data-price="16" data-label="SEO &amp; content gap-overvågning"><span class="sw"></span><span class="mtx"><b>SEO &amp; content gap-overvågning</b><span>Søgeordspositioner + content gap-finder</span></span><span class="mprice">+16€</span></button>
+          <button type="button" class="modrow" data-price="10" data-label="Overvågning af hjemmesidens driftssikkerhed"><span class="sw"></span><span class="mtx"><b>Overvågning af hjemmesidens driftssikkerhed</b><span>Oppetidsovervågning + advarsel, hvis shoppen er nede</span></span><span class="mprice">+10€</span></button>
+          <button type="button" class="modrow" data-price="30" data-label="ERP–webshop-integration"><span class="sw"></span><span class="mtx"><b>ERP–webshop-integration</b><span>ERP ↔ webshop automatisk synk</span></span><span class="mprice">+30€</span></button>
+          <button type="button" class="modrow" data-price="30" data-label="Genprissætning"><span class="sw"></span><span class="mtx"><b>Genprissætning</b><span>Konkurrentbaserede prisforslag, godkend med ét klik</span></span><span class="mprice">+30€</span></button>
+          <button type="button" class="modrow" data-price="40" data-label="Kursus til teamet"><span class="sw"></span><span class="mtx"><b>Kursus til teamet</b><span>Vi lærer dig selv at bruge værktøjerne og automatiseringen</span></span><span class="mprice">+40€</span></button>
           <button type="button" class="modrow" data-price="0" data-quote="1" data-label="Skræddersyet automatisering"><span class="sw"></span><span class="mtx"><b>Skræddersyet automatisering</b><span>En særlig opgave – plugin, script, dashboard</span></span><span class="mprice">efter aftale</span></button>
         </div>
       </div>
@@ -895,7 +963,7 @@
       <h2>Sæt din pakke sammen og<br><span class="g">tilmeld dig allerede i dag.</span></h2>
       <p>Første rapport gratis. Vælg dine moduler, se den månedlige pris med det samme og tilmeld dig – uden binding.</p>
       <div class="hero-actions">
-        <a href="#hinnad" class="btn btn-grad js-order">Tilmeld dig fra €1 om måneden <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="#hinnad" class="btn btn-grad js-order">Tilmeld dig fra €2 om måneden <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
     </div>
   </div>
@@ -919,7 +987,7 @@
       <div class="foot-cols">
         <div class="foot-col"><h5>Tjenester</h5><a href="#teenused">Konkurrentovervågning</a><a href="#teenused">Prisovervågning</a><a href="#teenused">Sundhedstjek af webshop</a><a href="#teenused">ERP-integration</a></div>
         <div class="foot-col"><h5>Virksomhed</h5><a href="#tugi">Tre søjler</a><a href="#platvorm">Platform</a><a href="#portfoolio">Portfolio</a><a href="#hinnad">Priser</a><a href="privaatsus-da.html">Privatlivspolitik</a><a href="tingimused-da.html">Vilkår for brug</a></div>
-        <div class="foot-col"><h5>Kontakt</h5><a href="mailto:watchdog.oy@gmail.com">watchdog.oy@gmail.com</a><a href="tel:+37255685340">+372 5568 5340</a><a href="https://www.google.com/maps?q=Sepa+tn+4-2,+Viljandi" target="_blank" rel="noopener">Sepa tn 4-2, 71003 Viljandi</a></div>
+        <div class="foot-col"><h5>Kontakt</h5><a href="mailto:info@look360.eu">info@look360.eu</a><a href="tel:+37253620246">+372 5362 0246</a><a href="https://www.google.com/maps?q=71003+Viljandi" target="_blank" rel="noopener">71003 Viljandi</a></div>
       </div>
     </div>
     <div class="foot-compat">
@@ -938,7 +1006,7 @@
       </div>
       <span class="fc-more">Fungerer også med de fleste andre webshops</span>
     </div>
-    <div class="foot-bottom"><span>© 2026 Look360 · OÜ Watchdog · Reg.nr. 17537572</span><span><a href="privaatsus-da.html" style="color:inherit;text-decoration:underline">Privatliv</a> · <a href="tingimused-da.html" style="color:inherit;text-decoration:underline">Vilkår</a> · Lavet i Estland</span></div>
+    <div class="foot-bottom"><span>© 2026 Look360 · Watchdog OÜ · Reg.nr. 17537572 · CVR EE103000237</span><span><a href="privaatsus-da.html" style="color:inherit;text-decoration:underline">Privatliv</a> · <a href="tingimused-da.html" style="color:inherit;text-decoration:underline">Vilkår</a> · Lavet i Estland</span></div>
   </div>
 </footer>
 
@@ -974,12 +1042,12 @@
 
         <div class="ord-lab">Tillægsmoduler til din shop</div>
         <div id="omods">
-          <button type="button" class="omod-toggle" data-price="19" data-kood="epoe_tervis" data-label="Sundhedstjek af webshop"><span class="sw"></span><span class="mt"><b>Sundhedstjek af webshop</b><span>Ødelagte billeder, alt-tekster, prisfejl</span></span><span class="mp">+19 €</span></button>
-          <button type="button" class="omod-toggle" data-price="15" data-kood="seo_seire" data-label="SEO & content gap-overvågning"><span class="sw"></span><span class="mt"><b>SEO &amp; content gap-overvågning</b><span>Søgeordspositioner + content gaps</span></span><span class="mp">+15 €</span></button>
-          <button type="button" class="omod-toggle" data-price="9" data-kood="uptime" data-label="Overvågning af hjemmesidens driftssikkerhed"><span class="sw"></span><span class="mt"><b>Overvågning af hjemmesidens driftssikkerhed</b><span>Oppetid + advarsel, hvis shoppen er nede</span></span><span class="mp">+9 €</span></button>
-          <button type="button" class="omod-toggle" data-price="29" data-kood="erp_liidestus" data-label="ERP–webshop-integration"><span class="sw"></span><span class="mt"><b>ERP–webshop-integration</b><span>ERP ↔ webshop synk</span></span><span class="mp">+29 €</span></button>
-          <button type="button" class="omod-toggle" data-price="29" data-kood="hinnastus" data-label="Genprissætning"><span class="sw"></span><span class="mt"><b>Genprissætning</b><span>Konkurrentbaserede prisforslag, godkend med ét klik</span></span><span class="mp">+29 €</span></button>
-          <button type="button" class="omod-toggle" data-price="39" data-kood="koolitus" data-label="Kursus til teamet"><span class="sw"></span><span class="mt"><b>Kursus til teamet</b><span>Vi lærer dig selv at bruge værktøjerne</span></span><span class="mp">+39 €</span></button>
+          <button type="button" class="omod-toggle" data-price="20" data-kood="epoe_tervis" data-label="Sundhedstjek af webshop"><span class="sw"></span><span class="mt"><b>Sundhedstjek af webshop</b><span>Ødelagte billeder, alt-tekster, prisfejl</span></span><span class="mp">+20 €</span></button>
+          <button type="button" class="omod-toggle" data-price="16" data-kood="seo_seire" data-label="SEO & content gap-overvågning"><span class="sw"></span><span class="mt"><b>SEO &amp; content gap-overvågning</b><span>Søgeordspositioner + content gaps</span></span><span class="mp">+16 €</span></button>
+          <button type="button" class="omod-toggle" data-price="10" data-kood="uptime" data-label="Overvågning af hjemmesidens driftssikkerhed"><span class="sw"></span><span class="mt"><b>Overvågning af hjemmesidens driftssikkerhed</b><span>Oppetid + advarsel, hvis shoppen er nede</span></span><span class="mp">+10 €</span></button>
+          <button type="button" class="omod-toggle" data-price="30" data-kood="erp_liidestus" data-label="ERP–webshop-integration"><span class="sw"></span><span class="mt"><b>ERP–webshop-integration</b><span>ERP ↔ webshop synk</span></span><span class="mp">+30 €</span></button>
+          <button type="button" class="omod-toggle" data-price="30" data-kood="hinnastus" data-label="Genprissætning"><span class="sw"></span><span class="mt"><b>Genprissætning</b><span>Konkurrentbaserede prisforslag, godkend med ét klik</span></span><span class="mp">+30 €</span></button>
+          <button type="button" class="omod-toggle" data-price="40" data-kood="koolitus" data-label="Kursus til teamet"><span class="sw"></span><span class="mt"><b>Kursus til teamet</b><span>Vi lærer dig selv at bruge værktøjerne</span></span><span class="mp">+40 €</span></button>
           <button type="button" class="omod-toggle" data-price="0" data-quote="1" data-kood="automaatika" data-label="Skræddersyet automatisering"><span class="sw"></span><span class="mt"><b>Skræddersyet automatisering</b><span>En særlig opgave — plugin, script, dashboard</span></span><span class="mp">efter aftale</span></button>
         </div>
 
@@ -1133,7 +1201,7 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
 
 /* paketi konfiguraator – ühikuhinnad ja moodulihinnad esialgsed, lihtne muuta */
 (function(){
-  const FB_UNIT=1, WEB_UNIT=5, FREE_MONTHS=2;   // aastamaksega FREE_MONTHS kuud tasuta
+  const FB_UNIT=2, WEB_UNIT=6, FREE_MONTHS=2;   // aastamaksega FREE_MONTHS kuud tasuta
   const fb=document.getElementById('fbRange'),web=document.getElementById('webRange');
   const fbV=document.getElementById('fbVal'),webV=document.getElementById('webVal');
   const out=document.getElementById('calcPrice'),suf=document.getElementById('calcSuffix'),was=document.getElementById('calcWas'),save=document.getElementById('calcSave');
@@ -1157,7 +1225,7 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
     brk.innerHTML=lines.length?lines.map(l=>`<div class="r"><span>${l[0]}</span><b>${l[1]}</b></div>`).join(''):`<div class="r"><span>${T.chooseOne}</span></div>`;
     const bill=annual?'\n'+fmt(T.billYear,{yr,eff,m:FREE_MONTHS}):'\n'+fmt(T.billMonth,{m});
     const body=encodeURIComponent(T.mailIntro+'\n\n'+T.mailChosen+'\n'+lines.map(l=>`- ${l[0]} (${l[1]})`).join('\n')+bill+(quote?'\n\n'+T.mailQuote:''));
-    join.href=`mailto:watchdog.oy@gmail.com?subject=${encodeURIComponent(T.mailSubject)}&body=${body}`;
+    join.href=`mailto:info@look360.eu?subject=${encodeURIComponent(T.mailSubject)}&body=${body}`;
     fill(fb);fill(web);
   }
   mods.forEach(x=>x.addEventListener('click',()=>{x.classList.toggle('on');upd();}));
@@ -1166,7 +1234,7 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
   const presetBtn=document.getElementById('presetBtn');
   if(presetBtn)presetBtn.addEventListener('click',()=>{
     fb.value=8;web.value=3;
-    const want=[19,9]; // E-poe tervisekontroll + Veebilehe töökindluse seire (data-price jargi - keelekindel)
+    const want=[20,10]; // E-poe tervisekontroll + Veebilehe töökindluse seire (data-price jargi - keelekindel)
     mods.forEach(x=>x.classList.toggle('on',want.includes(+x.dataset.price)));
     bopts.forEach(o=>o.classList.toggle('on',o.dataset.mode==='month'));
     upd();
@@ -1176,7 +1244,7 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
 
 /* === TELLIMUSVOOG (modaal) === */
 (function(){
-  const FB_UNIT=1, WEB_UNIT=5, FREE_MONTHS=2;
+  const FB_UNIT=2, WEB_UNIT=6, FREE_MONTHS=2;
   const ov=document.getElementById('orderOv');
   if(!ov)return;
   const bodyEl=document.getElementById('ordBody');
@@ -1244,9 +1312,9 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
     const lns=lines.map(l=>`- ${l[0]} (${l[1]})`).join('\n');
     const tot=y?fmt(T.totYear,{yr,eff}):fmt(T.totMonth,{m});
     const body=`${T.mailIntro}\n\n${T.mlCompany}: ${document.getElementById('cName').value.trim()}\n${T.mlContact}: ${document.getElementById('cContact').value.trim()}\n${T.mlPhone}: ${document.getElementById('cPhone').value.trim()}\n${T.mlEmail}: ${document.getElementById('cEmail').value.trim()}\n${own?`${T.mlOwnShop}: ${own}\n`:''}\n${T.mlWatch}:\n${comps||'-'}\n\n${T.mlPackage}:\n${lns}\n\n${T.mlBilling}: ${tot}`;
-    return `mailto:watchdog.oy@gmail.com?subject=${encodeURIComponent(T.mailSubject)}&body=${encodeURIComponent(body)}`;
+    return `mailto:info@look360.eu?subject=${encodeURIComponent(T.mailSubject)}&body=${encodeURIComponent(body)}`;
   }
-  var ORDER_ENDPOINT='https://scan.look360.eu/api/tellimus/';
+  var ORDER_ENDPOINT='https://expenses-destruct-snowboard.ngrok-free.dev/api/tellimus/';
   // Firma-nime autocomplete (Eesti äriregister) - AINULT eestikeelne sait.
   // Taaskasutatav: nii kliendi enda ettevõtte nimi (#cName) kui konkurentide
   // nimed (.c-name, dünaamilised read - vt addRow + window.L360auto).
