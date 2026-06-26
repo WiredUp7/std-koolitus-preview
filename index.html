@@ -563,7 +563,7 @@
     </nav>
     <div class="nav-r">
       <a href="#hinnad" class="btn btn-grad js-order">Liitu alates 2€</a>
-      <a href="https://expenses-destruct-snowboard.ngrok-free.dev/accounts/login/" class="login-link" style="color:#cbd3da;text-decoration:none;font-weight:600;font-size:14px;display:flex;align-items:center;gap:5px">Logi sisse <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="https://scan.look360.eu/accounts/login/" class="login-link" style="color:#cbd3da;text-decoration:none;font-weight:600;font-size:14px;display:flex;align-items:center;gap:5px">Logi sisse <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
     <div class="langsel" id="langsel"></div>
     <button class="burger" id="burger" aria-label="Ava menüü" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -574,7 +574,7 @@
     <a href="#platvorm">Platvorm</a>
     <a href="#portfoolio">Portfoolio</a>
     <a href="#hinnad">Hinnad</a>
-    <a href="https://expenses-destruct-snowboard.ngrok-free.dev/accounts/login/">Logi sisse</a>
+    <a href="https://scan.look360.eu/accounts/login/">Logi sisse</a>
     <a href="#hinnad" class="btn btn-grad js-order">Liitumine alates 2 EUR kuutasust</a>
   </div>
 </header>
@@ -1000,7 +1000,7 @@
 </section>
 
 <!-- FAQ -->
-<section class="alt" style="border-top:1px solid var(--line)">
+<section class="alt" id="kkk" style="border-top:1px solid var(--line)">
   <div class="wrap">
     <div class="sec-head center reveal">
       <div class="eyebrow"><span class="dot"></span> Korduma kippuvad küsimused</div>
@@ -1014,6 +1014,10 @@
       <div class="qa"><button>Kas teenus sobib ka väikeettevõttele? <span class="ico"></span></button><div class="ans"><p>Jah. Võtad ainult need moodulid, mida vajad, ja maksad vaid nende eest – sobib hästi ka väiksele poele või üksikettevõtjale.</p></div></div>
       <div class="qa"><button>Kuidas käib arveldus? <span class="ico"></span></button><div class="ans"><p>Maksad kuus või aastas – aastamaksega saad 2 kuud tasuta. Pikaajalist kohustust pole, lõpetamine käib lihtsa etteteatamisega.</p></div></div>
       <div class="qa"><button>Kui kiiresti hoiatus minuni jõuab? <span class="ico"></span></button><div class="ans"><p>Kriitilised muutused – konkurendi hinnalangus, e-poe tõrge, laoseisu lõppemine – jõuavad reaalajas. Ülejäänu koondub igahommikusse raportisse, et postkast ei ummistuks.</p></div></div>
+    </div>
+    <div class="reveal" style="text-align:center;margin-top:36px">
+      <p style="color:var(--muted);font-size:15px;margin-bottom:16px">Juba klient? Vaata, mida iga vaade ja nupp seirepaneelil teeb.</p>
+      <a href="kasutusjuhend.html" class="btn btn-out">Vaata kasutusjuhendit <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
   </div>
 </section>
@@ -1050,7 +1054,7 @@
       </div>
       <div class="foot-cols">
         <div class="foot-col"><h5>Teenused</h5><a href="#teenused">Konkurentide seire</a><a href="#teenused">Hinnaseire</a><a href="#teenused">E-poe tervisekontroll</a><a href="#teenused">ERP-liidestus</a></div>
-        <div class="foot-col"><h5>Ettevõte</h5><a href="#tugi">Kolm sammast</a><a href="#platvorm">Platvorm</a><a href="#portfoolio">Portfoolio</a><a href="#hinnad">Hinnad</a><a href="privaatsus.html">Privaatsuspoliitika</a><a href="tingimused.html">Kasutustingimused</a></div>
+        <div class="foot-col"><h5>Ettevõte</h5><a href="#tugi">Kolm sammast</a><a href="#platvorm">Platvorm</a><a href="#portfoolio">Portfoolio</a><a href="#hinnad">Hinnad</a><a href="kasutusjuhend.html">Kasutusjuhend</a><a href="privaatsus.html">Privaatsuspoliitika</a><a href="tingimused.html">Kasutustingimused</a></div>
         <div class="foot-col"><h5>Kontakt</h5><a href="mailto:info@look360.eu">info@look360.eu</a><a href="tel:+37253620246">+372 5362 0246</a><a href="https://www.google.com/maps?q=71003+Viljandi" target="_blank" rel="noopener">71003 Viljandi</a></div>
       </div>
     </div>
@@ -1191,8 +1195,8 @@
 const nav=document.getElementById('nav');
 addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>12),{passive:true});
 
-/* === i18n: keele-stringid (build_i18n.py asendab {"locale": "et-EE", "fbLine": "{n} konkurenti Facebookis", "webLineCalc": "{n} e-poodi hinna+laoseires", "webLineModal": "{n} e-poodi hinna- ja laoseires", "perMonth": "/kuus", "saveAnnual": "{m} kuud tasuta – arve kord aastas (€{yr}/a)", "chooseOne": "Vali vähemalt üks moodul", "billYear": "Arveldus: aastamakse €{yr}/aastas (≈€{eff}/kuus, {m} kuud tasuta)", "billMonth": "Arveldus: kuumakse €{m}/kuus", "mailIntro": "Soovin liituda Look360 seirega.", "mailChosen": "Valitud:", "mailQuote": "NB: soovin ka tellitud automaatikat – palun pakkumist.", "mailSubject": "Liitumissoov – Look360", "quotePrice": "pakkumisel", "hintWeb": "veeb +5 €", "hintFb": "FB +1 €", "perMonthSpaced": "/ kuus", "hintEmpty": "Lisa koduleht või FB-leht, et seda firmat jälgida", "phName": "Konkurendi nimi", "phWeb": "Koduleht (nt konkurent.ee)", "phFb": "Facebooki leht (nt facebook.com/konkurent)", "remove": "Eemalda", "sumEmpty": "Midagi pole veel valitud", "sumTotal": "Kokku", "sumYearSuffix": "· aastamakse (2 kuud tasuta)", "perMonthUnit": "€/kuus", "twoMonthsFree": "2 kuud tasuta", "mlCompany": "Ettevõte", "mlContact": "Kontakt", "mlPhone": "Telefon", "mlEmail": "E-post", "mlOwnShop": "Oma pood", "mlWatch": "Jälgida", "mlPackage": "Pakett", "mlBilling": "Arveldus", "unnamed": "(nimeta)", "mlWeb": "veeb", "totYear": "aastamakse €{yr}/aastas (≈€{eff}/kuus, 2 kuud tasuta)", "totMonth": "kuumakse €{m}/kuus", "btnContinuePay": "Jätka maksma →", "btnPay": "Maksa", "btnNext": "Edasi →", "btnCreateAccount": "Loo konto ja logi sisse", "btnCreatingAccount": "Loon kontot…", "errPassMin": "Parool peab olema vähemalt 8 märki.", "errAcctFail": "Konto loomine ebaõnnestus.", "errConnFail": "Ühendus ebaõnnestus. Proovi uuesti."} keele kaupa) === */
-const T = {"locale": "et-EE", "fbLine": "{n} konkurenti Facebookis", "webLineCalc": "{n} e-poodi hinna+laoseires", "webLineModal": "{n} e-poodi hinna- ja laoseires", "perMonth": "/kuus", "saveAnnual": "{m} kuud tasuta – arve kord aastas (€{yr}/a)", "chooseOne": "Vali vähemalt üks moodul", "billYear": "Arveldus: aastamakse €{yr}/aastas (≈€{eff}/kuus, {m} kuud tasuta)", "billMonth": "Arveldus: kuumakse €{m}/kuus", "mailIntro": "Soovin liituda Look360 seirega.", "mailChosen": "Valitud:", "mailQuote": "NB: soovin ka tellitud automaatikat – palun pakkumist.", "mailSubject": "Liitumissoov – Look360", "quotePrice": "pakkumisel", "hintWeb": "veeb +5 €", "hintFb": "FB +1 €", "perMonthSpaced": "/ kuus", "hintEmpty": "Lisa koduleht või FB-leht, et seda firmat jälgida", "phName": "Konkurendi nimi", "phWeb": "Koduleht (nt konkurent.ee)", "phFb": "Facebooki leht (nt facebook.com/konkurent)", "remove": "Eemalda", "sumEmpty": "Midagi pole veel valitud", "sumTotal": "Kokku", "sumYearSuffix": "· aastamakse (2 kuud tasuta)", "perMonthUnit": "€/kuus", "twoMonthsFree": "2 kuud tasuta", "mlCompany": "Ettevõte", "mlContact": "Kontakt", "mlPhone": "Telefon", "mlEmail": "E-post", "mlOwnShop": "Oma pood", "mlWatch": "Jälgida", "mlPackage": "Pakett", "mlBilling": "Arveldus", "unnamed": "(nimeta)", "mlWeb": "veeb", "totYear": "aastamakse €{yr}/aastas (≈€{eff}/kuus, 2 kuud tasuta)", "totMonth": "kuumakse €{m}/kuus", "btnContinuePay": "Jätka maksma →", "btnPay": "Maksa", "btnNext": "Edasi →", "btnCreateAccount": "Loo konto ja logi sisse", "btnCreatingAccount": "Loon kontot…", "errPassMin": "Parool peab olema vähemalt 8 märki.", "errAcctFail": "Konto loomine ebaõnnestus.", "errConnFail": "Ühendus ebaõnnestus. Proovi uuesti."};
+/* === i18n: keele-stringid (build_i18n.py asendab {"locale": "et-EE", "fbLine": "{n} konkurenti Facebookis", "webLineCalc": "{n} e-poodi hinna+laoseires", "webLineModal": "{n} e-poodi hinna- ja laoseires", "perMonth": "/kuus", "saveAnnual": "{m} kuud tasuta – arve kord aastas (€{yr}/a)", "chooseOne": "Vali vähemalt üks moodul", "billYear": "Arveldus: aastamakse €{yr}/aastas (≈€{eff}/kuus, {m} kuud tasuta)", "billMonth": "Arveldus: kuumakse €{m}/kuus", "mailIntro": "Soovin liituda Look360 seirega.", "mailChosen": "Valitud:", "mailQuote": "NB: soovin ka tellitud automaatikat – palun pakkumist.", "mailSubject": "Liitumissoov – Look360", "quotePrice": "pakkumisel", "hintWeb": "veeb +6 €", "hintFb": "FB +2 €", "perMonthSpaced": "/ kuus", "hintEmpty": "Lisa koduleht või FB-leht, et seda firmat jälgida", "phName": "Konkurendi nimi", "phWeb": "Koduleht (nt konkurent.ee)", "phFb": "Facebooki leht (nt facebook.com/konkurent)", "remove": "Eemalda", "sumEmpty": "Midagi pole veel valitud", "sumTotal": "Kokku", "sumYearSuffix": "· aastamakse (2 kuud tasuta)", "perMonthUnit": "€/kuus", "twoMonthsFree": "2 kuud tasuta", "mlCompany": "Ettevõte", "mlContact": "Kontakt", "mlPhone": "Telefon", "mlEmail": "E-post", "mlOwnShop": "Oma pood", "mlWatch": "Jälgida", "mlPackage": "Pakett", "mlBilling": "Arveldus", "unnamed": "(nimeta)", "mlWeb": "veeb", "totYear": "aastamakse €{yr}/aastas (≈€{eff}/kuus, 2 kuud tasuta)", "totMonth": "kuumakse €{m}/kuus", "btnContinuePay": "Jätka maksma →", "btnPay": "Maksa", "btnNext": "Edasi →", "btnCreateAccount": "Loo konto ja logi sisse", "btnCreatingAccount": "Loon kontot…", "errPassMin": "Parool peab olema vähemalt 8 märki.", "errAcctFail": "Konto loomine ebaõnnestus.", "errConnFail": "Ühendus ebaõnnestus. Proovi uuesti."} keele kaupa) === */
+const T = {"locale": "et-EE", "fbLine": "{n} konkurenti Facebookis", "webLineCalc": "{n} e-poodi hinna+laoseires", "webLineModal": "{n} e-poodi hinna- ja laoseires", "perMonth": "/kuus", "saveAnnual": "{m} kuud tasuta – arve kord aastas (€{yr}/a)", "chooseOne": "Vali vähemalt üks moodul", "billYear": "Arveldus: aastamakse €{yr}/aastas (≈€{eff}/kuus, {m} kuud tasuta)", "billMonth": "Arveldus: kuumakse €{m}/kuus", "mailIntro": "Soovin liituda Look360 seirega.", "mailChosen": "Valitud:", "mailQuote": "NB: soovin ka tellitud automaatikat – palun pakkumist.", "mailSubject": "Liitumissoov – Look360", "quotePrice": "pakkumisel", "hintWeb": "veeb +6 €", "hintFb": "FB +2 €", "perMonthSpaced": "/ kuus", "hintEmpty": "Lisa koduleht või FB-leht, et seda firmat jälgida", "phName": "Konkurendi nimi", "phWeb": "Koduleht (nt konkurent.ee)", "phFb": "Facebooki leht (nt facebook.com/konkurent)", "remove": "Eemalda", "sumEmpty": "Midagi pole veel valitud", "sumTotal": "Kokku", "sumYearSuffix": "· aastamakse (2 kuud tasuta)", "perMonthUnit": "€/kuus", "twoMonthsFree": "2 kuud tasuta", "mlCompany": "Ettevõte", "mlContact": "Kontakt", "mlPhone": "Telefon", "mlEmail": "E-post", "mlOwnShop": "Oma pood", "mlWatch": "Jälgida", "mlPackage": "Pakett", "mlBilling": "Arveldus", "unnamed": "(nimeta)", "mlWeb": "veeb", "totYear": "aastamakse €{yr}/aastas (≈€{eff}/kuus, 2 kuud tasuta)", "totMonth": "kuumakse €{m}/kuus", "btnContinuePay": "Jätka maksma →", "btnPay": "Maksa", "btnNext": "Edasi →", "btnCreateAccount": "Loo konto ja logi sisse", "btnCreatingAccount": "Loon kontot…", "errPassMin": "Parool peab olema vähemalt 8 märki.", "errAcctFail": "Konto loomine ebaõnnestus.", "errConnFail": "Ühendus ebaõnnestus. Proovi uuesti."};
 function fmt(s,o){return String(s).replace(/\{(\w+)\}/g,(_,k)=>o[k]!=null?o[k]:'')}
 
 /* === keelevaheti (lipud) + IP-suunaja (Cloudflare trace) === */
@@ -1378,7 +1382,7 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
     const body=`${T.mailIntro}\n\n${T.mlCompany}: ${document.getElementById('cName').value.trim()}\n${T.mlContact}: ${document.getElementById('cContact').value.trim()}\n${T.mlPhone}: ${document.getElementById('cPhone').value.trim()}\n${T.mlEmail}: ${document.getElementById('cEmail').value.trim()}\n${own?`${T.mlOwnShop}: ${own}\n`:''}\n${T.mlWatch}:\n${comps||'-'}\n\n${T.mlPackage}:\n${lns}\n\n${T.mlBilling}: ${tot}`;
     return `mailto:info@look360.eu?subject=${encodeURIComponent(T.mailSubject)}&body=${encodeURIComponent(body)}`;
   }
-  var ORDER_ENDPOINT='https://expenses-destruct-snowboard.ngrok-free.dev/api/tellimus/';
+  var ORDER_ENDPOINT='https://scan.look360.eu/api/tellimus/';
   // Firma-nime autocomplete (Eesti äriregister) - AINULT eestikeelne sait.
   // Taaskasutatav: nii kliendi enda ettevõtte nimi (#cName) kui konkurentide
   // nimed (.c-name, dünaamilised read - vt addRow + window.L360auto).
@@ -1408,7 +1412,7 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
         if(q===viimaneQ)return;viimaneQ=q;
         if(ctrl)try{ctrl.abort();}catch(e){}
         ctrl=('AbortController'in window)?new AbortController():null;
-        fetch(OTSING+'?q='+encodeURIComponent(q),{mode:'cors',signal:ctrl?ctrl.signal:undefined,headers:{'ngrok-skip-browser-warning':'1'}})
+        fetch(OTSING+'?q='+encodeURIComponent(q),{mode:'cors',signal:ctrl?ctrl.signal:undefined,headers:{}})
           .then(function(r){return r.json();}).then(function(d){if(inp.value.trim()===q)naita(d.tulemused||[],q);})
           .catch(function(){});}
       inp.addEventListener('input',function(){clearTimeout(tmr);tmr=setTimeout(otsi,140);});
@@ -1446,7 +1450,7 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
     // Tagastab true AINULT serveri kinnitusel; ebaõnnestumisel false (mailto-varu).
     try{
       const r=await fetch(ORDER_ENDPOINT,{method:'POST',mode:'cors',
-        headers:{'Content-Type':'application/json','ngrok-skip-browser-warning':'1'},
+        headers:{'Content-Type':'application/json'},
         body:JSON.stringify(buildOrder())});
       return !!(r&&r.ok);
     }catch(e){return false;}
@@ -1532,7 +1536,7 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
       if(pass.length<8){err.textContent=T.errPassMin;err.classList.add('show');return;}
       acctBtn.disabled=true;acctBtn.textContent=T.btnCreatingAccount;
       fetch(LOO_KONTO,{method:'POST',mode:'cors',
-        headers:{'Content-Type':'application/json','ngrok-skip-browser-warning':'1'},
+        headers:{'Content-Type':'application/json'},
         body:JSON.stringify({epost:em,parool:pass,ettevote:nm})})
         .then(function(r){return r.json();})
         .then(function(j){
