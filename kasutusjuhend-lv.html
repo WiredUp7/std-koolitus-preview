@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<!-- Look360 kliendi kasutusjuhend. Kaesitsi hooldatav, eestikeelne (mitte build_i18n.py kaudu). -->
+<html lang="lv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lietošanas pamācība – Look360 monitoringa panelis</title>
+<meta name="description" content="Look360 monitoringa paneļa lietošanas pamācība klientam: pieteikšanās, darbvirsma, uzņēmumu pievienošana, produktu katalogs, pakalpojumi, maksājumi un atskaites – soli pa solim, kura poga ko dara.">
+<meta name="robots" content="index,follow">
+<link rel="alternate" hreflang="et" href="https://wiredup7.github.io/std-koolitus-preview/kasutusjuhend.html">
+<link rel="alternate" hreflang="en" href="https://wiredup7.github.io/std-koolitus-preview/kasutusjuhend-en.html">
+<link rel="alternate" hreflang="fi" href="https://wiredup7.github.io/std-koolitus-preview/kasutusjuhend-fi.html">
+<link rel="alternate" hreflang="sv" href="https://wiredup7.github.io/std-koolitus-preview/kasutusjuhend-sv.html">
+<link rel="alternate" hreflang="no" href="https://wiredup7.github.io/std-koolitus-preview/kasutusjuhend-no.html">
+<link rel="alternate" hreflang="da" href="https://wiredup7.github.io/std-koolitus-preview/kasutusjuhend-da.html">
+<link rel="alternate" hreflang="lv" href="https://wiredup7.github.io/std-koolitus-preview/kasutusjuhend-lv.html">
+<link rel="alternate" hreflang="lt" href="https://wiredup7.github.io/std-koolitus-preview/kasutusjuhend-lt.html">
+<link rel="alternate" hreflang="pl" href="https://wiredup7.github.io/std-koolitus-preview/kasutusjuhend-pl.html">
+<link rel="alternate" hreflang="uk" href="https://wiredup7.github.io/std-koolitus-preview/kasutusjuhend-uk.html">
+<link rel="alternate" hreflang="x-default" href="https://wiredup7.github.io/std-koolitus-preview/kasutusjuhend-en.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0a0b0e;--paper:#fff;--paper-2:#f4f5f7;--text:#15171c;--text-2:#3c424d;--muted:#6b7280;
+    --on-dark-mut:#9aa1ad;--line:#e7e9ee;--line-dark:rgba(255,255,255,.09);
+    --accent:#17b86a;--accent-ink:#0c8f4f;--accent-soft:#e7f6ee;
+    --warn:#b9760a;--warn-soft:#fdf4e6;--warn-line:#f1ddb6;
+    --err:#c0392b;--err-soft:#fcecec;--err-line:#f3cfcf;
+    --grad:linear-gradient(120deg,#1fd07a,#06b6b6);--maxw:1080px;
+    --f:"Poppins",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--f);background:var(--paper);color:var(--text);line-height:1.7;font-weight:400;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent-ink)}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  /* Header */
+  header.top{background:var(--ink);color:#fff;padding:18px 0;position:sticky;top:0;z-index:80}
+  header.top .wrap{display:flex;align-items:center;gap:13px}
+  .eye{height:38px;width:auto;flex-shrink:0;filter:drop-shadow(0 2px 9px rgba(23,184,106,.45))}
+  .wm{font-weight:700;font-size:20px;letter-spacing:-.01em;color:#fff}
+  .wm i{color:var(--accent);font-style:normal}
+  header.top nav{margin-left:auto;display:flex;gap:20px;font-size:14px;align-items:center}
+  header.top nav a{color:var(--on-dark-mut);text-decoration:none;transition:.2s}
+  header.top nav a:hover{color:#fff}
+  header.top nav a.login{display:inline-flex;align-items:center;gap:6px;color:#fff;border:1px solid var(--line-dark);padding:7px 13px;border-radius:10px}
+  header.top nav a.login:hover{border-color:var(--accent)}
+  header.top nav a.login svg{width:14px;height:14px}
+
+  /* Hero */
+  .hero{background:var(--ink);color:#fff;padding:14px 0 56px;border-bottom:1px solid var(--line-dark)}
+  .hero .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--accent);margin-bottom:14px}
+  .hero .eyebrow .pip{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(23,184,106,.2)}
+  .hero h1{font-weight:600;font-size:clamp(28px,5vw,42px);letter-spacing:-.02em;line-height:1.1}
+  .hero p{color:var(--on-dark-mut);font-size:17px;font-weight:300;margin-top:14px;max-width:680px}
+
+  /* Layout: sticky TOC + content */
+  main{padding:40px 0 80px}
+  .layout{display:grid;grid-template-columns:230px 1fr;gap:48px;align-items:start}
+  .toc{position:sticky;top:90px;font-size:14px}
+  .toc h4{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:12px}
+  .toc a{display:block;color:var(--text-2);text-decoration:none;padding:6px 11px;border-radius:9px;border-left:2px solid transparent;font-weight:300;transition:.15s}
+  .toc a:hover{background:var(--paper-2);color:var(--text)}
+  .toc a.on{color:var(--accent-ink);border-left-color:var(--accent);font-weight:500;background:var(--accent-soft)}
+
+  .content{min-width:0}
+  .lead{font-size:17px;color:var(--text-2);font-weight:300;margin-bottom:30px}
+  section.doc{padding-top:14px;margin-bottom:18px;scroll-margin-top:90px}
+  section.doc h2{font-weight:600;font-size:23px;letter-spacing:-.01em;margin:34px 0 8px;display:flex;align-items:center;gap:11px}
+  section.doc h2 .num{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:9px;background:var(--accent-soft);color:var(--accent-ink);font-size:14px;font-weight:600;flex:0 0 auto}
+  section.doc h3{font-weight:600;font-size:16.5px;margin:24px 0 6px}
+  section.doc p{margin:9px 0;color:var(--text-2);font-weight:300}
+  section.doc strong{font-weight:600;color:var(--text)}
+
+  /* Numbered steps */
+  ol.steps{list-style:none;counter-reset:s;margin:14px 0;padding:0}
+  ol.steps>li{counter-increment:s;position:relative;padding:4px 0 16px 44px;color:var(--text-2);font-weight:300}
+  ol.steps>li::before{content:counter(s);position:absolute;left:0;top:0;width:30px;height:30px;border-radius:50%;background:var(--accent);color:#fff;font-weight:600;font-size:14px;display:flex;align-items:center;justify-content:center}
+  ol.steps>li:not(:last-child)::after{content:"";position:absolute;left:14px;top:32px;bottom:2px;width:2px;background:var(--line)}
+  ol.steps>li b{color:var(--text);font-weight:600}
+
+  ul.plain{margin:10px 0 12px;padding-left:20px}
+  ul.plain li{margin:7px 0;color:var(--text-2);font-weight:300}
+  ul.plain li b{color:var(--text);font-weight:600}
+
+  /* Button chip – replicates a real dashboard button */
+  .chip{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;padding:5px 11px;border-radius:9px;
+    border:1px solid var(--line);background:var(--paper-2);color:var(--text);white-space:nowrap;vertical-align:1px;line-height:1.3}
+  .chip svg{width:14px;height:14px;flex:0 0 auto}
+  .chip.go{background:var(--grad);color:#04231a;border-color:transparent}
+  .chip.fb{background:#eaf1fb;color:#1b62c4;border-color:#d6e3f6}
+
+  /* Status legend / pills */
+  .pill{display:inline-flex;align-items:center;gap:5px;border-radius:999px;padding:2px 10px;font-size:12.5px;font-weight:600;vertical-align:1px}
+  .pill .dot{width:8px;height:8px;border-radius:50%;flex:0 0 auto}
+  .pill.ok{background:var(--accent-soft);color:var(--accent-ink)}
+  .pill.ok .dot{background:var(--accent)}
+  .pill.warn{background:var(--warn-soft);color:var(--warn)}
+  .pill.warn .dot{background:var(--warn)}
+  .pill.err{background:var(--err-soft);color:var(--err)}
+  .pill.err .dot{background:var(--err)}
+  .pill.sec{background:#eef1f5;color:var(--muted)}
+  .pill.sec .dot{background:#9aa6b2}
+
+  .legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:18px 0}
+  .legend .lg{display:flex;gap:11px;align-items:flex-start;background:var(--paper-2);border:1px solid var(--line);border-radius:13px;padding:13px 15px}
+  .legend .lg .sw{width:13px;height:13px;border-radius:50%;flex:0 0 auto;margin-top:4px}
+  .legend .lg b{display:block;color:var(--text);font-weight:600;font-size:14px}
+  .legend .lg span{font-size:13px;color:var(--text-2);font-weight:300}
+
+  /* Callouts */
+  .box{background:var(--paper-2);border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin:18px 0}
+  .box.green{background:var(--accent-soft);border-color:#cdeadd}
+  .box.warn{background:var(--warn-soft);border-color:var(--warn-line)}
+  .box .bt{display:flex;align-items:center;gap:8px;font-weight:600;color:var(--text);margin-bottom:4px;font-size:14.5px}
+  .box .bt svg{width:17px;height:17px;flex:0 0 auto}
+  .box p{margin:4px 0 0;font-size:14px}
+
+  /* Screenshot figure */
+  figure{margin:22px 0}
+  figure img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 40px -22px rgba(13,22,38,.4)}
+  figure figcaption{font-size:13px;color:var(--muted);margin-top:9px;font-weight:300;text-align:center}
+
+  /* Definition rows (column / field meaning) */
+  .deflist{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:16px 0}
+  .deflist .dr{display:grid;grid-template-columns:200px 1fr;gap:16px;padding:12px 16px;border-bottom:1px solid var(--line);font-size:14px}
+  .deflist .dr:last-child{border-bottom:0}
+  .deflist .dr:nth-child(odd){background:var(--paper-2)}
+  .deflist .dr .k{font-weight:600;color:var(--text)}
+  .deflist .dr .v{color:var(--text-2);font-weight:300}
+
+  footer{background:var(--ink);color:var(--on-dark-mut);padding:40px 0;font-size:14px;font-weight:300;margin-top:20px}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
+  footer a{color:var(--on-dark-mut);text-decoration:none}
+  footer a:hover{color:#fff}
+
+  @media(max-width:860px){
+    .layout{grid-template-columns:1fr;gap:0}
+    .toc{position:static;margin-bottom:24px;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--paper-2)}
+    .toc a{border-left:0;padding:5px 0}
+    .toc a.on{background:none}
+    .deflist .dr{grid-template-columns:1fr;gap:2px}
+    header.top nav a:not(.login){display:none}
+  }
+  /* Keelevaheti (lipud) – jagatud lang.js-iga */
+  .langsel{position:relative;margin-left:6px}
+  .flag{display:block;width:22px;height:15px;border-radius:3px;overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.22)}
+  .flag svg{display:block;width:100%;height:100%}
+  .langbtn{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.07);border:1px solid var(--line-dark);padding:6px 9px;border-radius:10px;cursor:pointer;transition:.2s}
+  .langbtn:hover{background:rgba(255,255,255,.14)}
+  .langbtn .chev{width:12px;height:12px;color:var(--on-dark-mut);transition:.2s;flex-shrink:0}
+  .langbtn[aria-expanded="true"] .chev{transform:rotate(180deg)}
+  .langmenu{position:absolute;top:calc(100% + 9px);right:0;background:#14161d;border:1px solid var(--line-dark);border-radius:13px;padding:8px;box-shadow:0 22px 54px -14px rgba(0,0,0,.75);display:none;grid-template-columns:repeat(2,1fr);gap:5px;z-index:90}
+  .langmenu.open{display:grid}
+  .langmenu a{display:grid;place-items:center;padding:7px 9px;border-radius:8px;cursor:pointer;transition:.15s;border:1px solid transparent}
+  .langmenu a:hover{background:rgba(255,255,255,.08)}
+  .langmenu a.on{border-color:var(--accent);background:rgba(23,184,106,.16)}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a href="index.html" style="display:flex;align-items:center;gap:13px;text-decoration:none">
+      <svg class="eye" viewBox="0 0 76 62" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="gL" x1="0" y1="0" x2="1" y2="0.7"><stop offset="0" stop-color="#46ec9f"/><stop offset="1" stop-color="#0bc8c8"/></linearGradient><clipPath id="cI"><circle cx="27" cy="39" r="14"/></clipPath></defs><path d="M5 35 C 18 14, 47 6, 72 9 C 53 16, 31 23, 5 35 Z" fill="url(#gL)"/><path d="M9 47 C 24 58, 47 56, 67 45 C 50 51, 29 53, 9 47 Z" fill="url(#gL)" opacity="0.92"/><circle cx="27" cy="39" r="14" fill="#0c8f5f"/><g clip-path="url(#cI)"><circle cx="37" cy="38" r="13" fill="#37e3a2"/></g><circle cx="22.5" cy="33.5" r="3.2" fill="#ffffff"/></svg>
+      <span class="wm">Look<i>360</i></span>
+    </a>
+    <nav>
+      <a href="index.html">Sākumlapa</a>
+      <a href="index.html#kkk">BUJ</a>
+      <a class="login" href="https://expenses-destruct-snowboard.ngrok-free.dev/accounts/login/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><path d="M10 17l5-5-5-5M15 12H3"/></svg> Pieteikties</a>
+      <div class="langsel" id="langsel"></div>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow"><span class="pip"></span> Lietošanas pamācība</div>
+    <h1>Monitoringa paneļa lietošanas pamācība</h1>
+    <p>Soli pa solim sniegts pārskats par visu, ko Jūs kā klients redzat un varat darīt: no pieteikšanās līdz darbvirsmai, novērojamiem uzņēmumiem, produktu katalogam, pakalpojumiem, maksājumiem un atskaitēm. Pie katras pogas ir aprakstīts, ko tā dara un kur redzams rezultāts.</p>
+  </div>
+</section>
+
+<main>
+  <div class="wrap layout">
+    <aside class="toc" id="toc">
+      <h4>Saturs</h4>
+      <a href="#algus">1. Kas ir monitoringa panelis</a>
+      <a href="#logimine">2. Pieteikšanās</a>
+      <a href="#menuu">3. Izvēlne un kopskats</a>
+      <a href="#toolaud">4. Monitoringa darbvirsma</a>
+      <a href="#lisafirma">5. Uzņēmuma pievienošana</a>
+      <a href="#firmavaade">6. Uzņēmuma skats un katalogs</a>
+      <a href="#kategooriad">7. Kategoriju izvēle</a>
+      <a href="#teenused">8. Pakalpojumi un mēneša maksa</a>
+      <a href="#maksed">9. Kā notiek maksājums</a>
+      <a href="#hinnastamine">10. Cenu noteikšana</a>
+      <a href="#raportid">11. Atskaites</a>
+      <a href="#seaded">12. Tumšais režīms un telefons</a>
+      <a href="#abi">13. Palīdzība un kontakti</a>
+    </aside>
+
+    <div class="content">
+      <p class="lead">Look360 monitoringa panelis vienuviet apkopo visu, ko mēs Jūsu vietā novērojam – konkurentu cenas un noliktavas atlikumu, Facebook ierakstus, Jūsu paša e-veikala stāvokli. Jums nekas nav jāuzstāda: piesakāties, ar vienu skatienu redzat stāvokli un būtiskākās izmaiņas saņemat arī ar ikrīta vēstuli. Šī pamācība soli pa solim iziet cauri katram skatam un pogai.</p>
+
+      <!-- 1 -->
+      <section class="doc" id="algus">
+        <h2><span class="num">1</span> Kas ir monitoringa panelis</h2>
+        <p>Monitoringa panelis ir Jūsu privātā darbvirsma adresē, kur piesakāties ar savu e-pastu un paroli. Tur Jūs redzat visus novērojamos uzņēmumus – gan savu e-veikalu, gan konkurentus – un katru izmaiņu, ko sistēma ir pamanījusi: cenas kritumu, noliktavas atlikuma izsīkumu, jaunu Facebook ierakstu, e-veikala kļūmi.</p>
+        <p>Viss darbojas pēc <strong>krāsu loģikas</strong>. Vienas un tās pašas trīs krāsas atkārtojas visur – darbvirsmā, uzņēmuma kartē, tabulā:</p>
+        <div class="legend">
+          <div class="lg"><span class="sw" style="background:var(--accent)"></span><span><b>Zaļš – viss kārtībā</b>Izmaiņu nav vai viss ir kā paredzēts. Nekas nav jādara.</span></div>
+          <div class="lg"><span class="sw" style="background:var(--warn)"></span><span><b>Dzeltens – nepieciešama uzmanība</b>Brīdinājums: piem., konkurenta cenas izmaiņa, noliktavas atlikuma izsīkums vai novecojuši dati.</span></div>
+          <div class="lg"><span class="sw" style="background:var(--err)"></span><span><b>Sarkans – kļūme</b>Datu avots uz brīdi kļuva nepieejams. Parasti atjaunojas pats vai to pārbauda operators.</span></div>
+        </div>
+        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z"/></svg> Pastkaste nav jāuzrauga</div><p>Būtiskākās izmaiņas mēs nosūtām arī ar ikrīta kopsavilkuma vēstuli. Paneli atverat tad, kad vēlaties redzēt vairāk vai kaut ko mainīt.</p></div>
+      </section>
+
+      <!-- 2 -->
+      <section class="doc" id="logimine">
+        <h2><span class="num">2</span> Pieteikšanās</h2>
+        <ol class="steps">
+          <li>Atveriet <b>Pieteikties</b> – vai nu no sākumlapas augšējā stūra, no šīs pamācības augšmalas vai no tiešās saites, ko mēs Jums nosūtījām.</li>
+          <li>Ievadiet <b>lietotājvārdu</b> – tā ir Jūsu <b>e-pasta adrese</b> (piem., tu@uznemums.lv).</li>
+          <li>Ievadiet <b>paroli</b> un nospiediet <span class="chip go">Ieiet</span></li>
+        </ol>
+        <ul class="plain">
+          <li><b>Aizmirsāt paroli?</b> – pa saiti zemāk nosūtām ar e-pastu jaunas paroles iestatīšanas saiti.</li>
+          <li><b>Vēl nav konta?</b> – poga <span class="chip">Reģistrēties</span> aizved uz sākumlapas cenrādi, kur varat salikt paketi un pievienoties.</li>
+          <li><b>Atpakaļ uz sākumlapu</b> – augšējā saite aizved atpakaļ uz look360.eu.</li>
+        </ul>
+        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg> Noderīgi zināt</div><p>Konts ir saistīts ar Jūsu uzņēmumu. Pēc pieteikšanās augšā pa kreisi zaļā joslā redzat sava uzņēmuma nosaukumu – tā Jūs zināt, ka esat pareizajā kontā.</p></div>
+      </section>
+
+      <!-- 3 -->
+      <section class="doc" id="menuu">
+        <h2><span class="num">3</span> Izvēlne un kopskats</h2>
+        <p>Katrā lapā ir viens un tas pats ietvars: <strong>kreisā izvēlne</strong>, <strong>augšējā josla</strong> un saturs vidū.</p>
+        <h3>Kreisā izvēlne</h3>
+        <ul class="plain">
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="5" rx="1.5"/><rect x="13" y="11" width="8" height="10" rx="1.5"/><rect x="3" y="14" width="8" height="7" rx="1.5"/></svg> Monitorings</span> – galvenā darbvirsma, kur ir visi novērojamie uzņēmumi un atradumi.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M20 7H4M20 12H4M20 17H4"/></svg> Pakalpojumi</span> – Jūsu pasūtītie pakalpojumi, mēneša maksa un iespēja pasūtīt papildus.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Cenu noteikšana</span> – parādās tikai tad, ja Jums ir pasūtīts <b>cenu pārcenošanas</b> pakalpojums.</li>
+          <li>Apakšmalā ir Jūsu lietotājvārds, loma <b>Klients</b> un <b>izrakstīšanās</b> ikona (pa durvīm ārā).</li>
+        </ul>
+        <h3>Augšējā josla</h3>
+        <ul class="plain">
+          <li>Pa kreisi <b>lapas virsraksts</b> (piem., Jūsu uzņēmuma nosaukums) un zem tā sīkā drukā <b>kad pēdējoreiz atjaunināts</b>.</li>
+          <li>Pa labi <b>tumšs/gaišs slēdzis</b> (saule/mēness) un konkrētās lapas <b>darbības pogas</b>.</li>
+          <li>Telefonā kreiso izvēlni atver augšējā stūra <b>☰ poga</b>.</li>
+        </ul>
+      </section>
+
+      <!-- 4 -->
+      <section class="doc" id="toolaud">
+        <h2><span class="num">4</span> Monitoringa darbvirsma</h2>
+        <p>Šis ir sākumskats. Augšmalā atrodat galvenās pogas, apakšā ir pārskats un uzņēmumu saraksts.</p>
+        <figure>
+          <img src="l360-seirepaneel.png" alt="Look360 monitoringa darbvirsma: trenda grafiks, kopsavilkums un uzņēmumu tabula" loading="lazy">
+          <figcaption>Monitoringa darbvirsma – trenda grafiks, kopsavilkums un novērojamo uzņēmumu tabula.</figcaption>
+        </figure>
+        <h3>Augšējās joslas pogas</h3>
+        <ul class="plain">
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Pievienot uzņēmumu</span> – pievienojiet jaunu novērojamu uzņēmumu (sk. <a href="#lisafirma">5. nodaļu</a>).</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 7H4M20 12H4M20 17H4"/></svg> Pakalpojumi</span> – atveriet pakalpojumu un mēneša maksas skatu.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-2.6-6.4L21 8"/><path d="M21 3v5h-5"/></svg> Atsvaidzināt skatu</span> – nolasa pēdējos datus no jauna un atjauno ekrānu. <b>Nepārmeklē</b> vietnes, tikai atsvaidzina skatu.</li>
+          <li><span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg> Skenēt visu no jauna</span> – parādās, ja novērojat tīmekļa veikalus vai Facebook. Palaiž <b>īstos skenējumus</b> (pārmeklē vietnes), aizņem dažas minūtes. To var darīt <b>1 reizi diennaktī</b>.</li>
+        </ul>
+        <h3>Kā darbojas monitorings? – palīdzības josla</h3>
+        <p>Darbvirsmas augšdaļā ir izvēršama josla <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .8-1 1.7M12 17h.01"/></svg> Kā darbojas monitorings?</span> Noklikšķiniet, lai izlasītu īsu krāsu skaidrojumu. Pirmajā reizē, kad vēl nav neviena uzņēmuma, tā ir atvērta.</p>
+        <h3>Brīdinājumu trends</h3>
+        <p>Grafiks rāda, kā brīdinājumu skaits ir mainījies pēdējo monitoringu laikā – vai lietas norimst, vai prasa vairāk uzmanības.</p>
+        <h3>Kopsavilkums</h3>
+        <p>Pa labi ir četri skaitļi un stāvokļa rinda:</p>
+        <div class="deflist">
+          <div class="dr"><span class="k">Uzņēmumu novērošanā</span><span class="v">Cik uzņēmumus pašlaik novērojat.</span></div>
+          <div class="dr"><span class="k">Aktīvu brīdinājumu</span><span class="v">Cik lietas prasa uzmanību (dzeltens).</span></div>
+          <div class="dr"><span class="k">Avotu ar kļūmi</span><span class="v">Cik datu avoti šobrīd ir nepieejami (sarkans).</span></div>
+          <div class="dr"><span class="k">Novecojuši dati</span><span class="v">Cik uzņēmumu dati ir novecojuši un prasa atsvaidzināšanu.</span></div>
+        </div>
+        <h3>Cilnes, skati un eksports</h3>
+        <ul class="plain">
+          <li><b>Cilnes</b> <span class="pill sec"><span class="dot"></span>Visi</span> <span class="pill sec"><span class="dot"></span>Mans uzņēmums</span> <span class="pill sec"><span class="dot"></span>Konkurenti</span> – filtrē sarakstu.</li>
+          <li><b>Tabula / Kartes</b> – pārslēdziet saraksta izskatu. Tabula ir kompakta, kartes uzreiz rāda katra uzņēmuma kanālus.</li>
+          <li><b>Kārtot</b> – sakārtojiet pēc brīdinājumiem, atradumiem, stāvokļa vai nosaukuma.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg> Eksportēt CSV</span> – lejupielādē redzamo tabulu kā Excel atveramu failu.</li>
+        </ul>
+        <h3>Uzņēmumu tabula</h3>
+        <p>Katra rinda ir viens novērojams uzņēmums. <b>Noklikšķiniet uz rindas</b>, lai atvērtu šī uzņēmuma pilnu skatu. Kolonnas:</p>
+        <div class="deflist">
+          <div class="dr"><span class="k">Uzņēmums</span><span class="v">Nosaukums un vai tas ir Jūsu uzņēmums vai konkurents.</span></div>
+          <div class="dr"><span class="k">Statuss</span><span class="v"><span class="pill ok"><span class="dot"></span>Viss kārtībā</span> · <span class="pill warn"><span class="dot"></span>N brīdinājumu</span> · <span class="pill err"><span class="dot"></span>Kļūme</span> · <span class="pill sec"><span class="dot"></span>Novecojis / Nav darbojies</span></span></div>
+          <div class="dr"><span class="k">Kanālu</span><span class="v">Cik avotus pie šī uzņēmuma novēro (tīmeklis, Facebook utt.).</span></div>
+          <div class="dr"><span class="k">Atradumu</span><span class="v">Cik izmaiņu ir atrasts pēdējā monitoringā.</span></div>
+          <div class="dr"><span class="k">Brīdinājumu</span><span class="v">Cik atradumu prasa uzmanību.</span></div>
+          <div class="dr"><span class="k">Svaigums</span><span class="v">Kad šī uzņēmuma datus pēdējoreiz atjaunināja.</span></div>
+          <div class="dr"><span class="k">Stāvoklis</span><span class="v">Vispārējā stāvokļa josla 0–100% (zaļš labs, dzeltens vidējs, sarkans vājš).</span></div>
+        </div>
+        <h3>Jūsu pievienotie novērojamie</h3>
+        <p>Ja esat pats pievienojis uzņēmumu, tā stāvokli redzat atsevišķā sadaļā. Iespējamie stāvokļi:</p>
+        <ul class="plain">
+          <li><span class="pill warn"><span class="dot"></span>Gaida</span> – gaida operatora apstiprinājumu.</li>
+          <li><span class="pill sec"><span class="dot"></span>Veidoju… / AI atpazīst…</span> – tīmekļa veikala lasītāju iestata automātiski.</li>
+          <li><span class="pill warn"><span class="dot"></span>Gaida maksu</span> – dati ir gatavi, jāapstiprina mēneša maksa (sk. <a href="#firmavaade">6. nodaļu</a>).</li>
+          <li><span class="pill err"><span class="dot"></span>Noraidīts</span> – pieprasījums tika noraidīts (iemesls ir norādīts).</li>
+          <li><span class="pill ok"><span class="dot"></span>Aktīvs</span> – uzņēmums ir monitoringā.</li>
+        </ul>
+        <h3>Facebook monitorings</h3>
+        <p>Atsevišķā kartē ir novērojamo konkurentu jaunākie Facebook ieraksti, jaunākie un jaunie izceltā veidā. Klikšķis uz ieraksta aizved pie oriģināla Facebook.</p>
+        <h3>Visi atradumi un atskaišu vēsture</h3>
+        <ul class="plain">
+          <li><b>Visi atradumi</b> – visas pēdējā monitoringa izmaiņas vienā sarakstā. Ķeksītis <b>Tikai brīdinājumi</b> paslēpj mierīgo daļu.</li>
+          <li><b>Atskaišu vēsture</b> – iepriekšējās kopsavilkuma atskaites. Klikšķis atver arhivēto atskaiti.</li>
+        </ul>
+      </section>
+
+      <!-- 5 -->
+      <section class="doc" id="lisafirma">
+        <h2><span class="num">5</span> Uzņēmuma pievienošana</h2>
+        <p>Nospiediet darbvirsmā <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Pievienot uzņēmumu</span>. Atveras vienkārša veidlapa.</p>
+        <ol class="steps">
+          <li><b>Uzņēmuma nosaukums</b> – sāciet rakstīt un izvēlieties no saraksta Igaunijas uzņēmumu reģistra firmu (vai ierakstiet nosaukumu manuāli).</li>
+          <li><b>Tīmekļa vietne</b> – pietiek ar nosaukumu bez https:// sākumā, piem., <b>weekend.ee</b>.</li>
+          <li>Pēc vēlēšanās ieslēdziet <b>novērot tīmekļa veikala cenas un noliktavas atlikumu</b> un/vai <b>novērot arī Facebook</b>.</li>
+          <li>Nospiediet <span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Pievienot novērojamo uzņēmumu</span></li>
+        </ol>
+        <h3>Tīmekļa veikala novērošana</h3>
+        <p>Ja izvēlaties tīmekļa veikala novērošanu, sistēma cenšas pati nolasīt veikala produktus. Ja izdodas, monitorings sākas automātiski; pretējā gadījumā to pārbauda operators. Papildus varat atvērt <b>atslēgvārdu filtru</b>: ierakstiet atslēgvārdu un nospiediet Enter vai <b>+</b>, lai pievienotu čipu (piem., <i>zāles pļāvējs</i>). Atstājot tukšu, mēs novērojam visus produktus.</p>
+        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg> Cenu modelis</div><p>Tīmekļa veikala novērošana maksā <strong>5 €/mēnesī par katrām līdz 2000 novērojamām precēm</strong>. Kad sistēma ir nolasījusi veikala produktus, Jūs pats izvēlaties kategorijas, kuras novērot – tas nosaka produktu skaitu un mēneša maksu. Mēs parādām precīzu summu un lūdzam apstiprinājumu, pirms atveram datus.</p></div>
+        <h3>Facebook novērošana</h3>
+        <p>Ievadiet Facebook lapas adresi – pietiek ar lapas nosaukumu vai adresi (piem., <b>facebook.com/konkurent</b> vai vienkārši <b>konkurents</b>). Ja lapa vēl nav monitoringa sarakstā, tā nonāk pie operatora apstiprināšanai.</p>
+      </section>
+
+      <!-- 6 -->
+      <section class="doc" id="firmavaade">
+        <h2><span class="num">6</span> Uzņēmuma skats un produktu katalogs</h2>
+        <p>Klikšķis darbvirsmā uz uzņēmuma nosaukuma atver tā pilnu skatu: visus kanālus, atradumus un – tīmekļa veikala gadījumā – visu produktu katalogu.</p>
+        <figure>
+          <img src="l360-kataloog.png" alt="Uzņēmuma skats: produktu katalogs ar kategorijām, cenām un noliktavas atlikumu" loading="lazy">
+          <figcaption>Uzņēmuma skats – meklējams produktu katalogs ar kategorijām, cenām un noliktavas atlikumu.</figcaption>
+        </figure>
+        <h3>Galvenes pogas</h3>
+        <ul class="plain">
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Izvēlēties kategorijas</span> – izvēlieties, kuras veikala kategorijas novērot (sk. <a href="#kategooriad">7. nodaļu</a>).</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 6H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4"/><path d="M14 4h6v6m0-6L10 14"/></svg> Atvērt vietni</span> – atver konkurenta tīmekļa veikalu jaunā logā.</li>
+        </ul>
+        <h3>Stāvokļa paziņojumi</h3>
+        <p>Skata augšmalā var būt paziņojums: <b>gaida operatora apstiprinājumu</b>, <b>tiek veidots scraperis</b>, <b>atpazīstam kategorijas</b>, <b>automātiskā iestatīšana neizdevās</b> (operators pārbauda) vai <b>pieprasījums tika noraidīts</b>.</p>
+        <h3>Mēneša maksas apstiprināšana</h3>
+        <p>Kad veikala produkti ir nolasīti, Jūs redzat kalkulatoru: <b>produktu skaits</b>, <b>pakāpes</b> (× līdz 2000 precēm), <b>bāzes cena 5 €</b>, iespējamā piemaksa un <b>mēneša maksa kopā</b>. Līdz apstiprināšanai katalogs ir kā paraugs <b>aizmiglots</b> (blur). Izvēles:</p>
+        <ul class="plain">
+          <li><span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg> Samaksāt un atvērt datus</span> – mēs novirzām uz drošu maksājumu vārteju (bankas saite vai karte); dati atveras uzreiz.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg> Maksāt ar pārskaitījuma rēķinu</span> – mēs nosūtām rēķinu ar e-pastu; saturs atveras pēc maksājuma saņemšanas.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Izvēlēties kategorijas</span> – samaziniet produktus, lai mēneša maksa būtu mazāka.</li>
+        </ul>
+        <p>Facebook monitoringa apstiprināšana notiek tāpat (1 €/mēn.).</p>
+        <h3>Produktu katalogs</h3>
+        <ul class="plain">
+          <li><b>Meklēšana</b> – ierakstiet produkta nosaukumu, lai filtrētu sarakstu.</li>
+          <li><b>Kategorijas</b> – noklikšķiniet uz kategorijas, lai atvērtu apakškategorijas un produktus.</li>
+          <li><b>Noliktavas atlikums</b> – pie katra produkta <span class="pill ok"><span class="dot"></span>noliktavā</span>, <span class="pill err"><span class="dot"></span>izpārdots</span> vai <span class="pill sec"><span class="dot"></span>nezināms</span>.</li>
+          <li><b>Cena</b> – atlaides gadījumā Jūs redzat parasto cenu pārsvītrotu un atlaides cenu sarkanā krāsā.</li>
+          <li><b>Ārējā saite</b> (bultiņa) aizved pie produkta veikalā.</li>
+          <li><b>Klikšķis uz produkta rindas</b> atver <b>cenas un noliktavas atlikuma vēstures grafiku</b>: pašreizējo cenu un atlaidi, parasto cenu kā pārtrauktu līniju, noliktavas atlikumu laikā kā joslu un leģendu.</li>
+        </ul>
+      </section>
+
+      <!-- 7 -->
+      <section class="doc" id="kategooriad">
+        <h2><span class="num">7</span> Kategoriju izvēle</h2>
+        <p>Poga <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Izvēlēties kategorijas</span> atver visu veikala kategoriju sarakstu. Jo mazāk produktu izvēlaties, jo mazāka ir mēneša maksa.</p>
+        <ol class="steps">
+          <li>Atzīmējiet ar ķeksīti kategorijas, kuras vēlaties novērot. Noder <b>Izvēlēties visu</b>, <b>Atcelt izvēli</b> un <b>meklēšana</b>.</li>
+          <li>Sekojiet apakšā <b>kalkulatoram</b>: izvēlētie produkti → pakāpes (× līdz 2000) → mēneša maksa uzreiz atjaunojas.</li>
+          <li>Nospiediet <span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg> Saglabāt izvēli</span></li>
+        </ol>
+        <p>Izvēli varat vēlāk jebkurā laikā mainīt – mēneša maksa pielāgojas atbilstoši.</p>
+      </section>
+
+      <!-- 8 -->
+      <section class="doc" id="teenused">
+        <h2><span class="num">8</span> Pakalpojumi un mēneša maksa</h2>
+        <p>Izvēlnē <b>Pakalpojumi</b> Jūs redzat visu, par ko maksājat, un varat pasūtīt papildus.</p>
+        <ul class="plain">
+          <li><b>Jūsu mēneša maksa kopā</b> – liels skaitlis augšā. Summa veidojas no visiem aktīvajiem pakalpojumiem. Blakus ir nākamā norēķina datums.</li>
+          <li><b>Samaksāts – gaida aktivizēšanu</b> – pasūtījumi, kuru pirmā maksa ir samaksāta un kurus operators drīz ieslēgs.</li>
+          <li><b>Jūsu pakalpojumi</b> – visi aktīvie pakalpojumi (zaļā krāsā), tostarp konkurentu Facebook un tīmekļa monitorings. <b>Atcelt</b> izbeidz pakalpojumu; konkurentu monitoringu pārvalda zem <b>Pievienot uzņēmumu</b> (poga <b>Pārvaldīt</b>).</li>
+          <li><b>Pasūtīt papildus</b> – pie katra pakalpojuma ir cena €/mēnesī un pirmā maksa. Nospiediet <span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Pasūtīt</span>, apstipriniet logā un samaksājiet pirmo maksu. Īpašiem uzdevumiem ir poga <span class="chip">Pieprasīt piedāvājumu</span>.</li>
+          <li><b>Paketes</b> – pasūta vairākus pakalpojumus uzreiz ar vienu maksājuma plūsmu.</li>
+        </ul>
+        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Kā tiek aprēķināta pirmā maksa</div><p>Pasūtot jaunu pakalpojumu, Jūs uzreiz maksājat <strong>proporcionālo pirmo maksu</strong> – tikai līdz nākamajai norēķina dienai. Pēc tam operators ieslēdz pakalpojumu un turpmāk visi pakalpojumi tiek norēķināti kopā.</p></div>
+      </section>
+
+      <!-- 9 -->
+      <section class="doc" id="maksed">
+        <h2><span class="num">9</span> Kā notiek maksājums</h2>
+        <p>Katrs maksājums sākas ar <strong>apstiprinājuma logu</strong>, kurā ir norādīta summa un par ko maksājat. Jūs vienmēr varat <b>Atcelt</b>.</p>
+        <ul class="plain">
+          <li><b>Maksājot uzreiz</b> mēs novirzām uz drošu maksājumu vārteju – maksājat ar <b>bankas saiti</b> vai <b>karti</b>, un dati/pakalpojums atveras uzreiz pēc maksājuma.</li>
+          <li><b>Ar pārskaitījuma rēķinu</b> – mēs nosūtām rēķinu ar e-pastu. Saturs atveras pilnā apjomā tad, kad maksājums ir saņemts.</li>
+          <li><b>Pirmā maksa</b> vienmēr ir proporcionāla līdz nākamajai norēķina dienai; turpmāk tiek piemērota pilna mēneša maksa.</li>
+          <li><b>Norēķins</b> notiek par visiem pakalpojumiem uzreiz, pēc Jūsu pievienošanās dienas gadadienas.</li>
+        </ul>
+      </section>
+
+      <!-- 10 -->
+      <section class="doc" id="hinnastamine">
+        <h2><span class="num">10</span> Cenu noteikšana</h2>
+        <p>Izvēlnes punkts <b>Cenu noteikšana</b> ir redzams tikai tad, ja Jums ir pasūtīts <strong>cenu pārcenošanas</strong> pakalpojums. Tur Jūs redzat uz konkurenci balstītus cenu ieteikumus savam veikalam.</p>
+        <ul class="plain">
+          <li><b>Ieteikumu tabula</b> – produkts, pašreizējā cena, ieteiktā cena, starpība un iemesls.</li>
+          <li><span class="chip">Ģenerēt no jauna</span> aprēķina ieteikumus no jauna; <span class="chip">Noteikumi</span> un <span class="chip">Vēsture</span> rāda iestatījumus un iepriekšējās izmaiņas.</li>
+          <li>Ja pakalpojums ir <b>aktivizēts</b>, ieteikumu var ar vienu klikšķi ierakstīt savā WooCommerce veikalā; <b>Atstāt tā</b> saglabā cenu un ignorē produktu izvēlēto dienu skaitu, <b>Izlaist</b> izlaiž ieteikumu.</li>
+        </ul>
+        <div class="box warn"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg> Droši</div><p>Cenas izmaiņas ierakstīšanu veikalā Look360 ieslēdz kopā ar Jums. Pēc noklusējuma viss ir <b>sausā palaide</b> (nekas netiek mainīts), līdz vienojamies par tiešraides režīmu.</p></div>
+      </section>
+
+      <!-- 11 -->
+      <section class="doc" id="raportid">
+        <h2><span class="num">11</span> Atskaites</h2>
+        <ul class="plain">
+          <li><b>Ikrīta vēstule</b> – būtiskākās izmaiņas automātiski nonāk Jūsu (un saskaņoto kontaktpersonu) pastkastē.</li>
+          <li><b>Reāllaika brīdinājumi</b> – pats kritiskākais (piem., konkurenta cenas kritums, e-veikala kļūme, noliktavas atlikuma izsīkums) nonāk uzreiz, pārējais apkopojas rīta atskaitē.</li>
+          <li><b>Atskaišu vēsture</b> – darbvirsmā varat atvērt katru iepriekšējo kopsavilkuma atskaiti un redzēt, kas toreiz mainījās.</li>
+        </ul>
+      </section>
+
+      <!-- 12 -->
+      <section class="doc" id="seaded">
+        <h2><span class="num">12</span> Tumšais režīms un telefons</h2>
+        <ul class="plain">
+          <li><b>Tumšs / gaišs režīms</b> – augšējās joslas slēdzis (saule/mēness) maina tēmu. Izvēle tiek saglabāta.</li>
+          <li><b>Telefonā</b> – izvēlne ir paslēpta aiz ☰ pogas augšējā stūrī; saturs pielāgojas ekrāna platumam.</li>
+          <li><b>Izrakstīšanās</b> – pa kreisi apakšā blakus lietotājvārdam esošā pa durvīm ārā ikona.</li>
+        </ul>
+      </section>
+
+      <!-- 13 -->
+      <section class="doc" id="abi">
+        <h2><span class="num">13</span> Palīdzība un kontakti</h2>
+        <p>Jautājuma vai problēmas gadījumā mēs atbildam latviešu valodā – īsts cilvēks, nevis automātiska atbilde.</p>
+        <ul class="plain">
+          <li>E-pasts: <a href="mailto:info@look360.eu">info@look360.eu</a></li>
+          <li>Telefons: <a href="tel:+37253620246">+372 5362 0246</a></li>
+          <li>Biežāk uzdotie jautājumi: <a href="index.html#kkk">sākumlapas BUJ</a></li>
+        </ul>
+        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Īsumā</div><p>Piesakāties → skatieties darbvirsmā zaļo/dzelteno/sarkano → pievienojiet uzņēmumus un pakalpojumus → būtiskās izmaiņas Jums nonāk arī ar vēstuli. Vairāk nekas nav jādara.</p></div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Look360 · Watchdog OÜ · Reģistrācijas kods 17537572 · PVN reģ. nr. EE103000237</span>
+    <span><a href="index.html">Sākumlapa</a> · <a href="index.html#kkk">BUJ</a> · <a href="privaatsus.html">Privātums</a> · <a href="tingimused.html">Noteikumi</a></span>
+  </div>
+</footer>
+
+<script>
+  // Sisukord: too esile parajasti nahtav peatukk.
+  (function(){
+    var links=[].slice.call(document.querySelectorAll('#toc a'));
+    var map={}; links.forEach(function(a){ map[a.getAttribute('href').slice(1)]=a; });
+    var secs=[].slice.call(document.querySelectorAll('section.doc'));
+    if(!('IntersectionObserver' in window)) return;
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){
+        links.forEach(function(a){a.classList.remove('on');});
+        var a=map[e.target.id]; if(a)a.classList.add('on');
+      }});
+    },{rootMargin:'-45% 0px -50% 0px',threshold:0});
+    secs.forEach(function(s){io.observe(s);});
+  })();
+</script>
+<script>window.LANGFILES={"et":"kasutusjuhend.html","en":"kasutusjuhend-en.html","fi":"kasutusjuhend-fi.html","sv":"kasutusjuhend-sv.html","no":"kasutusjuhend-no.html","da":"kasutusjuhend-da.html","lv":"kasutusjuhend-lv.html","lt":"kasutusjuhend-lt.html","pl":"kasutusjuhend-pl.html","uk":"kasutusjuhend-uk.html"};</script>
+<script src="lang.js"></script>
+</body>
+</html>
