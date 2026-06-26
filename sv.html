@@ -563,7 +563,7 @@
     </nav>
     <div class="nav-r">
       <a href="#hinnad" class="btn btn-grad js-order">Gå med från €2</a>
-      <a href="https://expenses-destruct-snowboard.ngrok-free.dev/accounts/login/" class="login-link" style="color:#cbd3da;text-decoration:none;font-weight:600;font-size:14px;display:flex;align-items:center;gap:5px">Logga in <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="https://scan.look360.eu/accounts/login/" class="login-link" style="color:#cbd3da;text-decoration:none;font-weight:600;font-size:14px;display:flex;align-items:center;gap:5px">Logga in <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
     <div class="langsel" id="langsel"></div>
     <button class="burger" id="burger" aria-label="Öppna meny" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -574,7 +574,7 @@
     <a href="#platvorm">Plattform</a>
     <a href="#portfoolio">Portfölj</a>
     <a href="#hinnad">Priser</a>
-    <a href="https://expenses-destruct-snowboard.ngrok-free.dev/accounts/login/">Logga in</a>
+    <a href="https://scan.look360.eu/accounts/login/">Logga in</a>
     <a href="#hinnad" class="btn btn-grad js-order">Gå med från €2 i månaden</a>
   </div>
 </header>
@@ -1000,7 +1000,7 @@
 </section>
 
 <!-- FAQ -->
-<section class="alt" style="border-top:1px solid var(--line)">
+<section class="alt" id="kkk" style="border-top:1px solid var(--line)">
   <div class="wrap">
     <div class="sec-head center reveal">
       <div class="eyebrow"><span class="dot"></span> Vanliga frågor</div>
@@ -1014,6 +1014,10 @@
       <div class="qa"><button>Passar tjänsten även ett litet företag? <span class="ico"></span></button><div class="ans"><p>Ja. Du tar bara de moduler du behöver och betalar bara för dem – passar bra även för en liten butik eller en egenföretagare.</p></div></div>
       <div class="qa"><button>Hur fungerar faktureringen? <span class="ico"></span></button><div class="ans"><p>Du betalar per månad eller per år – med årsbetalning får du 2 månader gratis. Det finns inget långtidsåtagande; du kan avsluta med enkel uppsägning.</p></div></div>
       <div class="qa"><button>Hur snabbt når en avisering mig? <span class="ico"></span></button><div class="ans"><p>Kritiska förändringar – en konkurrents prissänkning, ett driftavbrott i e-handeln, slut i lager – kommer i realtid. Resten samlas i morgonrapporten så att inkorgen inte täpps till.</p></div></div>
+    </div>
+    <div class="reveal" style="text-align:center;margin-top:36px">
+      <p style="color:var(--muted);font-size:15px;margin-bottom:16px">Redan kund? Se vad varje vy och knapp i panelen gör.</p>
+      <a href="kasutusjuhend.html" class="btn btn-out">Se användarguiden <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
   </div>
 </section>
@@ -1050,7 +1054,7 @@
       </div>
       <div class="foot-cols">
         <div class="foot-col"><h5>Tjänster</h5><a href="#teenused">Konkurrentbevakning</a><a href="#teenused">Prisbevakning</a><a href="#teenused">Hälsokontroll av e-handeln</a><a href="#teenused">ERP-integration</a></div>
-        <div class="foot-col"><h5>Företag</h5><a href="#tugi">Tre pelare</a><a href="#platvorm">Plattform</a><a href="#portfoolio">Portfölj</a><a href="#hinnad">Priser</a><a href="privaatsus-sv.html">Integritetspolicy</a><a href="tingimused-sv.html">Användarvillkor</a></div>
+        <div class="foot-col"><h5>Företag</h5><a href="#tugi">Tre pelare</a><a href="#platvorm">Plattform</a><a href="#portfoolio">Portfölj</a><a href="#hinnad">Priser</a><a href="kasutusjuhend.html">Användarguide</a><a href="privaatsus-sv.html">Integritetspolicy</a><a href="tingimused-sv.html">Användarvillkor</a></div>
         <div class="foot-col"><h5>Kontakt</h5><a href="mailto:info@look360.eu">info@look360.eu</a><a href="tel:+37253620246">+372 5362 0246</a><a href="https://www.google.com/maps?q=71003+Viljandi" target="_blank" rel="noopener">71003 Viljandi</a></div>
       </div>
     </div>
@@ -1191,8 +1195,8 @@
 const nav=document.getElementById('nav');
 addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>12),{passive:true});
 
-/* === i18n: keele-stringid (build_i18n.py asendab {"locale": "sv-SE", "fbLine": "{n} konkurrenter på Facebook", "webLineCalc": "{n} e-handlar i pris- + lagerbevakning", "webLineModal": "{n} e-handlar i pris- och lagerbevakning", "perMonth": "/mån", "saveAnnual": "{m} månader gratis – faktureras en gång per år (€{yr}/år)", "chooseOne": "Välj minst en modul", "billYear": "Fakturering: årsavgift €{yr}/år (≈€{eff}/mån, {m} månader gratis)", "billMonth": "Fakturering: månadsavgift €{m}/mån", "mailIntro": "Jag vill teckna mig för Look360-bevakning.", "mailChosen": "Valt:", "mailQuote": "Obs: jag vill även ha skräddarsydd automatisering – be om en offert.", "mailSubject": "Anmälan – Look360", "quotePrice": "på begäran", "hintWeb": "webb +5 €", "hintFb": "FB +1 €", "perMonthSpaced": "/ mån", "hintEmpty": "Lägg till en webbplats eller Facebook-sida för att bevaka det här företaget", "phName": "Konkurrentens namn", "phWeb": "Webbplats (t.ex. konkurrent.com)", "phFb": "Facebook-sida (t.ex. facebook.com/konkurrent)", "remove": "Ta bort", "sumEmpty": "Inget valt ännu", "sumTotal": "Totalt", "sumYearSuffix": "· årsavgift (2 månader gratis)", "perMonthUnit": "€/mån", "twoMonthsFree": "2 månader gratis", "mlCompany": "Företag", "mlContact": "Kontakt", "mlPhone": "Telefon", "mlEmail": "E-post", "mlOwnShop": "Egen butik", "mlWatch": "Att bevaka", "mlPackage": "Paket", "mlBilling": "Fakturering", "unnamed": "(namnlös)", "mlWeb": "webb", "totYear": "årsavgift €{yr}/år (≈€{eff}/mån, 2 månader gratis)", "totMonth": "månadsavgift €{m}/mån", "btnContinuePay": "Gå vidare till betalning →", "btnPay": "Betala", "btnNext": "Nästa →", "btnCreateAccount": "Skapa konto och logga in", "btnCreatingAccount": "Skapar konto…", "errPassMin": "Lösenordet måste vara minst 8 tecken.", "errAcctFail": "Det gick inte att skapa kontot.", "errConnFail": "Anslutningen misslyckades. Försök igen."} keele kaupa) === */
-const T = {"locale": "sv-SE", "fbLine": "{n} konkurrenter på Facebook", "webLineCalc": "{n} e-handlar i pris- + lagerbevakning", "webLineModal": "{n} e-handlar i pris- och lagerbevakning", "perMonth": "/mån", "saveAnnual": "{m} månader gratis – faktureras en gång per år (€{yr}/år)", "chooseOne": "Välj minst en modul", "billYear": "Fakturering: årsavgift €{yr}/år (≈€{eff}/mån, {m} månader gratis)", "billMonth": "Fakturering: månadsavgift €{m}/mån", "mailIntro": "Jag vill teckna mig för Look360-bevakning.", "mailChosen": "Valt:", "mailQuote": "Obs: jag vill även ha skräddarsydd automatisering – be om en offert.", "mailSubject": "Anmälan – Look360", "quotePrice": "på begäran", "hintWeb": "webb +5 €", "hintFb": "FB +1 €", "perMonthSpaced": "/ mån", "hintEmpty": "Lägg till en webbplats eller Facebook-sida för att bevaka det här företaget", "phName": "Konkurrentens namn", "phWeb": "Webbplats (t.ex. konkurrent.com)", "phFb": "Facebook-sida (t.ex. facebook.com/konkurrent)", "remove": "Ta bort", "sumEmpty": "Inget valt ännu", "sumTotal": "Totalt", "sumYearSuffix": "· årsavgift (2 månader gratis)", "perMonthUnit": "€/mån", "twoMonthsFree": "2 månader gratis", "mlCompany": "Företag", "mlContact": "Kontakt", "mlPhone": "Telefon", "mlEmail": "E-post", "mlOwnShop": "Egen butik", "mlWatch": "Att bevaka", "mlPackage": "Paket", "mlBilling": "Fakturering", "unnamed": "(namnlös)", "mlWeb": "webb", "totYear": "årsavgift €{yr}/år (≈€{eff}/mån, 2 månader gratis)", "totMonth": "månadsavgift €{m}/mån", "btnContinuePay": "Gå vidare till betalning →", "btnPay": "Betala", "btnNext": "Nästa →", "btnCreateAccount": "Skapa konto och logga in", "btnCreatingAccount": "Skapar konto…", "errPassMin": "Lösenordet måste vara minst 8 tecken.", "errAcctFail": "Det gick inte att skapa kontot.", "errConnFail": "Anslutningen misslyckades. Försök igen."};
+/* === i18n: keele-stringid (build_i18n.py asendab {"locale": "sv-SE", "fbLine": "{n} konkurrenter på Facebook", "webLineCalc": "{n} e-handlar i pris- + lagerbevakning", "webLineModal": "{n} e-handlar i pris- och lagerbevakning", "perMonth": "/mån", "saveAnnual": "{m} månader gratis – faktureras en gång per år (€{yr}/år)", "chooseOne": "Välj minst en modul", "billYear": "Fakturering: årsavgift €{yr}/år (≈€{eff}/mån, {m} månader gratis)", "billMonth": "Fakturering: månadsavgift €{m}/mån", "mailIntro": "Jag vill teckna mig för Look360-bevakning.", "mailChosen": "Valt:", "mailQuote": "Obs: jag vill även ha skräddarsydd automatisering – be om en offert.", "mailSubject": "Anmälan – Look360", "quotePrice": "på begäran", "hintWeb": "webb +6 €", "hintFb": "FB +2 €", "perMonthSpaced": "/ mån", "hintEmpty": "Lägg till en webbplats eller Facebook-sida för att bevaka det här företaget", "phName": "Konkurrentens namn", "phWeb": "Webbplats (t.ex. konkurrent.com)", "phFb": "Facebook-sida (t.ex. facebook.com/konkurrent)", "remove": "Ta bort", "sumEmpty": "Inget valt ännu", "sumTotal": "Totalt", "sumYearSuffix": "· årsavgift (2 månader gratis)", "perMonthUnit": "€/mån", "twoMonthsFree": "2 månader gratis", "mlCompany": "Företag", "mlContact": "Kontakt", "mlPhone": "Telefon", "mlEmail": "E-post", "mlOwnShop": "Egen butik", "mlWatch": "Att bevaka", "mlPackage": "Paket", "mlBilling": "Fakturering", "unnamed": "(namnlös)", "mlWeb": "webb", "totYear": "årsavgift €{yr}/år (≈€{eff}/mån, 2 månader gratis)", "totMonth": "månadsavgift €{m}/mån", "btnContinuePay": "Gå vidare till betalning →", "btnPay": "Betala", "btnNext": "Nästa →", "btnCreateAccount": "Skapa konto och logga in", "btnCreatingAccount": "Skapar konto…", "errPassMin": "Lösenordet måste vara minst 8 tecken.", "errAcctFail": "Det gick inte att skapa kontot.", "errConnFail": "Anslutningen misslyckades. Försök igen."} keele kaupa) === */
+const T = {"locale": "sv-SE", "fbLine": "{n} konkurrenter på Facebook", "webLineCalc": "{n} e-handlar i pris- + lagerbevakning", "webLineModal": "{n} e-handlar i pris- och lagerbevakning", "perMonth": "/mån", "saveAnnual": "{m} månader gratis – faktureras en gång per år (€{yr}/år)", "chooseOne": "Välj minst en modul", "billYear": "Fakturering: årsavgift €{yr}/år (≈€{eff}/mån, {m} månader gratis)", "billMonth": "Fakturering: månadsavgift €{m}/mån", "mailIntro": "Jag vill teckna mig för Look360-bevakning.", "mailChosen": "Valt:", "mailQuote": "Obs: jag vill även ha skräddarsydd automatisering – be om en offert.", "mailSubject": "Anmälan – Look360", "quotePrice": "på begäran", "hintWeb": "webb +6 €", "hintFb": "FB +2 €", "perMonthSpaced": "/ mån", "hintEmpty": "Lägg till en webbplats eller Facebook-sida för att bevaka det här företaget", "phName": "Konkurrentens namn", "phWeb": "Webbplats (t.ex. konkurrent.com)", "phFb": "Facebook-sida (t.ex. facebook.com/konkurrent)", "remove": "Ta bort", "sumEmpty": "Inget valt ännu", "sumTotal": "Totalt", "sumYearSuffix": "· årsavgift (2 månader gratis)", "perMonthUnit": "€/mån", "twoMonthsFree": "2 månader gratis", "mlCompany": "Företag", "mlContact": "Kontakt", "mlPhone": "Telefon", "mlEmail": "E-post", "mlOwnShop": "Egen butik", "mlWatch": "Att bevaka", "mlPackage": "Paket", "mlBilling": "Fakturering", "unnamed": "(namnlös)", "mlWeb": "webb", "totYear": "årsavgift €{yr}/år (≈€{eff}/mån, 2 månader gratis)", "totMonth": "månadsavgift €{m}/mån", "btnContinuePay": "Gå vidare till betalning →", "btnPay": "Betala", "btnNext": "Nästa →", "btnCreateAccount": "Skapa konto och logga in", "btnCreatingAccount": "Skapar konto…", "errPassMin": "Lösenordet måste vara minst 8 tecken.", "errAcctFail": "Det gick inte att skapa kontot.", "errConnFail": "Anslutningen misslyckades. Försök igen."};
 function fmt(s,o){return String(s).replace(/\{(\w+)\}/g,(_,k)=>o[k]!=null?o[k]:'')}
 
 /* === keelevaheti (lipud) + IP-suunaja (Cloudflare trace) === */
@@ -1378,7 +1382,7 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
     const body=`${T.mailIntro}\n\n${T.mlCompany}: ${document.getElementById('cName').value.trim()}\n${T.mlContact}: ${document.getElementById('cContact').value.trim()}\n${T.mlPhone}: ${document.getElementById('cPhone').value.trim()}\n${T.mlEmail}: ${document.getElementById('cEmail').value.trim()}\n${own?`${T.mlOwnShop}: ${own}\n`:''}\n${T.mlWatch}:\n${comps||'-'}\n\n${T.mlPackage}:\n${lns}\n\n${T.mlBilling}: ${tot}`;
     return `mailto:info@look360.eu?subject=${encodeURIComponent(T.mailSubject)}&body=${encodeURIComponent(body)}`;
   }
-  var ORDER_ENDPOINT='https://expenses-destruct-snowboard.ngrok-free.dev/api/tellimus/';
+  var ORDER_ENDPOINT='https://scan.look360.eu/api/tellimus/';
   // Firma-nime autocomplete (Eesti äriregister) - AINULT eestikeelne sait.
   // Taaskasutatav: nii kliendi enda ettevõtte nimi (#cName) kui konkurentide
   // nimed (.c-name, dünaamilised read - vt addRow + window.L360auto).
@@ -1408,7 +1412,7 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
         if(q===viimaneQ)return;viimaneQ=q;
         if(ctrl)try{ctrl.abort();}catch(e){}
         ctrl=('AbortController'in window)?new AbortController():null;
-        fetch(OTSING+'?q='+encodeURIComponent(q),{mode:'cors',signal:ctrl?ctrl.signal:undefined,headers:{'ngrok-skip-browser-warning':'1'}})
+        fetch(OTSING+'?q='+encodeURIComponent(q),{mode:'cors',signal:ctrl?ctrl.signal:undefined,headers:{}})
           .then(function(r){return r.json();}).then(function(d){if(inp.value.trim()===q)naita(d.tulemused||[],q);})
           .catch(function(){});}
       inp.addEventListener('input',function(){clearTimeout(tmr);tmr=setTimeout(otsi,140);});
@@ -1446,7 +1450,7 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
     // Tagastab true AINULT serveri kinnitusel; ebaõnnestumisel false (mailto-varu).
     try{
       const r=await fetch(ORDER_ENDPOINT,{method:'POST',mode:'cors',
-        headers:{'Content-Type':'application/json','ngrok-skip-browser-warning':'1'},
+        headers:{'Content-Type':'application/json'},
         body:JSON.stringify(buildOrder())});
       return !!(r&&r.ok);
     }catch(e){return false;}
@@ -1532,7 +1536,7 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
       if(pass.length<8){err.textContent=T.errPassMin;err.classList.add('show');return;}
       acctBtn.disabled=true;acctBtn.textContent=T.btnCreatingAccount;
       fetch(LOO_KONTO,{method:'POST',mode:'cors',
-        headers:{'Content-Type':'application/json','ngrok-skip-browser-warning':'1'},
+        headers:{'Content-Type':'application/json'},
         body:JSON.stringify({epost:em,parool:pass,ettevote:nm})})
         .then(function(r){return r.json();})
         .then(function(j){
