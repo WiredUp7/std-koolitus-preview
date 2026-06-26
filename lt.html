@@ -563,7 +563,7 @@
     </nav>
     <div class="nav-r">
       <a href="#hinnad" class="btn btn-grad js-order">Prisijunkite nuo 2 €</a>
-      <a href="https://expenses-destruct-snowboard.ngrok-free.dev/accounts/login/" class="login-link" style="color:#cbd3da;text-decoration:none;font-weight:600;font-size:14px;display:flex;align-items:center;gap:5px">Prisijungti <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="https://scan.look360.eu/accounts/login/" class="login-link" style="color:#cbd3da;text-decoration:none;font-weight:600;font-size:14px;display:flex;align-items:center;gap:5px">Prisijungti <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
     <div class="langsel" id="langsel"></div>
     <button class="burger" id="burger" aria-label="Atidaryti meniu" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -574,7 +574,7 @@
     <a href="#platvorm">Platforma</a>
     <a href="#portfoolio">Portfelis</a>
     <a href="#hinnad">Kainos</a>
-    <a href="https://expenses-destruct-snowboard.ngrok-free.dev/accounts/login/">Prisijungti</a>
+    <a href="https://scan.look360.eu/accounts/login/">Prisijungti</a>
     <a href="#hinnad" class="btn btn-grad js-order">Prisijungimas nuo 2 € mėnesinio mokesčio</a>
   </div>
 </header>
@@ -1000,7 +1000,7 @@
 </section>
 
 <!-- FAQ -->
-<section class="alt" style="border-top:1px solid var(--line)">
+<section class="alt" id="kkk" style="border-top:1px solid var(--line)">
   <div class="wrap">
     <div class="sec-head center reveal">
       <div class="eyebrow"><span class="dot"></span> Dažniausiai užduodami klausimai</div>
@@ -1014,6 +1014,10 @@
       <div class="qa"><button>Ar paslauga tinka ir mažai įmonei? <span class="ico"></span></button><div class="ans"><p>Taip. Pasirenkate tik tuos modulius, kurių jums reikia, ir mokate tik už juos – puikiai tinka ir mažai parduotuvei ar individualiai veiklai.</p></div></div>
       <div class="qa"><button>Kaip vyksta atsiskaitymas? <span class="ico"></span></button><div class="ans"><p>Mokate mėnesiui arba metams – pasirinkę metinį mokestį gaunate 2 mėnesius nemokamai. Jokio ilgalaikio įsipareigojimo, nutraukti galima paprastu išankstiniu pranešimu.</p></div></div>
       <div class="qa"><button>Kaip greitai įspėjimas mane pasiekia? <span class="ico"></span></button><div class="ans"><p>Kritiniai pokyčiai – konkurento kainos kritimas, el. parduotuvės sutrikimas, likučių pasibaigimas – pasiekia realiuoju laiku. Visa kita sutelkiama į kasrytinę ataskaitą, kad pašto dėžutė neužsikimštų.</p></div></div>
+    </div>
+    <div class="reveal" style="text-align:center;margin-top:36px">
+      <p style="color:var(--muted);font-size:15px;margin-bottom:16px">Jau klientas? Pažiūrėk, ką daro kiekvienas skydelio rodinys ir mygtukas.</p>
+      <a href="kasutusjuhend.html" class="btn btn-out">Žiūrėti naudojimo vadovą <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
   </div>
 </section>
@@ -1050,7 +1054,7 @@
       </div>
       <div class="foot-cols">
         <div class="foot-col"><h5>Paslaugos</h5><a href="#teenused">Konkurentų stebėsena</a><a href="#teenused">Kainų stebėsena</a><a href="#teenused">El. parduotuvės būklės patikra</a><a href="#teenused">ERP integracija</a></div>
-        <div class="foot-col"><h5>Įmonė</h5><a href="#tugi">Trys ramsčiai</a><a href="#platvorm">Platforma</a><a href="#portfoolio">Portfelis</a><a href="#hinnad">Kainos</a><a href="privaatsus-lt.html">Privatumo politika</a><a href="tingimused-lt.html">Naudojimo sąlygos</a></div>
+        <div class="foot-col"><h5>Įmonė</h5><a href="#tugi">Trys ramsčiai</a><a href="#platvorm">Platforma</a><a href="#portfoolio">Portfelis</a><a href="#hinnad">Kainos</a><a href="kasutusjuhend.html">Naudojimo vadovas</a><a href="privaatsus-lt.html">Privatumo politika</a><a href="tingimused-lt.html">Naudojimo sąlygos</a></div>
         <div class="foot-col"><h5>Kontaktai</h5><a href="mailto:info@look360.eu">info@look360.eu</a><a href="tel:+37253620246">+372 5362 0246</a><a href="https://www.google.com/maps?q=71003+Viljandi" target="_blank" rel="noopener">71003 Viljandi</a></div>
       </div>
     </div>
@@ -1191,8 +1195,8 @@
 const nav=document.getElementById('nav');
 addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>12),{passive:true});
 
-/* === i18n: keele-stringid (build_i18n.py asendab {"locale": "lt-LT", "fbLine": "{n} konkurentai Facebook", "webLineCalc": "{n} el. parduotuvės kainų ir likučių stebėsenoje", "webLineModal": "{n} el. parduotuvės kainų ir likučių stebėsenoje", "perMonth": "/mėn.", "saveAnnual": "{m} mėn. nemokamai – sąskaita kartą per metus (€{yr}/m.)", "chooseOne": "Pasirinkite bent vieną modulį", "billYear": "Atsiskaitymas: metinis mokestis €{yr}/metus (≈€{eff}/mėn., {m} mėn. nemokamai)", "billMonth": "Atsiskaitymas: mėnesinis mokestis €{m}/mėn.", "mailIntro": "Norėčiau prisijungti prie Look360 stebėsenos.", "mailChosen": "Pasirinkta:", "mailQuote": "Pastaba: taip pat norėčiau individualios automatizacijos – prašau pateikti pasiūlymą.", "mailSubject": "Prisijungimo užklausa – Look360", "quotePrice": "pagal pasiūlymą", "hintWeb": "internetas +5 €", "hintFb": "FB +1 €", "perMonthSpaced": "/ mėn.", "hintEmpty": "Pridėkite svetainę arba Facebook puslapį, kad galėtumėte stebėti šią įmonę", "phName": "Konkurento pavadinimas", "phWeb": "Svetainė (pvz., konkurentas.com)", "phFb": "Facebook puslapis (pvz., facebook.com/konkurentas)", "remove": "Pašalinti", "sumEmpty": "Dar nieko nepasirinkta", "sumTotal": "Iš viso", "sumYearSuffix": "· metinis mokestis (2 mėn. nemokamai)", "perMonthUnit": "€/mėn.", "twoMonthsFree": "2 mėn. nemokamai", "mlCompany": "Įmonė", "mlContact": "Kontaktas", "mlPhone": "Telefonas", "mlEmail": "El. paštas", "mlOwnShop": "Sava parduotuvė", "mlWatch": "Stebėti", "mlPackage": "Paketas", "mlBilling": "Atsiskaitymas", "unnamed": "(be pavadinimo)", "mlWeb": "internetas", "totYear": "metinis mokestis €{yr}/metus (≈€{eff}/mėn., 2 mėn. nemokamai)", "totMonth": "mėnesinis mokestis €{m}/mėn.", "btnContinuePay": "Tęsti į apmokėjimą →", "btnPay": "Mokėti", "btnNext": "Toliau →", "btnCreateAccount": "Sukurti paskyrą ir prisijungti", "btnCreatingAccount": "Kuriama paskyra…", "errPassMin": "Slaptažodį turi sudaryti bent 8 simboliai.", "errAcctFail": "Nepavyko sukurti paskyros.", "errConnFail": "Ryšys nepavyko. Bandykite dar kartą."} keele kaupa) === */
-const T = {"locale": "lt-LT", "fbLine": "{n} konkurentai Facebook", "webLineCalc": "{n} el. parduotuvės kainų ir likučių stebėsenoje", "webLineModal": "{n} el. parduotuvės kainų ir likučių stebėsenoje", "perMonth": "/mėn.", "saveAnnual": "{m} mėn. nemokamai – sąskaita kartą per metus (€{yr}/m.)", "chooseOne": "Pasirinkite bent vieną modulį", "billYear": "Atsiskaitymas: metinis mokestis €{yr}/metus (≈€{eff}/mėn., {m} mėn. nemokamai)", "billMonth": "Atsiskaitymas: mėnesinis mokestis €{m}/mėn.", "mailIntro": "Norėčiau prisijungti prie Look360 stebėsenos.", "mailChosen": "Pasirinkta:", "mailQuote": "Pastaba: taip pat norėčiau individualios automatizacijos – prašau pateikti pasiūlymą.", "mailSubject": "Prisijungimo užklausa – Look360", "quotePrice": "pagal pasiūlymą", "hintWeb": "internetas +5 €", "hintFb": "FB +1 €", "perMonthSpaced": "/ mėn.", "hintEmpty": "Pridėkite svetainę arba Facebook puslapį, kad galėtumėte stebėti šią įmonę", "phName": "Konkurento pavadinimas", "phWeb": "Svetainė (pvz., konkurentas.com)", "phFb": "Facebook puslapis (pvz., facebook.com/konkurentas)", "remove": "Pašalinti", "sumEmpty": "Dar nieko nepasirinkta", "sumTotal": "Iš viso", "sumYearSuffix": "· metinis mokestis (2 mėn. nemokamai)", "perMonthUnit": "€/mėn.", "twoMonthsFree": "2 mėn. nemokamai", "mlCompany": "Įmonė", "mlContact": "Kontaktas", "mlPhone": "Telefonas", "mlEmail": "El. paštas", "mlOwnShop": "Sava parduotuvė", "mlWatch": "Stebėti", "mlPackage": "Paketas", "mlBilling": "Atsiskaitymas", "unnamed": "(be pavadinimo)", "mlWeb": "internetas", "totYear": "metinis mokestis €{yr}/metus (≈€{eff}/mėn., 2 mėn. nemokamai)", "totMonth": "mėnesinis mokestis €{m}/mėn.", "btnContinuePay": "Tęsti į apmokėjimą →", "btnPay": "Mokėti", "btnNext": "Toliau →", "btnCreateAccount": "Sukurti paskyrą ir prisijungti", "btnCreatingAccount": "Kuriama paskyra…", "errPassMin": "Slaptažodį turi sudaryti bent 8 simboliai.", "errAcctFail": "Nepavyko sukurti paskyros.", "errConnFail": "Ryšys nepavyko. Bandykite dar kartą."};
+/* === i18n: keele-stringid (build_i18n.py asendab {"locale": "lt-LT", "fbLine": "{n} konkurentai Facebook", "webLineCalc": "{n} el. parduotuvės kainų ir likučių stebėsenoje", "webLineModal": "{n} el. parduotuvės kainų ir likučių stebėsenoje", "perMonth": "/mėn.", "saveAnnual": "{m} mėn. nemokamai – sąskaita kartą per metus (€{yr}/m.)", "chooseOne": "Pasirinkite bent vieną modulį", "billYear": "Atsiskaitymas: metinis mokestis €{yr}/metus (≈€{eff}/mėn., {m} mėn. nemokamai)", "billMonth": "Atsiskaitymas: mėnesinis mokestis €{m}/mėn.", "mailIntro": "Norėčiau prisijungti prie Look360 stebėsenos.", "mailChosen": "Pasirinkta:", "mailQuote": "Pastaba: taip pat norėčiau individualios automatizacijos – prašau pateikti pasiūlymą.", "mailSubject": "Prisijungimo užklausa – Look360", "quotePrice": "pagal pasiūlymą", "hintWeb": "internetas +6 €", "hintFb": "FB +2 €", "perMonthSpaced": "/ mėn.", "hintEmpty": "Pridėkite svetainę arba Facebook puslapį, kad galėtumėte stebėti šią įmonę", "phName": "Konkurento pavadinimas", "phWeb": "Svetainė (pvz., konkurentas.com)", "phFb": "Facebook puslapis (pvz., facebook.com/konkurentas)", "remove": "Pašalinti", "sumEmpty": "Dar nieko nepasirinkta", "sumTotal": "Iš viso", "sumYearSuffix": "· metinis mokestis (2 mėn. nemokamai)", "perMonthUnit": "€/mėn.", "twoMonthsFree": "2 mėn. nemokamai", "mlCompany": "Įmonė", "mlContact": "Kontaktas", "mlPhone": "Telefonas", "mlEmail": "El. paštas", "mlOwnShop": "Sava parduotuvė", "mlWatch": "Stebėti", "mlPackage": "Paketas", "mlBilling": "Atsiskaitymas", "unnamed": "(be pavadinimo)", "mlWeb": "internetas", "totYear": "metinis mokestis €{yr}/metus (≈€{eff}/mėn., 2 mėn. nemokamai)", "totMonth": "mėnesinis mokestis €{m}/mėn.", "btnContinuePay": "Tęsti į apmokėjimą →", "btnPay": "Mokėti", "btnNext": "Toliau →", "btnCreateAccount": "Sukurti paskyrą ir prisijungti", "btnCreatingAccount": "Kuriama paskyra…", "errPassMin": "Slaptažodį turi sudaryti bent 8 simboliai.", "errAcctFail": "Nepavyko sukurti paskyros.", "errConnFail": "Ryšys nepavyko. Bandykite dar kartą."} keele kaupa) === */
+const T = {"locale": "lt-LT", "fbLine": "{n} konkurentai Facebook", "webLineCalc": "{n} el. parduotuvės kainų ir likučių stebėsenoje", "webLineModal": "{n} el. parduotuvės kainų ir likučių stebėsenoje", "perMonth": "/mėn.", "saveAnnual": "{m} mėn. nemokamai – sąskaita kartą per metus (€{yr}/m.)", "chooseOne": "Pasirinkite bent vieną modulį", "billYear": "Atsiskaitymas: metinis mokestis €{yr}/metus (≈€{eff}/mėn., {m} mėn. nemokamai)", "billMonth": "Atsiskaitymas: mėnesinis mokestis €{m}/mėn.", "mailIntro": "Norėčiau prisijungti prie Look360 stebėsenos.", "mailChosen": "Pasirinkta:", "mailQuote": "Pastaba: taip pat norėčiau individualios automatizacijos – prašau pateikti pasiūlymą.", "mailSubject": "Prisijungimo užklausa – Look360", "quotePrice": "pagal pasiūlymą", "hintWeb": "internetas +6 €", "hintFb": "FB +2 €", "perMonthSpaced": "/ mėn.", "hintEmpty": "Pridėkite svetainę arba Facebook puslapį, kad galėtumėte stebėti šią įmonę", "phName": "Konkurento pavadinimas", "phWeb": "Svetainė (pvz., konkurentas.com)", "phFb": "Facebook puslapis (pvz., facebook.com/konkurentas)", "remove": "Pašalinti", "sumEmpty": "Dar nieko nepasirinkta", "sumTotal": "Iš viso", "sumYearSuffix": "· metinis mokestis (2 mėn. nemokamai)", "perMonthUnit": "€/mėn.", "twoMonthsFree": "2 mėn. nemokamai", "mlCompany": "Įmonė", "mlContact": "Kontaktas", "mlPhone": "Telefonas", "mlEmail": "El. paštas", "mlOwnShop": "Sava parduotuvė", "mlWatch": "Stebėti", "mlPackage": "Paketas", "mlBilling": "Atsiskaitymas", "unnamed": "(be pavadinimo)", "mlWeb": "internetas", "totYear": "metinis mokestis €{yr}/metus (≈€{eff}/mėn., 2 mėn. nemokamai)", "totMonth": "mėnesinis mokestis €{m}/mėn.", "btnContinuePay": "Tęsti į apmokėjimą →", "btnPay": "Mokėti", "btnNext": "Toliau →", "btnCreateAccount": "Sukurti paskyrą ir prisijungti", "btnCreatingAccount": "Kuriama paskyra…", "errPassMin": "Slaptažodį turi sudaryti bent 8 simboliai.", "errAcctFail": "Nepavyko sukurti paskyros.", "errConnFail": "Ryšys nepavyko. Bandykite dar kartą."};
 function fmt(s,o){return String(s).replace(/\{(\w+)\}/g,(_,k)=>o[k]!=null?o[k]:'')}
 
 /* === keelevaheti (lipud) + IP-suunaja (Cloudflare trace) === */
@@ -1378,7 +1382,7 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
     const body=`${T.mailIntro}\n\n${T.mlCompany}: ${document.getElementById('cName').value.trim()}\n${T.mlContact}: ${document.getElementById('cContact').value.trim()}\n${T.mlPhone}: ${document.getElementById('cPhone').value.trim()}\n${T.mlEmail}: ${document.getElementById('cEmail').value.trim()}\n${own?`${T.mlOwnShop}: ${own}\n`:''}\n${T.mlWatch}:\n${comps||'-'}\n\n${T.mlPackage}:\n${lns}\n\n${T.mlBilling}: ${tot}`;
     return `mailto:info@look360.eu?subject=${encodeURIComponent(T.mailSubject)}&body=${encodeURIComponent(body)}`;
   }
-  var ORDER_ENDPOINT='https://expenses-destruct-snowboard.ngrok-free.dev/api/tellimus/';
+  var ORDER_ENDPOINT='https://scan.look360.eu/api/tellimus/';
   // Firma-nime autocomplete (Eesti äriregister) - AINULT eestikeelne sait.
   // Taaskasutatav: nii kliendi enda ettevõtte nimi (#cName) kui konkurentide
   // nimed (.c-name, dünaamilised read - vt addRow + window.L360auto).
@@ -1408,7 +1412,7 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
         if(q===viimaneQ)return;viimaneQ=q;
         if(ctrl)try{ctrl.abort();}catch(e){}
         ctrl=('AbortController'in window)?new AbortController():null;
-        fetch(OTSING+'?q='+encodeURIComponent(q),{mode:'cors',signal:ctrl?ctrl.signal:undefined,headers:{'ngrok-skip-browser-warning':'1'}})
+        fetch(OTSING+'?q='+encodeURIComponent(q),{mode:'cors',signal:ctrl?ctrl.signal:undefined,headers:{}})
           .then(function(r){return r.json();}).then(function(d){if(inp.value.trim()===q)naita(d.tulemused||[],q);})
           .catch(function(){});}
       inp.addEventListener('input',function(){clearTimeout(tmr);tmr=setTimeout(otsi,140);});
@@ -1446,7 +1450,7 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
     // Tagastab true AINULT serveri kinnitusel; ebaõnnestumisel false (mailto-varu).
     try{
       const r=await fetch(ORDER_ENDPOINT,{method:'POST',mode:'cors',
-        headers:{'Content-Type':'application/json','ngrok-skip-browser-warning':'1'},
+        headers:{'Content-Type':'application/json'},
         body:JSON.stringify(buildOrder())});
       return !!(r&&r.ok);
     }catch(e){return false;}
@@ -1532,7 +1536,7 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
       if(pass.length<8){err.textContent=T.errPassMin;err.classList.add('show');return;}
       acctBtn.disabled=true;acctBtn.textContent=T.btnCreatingAccount;
       fetch(LOO_KONTO,{method:'POST',mode:'cors',
-        headers:{'Content-Type':'application/json','ngrok-skip-browser-warning':'1'},
+        headers:{'Content-Type':'application/json'},
         body:JSON.stringify({epost:em,parool:pass,ettevote:nm})})
         .then(function(r){return r.json();})
         .then(function(j){
