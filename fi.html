@@ -563,7 +563,7 @@
     </nav>
     <div class="nav-r">
       <a href="#hinnad" class="btn btn-grad js-order">Liity alkaen 2 €</a>
-      <a href="https://expenses-destruct-snowboard.ngrok-free.dev/accounts/login/" class="login-link" style="color:#cbd3da;text-decoration:none;font-weight:600;font-size:14px;display:flex;align-items:center;gap:5px">Kirjaudu sisään <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="https://scan.look360.eu/accounts/login/" class="login-link" style="color:#cbd3da;text-decoration:none;font-weight:600;font-size:14px;display:flex;align-items:center;gap:5px">Kirjaudu sisään <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
     <div class="langsel" id="langsel"></div>
     <button class="burger" id="burger" aria-label="Avaa valikko" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -574,7 +574,7 @@
     <a href="#platvorm">Alusta</a>
     <a href="#portfoolio">Portfolio</a>
     <a href="#hinnad">Hinnat</a>
-    <a href="https://expenses-destruct-snowboard.ngrok-free.dev/accounts/login/">Kirjaudu sisään</a>
+    <a href="https://scan.look360.eu/accounts/login/">Kirjaudu sisään</a>
     <a href="#hinnad" class="btn btn-grad js-order">Liity alkaen 2 € kuukaudessa</a>
   </div>
 </header>
@@ -1000,7 +1000,7 @@
 </section>
 
 <!-- FAQ -->
-<section class="alt" style="border-top:1px solid var(--line)">
+<section class="alt" id="kkk" style="border-top:1px solid var(--line)">
   <div class="wrap">
     <div class="sec-head center reveal">
       <div class="eyebrow"><span class="dot"></span> Usein kysytyt kysymykset</div>
@@ -1014,6 +1014,10 @@
       <div class="qa"><button>Sopiiko palvelu myös pienyritykselle? <span class="ico"></span></button><div class="ans"><p>Kyllä. Otat vain ne moduulit, joita tarvitset, ja maksat vain niistä – sopii hyvin myös pienelle kaupalle tai yksinyrittäjälle.</p></div></div>
       <div class="qa"><button>Miten laskutus toimii? <span class="ico"></span></button><div class="ans"><p>Maksat kuukausittain tai vuosittain – vuosimaksulla saat 2 kuukautta ilmaiseksi. Pitkäaikaista sitoumusta ei ole, lopettaminen onnistuu yksinkertaisella ennakkoilmoituksella.</p></div></div>
       <div class="qa"><button>Kuinka nopeasti hälytys tavoittaa minut? <span class="ico"></span></button><div class="ans"><p>Kriittiset muutokset – kilpailijan hinnanlasku, verkkokaupan häiriö, varaston loppuminen – saapuvat reaaliajassa. Loput kootaan joka-aamuiseen raporttiin, jotta postilaatikko ei tukkeudu.</p></div></div>
+    </div>
+    <div class="reveal" style="text-align:center;margin-top:36px">
+      <p style="color:var(--muted);font-size:15px;margin-bottom:16px">Jo asiakas? Katso, mitä jokainen näkymä ja painike hallintapaneelissa tekee.</p>
+      <a href="kasutusjuhend.html" class="btn btn-out">Katso käyttöopas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
   </div>
 </section>
@@ -1050,7 +1054,7 @@
       </div>
       <div class="foot-cols">
         <div class="foot-col"><h5>Palvelut</h5><a href="#teenused">Kilpailijaseuranta</a><a href="#teenused">Hintaseuranta</a><a href="#teenused">Verkkokaupan kuntotarkastus</a><a href="#teenused">ERP-integraatio</a></div>
-        <div class="foot-col"><h5>Yritys</h5><a href="#tugi">Kolme pilaria</a><a href="#platvorm">Alusta</a><a href="#portfoolio">Portfolio</a><a href="#hinnad">Hinnat</a><a href="privaatsus-fi.html">Tietosuojakäytäntö</a><a href="tingimused-fi.html">Käyttöehdot</a></div>
+        <div class="foot-col"><h5>Yritys</h5><a href="#tugi">Kolme pilaria</a><a href="#platvorm">Alusta</a><a href="#portfoolio">Portfolio</a><a href="#hinnad">Hinnat</a><a href="kasutusjuhend.html">Käyttöopas</a><a href="privaatsus-fi.html">Tietosuojakäytäntö</a><a href="tingimused-fi.html">Käyttöehdot</a></div>
         <div class="foot-col"><h5>Yhteystiedot</h5><a href="mailto:info@look360.eu">info@look360.eu</a><a href="tel:+37253620246">+372 5362 0246</a><a href="https://www.google.com/maps?q=71003+Viljandi" target="_blank" rel="noopener">71003 Viljandi</a></div>
       </div>
     </div>
@@ -1191,8 +1195,8 @@
 const nav=document.getElementById('nav');
 addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>12),{passive:true});
 
-/* === i18n: keele-stringid (build_i18n.py asendab {"locale": "fi-FI", "fbLine": "{n} kilpailijaa Facebookissa", "webLineCalc": "{n} verkkokauppaa hinta- ja varastoseurannassa", "webLineModal": "{n} verkkokauppaa hinta- ja varastoseurannassa", "perMonth": "/kk", "saveAnnual": "{m} kuukautta ilmaiseksi – laskutus kerran vuodessa (€{yr}/v)", "chooseOne": "Valitse vähintään yksi moduuli", "billYear": "Laskutus: vuosimaksu €{yr}/vuosi (≈€{eff}/kk, {m} kuukautta ilmaiseksi)", "billMonth": "Laskutus: kuukausimaksu €{m}/kk", "mailIntro": "Haluan liittyä Look360-seurantaan.", "mailChosen": "Valittu:", "mailQuote": "Huom: haluan myös räätälöityä automaatiota – pyydän tarjousta.", "mailSubject": "Liittymispyyntö – Look360", "quotePrice": "tarjouksesta", "hintWeb": "verkko +5 €", "hintFb": "FB +1 €", "perMonthSpaced": "/ kk", "hintEmpty": "Lisää verkkosivu tai Facebook-sivu seurataksesi tätä yritystä", "phName": "Kilpailijan nimi", "phWeb": "Verkkosivu (esim. kilpailija.com)", "phFb": "Facebook-sivu (esim. facebook.com/kilpailija)", "remove": "Poista", "sumEmpty": "Mitään ei ole vielä valittu", "sumTotal": "Yhteensä", "sumYearSuffix": "· vuosimaksu (2 kuukautta ilmaiseksi)", "perMonthUnit": "€/kk", "twoMonthsFree": "2 kuukautta ilmaiseksi", "mlCompany": "Yritys", "mlContact": "Yhteyshenkilö", "mlPhone": "Puhelin", "mlEmail": "Sähköposti", "mlOwnShop": "Oma kauppa", "mlWatch": "Seurattavat", "mlPackage": "Paketti", "mlBilling": "Laskutus", "unnamed": "(nimetön)", "mlWeb": "verkko", "totYear": "vuosimaksu €{yr}/vuosi (≈€{eff}/kk, 2 kuukautta ilmaiseksi)", "totMonth": "kuukausimaksu €{m}/kk", "btnContinuePay": "Jatka maksamaan →", "btnPay": "Maksa", "btnNext": "Eteenpäin →", "btnCreateAccount": "Luo tili ja kirjaudu sisään", "btnCreatingAccount": "Luodaan tiliä…", "errPassMin": "Salasanan on oltava vähintään 8 merkkiä.", "errAcctFail": "Tilin luonti epäonnistui.", "errConnFail": "Yhteys epäonnistui. Yritä uudelleen."} keele kaupa) === */
-const T = {"locale": "fi-FI", "fbLine": "{n} kilpailijaa Facebookissa", "webLineCalc": "{n} verkkokauppaa hinta- ja varastoseurannassa", "webLineModal": "{n} verkkokauppaa hinta- ja varastoseurannassa", "perMonth": "/kk", "saveAnnual": "{m} kuukautta ilmaiseksi – laskutus kerran vuodessa (€{yr}/v)", "chooseOne": "Valitse vähintään yksi moduuli", "billYear": "Laskutus: vuosimaksu €{yr}/vuosi (≈€{eff}/kk, {m} kuukautta ilmaiseksi)", "billMonth": "Laskutus: kuukausimaksu €{m}/kk", "mailIntro": "Haluan liittyä Look360-seurantaan.", "mailChosen": "Valittu:", "mailQuote": "Huom: haluan myös räätälöityä automaatiota – pyydän tarjousta.", "mailSubject": "Liittymispyyntö – Look360", "quotePrice": "tarjouksesta", "hintWeb": "verkko +5 €", "hintFb": "FB +1 €", "perMonthSpaced": "/ kk", "hintEmpty": "Lisää verkkosivu tai Facebook-sivu seurataksesi tätä yritystä", "phName": "Kilpailijan nimi", "phWeb": "Verkkosivu (esim. kilpailija.com)", "phFb": "Facebook-sivu (esim. facebook.com/kilpailija)", "remove": "Poista", "sumEmpty": "Mitään ei ole vielä valittu", "sumTotal": "Yhteensä", "sumYearSuffix": "· vuosimaksu (2 kuukautta ilmaiseksi)", "perMonthUnit": "€/kk", "twoMonthsFree": "2 kuukautta ilmaiseksi", "mlCompany": "Yritys", "mlContact": "Yhteyshenkilö", "mlPhone": "Puhelin", "mlEmail": "Sähköposti", "mlOwnShop": "Oma kauppa", "mlWatch": "Seurattavat", "mlPackage": "Paketti", "mlBilling": "Laskutus", "unnamed": "(nimetön)", "mlWeb": "verkko", "totYear": "vuosimaksu €{yr}/vuosi (≈€{eff}/kk, 2 kuukautta ilmaiseksi)", "totMonth": "kuukausimaksu €{m}/kk", "btnContinuePay": "Jatka maksamaan →", "btnPay": "Maksa", "btnNext": "Eteenpäin →", "btnCreateAccount": "Luo tili ja kirjaudu sisään", "btnCreatingAccount": "Luodaan tiliä…", "errPassMin": "Salasanan on oltava vähintään 8 merkkiä.", "errAcctFail": "Tilin luonti epäonnistui.", "errConnFail": "Yhteys epäonnistui. Yritä uudelleen."};
+/* === i18n: keele-stringid (build_i18n.py asendab {"locale": "fi-FI", "fbLine": "{n} kilpailijaa Facebookissa", "webLineCalc": "{n} verkkokauppaa hinta- ja varastoseurannassa", "webLineModal": "{n} verkkokauppaa hinta- ja varastoseurannassa", "perMonth": "/kk", "saveAnnual": "{m} kuukautta ilmaiseksi – laskutus kerran vuodessa (€{yr}/v)", "chooseOne": "Valitse vähintään yksi moduuli", "billYear": "Laskutus: vuosimaksu €{yr}/vuosi (≈€{eff}/kk, {m} kuukautta ilmaiseksi)", "billMonth": "Laskutus: kuukausimaksu €{m}/kk", "mailIntro": "Haluan liittyä Look360-seurantaan.", "mailChosen": "Valittu:", "mailQuote": "Huom: haluan myös räätälöityä automaatiota – pyydän tarjousta.", "mailSubject": "Liittymispyyntö – Look360", "quotePrice": "tarjouksesta", "hintWeb": "verkko +6 €", "hintFb": "FB +2 €", "perMonthSpaced": "/ kk", "hintEmpty": "Lisää verkkosivu tai Facebook-sivu seurataksesi tätä yritystä", "phName": "Kilpailijan nimi", "phWeb": "Verkkosivu (esim. kilpailija.com)", "phFb": "Facebook-sivu (esim. facebook.com/kilpailija)", "remove": "Poista", "sumEmpty": "Mitään ei ole vielä valittu", "sumTotal": "Yhteensä", "sumYearSuffix": "· vuosimaksu (2 kuukautta ilmaiseksi)", "perMonthUnit": "€/kk", "twoMonthsFree": "2 kuukautta ilmaiseksi", "mlCompany": "Yritys", "mlContact": "Yhteyshenkilö", "mlPhone": "Puhelin", "mlEmail": "Sähköposti", "mlOwnShop": "Oma kauppa", "mlWatch": "Seurattavat", "mlPackage": "Paketti", "mlBilling": "Laskutus", "unnamed": "(nimetön)", "mlWeb": "verkko", "totYear": "vuosimaksu €{yr}/vuosi (≈€{eff}/kk, 2 kuukautta ilmaiseksi)", "totMonth": "kuukausimaksu €{m}/kk", "btnContinuePay": "Jatka maksamaan →", "btnPay": "Maksa", "btnNext": "Eteenpäin →", "btnCreateAccount": "Luo tili ja kirjaudu sisään", "btnCreatingAccount": "Luodaan tiliä…", "errPassMin": "Salasanan on oltava vähintään 8 merkkiä.", "errAcctFail": "Tilin luonti epäonnistui.", "errConnFail": "Yhteys epäonnistui. Yritä uudelleen."} keele kaupa) === */
+const T = {"locale": "fi-FI", "fbLine": "{n} kilpailijaa Facebookissa", "webLineCalc": "{n} verkkokauppaa hinta- ja varastoseurannassa", "webLineModal": "{n} verkkokauppaa hinta- ja varastoseurannassa", "perMonth": "/kk", "saveAnnual": "{m} kuukautta ilmaiseksi – laskutus kerran vuodessa (€{yr}/v)", "chooseOne": "Valitse vähintään yksi moduuli", "billYear": "Laskutus: vuosimaksu €{yr}/vuosi (≈€{eff}/kk, {m} kuukautta ilmaiseksi)", "billMonth": "Laskutus: kuukausimaksu €{m}/kk", "mailIntro": "Haluan liittyä Look360-seurantaan.", "mailChosen": "Valittu:", "mailQuote": "Huom: haluan myös räätälöityä automaatiota – pyydän tarjousta.", "mailSubject": "Liittymispyyntö – Look360", "quotePrice": "tarjouksesta", "hintWeb": "verkko +6 €", "hintFb": "FB +2 €", "perMonthSpaced": "/ kk", "hintEmpty": "Lisää verkkosivu tai Facebook-sivu seurataksesi tätä yritystä", "phName": "Kilpailijan nimi", "phWeb": "Verkkosivu (esim. kilpailija.com)", "phFb": "Facebook-sivu (esim. facebook.com/kilpailija)", "remove": "Poista", "sumEmpty": "Mitään ei ole vielä valittu", "sumTotal": "Yhteensä", "sumYearSuffix": "· vuosimaksu (2 kuukautta ilmaiseksi)", "perMonthUnit": "€/kk", "twoMonthsFree": "2 kuukautta ilmaiseksi", "mlCompany": "Yritys", "mlContact": "Yhteyshenkilö", "mlPhone": "Puhelin", "mlEmail": "Sähköposti", "mlOwnShop": "Oma kauppa", "mlWatch": "Seurattavat", "mlPackage": "Paketti", "mlBilling": "Laskutus", "unnamed": "(nimetön)", "mlWeb": "verkko", "totYear": "vuosimaksu €{yr}/vuosi (≈€{eff}/kk, 2 kuukautta ilmaiseksi)", "totMonth": "kuukausimaksu €{m}/kk", "btnContinuePay": "Jatka maksamaan →", "btnPay": "Maksa", "btnNext": "Eteenpäin →", "btnCreateAccount": "Luo tili ja kirjaudu sisään", "btnCreatingAccount": "Luodaan tiliä…", "errPassMin": "Salasanan on oltava vähintään 8 merkkiä.", "errAcctFail": "Tilin luonti epäonnistui.", "errConnFail": "Yhteys epäonnistui. Yritä uudelleen."};
 function fmt(s,o){return String(s).replace(/\{(\w+)\}/g,(_,k)=>o[k]!=null?o[k]:'')}
 
 /* === keelevaheti (lipud) + IP-suunaja (Cloudflare trace) === */
@@ -1378,7 +1382,7 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
     const body=`${T.mailIntro}\n\n${T.mlCompany}: ${document.getElementById('cName').value.trim()}\n${T.mlContact}: ${document.getElementById('cContact').value.trim()}\n${T.mlPhone}: ${document.getElementById('cPhone').value.trim()}\n${T.mlEmail}: ${document.getElementById('cEmail').value.trim()}\n${own?`${T.mlOwnShop}: ${own}\n`:''}\n${T.mlWatch}:\n${comps||'-'}\n\n${T.mlPackage}:\n${lns}\n\n${T.mlBilling}: ${tot}`;
     return `mailto:info@look360.eu?subject=${encodeURIComponent(T.mailSubject)}&body=${encodeURIComponent(body)}`;
   }
-  var ORDER_ENDPOINT='https://expenses-destruct-snowboard.ngrok-free.dev/api/tellimus/';
+  var ORDER_ENDPOINT='https://scan.look360.eu/api/tellimus/';
   // Firma-nime autocomplete (Eesti äriregister) - AINULT eestikeelne sait.
   // Taaskasutatav: nii kliendi enda ettevõtte nimi (#cName) kui konkurentide
   // nimed (.c-name, dünaamilised read - vt addRow + window.L360auto).
@@ -1408,7 +1412,7 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
         if(q===viimaneQ)return;viimaneQ=q;
         if(ctrl)try{ctrl.abort();}catch(e){}
         ctrl=('AbortController'in window)?new AbortController():null;
-        fetch(OTSING+'?q='+encodeURIComponent(q),{mode:'cors',signal:ctrl?ctrl.signal:undefined,headers:{'ngrok-skip-browser-warning':'1'}})
+        fetch(OTSING+'?q='+encodeURIComponent(q),{mode:'cors',signal:ctrl?ctrl.signal:undefined,headers:{}})
           .then(function(r){return r.json();}).then(function(d){if(inp.value.trim()===q)naita(d.tulemused||[],q);})
           .catch(function(){});}
       inp.addEventListener('input',function(){clearTimeout(tmr);tmr=setTimeout(otsi,140);});
@@ -1446,7 +1450,7 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
     // Tagastab true AINULT serveri kinnitusel; ebaõnnestumisel false (mailto-varu).
     try{
       const r=await fetch(ORDER_ENDPOINT,{method:'POST',mode:'cors',
-        headers:{'Content-Type':'application/json','ngrok-skip-browser-warning':'1'},
+        headers:{'Content-Type':'application/json'},
         body:JSON.stringify(buildOrder())});
       return !!(r&&r.ok);
     }catch(e){return false;}
@@ -1532,7 +1536,7 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
       if(pass.length<8){err.textContent=T.errPassMin;err.classList.add('show');return;}
       acctBtn.disabled=true;acctBtn.textContent=T.btnCreatingAccount;
       fetch(LOO_KONTO,{method:'POST',mode:'cors',
-        headers:{'Content-Type':'application/json','ngrok-skip-browser-warning':'1'},
+        headers:{'Content-Type':'application/json'},
         body:JSON.stringify({epost:em,parool:pass,ettevote:nm})})
         .then(function(r){return r.json();})
         .then(function(j){
