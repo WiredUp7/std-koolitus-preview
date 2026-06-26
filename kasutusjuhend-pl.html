@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<!-- Look360 kliendi kasutusjuhend. Kaesitsi hooldatav, eestikeelne (mitte build_i18n.py kaudu). -->
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Instrukcja obsługi – panel monitoringu Look360</title>
+<meta name="description" content="Instrukcja obsługi panelu monitoringu Look360 dla klienta: logowanie, pulpit, dodawanie firm, katalog produktów, usługi, płatności i raporty – krok po kroku, który przycisk co robi.">
+<meta name="robots" content="index,follow">
+<link rel="alternate" hreflang="et" href="https://wiredup7.github.io/std-koolitus-preview/kasutusjuhend.html">
+<link rel="alternate" hreflang="en" href="https://wiredup7.github.io/std-koolitus-preview/kasutusjuhend-en.html">
+<link rel="alternate" hreflang="fi" href="https://wiredup7.github.io/std-koolitus-preview/kasutusjuhend-fi.html">
+<link rel="alternate" hreflang="sv" href="https://wiredup7.github.io/std-koolitus-preview/kasutusjuhend-sv.html">
+<link rel="alternate" hreflang="no" href="https://wiredup7.github.io/std-koolitus-preview/kasutusjuhend-no.html">
+<link rel="alternate" hreflang="da" href="https://wiredup7.github.io/std-koolitus-preview/kasutusjuhend-da.html">
+<link rel="alternate" hreflang="lv" href="https://wiredup7.github.io/std-koolitus-preview/kasutusjuhend-lv.html">
+<link rel="alternate" hreflang="lt" href="https://wiredup7.github.io/std-koolitus-preview/kasutusjuhend-lt.html">
+<link rel="alternate" hreflang="pl" href="https://wiredup7.github.io/std-koolitus-preview/kasutusjuhend-pl.html">
+<link rel="alternate" hreflang="uk" href="https://wiredup7.github.io/std-koolitus-preview/kasutusjuhend-uk.html">
+<link rel="alternate" hreflang="x-default" href="https://wiredup7.github.io/std-koolitus-preview/kasutusjuhend-en.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0a0b0e;--paper:#fff;--paper-2:#f4f5f7;--text:#15171c;--text-2:#3c424d;--muted:#6b7280;
+    --on-dark-mut:#9aa1ad;--line:#e7e9ee;--line-dark:rgba(255,255,255,.09);
+    --accent:#17b86a;--accent-ink:#0c8f4f;--accent-soft:#e7f6ee;
+    --warn:#b9760a;--warn-soft:#fdf4e6;--warn-line:#f1ddb6;
+    --err:#c0392b;--err-soft:#fcecec;--err-line:#f3cfcf;
+    --grad:linear-gradient(120deg,#1fd07a,#06b6b6);--maxw:1080px;
+    --f:"Poppins",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--f);background:var(--paper);color:var(--text);line-height:1.7;font-weight:400;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent-ink)}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  /* Header */
+  header.top{background:var(--ink);color:#fff;padding:18px 0;position:sticky;top:0;z-index:80}
+  header.top .wrap{display:flex;align-items:center;gap:13px}
+  .eye{height:38px;width:auto;flex-shrink:0;filter:drop-shadow(0 2px 9px rgba(23,184,106,.45))}
+  .wm{font-weight:700;font-size:20px;letter-spacing:-.01em;color:#fff}
+  .wm i{color:var(--accent);font-style:normal}
+  header.top nav{margin-left:auto;display:flex;gap:20px;font-size:14px;align-items:center}
+  header.top nav a{color:var(--on-dark-mut);text-decoration:none;transition:.2s}
+  header.top nav a:hover{color:#fff}
+  header.top nav a.login{display:inline-flex;align-items:center;gap:6px;color:#fff;border:1px solid var(--line-dark);padding:7px 13px;border-radius:10px}
+  header.top nav a.login:hover{border-color:var(--accent)}
+  header.top nav a.login svg{width:14px;height:14px}
+
+  /* Hero */
+  .hero{background:var(--ink);color:#fff;padding:14px 0 56px;border-bottom:1px solid var(--line-dark)}
+  .hero .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--accent);margin-bottom:14px}
+  .hero .eyebrow .pip{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(23,184,106,.2)}
+  .hero h1{font-weight:600;font-size:clamp(28px,5vw,42px);letter-spacing:-.02em;line-height:1.1}
+  .hero p{color:var(--on-dark-mut);font-size:17px;font-weight:300;margin-top:14px;max-width:680px}
+
+  /* Layout: sticky TOC + content */
+  main{padding:40px 0 80px}
+  .layout{display:grid;grid-template-columns:230px 1fr;gap:48px;align-items:start}
+  .toc{position:sticky;top:90px;font-size:14px}
+  .toc h4{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:12px}
+  .toc a{display:block;color:var(--text-2);text-decoration:none;padding:6px 11px;border-radius:9px;border-left:2px solid transparent;font-weight:300;transition:.15s}
+  .toc a:hover{background:var(--paper-2);color:var(--text)}
+  .toc a.on{color:var(--accent-ink);border-left-color:var(--accent);font-weight:500;background:var(--accent-soft)}
+
+  .content{min-width:0}
+  .lead{font-size:17px;color:var(--text-2);font-weight:300;margin-bottom:30px}
+  section.doc{padding-top:14px;margin-bottom:18px;scroll-margin-top:90px}
+  section.doc h2{font-weight:600;font-size:23px;letter-spacing:-.01em;margin:34px 0 8px;display:flex;align-items:center;gap:11px}
+  section.doc h2 .num{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:9px;background:var(--accent-soft);color:var(--accent-ink);font-size:14px;font-weight:600;flex:0 0 auto}
+  section.doc h3{font-weight:600;font-size:16.5px;margin:24px 0 6px}
+  section.doc p{margin:9px 0;color:var(--text-2);font-weight:300}
+  section.doc strong{font-weight:600;color:var(--text)}
+
+  /* Numbered steps */
+  ol.steps{list-style:none;counter-reset:s;margin:14px 0;padding:0}
+  ol.steps>li{counter-increment:s;position:relative;padding:4px 0 16px 44px;color:var(--text-2);font-weight:300}
+  ol.steps>li::before{content:counter(s);position:absolute;left:0;top:0;width:30px;height:30px;border-radius:50%;background:var(--accent);color:#fff;font-weight:600;font-size:14px;display:flex;align-items:center;justify-content:center}
+  ol.steps>li:not(:last-child)::after{content:"";position:absolute;left:14px;top:32px;bottom:2px;width:2px;background:var(--line)}
+  ol.steps>li b{color:var(--text);font-weight:600}
+
+  ul.plain{margin:10px 0 12px;padding-left:20px}
+  ul.plain li{margin:7px 0;color:var(--text-2);font-weight:300}
+  ul.plain li b{color:var(--text);font-weight:600}
+
+  /* Button chip – replicates a real dashboard button */
+  .chip{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;padding:5px 11px;border-radius:9px;
+    border:1px solid var(--line);background:var(--paper-2);color:var(--text);white-space:nowrap;vertical-align:1px;line-height:1.3}
+  .chip svg{width:14px;height:14px;flex:0 0 auto}
+  .chip.go{background:var(--grad);color:#04231a;border-color:transparent}
+  .chip.fb{background:#eaf1fb;color:#1b62c4;border-color:#d6e3f6}
+
+  /* Status legend / pills */
+  .pill{display:inline-flex;align-items:center;gap:5px;border-radius:999px;padding:2px 10px;font-size:12.5px;font-weight:600;vertical-align:1px}
+  .pill .dot{width:8px;height:8px;border-radius:50%;flex:0 0 auto}
+  .pill.ok{background:var(--accent-soft);color:var(--accent-ink)}
+  .pill.ok .dot{background:var(--accent)}
+  .pill.warn{background:var(--warn-soft);color:var(--warn)}
+  .pill.warn .dot{background:var(--warn)}
+  .pill.err{background:var(--err-soft);color:var(--err)}
+  .pill.err .dot{background:var(--err)}
+  .pill.sec{background:#eef1f5;color:var(--muted)}
+  .pill.sec .dot{background:#9aa6b2}
+
+  .legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:18px 0}
+  .legend .lg{display:flex;gap:11px;align-items:flex-start;background:var(--paper-2);border:1px solid var(--line);border-radius:13px;padding:13px 15px}
+  .legend .lg .sw{width:13px;height:13px;border-radius:50%;flex:0 0 auto;margin-top:4px}
+  .legend .lg b{display:block;color:var(--text);font-weight:600;font-size:14px}
+  .legend .lg span{font-size:13px;color:var(--text-2);font-weight:300}
+
+  /* Callouts */
+  .box{background:var(--paper-2);border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin:18px 0}
+  .box.green{background:var(--accent-soft);border-color:#cdeadd}
+  .box.warn{background:var(--warn-soft);border-color:var(--warn-line)}
+  .box .bt{display:flex;align-items:center;gap:8px;font-weight:600;color:var(--text);margin-bottom:4px;font-size:14.5px}
+  .box .bt svg{width:17px;height:17px;flex:0 0 auto}
+  .box p{margin:4px 0 0;font-size:14px}
+
+  /* Screenshot figure */
+  figure{margin:22px 0}
+  figure img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 40px -22px rgba(13,22,38,.4)}
+  figure figcaption{font-size:13px;color:var(--muted);margin-top:9px;font-weight:300;text-align:center}
+
+  /* Definition rows (column / field meaning) */
+  .deflist{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:16px 0}
+  .deflist .dr{display:grid;grid-template-columns:200px 1fr;gap:16px;padding:12px 16px;border-bottom:1px solid var(--line);font-size:14px}
+  .deflist .dr:last-child{border-bottom:0}
+  .deflist .dr:nth-child(odd){background:var(--paper-2)}
+  .deflist .dr .k{font-weight:600;color:var(--text)}
+  .deflist .dr .v{color:var(--text-2);font-weight:300}
+
+  footer{background:var(--ink);color:var(--on-dark-mut);padding:40px 0;font-size:14px;font-weight:300;margin-top:20px}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
+  footer a{color:var(--on-dark-mut);text-decoration:none}
+  footer a:hover{color:#fff}
+
+  @media(max-width:860px){
+    .layout{grid-template-columns:1fr;gap:0}
+    .toc{position:static;margin-bottom:24px;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--paper-2)}
+    .toc a{border-left:0;padding:5px 0}
+    .toc a.on{background:none}
+    .deflist .dr{grid-template-columns:1fr;gap:2px}
+    header.top nav a:not(.login){display:none}
+  }
+  /* Keelevaheti (lipud) – jagatud lang.js-iga */
+  .langsel{position:relative;margin-left:6px}
+  .flag{display:block;width:22px;height:15px;border-radius:3px;overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.22)}
+  .flag svg{display:block;width:100%;height:100%}
+  .langbtn{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.07);border:1px solid var(--line-dark);padding:6px 9px;border-radius:10px;cursor:pointer;transition:.2s}
+  .langbtn:hover{background:rgba(255,255,255,.14)}
+  .langbtn .chev{width:12px;height:12px;color:var(--on-dark-mut);transition:.2s;flex-shrink:0}
+  .langbtn[aria-expanded="true"] .chev{transform:rotate(180deg)}
+  .langmenu{position:absolute;top:calc(100% + 9px);right:0;background:#14161d;border:1px solid var(--line-dark);border-radius:13px;padding:8px;box-shadow:0 22px 54px -14px rgba(0,0,0,.75);display:none;grid-template-columns:repeat(2,1fr);gap:5px;z-index:90}
+  .langmenu.open{display:grid}
+  .langmenu a{display:grid;place-items:center;padding:7px 9px;border-radius:8px;cursor:pointer;transition:.15s;border:1px solid transparent}
+  .langmenu a:hover{background:rgba(255,255,255,.08)}
+  .langmenu a.on{border-color:var(--accent);background:rgba(23,184,106,.16)}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a href="index.html" style="display:flex;align-items:center;gap:13px;text-decoration:none">
+      <svg class="eye" viewBox="0 0 76 62" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="gL" x1="0" y1="0" x2="1" y2="0.7"><stop offset="0" stop-color="#46ec9f"/><stop offset="1" stop-color="#0bc8c8"/></linearGradient><clipPath id="cI"><circle cx="27" cy="39" r="14"/></clipPath></defs><path d="M5 35 C 18 14, 47 6, 72 9 C 53 16, 31 23, 5 35 Z" fill="url(#gL)"/><path d="M9 47 C 24 58, 47 56, 67 45 C 50 51, 29 53, 9 47 Z" fill="url(#gL)" opacity="0.92"/><circle cx="27" cy="39" r="14" fill="#0c8f5f"/><g clip-path="url(#cI)"><circle cx="37" cy="38" r="13" fill="#37e3a2"/></g><circle cx="22.5" cy="33.5" r="3.2" fill="#ffffff"/></svg>
+      <span class="wm">Look<i>360</i></span>
+    </a>
+    <nav>
+      <a href="index.html">Strona główna</a>
+      <a href="index.html#kkk">FAQ</a>
+      <a class="login" href="https://expenses-destruct-snowboard.ngrok-free.dev/accounts/login/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><path d="M10 17l5-5-5-5M15 12H3"/></svg> Zaloguj się</a>
+      <div class="langsel" id="langsel"></div>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow"><span class="pip"></span> Instrukcja obsługi</div>
+    <h1>Instrukcja obsługi panelu monitoringu</h1>
+    <p>Przewodnik krok po kroku po wszystkim, co Państwo jako klient widzą i mogą zrobić: od logowania po pulpit, monitorowane firmy, katalog produktów, usługi, płatności i raporty. Przy każdym przycisku opisano, co on robi i gdzie znajdą Państwo jego wynik.</p>
+  </div>
+</section>
+
+<main>
+  <div class="wrap layout">
+    <aside class="toc" id="toc">
+      <h4>Spis treści</h4>
+      <a href="#algus">1. Czym jest panel monitoringu</a>
+      <a href="#logimine">2. Logowanie</a>
+      <a href="#menuu">3. Menu i widok ogólny</a>
+      <a href="#toolaud">4. Pulpit monitoringu</a>
+      <a href="#lisafirma">5. Dodawanie firmy</a>
+      <a href="#firmavaade">6. Widok firmy i katalog</a>
+      <a href="#kategooriad">7. Wybór kategorii</a>
+      <a href="#teenused">8. Usługi i opłata miesięczna</a>
+      <a href="#maksed">9. Jak przebiega płatność</a>
+      <a href="#hinnastamine">10. Ustalanie cen</a>
+      <a href="#raportid">11. Raporty</a>
+      <a href="#seaded">12. Tryb ciemny i telefon</a>
+      <a href="#abi">13. Pomoc i kontakt</a>
+    </aside>
+
+    <div class="content">
+      <p class="lead">Panel monitoringu Look360 gromadzi w jednym miejscu wszystko, co śledzimy w Państwa imieniu – ceny i stany magazynowe konkurencji, posty na Facebooku oraz kondycję Państwa własnego sklepu internetowego. Nie muszą Państwo niczego instalować: logują się Państwo, jednym spojrzeniem widzą Państwo aktualny stan, a o istotnych zmianach informujemy także codzienną poranną wiadomością. Niniejszy przewodnik omawia każdy widok i każdy przycisk.</p>
+
+      <!-- 1 -->
+      <section class="doc" id="algus">
+        <h2><span class="num">1</span> Czym jest panel monitoringu</h2>
+        <p>Panel monitoringu to Państwa prywatny pulpit pod adresem, do którego logują się Państwo swoim adresem e-mail i hasłem. Widzą tam Państwo wszystkie monitorowane przedsiębiorstwa – zarówno własny sklep internetowy, jak i konkurentów – oraz każdą zmianę, którą system wykrył: spadek ceny, wyczerpanie zapasów, nowy post na Facebooku, awarię sklepu internetowego.</p>
+        <p>Wszystko działa według <strong>logiki kolorów</strong>. Te same trzy kolory powtarzają się wszędzie – na pulpicie, na karcie firmy, w tabeli:</p>
+        <div class="legend">
+          <div class="lg"><span class="sw" style="background:var(--accent)"></span><span><b>Zielony – wszystko w porządku</b>Brak zmian lub wszystko przebiega zgodnie z oczekiwaniami. Nie trzeba nic robić.</span></div>
+          <div class="lg"><span class="sw" style="background:var(--warn)"></span><span><b>Żółty – wymaga uwagi</b>Ostrzeżenie: np. zmiana ceny u konkurenta, wyczerpanie zapasów lub nieaktualne dane.</span></div>
+          <div class="lg"><span class="sw" style="background:var(--err)"></span><span><b>Czerwony – awaria</b>Źródło danych okazało się chwilowo niedostępne. Zwykle przywraca się samo lub sprawdza je operator.</span></div>
+        </div>
+        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z"/></svg> Nie trzeba pilnować skrzynki</div><p>Najważniejsze zmiany wysyłamy także codzienną zbiorczą wiadomością poranną. Panel otwierają Państwo wtedy, gdy chcą zobaczyć więcej lub coś zmienić.</p></div>
+      </section>
+
+      <!-- 2 -->
+      <section class="doc" id="logimine">
+        <h2><span class="num">2</span> Logowanie</h2>
+        <ol class="steps">
+          <li>Otwórz opcję <b>Zaloguj się</b> – w górnym rogu strony głównej, w nagłówku tego przewodnika lub poprzez bezpośredni link, który Państwu przesłaliśmy.</li>
+          <li>Wpisz <b>nazwę użytkownika</b> – jest nią Państwa <b>adres e-mail</b> (np. ty@firma.pl).</li>
+          <li>Wpisz <b>hasło</b> i naciśnij <span class="chip go">Wejdź</span></li>
+        </ol>
+        <ul class="plain">
+          <li><b>Nie pamiętają Państwo hasła?</b> – z linku poniżej wyślemy e-mailem link do ustawienia nowego hasła.</li>
+          <li><b>Nie mają Państwo jeszcze konta?</b> – przycisk <span class="chip">Zarejestruj się</span> przenosi do cennika na stronie głównej, gdzie mogą Państwo skomponować pakiet i przystąpić.</li>
+          <li><b>Powrót na stronę główną</b> – górny link prowadzi z powrotem na look360.eu.</li>
+        </ul>
+        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg> Warto wiedzieć</div><p>Konto jest powiązane z Państwa przedsiębiorstwem. Po zalogowaniu widzą Państwo u góry po lewej, na zielonym pasku, nazwę swojego przedsiębiorstwa – dzięki temu wiedzą Państwo, że są w odpowiednim koncie.</p></div>
+      </section>
+
+      <!-- 3 -->
+      <section class="doc" id="menuu">
+        <h2><span class="num">3</span> Menu i widok ogólny</h2>
+        <p>Każda strona ma tę samą strukturę: <strong>menu po lewej</strong>, <strong>górny pasek</strong> i treść pośrodku.</p>
+        <h3>Menu po lewej</h3>
+        <ul class="plain">
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="5" rx="1.5"/><rect x="13" y="11" width="8" height="10" rx="1.5"/><rect x="3" y="14" width="8" height="7" rx="1.5"/></svg> Monitoring</span> – główny pulpit ze wszystkimi monitorowanymi przedsiębiorstwami i wykrytymi zmianami.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M20 7H4M20 12H4M20 17H4"/></svg> Usługi</span> – Państwa zamówione usługi, opłata miesięczna i możliwość domówienia kolejnych.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Ustalanie cen</span> – pojawia się tylko wtedy, gdy mają Państwo zamówioną usługę <b>przecenienia produktów</b>.</li>
+          <li>U dołu znajdują się Państwa nazwa użytkownika, rola <b>Klient</b> oraz ikona <b>wylogowania</b> (drzwi z wyjściem).</li>
+        </ul>
+        <h3>Górny pasek</h3>
+        <ul class="plain">
+          <li>Po lewej <b>tytuł strony</b> (np. nazwa Państwa przedsiębiorstwa), a pod nim drobnym drukiem <b>kiedy ostatnio aktualizowano</b>.</li>
+          <li>Po prawej <b>przełącznik trybu ciemny/jasny</b> (słońce/księżyc) oraz <b>przyciski czynności</b> danej strony.</li>
+          <li>Na telefonie menu po lewej otwiera <b>przycisk ☰</b> w górnym rogu.</li>
+        </ul>
+      </section>
+
+      <!-- 4 -->
+      <section class="doc" id="toolaud">
+        <h2><span class="num">4</span> Pulpit monitoringu</h2>
+        <p>To widok startowy. U góry znajdują się Państwo główne przyciski, a niżej przegląd i lista firm.</p>
+        <figure>
+          <img src="l360-seirepaneel.png" alt="Look360 seire töölaud: trendigraafik, kokkuvõte ja firmade tabel" loading="lazy">
+          <figcaption>Pulpit monitoringu – wykres trendu, podsumowanie i tabela monitorowanych firm.</figcaption>
+        </figure>
+        <h3>Przyciski górnego paska</h3>
+        <ul class="plain">
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Dodaj firmę</span> – dodaj nowe monitorowane przedsiębiorstwo (zob. <a href="#lisafirma">rozdział 5</a>).</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 7H4M20 12H4M20 17H4"/></svg> Usługi</span> – otwórz widok usług i opłaty miesięcznej.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-2.6-6.4L21 8"/><path d="M21 3v5h-5"/></svg> Odśwież widok</span> – wczytuje ponownie najnowsze dane i odświeża ekran. <b>Nie skanuje</b> witryn, jedynie odświeża widok.</li>
+          <li><span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg> Przeskanuj wszystko ponownie</span> – pojawia się, gdy monitorują Państwo sklepy internetowe lub Facebooka. Uruchamia <b>rzeczywiste skanowania</b> (pobiera dane z witryn), trwa kilka minut. Można to wykonać <b>1 raz na dobę</b>.</li>
+        </ul>
+        <h3>Jak działa monitoring? – pasek pomocy</h3>
+        <p>W górnej części pulpitu znajduje się rozwijany pasek <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .8-1 1.7M12 17h.01"/></svg> Jak działa monitoring?</span> Kliknij, aby przeczytać krótkie objaśnienie kolorów. Za pierwszym razem, gdy nie ma jeszcze żadnej firmy, jest on otwarty.</p>
+        <h3>Trend ostrzeżeń</h3>
+        <p>Wykres pokazuje, jak liczba ostrzeżeń zmieniała się w trakcie ostatnich monitorowań – czy sprawy się uspokajają, czy wymagają większej uwagi.</p>
+        <h3>Podsumowanie</h3>
+        <p>Po prawej znajdują się cztery liczby i wiersz stanu:</p>
+        <div class="deflist">
+          <div class="dr"><span class="k">Firm w monitorowaniu</span><span class="v">Ile przedsiębiorstw monitorują Państwo obecnie.</span></div>
+          <div class="dr"><span class="k">Aktywnych ostrzeżeń</span><span class="v">Ile spraw wymaga uwagi (żółty).</span></div>
+          <div class="dr"><span class="k">Źródeł z awarią</span><span class="v">Ile źródeł danych jest w danej chwili niedostępnych (czerwony).</span></div>
+          <div class="dr"><span class="k">Nieaktualne dane</span><span class="v">Dane ilu firm są przestarzałe i wymagają odświeżenia.</span></div>
+        </div>
+        <h3>Zakładki, widoki i eksport</h3>
+        <ul class="plain">
+          <li><b>Zakładki</b> <span class="pill sec"><span class="dot"></span>Wszystkie</span> <span class="pill sec"><span class="dot"></span>Moje przedsiębiorstwo</span> <span class="pill sec"><span class="dot"></span>Konkurenci</span> – filtrują listę.</li>
+          <li><b>Tabela / Karty</b> – przełącz formę listy. Tabela jest kompaktowa, karty od razu pokazują kanały każdej firmy w rozwinięciu.</li>
+          <li><b>Sortuj</b> – uporządkuj według ostrzeżeń, wykrytych zmian, kondycji lub nazwy.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg> Eksportuj CSV</span> – pobiera widoczną tabelę jako plik otwierany w programie Excel.</li>
+        </ul>
+        <h3>Tabela firm</h3>
+        <p>Każdy wiersz to jedno monitorowane przedsiębiorstwo. <b>Kliknij wiersz</b>, aby otworzyć pełny widok danej firmy. Kolumny:</p>
+        <div class="deflist">
+          <div class="dr"><span class="k">Firma</span><span class="v">Nazwa oraz to, czy jest to Państwa przedsiębiorstwo, czy konkurent.</span></div>
+          <div class="dr"><span class="k">Status</span><span class="v"><span class="pill ok"><span class="dot"></span>Wszystko w porządku</span> · <span class="pill warn"><span class="dot"></span>N ostrzeżeń</span> · <span class="pill err"><span class="dot"></span>Awaria</span> · <span class="pill sec"><span class="dot"></span>Nieaktualne / Brak uruchomienia</span></span></div>
+          <div class="dr"><span class="k">Kanały</span><span class="v">Ile źródeł jest monitorowanych przy danej firmie (sieć, Facebook itd.).</span></div>
+          <div class="dr"><span class="k">Wykryte zmiany</span><span class="v">Ile zmian wykryto podczas ostatniego monitorowania.</span></div>
+          <div class="dr"><span class="k">Ostrzeżenia</span><span class="v">Ile wykrytych zmian wymaga uwagi.</span></div>
+          <div class="dr"><span class="k">Aktualność</span><span class="v">Kiedy ostatnio aktualizowano dane tej firmy.</span></div>
+          <div class="dr"><span class="k">Kondycja</span><span class="v">Ogólny pasek stanu 0–100% (zielony dobry, żółty średni, czerwony słaby).</span></div>
+        </div>
+        <h3>Dodane przez Państwa monitorowane firmy</h3>
+        <p>Jeśli sami dodali Państwo firmę, jej stan widzą Państwo w osobnej sekcji. Możliwe stany:</p>
+        <ul class="plain">
+          <li><span class="pill warn"><span class="dot"></span>Oczekuje</span> – oczekuje na zatwierdzenie przez operatora.</li>
+          <li><span class="pill sec"><span class="dot"></span>Buduję… / AI rozpoznaje…</span> – czytnik sklepu internetowego jest konfigurowany automatycznie.</li>
+          <li><span class="pill warn"><span class="dot"></span>Oczekuje na opłatę</span> – dane są gotowe, należy zatwierdzić opłatę miesięczną (zob. <a href="#firmavaade">rozdział 6</a>).</li>
+          <li><span class="pill err"><span class="dot"></span>Odrzucono</span> – wniosek został odrzucony (powód jest podany).</li>
+          <li><span class="pill ok"><span class="dot"></span>Aktywna</span> – firma jest w monitoringu.</li>
+        </ul>
+        <h3>Monitoring Facebooka</h3>
+        <p>Na osobnej karcie znajdują się najnowsze posty na Facebooku monitorowanych konkurentów, z najnowszymi i nowymi wyróżnionymi. Kliknięcie w post przenosi do oryginału na Facebooku.</p>
+        <h3>Wszystkie wykryte zmiany i historia raportów</h3>
+        <ul class="plain">
+          <li><b>Wszystkie wykryte zmiany</b> – wszystkie zmiany z ostatniego monitorowania w jednej liście. Zaznaczenie <b>Tylko ostrzeżenia</b> ukrywa spokojną część.</li>
+          <li><b>Historia raportów</b> – wcześniejsze raporty zbiorcze. Kliknięcie otwiera zarchiwizowany raport.</li>
+        </ul>
+      </section>
+
+      <!-- 5 -->
+      <section class="doc" id="lisafirma">
+        <h2><span class="num">5</span> Dodawanie firmy</h2>
+        <p>Na pulpicie naciśnij <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Dodaj firmę</span>. Otworzy się prosty formularz.</p>
+        <ol class="steps">
+          <li><b>Nazwa firmy</b> – zacznij pisać i wybierz z listy firmę z estońskiego rejestru handlowego (albo wpisz nazwę ręcznie).</li>
+          <li><b>Strona internetowa</b> – wystarczy sama nazwa bez przedrostka https://, np. <b>weekend.ee</b>.</li>
+          <li>W razie potrzeby włącz <b>monitorowanie cen i stanów magazynowych sklepu internetowego</b> oraz/lub <b>monitorowanie także Facebooka</b>.</li>
+          <li>Naciśnij <span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Dodaj monitorowaną firmę</span></li>
+        </ol>
+        <h3>Monitorowanie sklepu internetowego</h3>
+        <p>Jeśli wybiorą Państwo monitorowanie sklepu internetowego, system spróbuje sam wczytać produkty sklepu. Po pomyślnym wczytaniu monitoring uruchamia się automatycznie; w przeciwnym razie sprawdza go operator. Dodatkowo mogą Państwo otworzyć <b>filtr słów kluczowych</b>: wpisz słowo kluczowe i naciśnij Enter lub <b>+</b>, aby dodać chip (np. <i>kosiarka</i>). Pozostawiając pole puste, monitorujemy wszystkie produkty.</p>
+        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg> Model cenowy</div><p>Monitorowanie sklepu internetowego kosztuje <strong>5 €/mies. za każde do 2000 monitorowanych produktów</strong>. Gdy system wczyta produkty sklepu, sami wybierają Państwo kategorie do monitorowania – to określa liczbę produktów i opłatę miesięczną. Pokazujemy dokładną kwotę i prosimy o potwierdzenie, zanim udostępnimy dane.</p></div>
+        <h3>Monitorowanie Facebooka</h3>
+        <p>Wpisz adres strony na Facebooku – wystarczy nazwa strony lub adres (np. <b>facebook.com/konkurent</b> albo po prostu <b>konkurent</b>). Jeśli strona nie znajduje się jeszcze na liście monitoringu, trafia ona do operatora w celu zatwierdzenia.</p>
+      </section>
+
+      <!-- 6 -->
+      <section class="doc" id="firmavaade">
+        <h2><span class="num">6</span> Widok firmy i katalog produktów</h2>
+        <p>Kliknięcie w nazwę firmy na pulpicie otwiera jej pełny widok: wszystkie kanały, wykryte zmiany oraz – w przypadku sklepu internetowego – cały katalog produktów.</p>
+        <figure>
+          <img src="l360-kataloog.png" alt="Firma vaade: tootekataloog kategooriate, hindade ja laoseisuga" loading="lazy">
+          <figcaption>Widok firmy – przeszukiwalny katalog produktów z kategoriami, cenami i stanami magazynowymi.</figcaption>
+        </figure>
+        <h3>Przyciski nagłówka</h3>
+        <ul class="plain">
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Wybierz kategorie</span> – wybierz, które kategorie sklepu monitorować (zob. <a href="#kategooriad">rozdział 7</a>).</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 6H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4"/><path d="M14 4h6v6m0-6L10 14"/></svg> Otwórz witrynę</span> – otwiera sklep internetowy konkurenta w nowym oknie.</li>
+        </ul>
+        <h3>Komunikaty o stanie</h3>
+        <p>W górnej części widoku może pojawić się komunikat: <b>oczekuje na zatwierdzenie przez operatora</b>, <b>scraper jest budowany</b>, <b>rozpoznajemy kategorie</b>, <b>automatyczna konfiguracja nie powiodła się</b> (operator sprawdzi) lub <b>wniosek został odrzucony</b>.</p>
+        <h3>Zatwierdzenie opłaty miesięcznej</h3>
+        <p>Gdy produkty sklepu są wczytane, widzą Państwo kalkulator: <b>liczba produktów</b>, <b>progi</b> (× do 2000 produktów), <b>cena bazowa 5 €</b>, ewentualna dopłata oraz <b>opłata miesięczna łącznie</b>. Do momentu zatwierdzenia katalog jest pokazany poglądowo i <b>rozmyty</b> (blur). Opcje:</p>
+        <ul class="plain">
+          <li><span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg> Zapłać i odblokuj dane</span> – kierujemy Państwa do bezpiecznej bramki płatniczej (link bankowy lub karta); dane otwierają się od razu.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg> Zapłać fakturą przelewową</span> – wysyłamy fakturę e-mailem; treść otwiera się po wpłynięciu płatności.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Wybierz kategorie</span> – zmniejsz liczbę produktów, aby obniżyć opłatę miesięczną.</li>
+        </ul>
+        <p>Zatwierdzenie monitoringu Facebooka przebiega tak samo (1 €/mies.).</p>
+        <h3>Katalog produktów</h3>
+        <ul class="plain">
+          <li><b>Wyszukiwanie</b> – wpisz nazwę produktu, aby przefiltrować listę.</li>
+          <li><b>Kategorie</b> – kliknij kategorię, aby otworzyć podkategorie i produkty.</li>
+          <li><b>Stan magazynowy</b> – przy każdym produkcie <span class="pill ok"><span class="dot"></span>w magazynie</span>, <span class="pill err"><span class="dot"></span>wyczerpany</span> lub <span class="pill sec"><span class="dot"></span>nieznany</span>.</li>
+          <li><b>Cena</b> – w przypadku ceny promocyjnej widzą Państwo cenę zwykłą przekreśloną, a cenę promocyjną na czerwono.</li>
+          <li><b>Link zewnętrzny</b> (strzałka) prowadzi do produktu w sklepie.</li>
+          <li><b>Kliknięcie w wiersz produktu</b> otwiera <b>wykres historii ceny i stanu magazynowego</b>: bieżącą cenę i rabat, cenę zwykłą jako linię przerywaną, stan magazynowy w czasie jako pasek oraz legendę.</li>
+        </ul>
+      </section>
+
+      <!-- 7 -->
+      <section class="doc" id="kategooriad">
+        <h2><span class="num">7</span> Wybór kategorii</h2>
+        <p>Przycisk <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Wybierz kategorie</span> otwiera listę wszystkich kategorii sklepu. Im mniej produktów wybiorą Państwo, tym niższa opłata miesięczna.</p>
+        <ol class="steps">
+          <li>Zaznacz haczykiem kategorie, które chcą Państwo monitorować. Pomocne są <b>Zaznacz wszystkie</b>, <b>Wyczyść wybór</b> i <b>wyszukiwanie</b>.</li>
+          <li>Śledź u dołu <b>kalkulator</b>: wybrane produkty → progi (× do 2000) → opłata miesięczna aktualizuje się od razu.</li>
+          <li>Naciśnij <span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg> Zapisz wybór</span></li>
+        </ol>
+        <p>Wybór mogą Państwo później zmienić w dowolnej chwili – opłata miesięczna dostosuje się odpowiednio.</p>
+      </section>
+
+      <!-- 8 -->
+      <section class="doc" id="teenused">
+        <h2><span class="num">8</span> Usługi i opłata miesięczna</h2>
+        <p>Z menu <b>Usługi</b> widzą Państwo wszystko, za co płacą, i mogą domówić kolejne.</p>
+        <ul class="plain">
+          <li><b>Państwa opłata miesięczna łącznie</b> – duża liczba u góry. Kwota wynika ze wszystkich aktywnych usług. Obok znajduje się data następnego rozliczenia.</li>
+          <li><b>Opłacone – oczekuje na aktywację</b> – zamówienia, których opłata wstępna została uiszczona i które operator wkrótce włączy.</li>
+          <li><b>Państwa usługi</b> – wszystkie aktywne usługi (na zielono), w tym monitoring Facebooka i sieci u konkurentów. <b>Anuluj</b> kończy usługę; monitoringiem konkurentów zarządza się w sekcji <b>Dodaj firmę</b> (przycisk <b>Zarządzaj</b>).</li>
+          <li><b>Domów</b> – przy każdej usłudze podana jest cena €/mies. i opłata wstępna. Naciśnij <span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Zamów</span>, potwierdź w oknie i opłać opłatę wstępną. Przy zadaniach specjalnych dostępny jest przycisk <span class="chip">Poproś o wycenę</span>.</li>
+          <li><b>Pakiety</b> – zamawiają od razu kilka usług jednym przepływem płatności.</li>
+        </ul>
+        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Jak wyliczana jest opłata wstępna</div><p>Przy zamawianiu nowej usługi płacą Państwo od razu <strong>proporcjonalną opłatę wstępną</strong> – wyłącznie do następnego dnia rozliczenia. Następnie operator włącza usługę, a odtąd wszystkie usługi rozliczane są razem.</p></div>
+      </section>
+
+      <!-- 9 -->
+      <section class="doc" id="maksed">
+        <h2><span class="num">9</span> Jak przebiega płatność</h2>
+        <p>Każda płatność rozpoczyna się od <strong>okna potwierdzenia</strong>, w którym podana jest kwota i to, za co Państwo płacą. Zawsze mogą Państwo wybrać <b>Anuluj</b>.</p>
+        <ul class="plain">
+          <li><b>Płacąc od razu</b> kierujemy Państwa do bezpiecznej bramki płatniczej – płacą Państwo <b>linkiem bankowym</b> lub <b>kartą</b>, a dane/usługa otwierają się od razu po płatności.</li>
+          <li><b>Fakturą przelewową</b> – wysyłamy fakturę e-mailem. Treść otwiera się w pełnym zakresie wtedy, gdy płatność wpłynie.</li>
+          <li><b>Opłata wstępna</b> jest zawsze proporcjonalna do następnego dnia rozliczenia; odtąd obowiązuje pełna opłata miesięczna.</li>
+          <li><b>Rozliczenie</b> odbywa się jednorazowo za wszystkie usługi, według rocznicy dnia Państwa przystąpienia.</li>
+        </ul>
+      </section>
+
+      <!-- 10 -->
+      <section class="doc" id="hinnastamine">
+        <h2><span class="num">10</span> Ustalanie cen</h2>
+        <p>Pozycja menu <b>Ustalanie cen</b> jest widoczna tylko wtedy, gdy mają Państwo zamówioną usługę <strong>przecenienia produktów</strong>. Widzą tam Państwo oparte na konkurencji rekomendacje cenowe dla Państwa własnego sklepu.</p>
+        <ul class="plain">
+          <li><b>Tabela rekomendacji</b> – produkt, bieżąca cena, rekomendowana cena, różnica i powód.</li>
+          <li><span class="chip">Wygeneruj ponownie</span> przelicza rekomendacje na nowo; <span class="chip">Reguły</span> i <span class="chip">Historia</span> pokazują ustawienia i wcześniejsze zmiany.</li>
+          <li>Gdy usługa jest <b>aktywowana</b>, rekomendację można jednym kliknięciem zapisać do swojego sklepu WooCommerce; <b>Pozostaw bez zmian</b> zachowuje cenę i pomija produkt przez wybraną liczbę dni, <b>Pomiń</b> pomija rekomendację.</li>
+        </ul>
+        <div class="box warn"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg> Bezpiecznie</div><p>Zapisywanie zmiany ceny do sklepu Look360 włącza wspólnie z Państwem. Domyślnie wszystko działa w trybie <b>próbnym</b> (nic nie jest zmieniane), dopóki nie uzgodnimy trybu na żywo.</p></div>
+      </section>
+
+      <!-- 11 -->
+      <section class="doc" id="raportid">
+        <h2><span class="num">11</span> Raporty</h2>
+        <ul class="plain">
+          <li><b>Codzienna poranna wiadomość</b> – najważniejsze zmiany trafiają automatycznie do Państwa skrzynki (i uzgodnionych kontaktów).</li>
+          <li><b>Ostrzeżenia w czasie rzeczywistym</b> – to, co najbardziej krytyczne (np. spadek ceny u konkurenta, awaria sklepu internetowego, wyczerpanie zapasów), dociera od razu, a pozostałe zbierane jest w porannym raporcie.</li>
+          <li><b>Historia raportów</b> – na pulpicie mogą Państwo otworzyć każdy wcześniejszy raport zbiorczy i zobaczyć, co się wówczas zmieniło.</li>
+        </ul>
+      </section>
+
+      <!-- 12 -->
+      <section class="doc" id="seaded">
+        <h2><span class="num">12</span> Tryb ciemny i telefon</h2>
+        <ul class="plain">
+          <li><b>Tryb ciemny / jasny</b> – przełącznik na górnym pasku (słońce/księżyc) zmienia motyw. Wybór zostaje zapamiętany.</li>
+          <li><b>Na telefonie</b> – menu jest ukryte za przyciskiem ☰ w górnym rogu; treść dostosowuje się do szerokości ekranu.</li>
+          <li><b>Wylogowanie</b> – ikona drzwi z wyjściem po lewej u dołu, obok nazwy użytkownika.</li>
+        </ul>
+      </section>
+
+      <!-- 13 -->
+      <section class="doc" id="abi">
+        <h2><span class="num">13</span> Pomoc i kontakt</h2>
+        <p>W razie pytań lub wątpliwości odpowiada żywy człowiek, a nie automatyczna odpowiedź.</p>
+        <ul class="plain">
+          <li>E-mail: <a href="mailto:info@look360.eu">info@look360.eu</a></li>
+          <li>Telefon: <a href="tel:+37253620246">+372 5362 0246</a></li>
+          <li>Najczęściej zadawane pytania: <a href="index.html#kkk">FAQ na stronie głównej</a></li>
+        </ul>
+        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> W skrócie</div><p>Zaloguj się → spójrz na pulpicie na kolor zielony/żółty/czerwony → dodawaj firmy i usługi → istotne zmiany przychodzą do Państwa także wiadomością. Nic więcej nie trzeba robić.</p></div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Look360 · Watchdog OÜ · Numer rejestrowy 17537572 · NIP EE103000237</span>
+    <span><a href="index.html">Strona główna</a> · <a href="index.html#kkk">FAQ</a> · <a href="privaatsus.html">Prywatność</a> · <a href="tingimused.html">Warunki</a></span>
+  </div>
+</footer>
+
+<script>
+  // Sisukord: too esile parajasti nahtav peatukk.
+  (function(){
+    var links=[].slice.call(document.querySelectorAll('#toc a'));
+    var map={}; links.forEach(function(a){ map[a.getAttribute('href').slice(1)]=a; });
+    var secs=[].slice.call(document.querySelectorAll('section.doc'));
+    if(!('IntersectionObserver' in window)) return;
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){
+        links.forEach(function(a){a.classList.remove('on');});
+        var a=map[e.target.id]; if(a)a.classList.add('on');
+      }});
+    },{rootMargin:'-45% 0px -50% 0px',threshold:0});
+    secs.forEach(function(s){io.observe(s);});
+  })();
+</script>
+<script>window.LANGFILES={"et":"kasutusjuhend.html","en":"kasutusjuhend-en.html","fi":"kasutusjuhend-fi.html","sv":"kasutusjuhend-sv.html","no":"kasutusjuhend-no.html","da":"kasutusjuhend-da.html","lv":"kasutusjuhend-lv.html","lt":"kasutusjuhend-lt.html","pl":"kasutusjuhend-pl.html","uk":"kasutusjuhend-uk.html"};</script>
+<script src="lang.js"></script>
+</body>
+</html>
