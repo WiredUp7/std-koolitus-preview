@@ -563,7 +563,7 @@
     </nav>
     <div class="nav-r">
       <a href="#hinnad" class="btn btn-grad js-order">Join from €2</a>
-      <a href="https://expenses-destruct-snowboard.ngrok-free.dev/accounts/login/" class="login-link" style="color:#cbd3da;text-decoration:none;font-weight:600;font-size:14px;display:flex;align-items:center;gap:5px">Log in <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="https://scan.look360.eu/accounts/login/" class="login-link" style="color:#cbd3da;text-decoration:none;font-weight:600;font-size:14px;display:flex;align-items:center;gap:5px">Log in <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
     <div class="langsel" id="langsel"></div>
     <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -574,7 +574,7 @@
     <a href="#platvorm">Platform</a>
     <a href="#portfoolio">Portfolio</a>
     <a href="#hinnad">Pricing</a>
-    <a href="https://expenses-destruct-snowboard.ngrok-free.dev/accounts/login/">Log in</a>
+    <a href="https://scan.look360.eu/accounts/login/">Log in</a>
     <a href="#hinnad" class="btn btn-grad js-order">Join from €2 a month</a>
   </div>
 </header>
@@ -1000,7 +1000,7 @@
 </section>
 
 <!-- FAQ -->
-<section class="alt" style="border-top:1px solid var(--line)">
+<section class="alt" id="kkk" style="border-top:1px solid var(--line)">
   <div class="wrap">
     <div class="sec-head center reveal">
       <div class="eyebrow"><span class="dot"></span> Frequently asked questions</div>
@@ -1014,6 +1014,10 @@
       <div class="qa"><button>Is the service suitable for a small business too? <span class="ico"></span></button><div class="ans"><p>Yes. You take only the modules you need and pay only for those – a good fit for a small shop or a sole trader too.</p></div></div>
       <div class="qa"><button>How does billing work? <span class="ico"></span></button><div class="ans"><p>You pay monthly or annually – with annual billing you get 2 months free. There's no long-term commitment; you can stop with simple notice.</p></div></div>
       <div class="qa"><button>How quickly does an alert reach me? <span class="ico"></span></button><div class="ans"><p>Critical changes – a competitor's price drop, an e-shop outage, stock running out – arrive in real time. The rest is gathered into the morning report so your inbox doesn't clog up.</p></div></div>
+    </div>
+    <div class="reveal" style="text-align:center;margin-top:36px">
+      <p style="color:var(--muted);font-size:15px;margin-bottom:16px">Already a customer? See what every view and button in the dashboard does.</p>
+      <a href="kasutusjuhend.html" class="btn btn-out">View the user guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
   </div>
 </section>
@@ -1050,7 +1054,7 @@
       </div>
       <div class="foot-cols">
         <div class="foot-col"><h5>Services</h5><a href="#teenused">Competitor monitoring</a><a href="#teenused">Price monitoring</a><a href="#teenused">E-shop health check</a><a href="#teenused">ERP integration</a></div>
-        <div class="foot-col"><h5>Company</h5><a href="#tugi">Three pillars</a><a href="#platvorm">Platform</a><a href="#portfoolio">Portfolio</a><a href="#hinnad">Pricing</a><a href="privaatsus-en.html">Privacy policy</a><a href="tingimused-en.html">Terms of use</a></div>
+        <div class="foot-col"><h5>Company</h5><a href="#tugi">Three pillars</a><a href="#platvorm">Platform</a><a href="#portfoolio">Portfolio</a><a href="#hinnad">Pricing</a><a href="kasutusjuhend.html">User guide</a><a href="privaatsus-en.html">Privacy policy</a><a href="tingimused-en.html">Terms of use</a></div>
         <div class="foot-col"><h5>Contact</h5><a href="mailto:info@look360.eu">info@look360.eu</a><a href="tel:+37253620246">+372 5362 0246</a><a href="https://www.google.com/maps?q=71003+Viljandi" target="_blank" rel="noopener">71003 Viljandi</a></div>
       </div>
     </div>
@@ -1191,8 +1195,8 @@
 const nav=document.getElementById('nav');
 addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>12),{passive:true});
 
-/* === i18n: keele-stringid (build_i18n.py asendab {"locale": "en-GB", "fbLine": "{n} competitors on Facebook", "webLineCalc": "{n} e-shops in price + stock monitoring", "webLineModal": "{n} e-shops in price and stock monitoring", "perMonth": "/mo", "saveAnnual": "{m} months free – billed once a year (€{yr}/yr)", "chooseOne": "Choose at least one module", "billYear": "Billing: annual €{yr}/year (≈€{eff}/mo, {m} months free)", "billMonth": "Billing: monthly €{m}/mo", "mailIntro": "I'd like to sign up for Look360 monitoring.", "mailChosen": "Selected:", "mailQuote": "Note: I'd also like custom automation – please send a quote.", "mailSubject": "Sign-up request – Look360", "quotePrice": "on request", "hintWeb": "web +€5", "hintFb": "FB +€1", "perMonthSpaced": "/ mo", "hintEmpty": "Add a website or Facebook page to monitor this company", "phName": "Competitor name", "phWeb": "Website (e.g. competitor.com)", "phFb": "Facebook page (e.g. facebook.com/competitor)", "remove": "Remove", "sumEmpty": "Nothing selected yet", "sumTotal": "Total", "sumYearSuffix": "· annual (2 months free)", "perMonthUnit": "€/mo", "twoMonthsFree": "2 months free", "mlCompany": "Company", "mlContact": "Contact", "mlPhone": "Phone", "mlEmail": "Email", "mlOwnShop": "Own shop", "mlWatch": "To monitor", "mlPackage": "Package", "mlBilling": "Billing", "unnamed": "(unnamed)", "mlWeb": "web", "totYear": "annual €{yr}/year (≈€{eff}/mo, 2 months free)", "totMonth": "monthly €{m}/mo", "btnContinuePay": "Continue to payment →", "btnPay": "Pay", "btnNext": "Next →", "btnCreateAccount": "Create account and log in", "btnCreatingAccount": "Creating account…", "errPassMin": "Password must be at least 8 characters.", "errAcctFail": "Account creation failed.", "errConnFail": "Connection failed. Please try again."} keele kaupa) === */
-const T = {"locale": "en-GB", "fbLine": "{n} competitors on Facebook", "webLineCalc": "{n} e-shops in price + stock monitoring", "webLineModal": "{n} e-shops in price and stock monitoring", "perMonth": "/mo", "saveAnnual": "{m} months free – billed once a year (€{yr}/yr)", "chooseOne": "Choose at least one module", "billYear": "Billing: annual €{yr}/year (≈€{eff}/mo, {m} months free)", "billMonth": "Billing: monthly €{m}/mo", "mailIntro": "I'd like to sign up for Look360 monitoring.", "mailChosen": "Selected:", "mailQuote": "Note: I'd also like custom automation – please send a quote.", "mailSubject": "Sign-up request – Look360", "quotePrice": "on request", "hintWeb": "web +€5", "hintFb": "FB +€1", "perMonthSpaced": "/ mo", "hintEmpty": "Add a website or Facebook page to monitor this company", "phName": "Competitor name", "phWeb": "Website (e.g. competitor.com)", "phFb": "Facebook page (e.g. facebook.com/competitor)", "remove": "Remove", "sumEmpty": "Nothing selected yet", "sumTotal": "Total", "sumYearSuffix": "· annual (2 months free)", "perMonthUnit": "€/mo", "twoMonthsFree": "2 months free", "mlCompany": "Company", "mlContact": "Contact", "mlPhone": "Phone", "mlEmail": "Email", "mlOwnShop": "Own shop", "mlWatch": "To monitor", "mlPackage": "Package", "mlBilling": "Billing", "unnamed": "(unnamed)", "mlWeb": "web", "totYear": "annual €{yr}/year (≈€{eff}/mo, 2 months free)", "totMonth": "monthly €{m}/mo", "btnContinuePay": "Continue to payment →", "btnPay": "Pay", "btnNext": "Next →", "btnCreateAccount": "Create account and log in", "btnCreatingAccount": "Creating account…", "errPassMin": "Password must be at least 8 characters.", "errAcctFail": "Account creation failed.", "errConnFail": "Connection failed. Please try again."};
+/* === i18n: keele-stringid (build_i18n.py asendab {"locale": "en-GB", "fbLine": "{n} competitors on Facebook", "webLineCalc": "{n} e-shops in price + stock monitoring", "webLineModal": "{n} e-shops in price and stock monitoring", "perMonth": "/mo", "saveAnnual": "{m} months free – billed once a year (€{yr}/yr)", "chooseOne": "Choose at least one module", "billYear": "Billing: annual €{yr}/year (≈€{eff}/mo, {m} months free)", "billMonth": "Billing: monthly €{m}/mo", "mailIntro": "I'd like to sign up for Look360 monitoring.", "mailChosen": "Selected:", "mailQuote": "Note: I'd also like custom automation – please send a quote.", "mailSubject": "Sign-up request – Look360", "quotePrice": "on request", "hintWeb": "web +€6", "hintFb": "FB +€2", "perMonthSpaced": "/ mo", "hintEmpty": "Add a website or Facebook page to monitor this company", "phName": "Competitor name", "phWeb": "Website (e.g. competitor.com)", "phFb": "Facebook page (e.g. facebook.com/competitor)", "remove": "Remove", "sumEmpty": "Nothing selected yet", "sumTotal": "Total", "sumYearSuffix": "· annual (2 months free)", "perMonthUnit": "€/mo", "twoMonthsFree": "2 months free", "mlCompany": "Company", "mlContact": "Contact", "mlPhone": "Phone", "mlEmail": "Email", "mlOwnShop": "Own shop", "mlWatch": "To monitor", "mlPackage": "Package", "mlBilling": "Billing", "unnamed": "(unnamed)", "mlWeb": "web", "totYear": "annual €{yr}/year (≈€{eff}/mo, 2 months free)", "totMonth": "monthly €{m}/mo", "btnContinuePay": "Continue to payment →", "btnPay": "Pay", "btnNext": "Next →", "btnCreateAccount": "Create account and log in", "btnCreatingAccount": "Creating account…", "errPassMin": "Password must be at least 8 characters.", "errAcctFail": "Account creation failed.", "errConnFail": "Connection failed. Please try again."} keele kaupa) === */
+const T = {"locale": "en-GB", "fbLine": "{n} competitors on Facebook", "webLineCalc": "{n} e-shops in price + stock monitoring", "webLineModal": "{n} e-shops in price and stock monitoring", "perMonth": "/mo", "saveAnnual": "{m} months free – billed once a year (€{yr}/yr)", "chooseOne": "Choose at least one module", "billYear": "Billing: annual €{yr}/year (≈€{eff}/mo, {m} months free)", "billMonth": "Billing: monthly €{m}/mo", "mailIntro": "I'd like to sign up for Look360 monitoring.", "mailChosen": "Selected:", "mailQuote": "Note: I'd also like custom automation – please send a quote.", "mailSubject": "Sign-up request – Look360", "quotePrice": "on request", "hintWeb": "web +€6", "hintFb": "FB +€2", "perMonthSpaced": "/ mo", "hintEmpty": "Add a website or Facebook page to monitor this company", "phName": "Competitor name", "phWeb": "Website (e.g. competitor.com)", "phFb": "Facebook page (e.g. facebook.com/competitor)", "remove": "Remove", "sumEmpty": "Nothing selected yet", "sumTotal": "Total", "sumYearSuffix": "· annual (2 months free)", "perMonthUnit": "€/mo", "twoMonthsFree": "2 months free", "mlCompany": "Company", "mlContact": "Contact", "mlPhone": "Phone", "mlEmail": "Email", "mlOwnShop": "Own shop", "mlWatch": "To monitor", "mlPackage": "Package", "mlBilling": "Billing", "unnamed": "(unnamed)", "mlWeb": "web", "totYear": "annual €{yr}/year (≈€{eff}/mo, 2 months free)", "totMonth": "monthly €{m}/mo", "btnContinuePay": "Continue to payment →", "btnPay": "Pay", "btnNext": "Next →", "btnCreateAccount": "Create account and log in", "btnCreatingAccount": "Creating account…", "errPassMin": "Password must be at least 8 characters.", "errAcctFail": "Account creation failed.", "errConnFail": "Connection failed. Please try again."};
 function fmt(s,o){return String(s).replace(/\{(\w+)\}/g,(_,k)=>o[k]!=null?o[k]:'')}
 
 /* === keelevaheti (lipud) + IP-suunaja (Cloudflare trace) === */
@@ -1378,7 +1382,7 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
     const body=`${T.mailIntro}\n\n${T.mlCompany}: ${document.getElementById('cName').value.trim()}\n${T.mlContact}: ${document.getElementById('cContact').value.trim()}\n${T.mlPhone}: ${document.getElementById('cPhone').value.trim()}\n${T.mlEmail}: ${document.getElementById('cEmail').value.trim()}\n${own?`${T.mlOwnShop}: ${own}\n`:''}\n${T.mlWatch}:\n${comps||'-'}\n\n${T.mlPackage}:\n${lns}\n\n${T.mlBilling}: ${tot}`;
     return `mailto:info@look360.eu?subject=${encodeURIComponent(T.mailSubject)}&body=${encodeURIComponent(body)}`;
   }
-  var ORDER_ENDPOINT='https://expenses-destruct-snowboard.ngrok-free.dev/api/tellimus/';
+  var ORDER_ENDPOINT='https://scan.look360.eu/api/tellimus/';
   // Firma-nime autocomplete (Eesti äriregister) - AINULT eestikeelne sait.
   // Taaskasutatav: nii kliendi enda ettevõtte nimi (#cName) kui konkurentide
   // nimed (.c-name, dünaamilised read - vt addRow + window.L360auto).
@@ -1408,7 +1412,7 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
         if(q===viimaneQ)return;viimaneQ=q;
         if(ctrl)try{ctrl.abort();}catch(e){}
         ctrl=('AbortController'in window)?new AbortController():null;
-        fetch(OTSING+'?q='+encodeURIComponent(q),{mode:'cors',signal:ctrl?ctrl.signal:undefined,headers:{'ngrok-skip-browser-warning':'1'}})
+        fetch(OTSING+'?q='+encodeURIComponent(q),{mode:'cors',signal:ctrl?ctrl.signal:undefined,headers:{}})
           .then(function(r){return r.json();}).then(function(d){if(inp.value.trim()===q)naita(d.tulemused||[],q);})
           .catch(function(){});}
       inp.addEventListener('input',function(){clearTimeout(tmr);tmr=setTimeout(otsi,140);});
@@ -1446,7 +1450,7 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
     // Tagastab true AINULT serveri kinnitusel; ebaõnnestumisel false (mailto-varu).
     try{
       const r=await fetch(ORDER_ENDPOINT,{method:'POST',mode:'cors',
-        headers:{'Content-Type':'application/json','ngrok-skip-browser-warning':'1'},
+        headers:{'Content-Type':'application/json'},
         body:JSON.stringify(buildOrder())});
       return !!(r&&r.ok);
     }catch(e){return false;}
@@ -1532,7 +1536,7 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
       if(pass.length<8){err.textContent=T.errPassMin;err.classList.add('show');return;}
       acctBtn.disabled=true;acctBtn.textContent=T.btnCreatingAccount;
       fetch(LOO_KONTO,{method:'POST',mode:'cors',
-        headers:{'Content-Type':'application/json','ngrok-skip-browser-warning':'1'},
+        headers:{'Content-Type':'application/json'},
         body:JSON.stringify({epost:em,parool:pass,ettevote:nm})})
         .then(function(r){return r.json();})
         .then(function(j){
