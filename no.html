@@ -551,6 +551,7 @@
   .ord-foot .oprice .a .save{font-size:11px;color:var(--accent-ink);font-weight:500;margin-left:6px}
   .ord-err{color:#c0556b;font-size:13px;margin-top:4px;display:none}
   .ord-err.show{display:block}
+  .ord-vat{font-size:11.5px;color:var(--muted);font-weight:400;margin-top:10px}
   /* view 1 kahe-veeru paigutus + eelvaate galerii */
   .ov1-grid{display:grid;grid-template-columns:minmax(380px,440px) 1fr;gap:30px;align-items:stretch}
   .ord-view:not([data-v="1"]){max-width:560px;margin:0 auto}
@@ -1173,8 +1174,9 @@
         <div class="ord-lab">Fakturering</div>
         <div class="obill" id="obill">
           <button type="button" class="on" data-mode="month">Månedlig</button>
-          <button type="button" data-mode="year">Årlig <span>−2 måneder</span></button>
+          <button type="button" data-mode="year">Årlig <span>spar 2 måneder!</span></button>
         </div>
+        <div class="ord-vat">Alle priser er eksklusive mva.</div>
         <div class="ord-err" id="err1">Legg til minst ett firma å overvåke (nettsted eller FB-side) eller velg en modul.</div>
         </div>
         <aside class="ov1-gallery" aria-hidden="true">
