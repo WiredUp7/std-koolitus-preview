@@ -456,7 +456,7 @@
   body.modal-open{overflow:hidden}
   .order-ov{position:fixed;inset:0;z-index:200;background:rgba(8,9,12,.66);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:none;align-items:flex-start;justify-content:center;overflow-y:auto;padding:30px 14px}
   .order-ov.open{display:flex}
-  .order{width:100%;max-width:720px;background:var(--paper);border-radius:22px;box-shadow:var(--shadow-lg);overflow:hidden;animation:omod .35s cubic-bezier(.2,.7,.3,1)}
+  .order{width:100%;max-width:940px;background:var(--paper);border-radius:22px;box-shadow:var(--shadow-lg);overflow:hidden;animation:omod .35s cubic-bezier(.2,.7,.3,1)}
   @keyframes omod{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
   .ord-head{display:flex;align-items:center;gap:13px;padding:18px 24px;background:linear-gradient(125deg,#0a0b0e 0%,#0d2e28 50%,#0c5f4d 100%);color:#fff;position:relative}
   .ord-head::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--grad)}
@@ -551,6 +551,22 @@
   .ord-foot .oprice .a .save{font-size:11px;color:var(--accent-ink);font-weight:500;margin-left:6px}
   .ord-err{color:#c0556b;font-size:13px;margin-top:4px;display:none}
   .ord-err.show{display:block}
+  /* view 1 kahe-veeru paigutus + eelvaate galerii */
+  .ov1-grid{display:grid;grid-template-columns:1fr .8fr;gap:24px;align-items:stretch}
+  .ord-view:not([data-v="1"]){max-width:560px;margin:0 auto}
+  .ov1-gallery{position:relative;border-radius:16px;overflow:hidden;min-height:430px;background:linear-gradient(165deg,#0d2e28,#0a0b0e 72%);border:1px solid rgba(12,95,77,.55);box-shadow:inset 0 0 60px rgba(0,0,0,.4)}
+  .ov1-gallery .gtrack{position:absolute;left:14px;right:14px;top:0;display:flex;flex-direction:column;gap:14px;padding:16px 0;animation:gscroll 34s linear infinite;will-change:transform}
+  .ov1-gallery:hover .gtrack{animation-play-state:paused}
+  .ov1-gallery .gtrack img{width:100%;display:block;border-radius:11px;border:1px solid rgba(255,255,255,.09);box-shadow:0 12px 30px rgba(0,0,0,.45);filter:blur(3px) brightness(.97) saturate(1.05)}
+  @keyframes gscroll{from{transform:translateY(0)}to{transform:translateY(-50%)}}
+  .ov1-gallery::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(180deg,rgba(10,11,14,.7),rgba(10,11,14,0) 17%,rgba(10,11,14,0) 62%,rgba(10,11,14,.94))}
+  .ov1-gallery .glock{position:absolute;z-index:3;top:13px;left:13px;display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#bff3da;background:rgba(8,20,16,.6);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);border:1px solid rgba(23,184,106,.4);border-radius:999px;padding:5px 11px 5px 9px}
+  .ov1-gallery .glock svg{width:13px;height:13px}
+  .ov1-gallery .glabel{position:absolute;z-index:3;left:15px;right:15px;bottom:15px;color:#fff}
+  .ov1-gallery .glabel b{display:block;font-size:15px;font-weight:600;letter-spacing:-.01em;margin-bottom:3px}
+  .ov1-gallery .glabel span{font-size:12px;font-weight:300;line-height:1.45;color:#c7d4ce}
+  @media(prefers-reduced-motion:reduce){.ov1-gallery .gtrack{animation:none}}
+  @media(max-width:720px){.ov1-grid{grid-template-columns:1fr}.ov1-gallery{display:none}}
   @media(max-width:900px){.why{grid-template-columns:repeat(2,1fr)}.rely{grid-template-columns:1fr}}
   @media(max-width:560px){.why{grid-template-columns:1fr}.replace{grid-template-columns:1fr}.orow2,.comp .crow{grid-template-columns:1fr}.ord-steps .lbl{display:none}.ord-foot{gap:10px}.ord-foot .btn{flex:1;justify-content:center}}
 
@@ -1122,9 +1138,11 @@
       <div class="s" data-s="4"><span class="n">4</span><span class="lbl">Maksu</span></div>
     </div>
     <div class="ord-body" id="ordBody">
-      <!-- VIEW 1: mida jälgida -->
+      <!-- VIEW 1: keda jälgida -->
       <div class="ord-view on" data-v="1">
-        <div class="ord-h">Mitä haluat seurata?</div>
+       <div class="ov1-grid">
+        <div class="ov1-main">
+        <div class="ord-h">Ketä haluat seurata?</div>
         <div class="ord-sub">Lisää seurattavat yritykset ja valitse kauppasi moduulit. Kuukausimaksu lasketaan heti syöttämiesi yritysten mukaan.</div>
 
         <div class="ord-lab">Sinun verkkokauppasi</div>
@@ -1151,6 +1169,22 @@
           <button type="button" data-mode="year">Vuosimaksu <span>−2 kuukautta</span></button>
         </div>
         <div class="ord-err" id="err1">Lisää vähintään yksi seurattava yritys (verkkosivu tai FB-sivu) tai valitse moduuli.</div>
+        </div>
+        <aside class="ov1-gallery" aria-hidden="true">
+          <div class="glock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4" stroke-linecap="round"/></svg>Eelvaade</div>
+          <div class="gtrack">
+            <img src="l360-seirepaneel.png" alt="">
+            <img src="l360-naidikud.png" alt="">
+            <img src="l360-kaardid.png" alt="">
+            <img src="l360-kataloog.png" alt="">
+            <img src="l360-seirepaneel.png" alt="">
+            <img src="l360-naidikud.png" alt="">
+            <img src="l360-kaardid.png" alt="">
+            <img src="l360-kataloog.png" alt="">
+          </div>
+          <div class="glabel"><b>Vaade, mis sind ees ootab</b><span>Iga hommik värske seirepaneel — konkurendid, hinnad, laoseis ja terviseskann ühel pilgul.</span></div>
+        </aside>
+       </div>
       </div>
 
       <!-- VIEW 2: sinu andmed -->
