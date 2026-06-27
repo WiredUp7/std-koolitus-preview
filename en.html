@@ -8,27 +8,27 @@
 <meta name="description" content="Monitoring, automation and training on a monthly subscription. Competitor and price monitoring in Estonia and nearby markets (Finland, Sweden, Latvia, Lithuania), e-shop health checks, ERP integration and custom automation.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://wiredup7.github.io/std-koolitus-preview/">
+<meta property="og:url" content="https://look360.eu/">
 <meta property="og:title" content="Look360 – We keep an eye on your business">
 <meta property="og:description" content="Monitoring, automation and training on a monthly subscription. One report that warns you before anything breaks.">
-<meta property="og:image" content="https://wiredup7.github.io/std-koolitus-preview/og-cover.png">
+<meta property="og:image" content="https://look360.eu/og-cover.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Look360 – We keep an eye on your business">
 <meta name="twitter:description" content="Monitoring, automation and training on a monthly subscription. One report that warns you before anything breaks.">
-<meta name="twitter:image" content="https://wiredup7.github.io/std-koolitus-preview/og-cover.png">
-<link rel="alternate" hreflang="et" href="https://wiredup7.github.io/std-koolitus-preview/index.html">
-<link rel="alternate" hreflang="en" href="https://wiredup7.github.io/std-koolitus-preview/en.html">
-<link rel="alternate" hreflang="fi" href="https://wiredup7.github.io/std-koolitus-preview/fi.html">
-<link rel="alternate" hreflang="sv" href="https://wiredup7.github.io/std-koolitus-preview/sv.html">
-<link rel="alternate" hreflang="no" href="https://wiredup7.github.io/std-koolitus-preview/no.html">
-<link rel="alternate" hreflang="da" href="https://wiredup7.github.io/std-koolitus-preview/da.html">
-<link rel="alternate" hreflang="lv" href="https://wiredup7.github.io/std-koolitus-preview/lv.html">
-<link rel="alternate" hreflang="lt" href="https://wiredup7.github.io/std-koolitus-preview/lt.html">
-<link rel="alternate" hreflang="pl" href="https://wiredup7.github.io/std-koolitus-preview/pl.html">
-<link rel="alternate" hreflang="uk" href="https://wiredup7.github.io/std-koolitus-preview/uk.html">
-<link rel="alternate" hreflang="x-default" href="https://wiredup7.github.io/std-koolitus-preview/en.html">
+<meta name="twitter:image" content="https://look360.eu/og-cover.png">
+<link rel="alternate" hreflang="et" href="https://look360.eu/index.html">
+<link rel="alternate" hreflang="en" href="https://look360.eu/en.html">
+<link rel="alternate" hreflang="fi" href="https://look360.eu/fi.html">
+<link rel="alternate" hreflang="sv" href="https://look360.eu/sv.html">
+<link rel="alternate" hreflang="no" href="https://look360.eu/no.html">
+<link rel="alternate" hreflang="da" href="https://look360.eu/da.html">
+<link rel="alternate" hreflang="lv" href="https://look360.eu/lv.html">
+<link rel="alternate" hreflang="lt" href="https://look360.eu/lt.html">
+<link rel="alternate" hreflang="pl" href="https://look360.eu/pl.html">
+<link rel="alternate" hreflang="uk" href="https://look360.eu/uk.html">
+<link rel="alternate" hreflang="x-default" href="https://look360.eu/en.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
@@ -1243,6 +1243,7 @@
 
         <div class="ord-lab">Your e-shop</div>
         <div class="ofield"><label for="ownSite">Your shop's web address</label><input type="text" id="ownSite" placeholder="e.g. myshop.com"></div>
+        <div class="ofield"><label for="ownFb">Your company's Facebook</label><input type="text" id="ownFb" placeholder="e.g. facebook.com/yourcompany"><div style="color:var(--muted);font-size:12.5px;margin-top:5px">Free — your own company's page.</div></div>
 
         <div class="ord-lab">Who to monitor — competitors</div>
         <div id="compList"></div>
@@ -1396,8 +1397,8 @@
 const nav=document.getElementById('nav');
 addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>12),{passive:true});
 
-/* === i18n: keele-stringid (build_i18n.py asendab {"locale": "en-GB", "fbLine": "{n} competitors on Facebook", "webLineCalc": "{n} e-shops in price + stock monitoring", "webLineModal": "{n} e-shops in price and stock monitoring", "perMonth": "/mo", "saveAnnual": "{m} months free – billed once a year (€{yr}/yr)", "chooseOne": "Choose at least one module", "billYear": "Billing: annual €{yr}/year (≈€{eff}/mo, {m} months free)", "billMonth": "Billing: monthly €{m}/mo", "mailIntro": "I'd like to sign up for Look360 monitoring.", "mailChosen": "Selected:", "mailQuote": "Note: I'd also like custom automation – please send a quote.", "mailSubject": "Sign-up request – Look360", "quotePrice": "on request", "hintWeb": "web +€8", "hintFb": "FB +€3", "perMonthSpaced": "/ mo", "hintEmpty": "Add a website or Facebook page to monitor this company", "phName": "Competitor name", "phWeb": "Website (e.g. competitor.com)", "phFb": "Facebook page (e.g. facebook.com/competitor)", "remove": "Remove", "sumEmpty": "Nothing selected yet", "sumTotal": "Total", "sumYearSuffix": "· annual (2 months free)", "perMonthUnit": "€/mo", "perYear": "/yr", "perYearUnit": "€/yr", "payNoteYear": "You pay for the whole year now (2 months free). Your card stays securely linked and renews once a year — cancel anytime.", "twoMonthsFree": "2 months free", "mlCompany": "Company", "mlContact": "Contact", "mlPhone": "Phone", "mlEmail": "Email", "mlOwnShop": "Own shop", "mlWatch": "To monitor", "mlPackage": "Package", "mlBilling": "Billing", "unnamed": "(unnamed)", "mlWeb": "web", "totYear": "annual €{yr}/year (≈€{eff}/mo, 2 months free)", "totMonth": "monthly €{m}/mo", "btnContinuePay": "Continue to payment →", "btnPay": "Pay", "btnNext": "Next →", "btnCreateAccount": "Create account and log in", "btnCreatingAccount": "Creating account…", "errPassMin": "Password must be at least 8 characters.", "errAcctFail": "Account creation failed.", "errConnFail": "Connection failed. Please try again.", "navToolaud": "Dashboard", "copySending": "Sending…", "copySent": "Copy sent to your email ✓", "copyFail": "Sending failed. Please try again."} keele kaupa) === */
-const T = {"locale": "en-GB", "fbLine": "{n} competitors on Facebook", "webLineCalc": "{n} e-shops in price + stock monitoring", "webLineModal": "{n} e-shops in price and stock monitoring", "perMonth": "/mo", "saveAnnual": "{m} months free – billed once a year (€{yr}/yr)", "chooseOne": "Choose at least one module", "billYear": "Billing: annual €{yr}/year (≈€{eff}/mo, {m} months free)", "billMonth": "Billing: monthly €{m}/mo", "mailIntro": "I'd like to sign up for Look360 monitoring.", "mailChosen": "Selected:", "mailQuote": "Note: I'd also like custom automation – please send a quote.", "mailSubject": "Sign-up request – Look360", "quotePrice": "on request", "hintWeb": "web +€8", "hintFb": "FB +€3", "perMonthSpaced": "/ mo", "hintEmpty": "Add a website or Facebook page to monitor this company", "phName": "Competitor name", "phWeb": "Website (e.g. competitor.com)", "phFb": "Facebook page (e.g. facebook.com/competitor)", "remove": "Remove", "sumEmpty": "Nothing selected yet", "sumTotal": "Total", "sumYearSuffix": "· annual (2 months free)", "perMonthUnit": "€/mo", "perYear": "/yr", "perYearUnit": "€/yr", "payNoteYear": "You pay for the whole year now (2 months free). Your card stays securely linked and renews once a year — cancel anytime.", "twoMonthsFree": "2 months free", "mlCompany": "Company", "mlContact": "Contact", "mlPhone": "Phone", "mlEmail": "Email", "mlOwnShop": "Own shop", "mlWatch": "To monitor", "mlPackage": "Package", "mlBilling": "Billing", "unnamed": "(unnamed)", "mlWeb": "web", "totYear": "annual €{yr}/year (≈€{eff}/mo, 2 months free)", "totMonth": "monthly €{m}/mo", "btnContinuePay": "Continue to payment →", "btnPay": "Pay", "btnNext": "Next →", "btnCreateAccount": "Create account and log in", "btnCreatingAccount": "Creating account…", "errPassMin": "Password must be at least 8 characters.", "errAcctFail": "Account creation failed.", "errConnFail": "Connection failed. Please try again.", "navToolaud": "Dashboard", "copySending": "Sending…", "copySent": "Copy sent to your email ✓", "copyFail": "Sending failed. Please try again."};
+/* === i18n: keele-stringid (build_i18n.py asendab {"locale": "en-GB", "fbLine": "{n} competitors on Facebook", "webLineCalc": "{n} e-shops in price + stock monitoring", "webLineModal": "{n} e-shops in price and stock monitoring", "perMonth": "/mo", "saveAnnual": "{m} months free – billed once a year (€{yr}/yr)", "chooseOne": "Choose at least one module", "billYear": "Billing: annual €{yr}/year (≈€{eff}/mo, {m} months free)", "billMonth": "Billing: monthly €{m}/mo", "mailIntro": "I'd like to sign up for Look360 monitoring.", "mailChosen": "Selected:", "mailQuote": "Note: I'd also like custom automation – please send a quote.", "mailSubject": "Sign-up request – Look360", "quotePrice": "on request", "hintWeb": "web +€8", "hintFb": "FB +€3", "perMonthSpaced": "/ mo", "hintEmpty": "Add a website or Facebook page to monitor this company", "phName": "Competitor name", "phWeb": "Website (e.g. competitor.com)", "phFb": "Facebook page (e.g. facebook.com/competitor)", "remove": "Remove", "sumEmpty": "Nothing selected yet", "sumTotal": "Total", "sumYearSuffix": "· annual (2 months free)", "perMonthUnit": "€/mo", "perYear": "/yr", "perYearUnit": "€/yr", "payNoteYear": "You pay for the whole year now (2 months free). Your card stays securely linked and renews once a year — cancel anytime.", "twoMonthsFree": "2 months free", "mlCompany": "Company", "mlContact": "Contact", "mlPhone": "Phone", "mlEmail": "Email", "mlOwnShop": "Own shop", "mlOwnFb": "Own Facebook", "mlWatch": "To monitor", "mlPackage": "Package", "mlBilling": "Billing", "unnamed": "(unnamed)", "mlWeb": "web", "totYear": "annual €{yr}/year (≈€{eff}/mo, 2 months free)", "totMonth": "monthly €{m}/mo", "btnContinuePay": "Continue to payment →", "btnPay": "Pay", "btnNext": "Next →", "btnCreateAccount": "Create account and log in", "btnCreatingAccount": "Creating account…", "errPassMin": "Password must be at least 8 characters.", "errAcctFail": "Account creation failed.", "errConnFail": "Connection failed. Please try again.", "navToolaud": "Dashboard", "copySending": "Sending…", "copySent": "Copy sent to your email ✓", "copyFail": "Sending failed. Please try again."} keele kaupa) === */
+const T = {"locale": "en-GB", "fbLine": "{n} competitors on Facebook", "webLineCalc": "{n} e-shops in price + stock monitoring", "webLineModal": "{n} e-shops in price and stock monitoring", "perMonth": "/mo", "saveAnnual": "{m} months free – billed once a year (€{yr}/yr)", "chooseOne": "Choose at least one module", "billYear": "Billing: annual €{yr}/year (≈€{eff}/mo, {m} months free)", "billMonth": "Billing: monthly €{m}/mo", "mailIntro": "I'd like to sign up for Look360 monitoring.", "mailChosen": "Selected:", "mailQuote": "Note: I'd also like custom automation – please send a quote.", "mailSubject": "Sign-up request – Look360", "quotePrice": "on request", "hintWeb": "web +€8", "hintFb": "FB +€3", "perMonthSpaced": "/ mo", "hintEmpty": "Add a website or Facebook page to monitor this company", "phName": "Competitor name", "phWeb": "Website (e.g. competitor.com)", "phFb": "Facebook page (e.g. facebook.com/competitor)", "remove": "Remove", "sumEmpty": "Nothing selected yet", "sumTotal": "Total", "sumYearSuffix": "· annual (2 months free)", "perMonthUnit": "€/mo", "perYear": "/yr", "perYearUnit": "€/yr", "payNoteYear": "You pay for the whole year now (2 months free). Your card stays securely linked and renews once a year — cancel anytime.", "twoMonthsFree": "2 months free", "mlCompany": "Company", "mlContact": "Contact", "mlPhone": "Phone", "mlEmail": "Email", "mlOwnShop": "Own shop", "mlOwnFb": "Own Facebook", "mlWatch": "To monitor", "mlPackage": "Package", "mlBilling": "Billing", "unnamed": "(unnamed)", "mlWeb": "web", "totYear": "annual €{yr}/year (≈€{eff}/mo, 2 months free)", "totMonth": "monthly €{m}/mo", "btnContinuePay": "Continue to payment →", "btnPay": "Pay", "btnNext": "Next →", "btnCreateAccount": "Create account and log in", "btnCreatingAccount": "Creating account…", "errPassMin": "Password must be at least 8 characters.", "errAcctFail": "Account creation failed.", "errConnFail": "Connection failed. Please try again.", "navToolaud": "Dashboard", "copySending": "Sending…", "copySent": "Copy sent to your email ✓", "copyFail": "Sending failed. Please try again."};
 function fmt(s,o){return String(s).replace(/\{(\w+)\}/g,(_,k)=>o[k]!=null?o[k]:'')}
 
 /* === Login-staatus: kui külastaja on äpis juba sisse logitud, vaheta "Logi
@@ -1635,6 +1636,7 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
   function buildMail(){
     const {lines,m}=calc();const y=isYear();const yr=m*(12-FREE_MONTHS),eff=Math.round(yr/12);
     const own=document.getElementById('ownSite').value.trim();
+    const ownf=document.getElementById('ownFb').value.trim();
     const comps=[...compList.querySelectorAll('.comp')].map(c=>{
       const n=c.querySelector('.c-name').value.trim(),w=c.querySelector('.c-web').value.trim(),f=c.querySelector('.c-fb').value.trim();
       if(!n&&!w&&!f)return null;
@@ -1642,7 +1644,7 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
     }).filter(Boolean).join('\n');
     const lns=lines.map(l=>`- ${l[0]} (${l[1]})`).join('\n');
     const tot=y?fmt(T.totYear,{yr,eff}):fmt(T.totMonth,{m});
-    const body=`${T.mailIntro}\n\n${T.mlCompany}: ${document.getElementById('cName').value.trim()}\n${T.mlContact}: ${document.getElementById('cContact').value.trim()}\n${T.mlPhone}: ${document.getElementById('cPhone').value.trim()}\n${T.mlEmail}: ${document.getElementById('cEmail').value.trim()}\n${own?`${T.mlOwnShop}: ${own}\n`:''}\n${T.mlWatch}:\n${comps||'-'}\n\n${T.mlPackage}:\n${lns}\n\n${T.mlBilling}: ${tot}`;
+    const body=`${T.mailIntro}\n\n${T.mlCompany}: ${document.getElementById('cName').value.trim()}\n${T.mlContact}: ${document.getElementById('cContact').value.trim()}\n${T.mlPhone}: ${document.getElementById('cPhone').value.trim()}\n${T.mlEmail}: ${document.getElementById('cEmail').value.trim()}\n${own?`${T.mlOwnShop}: ${own}\n`:''}${ownf?`${T.mlOwnFb}: ${ownf}\n`:''}\n${T.mlWatch}:\n${comps||'-'}\n\n${T.mlPackage}:\n${lns}\n\n${T.mlBilling}: ${tot}`;
     return {teema:T.mailSubject, tekst:body};   // koopia-kiri: teema + lokaliseeritud keha (saadetakse serveri kaudu kliendi e-postile)
   }
   var ORDER_ENDPOINT='https://scan.look360.eu/api/tellimus/';
@@ -1795,6 +1797,7 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
       telefon:(window.telFull?window.telFull():document.getElementById('cPhone').value.trim()),
       epost:document.getElementById('cEmail').value.trim(),
       oma_pood:document.getElementById('ownSite').value.trim(),
+      oma_fb:document.getElementById('ownFb').value.trim(),
       konkurendid:konkurendid, moodulid:moodulid, mooduli_koodid:mooduli_koodid,
       arveldus:y?'aasta':'kuu', kuutasu:m, keel:T.locale};
   }
