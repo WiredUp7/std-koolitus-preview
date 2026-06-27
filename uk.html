@@ -31,7 +31,7 @@
 <link rel="alternate" hreflang="x-default" href="https://wiredup7.github.io/std-koolitus-preview/en.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --ink:#0a0b0e;          /* hero black */
@@ -57,7 +57,7 @@
     --shadow-lg:0 40px 80px -28px rgba(0,0,0,.45);
     --maxw:1180px;--r:16px;
     --f:"Poppins",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-    --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+    --mono:"Poppins",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
@@ -407,7 +407,11 @@
     .steps{grid-template-columns:repeat(2,1fr)}
     .port,.price-top{grid-template-columns:1fr}
     .calc{grid-template-columns:1fr;gap:32px;padding:30px}
-    .nav-links,.nav-r{display:none}
+    .nav-links{display:none}
+    .nav-r{display:flex;gap:8px}
+    .nav-r .js-order{display:none}        /* CTA on niigi heros + menüüs — ülaribal jätame ainult login */
+    .nav-r .login-link{font-size:13.5px}
+    .mobile-menu a.js-login{display:none}  /* login on nüüd ülaribal alati nähtav — väldime dubleerimist */
     .burger{display:flex}
   }
   @media(max-width:560px){
@@ -415,6 +419,11 @@
     .steps{grid-template-columns:1fr}
     section{padding:74px 0}
     .logo .tag{display:none}
+    .nav-inner{gap:12px;height:72px}
+    .wrap.nav-inner{padding-left:18px;padding-right:18px}
+    .logo .eye{height:42px}
+    .nav-r .login-link{font-size:13px;gap:0}
+    .nav-r .login-link svg{display:none}   /* ruumi kokkuhoid kitsal mobiilil — ainult tekst */
     .hero-stats .s{border-right:0;border-bottom:1px solid var(--line-dark);padding:16px 0}
   }
 
@@ -538,6 +547,19 @@
   .pay-demo svg{width:18px;height:18px;flex-shrink:0;margin-top:1px}
   .pay-logos{display:flex;gap:8px;align-items:center;margin-bottom:16px;flex-wrap:wrap}
   .pay-logos .pl{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--muted);border:1px solid var(--line);border-radius:7px;padding:5px 10px;background:#fff}
+  /* makse: "mis juhtub edasi" sammud + usaldusread */
+  .pay-flow{list-style:none;display:flex;flex-direction:column;gap:0;margin:0 0 18px}
+  .pay-flow li{display:flex;gap:14px;align-items:flex-start;padding:0 0 17px;position:relative}
+  .pay-flow li:last-child{padding-bottom:4px}
+  .pay-flow li:not(:last-child)::before{content:"";position:absolute;left:15px;top:31px;bottom:2px;width:2px;background:linear-gradient(180deg,var(--accent),rgba(23,184,106,.16))}
+  .pay-flow .pf-n{flex-shrink:0;width:31px;height:31px;border-radius:50%;background:var(--grad);color:#04231a;font-weight:700;font-size:14px;display:grid;place-items:center;box-shadow:0 6px 16px -6px rgba(13,191,135,.6);position:relative;z-index:1}
+  .pay-flow .pf-t{padding-top:3px}
+  .pay-flow .pf-t b{display:block;font-weight:600;font-size:14.5px;color:var(--text);margin-bottom:2px}
+  .pay-flow .pf-t span{font-size:13px;color:var(--muted);font-weight:300;line-height:1.5}
+  .pay-note{display:flex;gap:11px;align-items:flex-start;background:var(--accent-soft);border:1px solid #cdeadd;border-radius:13px;padding:13px 15px;font-size:13px;color:#22614a;font-weight:400;margin-bottom:15px;line-height:1.5}
+  .pay-note svg{width:18px;height:18px;color:var(--accent-ink);flex-shrink:0;margin-top:1px}
+  .pay-trust{display:flex;gap:8px;align-items:center;font-size:12px;color:var(--muted);font-weight:400;margin-top:2px}
+  .pay-trust svg{width:14px;height:14px;flex-shrink:0;color:var(--accent-ink)}
   .ord-done{text-align:center;padding:14px 6px 6px}
   .ord-done .chk{width:72px;height:72px;border-radius:50%;background:var(--accent-soft);color:var(--accent-ink);display:grid;place-items:center;margin:0 auto 22px}
   .ord-done .chk svg{width:38px;height:38px}
@@ -1294,8 +1316,15 @@
         <div id="payForm">
           <div class="ord-h">Оплата</div>
           <div class="ord-sub">Безпечна оплата банківським посиланням або карткою. «Сплатити» перенесе вас на безпечну сторінку оплати.</div>
-          <div class="pay-demo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 5 6v5c0 4.2 2.8 7.3 7 8.8 4.2-1.5 7-4.6 7-8.8V6l-7-3Z" stroke-linejoin="round"/><path d="m9 11.5 2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg><span id="payNote">Ви сплачуєте лише за перший місяць. Картка залишається безпечно прив'язаною, а наступні місяці списуються автоматично — ви можете скасувати будь-якої миті.</span></div>
+          <div class="ord-lab">Що буде далі</div>
+          <ol class="pay-flow">
+            <li><span class="pf-n">1</span><div class="pf-t"><b>Ви підтверджуєте замовлення</b><span>Відкривається захищена сторінка оплати Stripe.</span></div></li>
+            <li><span class="pf-n">2</span><div class="pf-t"><b>Ви платите через банківське посилання або карткою</b><span>Swedbank, SEB, LHV, Visa або Mastercard.</span></div></li>
+            <li><span class="pf-n">3</span><div class="pf-t"><b>Готово — моніторинг запускається одразу</b><span>Перший звіт надішлемо електронною поштою, а налаштування зробимо ми.</span></div></li>
+          </ol>
+          <div class="pay-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 5 6v5c0 4.2 2.8 7.3 7 8.8 4.2-1.5 7-4.6 7-8.8V6l-7-3Z" stroke-linejoin="round"/><path d="m9 11.5 2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg><span id="payNote">Ви сплачуєте лише за перший місяць. Картка залишається безпечно прив'язаною, а наступні місяці списуються автоматично — ви можете скасувати будь-якої миті.</span></div>
           <div class="pay-logos"><span class="pl">Swedbank</span><span class="pl">SEB</span><span class="pl">LHV</span><span class="pl">Visa</span><span class="pl">Mastercard</span></div>
+          <div class="pay-trust"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="4.5" y="10.5" width="15" height="10" rx="2.2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3" stroke-linecap="round"/></svg><span>Платежі обробляє Stripe. Дані вашої картки до нас не потрапляють.</span></div>
         </div>
         <div class="ord-done" id="payDone" style="display:none">
           <div id="payOk">
@@ -1314,7 +1343,8 @@
             <p><b>Обліковий запис створено.</b> Тепер увійдіть за допомогою електронної пошти та пароля.</p>
             <a href="#" id="acctLogin" class="btn btn-grad" style="justify-content:center;margin-top:8px">Увійти →</a>
           </div>
-          <p style="margin-top:16px"><a href="#" id="mailCopy" class="btn btn-out">Надіслати копію замовлення на e-mail</a></p>
+          <p style="margin-top:16px"><button type="button" id="mailCopy" class="btn btn-out">Надіслати копію замовлення на e-mail</button></p>
+          <div id="mailCopyStatus" style="display:none;font-size:13px;margin-top:8px;color:#0c8f4f"></div>
         </div>
       </div>
     </div>
@@ -1330,8 +1360,8 @@
 const nav=document.getElementById('nav');
 addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>12),{passive:true});
 
-/* === i18n: keele-stringid (build_i18n.py asendab {"locale": "uk-UA", "fbLine": "{n} конкурентів у Facebook", "webLineCalc": "{n} інтернет-магазинів у моніторингу цін + залишків", "webLineModal": "{n} інтернет-магазинів у моніторингу цін і залишків", "perMonth": "/міс", "saveAnnual": "{m} місяців безкоштовно – рахунок раз на рік (€{yr}/рік)", "chooseOne": "Виберіть щонайменше один модуль", "billYear": "Оплата: річна €{yr}/рік (≈€{eff}/міс, {m} місяців безкоштовно)", "billMonth": "Оплата: щомісячна €{m}/міс", "mailIntro": "Хочу підключити моніторинг Look360.", "mailChosen": "Вибрано:", "mailQuote": "Примітка: також хочу індивідуальну автоматизацію – надішліть, будь ласка, пропозицію.", "mailSubject": "Запит на підключення – Look360", "quotePrice": "за запитом", "hintWeb": "веб +8 €", "hintFb": "FB +3 €", "perMonthSpaced": "/ міс", "hintEmpty": "Додайте сайт або сторінку Facebook, щоб відстежувати цю компанію", "phName": "Назва конкурента", "phWeb": "Сайт (напр. konkurent.com)", "phFb": "Сторінка Facebook (напр. facebook.com/konkurent)", "remove": "Видалити", "sumEmpty": "Ще нічого не вибрано", "sumTotal": "Разом", "sumYearSuffix": "· річна оплата (2 місяці безкоштовно)", "perMonthUnit": "€/міс", "perYear": "/рік", "perYearUnit": "€/рік", "payNoteYear": "Ти сплачуєш одразу за весь рік (2 місяці безкоштовно). Картка лишається надійно прив'язаною й оновлюється раз на рік — можна скасувати будь-коли.", "twoMonthsFree": "2 місяці безкоштовно", "mlCompany": "Компанія", "mlContact": "Контакт", "mlPhone": "Телефон", "mlEmail": "E-mail", "mlOwnShop": "Власний магазин", "mlWatch": "Відстежувати", "mlPackage": "Пакет", "mlBilling": "Оплата", "unnamed": "(без назви)", "mlWeb": "веб", "totYear": "річна оплата €{yr}/рік (≈€{eff}/міс, 2 місяці безкоштовно)", "totMonth": "щомісячна оплата €{m}/міс", "btnContinuePay": "Перейти до оплати →", "btnPay": "Сплатити", "btnNext": "Далі →", "btnCreateAccount": "Створити обліковий запис і увійти", "btnCreatingAccount": "Створення облікового запису…", "errPassMin": "Пароль має містити щонайменше 8 символів.", "errAcctFail": "Не вдалося створити обліковий запис.", "errConnFail": "Помилка з’єднання. Спробуйте ще раз.", "navToolaud": "Панель"} keele kaupa) === */
-const T = {"locale": "uk-UA", "fbLine": "{n} конкурентів у Facebook", "webLineCalc": "{n} інтернет-магазинів у моніторингу цін + залишків", "webLineModal": "{n} інтернет-магазинів у моніторингу цін і залишків", "perMonth": "/міс", "saveAnnual": "{m} місяців безкоштовно – рахунок раз на рік (€{yr}/рік)", "chooseOne": "Виберіть щонайменше один модуль", "billYear": "Оплата: річна €{yr}/рік (≈€{eff}/міс, {m} місяців безкоштовно)", "billMonth": "Оплата: щомісячна €{m}/міс", "mailIntro": "Хочу підключити моніторинг Look360.", "mailChosen": "Вибрано:", "mailQuote": "Примітка: також хочу індивідуальну автоматизацію – надішліть, будь ласка, пропозицію.", "mailSubject": "Запит на підключення – Look360", "quotePrice": "за запитом", "hintWeb": "веб +8 €", "hintFb": "FB +3 €", "perMonthSpaced": "/ міс", "hintEmpty": "Додайте сайт або сторінку Facebook, щоб відстежувати цю компанію", "phName": "Назва конкурента", "phWeb": "Сайт (напр. konkurent.com)", "phFb": "Сторінка Facebook (напр. facebook.com/konkurent)", "remove": "Видалити", "sumEmpty": "Ще нічого не вибрано", "sumTotal": "Разом", "sumYearSuffix": "· річна оплата (2 місяці безкоштовно)", "perMonthUnit": "€/міс", "perYear": "/рік", "perYearUnit": "€/рік", "payNoteYear": "Ти сплачуєш одразу за весь рік (2 місяці безкоштовно). Картка лишається надійно прив'язаною й оновлюється раз на рік — можна скасувати будь-коли.", "twoMonthsFree": "2 місяці безкоштовно", "mlCompany": "Компанія", "mlContact": "Контакт", "mlPhone": "Телефон", "mlEmail": "E-mail", "mlOwnShop": "Власний магазин", "mlWatch": "Відстежувати", "mlPackage": "Пакет", "mlBilling": "Оплата", "unnamed": "(без назви)", "mlWeb": "веб", "totYear": "річна оплата €{yr}/рік (≈€{eff}/міс, 2 місяці безкоштовно)", "totMonth": "щомісячна оплата €{m}/міс", "btnContinuePay": "Перейти до оплати →", "btnPay": "Сплатити", "btnNext": "Далі →", "btnCreateAccount": "Створити обліковий запис і увійти", "btnCreatingAccount": "Створення облікового запису…", "errPassMin": "Пароль має містити щонайменше 8 символів.", "errAcctFail": "Не вдалося створити обліковий запис.", "errConnFail": "Помилка з’єднання. Спробуйте ще раз.", "navToolaud": "Панель"};
+/* === i18n: keele-stringid (build_i18n.py asendab {"locale": "uk-UA", "fbLine": "{n} конкурентів у Facebook", "webLineCalc": "{n} інтернет-магазинів у моніторингу цін + залишків", "webLineModal": "{n} інтернет-магазинів у моніторингу цін і залишків", "perMonth": "/міс", "saveAnnual": "{m} місяців безкоштовно – рахунок раз на рік (€{yr}/рік)", "chooseOne": "Виберіть щонайменше один модуль", "billYear": "Оплата: річна €{yr}/рік (≈€{eff}/міс, {m} місяців безкоштовно)", "billMonth": "Оплата: щомісячна €{m}/міс", "mailIntro": "Хочу підключити моніторинг Look360.", "mailChosen": "Вибрано:", "mailQuote": "Примітка: також хочу індивідуальну автоматизацію – надішліть, будь ласка, пропозицію.", "mailSubject": "Запит на підключення – Look360", "quotePrice": "за запитом", "hintWeb": "веб +8 €", "hintFb": "FB +3 €", "perMonthSpaced": "/ міс", "hintEmpty": "Додайте сайт або сторінку Facebook, щоб відстежувати цю компанію", "phName": "Назва конкурента", "phWeb": "Сайт (напр. konkurent.com)", "phFb": "Сторінка Facebook (напр. facebook.com/konkurent)", "remove": "Видалити", "sumEmpty": "Ще нічого не вибрано", "sumTotal": "Разом", "sumYearSuffix": "· річна оплата (2 місяці безкоштовно)", "perMonthUnit": "€/міс", "perYear": "/рік", "perYearUnit": "€/рік", "payNoteYear": "Ти сплачуєш одразу за весь рік (2 місяці безкоштовно). Картка лишається надійно прив'язаною й оновлюється раз на рік — можна скасувати будь-коли.", "twoMonthsFree": "2 місяці безкоштовно", "mlCompany": "Компанія", "mlContact": "Контакт", "mlPhone": "Телефон", "mlEmail": "E-mail", "mlOwnShop": "Власний магазин", "mlWatch": "Відстежувати", "mlPackage": "Пакет", "mlBilling": "Оплата", "unnamed": "(без назви)", "mlWeb": "веб", "totYear": "річна оплата €{yr}/рік (≈€{eff}/міс, 2 місяці безкоштовно)", "totMonth": "щомісячна оплата €{m}/міс", "btnContinuePay": "Перейти до оплати →", "btnPay": "Сплатити", "btnNext": "Далі →", "btnCreateAccount": "Створити обліковий запис і увійти", "btnCreatingAccount": "Створення облікового запису…", "errPassMin": "Пароль має містити щонайменше 8 символів.", "errAcctFail": "Не вдалося створити обліковий запис.", "errConnFail": "Помилка з’єднання. Спробуйте ще раз.", "navToolaud": "Панель", "copySending": "Надсилання…", "copySent": "Копію надіслано на вашу пошту ✓", "copyFail": "Не вдалося надіслати. Спробуйте ще раз."} keele kaupa) === */
+const T = {"locale": "uk-UA", "fbLine": "{n} конкурентів у Facebook", "webLineCalc": "{n} інтернет-магазинів у моніторингу цін + залишків", "webLineModal": "{n} інтернет-магазинів у моніторингу цін і залишків", "perMonth": "/міс", "saveAnnual": "{m} місяців безкоштовно – рахунок раз на рік (€{yr}/рік)", "chooseOne": "Виберіть щонайменше один модуль", "billYear": "Оплата: річна €{yr}/рік (≈€{eff}/міс, {m} місяців безкоштовно)", "billMonth": "Оплата: щомісячна €{m}/міс", "mailIntro": "Хочу підключити моніторинг Look360.", "mailChosen": "Вибрано:", "mailQuote": "Примітка: також хочу індивідуальну автоматизацію – надішліть, будь ласка, пропозицію.", "mailSubject": "Запит на підключення – Look360", "quotePrice": "за запитом", "hintWeb": "веб +8 €", "hintFb": "FB +3 €", "perMonthSpaced": "/ міс", "hintEmpty": "Додайте сайт або сторінку Facebook, щоб відстежувати цю компанію", "phName": "Назва конкурента", "phWeb": "Сайт (напр. konkurent.com)", "phFb": "Сторінка Facebook (напр. facebook.com/konkurent)", "remove": "Видалити", "sumEmpty": "Ще нічого не вибрано", "sumTotal": "Разом", "sumYearSuffix": "· річна оплата (2 місяці безкоштовно)", "perMonthUnit": "€/міс", "perYear": "/рік", "perYearUnit": "€/рік", "payNoteYear": "Ти сплачуєш одразу за весь рік (2 місяці безкоштовно). Картка лишається надійно прив'язаною й оновлюється раз на рік — можна скасувати будь-коли.", "twoMonthsFree": "2 місяці безкоштовно", "mlCompany": "Компанія", "mlContact": "Контакт", "mlPhone": "Телефон", "mlEmail": "E-mail", "mlOwnShop": "Власний магазин", "mlWatch": "Відстежувати", "mlPackage": "Пакет", "mlBilling": "Оплата", "unnamed": "(без назви)", "mlWeb": "веб", "totYear": "річна оплата €{yr}/рік (≈€{eff}/міс, 2 місяці безкоштовно)", "totMonth": "щомісячна оплата €{m}/міс", "btnContinuePay": "Перейти до оплати →", "btnPay": "Сплатити", "btnNext": "Далі →", "btnCreateAccount": "Створити обліковий запис і увійти", "btnCreatingAccount": "Створення облікового запису…", "errPassMin": "Пароль має містити щонайменше 8 символів.", "errAcctFail": "Не вдалося створити обліковий запис.", "errConnFail": "Помилка з’єднання. Спробуйте ще раз.", "navToolaud": "Панель", "copySending": "Надсилання…", "copySent": "Копію надіслано на вашу пошту ✓", "copyFail": "Не вдалося надіслати. Спробуйте ще раз."};
 function fmt(s,o){return String(s).replace(/\{(\w+)\}/g,(_,k)=>o[k]!=null?o[k]:'')}
 
 /* === Login-staatus: kui külastaja on äpis juba sisse logitud, vaheta "Logi
@@ -1577,7 +1607,7 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
     const lns=lines.map(l=>`- ${l[0]} (${l[1]})`).join('\n');
     const tot=y?fmt(T.totYear,{yr,eff}):fmt(T.totMonth,{m});
     const body=`${T.mailIntro}\n\n${T.mlCompany}: ${document.getElementById('cName').value.trim()}\n${T.mlContact}: ${document.getElementById('cContact').value.trim()}\n${T.mlPhone}: ${document.getElementById('cPhone').value.trim()}\n${T.mlEmail}: ${document.getElementById('cEmail').value.trim()}\n${own?`${T.mlOwnShop}: ${own}\n`:''}\n${T.mlWatch}:\n${comps||'-'}\n\n${T.mlPackage}:\n${lns}\n\n${T.mlBilling}: ${tot}`;
-    return `mailto:info@look360.eu?subject=${encodeURIComponent(T.mailSubject)}&body=${encodeURIComponent(body)}`;
+    return {teema:T.mailSubject, tekst:body};   // koopia-kiri: teema + lokaliseeritud keha (saadetakse serveri kaudu kliendi e-postile)
   }
   var ORDER_ENDPOINT='https://scan.look360.eu/api/tellimus/';
   // Firma-nime autocomplete (Eesti äriregister) - AINULT eestikeelne sait.
@@ -1669,7 +1699,9 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
     }catch(e){return {fail:true};}
   }
   function naitaPayDone(ok){
-    document.getElementById('mailCopy').setAttribute('href',buildMail());
+    var mc=document.getElementById('mailCopy');
+    if(mc){mc.disabled=false;mc.textContent=mc.dataset.label||mc.textContent;}      // lähtesta koopia-nupp (re-open)
+    var mcs=document.getElementById('mailCopyStatus');if(mcs){mcs.style.display='none';mcs.textContent='';}
     document.getElementById('payForm').style.display='none';
     document.getElementById('payDone').style.display='block';
     foot.style.display='none';done=true;
@@ -1737,6 +1769,39 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
       naitaPayDone(!res.fail);
     }
   });
+
+  /* === Tellimuse koopia: saadab kliendi e-postile OTSE serveri kaudu (varem
+     avas mailto: e-posti kliendi ja nõudis käsitsi saatmist) === */
+  var SAADA_KOOPIA=ORDER_ENDPOINT.replace('/api/tellimus/','/api/saada-koopia/');
+  var mailCopyBtn=document.getElementById('mailCopy');
+  if(mailCopyBtn){
+    mailCopyBtn.dataset.label=mailCopyBtn.textContent;     // algne silt (re-open lähtestab)
+    mailCopyBtn.addEventListener('click',function(){
+      if(mailCopyBtn.disabled)return;
+      var em=(document.getElementById('cEmail').value||'').trim();
+      var st=document.getElementById('mailCopyStatus');
+      var msg=buildMail();                                  // {teema, tekst} — lokaliseeritud
+      mailCopyBtn.disabled=true;mailCopyBtn.textContent=T.copySending;
+      if(st){st.style.display='none';st.textContent='';}
+      fetch(SAADA_KOOPIA,{method:'POST',mode:'cors',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({epost:em,teema:msg.teema,tekst:msg.tekst})})
+        .then(function(r){return r.json().catch(function(){return null;});})
+        .then(function(j){
+          if(j&&j.ok){
+            mailCopyBtn.style.display='none';
+            if(st){st.style.color='#0c8f4f';st.textContent=T.copySent;st.style.display='block';}
+          }else{
+            mailCopyBtn.disabled=false;mailCopyBtn.textContent=mailCopyBtn.dataset.label;
+            if(st){st.style.color='#c0392b';st.textContent=(j&&j.viga)||T.copyFail;st.style.display='block';}
+          }
+        })
+        .catch(function(){
+          mailCopyBtn.disabled=false;mailCopyBtn.textContent=mailCopyBtn.dataset.label;
+          if(st){st.style.color='#c0392b';st.textContent=T.errConnFail;st.style.display='block';}
+        });
+    });
+  }
 
   /* === Iseteenindus: klient loob pärast tellimust endale login'i === */
   var LOO_KONTO=ORDER_ENDPOINT.replace('/api/tellimus/','/api/loo-konto/');
