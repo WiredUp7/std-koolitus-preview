@@ -456,28 +456,31 @@
   body.modal-open{overflow:hidden}
   .order-ov{position:fixed;inset:0;z-index:200;background:rgba(8,9,12,.66);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:none;align-items:flex-start;justify-content:center;overflow-y:auto;padding:30px 14px}
   .order-ov.open{display:flex}
-  .order{width:100%;max-width:720px;background:var(--paper);border-radius:22px;box-shadow:var(--shadow-lg);overflow:hidden;animation:omod .35s cubic-bezier(.2,.7,.3,1)}
+  .order{width:100%;max-width:940px;background:var(--paper);border-radius:22px;box-shadow:var(--shadow-lg);overflow:hidden;animation:omod .35s cubic-bezier(.2,.7,.3,1)}
   @keyframes omod{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
-  .ord-head{display:flex;align-items:center;gap:13px;padding:18px 24px;background:var(--ink);color:#fff}
+  .ord-head{display:flex;align-items:center;gap:13px;padding:18px 24px;background:linear-gradient(125deg,#0a0b0e 0%,#0d2e28 50%,#0c5f4d 100%);color:#fff;position:relative}
+  .ord-head::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--grad)}
   .ord-head .eye{height:36px;width:auto;transform:scaleX(-1)}
   .ord-head .ht{font-weight:600;font-size:16px;line-height:1.15}
   .ord-head .ht span{display:block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--on-dark-mut);font-weight:600;margin-top:3px}
   .ord-x{margin-left:auto;width:36px;height:36px;border-radius:10px;border:1px solid rgba(255,255,255,.18);background:transparent;color:#fff;cursor:pointer;font-size:20px;line-height:1;display:grid;place-items:center;transition:.2s}
   .ord-x:hover{background:rgba(255,255,255,.1)}
-  .ord-steps{display:flex;align-items:center;gap:8px;padding:13px 24px;border-bottom:1px solid var(--line);font-size:12px;font-family:var(--mono);color:var(--muted);flex-wrap:wrap}
+  .ord-steps{display:flex;align-items:center;gap:8px;padding:13px 24px;border-bottom:1px solid #d9efe4;font-size:12px;font-family:var(--mono);color:var(--muted);flex-wrap:wrap;background:linear-gradient(120deg,#f3fbf7,#edf8f4)}
   .ord-steps .s{display:flex;align-items:center;gap:7px;opacity:.45;transition:.2s}
   .ord-steps .s.on{opacity:1;color:var(--accent-ink);font-weight:500}
   .ord-steps .s.done{opacity:.85}
   .ord-steps .s .n{width:21px;height:21px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-size:11px;background:#fff}
   .ord-steps .s.on .n,.ord-steps .s.done .n{background:var(--accent);color:#fff;border-color:var(--accent)}
   .ord-steps .sep{opacity:.35}
-  .ord-body{padding:24px;max-height:60vh;overflow-y:auto}
+  .ord-body{padding:24px;max-height:60vh;overflow-y:auto;background:linear-gradient(180deg,#f1fbf6 0%,#fbfdfc 24%,#fff 58%)}
   .ord-view{display:none}
   .ord-view.on{display:block;animation:ofade .3s ease}
   @keyframes ofade{from{opacity:0}to{opacity:1}}
-  .ord-h{font-weight:600;font-size:20px;letter-spacing:-.02em;margin-bottom:5px}
+  .ord-h{font-weight:600;font-size:20px;letter-spacing:-.02em;margin-bottom:5px;position:relative;padding-left:15px}
+  .ord-h::before{content:"";position:absolute;left:0;top:3px;bottom:3px;width:5px;border-radius:3px;background:var(--grad)}
   .ord-sub{color:var(--muted);font-size:14px;font-weight:300;margin-bottom:22px;line-height:1.5}
-  .ord-lab{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:24px 0 12px}
+  .ord-lab{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--accent-ink);font-weight:500;margin:24px 0 12px;display:flex;align-items:center;gap:8px}
+  .ord-lab::before{content:"";width:16px;height:2px;border-radius:2px;background:var(--grad);flex-shrink:0}
   .ord-lab:first-child{margin-top:0}
   .ofield{margin-bottom:15px}
   .ofield label{display:block;font-size:13px;font-weight:500;color:var(--text-2);margin-bottom:6px}
@@ -492,7 +495,7 @@
   .ac-ddn li .acm{font-size:11.5px;color:var(--text-2)}
   .ac-ddn li[aria-selected="true"],.ac-ddn li:hover{background:var(--accent-soft)}
   .orow2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  .comp{border:1px solid var(--line);border-radius:14px;padding:15px 14px 13px;margin-bottom:12px;background:var(--paper-2);position:relative}
+  .comp{border:1px solid #dceee5;border-radius:14px;padding:15px 14px 13px;margin-bottom:12px;background:linear-gradient(180deg,#f3fbf7,#f7faf9);position:relative}
   .comp .cx{position:absolute;top:9px;right:9px;width:27px;height:27px;border:0;background:transparent;color:var(--muted);cursor:pointer;font-size:17px;border-radius:8px;line-height:1}
   .comp .cx:hover{background:#fff;color:#c0556b}
   .comp input{width:100%;font-family:var(--f);font-size:14px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;margin-bottom:9px}
@@ -525,7 +528,7 @@
   .osum .sr:last-child{border-bottom:0}
   .osum .sr span{color:var(--text-2);font-weight:300}
   .osum .sr b{font-weight:500;font-family:var(--mono)}
-  .osum .sr.tot{background:var(--paper-2);font-size:16px}
+  .osum .sr.tot{background:var(--accent-soft);font-size:16px}
   .osum .sr.tot b{color:var(--accent-ink);font-size:18px}
   .osec{display:flex;gap:11px;background:var(--accent-soft);border:1px solid #cdeadd;border-radius:13px;padding:14px 16px;margin-bottom:18px}
   .osec svg{width:20px;height:20px;color:var(--accent-ink);flex-shrink:0;margin-top:1px}
@@ -540,14 +543,30 @@
   .ord-done .chk svg{width:38px;height:38px}
   .ord-done h3{font-weight:600;font-size:22px;letter-spacing:-.02em;margin-bottom:10px}
   .ord-done p{color:var(--muted);font-size:15px;font-weight:300;line-height:1.6;max-width:420px;margin:0 auto 8px}
-  .ord-foot{display:flex;align-items:center;gap:13px;padding:15px 24px;border-top:1px solid var(--line);background:#fafbfc;flex-wrap:wrap}
+  .ord-foot{display:flex;align-items:center;gap:13px;padding:15px 24px;border-top:1px solid #d7eee3;background:linear-gradient(120deg,#eefaf4,#e6f7f4);flex-wrap:wrap}
   .ord-foot .oprice{margin-right:auto}
   .ord-foot .oprice .l{font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-family:var(--mono)}
-  .ord-foot .oprice .a{font-weight:500;font-size:23px;line-height:1.1}
+  .ord-foot .oprice .a{font-weight:600;font-size:23px;line-height:1.1;color:var(--accent-ink)}
   .ord-foot .oprice .a small{font-size:13px;color:var(--muted);font-weight:400}
   .ord-foot .oprice .a .save{font-size:11px;color:var(--accent-ink);font-weight:500;margin-left:6px}
   .ord-err{color:#c0556b;font-size:13px;margin-top:4px;display:none}
   .ord-err.show{display:block}
+  /* view 1 kahe-veeru paigutus + eelvaate galerii */
+  .ov1-grid{display:grid;grid-template-columns:1fr .8fr;gap:24px;align-items:stretch}
+  .ord-view:not([data-v="1"]){max-width:560px;margin:0 auto}
+  .ov1-gallery{position:relative;border-radius:16px;overflow:hidden;min-height:430px;background:linear-gradient(165deg,#0d2e28,#0a0b0e 72%);border:1px solid rgba(12,95,77,.55);box-shadow:inset 0 0 60px rgba(0,0,0,.4)}
+  .ov1-gallery .gtrack{position:absolute;left:14px;right:14px;top:0;display:flex;flex-direction:column;gap:14px;padding:16px 0;animation:gscroll 34s linear infinite;will-change:transform}
+  .ov1-gallery:hover .gtrack{animation-play-state:paused}
+  .ov1-gallery .gtrack img{width:100%;display:block;border-radius:11px;border:1px solid rgba(255,255,255,.09);box-shadow:0 12px 30px rgba(0,0,0,.45);filter:blur(3px) brightness(.97) saturate(1.05)}
+  @keyframes gscroll{from{transform:translateY(0)}to{transform:translateY(-50%)}}
+  .ov1-gallery::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(180deg,rgba(10,11,14,.7),rgba(10,11,14,0) 17%,rgba(10,11,14,0) 62%,rgba(10,11,14,.94))}
+  .ov1-gallery .glock{position:absolute;z-index:3;top:13px;left:13px;display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#bff3da;background:rgba(8,20,16,.6);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);border:1px solid rgba(23,184,106,.4);border-radius:999px;padding:5px 11px 5px 9px}
+  .ov1-gallery .glock svg{width:13px;height:13px}
+  .ov1-gallery .glabel{position:absolute;z-index:3;left:15px;right:15px;bottom:15px;color:#fff}
+  .ov1-gallery .glabel b{display:block;font-size:15px;font-weight:600;letter-spacing:-.01em;margin-bottom:3px}
+  .ov1-gallery .glabel span{font-size:12px;font-weight:300;line-height:1.45;color:#c7d4ce}
+  @media(prefers-reduced-motion:reduce){.ov1-gallery .gtrack{animation:none}}
+  @media(max-width:720px){.ov1-grid{grid-template-columns:1fr}.ov1-gallery{display:none}}
   @media(max-width:900px){.why{grid-template-columns:repeat(2,1fr)}.rely{grid-template-columns:1fr}}
   @media(max-width:560px){.why{grid-template-columns:1fr}.replace{grid-template-columns:1fr}.orow2,.comp .crow{grid-template-columns:1fr}.ord-steps .lbl{display:none}.ord-foot{gap:10px}.ord-foot .btn{flex:1;justify-content:center}}
 
@@ -584,7 +603,7 @@
     </nav>
     <div class="nav-r">
       <a href="#hinnad" class="btn btn-grad js-order">Pievienojieties no 3 €</a>
-      <a href="https://scan.look360.eu/accounts/login/" class="login-link" style="color:#cbd3da;text-decoration:none;font-weight:600;font-size:14px;display:flex;align-items:center;gap:5px">Pieteikties <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="https://scan.look360.eu/accounts/login/" class="login-link js-login" style="color:#cbd3da;text-decoration:none;font-weight:600;font-size:14px;display:flex;align-items:center;gap:5px">Pieteikties <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
     <div class="langsel" id="langsel"></div>
     <button class="burger" id="burger" aria-label="Atvērt izvēlni" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -595,7 +614,7 @@
     <a href="#toosees">Platforma</a>
     <a href="#portfoolio">Portfolio</a>
     <a href="#hinnad">Cenas</a>
-    <a href="https://scan.look360.eu/accounts/login/">Pieteikties</a>
+    <a href="https://scan.look360.eu/accounts/login/" class="js-login">Pieteikties</a>
     <a href="#hinnad" class="btn btn-grad js-order">Pievienojieties no 3 € mēnesī</a>
   </div>
 </header>
@@ -1119,8 +1138,10 @@
       <div class="s" data-s="4"><span class="n">4</span><span class="lbl">Maksājums</span></div>
     </div>
     <div class="ord-body" id="ordBody">
-      <!-- VIEW 1: mida jälgida -->
+      <!-- VIEW 1: keda jälgida -->
       <div class="ord-view on" data-v="1">
+       <div class="ov1-grid">
+        <div class="ov1-main">
         <div class="ord-h">Ko vēlaties uzraudzīt?</div>
         <div class="ord-sub">Pievienojiet uzņēmumus, kurus uzraudzīt, un izvēlieties sava veikala moduļus. Ikmēneša maksa tiek aprēķināta uzreiz pēc ievadītajiem uzņēmumiem.</div>
 
@@ -1148,6 +1169,22 @@
           <button type="button" data-mode="year">Gada maksa <span>−2 mēneši</span></button>
         </div>
         <div class="ord-err" id="err1">Pievienojiet vismaz vienu uzraugāmo uzņēmumu (mājaslapu vai FB lapu) vai izvēlieties moduli.</div>
+        </div>
+        <aside class="ov1-gallery" aria-hidden="true">
+          <div class="glock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4" stroke-linecap="round"/></svg>Eelvaade</div>
+          <div class="gtrack">
+            <img src="l360-seirepaneel.png" alt="">
+            <img src="l360-naidikud.png" alt="">
+            <img src="l360-kaardid.png" alt="">
+            <img src="l360-kataloog.png" alt="">
+            <img src="l360-seirepaneel.png" alt="">
+            <img src="l360-naidikud.png" alt="">
+            <img src="l360-kaardid.png" alt="">
+            <img src="l360-kataloog.png" alt="">
+          </div>
+          <div class="glabel"><b>Vaade, mis sind ees ootab</b><span>Iga hommik värske seirepaneel — konkurendid, hinnad, laoseis ja terviseskann ühel pilgul.</span></div>
+        </aside>
+       </div>
       </div>
 
       <!-- VIEW 2: sinu andmed -->
@@ -1215,9 +1252,31 @@
 const nav=document.getElementById('nav');
 addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>12),{passive:true});
 
-/* === i18n: keele-stringid (build_i18n.py asendab {"locale": "lv-LV", "fbLine": "{n} konkurenti Facebook", "webLineCalc": "{n} e-veikali cenu + krājumu uzraudzībā", "webLineModal": "{n} e-veikali cenu un krājumu uzraudzībā", "perMonth": "/mēn.", "saveAnnual": "{m} mēneši bez maksas – rēķins reizi gadā (€{yr}/gadā)", "chooseOne": "Izvēlieties vismaz vienu moduli", "billYear": "Norēķini: gada maksa €{yr}/gadā (≈€{eff}/mēn., {m} mēneši bez maksas)", "billMonth": "Norēķini: ikmēneša maksa €{m}/mēn.", "mailIntro": "Vēlos pieteikties Look360 uzraudzībai.", "mailChosen": "Izvēlēts:", "mailQuote": "Piezīme: vēlos arī individuālu automatizāciju – lūdzu, atsūtiet piedāvājumu.", "mailSubject": "Pieteikuma pieprasījums – Look360", "quotePrice": "pēc pieprasījuma", "hintWeb": "tīmeklis +8 €", "hintFb": "FB +3 €", "perMonthSpaced": "/ mēn.", "hintEmpty": "Pievienojiet mājaslapu vai Facebook lapu, lai uzraudzītu šo uzņēmumu", "phName": "Konkurenta nosaukums", "phWeb": "Mājaslapa (piem., konkurents.com)", "phFb": "Facebook lapa (piem., facebook.com/konkurents)", "remove": "Noņemt", "sumEmpty": "Vēl nekas nav izvēlēts", "sumTotal": "Kopā", "sumYearSuffix": "· gada maksa (2 mēneši bez maksas)", "perMonthUnit": "€/mēn.", "twoMonthsFree": "2 mēneši bez maksas", "mlCompany": "Uzņēmums", "mlContact": "Kontaktpersona", "mlPhone": "Tālrunis", "mlEmail": "E-pasts", "mlOwnShop": "Jūsu veikals", "mlWatch": "Uzraudzīt", "mlPackage": "Pakete", "mlBilling": "Norēķini", "unnamed": "(bez nosaukuma)", "mlWeb": "tīmeklis", "totYear": "gada maksa €{yr}/gadā (≈€{eff}/mēn., 2 mēneši bez maksas)", "totMonth": "ikmēneša maksa €{m}/mēn.", "btnContinuePay": "Turpināt uz maksājumu →", "btnPay": "Maksāt", "btnNext": "Tālāk →", "btnCreateAccount": "Izveidot kontu un pieteikties", "btnCreatingAccount": "Izveido kontu…", "errPassMin": "Parolei jābūt vismaz 8 rakstzīmes.", "errAcctFail": "Neizdevās izveidot kontu.", "errConnFail": "Savienojums neizdevās. Mēģiniet vēlreiz."} keele kaupa) === */
-const T = {"locale": "lv-LV", "fbLine": "{n} konkurenti Facebook", "webLineCalc": "{n} e-veikali cenu + krājumu uzraudzībā", "webLineModal": "{n} e-veikali cenu un krājumu uzraudzībā", "perMonth": "/mēn.", "saveAnnual": "{m} mēneši bez maksas – rēķins reizi gadā (€{yr}/gadā)", "chooseOne": "Izvēlieties vismaz vienu moduli", "billYear": "Norēķini: gada maksa €{yr}/gadā (≈€{eff}/mēn., {m} mēneši bez maksas)", "billMonth": "Norēķini: ikmēneša maksa €{m}/mēn.", "mailIntro": "Vēlos pieteikties Look360 uzraudzībai.", "mailChosen": "Izvēlēts:", "mailQuote": "Piezīme: vēlos arī individuālu automatizāciju – lūdzu, atsūtiet piedāvājumu.", "mailSubject": "Pieteikuma pieprasījums – Look360", "quotePrice": "pēc pieprasījuma", "hintWeb": "tīmeklis +8 €", "hintFb": "FB +3 €", "perMonthSpaced": "/ mēn.", "hintEmpty": "Pievienojiet mājaslapu vai Facebook lapu, lai uzraudzītu šo uzņēmumu", "phName": "Konkurenta nosaukums", "phWeb": "Mājaslapa (piem., konkurents.com)", "phFb": "Facebook lapa (piem., facebook.com/konkurents)", "remove": "Noņemt", "sumEmpty": "Vēl nekas nav izvēlēts", "sumTotal": "Kopā", "sumYearSuffix": "· gada maksa (2 mēneši bez maksas)", "perMonthUnit": "€/mēn.", "twoMonthsFree": "2 mēneši bez maksas", "mlCompany": "Uzņēmums", "mlContact": "Kontaktpersona", "mlPhone": "Tālrunis", "mlEmail": "E-pasts", "mlOwnShop": "Jūsu veikals", "mlWatch": "Uzraudzīt", "mlPackage": "Pakete", "mlBilling": "Norēķini", "unnamed": "(bez nosaukuma)", "mlWeb": "tīmeklis", "totYear": "gada maksa €{yr}/gadā (≈€{eff}/mēn., 2 mēneši bez maksas)", "totMonth": "ikmēneša maksa €{m}/mēn.", "btnContinuePay": "Turpināt uz maksājumu →", "btnPay": "Maksāt", "btnNext": "Tālāk →", "btnCreateAccount": "Izveidot kontu un pieteikties", "btnCreatingAccount": "Izveido kontu…", "errPassMin": "Parolei jābūt vismaz 8 rakstzīmes.", "errAcctFail": "Neizdevās izveidot kontu.", "errConnFail": "Savienojums neizdevās. Mēģiniet vēlreiz."};
+/* === i18n: keele-stringid (build_i18n.py asendab {"locale": "lv-LV", "fbLine": "{n} konkurenti Facebook", "webLineCalc": "{n} e-veikali cenu + krājumu uzraudzībā", "webLineModal": "{n} e-veikali cenu un krājumu uzraudzībā", "perMonth": "/mēn.", "saveAnnual": "{m} mēneši bez maksas – rēķins reizi gadā (€{yr}/gadā)", "chooseOne": "Izvēlieties vismaz vienu moduli", "billYear": "Norēķini: gada maksa €{yr}/gadā (≈€{eff}/mēn., {m} mēneši bez maksas)", "billMonth": "Norēķini: ikmēneša maksa €{m}/mēn.", "mailIntro": "Vēlos pieteikties Look360 uzraudzībai.", "mailChosen": "Izvēlēts:", "mailQuote": "Piezīme: vēlos arī individuālu automatizāciju – lūdzu, atsūtiet piedāvājumu.", "mailSubject": "Pieteikuma pieprasījums – Look360", "quotePrice": "pēc pieprasījuma", "hintWeb": "tīmeklis +8 €", "hintFb": "FB +3 €", "perMonthSpaced": "/ mēn.", "hintEmpty": "Pievienojiet mājaslapu vai Facebook lapu, lai uzraudzītu šo uzņēmumu", "phName": "Konkurenta nosaukums", "phWeb": "Mājaslapa (piem., konkurents.com)", "phFb": "Facebook lapa (piem., facebook.com/konkurents)", "remove": "Noņemt", "sumEmpty": "Vēl nekas nav izvēlēts", "sumTotal": "Kopā", "sumYearSuffix": "· gada maksa (2 mēneši bez maksas)", "perMonthUnit": "€/mēn.", "twoMonthsFree": "2 mēneši bez maksas", "mlCompany": "Uzņēmums", "mlContact": "Kontaktpersona", "mlPhone": "Tālrunis", "mlEmail": "E-pasts", "mlOwnShop": "Jūsu veikals", "mlWatch": "Uzraudzīt", "mlPackage": "Pakete", "mlBilling": "Norēķini", "unnamed": "(bez nosaukuma)", "mlWeb": "tīmeklis", "totYear": "gada maksa €{yr}/gadā (≈€{eff}/mēn., 2 mēneši bez maksas)", "totMonth": "ikmēneša maksa €{m}/mēn.", "btnContinuePay": "Turpināt uz maksājumu →", "btnPay": "Maksāt", "btnNext": "Tālāk →", "btnCreateAccount": "Izveidot kontu un pieteikties", "btnCreatingAccount": "Izveido kontu…", "errPassMin": "Parolei jābūt vismaz 8 rakstzīmes.", "errAcctFail": "Neizdevās izveidot kontu.", "errConnFail": "Savienojums neizdevās. Mēģiniet vēlreiz.", "navToolaud": "Vadības panelis"} keele kaupa) === */
+const T = {"locale": "lv-LV", "fbLine": "{n} konkurenti Facebook", "webLineCalc": "{n} e-veikali cenu + krājumu uzraudzībā", "webLineModal": "{n} e-veikali cenu un krājumu uzraudzībā", "perMonth": "/mēn.", "saveAnnual": "{m} mēneši bez maksas – rēķins reizi gadā (€{yr}/gadā)", "chooseOne": "Izvēlieties vismaz vienu moduli", "billYear": "Norēķini: gada maksa €{yr}/gadā (≈€{eff}/mēn., {m} mēneši bez maksas)", "billMonth": "Norēķini: ikmēneša maksa €{m}/mēn.", "mailIntro": "Vēlos pieteikties Look360 uzraudzībai.", "mailChosen": "Izvēlēts:", "mailQuote": "Piezīme: vēlos arī individuālu automatizāciju – lūdzu, atsūtiet piedāvājumu.", "mailSubject": "Pieteikuma pieprasījums – Look360", "quotePrice": "pēc pieprasījuma", "hintWeb": "tīmeklis +8 €", "hintFb": "FB +3 €", "perMonthSpaced": "/ mēn.", "hintEmpty": "Pievienojiet mājaslapu vai Facebook lapu, lai uzraudzītu šo uzņēmumu", "phName": "Konkurenta nosaukums", "phWeb": "Mājaslapa (piem., konkurents.com)", "phFb": "Facebook lapa (piem., facebook.com/konkurents)", "remove": "Noņemt", "sumEmpty": "Vēl nekas nav izvēlēts", "sumTotal": "Kopā", "sumYearSuffix": "· gada maksa (2 mēneši bez maksas)", "perMonthUnit": "€/mēn.", "twoMonthsFree": "2 mēneši bez maksas", "mlCompany": "Uzņēmums", "mlContact": "Kontaktpersona", "mlPhone": "Tālrunis", "mlEmail": "E-pasts", "mlOwnShop": "Jūsu veikals", "mlWatch": "Uzraudzīt", "mlPackage": "Pakete", "mlBilling": "Norēķini", "unnamed": "(bez nosaukuma)", "mlWeb": "tīmeklis", "totYear": "gada maksa €{yr}/gadā (≈€{eff}/mēn., 2 mēneši bez maksas)", "totMonth": "ikmēneša maksa €{m}/mēn.", "btnContinuePay": "Turpināt uz maksājumu →", "btnPay": "Maksāt", "btnNext": "Tālāk →", "btnCreateAccount": "Izveidot kontu un pieteikties", "btnCreatingAccount": "Izveido kontu…", "errPassMin": "Parolei jābūt vismaz 8 rakstzīmes.", "errAcctFail": "Neizdevās izveidot kontu.", "errConnFail": "Savienojums neizdevās. Mēģiniet vēlreiz.", "navToolaud": "Vadības panelis"};
 function fmt(s,o){return String(s).replace(/\{(\w+)\}/g,(_,k)=>o[k]!=null?o[k]:'')}
+
+/* === Login-staatus: kui külastaja on äpis juba sisse logitud, vaheta "Logi
+   sisse" → "Töölaud" (link dashboardile). Staatiline leht ei tea sessiooni —
+   küsime äpilt (scan.look360.eu) küpsisega. Ebaõnnestumisel jääb "Pieteikties". */
+(function(){
+  var APP='https://scan.look360.eu';
+  fetch(APP+'/api/whoami/',{credentials:'include'})
+    .then(function(r){return r.ok?r.json():null})
+    .then(function(d){
+      if(!d||!d.logitud)return;
+      var url=APP+(d.toolaud_url||'/');
+      var label=T.navToolaud||'Töölaud';
+      document.querySelectorAll('a.js-login').forEach(function(a){
+        var svg=a.querySelector('svg');           // säilita olemasolev nool-ikoon
+        a.setAttribute('href',url);
+        a.setAttribute('title',d.nimi||label);
+        a.textContent=label+(svg?' ':'');
+        if(svg)a.appendChild(svg);
+      });
+    })
+    .catch(function(){});
+})();
 
 /* === keelevaheti (lipud) + IP-suunaja (Cloudflare trace) === */
 (function(){
