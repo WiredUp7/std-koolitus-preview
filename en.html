@@ -260,6 +260,27 @@
   .pcard .kpi .v{font-weight:500;font-size:22px}
   .pcard .kpi .l{font-size:12px;color:var(--muted);font-family:var(--mono)}
 
+  /* SCROLL-KARUSSELL (teenused, portfoolio) */
+  .scrl{position:relative}
+  .scrl-track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:6px 0}
+  .scrl-track::-webkit-scrollbar{display:none}
+  .scrl-track>*{scroll-snap-align:start;flex:0 0 calc((100% - 40px)/3)}
+  .cards-scrl .card{border:1px solid var(--line);border-radius:var(--r);background:var(--paper)}
+  .cards-scrl .card:hover{background:var(--paper-2)}
+  .port-scrl .pcard{height:100%}
+  .scrl-ctrl{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:26px}
+  .scrl-nav{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--paper);color:var(--text);display:flex;align-items:center;justify-content:center;cursor:pointer;flex:0 0 auto;transition:background .15s,border-color .15s,color .15s,transform .05s}
+  .scrl-nav:hover{background:var(--accent);border-color:transparent;color:#fff}
+  .scrl-nav:active{transform:translateY(1px)}
+  .scrl-nav svg{width:20px;height:20px}
+  .scrl-dots{display:flex;align-items:center;gap:8px}
+  .scrl-dots button{width:8px;height:8px;border-radius:50%;border:0;padding:0;background:#cfd4dc;cursor:pointer;transition:background .25s,width .25s}
+  .scrl-dots button:hover{background:#aab2bd}
+  .scrl-dots button.on{background:var(--accent);width:24px;border-radius:4px}
+  @media(max-width:840px){.scrl-track>*{flex-basis:calc((100% - 20px)/2)}}
+  @media(max-width:560px){.scrl-track>*{flex-basis:86%}}
+  @media(prefers-reduced-motion:reduce){.scrl-track{scroll-behavior:auto}}
+
   /* PRICING */
   .price-top{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;align-items:stretch;max-width:760px;margin:0 auto 22px}
   .tier{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:34px;display:flex;flex-direction:column;transition:.25s}
@@ -557,7 +578,7 @@
     <nav class="nav-links">
       <a href="#tugi">Three pillars</a>
       <a href="#teenused">Services</a>
-      <a href="#platvorm">Platform</a>
+      <a href="#toosees">Platform</a>
       <a href="#portfoolio">Portfolio</a>
       <a href="#hinnad">Pricing</a>
     </nav>
@@ -571,7 +592,7 @@
   <div class="mobile-menu" id="mobileMenu">
     <a href="#tugi">Three pillars</a>
     <a href="#teenused">Services</a>
-    <a href="#platvorm">Platform</a>
+    <a href="#toosees">Platform</a>
     <a href="#portfoolio">Portfolio</a>
     <a href="#hinnad">Pricing</a>
     <a href="https://scan.look360.eu/accounts/login/">Log in</a>
@@ -676,27 +697,6 @@
   </div>
 </section>
 
-<!-- PLATFORM (dark) -->
-<section id="platvorm" class="dark">
-  <div class="wrap show">
-    <div class="show-l reveal">
-      <div class="eyebrow on-dark"><span class="dot"></span> Platform</div>
-      <h2 style="font-weight:300;font-size:clamp(28px,3.6vw,42px);letter-spacing:-.03em;line-height:1.1;margin-bottom:18px;color:#fff">One panel,<br>the whole picture</h2>
-      <p style="color:var(--on-dark-mut);font-size:16.5px;font-weight:300;line-height:1.65;margin-bottom:26px">All monitoring modules come together in one view. You don't have to juggle ten tools – we bring the data together, you see what matters.</p>
-      <ul>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 6"/></svg> Real-time alerts on important changes</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 6"/></svg> A summary report by email every morning</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 6"/></svg> History and trends in one place</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 6"/></svg> If there's a problem, we fix it ourselves</li>
-      </ul>
-    </div>
-    <div class="show-r reveal">
-      <img src="l360-seirepaneel.png" alt="Look360 monitoring panel — the client monitoring view" loading="lazy"
-           style="width:100%;display:block;border-radius:14px;box-shadow:var(--shadow-lg);border:1px solid rgba(255,255,255,.12)">
-    </div>
-  </div>
-</section>
-
 <!-- SERVICES -->
 <section id="teenused" class="alt" style="border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
   <div class="wrap">
@@ -705,7 +705,8 @@
       <h2>Everything that keeps an eye on your online business</h2>
       <p>Pick only what you need. Each service is a standalone monthly module – start with one and expand as you grow.</p>
     </div>
-    <div class="cards reveal">
+    <div class="scrl reveal">
+      <div class="scrl-track cards-scrl" tabindex="0" role="group" aria-label="Services">
       <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" fill="currentColor" fill-opacity=".18"/><path d="M12 12 18.5 7.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="12" r="2.3" fill="currentColor"/><circle cx="17.5" cy="7" r="1.5" fill="currentColor"/></svg></div><h3>Competitor monitoring</h3><p>We track competitors' Facebook, ads and feed. Every morning you get a summary of what they did yesterday.</p></div>
       <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12.7 3H18a3 3 0 0 1 3 3v5.3a2 2 0 0 1-.6 1.4l-7.2 7.2a2 2 0 0 1-2.8 0l-5.3-5.3a2 2 0 0 1 0-2.8l7.2-7.2A2 2 0 0 1 12.7 3Z" fill="currentColor" fill-opacity=".2"/><circle cx="16.3" cy="7.7" r="1.5" fill="currentColor"/></svg></div><h3>Price monitoring</h3><p>We compare your prices with competitors' automatically and alert you the moment someone undercuts you or you fall behind.</p></div>
       <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.8 20.5 7.2v9.6L12 21.2 3.5 16.8V7.2L12 2.8Z" fill="currentColor" fill-opacity=".18"/><path d="M3.7 7.2 12 11.6l8.3-4.4M12 11.6v9.4" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></div><h3>Stock monitoring</h3><p>Supplier stock levels in real time inside your system. A notification when an item is back in stock or running low.</p></div>
@@ -715,6 +716,12 @@
       <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.7 5 5.7v5.6c0 4.3 2.9 7.4 7 9 4.1-1.6 7-4.7 7-9V5.7l-7-3Z" fill="currentColor" fill-opacity=".2"/><path d="m8.8 12 2.1 2.1 4.3-4.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>Reliability monitoring</h3><p>We watch that your website and shop stay up. If something goes down, you hear about it before customers call.</p></div>
       <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none"><rect x="3.3" y="4.3" width="17.4" height="15.4" rx="3.2" fill="currentColor" fill-opacity=".16"/><path d="M7 9.5h10M7 14.5h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="10" cy="9.5" r="1.9" fill="currentColor"/><circle cx="14" cy="14.5" r="1.9" fill="currentColor"/></svg></div><h3>Custom automation</h3><p>A special task? We build a plugin, script or dashboard that does the repetitive work for you.</p></div>
       <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3.5 2.5 8 12 12.5 21.5 8 12 3.5Z" fill="currentColor" fill-opacity=".2"/><path d="M6.5 10.3v4.4c0 1.4 2.5 2.8 5.5 2.8s5.5-1.4 5.5-2.8v-4.4" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M21 8.2v4.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div><h3>Training</h3><p>We teach your team to use and manage the tools and automation themselves, so you can cope on your own in future.</p></div>
+      </div>
+      <div class="scrl-ctrl">
+        <button class="scrl-nav prev" type="button" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
+        <div class="scrl-dots" role="tablist" aria-label="Select slide"></div>
+        <button class="scrl-nav next" type="button" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></button>
+      </div>
     </div>
   </div>
 </section>
@@ -808,13 +815,20 @@
       <h2>Systems that are already running for real</h2>
       <p>These solutions work every day for real businesses. We'll build the same for you.</p>
     </div>
-    <div class="port reveal">
+    <div class="scrl reveal">
+      <div class="scrl-track port-scrl" tabindex="0" role="group" aria-label="Portfolio">
       <div class="pcard"><div class="tag">Monitoring</div><h3>Competitor FB monitor</h3><p>20 competitors' Facebook pages are scanned every morning; changes land in your inbox as a single summary email.</p><div class="kpi"><div><div class="v">20</div><div class="l">pages</div></div><div><div class="v">9:09</div><div class="l">every day</div></div></div></div>
       <div class="pcard"><div class="tag">E-shop</div><h3>Product health check</h3><p>Over 2100 products: images, alt text, descriptions and a price comparison with competitors down to the cent.</p><div class="kpi"><div><div class="v">2100+</div><div class="l">products</div></div><div><div class="v">1:1</div><div class="l">price comparison</div></div></div></div>
       <div class="pcard"><div class="tag">SEO</div><h3>Keyword monitoring</h3><p>The positions of 524 keywords are tracked from Search Console data – feeding content-gap discovery.</p><div class="kpi"><div><div class="v">524</div><div class="l">keywords</div></div><div><div class="v">GSC</div><div class="l">source</div></div></div></div>
       <div class="pcard"><div class="tag">Integration</div><h3>ERP ↔ e-shop integration</h3><p>Orders flow from the e-shop into the ERP, and stock and prices back again – automatically, with no manual entry.</p><div class="kpi"><div><div class="v">Auto</div><div class="l">sync</div></div><div><div class="v">0</div><div class="l">manual work</div></div></div></div>
       <div class="pcard"><div class="tag">Plugin</div><h3>Remote-delivery fee solution</h3><p>The remote-delivery fee for larger equipment is calculated automatically at checkout by distance and region. Updates itself.</p><div class="kpi"><div><div class="v">Live</div><div class="l">in production</div></div><div><div class="v">Auto</div><div class="l">update</div></div></div></div>
       <div class="pcard"><div class="tag">Tool</div><h3>Stock on the purchase order</h3><p>The supplier's real-time stock is shown right in the purchase-order view, so you order the right quantity first time.</p><div class="kpi"><div><div class="v">Real-time</div><div class="l">stock</div></div><div><div class="v">1 view</div><div class="l">all together</div></div></div></div>
+      </div>
+      <div class="scrl-ctrl">
+        <button class="scrl-nav prev" type="button" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
+        <div class="scrl-dots" role="tablist" aria-label="Select slide"></div>
+        <button class="scrl-nav next" type="button" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></button>
+      </div>
     </div>
   </div>
 </section>
@@ -849,7 +863,10 @@
   #toosees .cdots button.on{background:#39d98a;width:26px;border-radius:5px}
   #toosees .shots-note{display:inline-flex;align-items:center;gap:10px;margin-top:34px;font-size:13.5px;color:var(--on-dark-mut);background:rgba(23,184,106,.10);border:1px solid rgba(23,184,106,.22);border-radius:999px;padding:10px 18px}
   #toosees .shots-note svg{width:16px;height:16px;color:#39d98a;flex:0 0 auto}
-  @media(max-width:600px){#toosees .cnav{width:40px;height:40px}#toosees .cap{min-height:92px}}
+  #toosees .feats{display:flex;flex-wrap:wrap;justify-content:center;gap:14px 30px;max-width:840px;margin:30px auto 6px;padding:0;list-style:none}
+  #toosees .feats li{display:flex;gap:10px;align-items:center;font-size:14.5px;color:var(--on-dark);font-weight:300}
+  #toosees .feats li svg{width:18px;height:18px;color:#39d98a;flex:0 0 auto}
+  @media(max-width:600px){#toosees .cnav{width:40px;height:40px}#toosees .cap{min-height:92px}#toosees .feats{gap:12px 20px}}
   @media(prefers-reduced-motion:reduce){#toosees .ctrack{transition:none}}
 </style>
 <section id="toosees">
@@ -859,6 +876,12 @@
       <h2>See what's happening inside</h2>
       <p>Real monitoring views from the dashboard. Client and monitored company names are blurred in the sample.</p>
     </div>
+    <ul class="feats reveal">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 6"/></svg> Real-time alerts on important changes</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 6"/></svg> A summary report by email every morning</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 6"/></svg> History and trends in one place</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 6"/></svg> If there's a problem, we fix it ourselves</li>
+    </ul>
     <div class="car reveal" id="l360car" role="group" aria-roledescription="karussell" aria-label="Look360 work views" tabindex="0">
       <div class="cviewport">
         <div class="ctrack" id="l360track">
@@ -1054,7 +1077,7 @@
       </div>
       <div class="foot-cols">
         <div class="foot-col"><h5>Services</h5><a href="#teenused">Competitor monitoring</a><a href="#teenused">Price monitoring</a><a href="#teenused">E-shop health check</a><a href="#teenused">ERP integration</a></div>
-        <div class="foot-col"><h5>Company</h5><a href="#tugi">Three pillars</a><a href="#platvorm">Platform</a><a href="#portfoolio">Portfolio</a><a href="#hinnad">Pricing</a><a href="kasutusjuhend-en.html">User guide</a><a href="privaatsus-en.html">Privacy policy</a><a href="tingimused-en.html">Terms of use</a></div>
+        <div class="foot-col"><h5>Company</h5><a href="#tugi">Three pillars</a><a href="#toosees">Platform</a><a href="#portfoolio">Portfolio</a><a href="#hinnad">Pricing</a><a href="kasutusjuhend-en.html">User guide</a><a href="privaatsus-en.html">Privacy policy</a><a href="tingimused-en.html">Terms of use</a></div>
         <div class="foot-col"><h5>Contact</h5><a href="mailto:info@look360.eu">info@look360.eu</a><a href="tel:+37253620246">+372 5362 0246</a><a href="https://www.google.com/maps?q=71003+Viljandi" target="_blank" rel="noopener">71003 Viljandi</a></div>
       </div>
     </div>
@@ -1254,6 +1277,46 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 function countUp(el){const t=+el.dataset.count;let c=0;const s=Math.max(1,t/55);const iv=setInterval(()=>{c+=s;if(c>=t){c=t;clearInterval(iv)}el.textContent=Math.floor(c).toLocaleString(T.locale)},22)}
 const cio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){countUp(e.target);cio.unobserve(e.target)}}),{threshold:.6});
 document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
+
+/* scroll-karussell (teenused, portfoolio): autoplay + nooled + punktid + pyyhe */
+document.querySelectorAll('.scrl').forEach(function(scrl){
+  var track=scrl.querySelector('.scrl-track'), ctrl=scrl.querySelector('.scrl-ctrl');
+  var dotsBox=scrl.querySelector('.scrl-dots');
+  var prev=scrl.querySelector('.scrl-nav.prev'), next=scrl.querySelector('.scrl-nav.next');
+  if(!track) return;
+  var rm=window.matchMedia('(prefers-reduced-motion:reduce)').matches, timer=null, DELAY=4800;
+  function many(){return track.clientWidth>0 && track.scrollWidth>track.clientWidth+2;}
+  function pages(){var w=track.clientWidth; if(w<=0)return 1; return Math.max(1,Math.min(40,Math.round(track.scrollWidth/w)));}
+  function cur(){var w=track.clientWidth; if(w<=0)return 0; return Math.min(pages()-1,Math.round(track.scrollLeft/w));}
+  function toPage(p){track.scrollTo({left:p*track.clientWidth,behavior:rm?'auto':'smooth'});}
+  function go(d){var p=pages(),c=cur()+d; if(c<0)c=p-1; if(c>=p)c=0; toPage(c);}
+  function sync(){if(!dotsBox)return;var c=cur(),d=dotsBox.children;for(var k=0;k<d.length;k++)d[k].classList.toggle('on',k===c);}
+  function build(){
+    if(ctrl)ctrl.style.display=many()?'':'none';
+    if(dotsBox){dotsBox.innerHTML='';
+      if(many())for(var k=0;k<pages();k++){(function(k){var b=document.createElement('button');b.type='button';b.setAttribute('role','tab');b.setAttribute('aria-label','Slaid '+(k+1));
+        b.addEventListener('click',function(){toPage(k);restart();});dotsBox.appendChild(b);})(k);}
+    }
+    sync();
+  }
+  function start(){if(rm||!many())return;stop();timer=setInterval(function(){go(1);},DELAY);}
+  function stop(){if(timer){clearInterval(timer);timer=null;}}
+  function restart(){stop();start();}
+  if(next)next.addEventListener('click',function(){go(1);restart();});
+  if(prev)prev.addEventListener('click',function(){go(-1);restart();});
+  track.addEventListener('scroll',sync,{passive:true});
+  scrl.addEventListener('mouseenter',stop); scrl.addEventListener('mouseleave',start);
+  scrl.addEventListener('focusin',stop); scrl.addEventListener('focusout',start);
+  track.addEventListener('touchstart',stop,{passive:true});
+  track.addEventListener('touchend',function(){setTimeout(restart,600);},{passive:true});
+  var rt; window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(build,200);});
+  document.addEventListener('visibilitychange',function(){document.hidden?stop():start();});
+  build();
+  if('IntersectionObserver' in window){
+    var io3=new IntersectionObserver(function(es){es.forEach(function(en){en.isIntersecting?start():stop();});},{threshold:.2});
+    io3.observe(scrl);
+  } else start();
+});
 
 /* (platvormi-makett asendatud paris screenshot'iga) */
 
