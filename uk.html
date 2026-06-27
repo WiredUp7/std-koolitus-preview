@@ -559,6 +559,26 @@
   .ov1-gallery .gtrack{position:absolute;left:14px;right:14px;top:0;display:flex;flex-direction:column;gap:14px;padding:16px 0;animation:gscroll 34s linear infinite;will-change:transform}
   .ov1-gallery:hover .gtrack{animation-play-state:paused}
   .ov1-gallery .gtrack img{width:100%;display:block;border-radius:11px;border:1px solid rgba(255,255,255,.12);box-shadow:0 12px 30px rgba(0,0,0,.45)}
+  .ov1-gallery .gtrack .gshot{background:#fff;border-radius:11px;border:1px solid rgba(255,255,255,.14);box-shadow:0 12px 30px rgba(0,0,0,.45);overflow:hidden;color:#15171c;font-family:var(--f)}
+  .gshot .gsh-top{display:flex;align-items:center;gap:9px;padding:11px 14px;border-bottom:1px solid #eef0f3}
+  .gshot .gsh-name{height:12px;width:104px;border-radius:3px;background:linear-gradient(90deg,#c2c8d0,#dfe3e8);filter:blur(2.5px)}
+  .gshot .gsh-tag{margin-left:auto;font-size:10.5px;font-weight:600;color:#0c8f4f;background:#e7f6ee;border-radius:6px;padding:3px 9px}
+  .gshot .gsh-rows{padding:6px 14px 12px}
+  .gshot .pr{display:flex;align-items:center;gap:9px;padding:8px 0;border-bottom:1px solid #f1f2f5;font-size:12.5px}
+  .gshot .pr:last-child{border-bottom:0}
+  .gshot .pr .nm{flex:1;min-width:0;color:#3c424d;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .gshot .pr .old{color:#9aa1ad;text-decoration:line-through;font-size:11.5px}
+  .gshot .pr .new{font-weight:600;color:#15171c}
+  .gshot .pr .dn{font-size:10.5px;font-weight:600;color:#0c8f4f;background:#e7f6ee;border-radius:5px;padding:2px 6px}
+  .gshot .pr .up{font-size:10.5px;font-weight:600;color:#b3344c;background:#fbe7ec;border-radius:5px;padding:2px 6px}
+  .gshot .pr .stk{font-size:10px;font-weight:600;border-radius:5px;padding:2px 7px;white-space:nowrap}
+  .gshot .pr .stk.ok{color:#0c8f4f;background:#e7f6ee}
+  .gshot .pr .stk.low{color:#b06a0a;background:#f7eddc}
+  .gshot .pr .stk.out{color:#b3344c;background:#fbe7ec}
+  .gshot .gsh-chart{padding:13px 14px 6px}
+  .gshot .gsh-chart svg{width:100%;height:78px;display:block;overflow:visible}
+  .gshot .gsh-meta{display:flex;align-items:center;gap:8px;padding:0 14px 13px;font-size:11px;color:#6b7280}
+  .gshot .gsh-meta .big{font-size:15px;font-weight:600;color:#0c8f4f}
   @keyframes gscroll{from{transform:translateY(0)}to{transform:translateY(-50%)}}
   .ov1-gallery::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(180deg,rgba(10,11,14,.7),rgba(10,11,14,0) 17%,rgba(10,11,14,0) 62%,rgba(10,11,14,.94))}
   .ov1-gallery .glock{position:absolute;z-index:3;top:13px;left:13px;display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#bff3da;background:rgba(8,20,16,.6);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);border:1px solid rgba(23,184,106,.4);border-radius:999px;padding:5px 11px 5px 9px}
@@ -874,6 +894,9 @@
   #toosees .frame .bdot{width:11px;height:11px;border-radius:50%;flex:0 0 auto}
   #toosees .frame .burl{margin-left:10px;font:500 12px/1 var(--mono);color:var(--on-dark-mut);background:rgba(255,255,255,.05);border:1px solid var(--line-dark);border-radius:8px;padding:7px 13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   #toosees .frame img{display:block;width:100%;height:auto}
+  #toosees .frame .gshot{border:0;border-radius:0;box-shadow:none}
+  #toosees .frame .gshot .pr{font-size:13.5px;padding:9px 0}
+  #toosees .frame .gshot .gsh-chart svg{height:120px}
   #toosees .cap{display:flex;gap:13px;align-items:flex-start;margin:20px 6px 0;min-height:62px}
   #toosees .cap .cic{width:36px;height:36px;border-radius:11px;background:rgba(23,184,106,.16);color:#39d98a;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
   #toosees .cap .cic svg{width:19px;height:19px}
@@ -914,12 +937,23 @@
         <div class="ctrack" id="l360track">
           <div class="cslide" role="group" aria-roledescription="slaid" aria-label="1 / 4">
             <div class="frame">
-              <div class="bar"><span class="bdot" style="background:#ff5f57"></span><span class="bdot" style="background:#febc2e"></span><span class="bdot" style="background:#28c840"></span><span class="burl">scan.look360.eu/operaator/naidikud</span></div>
-              <img src="l360-naidikud.png" alt="Look360 mission control — моніторинг усіх клієнтів одним поглядом" loading="lazy">
+              <div class="bar"><span class="bdot" style="background:#ff5f57"></span><span class="bdot" style="background:#febc2e"></span><span class="bdot" style="background:#28c840"></span><span class="burl">scan.look360.eu/firma</span></div>
+              <div class="gshot">
+                <div class="gsh-top"><span class="gsh-name"></span><span class="gsh-tag">Hinnamuudatused täna</span></div>
+                <div class="gsh-rows">
+                  <div class="pr"><span class="nm">Aku 5,0 Ah BAX1500E</span><span class="old">559 €</span><span class="new">529 €</span><span class="dn">−5%</span><span class="stk ok">Laos 24</span></div>
+                  <div class="pr"><span class="nm">Mootorsaag MS-201 40 cm</span><span class="old">449 €</span><span class="new">399 €</span><span class="dn">−11%</span><span class="stk low">Vähe · 3</span></div>
+                  <div class="pr"><span class="nm">Murutraktor T6 Pro</span><span class="old">2 099 €</span><span class="new">2 290 €</span><span class="up">+9%</span><span class="stk out">Otsas</span></div>
+                  <div class="pr"><span class="nm">Trimmer LT-56 V</span><span class="old">219 €</span><span class="new">189 €</span><span class="dn">−14%</span><span class="stk ok">Laos 41</span></div>
+                  <div class="pr"><span class="nm">Oksapurusti GS-2800</span><span class="old">329 €</span><span class="new">299 €</span><span class="dn">−9%</span><span class="stk low">Vähe · 7</span></div>
+                  <div class="pr"><span class="nm">Lehepuhur BL-58 V</span><span class="old">99 €</span><span class="new">89 €</span><span class="dn">−10%</span><span class="stk ok">Laos 33</span></div>
+                  <div class="pr"><span class="nm">Kõrgsurvepesur HPW-700</span><span class="new">149 €</span><span class="stk ok">Laos 12</span></div>
+                </div>
+              </div>
             </div>
             <div class="cap">
-              <span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 14a8 8 0 0 1 8-8M12 14l4-4"/><path d="M4.9 18.5a9 9 0 1 1 14.2 0"/><circle cx="12" cy="14" r="1.4"/></svg></span>
-              <div><h3>Mission control</h3><p>Сотні моніторингів одночасно. Зелений означає порядок, жовтий потребує уваги, червоний вимагає дії негайно.</p></div>
+              <span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12.7 3H18a3 3 0 0 1 3 3v5.3a2 2 0 0 1-.6 1.4l-7.2 7.2a2 2 0 0 1-2.8 0l-5.3-5.3a2 2 0 0 1 0-2.8l7.2-7.2A2 2 0 0 1 12.7 3Z"/><circle cx="16.3" cy="7.7" r="1.5" fill="currentColor"/></svg></span>
+              <div><h3>Hinnamuutused kohe näha</h3><p>Konkurendi hinnalangused, tõusud ja otsasaamised märkame samal päeval — sina näed kohe, kas tasub reageerida.</p></div>
             </div>
           </div>
           <div class="cslide" role="group" aria-roledescription="slaid" aria-label="2 / 4">
@@ -934,12 +968,21 @@
           </div>
           <div class="cslide" role="group" aria-roledescription="slaid" aria-label="3 / 4">
             <div class="frame">
-              <div class="bar"><span class="bdot" style="background:#ff5f57"></span><span class="bdot" style="background:#febc2e"></span><span class="bdot" style="background:#28c840"></span><span class="burl">scan.look360.eu</span></div>
-              <img src="l360-kaardid.png" alt="Картковий вид Look360 — канали моніторингу та знахідки кожної компанії на картці" loading="lazy">
+              <div class="bar"><span class="bdot" style="background:#ff5f57"></span><span class="bdot" style="background:#febc2e"></span><span class="bdot" style="background:#28c840"></span><span class="burl">scan.look360.eu/firma</span></div>
+              <div class="gshot">
+                <div class="gsh-top"><span class="gsh-name"></span><span class="gsh-tag">Hinnaajalugu · 14 päeva</span></div>
+                <div class="gsh-chart"><svg viewBox="0 0 300 120" preserveAspectRatio="none"><polyline fill="none" stroke="#1fd07a" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" points="4,30 30,27 56,40 82,37 108,46 134,43 160,68 186,64 212,78 238,74 264,92 296,88"/><circle cx="160" cy="68" r="5" fill="#fff" stroke="#17b86a" stroke-width="2.5"/><circle cx="296" cy="88" r="4.5" fill="#17b86a"/></svg></div>
+                <div class="gsh-meta"><span class="big">−18%</span><span>hinnalangus jälgitud perioodil · madalaim 4 poest</span></div>
+                <div class="gsh-rows" style="padding-top:2px">
+                  <div class="pr"><span class="nm">Aku 5,0 Ah BAX1500E</span><span class="new">529 €</span><span class="stk ok">Laos 24</span></div>
+                  <div class="pr"><span class="nm">Mootorsaag MS-201 40 cm</span><span class="new">399 €</span><span class="stk low">Vähe · 3</span></div>
+                  <div class="pr"><span class="nm">Murutraktor T6 Pro</span><span class="new">2 290 €</span><span class="stk out">Otsas</span></div>
+                </div>
+              </div>
             </div>
             <div class="cap">
-              <span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg></span>
-              <div><h3>Кожен канал на картці</h3><p>Стан магазину, ціни, SEO та Facebook для кожної компанії. Биті зображення, зміни цін і просіли ключові слова видно одразу.</p></div>
+              <span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5M4 19h16M8 15l3-4 3 2 4-6"/></svg></span>
+              <div><h3>Hinnaajalugu ja laoseis</h3><p>Iga toote hind ja laoseis ajateljel — näed trendi, madalaimat hinda turul ja millal kaup otsa sai.</p></div>
             </div>
           </div>
           <div class="cslide" role="group" aria-roledescription="slaid" aria-label="4 / 4">
@@ -1183,13 +1226,39 @@
           <div class="glock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4" stroke-linecap="round"/></svg>Eelvaade</div>
           <div class="gtrack">
             <img src="l360-seirepaneel.png" alt="">
-            <img src="l360-naidikud.png" alt="">
-            <img src="l360-kaardid.png" alt="">
+            <div class="gshot">
+              <div class="gsh-top"><span class="gsh-name"></span><span class="gsh-tag">Hinnamuudatused täna</span></div>
+              <div class="gsh-rows">
+                <div class="pr"><span class="nm">Aku 5,0 Ah BAX1500E</span><span class="old">559 €</span><span class="new">529 €</span><span class="dn">−5%</span><span class="stk ok">Laos 24</span></div>
+                <div class="pr"><span class="nm">Mootorsaag MS-201 40 cm</span><span class="old">449 €</span><span class="new">399 €</span><span class="dn">−11%</span><span class="stk low">Vähe · 3</span></div>
+                <div class="pr"><span class="nm">Murutraktor T6 Pro</span><span class="old">2 099 €</span><span class="new">2 290 €</span><span class="up">+9%</span><span class="stk out">Otsas</span></div>
+                <div class="pr"><span class="nm">Trimmer LT-56 V</span><span class="old">219 €</span><span class="new">189 €</span><span class="dn">−14%</span><span class="stk ok">Laos 41</span></div>
+                <div class="pr"><span class="nm">Kõrgsurvepesur HPW-700</span><span class="new">149 €</span><span class="stk ok">Laos 12</span></div>
+              </div>
+            </div>
             <img src="l360-kataloog.png" alt="">
+            <div class="gshot">
+              <div class="gsh-top"><span class="gsh-name"></span><span class="gsh-tag">Hinnaajalugu · 14 päeva</span></div>
+              <div class="gsh-chart"><svg viewBox="0 0 300 78" preserveAspectRatio="none"><polyline fill="none" stroke="#1fd07a" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" points="4,20 30,18 56,26 82,24 108,30 134,28 160,44 186,42 212,50 238,48 264,58 296,56"/><circle cx="160" cy="44" r="4.5" fill="#fff" stroke="#17b86a" stroke-width="2.5"/><circle cx="296" cy="56" r="4" fill="#17b86a"/></svg></div>
+              <div class="gsh-meta"><span class="big">−18%</span><span>hinnalangus jälgitud perioodil · madalaim 4 poest</span></div>
+            </div>
             <img src="l360-seirepaneel.png" alt="">
-            <img src="l360-naidikud.png" alt="">
-            <img src="l360-kaardid.png" alt="">
+            <div class="gshot">
+              <div class="gsh-top"><span class="gsh-name"></span><span class="gsh-tag">Hinnamuudatused täna</span></div>
+              <div class="gsh-rows">
+                <div class="pr"><span class="nm">Aku 5,0 Ah BAX1500E</span><span class="old">559 €</span><span class="new">529 €</span><span class="dn">−5%</span><span class="stk ok">Laos 24</span></div>
+                <div class="pr"><span class="nm">Mootorsaag MS-201 40 cm</span><span class="old">449 €</span><span class="new">399 €</span><span class="dn">−11%</span><span class="stk low">Vähe · 3</span></div>
+                <div class="pr"><span class="nm">Murutraktor T6 Pro</span><span class="old">2 099 €</span><span class="new">2 290 €</span><span class="up">+9%</span><span class="stk out">Otsas</span></div>
+                <div class="pr"><span class="nm">Trimmer LT-56 V</span><span class="old">219 €</span><span class="new">189 €</span><span class="dn">−14%</span><span class="stk ok">Laos 41</span></div>
+                <div class="pr"><span class="nm">Kõrgsurvepesur HPW-700</span><span class="new">149 €</span><span class="stk ok">Laos 12</span></div>
+              </div>
+            </div>
             <img src="l360-kataloog.png" alt="">
+            <div class="gshot">
+              <div class="gsh-top"><span class="gsh-name"></span><span class="gsh-tag">Hinnaajalugu · 14 päeva</span></div>
+              <div class="gsh-chart"><svg viewBox="0 0 300 78" preserveAspectRatio="none"><polyline fill="none" stroke="#1fd07a" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" points="4,20 30,18 56,26 82,24 108,30 134,28 160,44 186,42 212,50 238,48 264,58 296,56"/><circle cx="160" cy="44" r="4.5" fill="#fff" stroke="#17b86a" stroke-width="2.5"/><circle cx="296" cy="56" r="4" fill="#17b86a"/></svg></div>
+              <div class="gsh-meta"><span class="big">−18%</span><span>hinnalangus jälgitud perioodil · madalaim 4 poest</span></div>
+            </div>
           </div>
           <div class="glabel"><b>Vaade, mis sind ees ootab</b><span>Iga hommik värske seirepaneel — konkurendid, hinnad, laoseis ja terviseskann ühel pilgul.</span></div>
         </aside>
@@ -1225,7 +1294,7 @@
         <div id="payForm">
           <div class="ord-h">Оплата</div>
           <div class="ord-sub">Безпечна оплата банківським посиланням або карткою. «Сплатити» перенесе вас на безпечну сторінку оплати.</div>
-          <div class="pay-demo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 5 6v5c0 4.2 2.8 7.3 7 8.8 4.2-1.5 7-4.6 7-8.8V6l-7-3Z" stroke-linejoin="round"/><path d="m9 11.5 2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Ви сплачуєте лише за перший місяць. Картка залишається безпечно прив'язаною, а наступні місяці списуються автоматично — ви можете скасувати будь-якої миті.</span></div>
+          <div class="pay-demo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 5 6v5c0 4.2 2.8 7.3 7 8.8 4.2-1.5 7-4.6 7-8.8V6l-7-3Z" stroke-linejoin="round"/><path d="m9 11.5 2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg><span id="payNote">Ви сплачуєте лише за перший місяць. Картка залишається безпечно прив'язаною, а наступні місяці списуються автоматично — ви можете скасувати будь-якої миті.</span></div>
           <div class="pay-logos"><span class="pl">Swedbank</span><span class="pl">SEB</span><span class="pl">LHV</span><span class="pl">Visa</span><span class="pl">Mastercard</span></div>
         </div>
         <div class="ord-done" id="payDone" style="display:none">
@@ -1261,8 +1330,8 @@
 const nav=document.getElementById('nav');
 addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>12),{passive:true});
 
-/* === i18n: keele-stringid (build_i18n.py asendab {"locale": "uk-UA", "fbLine": "{n} конкурентів у Facebook", "webLineCalc": "{n} інтернет-магазинів у моніторингу цін + залишків", "webLineModal": "{n} інтернет-магазинів у моніторингу цін і залишків", "perMonth": "/міс", "saveAnnual": "{m} місяців безкоштовно – рахунок раз на рік (€{yr}/рік)", "chooseOne": "Виберіть щонайменше один модуль", "billYear": "Оплата: річна €{yr}/рік (≈€{eff}/міс, {m} місяців безкоштовно)", "billMonth": "Оплата: щомісячна €{m}/міс", "mailIntro": "Хочу підключити моніторинг Look360.", "mailChosen": "Вибрано:", "mailQuote": "Примітка: також хочу індивідуальну автоматизацію – надішліть, будь ласка, пропозицію.", "mailSubject": "Запит на підключення – Look360", "quotePrice": "за запитом", "hintWeb": "веб +8 €", "hintFb": "FB +3 €", "perMonthSpaced": "/ міс", "hintEmpty": "Додайте сайт або сторінку Facebook, щоб відстежувати цю компанію", "phName": "Назва конкурента", "phWeb": "Сайт (напр. konkurent.com)", "phFb": "Сторінка Facebook (напр. facebook.com/konkurent)", "remove": "Видалити", "sumEmpty": "Ще нічого не вибрано", "sumTotal": "Разом", "sumYearSuffix": "· річна оплата (2 місяці безкоштовно)", "perMonthUnit": "€/міс", "twoMonthsFree": "2 місяці безкоштовно", "mlCompany": "Компанія", "mlContact": "Контакт", "mlPhone": "Телефон", "mlEmail": "E-mail", "mlOwnShop": "Власний магазин", "mlWatch": "Відстежувати", "mlPackage": "Пакет", "mlBilling": "Оплата", "unnamed": "(без назви)", "mlWeb": "веб", "totYear": "річна оплата €{yr}/рік (≈€{eff}/міс, 2 місяці безкоштовно)", "totMonth": "щомісячна оплата €{m}/міс", "btnContinuePay": "Перейти до оплати →", "btnPay": "Сплатити", "btnNext": "Далі →", "btnCreateAccount": "Створити обліковий запис і увійти", "btnCreatingAccount": "Створення облікового запису…", "errPassMin": "Пароль має містити щонайменше 8 символів.", "errAcctFail": "Не вдалося створити обліковий запис.", "errConnFail": "Помилка з’єднання. Спробуйте ще раз.", "navToolaud": "Панель"} keele kaupa) === */
-const T = {"locale": "uk-UA", "fbLine": "{n} конкурентів у Facebook", "webLineCalc": "{n} інтернет-магазинів у моніторингу цін + залишків", "webLineModal": "{n} інтернет-магазинів у моніторингу цін і залишків", "perMonth": "/міс", "saveAnnual": "{m} місяців безкоштовно – рахунок раз на рік (€{yr}/рік)", "chooseOne": "Виберіть щонайменше один модуль", "billYear": "Оплата: річна €{yr}/рік (≈€{eff}/міс, {m} місяців безкоштовно)", "billMonth": "Оплата: щомісячна €{m}/міс", "mailIntro": "Хочу підключити моніторинг Look360.", "mailChosen": "Вибрано:", "mailQuote": "Примітка: також хочу індивідуальну автоматизацію – надішліть, будь ласка, пропозицію.", "mailSubject": "Запит на підключення – Look360", "quotePrice": "за запитом", "hintWeb": "веб +8 €", "hintFb": "FB +3 €", "perMonthSpaced": "/ міс", "hintEmpty": "Додайте сайт або сторінку Facebook, щоб відстежувати цю компанію", "phName": "Назва конкурента", "phWeb": "Сайт (напр. konkurent.com)", "phFb": "Сторінка Facebook (напр. facebook.com/konkurent)", "remove": "Видалити", "sumEmpty": "Ще нічого не вибрано", "sumTotal": "Разом", "sumYearSuffix": "· річна оплата (2 місяці безкоштовно)", "perMonthUnit": "€/міс", "twoMonthsFree": "2 місяці безкоштовно", "mlCompany": "Компанія", "mlContact": "Контакт", "mlPhone": "Телефон", "mlEmail": "E-mail", "mlOwnShop": "Власний магазин", "mlWatch": "Відстежувати", "mlPackage": "Пакет", "mlBilling": "Оплата", "unnamed": "(без назви)", "mlWeb": "веб", "totYear": "річна оплата €{yr}/рік (≈€{eff}/міс, 2 місяці безкоштовно)", "totMonth": "щомісячна оплата €{m}/міс", "btnContinuePay": "Перейти до оплати →", "btnPay": "Сплатити", "btnNext": "Далі →", "btnCreateAccount": "Створити обліковий запис і увійти", "btnCreatingAccount": "Створення облікового запису…", "errPassMin": "Пароль має містити щонайменше 8 символів.", "errAcctFail": "Не вдалося створити обліковий запис.", "errConnFail": "Помилка з’єднання. Спробуйте ще раз.", "navToolaud": "Панель"};
+/* === i18n: keele-stringid (build_i18n.py asendab {"locale": "uk-UA", "fbLine": "{n} конкурентів у Facebook", "webLineCalc": "{n} інтернет-магазинів у моніторингу цін + залишків", "webLineModal": "{n} інтернет-магазинів у моніторингу цін і залишків", "perMonth": "/міс", "saveAnnual": "{m} місяців безкоштовно – рахунок раз на рік (€{yr}/рік)", "chooseOne": "Виберіть щонайменше один модуль", "billYear": "Оплата: річна €{yr}/рік (≈€{eff}/міс, {m} місяців безкоштовно)", "billMonth": "Оплата: щомісячна €{m}/міс", "mailIntro": "Хочу підключити моніторинг Look360.", "mailChosen": "Вибрано:", "mailQuote": "Примітка: також хочу індивідуальну автоматизацію – надішліть, будь ласка, пропозицію.", "mailSubject": "Запит на підключення – Look360", "quotePrice": "за запитом", "hintWeb": "веб +8 €", "hintFb": "FB +3 €", "perMonthSpaced": "/ міс", "hintEmpty": "Додайте сайт або сторінку Facebook, щоб відстежувати цю компанію", "phName": "Назва конкурента", "phWeb": "Сайт (напр. konkurent.com)", "phFb": "Сторінка Facebook (напр. facebook.com/konkurent)", "remove": "Видалити", "sumEmpty": "Ще нічого не вибрано", "sumTotal": "Разом", "sumYearSuffix": "· річна оплата (2 місяці безкоштовно)", "perMonthUnit": "€/міс", "perYear": "/рік", "perYearUnit": "€/рік", "payNoteYear": "Ти сплачуєш одразу за весь рік (2 місяці безкоштовно). Картка лишається надійно прив'язаною й оновлюється раз на рік — можна скасувати будь-коли.", "twoMonthsFree": "2 місяці безкоштовно", "mlCompany": "Компанія", "mlContact": "Контакт", "mlPhone": "Телефон", "mlEmail": "E-mail", "mlOwnShop": "Власний магазин", "mlWatch": "Відстежувати", "mlPackage": "Пакет", "mlBilling": "Оплата", "unnamed": "(без назви)", "mlWeb": "веб", "totYear": "річна оплата €{yr}/рік (≈€{eff}/міс, 2 місяці безкоштовно)", "totMonth": "щомісячна оплата €{m}/міс", "btnContinuePay": "Перейти до оплати →", "btnPay": "Сплатити", "btnNext": "Далі →", "btnCreateAccount": "Створити обліковий запис і увійти", "btnCreatingAccount": "Створення облікового запису…", "errPassMin": "Пароль має містити щонайменше 8 символів.", "errAcctFail": "Не вдалося створити обліковий запис.", "errConnFail": "Помилка з’єднання. Спробуйте ще раз.", "navToolaud": "Панель"} keele kaupa) === */
+const T = {"locale": "uk-UA", "fbLine": "{n} конкурентів у Facebook", "webLineCalc": "{n} інтернет-магазинів у моніторингу цін + залишків", "webLineModal": "{n} інтернет-магазинів у моніторингу цін і залишків", "perMonth": "/міс", "saveAnnual": "{m} місяців безкоштовно – рахунок раз на рік (€{yr}/рік)", "chooseOne": "Виберіть щонайменше один модуль", "billYear": "Оплата: річна €{yr}/рік (≈€{eff}/міс, {m} місяців безкоштовно)", "billMonth": "Оплата: щомісячна €{m}/міс", "mailIntro": "Хочу підключити моніторинг Look360.", "mailChosen": "Вибрано:", "mailQuote": "Примітка: також хочу індивідуальну автоматизацію – надішліть, будь ласка, пропозицію.", "mailSubject": "Запит на підключення – Look360", "quotePrice": "за запитом", "hintWeb": "веб +8 €", "hintFb": "FB +3 €", "perMonthSpaced": "/ міс", "hintEmpty": "Додайте сайт або сторінку Facebook, щоб відстежувати цю компанію", "phName": "Назва конкурента", "phWeb": "Сайт (напр. konkurent.com)", "phFb": "Сторінка Facebook (напр. facebook.com/konkurent)", "remove": "Видалити", "sumEmpty": "Ще нічого не вибрано", "sumTotal": "Разом", "sumYearSuffix": "· річна оплата (2 місяці безкоштовно)", "perMonthUnit": "€/міс", "perYear": "/рік", "perYearUnit": "€/рік", "payNoteYear": "Ти сплачуєш одразу за весь рік (2 місяці безкоштовно). Картка лишається надійно прив'язаною й оновлюється раз на рік — можна скасувати будь-коли.", "twoMonthsFree": "2 місяці безкоштовно", "mlCompany": "Компанія", "mlContact": "Контакт", "mlPhone": "Телефон", "mlEmail": "E-mail", "mlOwnShop": "Власний магазин", "mlWatch": "Відстежувати", "mlPackage": "Пакет", "mlBilling": "Оплата", "unnamed": "(без назви)", "mlWeb": "веб", "totYear": "річна оплата €{yr}/рік (≈€{eff}/міс, 2 місяці безкоштовно)", "totMonth": "щомісячна оплата €{m}/міс", "btnContinuePay": "Перейти до оплати →", "btnPay": "Сплатити", "btnNext": "Далі →", "btnCreateAccount": "Створити обліковий запис і увійти", "btnCreatingAccount": "Створення облікового запису…", "errPassMin": "Пароль має містити щонайменше 8 символів.", "errAcctFail": "Не вдалося створити обліковий запис.", "errConnFail": "Помилка з’єднання. Спробуйте ще раз.", "navToolaud": "Панель"};
 function fmt(s,o){return String(s).replace(/\{(\w+)\}/g,(_,k)=>o[k]!=null?o[k]:'')}
 
 /* === Login-staatus: kui külastaja on äpis juba sisse logitud, vaheta "Logi
@@ -1470,7 +1539,7 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
   function fmtPrice(){
     if(done)return;
     const {m}=calc();
-    if(isYear()){const yr=m*(12-FREE_MONTHS),eff=Math.round(yr/12);priceEl.innerHTML=`${eff} €<small>${T.perMonth}</small>${m>0?'<span class="save">'+T.twoMonthsFree+'</span>':''}`;}
+    if(isYear()){const yr=m*(12-FREE_MONTHS);priceEl.innerHTML=`${yr} €<small>${T.perYear}</small>${m>0?'<span class="save">'+T.twoMonthsFree+'</span>':''}`;}
     else priceEl.innerHTML=`${m} €<small>${T.perMonth}</small>`;
   }
   function rowHint(c){
@@ -1493,8 +1562,8 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
   function buildSummary(){
     const {lines,m}=calc();
     let h=lines.length?lines.map(l=>`<div class="sr"><span>${l[0]}</span><b>${l[1]}</b></div>`).join(''):`<div class="sr"><span>${T.sumEmpty}</span><b></b></div>`;
-    const y=isYear();const yr=m*(12-FREE_MONTHS),eff=Math.round(yr/12);
-    h+=`<div class="sr tot"><span>${T.sumTotal}${y?T.sumYearSuffix:''}</span><b>${y?`${eff}${T.perMonthUnit}`:`${m}${T.perMonthUnit}`}</b></div>`;
+    const y=isYear();const yr=m*(12-FREE_MONTHS);
+    h+=`<div class="sr tot"><span>${T.sumTotal}${y?T.sumYearSuffix:''}</span><b>${y?`${yr}${T.perYearUnit}`:`${m}${T.perMonthUnit}`}</b></div>`;
     document.getElementById('osum').innerHTML=h;
   }
   function buildMail(){
@@ -1620,7 +1689,7 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
     stepsEl.forEach(s=>{const sn=+s.dataset.s;s.classList.toggle('on',sn===n);s.classList.toggle('done',sn<n);});
     backBtn.style.display=n>1?'inline-flex':'none';
     if(n===3){buildSummary();nextBtn.textContent=T.btnContinuePay;}
-    else if(n===4){nextBtn.textContent=T.btnPay;}
+    else if(n===4){nextBtn.textContent=T.btnPay;var pn=document.getElementById('payNote');if(pn){if(!pn.dataset.month)pn.dataset.month=pn.textContent;pn.textContent=isYear()?(T.payNoteYear||pn.dataset.month):pn.dataset.month;}}
     else nextBtn.textContent=T.btnNext;
     bodyEl.scrollTop=0;
   }
