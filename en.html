@@ -893,7 +893,23 @@
   #toosees .feats{display:flex;flex-wrap:wrap;justify-content:center;gap:14px 30px;max-width:840px;margin:30px auto 6px;padding:0;list-style:none}
   #toosees .feats li{display:flex;gap:10px;align-items:center;font-size:14.5px;color:var(--on-dark);font-weight:300}
   #toosees .feats li svg{width:18px;height:18px;color:#39d98a;flex:0 0 auto}
-  @media(max-width:600px){#toosees .cnav{width:40px;height:40px}#toosees .cap{min-height:92px}#toosees .feats{gap:12px 20px}}
+  .gshot .fbposts{padding:4px 14px 10px}
+  .gshot .fbp{display:flex;align-items:flex-start;gap:11px;padding:11px 0;border-bottom:1px solid #f1f2f5}
+  .gshot .fbp:last-child{border-bottom:0}
+  .gshot .fbp .fbp-ic{width:30px;height:30px;border-radius:8px;background:#eaf1fd;color:#1877f2;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+  .gshot .fbp .fbp-ic svg{width:16px;height:16px}
+  .gshot .fbp .fbp-main{flex:1;min-width:0}
+  .gshot .fbp .fbp-txt{font-size:12.5px;color:#3c424d;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .gshot .fbp .fbp-eng{display:flex;gap:14px;margin-top:6px;font-size:11px;color:#8a909c}
+  .gshot .fbp .fbp-eng span{display:inline-flex;align-items:center;gap:4px}
+  .gshot .fbp .fbp-eng svg{width:12px;height:12px;flex:0 0 auto}
+  .gshot .fbp .fbp-side{display:flex;flex-direction:column;align-items:flex-end;gap:5px;flex:0 0 auto}
+  .gshot .fbp .fbp-badge{font-size:10px;font-weight:600;color:#0c8f4f;background:#e7f6ee;border-radius:5px;padding:2px 7px;white-space:nowrap}
+  .gshot .fbp .fbp-badge.amber{color:#b06a0a;background:#f7eddc}
+  .gshot .fbp .fbp-date{font-size:10.5px;color:#9aa1ad;white-space:nowrap}
+  #toosees .frame .gshot .fbp .fbp-txt{font-size:13.5px}
+  #toosees .frame .gshot .fbp .fbp-eng{font-size:12px}
+  @media(max-width:600px){#toosees .cnav{width:40px;height:40px}#toosees .cap{min-height:92px}#toosees .feats{gap:12px 20px}#toosees .frame .gshot .fbp .fbp-txt{font-size:12.5px}}
   @media(prefers-reduced-motion:reduce){#toosees .ctrack{transition:none}}
 </style>
 <section id="toosees">
@@ -912,7 +928,7 @@
     <div class="car reveal" id="l360car" role="group" aria-roledescription="karussell" aria-label="Look360 work views" tabindex="0">
       <div class="cviewport">
         <div class="ctrack" id="l360track">
-          <div class="cslide" role="group" aria-roledescription="slaid" aria-label="1 / 4">
+          <div class="cslide" role="group" aria-roledescription="slaid" aria-label="1 / 5">
             <div class="frame">
               <div class="bar"><span class="bdot" style="background:#ff5f57"></span><span class="bdot" style="background:#febc2e"></span><span class="bdot" style="background:#28c840"></span><span class="burl">scan.look360.eu/firma</span></div>
               <div class="gshot">
@@ -933,7 +949,7 @@
               <div><h3>Hinnamuutused kohe näha</h3><p>Konkurendi hinnalangused, tõusud ja otsasaamised märkame samal päeval — sina näed kohe, kas tasub reageerida.</p></div>
             </div>
           </div>
-          <div class="cslide" role="group" aria-roledescription="slaid" aria-label="2 / 4">
+          <div class="cslide" role="group" aria-roledescription="slaid" aria-label="2 / 5">
             <div class="frame">
               <div class="bar"><span class="bdot" style="background:#ff5f57"></span><span class="bdot" style="background:#febc2e"></span><span class="bdot" style="background:#28c840"></span><span class="burl">scan.look360.eu</span></div>
               <img src="l360-seirepaneel.png" alt="Look360 monitoring panel — competitors, prices and alerts in one view" loading="lazy">
@@ -943,7 +959,7 @@
               <div><h3>One monitoring panel</h3><p>All competitors, prices, stock and alerts in one view, plus a daily morning digest.</p></div>
             </div>
           </div>
-          <div class="cslide" role="group" aria-roledescription="slaid" aria-label="3 / 4">
+          <div class="cslide" role="group" aria-roledescription="slaid" aria-label="3 / 5">
             <div class="frame">
               <div class="bar"><span class="bdot" style="background:#ff5f57"></span><span class="bdot" style="background:#febc2e"></span><span class="bdot" style="background:#28c840"></span><span class="burl">scan.look360.eu/firma</span></div>
               <div class="gshot">
@@ -962,7 +978,7 @@
               <div><h3>Hinnaajalugu ja laoseis</h3><p>Iga toote hind ja laoseis ajateljel — näed trendi, madalaimat hinda turul ja millal kaup otsa sai.</p></div>
             </div>
           </div>
-          <div class="cslide" role="group" aria-roledescription="slaid" aria-label="4 / 4">
+          <div class="cslide" role="group" aria-roledescription="slaid" aria-label="4 / 5">
             <div class="frame">
               <div class="bar"><span class="bdot" style="background:#ff5f57"></span><span class="bdot" style="background:#febc2e"></span><span class="bdot" style="background:#28c840"></span><span class="burl">scan.look360.eu/firma</span></div>
               <img src="l360-kataloog.png" alt="Look360 product catalogue — every competitor's product, price and stock" loading="lazy">
@@ -970,6 +986,60 @@
             <div class="cap">
               <span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12.7 3H18a3 3 0 0 1 3 3v5.3a2 2 0 0 1-.6 1.4l-7.2 7.2a2 2 0 0 1-2.8 0l-5.3-5.3a2 2 0 0 1 0-2.8l7.2-7.2A2 2 0 0 1 12.7 3Z"/><circle cx="16.3" cy="7.7" r="1.5" fill="currentColor"/></svg></span>
               <div><h3>Price and stock per product</h3><p>Every competitor's product, price and stock. We spot price drops and stockouts right away.</p></div>
+            </div>
+          </div>
+          <div class="cslide" role="group" aria-roledescription="slaid" aria-label="5 / 5">
+            <div class="frame">
+              <div class="bar"><span class="bdot" style="background:#ff5f57"></span><span class="bdot" style="background:#febc2e"></span><span class="bdot" style="background:#28c840"></span><span class="burl">scan.look360.eu/firma</span></div>
+              <div class="gshot">
+                <div class="gsh-top"><span class="gsh-name"></span><span class="gsh-tag">Facebook · uued postitused</span></div>
+                <div class="fbposts">
+                  <div class="fbp">
+                    <span class="fbp-ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.4 21v-7.9h2.65l.4-3.08H13.4V8.05c0-.89.25-1.5 1.53-1.5h1.63V3.8A21.7 21.7 0 0 0 14.2 3.7c-2.35 0-3.96 1.43-3.96 4.07v2.27H7.6v3.08h2.64V21h3.16Z"/></svg></span>
+                    <div class="fbp-main">
+                      <div class="fbp-txt">Suvekampaania algab! Kõik akutrimmerid ja -saed −20% kuni pühapäevani 🔥</div>
+                      <div class="fbp-eng"><span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 10h3v11H2zM22 11.2c0-1-.82-1.8-1.82-1.8h-5.16l.78-3.74.02-.26c0-.37-.15-.71-.4-.96l-.86-.85-5.4 5.41c-.33.33-.53.78-.53 1.28V19c0 1 .82 1.8 1.82 1.8h7.27c.7 0 1.3-.42 1.56-1.03l2.74-6.4c.08-.2.12-.42.12-.65z"/></svg> 184</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.7A8.4 8.4 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.4 8.4 0 0 1 21 11.5z"/></svg> 27</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/><path d="m8 6 4-4 4 4"/><path d="M12 2v13"/></svg> 14</span></div>
+                    </div>
+                    <div class="fbp-side"><span class="fbp-badge">Uus</span><span class="fbp-date">2 t tagasi</span></div>
+                  </div>
+                  <div class="fbp">
+                    <span class="fbp-ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.4 21v-7.9h2.65l.4-3.08H13.4V8.05c0-.89.25-1.5 1.53-1.5h1.63V3.8A21.7 21.7 0 0 0 14.2 3.7c-2.35 0-3.96 1.43-3.96 4.07v2.27H7.6v3.08h2.64V21h3.16Z"/></svg></span>
+                    <div class="fbp-main">
+                      <div class="fbp-txt">Uus laos: järgmise põlvkonna robotniiduk GPS-navigatsiooniga</div>
+                      <div class="fbp-eng"><span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 10h3v11H2zM22 11.2c0-1-.82-1.8-1.82-1.8h-5.16l.78-3.74.02-.26c0-.37-.15-.71-.4-.96l-.86-.85-5.4 5.41c-.33.33-.53.78-.53 1.28V19c0 1 .82 1.8 1.82 1.8h7.27c.7 0 1.3-.42 1.56-1.03l2.74-6.4c.08-.2.12-.42.12-.65z"/></svg> 96</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.7A8.4 8.4 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.4 8.4 0 0 1 21 11.5z"/></svg> 12</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/><path d="m8 6 4-4 4 4"/><path d="M12 2v13"/></svg> 7</span></div>
+                    </div>
+                    <div class="fbp-side"><span class="fbp-badge">Uus</span><span class="fbp-date">5 t tagasi</span></div>
+                  </div>
+                  <div class="fbp">
+                    <span class="fbp-ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.4 21v-7.9h2.65l.4-3.08H13.4V8.05c0-.89.25-1.5 1.53-1.5h1.63V3.8A21.7 21.7 0 0 0 14.2 3.7c-2.35 0-3.96 1.43-3.96 4.07v2.27H7.6v3.08h2.64V21h3.16Z"/></svg></span>
+                    <div class="fbp-main">
+                      <div class="fbp-txt">Black Weekend! Soodustused kuni −40%, ainult sel nädalavahetusel</div>
+                      <div class="fbp-eng"><span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 10h3v11H2zM22 11.2c0-1-.82-1.8-1.82-1.8h-5.16l.78-3.74.02-.26c0-.37-.15-.71-.4-.96l-.86-.85-5.4 5.41c-.33.33-.53.78-.53 1.28V19c0 1 .82 1.8 1.82 1.8h7.27c.7 0 1.3-.42 1.56-1.03l2.74-6.4c.08-.2.12-.42.12-.65z"/></svg> 312</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.7A8.4 8.4 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.4 8.4 0 0 1 21 11.5z"/></svg> 48</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/><path d="m8 6 4-4 4 4"/><path d="M12 2v13"/></svg> 39</span></div>
+                    </div>
+                    <div class="fbp-side"><span class="fbp-badge amber">Kampaania</span><span class="fbp-date">eile</span></div>
+                  </div>
+                  <div class="fbp">
+                    <span class="fbp-ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.4 21v-7.9h2.65l.4-3.08H13.4V8.05c0-.89.25-1.5 1.53-1.5h1.63V3.8A21.7 21.7 0 0 0 14.2 3.7c-2.35 0-3.96 1.43-3.96 4.07v2.27H7.6v3.08h2.64V21h3.16Z"/></svg></span>
+                    <div class="fbp-main">
+                      <div class="fbp-txt">Tasuta kohaletoimetus kõigile tellimustele üle 99 €</div>
+                      <div class="fbp-eng"><span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 10h3v11H2zM22 11.2c0-1-.82-1.8-1.82-1.8h-5.16l.78-3.74.02-.26c0-.37-.15-.71-.4-.96l-.86-.85-5.4 5.41c-.33.33-.53.78-.53 1.28V19c0 1 .82 1.8 1.82 1.8h7.27c.7 0 1.3-.42 1.56-1.03l2.74-6.4c.08-.2.12-.42.12-.65z"/></svg> 64</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.7A8.4 8.4 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.4 8.4 0 0 1 21 11.5z"/></svg> 5</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/><path d="m8 6 4-4 4 4"/><path d="M12 2v13"/></svg> 8</span></div>
+                    </div>
+                    <div class="fbp-side"><span class="fbp-date">eile</span></div>
+                  </div>
+                  <div class="fbp">
+                    <span class="fbp-ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.4 21v-7.9h2.65l.4-3.08H13.4V8.05c0-.89.25-1.5 1.53-1.5h1.63V3.8A21.7 21.7 0 0 0 14.2 3.7c-2.35 0-3.96 1.43-3.96 4.07v2.27H7.6v3.08h2.64V21h3.16Z"/></svg></span>
+                    <div class="fbp-main">
+                      <div class="fbp-txt">Tutvustame uut mootorsaagide seeriat — tule proovi kauplusesse</div>
+                      <div class="fbp-eng"><span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 10h3v11H2zM22 11.2c0-1-.82-1.8-1.82-1.8h-5.16l.78-3.74.02-.26c0-.37-.15-.71-.4-.96l-.86-.85-5.4 5.41c-.33.33-.53.78-.53 1.28V19c0 1 .82 1.8 1.82 1.8h7.27c.7 0 1.3-.42 1.56-1.03l2.74-6.4c.08-.2.12-.42.12-.65z"/></svg> 41</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.7A8.4 8.4 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.4 8.4 0 0 1 21 11.5z"/></svg> 6</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/><path d="m8 6 4-4 4 4"/><path d="M12 2v13"/></svg> 3</span></div>
+                    </div>
+                    <div class="fbp-side"><span class="fbp-date">2 p tagasi</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="cap">
+              <span class="cic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.4 21v-7.9h2.65l.4-3.08H13.4V8.05c0-.89.25-1.5 1.53-1.5h1.63V3.8A21.7 21.7 0 0 0 14.2 3.7c-2.35 0-3.96 1.43-3.96 4.07v2.27H7.6v3.08h2.64V21h3.16Z"/></svg></span>
+              <div><h3>Competitors' Facebook in one feed</h3><p>Every monitored competitor's new posts, campaigns and engagement in one feed — you spot a new campaign right away, not a week later.</p></div>
             </div>
           </div>
         </div>
