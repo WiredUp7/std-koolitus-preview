@@ -158,7 +158,7 @@
   @keyframes blipring{0%{transform:scale(.3);opacity:.85}5%{opacity:.85}55%{transform:scale(2.8);opacity:0}100%{opacity:0}}
   @media(prefers-reduced-motion:reduce){.radar-sweep,.blip,.blip::after,.tag span,.hero-glow,.glint{animation:none}.blip{opacity:.9}}
   .hero-inner{position:relative;z-index:2;text-align:center;width:100%}
-  .badge-live{display:inline-flex;align-items:center;gap:11px;background:rgba(10,11,14,.62);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid var(--line-dark);border-radius:999px;padding:11px 24px 11px 18px;font-size:16.5px;font-weight:600;color:var(--on-dark);margin-bottom:30px}
+  .badge-live{display:inline-flex;align-items:center;gap:8px;background:rgba(10,11,14,.62);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid var(--line-dark);border-radius:999px;padding:8px 18px 8px 14px;font-size:12.4px;font-weight:600;color:var(--on-dark);margin-bottom:30px}
   .ldot{width:7px;height:7px;border-radius:50%;background:var(--accent);position:relative}
   .ldot::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--accent);animation:ping 1.9s cubic-bezier(0,0,.2,1) infinite}
   @keyframes ping{0%{transform:scale(1);opacity:.7}80%,100%{transform:scale(2.8);opacity:0}}
@@ -544,6 +544,19 @@
   .omod-toggle .mt span{font-size:12px;color:var(--muted);line-height:1.3}
   .omod-toggle .mp{flex-shrink:0;font-family:var(--mono);font-size:13px;font-weight:500;color:var(--muted)}
   .omod-toggle.on .mp{color:var(--accent-ink)}
+  /* Teenuse "andmete küsimise moodul": ilmub teenuse valikul (JS lisab .show) */
+  .omod-data{display:none;margin:-4px 0 11px;padding:13px 14px;border:1px solid #dceee5;border-radius:12px;background:#f5fbf8}
+  .omod-data.show{display:block;animation:omodIn .18s ease}
+  @keyframes omodIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+  .omod-data .ofield{margin-bottom:11px}
+  .omod-data .ofield:last-child{margin-bottom:0}
+  .omod-data .ofield label{font-size:12.5px;display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+  .omod-data input,.omod-data textarea{width:100%;font-family:var(--f);font-size:14px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--text)}
+  .omod-data input:focus,.omod-data textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+  .omod-data textarea{min-height:58px;resize:vertical;line-height:1.45}
+  .omod-data .fhint{font-size:11.5px;color:var(--muted);font-family:var(--mono);margin-top:5px}
+  .omod-data .fhint b{color:var(--accent-ink);font-weight:500}
+  .omod-data .freq{font-family:var(--mono);font-size:10.5px;font-weight:400;color:#c0556b;text-transform:lowercase;letter-spacing:0}
   .obill{display:flex;gap:4px;background:var(--paper-2);border:1px solid var(--line);border-radius:11px;padding:4px;margin-bottom:6px}
   .obill button{flex:1;border:0;background:transparent;color:var(--muted);font-family:var(--f);font-size:13px;font-weight:500;padding:9px 6px;border-radius:8px;cursor:pointer;transition:.2s}
   .obill button span{font-size:11px;opacity:.85}
@@ -727,13 +740,9 @@
   </div>
   <div class="hero-glow"></div>
   <div class="wrap hero-inner">
-    <span class="badge-live"><span class="ldot"></span> Vær et træk foran konkurrenterne</span>
+    <span class="badge-live"><span class="ldot"></span> Vær et træk foran konkurrenterne med Look360's AI-motor</span>
     <h1 style="font-size:clamp(30px,5.2vw,60px);line-height:1.07;max-width:1020px;margin-left:auto;margin-right:auto">Vi opdager prisændringer, lagerproblemer og fejl i webshoppen <span class="g">før de rammer dit salg.</span></h1>
     <p class="lead">Løbende overvågning af dine konkurrenter, priser, lagerbeholdning, webshop og SEO — samlet i én visning og én rapport hver morgen. Du ser ændringen samme dag, ikke når kunden allerede er gået et andet sted hen.</p>
-    <div class="ai-hero" style="display:inline-flex;align-items:center;gap:11px;max-width:600px;margin:0 auto 32px;padding:11px 20px;background:rgba(23,184,106,.12);border:1px solid rgba(23,184,106,.3);border-radius:14px;font-size:14.5px;line-height:1.45;color:var(--on-dark);font-weight:400;text-align:left">
-      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#39d98a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex:0 0 auto"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="3.2"/></svg>
-      <span>En rigtig AI-motor læser dit marked igennem - allerede i drift, ikke et løfte</span>
-    </div>
     <div class="hero-actions">
       <a href="#hinnad" class="btn btn-grad js-order">Tilmeld dig fra €3 om måneden <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
@@ -1439,8 +1448,8 @@
 const nav=document.getElementById('nav');
 addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>12),{passive:true});
 
-/* === i18n: keele-stringid (build_i18n.py asendab {"locale": "da-DK", "fbLine": "{n} konkurrenter på Facebook", "webLineCalc": "{n} webshops i pris- + lagerovervågning", "webLineModal": "{n} webshops i pris- og lagerovervågning", "perMonth": "/md.", "saveAnnual": "{m} måneder gratis – faktureres én gang om året (€{yr}/år)", "chooseOne": "Vælg mindst ét modul", "billYear": "Fakturering: årligt €{yr}/år (≈€{eff}/md., {m} måneder gratis)", "billMonth": "Fakturering: månedligt €{m}/md.", "mailIntro": "Jeg vil gerne tilmelde mig Look360-overvågning.", "mailChosen": "Valgt:", "mailQuote": "Bemærk: Jeg vil også gerne have skræddersyet automatisering – send venligst et tilbud.", "mailSubject": "Tilmeldingsanmodning – Look360", "quotePrice": "efter aftale", "hintWeb": "web +€8", "hintFb": "FB +€3", "perMonthSpaced": "/ md.", "hintEmpty": "Tilføj en hjemmeside eller en Facebook-side for at overvåge denne virksomhed", "phName": "Konkurrentens navn", "phWeb": "Hjemmeside (f.eks. konkurrent.dk)", "phFb": "Facebook-side (f.eks. facebook.com/konkurrent)", "remove": "Fjern", "sumEmpty": "Intet er valgt endnu", "sumTotal": "I alt", "sumYearSuffix": "· årligt (2 måneder gratis)", "perMonthUnit": "€/md.", "perYear": "/år", "perYearUnit": "€/år", "payNoteYear": "Du betaler for hele året nu (2 måneder gratis). Dit kort forbliver sikkert tilknyttet og fornyes en gang om året — annuller når som helst.", "twoMonthsFree": "2 måneder gratis", "mlCompany": "Virksomhed", "mlContact": "Kontakt", "mlPhone": "Telefon", "mlEmail": "E-mail", "mlOwnShop": "Egen shop", "mlOwnFb": "Egen Facebook", "mlWatch": "Skal overvåges", "mlPackage": "Pakke", "mlBilling": "Fakturering", "unnamed": "(uden navn)", "mlWeb": "web", "totYear": "årligt €{yr}/år (≈€{eff}/md., 2 måneder gratis)", "totMonth": "månedligt €{m}/md.", "btnContinuePay": "Fortsæt til betaling →", "btnPay": "Betal", "btnNext": "Videre →", "btnCreateAccount": "Opret konto og log ind", "btnCreatingAccount": "Opretter konto…", "errPassMin": "Adgangskoden skal være på mindst 8 tegn.", "errAcctFail": "Kontoen kunne ikke oprettes.", "errConnFail": "Forbindelsen mislykkedes. Prøv igen.", "navToolaud": "Kontrolpanel", "copySending": "Sender…", "copySent": "Kopi sendt til din e-mail ✓", "copyFail": "Afsendelsen mislykkedes. Prøv igen."} keele kaupa) === */
-const T = {"locale": "da-DK", "fbLine": "{n} konkurrenter på Facebook", "webLineCalc": "{n} webshops i pris- + lagerovervågning", "webLineModal": "{n} webshops i pris- og lagerovervågning", "perMonth": "/md.", "saveAnnual": "{m} måneder gratis – faktureres én gang om året (€{yr}/år)", "chooseOne": "Vælg mindst ét modul", "billYear": "Fakturering: årligt €{yr}/år (≈€{eff}/md., {m} måneder gratis)", "billMonth": "Fakturering: månedligt €{m}/md.", "mailIntro": "Jeg vil gerne tilmelde mig Look360-overvågning.", "mailChosen": "Valgt:", "mailQuote": "Bemærk: Jeg vil også gerne have skræddersyet automatisering – send venligst et tilbud.", "mailSubject": "Tilmeldingsanmodning – Look360", "quotePrice": "efter aftale", "hintWeb": "web +€8", "hintFb": "FB +€3", "perMonthSpaced": "/ md.", "hintEmpty": "Tilføj en hjemmeside eller en Facebook-side for at overvåge denne virksomhed", "phName": "Konkurrentens navn", "phWeb": "Hjemmeside (f.eks. konkurrent.dk)", "phFb": "Facebook-side (f.eks. facebook.com/konkurrent)", "remove": "Fjern", "sumEmpty": "Intet er valgt endnu", "sumTotal": "I alt", "sumYearSuffix": "· årligt (2 måneder gratis)", "perMonthUnit": "€/md.", "perYear": "/år", "perYearUnit": "€/år", "payNoteYear": "Du betaler for hele året nu (2 måneder gratis). Dit kort forbliver sikkert tilknyttet og fornyes en gang om året — annuller når som helst.", "twoMonthsFree": "2 måneder gratis", "mlCompany": "Virksomhed", "mlContact": "Kontakt", "mlPhone": "Telefon", "mlEmail": "E-mail", "mlOwnShop": "Egen shop", "mlOwnFb": "Egen Facebook", "mlWatch": "Skal overvåges", "mlPackage": "Pakke", "mlBilling": "Fakturering", "unnamed": "(uden navn)", "mlWeb": "web", "totYear": "årligt €{yr}/år (≈€{eff}/md., 2 måneder gratis)", "totMonth": "månedligt €{m}/md.", "btnContinuePay": "Fortsæt til betaling →", "btnPay": "Betal", "btnNext": "Videre →", "btnCreateAccount": "Opret konto og log ind", "btnCreatingAccount": "Opretter konto…", "errPassMin": "Adgangskoden skal være på mindst 8 tegn.", "errAcctFail": "Kontoen kunne ikke oprettes.", "errConnFail": "Forbindelsen mislykkedes. Prøv igen.", "navToolaud": "Kontrolpanel", "copySending": "Sender…", "copySent": "Kopi sendt til din e-mail ✓", "copyFail": "Afsendelsen mislykkedes. Prøv igen."};
+/* === i18n: keele-stringid (build_i18n.py asendab {"locale": "da-DK", "fbLine": "{n} konkurrenter på Facebook", "webLineCalc": "{n} webshops i pris- + lagerovervågning", "webLineModal": "{n} webshops i pris- og lagerovervågning", "perMonth": "/md.", "saveAnnual": "{m} måneder gratis – faktureres én gang om året (€{yr}/år)", "chooseOne": "Vælg mindst ét modul", "billYear": "Fakturering: årligt €{yr}/år (≈€{eff}/md., {m} måneder gratis)", "billMonth": "Fakturering: månedligt €{m}/md.", "mailIntro": "Jeg vil gerne tilmelde mig Look360-overvågning.", "mailChosen": "Valgt:", "mailQuote": "Bemærk: Jeg vil også gerne have skræddersyet automatisering – send venligst et tilbud.", "mailSubject": "Tilmeldingsanmodning – Look360", "quotePrice": "efter aftale", "hintWeb": "web +€8", "hintFb": "FB +€3", "perMonthSpaced": "/ md.", "hintEmpty": "Tilføj en hjemmeside eller en Facebook-side for at overvåge denne virksomhed", "phName": "Konkurrentens navn", "phWeb": "Hjemmeside (f.eks. konkurrent.dk)", "phFb": "Facebook-side (f.eks. facebook.com/konkurrent)", "remove": "Fjern", "sumEmpty": "Intet er valgt endnu", "sumTotal": "I alt", "sumYearSuffix": "· årligt (2 måneder gratis)", "perMonthUnit": "€/md.", "perYear": "/år", "perYearUnit": "€/år", "payNoteYear": "Du betaler for hele året nu (2 måneder gratis). Dit kort forbliver sikkert tilknyttet og fornyes en gang om året — annuller når som helst.", "twoMonthsFree": "2 måneder gratis", "mlCompany": "Virksomhed", "mlContact": "Kontakt", "mlPhone": "Telefon", "mlEmail": "E-mail", "mlOwnShop": "Egen shop", "mlOwnFb": "Egen Facebook", "mlWatch": "Skal overvåges", "mlPackage": "Pakke", "mlBilling": "Fakturering", "unnamed": "(uden navn)", "mlWeb": "web", "totYear": "årligt €{yr}/år (≈€{eff}/md., 2 måneder gratis)", "totMonth": "månedligt €{m}/md.", "btnContinuePay": "Fortsæt til betaling →", "btnPay": "Betal", "btnNext": "Videre →", "btnCreateAccount": "Opret konto og log ind", "btnCreatingAccount": "Opretter konto…", "errPassMin": "Adgangskoden skal være på mindst 8 tegn.", "errAcctFail": "Kontoen kunne ikke oprettes.", "errConnFail": "Forbindelsen mislykkedes. Prøv igen.", "navToolaud": "Kontrolpanel", "copySending": "Sender…", "copySent": "Kopi sendt til din e-mail ✓", "copyFail": "Afsendelsen mislykkedes. Prøv igen.", "svc_req": "påkrævet", "svc_note": "Bemærkning", "svc_note_ph": "Andet vi bør vide (valgfrit)", "svc_words": "{n}/30 ord", "svc_ownshop": "Vi skanner din egen butik (adresse under „Din butik“ ovenfor).", "svc_seo_lbl": "Nøgleord", "svc_seo_ph": "ét nøgleord pr. linje, f.eks. batteritrimmer", "svc_seo_tier": "{n} nøgleord · {p} €/md.", "svc_epoe_lbl": "Prioriterede sider eller kategorier (valgfrit)", "svc_epoe_ph": "f.eks. /produkter/batterier, kampagneside", "svc_uptime_lbl": "Adresser, der skal overvåges", "svc_uptime_ph": "én URL pr. linje (standard: din butik)", "svc_erp_lbl": "Hvilket ERP?", "svc_erp_ph": "f.eks. Directo, Merit, SimplBooks", "svc_erpacc_lbl": "Adgang / API-bemærkning (valgfrit)", "svc_hinnastus_lbl": "Shopplatform (valgfrit)", "svc_hinnastus_ph": "f.eks. WooCommerce, Shopify, Magento", "svc_koolitus_size": "Antal deltagere", "svc_koolitus_topic": "Emne eller fokus (valgfrit)", "svc_koolitus_time": "Foretrukket tidspunkt (valgfrit)", "svc_auto_lbl": "Hvad har du brug for?", "svc_auto_ph": "Beskriv opgaven — plugin, script, dashboard", "svc_err_shop": "Tilføj din butiksadresse — den valgte tjeneste skanner din butik.", "svc_err_req": "Udfyld de påkrævede felter for de valgte tjenester."} keele kaupa) === */
+const T = {"locale": "da-DK", "fbLine": "{n} konkurrenter på Facebook", "webLineCalc": "{n} webshops i pris- + lagerovervågning", "webLineModal": "{n} webshops i pris- og lagerovervågning", "perMonth": "/md.", "saveAnnual": "{m} måneder gratis – faktureres én gang om året (€{yr}/år)", "chooseOne": "Vælg mindst ét modul", "billYear": "Fakturering: årligt €{yr}/år (≈€{eff}/md., {m} måneder gratis)", "billMonth": "Fakturering: månedligt €{m}/md.", "mailIntro": "Jeg vil gerne tilmelde mig Look360-overvågning.", "mailChosen": "Valgt:", "mailQuote": "Bemærk: Jeg vil også gerne have skræddersyet automatisering – send venligst et tilbud.", "mailSubject": "Tilmeldingsanmodning – Look360", "quotePrice": "efter aftale", "hintWeb": "web +€8", "hintFb": "FB +€3", "perMonthSpaced": "/ md.", "hintEmpty": "Tilføj en hjemmeside eller en Facebook-side for at overvåge denne virksomhed", "phName": "Konkurrentens navn", "phWeb": "Hjemmeside (f.eks. konkurrent.dk)", "phFb": "Facebook-side (f.eks. facebook.com/konkurrent)", "remove": "Fjern", "sumEmpty": "Intet er valgt endnu", "sumTotal": "I alt", "sumYearSuffix": "· årligt (2 måneder gratis)", "perMonthUnit": "€/md.", "perYear": "/år", "perYearUnit": "€/år", "payNoteYear": "Du betaler for hele året nu (2 måneder gratis). Dit kort forbliver sikkert tilknyttet og fornyes en gang om året — annuller når som helst.", "twoMonthsFree": "2 måneder gratis", "mlCompany": "Virksomhed", "mlContact": "Kontakt", "mlPhone": "Telefon", "mlEmail": "E-mail", "mlOwnShop": "Egen shop", "mlOwnFb": "Egen Facebook", "mlWatch": "Skal overvåges", "mlPackage": "Pakke", "mlBilling": "Fakturering", "unnamed": "(uden navn)", "mlWeb": "web", "totYear": "årligt €{yr}/år (≈€{eff}/md., 2 måneder gratis)", "totMonth": "månedligt €{m}/md.", "btnContinuePay": "Fortsæt til betaling →", "btnPay": "Betal", "btnNext": "Videre →", "btnCreateAccount": "Opret konto og log ind", "btnCreatingAccount": "Opretter konto…", "errPassMin": "Adgangskoden skal være på mindst 8 tegn.", "errAcctFail": "Kontoen kunne ikke oprettes.", "errConnFail": "Forbindelsen mislykkedes. Prøv igen.", "navToolaud": "Kontrolpanel", "copySending": "Sender…", "copySent": "Kopi sendt til din e-mail ✓", "copyFail": "Afsendelsen mislykkedes. Prøv igen.", "svc_req": "påkrævet", "svc_note": "Bemærkning", "svc_note_ph": "Andet vi bør vide (valgfrit)", "svc_words": "{n}/30 ord", "svc_ownshop": "Vi skanner din egen butik (adresse under „Din butik“ ovenfor).", "svc_seo_lbl": "Nøgleord", "svc_seo_ph": "ét nøgleord pr. linje, f.eks. batteritrimmer", "svc_seo_tier": "{n} nøgleord · {p} €/md.", "svc_epoe_lbl": "Prioriterede sider eller kategorier (valgfrit)", "svc_epoe_ph": "f.eks. /produkter/batterier, kampagneside", "svc_uptime_lbl": "Adresser, der skal overvåges", "svc_uptime_ph": "én URL pr. linje (standard: din butik)", "svc_erp_lbl": "Hvilket ERP?", "svc_erp_ph": "f.eks. Directo, Merit, SimplBooks", "svc_erpacc_lbl": "Adgang / API-bemærkning (valgfrit)", "svc_hinnastus_lbl": "Shopplatform (valgfrit)", "svc_hinnastus_ph": "f.eks. WooCommerce, Shopify, Magento", "svc_koolitus_size": "Antal deltagere", "svc_koolitus_topic": "Emne eller fokus (valgfrit)", "svc_koolitus_time": "Foretrukket tidspunkt (valgfrit)", "svc_auto_lbl": "Hvad har du brug for?", "svc_auto_ph": "Beskriv opgaven — plugin, script, dashboard", "svc_err_shop": "Tilføj din butiksadresse — den valgte tjeneste skanner din butik.", "svc_err_req": "Udfyld de påkrævede felter for de valgte tjenester."};
 function fmt(s,o){return String(s).replace(/\{(\w+)\}/g,(_,k)=>o[k]!=null?o[k]:'')}
 
 /* === Login-staatus: kui külastaja on äpis juba sisse logitud, vaheta "Logi
@@ -1632,6 +1641,102 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
   let step=1, done=false;
   const isYear=()=>obill.some(b=>b.classList.contains('on')&&b.dataset.mode==='year');
 
+  /* === Teenuse "andmete küsimise moodul" ===
+     Iga lisamooduli valikul ilmub teenusespetsiifiline andmevorm (+ märkus kuni
+     30 sõna). Andmed saadetakse tellimuses (mooduli_andmed) ja salvestatakse
+     serveris Moodul.params'i, et operaator saaks teenuse KOHE aktiveerida.
+     Hoia kooskõlas seire/teenused.py TEENUS_VALJAD-iga. */
+  const SEO_BASE=16, SEO_BLOCK=30, NOTE_MAX=30;
+  const SVC_FIELDS={
+    epoe_tervis:[{k:'fookus',t:'text',lbl:'svc_epoe_lbl',ph:'svc_epoe_ph'}],
+    seo_seire:[{k:'sonad',t:'sonad',lbl:'svc_seo_lbl',ph:'svc_seo_ph',req:1}],
+    uptime:[{k:'urlid',t:'textarea',lbl:'svc_uptime_lbl',ph:'svc_uptime_ph'}],
+    erp_liidestus:[{k:'erp',t:'text',lbl:'svc_erp_lbl',ph:'svc_erp_ph',req:1},{k:'ligipaas',t:'text',lbl:'svc_erpacc_lbl'}],
+    hinnastus:[{k:'platvorm',t:'text',lbl:'svc_hinnastus_lbl',ph:'svc_hinnastus_ph'}],
+    koolitus:[{k:'osalejaid',t:'number',lbl:'svc_koolitus_size'},{k:'teema',t:'text',lbl:'svc_koolitus_topic'},{k:'aeg',t:'text',lbl:'svc_koolitus_time'}],
+    automaatika:[{k:'kirjeldus',t:'textarea',lbl:'svc_auto_lbl',ph:'svc_auto_ph',req:1}]
+  };
+  const OWN_SHOP_SVC=new Set(['epoe_tervis','seo_seire','uptime','hinnastus']);
+  function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+  function tt(k){return T[k]!=null?T[k]:'';}
+  function seoEl(){return ov.querySelector('.omod-data[data-for="seo_seire"] [data-seo]');}
+  function seoSonu(){const el=seoEl();if(!el)return 0;return el.value.split(/[\n,;]+/).map(s=>s.trim()).filter(Boolean).length;}
+  function seoHind(){return SEO_BASE*Math.max(1,Math.ceil(seoSonu()/SEO_BLOCK));}
+  function noteSonu(s){return (String(s||'').match(/\S+/g)||[]).length;}
+  function fieldHtml(f){
+    const req=f.req?` <span class="freq">${esc(tt('svc_req'))}</span>`:'';
+    const ph=f.ph?esc(tt(f.ph)):'';
+    let inp;
+    if(f.t==='textarea'||f.t==='sonad')inp=`<textarea class="svc-f" data-k="${f.k}"${f.t==='sonad'?' data-seo="1"':''} rows="3" placeholder="${ph}"></textarea>`;
+    else inp=`<input class="svc-f" data-k="${f.k}" type="${f.t==='number'?'number':'text'}"${f.t==='number'?' min="0" inputmode="numeric"':''} placeholder="${ph}">`;
+    const hint=f.t==='sonad'?'<div class="fhint" data-seohint></div>':'';
+    return `<div class="ofield"><label><span>${esc(tt(f.lbl))}</span>${req}</label>${inp}${hint}</div>`;
+  }
+  function buildPanels(){
+    omods.forEach(btn=>{
+      const kood=btn.dataset.kood, fields=SVC_FIELDS[kood];
+      if(!fields||btn.nextElementSibling&&btn.nextElementSibling.classList.contains('omod-data'))return;
+      const panel=document.createElement('div');panel.className='omod-data';panel.dataset.for=kood;
+      let h='';
+      if(OWN_SHOP_SVC.has(kood))h+=`<div class="fhint" style="margin:0 0 10px">${esc(tt('svc_ownshop'))}</div>`;
+      h+=fields.map(fieldHtml).join('');
+      h+=`<div class="ofield"><label><span>${esc(tt('svc_note'))}</span><span class="fhint" data-words style="margin:0"></span></label><textarea class="svc-note" rows="2" placeholder="${esc(tt('svc_note_ph'))}"></textarea></div>`;
+      panel.innerHTML=h;
+      btn.insertAdjacentElement('afterend',panel);
+      panel.querySelectorAll('.svc-f,.svc-note').forEach(el=>el.addEventListener('input',()=>{onPanelInput(panel);fmtPrice();}));
+      onPanelInput(panel);
+    });
+  }
+  function syncPanel(btn){const p=btn.nextElementSibling;if(p&&p.classList.contains('omod-data'))p.classList.toggle('show',btn.classList.contains('on'));}
+  function refreshSeoChip(){const b=omods.find(x=>x.dataset.kood==='seo_seire');if(!b)return;const mp=b.querySelector('.mp');if(mp)mp.textContent=`+${seoHind()} €`;}
+  function onPanelInput(panel){
+    const note=panel.querySelector('.svc-note');
+    if(note){
+      if(noteSonu(note.value)>NOTE_MAX)note.value=note.value.trim().split(/\s+/).slice(0,NOTE_MAX).join(' ');
+      const wc=panel.querySelector('[data-words]');if(wc)wc.textContent=fmt(tt('svc_words'),{n:noteSonu(note.value)});
+    }
+    if(panel.dataset.for==='seo_seire'){
+      const hint=panel.querySelector('[data-seohint]');
+      if(hint)hint.innerHTML=`<b>${esc(fmt(tt('svc_seo_tier'),{n:seoSonu(),p:seoHind()}))}</b>`;
+      refreshSeoChip();
+    }
+  }
+  function resetPanels(){
+    ov.querySelectorAll('.omod-data').forEach(p=>{
+      p.classList.remove('show');
+      p.querySelectorAll('input,textarea').forEach(el=>el.value='');
+      onPanelInput(p);
+    });
+    refreshSeoChip();
+  }
+  function collectAndmed(){
+    const out={};
+    omods.filter(x=>x.classList.contains('on')).forEach(btn=>{
+      const p=btn.nextElementSibling;if(!p||!p.classList.contains('omod-data'))return;
+      const rec={};
+      p.querySelectorAll('.svc-f').forEach(el=>{const v=el.value.trim();if(v)rec[el.dataset.k]=v;});
+      const note=p.querySelector('.svc-note');if(note&&note.value.trim())rec.markus=note.value.trim();
+      if(Object.keys(rec).length)out[btn.dataset.kood]=rec;
+    });
+    return out;
+  }
+  function svcViga(){
+    // Tagasta {msg, el}: veateade + fokuseeritav väli, või {msg:''} kui kõik
+    // valitud teenuste kohustuslikud väljad + oma-poe aadress on täidetud.
+    const valitud=omods.filter(x=>x.classList.contains('on'));
+    if(valitud.some(x=>OWN_SHOP_SVC.has(x.dataset.kood))&&!document.getElementById('ownSite').value.trim())
+      return {msg:tt('svc_err_shop'),el:document.getElementById('ownSite')};
+    for(const btn of valitud){
+      const p=btn.nextElementSibling;if(!p)continue;
+      for(const f of (SVC_FIELDS[btn.dataset.kood]||[])){
+        if(!f.req)continue;
+        const el=p.querySelector(`.svc-f[data-k="${f.k}"]`);
+        if(el&&!el.value.trim())return {msg:tt('svc_err_req'),el:el};
+      }
+    }
+    return {msg:''};
+  }
+
   function calc(){
     let web=0,fb=0; const lines=[];
     compList.querySelectorAll('.comp').forEach(c=>{
@@ -1642,7 +1747,7 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
     if(web)lines.push([fmt(T.webLineModal,{n:web}),`€${web*WEB_UNIT}`]);
     if(fb)lines.push([fmt(T.fbLine,{n:fb}),`€${fb*FB_UNIT}`]);
     let quote=false;
-    omods.forEach(x=>{if(x.classList.contains('on')){if(x.dataset.quote){quote=true;lines.push([x.dataset.label,T.quotePrice]);}else{const p=+x.dataset.price;m+=p;lines.push([x.dataset.label,`€${p}`]);}}});
+    omods.forEach(x=>{if(x.classList.contains('on')){if(x.dataset.quote){quote=true;lines.push([x.dataset.label,T.quotePrice]);}else{const p=x.dataset.kood==='seo_seire'?seoHind():+x.dataset.price;m+=p;lines.push([x.dataset.label,`€${p}`]);}}});
     return {m,web,fb,lines,quote};
   }
   function fmtPrice(){
@@ -1841,6 +1946,7 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
       oma_pood:document.getElementById('ownSite').value.trim(),
       oma_fb:document.getElementById('ownFb').value.trim(),
       konkurendid:konkurendid, moodulid:moodulid, mooduli_koodid:mooduli_koodid,
+      mooduli_andmed:collectAndmed(),                              // per-teenus andmevormid -> Moodul.params
       arveldus:y?'aasta':'kuu', kuutasu:m, keel:T.locale};
   }
   async function postOrder(){
@@ -1882,7 +1988,14 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
     else  { if(payOk)payOk.style.display='none'; if(payFail)payFail.classList.add('show'); if(ac)ac.style.display='none'; }
   }
   function valid(n){
-    if(n===1){const {m,web,fb,quote}=calc();const ok=(web+fb)>0||m>0||quote;document.getElementById('err1').classList.toggle('show',!ok);return ok;}
+    if(n===1){
+      const e1=document.getElementById('err1');if(e1.dataset.orig==null)e1.dataset.orig=e1.textContent;
+      const {m,web,fb,quote}=calc();
+      if(!((web+fb)>0||m>0||quote)){e1.textContent=e1.dataset.orig;e1.classList.add('show');return false;}
+      const sv=svcViga();
+      if(sv.msg){e1.textContent=sv.msg;e1.classList.add('show');if(sv.el){sv.el.focus();sv.el.scrollIntoView({block:'center'});}return false;}
+      e1.textContent=e1.dataset.orig;e1.classList.remove('show');return true;
+    }
     if(n===2){const nm=document.getElementById('cName').value.trim(),co=document.getElementById('cContact').value.trim(),em=document.getElementById('cEmail').value.trim();const ok=!!nm&&!!co&&/^\S+@\S+\.\S+$/.test(em);document.getElementById('err2').classList.toggle('show',!ok);return ok;}
     return true;
   }
@@ -1899,6 +2012,7 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
   function open(prefill){
     done=false;
     compList.innerHTML='';addRow();addRow();
+    resetPanels();                                   // tühjenda + peida teenuste andmevormid
     if(prefill){
       const onLabels=[...document.querySelectorAll('#calc .modrow.on')].map(x=>x.dataset.label);
       omods.forEach(x=>x.classList.toggle('on',onLabels.includes(x.dataset.label)));
@@ -1908,6 +2022,7 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
       omods.forEach(x=>x.classList.remove('on'));
       obill.forEach(b=>b.classList.toggle('on',b.dataset.mode==='month'));
     }
+    omods.forEach(syncPanel);                         // näita valitud teenuste vorme
     document.getElementById('payForm').style.display='';
     document.getElementById('payDone').style.display='none';
     var ac=document.getElementById('acctCreate'),ao=document.getElementById('acctOk'),ap=document.getElementById('acctPass'),ab=document.getElementById('acctBtn');
@@ -1925,7 +2040,8 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
   ov.addEventListener('click',e=>{if(e.target===ov)close();});
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&ov.classList.contains('open'))close();});
   document.getElementById('addComp').addEventListener('click',addRow);
-  omods.forEach(x=>x.addEventListener('click',()=>{x.classList.toggle('on');fmtPrice();}));
+  buildPanels();                                     // teenuste andmevormid (üks kord)
+  omods.forEach(x=>x.addEventListener('click',()=>{x.classList.toggle('on');syncPanel(x);if(x.classList.contains('on')){const f=x.nextElementSibling&&x.nextElementSibling.querySelector('.svc-f');if(f)f.focus();}fmtPrice();}));
   obill.forEach(b=>b.addEventListener('click',()=>{obill.forEach(o=>o.classList.remove('on'));b.classList.add('on');fmtPrice();}));
   backBtn.addEventListener('click',()=>{if(step>1)setStep(step-1);});
   nextBtn.addEventListener('click',async ()=>{
