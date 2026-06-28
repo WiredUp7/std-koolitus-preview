@@ -159,6 +159,7 @@
   @media(prefers-reduced-motion:reduce){.radar-sweep,.blip,.blip::after,.tag span,.hero-glow,.glint{animation:none}.blip{opacity:.9}}
   .hero-inner{position:relative;z-index:2;text-align:center;width:100%}
   .badge-live{display:inline-flex;align-items:center;gap:8px;background:rgba(10,11,14,.62);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid var(--line-dark);border-radius:999px;padding:8px 18px 8px 14px;font-size:12.4px;font-weight:600;color:var(--on-dark);margin-bottom:30px}
+  .badge-live .b360{font-style:normal;color:var(--accent)}   /* "360" rohelisena nagu logo */
   .ldot{width:7px;height:7px;border-radius:50%;background:var(--accent);position:relative}
   .ldot::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--accent);animation:ping 1.9s cubic-bezier(0,0,.2,1) infinite}
   @keyframes ping{0%{transform:scale(1);opacity:.7}80%,100%{transform:scale(2.8);opacity:0}}
@@ -741,6 +742,7 @@
   <div class="hero-glow"></div>
   <div class="wrap hero-inner">
     <span class="badge-live"><span class="ldot"></span> Esiet par vienu gājienu priekšā konkurentiem ar Look360 AI dzinēju</span>
+    <script>(function(){var p=document.querySelector('.badge-live');if(p)p.innerHTML=p.innerHTML.replace(/Look360/g,'Look<i class="b360">360</i>');})();</script>
     <h1 style="font-size:clamp(30px,5.2vw,60px);line-height:1.07;max-width:1020px;margin-left:auto;margin-right:auto">Mēs atklājam cenu izmaiņas, krājumu problēmas un e-veikala kļūdas <span class="g">pirms tās ietekmē Jūsu pārdošanu.</span></h1>
     <p class="lead">Nepārtraukta Jūsu konkurentu, cenu, krājumu, e-veikala un SEO uzraudzība — apvienota vienā skatā un vienā pārskatā katru rītu. Jūs redzat izmaiņas jau tajā pašā dienā, nevis tad, kad klients jau aizgājis citur.</p>
     <div class="hero-actions">
