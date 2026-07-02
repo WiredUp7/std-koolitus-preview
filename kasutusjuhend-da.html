@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Brugervejledning – Look360 overvågningspanel</title>
-<meta name="description" content="Brugervejledning til Look360-overvågningspanelet for kunder: login, dashboard, tilføj virksomheder, produktkatalog, tjenester, betalinger og rapporter – trin for trin, hvad hver knap gør.">
+<meta name="description" content="Brugervejledning til Look360 overvågningspanelet for kunden: login, dashboard, tilføjelse af virksomheder, produktkatalog, prissammenligning, notifikationer, rapporter, tjenester og betaling – trin for trin, med billeder og praktiske eksempler.">
 <meta name="robots" content="index,follow">
 <link rel="alternate" hreflang="et" href="https://look360.eu/kasutusjuhend.html">
 <link rel="alternate" hreflang="en" href="https://look360.eu/kasutusjuhend-en.html">
@@ -60,7 +60,7 @@
   /* Layout: sticky TOC + content */
   main{padding:40px 0 80px}
   .layout{display:grid;grid-template-columns:230px 1fr;gap:48px;align-items:start}
-  .toc{position:sticky;top:90px;font-size:14px}
+  .toc{position:sticky;top:90px;font-size:14px;max-height:calc(100vh - 110px);overflow:auto}
   .toc h4{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:12px}
   .toc a{display:block;color:var(--text-2);text-decoration:none;padding:6px 11px;border-radius:9px;border-left:2px solid transparent;font-weight:300;transition:.15s}
   .toc a:hover{background:var(--paper-2);color:var(--text)}
@@ -132,6 +132,22 @@
   .deflist .dr .k{font-weight:600;color:var(--text)}
   .deflist .dr .v{color:var(--text-2);font-weight:300}
 
+  /* Service cards (teenuste ülevaade) */
+  .svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin:16px 0}
+  .svc .s{border:1px solid var(--line);border-radius:14px;padding:15px 17px;background:var(--paper)}
+  .svc .s .h{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:5px}
+  .svc .s .nm{font-weight:600;color:var(--text);font-size:14.5px}
+  .svc .s .pr{font-weight:600;color:var(--accent-ink);font-size:13px;white-space:nowrap}
+  .svc .s p{margin:0;font-size:13px;color:var(--text-2);font-weight:300;line-height:1.55}
+  .cat-h{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:22px 0 2px}
+
+  /* Scenario cards */
+  .scn{border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:0 14px 14px 0;padding:15px 19px;margin:15px 0;background:var(--paper-2)}
+  .scn h3{margin:0 0 4px;font-size:15.5px}
+  .scn .flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:9px;font-size:12.5px;color:var(--muted)}
+  .scn .flow .st{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:3px 9px;color:var(--text-2);font-weight:500}
+  .scn .flow .ar{color:var(--accent)}
+
   footer{background:var(--ink);color:var(--on-dark-mut);padding:40px 0;font-size:14px;font-weight:300;margin-top:20px}
   footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
   footer a{color:var(--on-dark-mut);text-decoration:none}
@@ -139,10 +155,11 @@
 
   @media(max-width:860px){
     .layout{grid-template-columns:1fr;gap:0}
-    .toc{position:static;margin-bottom:24px;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--paper-2)}
+    .toc{position:static;margin-bottom:24px;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--paper-2);max-height:none}
     .toc a{border-left:0;padding:5px 0}
     .toc a.on{background:none}
     .deflist .dr{grid-template-columns:1fr;gap:2px}
+    .scn .flow{font-size:11.5px}
     header.top nav a:not(.login){display:none}
   }
   /* Keelevaheti (lipud) – jagatud lang.js-iga */
@@ -180,7 +197,7 @@
   <div class="wrap">
     <div class="eyebrow"><span class="pip"></span> Brugervejledning</div>
     <h1>Brugervejledning til overvågningspanelet</h1>
-    <p>Et trin-for-trin-overblik over alt, hvad du som kunde ser og kan gøre: fra login til dashboardet, de overvågede virksomheder, produktkataloget, tjenesterne, betalingerne og rapporterne. Ved hver knap står der, hvad den gør, og hvor du ser resultatet.</p>
+    <p>En trinvis gennemgang af alt det, du som kunde kan se og gøre – fra login til dashboard, overvågede virksomheder, produktkatalog, prissammenligning, notifikationer, tjenester, betaling og rapporter. Til hver funktion hører et billede, en forklaring og praktiske eksempler.</p>
   </div>
 </section>
 
@@ -188,268 +205,470 @@
   <div class="wrap layout">
     <aside class="toc" id="toc">
       <h4>Indhold</h4>
-      <a href="#algus">1. Hvad er overvågningspanelet</a>
-      <a href="#logimine">2. Log ind</a>
-      <a href="#menuu">3. Menu og overblik</a>
-      <a href="#toolaud">4. Overvågnings-dashboardet</a>
-      <a href="#lisafirma">5. Tilføj en virksomhed</a>
+      <a href="#algus">1. Hvad er Look360</a>
+      <a href="#logimine">2. Login</a>
+      <a href="#menuu">3. Menu og oversigt</a>
+      <a href="#toolaud">4. Overvågnings-dashboard</a>
+      <a href="#lisafirma">5. Tilføj virksomhed</a>
       <a href="#firmavaade">6. Virksomhedsvisning og katalog</a>
       <a href="#kategooriad">7. Valg af kategorier</a>
-      <a href="#teenused">8. Tjenester og månedspris</a>
-      <a href="#maksed">9. Sådan foregår betaling</a>
-      <a href="#hinnastamine">10. Prissætning</a>
-      <a href="#raportid">11. Rapporter</a>
-      <a href="#seaded">12. App, notifikationer og mørk tilstand</a>
-      <a href="#abi">13. Hjælp og kontakt</a>
+      <a href="#hinnavordlus">8. Prissammenligning</a>
+      <a href="#teavitused">9. Notifikationer</a>
+      <a href="#kuuraportid">10. Månedsrapporter</a>
+      <a href="#konto">11. Konto og API</a>
+      <a href="#teenused">12. Alle tjenester og månedspris</a>
+      <a href="#maksed">13. Sådan foregår betalingen</a>
+      <a href="#hinnastamine">14. Prissætning</a>
+      <a href="#brandivalve">15. Brandovervågning</a>
+      <a href="#naited">16. Praktiske eksempler</a>
+      <a href="#seaded">17. App og mørk tilstand</a>
+      <a href="#abi">18. Hjælp og kontakt</a>
     </aside>
 
     <div class="content">
-      <p class="lead">Look360-overvågningspanelet samler ét sted alt det, vi holder øje med for dig – konkurrenternes priser og lagerbeholdning, Facebook-opslag, din egen webshops tilstand. Du skal ikke installere noget: du logger ind, ser status med ét blik og får også de vigtige ændringer i en mail hver morgen. Denne vejledning gennemgår hver visning og knap.</p>
+      <p class="lead">Look360 overvågningspanelet samler ét sted alt det, vi holder øje med for dig – konkurrenternes priser og lagerbeholdning, Facebook-opslag og -annoncer samt din egen webshops sundhed og driftssikkerhed. Du behøver ikke installere noget: du logger ind, ser status på ét blik og modtager de vigtige ændringer også med en mail hver morgen. Denne vejledning gennemgår hver visning og knap, og til sidst er der praktiske eksempler, som binder funktionerne sammen til rigtigt arbejde.</p>
 
       <!-- 1 -->
       <section class="doc" id="algus">
-        <h2><span class="num">1</span> Hvad er overvågningspanelet</h2>
-        <p>Overvågningspanelet er dit private dashboard på en adresse, hvor du logger ind med din e-mail og adgangskode. Her ser du alle de virksomheder, du overvåger – både din egen webshop og dine konkurrenter – og hver ændring, systemet har fanget: prisfald, udsolgt lager, nyt Facebook-opslag, fejl i webshoppen.</p>
-        <p>Alt fungerer efter en <strong>farvelogik</strong>. De samme tre farver går igen overalt – på dashboardet, på virksomhedskortet, i tabellen:</p>
+        <h2><span class="num">1</span> Hvad er Look360</h2>
+        <p>Look360 er <strong>overvågning, automatisering og reaktion</strong> i én pakke. Overvågningspanelet er dit private dashboard på en adresse, hvor du logger ind med din e-mail og adgangskode. Der ser du alle overvågede virksomheder – både din egen webshop og konkurrenterne – og enhver ændring, systemet har fanget: prisfald, udsolgt lager, nyt Facebook-opslag, fejl i webshoppen.</p>
+        <p>Alt fungerer efter en <strong>farvelogik</strong>. De samme tre farver går igen alle steder – på dashboardet, på virksomhedskortet, i tabellen, på graferne:</p>
         <div class="legend">
-          <div class="lg"><span class="sw" style="background:var(--accent)"></span><span><b>Grøn – alt i orden</b>Ingen ændringer, eller alt er som forventet. Der skal ikke gøres noget.</span></div>
-          <div class="lg"><span class="sw" style="background:var(--warn)"></span><span><b>Gul – kræver opmærksomhed</b>Advarsel: fx en konkurrents prisændring, udsolgt lager eller forældede data.</span></div>
-          <div class="lg"><span class="sw" style="background:var(--err)"></span><span><b>Rød – fejl</b>Datakilden var midlertidigt utilgængelig. Som regel genoprettes den af sig selv, eller en operatør ser den efter.</span></div>
+          <div class="lg"><span class="sw" style="background:var(--accent)"></span><span><b>Grøn – alt i orden</b>Ingen ændringer, eller alt er som forventet. Der er ikke noget at gøre.</span></div>
+          <div class="lg"><span class="sw" style="background:var(--warn)"></span><span><b>Gul – kræver opmærksomhed</b>Et fund: fx en prisændring hos en konkurrent, udsolgt lager eller forældede data.</span></div>
+          <div class="lg"><span class="sw" style="background:var(--err)"></span><span><b>Rød – fejl</b>Datakilden blev midlertidigt utilgængelig. Retter sig normalt selv eller bliver set efter af en operatør.</span></div>
         </div>
-        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z"/></svg> Du skal ikke holde øje med indbakken</div><p>De vigtigste ændringer sender vi også i en samlet mail hver morgen. Du åbner panelet, når du vil se mere eller ændre noget.</p></div>
+        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z"/></svg> Du behøver ikke holde øje med indbakken</div><p>De vigtigste ændringer sender vi også i en samlet mail hver morgen, og det mest kritiske med det samme. Panelet åbner du, når du vil se mere eller ændre noget.</p></div>
       </section>
 
       <!-- 2 -->
       <section class="doc" id="logimine">
-        <h2><span class="num">2</span> Log ind</h2>
+        <h2><span class="num">2</span> Login</h2>
         <ol class="steps">
-          <li>Åbn <b>Log ind</b> – enten fra forsidens øverste hjørne, fra toppen af denne vejledning eller via det direkte link, vi sendte dig.</li>
-          <li>Indtast dit <b>brugernavn</b> – det er din <b>e-mailadresse</b> (fx dig@virksomhed.dk).</li>
-          <li>Indtast din <b>adgangskode</b> og tryk på <span class="chip go">Log ind</span></li>
+          <li>Åbn <b>Log ind</b> – enten fra forsidens øverste hjørne, fra toppen af denne vejledning eller fra det direkte link, vi har sendt dig.</li>
+          <li>Indtast <b>brugernavn</b> – det er din <b>e-mailadresse</b> (fx dig@virksomhed.dk).</li>
+          <li>Indtast <b>adgangskode</b> og tryk på <span class="chip go">Log ind</span></li>
         </ol>
         <ul class="plain">
-          <li><b>Glemt adgangskode?</b> – via linket nedenunder sender vi et link på e-mail til at oprette en ny adgangskode.</li>
-          <li><b>Har du ikke en konto endnu?</b> – knappen <span class="chip">Tilmeld dig</span> fører til prislisten på forsiden, hvor du kan sammensætte en pakke og tilmelde dig.</li>
-          <li><b>Tilbage til forsiden</b> – det øverste link fører tilbage til look360.eu.</li>
+          <li><b>Glemt adgangskode?</b> – via linket nedenfor sender vi et link til at oprette en ny adgangskode med e-mail.</li>
+          <li><b>Har du ikke en konto endnu?</b> – knappen <span class="chip">Registrer</span> fører til prislisten på forsiden, hvor du kan sammensætte din pakke og tilmelde dig.</li>
+          <li><b>Prøv uden konto</b> – på login-siden er der en offentlig <b>demokonto</b>, hvor du kan klikke dig gennem alle visninger med rigtige eksempeldata.</li>
         </ul>
-        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg> Godt at vide</div><p>Kontoen er knyttet til din virksomhed. Efter login ser du øverst til venstre i en grøn bjælke din virksomheds navn – så ved du, at du er på den rigtige konto.</p></div>
+        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg> Godt at vide</div><p>Kontoen er knyttet til din virksomhed. Efter login ser du din virksomheds navn på den grønne bjælke øverst til venstre – så ved du, at du er på den rigtige konto.</p></div>
       </section>
 
       <!-- 3 -->
       <section class="doc" id="menuu">
-        <h2><span class="num">3</span> Menu og overblik</h2>
+        <h2><span class="num">3</span> Menu og oversigt</h2>
         <p>Hver side har den samme ramme: <strong>venstremenu</strong>, <strong>topbjælke</strong> og indhold i midten.</p>
         <h3>Venstremenu</h3>
-        <ul class="plain">
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="5" rx="1.5"/><rect x="13" y="11" width="8" height="10" rx="1.5"/><rect x="3" y="14" width="8" height="7" rx="1.5"/></svg> Overvågning</span> – det primære dashboard med alle de overvågede virksomheder og fund.</li>
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M20 7H4M20 12H4M20 17H4"/></svg> Tjenester</span> – dine bestilte tjenester, månedsprisen og mulighed for at tilkøbe.</li>
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Prissætning</span> – vises kun, hvis du har bestilt tjenesten <b>omprissætning</b>.</li>
-          <li>Nederst står dit brugernavn, rollen <b>Kunde</b> og <b>log ud</b>-ikonet (ud af døren).</li>
-        </ul>
+        <p>Menuen indeholder alle dine visninger. Nogle punkter vises kun, hvis du har den pågældende tjeneste bestilt.</p>
+        <div class="deflist">
+          <div class="dr"><span class="k">Overvågning</span><span class="v">Hoveddashboardet – alle overvågede virksomheder, fund og tendens.</span></div>
+          <div class="dr"><span class="k">Tjenester</span><span class="v">Dine bestilte tjenester, månedspris og tilkøb.</span></div>
+          <div class="dr"><span class="k">Konto</span><span class="v">Kontooplysninger, adgangskode, API-adgang og indstillinger for morgenmailen.</span></div>
+          <div class="dr"><span class="k">Prissammenligning</span><span class="v">Det samme produkt på tværs af alle overvågede shops – laveste pris og historik.</span></div>
+          <div class="dr"><span class="k">Notifikationer</span><span class="v">Regler for prisnotifikationer og push-beskeder til telefonen.</span></div>
+          <div class="dr"><span class="k">Månedsrapporter</span><span class="v">Månedlig samlet PDF-rapport til ledelsen.</span></div>
+          <div class="dr"><span class="k">Prissætning</span><span class="v">Vises kun med tjenesten <b>omprissætning af priser</b> – konkurrencebaserede prisanbefalinger.</span></div>
+          <div class="dr"><span class="k">Brandovervågning</span><span class="v">Vises kun med tjenesten <b>prisovervågning af forhandlere</b> – overtrædelser af vejl. udsalgspris/MAP.</span></div>
+        </div>
+        <p>Nederst er dit brugernavn, rollen <b>Kunde</b> og ikonet til <b>at logge ud</b> (ud af døren).</p>
         <h3>Topbjælke</h3>
         <ul class="plain">
-          <li>Til venstre <b>sidens titel</b> (fx din virksomheds navn) og nedenunder med fin skrift <b>hvornår der sidst blev opdateret</b>.</li>
-          <li>Til højre <b>mørk/lys-kontakten</b> (sol/måne) og den aktuelle sides <b>handlingsknapper</b>.</li>
+          <li>Til venstre <b>sidens titel</b> og nedenunder med fin skrift <b>hvornår den senest blev opdateret</b>.</li>
+          <li>Til højre <b>mørk/lys-kontakten</b> (sol/måne) og den konkrete sides <b>handlingsknapper</b>.</li>
           <li>På telefonen åbner <b>☰-knappen</b> i øverste hjørne venstremenuen.</li>
         </ul>
       </section>
 
       <!-- 4 -->
       <section class="doc" id="toolaud">
-        <h2><span class="num">4</span> Overvågnings-dashboardet</h2>
-        <p>Dette er startvisningen. Øverst finder du de vigtigste knapper, nedenunder er overblikket og listen over virksomheder.</p>
+        <h2><span class="num">4</span> Overvågnings-dashboard</h2>
+        <p>Dette er startvisningen. Øverst finder du de vigtigste knapper, nedenunder er tendens, resumé og listen over virksomheder.</p>
         <figure>
-          <img src="l360-seirepaneel.png" alt="Look360 overvågnings-dashboard: trendgraf, oversigt og virksomhedstabel" loading="lazy">
-          <figcaption>Overvågnings-dashboardet – trendgraf, oversigt og tabel over de overvågede virksomheder.</figcaption>
+          <img src="l360-seirepaneel.png" alt="Look360 overvågnings-dashboard: tendensgraf, resumé og virksomhedstabel" loading="lazy">
+          <figcaption>Overvågnings-dashboard – fundenes tendens, resumé og tabel over overvågede virksomheder.</figcaption>
         </figure>
         <h3>Knapper i topbjælken</h3>
         <ul class="plain">
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Tilføj virksomhed</span> – tilføj en ny virksomhed at overvåge (se <a href="#lisafirma">kapitel 5</a>).</li>
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 7H4M20 12H4M20 17H4"/></svg> Tjenester</span> – åbn visningen med tjenester og månedspris.</li>
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-2.6-6.4L21 8"/><path d="M21 3v5h-5"/></svg> Opdater visningen</span> – indlæser de seneste data igen og opdaterer skærmen. <b>Skraber ikke</b> sider, opdaterer kun visningen.</li>
-          <li><span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg> Skan alt igen</span> – vises, hvis du overvåger webshops eller Facebook. Starter <b>rigtige skanninger</b> (skraber sider), tager et par minutter. Det kan gøres <b>1 gang i døgnet</b>.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Tilføj virksomhed</span> – tilføj en ny overvåget virksomhed (se <a href="#lisafirma">kapitel 5</a>).</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 7H4M20 12H4M20 17H4"/></svg> Tjenester</span> – åbn visningen over tjenester og månedspris.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-2.6-6.4L21 8"/><path d="M21 3v5h-5"/></svg> Opdater visning</span> – indlæser de seneste data igen og opdaterer skærmen. <b>Skraber ikke</b> sider, opdaterer kun visningen.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg> Tillad notifikationer</span> – slår push-beskeder til telefonen til (se <a href="#teavitused">kapitel 9</a>).</li>
+          <li><span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg> Skan alt igen</span> – starter <b>rigtige skanninger</b> (skraber sider), tager et par minutter. Dette kan gøres <b>1 gang i døgnet</b>.</li>
         </ul>
-        <h3>Hvordan virker overvågningen? – hjælpebjælken</h3>
-        <p>Øverst på dashboardet er der en udfoldelig bjælke <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .8-1 1.7M12 17h.01"/></svg> Hvordan virker overvågningen?</span> Klik for at læse en kort forklaring af farverne. Første gang, når der endnu ikke er nogen virksomhed, er den åben.</p>
-        <h3>Advarselstrend</h3>
-        <p>Grafen viser, hvordan antallet af advarsler har ændret sig gennem de seneste overvågninger – om tingene falder til ro eller kræver mere opmærksomhed.</p>
-        <h3>Oversigt</h3>
+        <h3>Hvordan fungerer overvågningen? – hjælpebjælke</h3>
+        <p>Øverst på dashboardet er der en udfoldelig bjælke <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .8-1 1.7M12 17h.01"/></svg> Hvordan fungerer overvågningen?</span> Klik for at læse en kort forklaring. Første gang, hvor du endnu ikke har nogen virksomhed, er den åben.</p>
+        <h3>Fundenes tendens</h3>
+        <p>Grafen viser, hvordan antallet af fund har ændret sig under de seneste overvågninger – om tingene falder til ro eller kræver mere opmærksomhed. Alle grafer har akseskala og enhed angivet; før musen hen over linjen for at se det præcise tal.</p>
+        <h3>Resumé</h3>
         <p>Til højre er der fire tal og en statuslinje:</p>
         <div class="deflist">
           <div class="dr"><span class="k">Virksomheder under overvågning</span><span class="v">Hvor mange virksomheder du overvåger lige nu.</span></div>
-          <div class="dr"><span class="k">Aktive advarsler</span><span class="v">Hvor mange ting der kræver opmærksomhed (gul).</span></div>
-          <div class="dr"><span class="k">Kilder med fejl</span><span class="v">Hvor mange datakilder der er utilgængelige lige nu (rød).</span></div>
-          <div class="dr"><span class="k">Forældede data</span><span class="v">Hvor mange virksomheders data er forældede og trænger til en opdatering.</span></div>
+          <div class="dr"><span class="k">Fund</span><span class="v">Hvor mange ændringer der kræver opmærksomhed (gul).</span></div>
+          <div class="dr"><span class="k">Kilder med fejl</span><span class="v">Hvor mange datakilder der er utilgængelige i øjeblikket (rød).</span></div>
+          <div class="dr"><span class="k">Forældede data</span><span class="v">Hvor mange virksomheders data er blevet gamle og kræver en opdatering.</span></div>
         </div>
         <h3>Faneblade, visninger og eksport</h3>
         <ul class="plain">
           <li><b>Faneblade</b> <span class="pill sec"><span class="dot"></span>Alle</span> <span class="pill sec"><span class="dot"></span>Min virksomhed</span> <span class="pill sec"><span class="dot"></span>Konkurrenter</span> – filtrerer listen.</li>
-          <li><b>Tabel / Kort</b> – skift listens form. Tabellen er kompakt, kortene viser med det samme hver virksomheds kanaler foldet ud.</li>
-          <li><b>Sortér</b> – sortér efter advarsler, fund, tilstand eller navn.</li>
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg> Eksportér CSV</span> – downloader den synlige tabel som en fil, der kan åbnes i Excel.</li>
+          <li><b>Tabel / Kort</b> – skift listens form. Tabellen er kompakt; kortvisningen viser hver virksomheds kanaler og fund med det samme.</li>
+          <li><b>Sortér</b> – sortér som standard, efter fund eller efter navn.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg> Eksportér CSV</span> – henter den synlige tabel som en fil, der kan åbnes i Excel.</li>
         </ul>
+        <figure>
+          <img src="l360-firmakaardid.png" alt="Dashboardets kortvisning: hver virksomheds kanaler og fund straks synlige" loading="lazy">
+          <figcaption>Kortvisning – hver overvåget virksomheds kanaler og seneste fund på ét blik.</figcaption>
+        </figure>
         <h3>Virksomhedstabel</h3>
-        <p>Hver række er én overvåget virksomhed. <b>Klik på en række</b> for at åbne virksomhedens fulde visning. Kolonner:</p>
+        <p>Hver række er én overvåget virksomhed. <b>Klik på en række</b> for at åbne den pågældende virksomheds fuldvisning. Kolonner:</p>
         <div class="deflist">
-          <div class="dr"><span class="k">Virksomhed</span><span class="v">Navnet, og om det er din egen virksomhed eller en konkurrent.</span></div>
-          <div class="dr"><span class="k">Status</span><span class="v"><span class="pill ok"><span class="dot"></span>Alt i orden</span> · <span class="pill warn"><span class="dot"></span>N advarsler</span> · <span class="pill err"><span class="dot"></span>Fejl</span> · <span class="pill sec"><span class="dot"></span>Forældet / Ikke kørt</span></span></div>
-          <div class="dr"><span class="k">Kanaler</span><span class="v">Hvor mange kilder der overvåges for denne virksomhed (web, Facebook osv.).</span></div>
-          <div class="dr"><span class="k">Fund</span><span class="v">Hvor mange ændringer der blev fundet ved den seneste overvågning.</span></div>
-          <div class="dr"><span class="k">Advarsler</span><span class="v">Hvor mange fund der kræver opmærksomhed.</span></div>
-          <div class="dr"><span class="k">Friskhed</span><span class="v">Hvornår denne virksomheds data sidst blev opdateret.</span></div>
-          <div class="dr"><span class="k">Tilstand</span><span class="v">En samlet statuslinje på 0–100 % (grøn god, gul middel, rød svag).</span></div>
+          <div class="dr"><span class="k">Virksomhed</span><span class="v">Navn og om det er din virksomhed eller en konkurrent.</span></div>
+          <div class="dr"><span class="k">Status</span><span class="v"><span class="pill ok"><span class="dot"></span>N fund</span> · <span class="pill err"><span class="dot"></span>Fejl</span> · <span class="pill sec"><span class="dot"></span>Forældet / Ikke kørt / Alt stille</span></span></div>
+          <div class="dr"><span class="k">Kanaler</span><span class="v">Hvor mange kilder der overvåges ved den pågældende virksomhed (web, Facebook osv.).</span></div>
+          <div class="dr"><span class="k">Fund</span><span class="v">Hvor mange kanaler der havde et fund ved den seneste overvågning.</span></div>
+          <div class="dr"><span class="k">Friskhed</span><span class="v">Hvornår den pågældende virksomheds data senest blev opdateret.</span></div>
+          <div class="dr"><span class="k">Fund</span><span class="v">Hurtigt lys: <span class="pill ok"><span class="dot"></span>Ja</span> der er et fund, <span class="pill sec"><span class="dot"></span>Nej</span> alt er stille.</span></div>
         </div>
-        <h3>Dine tilføjede overvågninger</h3>
-        <p>Hvis du selv har tilføjet en virksomhed, ser du dens status i et særskilt afsnit. Mulige tilstande:</p>
+        <h3>Dine tilføjede overvågede</h3>
+        <p>Hvis du selv har tilføjet en virksomhed, ser du dens status. Mulige tilstande:</p>
         <ul class="plain">
           <li><span class="pill warn"><span class="dot"></span>Afventer</span> – afventer operatørens godkendelse.</li>
-          <li><span class="pill sec"><span class="dot"></span>Bygger… / AI registrerer…</span> – webshoppens læser sættes op automatisk.</li>
+          <li><span class="pill sec"><span class="dot"></span>Bygger… / AI genkender…</span> – webshoppens læser bliver sat op automatisk.</li>
           <li><span class="pill warn"><span class="dot"></span>Afventer betaling</span> – data er klar, månedsprisen skal bekræftes (se <a href="#firmavaade">kapitel 6</a>).</li>
-          <li><span class="pill err"><span class="dot"></span>Afvist</span> – anmodningen blev afvist (begrundelsen står angivet).</li>
+          <li><span class="pill err"><span class="dot"></span>Afvist</span> – anmodningen blev afvist (årsagen står angivet).</li>
           <li><span class="pill ok"><span class="dot"></span>Aktiv</span> – virksomheden er under overvågning.</li>
         </ul>
-        <h3>Facebook-overvågning</h3>
-        <p>På et særskilt kort er de seneste Facebook-opslag fra de overvågede konkurrenter, med de nyeste og nye fremhævet. Et klik på et opslag fører hen til originalen på Facebook.</p>
-        <h3>Alle fund og rapporthistorik</h3>
+        <h3>Facebook-overvågning, alle fund og historik</h3>
         <ul class="plain">
+          <li><b>Facebook-overvågning</b> – på et separat kort de overvågede konkurrenters seneste opslag; et klik fører til originalen.</li>
           <li><b>Alle fund</b> – alle ændringer fra den seneste overvågning i én liste. Fluebenet <b>Kun advarsler</b> skjuler den rolige del.</li>
-          <li><b>Rapporthistorik</b> – tidligere samlede rapporter. Et klik åbner en arkiveret rapport.</li>
+          <li><b>Rapporthistorik</b> – tidligere samlede rapporter; et klik åbner den arkiverede rapport.</li>
         </ul>
       </section>
 
       <!-- 5 -->
       <section class="doc" id="lisafirma">
-        <h2><span class="num">5</span> Tilføj en virksomhed</h2>
-        <p>Tryk på dashboardet på <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Tilføj virksomhed</span>. Der åbnes en enkel formular.</p>
+        <h2><span class="num">5</span> Tilføj virksomhed</h2>
+        <p>Tryk på dashboardet på <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Tilføj virksomhed</span>. En enkel formular åbnes.</p>
         <ol class="steps">
-          <li><b>Virksomhedens navn</b> – begynd at skrive og vælg virksomheden fra listen i det estiske virksomhedsregister (eller skriv navnet manuelt).</li>
-          <li><b>Hjemmeside</b> – navnet er nok, uden https:// foran, fx <b>weekend.ee</b>.</li>
-          <li>Slå om ønsket <b>overvåg webshoppens priser og lagerbeholdning</b> og/eller <b>overvåg også Facebook</b> til.</li>
-          <li>Tryk på <span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Tilføj virksomhed til overvågning</span></li>
+          <li><b>Virksomhedsnavn</b> – begynd at skrive og vælg virksomheden fra virksomhedsregistret på listen (eller skriv navnet manuelt).</li>
+          <li><b>Webside</b> – navnet uden https:// foran er nok, fx <b>weekend.ee</b>.</li>
+          <li>Slå eventuelt <b>overvåg webshoppens priser og lagerbeholdning</b> og/eller <b>overvåg også Facebook</b> til.</li>
+          <li>Tryk på <span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Tilføj overvåget virksomhed</span></li>
         </ol>
+        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg> Den samme virksomhed tilføjes ikke to gange</div><p>Hvis en virksomhed med samme navn eller webadresse allerede står på din liste, giver systemet besked – så opstår der hverken dobbeltposteringer eller dobbelt månedspris.</p></div>
         <h3>Overvågning af webshop</h3>
-        <p>Hvis du vælger at overvåge webshoppen, forsøger systemet selv at læse butikkens produkter. Lykkes det, starter overvågningen automatisk; ellers ser en operatør den efter. Derudover kan du åbne et <b>søgeordsfilter</b>: skriv et søgeord og tryk på Enter eller <b>+</b> for at tilføje en chip (fx <i>plæneklipper</i>). Lader du det stå tomt, overvåger vi alle produkter.</p>
-        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg> Prismodel</div><p>Overvågning af en webshop koster <strong>8 €/md. pr. op til 2000 overvågede produkter</strong>. Alle priser er eksklusive moms. Når systemet har læst butikkens produkter, vælger du selv de kategorier, der skal overvåges – det afgør antallet af produkter og månedsprisen. Vi viser det præcise beløb og beder om bekræftelse, før vi åbner dataene.</p></div>
+        <p>Hvis du vælger overvågning af webshop, forsøger systemet selv at læse shoppens produkter. Lykkes det, starter overvågningen automatisk; ellers ser en operatør efter. Du kan tilføje et <b>søgeordsfilter</b>: skriv et søgeord og tryk på Enter eller <b>+</b> for at tilføje en chip (fx <i>plæneklipper</i>). Lader du feltet stå tomt, overvåger vi alle produkter.</p>
+        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg> Prismodel</div><p>Overvågning af webshop koster <strong>8 € om måneden pr. op til 2000 overvågede produkter</strong>. Alle priser er uden moms. Når systemet har læst shoppens produkter, vælger du selv de kategorier, du vil overvåge – det bestemmer antallet af produkter og månedsprisen. Vi viser det præcise beløb og beder om bekræftelse, før vi åbner data.</p></div>
         <h3>Overvågning af Facebook</h3>
-        <p>Indtast adressen på Facebook-siden – navnet eller adressen på siden er nok (fx <b>facebook.com/konkurrent</b> eller bare <b>konkurrent</b>). Hvis siden ikke allerede er på overvågningslisten, sendes den til en operatør for godkendelse.</p>
+        <p>Indtast Facebook-sidens adresse – sidens navn eller adresse er nok (fx <b>facebook.com/konkurrent</b> eller blot <b>konkurrent</b>). Hvis siden endnu ikke er på overvågningslisten, går den til operatøren til godkendelse. Facebook-overvågning koster <strong>3 € om måneden pr. konkurrent</strong>.</p>
       </section>
 
       <!-- 6 -->
       <section class="doc" id="firmavaade">
         <h2><span class="num">6</span> Virksomhedsvisning og produktkatalog</h2>
-        <p>Et klik på en virksomheds navn på dashboardet åbner dens fulde visning: alle kanaler, fund og – ved en webshop – hele produktkataloget.</p>
+        <p>Et klik på virksomhedens navn på dashboardet åbner dens fuldvisning: alle kanaler, fund, webshoppens sundhed, grafer og – ved en webshop – hele produktkataloget.</p>
         <figure>
-          <img src="l360-kataloog.png" alt="Virksomhedsvisning: produktkatalog med kategorier, priser og lagerbeholdning" loading="lazy">
-          <figcaption>Virksomhedsvisning – et søgbart produktkatalog med kategorier, priser og lagerbeholdning.</figcaption>
+          <img src="l360-firma-tervis.png" alt="Virksomhedsvisning: webshoppens sundhed, graf over antal produkter og VIP-produkter" loading="lazy">
+          <figcaption>Virksomhedsvisning – webshoppens sundhedstal, sortimentsændring over tid og VIP-produkter.</figcaption>
         </figure>
-        <h3>Knapper i hovedet</h3>
+        <h3>Webshoppens sundhed</h3>
+        <p>På kortet ser du på én gang: <b>produkter i alt</b>, <b>på lager</b>, <b>udsolgt</b>, <b>pris mangler</b>, <b>på tilbud</b> og <b>lagerbeholdning ukendt</b>. Tallene er beregnet ud fra den pågældende shops katalog og er klikbare.</p>
+        <h3>Antal produkter over tid</h3>
+        <p>Grafen viser, hvor mange produkter der var i shoppens katalog på hver overvågningsdag – om sortimentet vokser, skrumper eller holder sig. Ved siden af er <b>nu</b>, <b>i gennemsnit</b>, <b>interval</b> og <b>retning</b>.</p>
+        <h3>VIP-produkter</h3>
+        <p>Sæt en <b>stjerne</b> på et produkt i kataloget for at føje det til VIP-produkterne. For hvert VIP-produkt tegnes en separat graf: normalpris, tilbudspris og lagerbeholdning over tid. Op til 10 produkter ad gangen – hold øje med dem, der er vigtigst for dig.</p>
+        <h3>Knapper i overskriften</h3>
         <ul class="plain">
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Vælg kategorier</span> – vælg, hvilke af butikkens kategorier der skal overvåges (se <a href="#kategooriad">kapitel 7</a>).</li>
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 6H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4"/><path d="M14 4h6v6m0-6L10 14"/></svg> Åbn siden</span> – åbner konkurrentens webshop i et nyt vindue.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Vælg kategorier</span> – vælg, hvilke af shoppens kategorier der skal overvåges (se <a href="#kategooriad">kapitel 7</a>).</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 6H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4"/><path d="M14 4h6v6m0-6L10 14"/></svg> Åbn side</span> – åbner konkurrentens webshop i et nyt vindue.</li>
         </ul>
-        <h3>Statusbeskeder</h3>
-        <p>Øverst i visningen kan der være en besked: <b>afventer operatørens godkendelse</b>, <b>scraperen bygges</b>, <b>vi registrerer kategorier</b>, <b>den automatiske opsætning lykkedes ikke</b> (en operatør ser den efter) eller <b>anmodningen blev afvist</b>.</p>
         <h3>Bekræftelse af månedspris</h3>
-        <p>Når butikkens produkter er læst, ser du en beregner: <b>antal produkter</b>, <b>trin</b> (× op til 2000 produkter), <b>basispris 8 €</b>, et eventuelt tillæg og <b>månedspris i alt</b>. Indtil du bekræfter, vises kataloget som eksempel <b>sløret</b> (blur). Valgmuligheder:</p>
+        <p>Når shoppens produkter er læst, ser du en beregner: <b>antal produkter</b>, <b>trin</b> (× op til 2000 produkter), <b>grundpris 8 €</b> og <b>månedspris i alt</b>. Indtil bekræftelsen er kataloget som eksempel <b>sløret</b> (blur). Valgmuligheder:</p>
         <ul class="plain">
-          <li><span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg> Betal og åbn data</span> – vi sender dig til en sikker betalingsgateway (banklink eller kort); dataene åbnes med det samme.</li>
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg> Betal med en overførselsfaktura</span> – vi sender en faktura på e-mail; indholdet åbnes, når betalingen er modtaget.</li>
+          <li><span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg> Betal og åbn data</span> – vi sender dig til en sikker betalingsgateway (banklink eller kort); data åbnes med det samme.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg> Betal med bankoverførsel</span> – vi sender en faktura med e-mail; indholdet åbnes, når betalingen er indgået.</li>
           <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Vælg kategorier</span> – reducér antallet af produkter, så månedsprisen falder.</li>
         </ul>
-        <p>Bekræftelse af Facebook-overvågning foregår på samme måde (3 €/md.).</p>
+        <figure>
+          <img src="l360-kataloog.png" alt="Virksomhedsvisning: søgbart produktkatalog med kategorier, priser og lagerbeholdning" loading="lazy">
+          <figcaption>Produktkatalog – søgbart, opdelt efter kategori, med pris og lagerbeholdning.</figcaption>
+        </figure>
         <h3>Produktkatalog</h3>
         <ul class="plain">
           <li><b>Søgning</b> – skriv produktets navn for at filtrere listen.</li>
           <li><b>Kategorier</b> – klik på en kategori for at åbne underkategorier og produkter.</li>
           <li><b>Lagerbeholdning</b> – ved hvert produkt <span class="pill ok"><span class="dot"></span>på lager</span>, <span class="pill err"><span class="dot"></span>udsolgt</span> eller <span class="pill sec"><span class="dot"></span>ukendt</span>.</li>
-          <li><b>Pris</b> – ved en tilbudspris ser du normalprisen overstreget og tilbudsprisen med rødt.</li>
-          <li><b>Det eksterne link</b> (pilen) fører hen til produktet i butikken.</li>
-          <li><b>Et klik på produktets række</b> åbner <b>grafen over pris- og lagerhistorik</b>: aktuel pris og rabat, normalpris som stiplet linje, lagerbeholdning over tid som en bjælke og en signaturforklaring.</li>
+          <li><b>Pris</b> – ved tilbudspris ser du normalprisen overstreget og tilbudsprisen med rødt.</li>
+          <li><b>Stjernen</b> føjer produktet til VIP-listen; <b>klokken</b> opretter straks en prisnotifikation; <b>pilen</b> fører til produktet i shoppen.</li>
         </ul>
+        <h3>Pris- og lagerhistorik</h3>
+        <p>Et klik på produktets række åbner et grafvindue: aktuel pris og rabat, normalpris og tilbudspris over tid samt lagerbeholdning. Forklaringen nedenunder beskriver linjerne.</p>
+        <figure>
+          <img src="l360-tootegraafik.png" alt="Graf over produktets pris- og lagerhistorik i et pop op-vindue" loading="lazy">
+          <figcaption>Produktets pris- og lagerhistorik – normalpris (grøn) og tilbudspris (rød) over tid.</figcaption>
+        </figure>
       </section>
 
       <!-- 7 -->
       <section class="doc" id="kategooriad">
         <h2><span class="num">7</span> Valg af kategorier</h2>
-        <p>Knappen <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Vælg kategorier</span> åbner en liste over alle butikkens kategorier. Jo færre produkter du vælger, jo lavere er månedsprisen.</p>
+        <p>Knappen <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Vælg kategorier</span> åbner en liste over alle shoppens kategorier. Jo færre produkter du vælger, jo lavere er månedsprisen.</p>
         <ol class="steps">
-          <li>Markér med et flueben de kategorier, du vil overvåge. Til hjælp har du <b>Vælg alle</b>, <b>Ryd valg</b> og en <b>søgning</b>.</li>
-          <li>Hold øje med <b>beregneren</b> nedenunder: valgte produkter → trin (× op til 2000) → månedsprisen opdateres med det samme.</li>
+          <li>Sæt flueben ved de kategorier, du vil overvåge. Til hjælp er der <b>Vælg alle</b>, <b>Ryd valg</b> og <b>søgning</b>.</li>
+          <li>Følg <b>beregneren</b> nedenunder: valgte produkter → trin (× op til 2000) → månedsprisen opdateres med det samme.</li>
           <li>Tryk på <span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg> Gem valg</span></li>
         </ol>
-        <p>Du kan til enhver tid ændre dit valg senere – månedsprisen tilpasser sig tilsvarende.</p>
+        <p>Du kan ændre valget når som helst senere – månedsprisen tilpasser sig tilsvarende.</p>
       </section>
 
       <!-- 8 -->
-      <section class="doc" id="teenused">
-        <h2><span class="num">8</span> Tjenester og månedspris</h2>
-        <p>Under <b>Tjenester</b> i menuen ser du alt, du betaler for, og du kan tilkøbe mere.</p>
+      <section class="doc" id="hinnavordlus">
+        <h2><span class="num">8</span> Prissammenligning</h2>
+        <p>Menupunktet <b>Prissammenligning</b> tager det samme produkt på tværs af alle overvågede shops og viser, <strong>hvor det er billigst</strong>, samt hvordan prisen har bevæget sig over tid. Produkterne knyttes sammen efter modelkode og mål.</p>
+        <figure>
+          <img src="l360-hinnavordlus.png" alt="Prissammenligning: samme produkt i flere shops, laveste pris og historikgraf" loading="lazy">
+          <figcaption>Prissammenligning – hvert produkts billigste shop, shoppenes prisinterval og historikgraf.</figcaption>
+        </figure>
         <ul class="plain">
-          <li><b>Din månedspris i alt</b> – det store tal øverst. Beløbet kommer fra alle aktive tjenester. Ved siden af står datoen for den næste afregning.</li>
-          <li><b>Betalt – afventer aktivering</b> – bestillinger, hvis førstegangsbetaling er betalt, og som operatøren snart slår til.</li>
-          <li><b>Dine tjenester</b> – alle aktive tjenester (med grønt), herunder Facebook- og webovervågning af konkurrenter. <b>Annullér</b> afslutter en tjeneste; konkurrentovervågning administreres under <b>Tilføj virksomhed</b> (knappen <b>Administrér</b>).</li>
-          <li><b>Tilkøb</b> – ved hver tjeneste er der en pris i €/md. og en førstegangsbetaling. Tryk på <span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Bestil</span>, bekræft i vinduet og betal førstegangsbetalingen. Ved særlige opgaver er der en <span class="chip">Bed om tilbud</span>-knap.</li>
-          <li><b>Pakker</b> – bestiller flere tjenester på én gang med det samme betalingsflow.</li>
+          <li>Øverst er der et resumé: <b>sammenlignelige produkter</b>, <b>prishistorik-grafer</b> og <b>overvågede shops</b>.</li>
+          <li>Hvert kort viser <b>laveste pris</b>, <b>shoppenes prisinterval</b> over tid og <b>dagens billigste shop</b>.</li>
+          <li>Nedenunder står, hvor mange procent prisen har ændret sig i den overvågede periode, og i hvor mange shops den billigste blev fundet.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg> CSV (Excel)</span> henter hele sammenligningen.</li>
         </ul>
-        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Sådan beregnes førstegangsbetalingen</div><p>Når du bestiller en ny tjeneste, betaler du med det samme en <strong>forholdsmæssig førstegangsbetaling</strong> – kun frem til den næste afregningsdag. Derefter slår operatøren tjenesten til, og fremover afregnes alle tjenester samlet.</p></div>
+        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg> Hvad kan det bruges til</div><p>Du ser med det samme, om du på et produkt er dyrest eller billigst på markedet – et godt input til prissætning (<a href="#hinnastamine">kapitel 14</a>) og kampagner.</p></div>
       </section>
 
       <!-- 9 -->
-      <section class="doc" id="maksed">
-        <h2><span class="num">9</span> Sådan foregår betaling</h2>
-        <p>Hver betaling begynder med et <strong>bekræftelsesvindue</strong>, hvor beløbet og det, du betaler for, står angivet. Du kan altid trykke <b>Annullér</b>.</p>
+      <section class="doc" id="teavitused">
+        <h2><span class="num">9</span> Notifikationer</h2>
+        <p>Menupunktet <b>Notifikationer</b> lader dig opsætte <strong>regler</strong>, hvor vi ved opfyldelse straks sender en besked – som push-notifikation til telefonen og/eller med e-mail.</p>
+        <figure>
+          <img src="l360-teavitused.png" alt="Notifikationer: tilføjelse af en prisnotifikationsregel og listen over regler" loading="lazy">
+          <figcaption>Notifikationer – tilføj en regel (betingelse, shop, produkt, tærskel) og vælg push og/eller e-mail.</figcaption>
+        </figure>
+        <ol class="steps">
+          <li>Vælg <b>betingelse</b> – fx prisfald på mindst X%, udsolgt lager, nyt produkt, konkurrent gik under din pris.</li>
+          <li>Vælg <b>shop</b> (alle overvågede eller én bestemt) og eventuelt et <b>bestemt produkt</b>.</li>
+          <li>Angiv <b>tærskel (%)</b>, hvis betingelsen kræver det.</li>
+          <li>Sæt flueben ved <b>Push-notifikation</b> og/eller <b>E-mail</b> og tryk på <span class="chip go">Tilføj regel</span></li>
+        </ol>
         <ul class="plain">
-          <li><b>Ved straksbetaling</b> sender vi dig til en sikker betalingsgateway – du betaler med <b>banklink</b> eller <b>kort</b>, og data/tjeneste åbnes med det samme efter betalingen.</li>
-          <li><b>Med en overførselsfaktura</b> – vi sender en faktura på e-mail. Indholdet åbnes i fuldt omfang, når betalingen er modtaget.</li>
-          <li><b>Førstegangsbetalingen</b> er altid forholdsmæssig frem til den næste afregningsdag; derefter løber den fulde månedspris.</li>
-          <li><b>Afregningen</b> sker for alle tjenester på én gang, efter årsdagen for din tilmeldingsdato.</li>
+          <li>Reglen kan når som helst midlertidigt <b>slås fra</b> eller slettes.</li>
+          <li>Hurtigst opretter du en notifikation direkte fra kataloget eller prissammenligningen – <b>klokke-ikonet</b> på produktets række udfylder formularen på forhånd.</li>
+          <li>For at modtage push-beskeder skal du trykke øverst på <span class="chip">Tillad push-notifikationer</span> (på iPhone efter installation som app – se <a href="#seaded">kapitel 17</a>).</li>
         </ul>
       </section>
 
       <!-- 10 -->
-      <section class="doc" id="hinnastamine">
-        <h2><span class="num">10</span> Prissætning</h2>
-        <p>Menupunktet <b>Prissætning</b> er kun synligt, hvis du har bestilt tjenesten <strong>omprissætning</strong>. Her ser du konkurrencebaserede prisforslag til din egen butik.</p>
+      <section class="doc" id="kuuraportid">
+        <h2><span class="num">10</span> Månedsrapporter</h2>
+        <p>Menupunktet <b>Månedsrapporter</b> samler den 1. i hver måned for den foregående måned en <strong>samlet PDF til ledelsen</strong>: prisændringer, sortimentsbevægelser, din prisposition på markedet og overtrædelser af brandovervågningen.</p>
+        <figure>
+          <img src="l360-kuuraportid.png" alt="Månedsrapporter: forklaring af den månedlige samlede PDF og arkiv" loading="lazy">
+          <figcaption>Månedsrapporter – en automatisk månedlig PDF, som kan sendes direkte videre til ledelsen eller producenten.</figcaption>
+        </figure>
         <ul class="plain">
-          <li><b>Forslagstabel</b> – produkt, aktuel pris, foreslået pris, forskel og begrundelse.</li>
-          <li><span class="chip">Generér igen</span> beregner forslagene på ny; <span class="chip">Regler</span> og <span class="chip">Historik</span> viser indstillinger og tidligere ændringer.</li>
-          <li>Hvis tjenesten er <b>aktiveret</b>, kan et forslag med ét klik skrives ind i din egen WooCommerce-butik; <b>Bevar</b> beholder prisen og springer produktet over i et valgt antal dage, <b>Spring over</b> springer forslaget over.</li>
+          <li><b>Automatisk</b> – rapporten bliver klar og sendes med e-mail i begyndelsen af hver måned; der er ikke noget, du skal gøre manuelt.</li>
+          <li><b>Arkiv</b> – alle tidligere månedsrapporter er her til download.</li>
+          <li>I modsætning til morgenmailen (se nedenfor) er månedsrapporten en <b>samlet oversigt</b> til beslutningstageren, ikke en daglig liste over ændringer.</li>
         </ul>
-        <div class="box warn"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg> Sikkert</div><p>At skrive en prisændring ind i butikken slår Look360 til sammen med dig. Som standard er alt en <b>tør kørsel</b> (der ændres intet), indtil vi aftaler live-tilstand.</p></div>
+        <h3>Morgenmail og advarsler i realtid</h3>
+        <ul class="plain">
+          <li><b>Morgenmail</b> – de vigtigste ændringer når automatisk frem til din (og de aftalte kontakters) indbakke. Den kan slås til/fra på siden <a href="#konto">Konto</a>.</li>
+          <li><b>Advarsler i realtid</b> – det mest kritiske (fx en konkurrents prisfald, en fejl i webshoppen, udsolgt lager) når frem med det samme via notifikationsreglerne.</li>
+        </ul>
       </section>
 
       <!-- 11 -->
-      <section class="doc" id="raportid">
-        <h2><span class="num">11</span> Rapporter</h2>
+      <section class="doc" id="konto">
+        <h2><span class="num">11</span> Konto og API-adgang</h2>
+        <p>Menupunktet <b>Konto</b> samler dine kontooplysninger og indstillinger.</p>
+        <figure>
+          <img src="l360-konto.png" alt="Konto: kontooplysninger, adgangskode, API-adgang og indstillinger for notifikationer" loading="lazy">
+          <figcaption>Konto – virksomhedens oplysninger, ændring af adgangskode, API-nøgle og kontakten til morgenmailen.</figcaption>
+        </figure>
         <ul class="plain">
-          <li><b>Mail hver morgen</b> – de vigtigste ændringer når automatisk frem til din (og de aftalte kontakters) indbakke.</li>
-          <li><b>Advarsler i realtid</b> – det mest kritiske (fx en konkurrents prisfald, fejl i webshoppen, udsolgt lager) når frem med det samme, resten samles i morgenrapporten.</li>
-          <li><b>Rapporthistorik</b> – på dashboardet kan du åbne hver tidligere samlet rapport og se, hvad der ændrede sig dengang.</li>
+          <li><b>Kontooplysninger</b> – virksomhed, kontaktperson og den e-mail, du er registreret med.</li>
+          <li><b>Adgangskode</b> – <span class="chip">Skift adgangskode</span>; en glemt adgangskode kan du nulstille fra login-siden.</li>
+          <li><b>Daglig overvågningsrapport om morgenen</b> – kontakten, hvormed du slår e-mailen til eller fra.</li>
         </ul>
+        <h3>API-adgang (BI, ERP, Excel)</h3>
+        <p>Via REST API kan du få dine overvågningsdata – shops, produkter, priser, prissammenligning, fund – direkte ind i dit eget system (Power BI, ERP, Excel Power Query).</p>
+        <ol class="steps">
+          <li>Skriv nøglens formål (fx „Power BI") og tryk på <span class="chip go">Opret API-nøgle</span></li>
+          <li>Kopiér nøglen med det samme – den vises kun én gang.</li>
+          <li>Se via linket til <b>API-dokumentationen</b>, hvilke endpoints der er tilgængelige.</li>
+        </ol>
       </section>
 
       <!-- 12 -->
-      <section class="doc" id="seaded">
-        <h2><span class="num">12</span> App, notifikationer og mørk tilstand</h2>
+      <section class="doc" id="teenused">
+        <h2><span class="num">12</span> Alle tjenester og månedspris</h2>
+        <p>Fra menuen <b>Tjenester</b> ser du alt det, du betaler for, og kan tilkøbe mere. Øverst er <b>din samlede månedspris</b> og datoen for næste afregning.</p>
+        <figure>
+          <img src="l360-teenused.png" alt="Tjenester: samlet månedspris og liste over aktive tjenester" loading="lazy">
+          <figcaption>Tjenester – samlet månedspris, aktive tjenester og tilkøb.</figcaption>
+        </figure>
+        <p>Nedenfor er alt det, vi tilbyder. Alle priser er <b>uden moms, pr. måned</b>.</p>
+
+        <div class="cat-h">Vedligeholdelse af din egen webshop</div>
+        <div class="svc">
+          <div class="s"><div class="h"><span class="nm">Sundhedstjek af webshop</span><span class="pr">20 €</span></div><p>Skanner din webshops produkter og finder mangler: manglende billeder og alt-tekster, tomme eller for korte beskrivelser, ødelagte priser, duplikerede produkter. Giver en sundheds-% og en liste over rettelser.</p></div>
+          <div class="s"><div class="h"><span class="nm">Overvågning af SEO og indholdshuller</span><span class="pr">fra 16 €</span></div><p>Overvåger dine søgeords placeringer i Google og finder indholdshuller – emner, du endnu ikke har indhold om. Prisen afhænger af antallet af overvågede søgeord.</p></div>
+          <div class="s"><div class="h"><span class="nm">Websidens driftssikkerhed</span><span class="pr">10 €</span></div><p>Kontrollerer, om din webside/webshop er oppe, og hvor hurtigt den svarer. Giver besked, hvis siden går ned eller bliver langsom.</p></div>
+          <div class="s"><div class="h"><span class="nm">ERP–webshop-integration</span><span class="pr">30 €</span></div><p>Forbinder din webshop og dit økonomisystem (fx Directo) – ordrer, lagerbeholdninger og priser flyttes automatisk uden manuel overførsel.</p></div>
+          <div class="s"><div class="h"><span class="nm">Omprissætning af priser</span><span class="pr">30 €</span></div><p>Konkurrencebaserede prisanbefalinger til din egen shop, som med ét klik kan skrives til WooCommerce (se <a href="#hinnastamine">kapitel 14</a>).</p></div>
+        </div>
+
+        <div class="cat-h">Overvågning af konkurrenter</div>
+        <div class="svc">
+          <div class="s"><div class="h"><span class="nm">FB-overvågning af konkurrenter</span><span class="pr">3 € / konkurrent</span></div><p>Overvåger konkurrenternes Facebook-opslag: nye produkter, kampagner, events, prismeddelelser. Alt i ét flow, nye fremhævet.</p></div>
+          <div class="s"><div class="h"><span class="nm">Konkurrenternes FB-annoncer</span><span class="pr">6 €</span></div><p>Overvåger konkurrenternes aktive Facebook-annoncer – hvad de reklamerer for, hvor mange annoncer der kører, og hvornår de startede eller blev stoppet.</p></div>
+          <div class="s"><div class="h"><span class="nm">Overvågning af webshops priser og lagerbeholdning</span><span class="pr">8 € / 2000 produkter</span></div><p>Overvåger konkurrentens webshops priser, tilbudspriser, lagerbeholdning og sortiment. Giver historikgrafer og fodrer prissammenligningen. Trinvis: 8 € pr. op til 2000 produkter.</p></div>
+        </div>
+
+        <div class="cat-h">Til brandejeren og importøren</div>
+        <div class="svc">
+          <div class="s"><div class="h"><span class="nm">Prisovervågning af forhandlere</span><span class="pr">40 €</span></div><p>Du fastsætter dine produkters RRP (vejl. udsalgspris) og MAP (minimum tilladt annonceret pris); systemet overvåger, hvilke forhandlere der overtræder dem (se <a href="#brandivalve">kapitel 15</a>).</p></div>
+        </div>
+
+        <div class="cat-h">Ekstra tjenester</div>
+        <div class="svc">
+          <div class="s"><div class="h"><span class="nm">Uddannelse til teamet</span><span class="pr">40 €</span></div><p>Vi uddanner dit team i systemet og i webshop-emner, så alle kan sætte overvågningen og dataene til at arbejde til deres fordel.</p></div>
+          <div class="s"><div class="h"><span class="nm">Automatisering efter bestilling</span><span class="pr">efter forespørgsel</span></div><p>Efter særlig bestilling automatiserer vi dine tilbagevendende opgaver – rapporter, synkroniseringer, notifikationer, datastrømme. Tryk på <span class="chip">Bed om tilbud</span>.</p></div>
+        </div>
+
+        <div class="cat-h">Pakker</div>
+        <div class="svc">
+          <div class="s"><div class="h"><span class="nm">Fuld pakke til egen shop</span></div><p>Sundhedstjek + SEO + driftssikkerhed + omprissætning af priser.</p></div>
+          <div class="s"><div class="h"><span class="nm">Overvågnings-startpakke</span></div><p>FB-overvågning af konkurrenter + sundhedstjek af webshop + driftssikkerhed.</p></div>
+          <div class="s"><div class="h"><span class="nm">Vedligeholdelse+ pakke</span></div><p>Sundhedstjek + driftssikkerhed + ERP-integration.</p></div>
+        </div>
+
+        <h3>Sådan bestiller du</h3>
         <ul class="plain">
-          <li><b>Installér som app</b> – på telefonen kan du lægge panelet på hjemmeskærmen som en app: åbn browserens menu og vælg „Føj til hjemmeskærm". Fremover åbner Look360 direkte fra ikonet og i fuld skærm – der er intet at downloade.</li>
-          <li><b>Notifikationer på telefonen</b> – knappen <span class="chip">Tillad notifikationer</span> på dashboardet sender vigtige pris- og lagerændringer som push-besked direkte til din enhed. På iPhone virker det, når du har installeret den som app.</li>
-          <li><b>Mørk / lys tilstand</b> – kontakten i topbjælken (sol/måne) skifter tema. Valget huskes.</li>
-          <li><b>På telefonen</b> – menuen er skjult bag ☰-knappen i øverste hjørne; indholdet tilpasser sig skærmens bredde.</li>
-          <li><b>Log ud</b> – ud-af-døren-ikonet nederst til venstre ved siden af brugernavnet.</li>
+          <li>Ved hver tjeneste står prisen i €/måned. Tryk på <span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Bestil</span>, bekræft i vinduet og betal det første gebyr; pakker bestiller flere tjenester på én gang.</li>
+          <li>Aktive tjenester er <span class="pill ok"><span class="dot"></span>grønne</span>. <b>Annullér</b> afslutter tjenesten; overvågning af konkurrenter administreres under <b>Tilføj virksomhed</b> og knappen <b>Administrér</b>.</li>
+          <li><b>Betalt – afventer aktivering</b>: det første gebyr er betalt, og operatøren slår snart tjenesten til.</li>
         </ul>
+        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Sådan beregnes det første gebyr</div><p>Når du bestiller en ny tjeneste, betaler du med det samme et <strong>forholdsmæssigt første gebyr</strong> – kun frem til næste afregningsdag. Derefter afregnes alle tjenester samlet, efter årsdagen for din tilmeldingsdag.</p></div>
       </section>
 
       <!-- 13 -->
+      <section class="doc" id="maksed">
+        <h2><span class="num">13</span> Sådan foregår betalingen</h2>
+        <p>Hver betaling starter med et <strong>bekræftelsesvindue</strong>, hvor beløbet og det, du betaler for, står angivet. Du kan altid <b>Annullere</b>.</p>
+        <ul class="plain">
+          <li><b>Ved betaling med det samme</b> sender vi dig til en sikker betalingsgateway – du betaler med <b>banklink</b> eller <b>kort</b>, og data/tjenesten åbnes straks efter betalingen.</li>
+          <li><b>Med bankoverførsel</b> – vi sender en faktura med e-mail. Indholdet åbnes i fuldt omfang, når betalingen er indgået.</li>
+          <li><b>Det første gebyr</b> er altid forholdsmæssigt frem til næste afregningsdag; derefter gælder den fulde månedspris.</li>
+          <li><b>Afregning</b> sker samlet for alle tjenester, efter årsdagen for din tilmeldingsdag.</li>
+        </ul>
+      </section>
+
+      <!-- 14 -->
+      <section class="doc" id="hinnastamine">
+        <h2><span class="num">14</span> Prissætning</h2>
+        <p>Menupunktet <b>Prissætning</b> er kun synligt, hvis du har bestilt tjenesten <strong>omprissætning af priser</strong>. Der ser du konkurrencebaserede prisanbefalinger til din egen shop.</p>
+        <div class="deflist">
+          <div class="dr"><span class="k">Produkt</span><span class="v">Produktet og den regel, anbefalingen blev lavet ud fra.</span></div>
+          <div class="dr"><span class="k">Aktuel</span><span class="v">Produktets aktuelle pris i din shop.</span></div>
+          <div class="dr"><span class="k">Anbefaling</span><span class="v">Den nye pris, systemet anbefaler.</span></div>
+          <div class="dr"><span class="k">Forskel</span><span class="v">Ændring i € og % (fx −0,22 € · −14,7%).</span></div>
+          <div class="dr"><span class="k">Årsag</span><span class="v">Hvorfor: fx „billigste konkurrent 1,50 €; regel 3% under; nedre grænse beskyttede".</span></div>
+        </div>
+        <ul class="plain">
+          <li><span class="chip">Generér igen</span> beregner anbefalingerne på ny; <span class="chip">Regler</span> og <span class="chip">Historik</span> viser indstillinger og tidligere ændringer.</li>
+          <li>Ved hver anbefaling: <span class="chip go">Skriv</span> fører prisen til shoppen, <b>Behold uændret</b> beholder prisen og ignorerer produktet i det valgte antal dage, <b>Spring over</b> springer anbefalingen over.</li>
+        </ul>
+        <div class="box warn"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg> Sikkert – som standard „afmonteret"</div><p>Som standard er alt i <b>testtilstand</b>: anbefalingerne beregnes, men ingen „Skriv" ændrer din shop. Livetilstand (rigtig skrivning af priser) slår vi til sammen med dig. Nedre grænser (prisgulv, MAP) forhindrer en for lav anbefaling.</p></div>
+      </section>
+
+      <!-- 15 -->
+      <section class="doc" id="brandivalve">
+        <h2><span class="num">15</span> Brandovervågning</h2>
+        <p>Menupunktet <b>Brandovervågning</b> er til brandejeren og importøren. Hvis du har bestilt <strong>prisovervågning af forhandlere</strong>, definerer du her dine produkters prisregler og ser, hvem der overtræder dem.</p>
+        <ol class="steps">
+          <li>Tilføj dine produkter med <b>RRP</b> (vejl. udsalgspris) og <b>MAP</b> (minimum tilladt annonceret pris). Produkter kan tilføjes ét ad gangen eller importeres.</li>
+          <li>Systemet sammenligner de overvågede forhandleres priser med din RRP/MAP.</li>
+          <li>Du ser en liste over <b>overtrædelser</b> – hvem der sælger under MAP eller afviger fra RRP – og du kan eksportere <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg> CSV</span>.</li>
+        </ol>
+        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg> Hvad kan det bruges til</div><p>Du holder dit brands prisniveau – finder du en overtrædelse, har du et dokumenteret grundlag for at tale med forhandleren.</p></div>
+      </section>
+
+      <!-- 16 -->
+      <section class="doc" id="naited">
+        <h2><span class="num">16</span> Praktiske eksempler</h2>
+        <p>Sådan binder funktionerne sammen til rigtigt arbejde.</p>
+
+        <div class="scn">
+          <h3>1. En konkurrent sænkede prisen</h3>
+          <p>Morgenmailen bringer „Konkurrent X: 12 prisfald". Du åbner <b>Prissammenligningen</b> og ser, at du på tre produkter nu er dyrest på markedet. <b>Prissætning</b> foreslår nye priser – du skriver dem til shoppen med ét klik.</p>
+          <div class="flow"><span class="st">Morgenmail</span><span class="ar">→</span><span class="st">Prissammenligning</span><span class="ar">→</span><span class="st">Prissætning</span><span class="ar">→</span><span class="st">Skriv til shoppen</span></div>
+        </div>
+
+        <div class="scn">
+          <h3>2. Et produkt blev udsolgt hos en konkurrent</h3>
+          <p>Du har opsat en notifikationsregel „udsolgt lager" på et nøgleprodukt. Når det bliver udsolgt hos konkurrenten, kommer der en <b>push til telefonen</b>. Du reagerer: hæver prisen eller reklamerer for, at du har varen på lager.</p>
+          <div class="flow"><span class="st">Notifikationsregel</span><span class="ar">→</span><span class="st">Push til telefonen</span><span class="ar">→</span><span class="st">Du reagerer</span></div>
+        </div>
+
+        <div class="scn">
+          <h3>3. En ny konkurrent på markedet</h3>
+          <p>Du hører om en ny shop. <b>Tilføj virksomhed</b> → webshop + Facebook → du bekræfter månedsprisen. På få minutter ser du dens sortiment, priser og Facebook-aktivitet.</p>
+          <div class="flow"><span class="st">Tilføj virksomhed</span><span class="ar">→</span><span class="st">Bekræft månedspris</span><span class="ar">→</span><span class="st">Virksomhedsvisning</span></div>
+        </div>
+
+        <div class="scn">
+          <h3>4. Min webshops sundhed halter</h3>
+          <p><b>Webshoppens sundhed</b> viser 109 kritiske fejl – manglende billeder og alt-tekster. Du går listen over rettelser igennem; ved næste skanning stiger sundheds-%'en.</p>
+          <div class="flow"><span class="st">Webshoppens sundhed</span><span class="ar">→</span><span class="st">Liste over rettelser</span><span class="ar">→</span><span class="st">Sundheden bliver bedre</span></div>
+        </div>
+
+        <div class="scn">
+          <h3>5. Månedsoversigt til ledelsen</h3>
+          <p>Den 1. i måneden kommer <b>PDF-månedsrapporten</b> automatisk i indbakken. Du sender den videre til ledelsen – et resumé af prisbevægelser, sortiment og markedsposition i én fil.</p>
+          <div class="flow"><span class="st">Månedsrapport (auto)</span><span class="ar">→</span><span class="st">Send videre til ledelsen</span></div>
+        </div>
+
+        <div class="scn">
+          <h3>6. En forhandler gik under MAP</h3>
+          <p>Du er brandejer. <b>Brandovervågning</b> viser, at en forhandler sælger et produkt under den aftalte MAP. Du eksporterer overtrædelsen og tager kontakt til forhandleren.</p>
+          <div class="flow"><span class="st">Brandovervågning</span><span class="ar">→</span><span class="st">Overtrædelse</span><span class="ar">→</span><span class="st">Tag kontakt</span></div>
+        </div>
+
+        <div class="scn">
+          <h3>7. Data i din egen BI</h3>
+          <p>Du vil have priser og lagerbeholdning ind i din egen Power BI-rapport. <b>Konto</b> → <b>Opret API-nøgle</b> → du forbinder REST API via Power Query. Dataene opdateres automatisk.</p>
+          <div class="flow"><span class="st">Konto</span><span class="ar">→</span><span class="st">API-nøgle</span><span class="ar">→</span><span class="st">Power BI</span></div>
+        </div>
+      </section>
+
+      <!-- 17 -->
+      <section class="doc" id="seaded">
+        <h2><span class="num">17</span> App og mørk tilstand</h2>
+        <ul class="plain">
+          <li><b>Installér som app</b> – på telefonen kan du føje panelet til startskærmen som en app: åbn browserens menu og vælg „Føj til startskærm". Fremover åbnes Look360 direkte fra ikonet og i fuld skærm – der er ikke noget at downloade.</li>
+          <li><b>Notifikationer til telefonen</b> – knappen <span class="chip">Tillad push-notifikationer</span> sender de vigtige ændringer direkte til enheden. På iPhone virker det efter installation som app.</li>
+          <li><b>Mørk / lys tilstand</b> – kontakten i topbjælken (sol/måne) skifter tema. Valget bliver husket.</li>
+          <li><b>På telefonen</b> – menuen er skjult bag ☰-knappen i øverste hjørne; indholdet tilpasser sig skærmbredden.</li>
+          <li><b>Log ud</b> – ud-af-døren-ikonet ved siden af brugernavnet nederst til venstre.</li>
+        </ul>
+      </section>
+
+      <!-- 18 -->
       <section class="doc" id="abi">
-        <h2><span class="num">13</span> Hjælp og kontakt</h2>
+        <h2><span class="num">18</span> Hjælp og kontakt</h2>
         <p>Har du et spørgsmål eller en bekymring, svarer vi på engelsk – et rigtigt menneske, ikke et automatsvar.</p>
         <ul class="plain">
           <li>E-mail: <a href="mailto:info@look360.eu">info@look360.eu</a></li>
           <li>Telefon: <a href="tel:+37253620246">+372 5362 0246</a></li>
           <li>Ofte stillede spørgsmål: <a href="index.html#kkk">FAQ på forsiden</a></li>
         </ul>
-        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Kort fortalt</div><p>Log ind → kig på det grønne/gule/røde på dashboardet → tilføj virksomheder og tjenester → de vigtige ændringer kommer også til dig i en mail. Mere skal du ikke gøre.</p></div>
+        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Kort fortalt</div><p>Log ind → hold øje med grøn/gul/rød på dashboardet → tilføj flere virksomheder og tjenester → opsæt notifikationsregler → de vigtige ændringer kommer også til dig som mail og push-besked. Mere skal der ikke til.</p></div>
       </section>
     </div>
   </div>
@@ -457,8 +676,8 @@
 
 <footer>
   <div class="wrap">
-    <span>© 2026 Look360 · Watchdog OÜ · Registreringsnr. 17537572 · CVR/moms EE103000237</span>
-    <span><a href="index.html">Forside</a> · <a href="index.html#kkk">FAQ</a> · <a href="privaatsus.html">Privatliv</a> · <a href="tingimused.html">Vilkår</a></span>
+    <span>© 2026 Look360 · Watchdog OÜ · Registrikood 17537572 · KMKR EE103000237</span>
+    <span><a href="index.html">Forside</a> · <a href="index.html#kkk">FAQ</a> · <a href="privaatsus.html">Privatliv</a> · <a href="tingimused.html">Betingelser</a></span>
   </div>
 </footer>
 
