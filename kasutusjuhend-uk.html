@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Посібник користувача – панель моніторингу Look360</title>
-<meta name="description" content="Посібник користувача панелі моніторингу Look360 для клієнта: вхід, робочий стіл, додавання компаній, каталог товарів, послуги, платежі та звіти – крок за кроком, яка кнопка що робить.">
+<meta name="description" content="Посібник користувача панелі моніторингу Look360 для клієнта: вхід у систему, робочий стіл, додавання компаній, каталог товарів, порівняння цін, сповіщення, звіти, послуги та платежі – крок за кроком, з ілюстраціями та прикладами ситуацій.">
 <meta name="robots" content="index,follow">
 <link rel="alternate" hreflang="et" href="https://look360.eu/kasutusjuhend.html">
 <link rel="alternate" hreflang="en" href="https://look360.eu/kasutusjuhend-en.html">
@@ -60,7 +60,7 @@
   /* Layout: sticky TOC + content */
   main{padding:40px 0 80px}
   .layout{display:grid;grid-template-columns:230px 1fr;gap:48px;align-items:start}
-  .toc{position:sticky;top:90px;font-size:14px}
+  .toc{position:sticky;top:90px;font-size:14px;max-height:calc(100vh - 110px);overflow:auto}
   .toc h4{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:12px}
   .toc a{display:block;color:var(--text-2);text-decoration:none;padding:6px 11px;border-radius:9px;border-left:2px solid transparent;font-weight:300;transition:.15s}
   .toc a:hover{background:var(--paper-2);color:var(--text)}
@@ -132,6 +132,22 @@
   .deflist .dr .k{font-weight:600;color:var(--text)}
   .deflist .dr .v{color:var(--text-2);font-weight:300}
 
+  /* Service cards (teenuste ülevaade) */
+  .svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin:16px 0}
+  .svc .s{border:1px solid var(--line);border-radius:14px;padding:15px 17px;background:var(--paper)}
+  .svc .s .h{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:5px}
+  .svc .s .nm{font-weight:600;color:var(--text);font-size:14.5px}
+  .svc .s .pr{font-weight:600;color:var(--accent-ink);font-size:13px;white-space:nowrap}
+  .svc .s p{margin:0;font-size:13px;color:var(--text-2);font-weight:300;line-height:1.55}
+  .cat-h{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:22px 0 2px}
+
+  /* Scenario cards */
+  .scn{border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:0 14px 14px 0;padding:15px 19px;margin:15px 0;background:var(--paper-2)}
+  .scn h3{margin:0 0 4px;font-size:15.5px}
+  .scn .flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:9px;font-size:12.5px;color:var(--muted)}
+  .scn .flow .st{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:3px 9px;color:var(--text-2);font-weight:500}
+  .scn .flow .ar{color:var(--accent)}
+
   footer{background:var(--ink);color:var(--on-dark-mut);padding:40px 0;font-size:14px;font-weight:300;margin-top:20px}
   footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
   footer a{color:var(--on-dark-mut);text-decoration:none}
@@ -139,10 +155,11 @@
 
   @media(max-width:860px){
     .layout{grid-template-columns:1fr;gap:0}
-    .toc{position:static;margin-bottom:24px;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--paper-2)}
+    .toc{position:static;margin-bottom:24px;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--paper-2);max-height:none}
     .toc a{border-left:0;padding:5px 0}
     .toc a.on{background:none}
     .deflist .dr{grid-template-columns:1fr;gap:2px}
+    .scn .flow{font-size:11.5px}
     header.top nav a:not(.login){display:none}
   }
   /* Keelevaheti (lipud) – jagatud lang.js-iga */
@@ -180,7 +197,7 @@
   <div class="wrap">
     <div class="eyebrow"><span class="pip"></span> Посібник користувача</div>
     <h1>Посібник користувача панелі моніторингу</h1>
-    <p>Покроковий огляд усього, що Ви як клієнт бачите та можете робити: від входу до робочого столу, відстежуваних компаній, каталогу товарів, послуг, платежів і звітів. Біля кожної кнопки зазначено, що вона робить і де Ви бачите результат.</p>
+    <p>Покроковий огляд усього, що Ви як клієнт бачите та можете зробити – від входу в систему до робочого столу, відстежуваних компаній, каталогу товарів, порівняння цін, сповіщень, послуг, платежів і звітів. Біля кожної функції є ілюстрація, пояснення та реальні приклади ситуацій.</p>
   </div>
 </section>
 
@@ -188,132 +205,146 @@
   <div class="wrap layout">
     <aside class="toc" id="toc">
       <h4>Зміст</h4>
-      <a href="#algus">1. Що таке панель моніторингу</a>
-      <a href="#logimine">2. Вхід</a>
-      <a href="#menuu">3. Меню та загальний вигляд</a>
+      <a href="#algus">1. Що таке Look360</a>
+      <a href="#logimine">2. Вхід у систему</a>
+      <a href="#menuu">3. Меню та загальний огляд</a>
       <a href="#toolaud">4. Робочий стіл моніторингу</a>
       <a href="#lisafirma">5. Додавання компанії</a>
       <a href="#firmavaade">6. Вигляд компанії та каталог</a>
       <a href="#kategooriad">7. Вибір категорій</a>
-      <a href="#teenused">8. Послуги та щомісячна плата</a>
-      <a href="#maksed">9. Як відбувається оплата</a>
-      <a href="#hinnastamine">10. Ціноутворення</a>
-      <a href="#raportid">11. Звіти</a>
-      <a href="#seaded">12. Застосунок, сповіщення та темний режим</a>
-      <a href="#abi">13. Допомога та контакти</a>
+      <a href="#hinnavordlus">8. Порівняння цін</a>
+      <a href="#teavitused">9. Сповіщення</a>
+      <a href="#kuuraportid">10. Місячні звіти</a>
+      <a href="#konto">11. Обліковий запис та API</a>
+      <a href="#teenused">12. Усі послуги та місячна плата</a>
+      <a href="#maksed">13. Як відбувається оплата</a>
+      <a href="#hinnastamine">14. Ціноутворення</a>
+      <a href="#brandivalve">15. Захист бренду</a>
+      <a href="#naited">16. Приклади ситуацій</a>
+      <a href="#seaded">17. Застосунок і темний режим</a>
+      <a href="#abi">18. Допомога та контакти</a>
     </aside>
 
     <div class="content">
-      <p class="lead">Панель моніторингу Look360 збирає в одному місці все, що ми відстежуємо для Вас – ціни та наявність у конкурентів, дописи у Facebook, стан Вашого власного інтернет-магазину. Вам нічого не потрібно встановлювати: Ви входите, бачите ситуацію з одного погляду й отримуєте важливі зміни також щоранковим листом. Цей посібник проходить через кожен вигляд і кожну кнопку.</p>
+      <p class="lead">Панель моніторингу Look360 зводить в одне місце все, що ми відстежуємо замість Вас – ціни та наявність у конкурентів, дописи й рекламу у Facebook, стан і надійність Вашого власного інтернет-магазину. Вам нічого не потрібно встановлювати: Ви входите в систему, бачите стан справ одним поглядом і отримуєте важливі зміни також щоранковим листом. Цей посібник проходить кожен вигляд і кожну кнопку, а наприкінці наведено приклади ситуацій, що поєднують функції в реальну роботу.</p>
 
       <!-- 1 -->
       <section class="doc" id="algus">
-        <h2><span class="num">1</span> Що таке панель моніторингу</h2>
-        <p>Панель моніторингу – це Ваш приватний робочий стіл за адресою, куди Ви входите зі своєю електронною поштою та паролем. Там Ви бачите всі відстежувані підприємства – як власний інтернет-магазин, так і конкурентів – і кожну зміну, яку зафіксувала система: зниження ціни, закінчення наявності, новий допис у Facebook, збій інтернет-магазину.</p>
-        <p>Усе працює за <strong>логікою кольорів</strong>. Ті самі три кольори повторюються всюди – на робочому столі, на картці компанії, у таблиці:</p>
+        <h2><span class="num">1</span> Що таке Look360</h2>
+        <p>Look360 – це <strong>моніторинг, автоматизація та реагування</strong> в одному пакеті. Панель моніторингу – це Ваш приватний робочий стіл за адресою, куди Ви входите зі своєю електронною поштою та паролем. Там Ви бачите всі відстежувані підприємства – як власний інтернет-магазин, так і конкурентів – і кожну зміну, яку виявила система: зниження ціни, закінчення наявності, новий допис у Facebook, збій інтернет-магазину.</p>
+        <p>Усе працює за <strong>логікою кольорів</strong>. Ті самі три кольори повторюються всюди – на робочому столі, на картці компанії, у таблиці, на графіках:</p>
         <div class="legend">
-          <div class="lg"><span class="sw" style="background:var(--accent)"></span><span><b>Зелений – усе гаразд</b>Змін немає або все відповідає очікуванням. Нічого робити не треба.</span></div>
-          <div class="lg"><span class="sw" style="background:var(--warn)"></span><span><b>Жовтий – потребує уваги</b>Попередження: наприклад, зміна ціни в конкурента, закінчення наявності або застарілі дані.</span></div>
-          <div class="lg"><span class="sw" style="background:var(--err)"></span><span><b>Червоний – збій</b>Джерело даних тимчасово стало недоступним. Зазвичай відновлюється саме або переглядається оператором.</span></div>
+          <div class="lg"><span class="sw" style="background:var(--accent)"></span><span><b>Зелений – усе гаразд</b>Змін немає або все відповідає очікуванням. Нічого робити не потрібно.</span></div>
+          <div class="lg"><span class="sw" style="background:var(--warn)"></span><span><b>Жовтий – потребує уваги</b>Знахідка: напр. зміна ціни в конкурента, закінчення наявності або застарілі дані.</span></div>
+          <div class="lg"><span class="sw" style="background:var(--err)"></span><span><b>Червоний – збій</b>Джерело даних тимчасово стало недоступним. Зазвичай відновлюється саме або оператор переглядає його.</span></div>
         </div>
-        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z"/></svg> Поштову скриньку не треба пильнувати</div><p>Найважливіші зміни ми надсилаємо також щоранковим зведеним листом. Панель Ви відкриваєте тоді, коли хочете побачити більше або щось змінити.</p></div>
+        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z"/></svg> Поштову скриньку не треба стерегти</div><p>Найважливіші зміни ми надсилаємо також щоранковим зведеним листом, а найкритичніше – одразу. Панель Ви відкриваєте тоді, коли хочете побачити більше або щось змінити.</p></div>
       </section>
 
       <!-- 2 -->
       <section class="doc" id="logimine">
-        <h2><span class="num">2</span> Вхід</h2>
+        <h2><span class="num">2</span> Вхід у систему</h2>
         <ol class="steps">
-          <li>Відкрийте <b>Увійти</b> – чи то з верхнього кута головної сторінки, з верхньої частини цього посібника, чи то за прямим посиланням, яке ми Вам надіслали.</li>
-          <li>Введіть <b>ім’я користувача</b> – це Ваша <b>адреса електронної пошти</b> (напр. ty@company.ua).</li>
+          <li>Відкрийте <b>Увійти</b> – або з верхнього кута головної сторінки, або з верхньої частини цього посібника, або за прямим посиланням, яке ми Вам надіслали.</li>
+          <li>Введіть <b>ім'я користувача</b> – це Ваша <b>адреса електронної пошти</b> (напр. ty@pidpryemstvo.ee).</li>
           <li>Введіть <b>пароль</b> і натисніть <span class="chip go">Увійти</span></li>
         </ol>
         <ul class="plain">
           <li><b>Забули пароль?</b> – за посиланням нижче ми надішлемо електронною поштою посилання для встановлення нового пароля.</li>
           <li><b>Ще немає облікового запису?</b> – кнопка <span class="chip">Зареєструватися</span> веде до прайс-листа на головній сторінці, де Ви можете скласти пакет і приєднатися.</li>
-          <li><b>Назад на головну сторінку</b> – верхнє посилання повертає Вас на look360.eu.</li>
+          <li><b>Спробуйте без облікового запису</b> – на сторінці входу є публічний <b>демообліковий запис</b>, з яким Ви можете переглянути всі вигляди з реальними прикладами даних.</li>
         </ul>
-        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg> Корисно знати</div><p>Обліковий запис пов’язаний з Вашим підприємством. Після входу Ви бачите ліворуч угорі на зеленій смузі назву свого підприємства – так Ви знаєте, що перебуваєте в правильному обліковому записі.</p></div>
+        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg> Корисно знати</div><p>Обліковий запис прив'язаний до Вашого підприємства. Після входу Ви бачите вгорі ліворуч на зеленій смужці назву свого підприємства – так Ви знаєте, що перебуваєте у правильному обліковому записі.</p></div>
       </section>
 
       <!-- 3 -->
       <section class="doc" id="menuu">
-        <h2><span class="num">3</span> Меню та загальний вигляд</h2>
-        <p>На кожній сторінці однакова структура: <strong>ліве меню</strong>, <strong>верхня смуга</strong> та вміст посередині.</p>
+        <h2><span class="num">3</span> Меню та загальний огляд</h2>
+        <p>На кожній сторінці той самий каркас: <strong>ліве меню</strong>, <strong>верхня смуга</strong> та вміст посередині.</p>
         <h3>Ліве меню</h3>
-        <ul class="plain">
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="5" rx="1.5"/><rect x="13" y="11" width="8" height="10" rx="1.5"/><rect x="3" y="14" width="8" height="7" rx="1.5"/></svg> Моніторинг</span> – головний робочий стіл, де є всі відстежувані підприємства та знахідки.</li>
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M20 7H4M20 12H4M20 17H4"/></svg> Послуги</span> – Ваші замовлені послуги, щомісячна плата та можливість дозамовити.</li>
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Ціноутворення</span> – з’являється лише тоді, коли у Вас замовлена послуга <b>переоцінки цін</b>.</li>
-          <li>Унизу розташовані Ваше ім’я користувача, роль <b>Клієнт</b> та значок <b>виходу</b> (двері назовні).</li>
-        </ul>
+        <p>У меню зібрані всі Ваші вигляди. Деякі пункти з'являються лише тоді, коли у Вас замовлено відповідну послугу.</p>
+        <div class="deflist">
+          <div class="dr"><span class="k">Моніторинг</span><span class="v">Головний робочий стіл – усі відстежувані підприємства, знахідки та тенденція.</span></div>
+          <div class="dr"><span class="k">Послуги</span><span class="v">Ваші замовлені послуги, місячна плата та додаткове замовлення.</span></div>
+          <div class="dr"><span class="k">Обліковий запис</span><span class="v">Дані облікового запису, пароль, доступ до API та налаштування щоранкового листа.</span></div>
+          <div class="dr"><span class="k">Порівняння цін</span><span class="v">Той самий товар серед усіх відстежуваних магазинів – найнижча ціна та історія.</span></div>
+          <div class="dr"><span class="k">Сповіщення</span><span class="v">Правила цінових сповіщень і push-сповіщення на телефон.</span></div>
+          <div class="dr"><span class="k">Місячні звіти</span><span class="v">Місячний зведений PDF-звіт для керівництва.</span></div>
+          <div class="dr"><span class="k">Ціноутворення</span><span class="v">Видно лише з послугою <b>переоцінки цін</b> – цінові рекомендації на основі конкуренції.</span></div>
+          <div class="dr"><span class="k">Захист бренду</span><span class="v">Видно лише з послугою <b>цінового нагляду за дилерами</b> – порушення RRP/MAP.</span></div>
+        </div>
+        <p>У нижньому краї – Ваше ім'я користувача, роль <b>Клієнт</b> та значок <b>виходу</b> (двері з виходом).</p>
         <h3>Верхня смуга</h3>
         <ul class="plain">
-          <li>Ліворуч <b>заголовок сторінки</b> (напр. назва Вашого підприємства), а під ним дрібним шрифтом <b>коли востаннє оновлено</b>.</li>
-          <li>Праворуч <b>перемикач темний/світлий</b> (сонце/місяць) та <b>кнопки дій</b> конкретної сторінки.</li>
-          <li>У телефоні ліве меню відкриває <b>кнопка ☰</b> у верхньому куті.</li>
+          <li>Ліворуч <b>заголовок сторінки</b>, а під ним дрібним шрифтом <b>коли востаннє оновлено</b>.</li>
+          <li>Праворуч <b>перемикач темного/світлого</b> (сонце/місяць) та <b>кнопки дій</b> конкретної сторінки.</li>
+          <li>На телефоні ліве меню відкриває <b>кнопка ☰</b> у верхньому куті.</li>
         </ul>
       </section>
 
       <!-- 4 -->
       <section class="doc" id="toolaud">
         <h2><span class="num">4</span> Робочий стіл моніторингу</h2>
-        <p>Це головний вигляд. У верхній частині Ви знайдете основні кнопки, нижче – огляд і список компаній.</p>
+        <p>Це домашній вигляд. У верхньому краї Ви знайдете головні кнопки, нижче – тенденцію, зведення та список компаній.</p>
         <figure>
-          <img src="l360-seirepaneel.png" alt="Робочий стіл моніторингу Look360: графік тренду, зведення та таблиця компаній" loading="lazy">
-          <figcaption>Робочий стіл моніторингу – графік тренду, зведення та таблиця відстежуваних компаній.</figcaption>
+          <img src="l360-seirepaneel.png" alt="Робочий стіл моніторингу Look360: графік тенденції, зведення та таблиця компаній" loading="lazy">
+          <figcaption>Робочий стіл моніторингу – тенденція знахідок, зведення та таблиця відстежуваних компаній.</figcaption>
         </figure>
         <h3>Кнопки верхньої смуги</h3>
         <ul class="plain">
           <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Додати компанію</span> – додайте нове відстежуване підприємство (див. <a href="#lisafirma">розділ 5</a>).</li>
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 7H4M20 12H4M20 17H4"/></svg> Послуги</span> – відкрийте вигляд послуг і щомісячної плати.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 7H4M20 12H4M20 17H4"/></svg> Послуги</span> – відкрийте вигляд послуг і місячної плати.</li>
           <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-2.6-6.4L21 8"/><path d="M21 3v5h-5"/></svg> Оновити вигляд</span> – зчитує останні дані заново та оновлює екран. <b>Не сканує</b> сайти, лише оновлює вигляд.</li>
-          <li><span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg> Сканувати все заново</span> – з’являється, якщо Ви відстежуєте інтернет-магазини або Facebook. Запускає <b>справжні сканування</b> (сканує сайти), займає кілька хвилин. Це можна робити <b>1 раз на добу</b>.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg> Дозволити сповіщення</span> – вмикає push-сповіщення на телефон (див. <a href="#teavitused">розділ 9</a>).</li>
+          <li><span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg> Сканувати все заново</span> – запускає <b>справжні сканування</b> (сканує сайти), займає кілька хвилин. Це можна робити <b>1 раз на добу</b>.</li>
         </ul>
-        <h3>Як працює моніторинг? – довідкова смуга</h3>
-        <p>У верхній частині робочого столу є розгортна смуга <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .8-1 1.7M12 17h.01"/></svg> Як працює моніторинг?</span> Клацніть, щоб прочитати коротке пояснення кольорів. Першого разу, коли ще немає жодної компанії, вона відкрита.</p>
-        <h3>Тренд попереджень</h3>
-        <p>Графік показує, як змінювалася кількість попереджень упродовж останніх сеансів моніторингу – чи справи заспокоюються, чи потребують більше уваги.</p>
+        <h3>Як працює моніторинг? – смуга допомоги</h3>
+        <p>У верхній частині робочого столу є розгортна смуга <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .8-1 1.7M12 17h.01"/></svg> Як працює моніторинг?</span> Натисніть, щоб прочитати коротке пояснення. Першого разу, коли ще немає жодної компанії, вона відкрита.</p>
+        <h3>Тенденція знахідок</h3>
+        <p>Графік показує, як змінювалася кількість знахідок протягом останніх моніторингів – чи справи заспокоюються, чи потребують більше уваги. На всіх графіках зазначено шкалу осі та одиницю; наведіть курсор на лінію, щоб побачити точне число.</p>
         <h3>Зведення</h3>
-        <p>Праворуч є чотири числа та рядок стану:</p>
+        <p>Праворуч – чотири числа та рядок стану:</p>
         <div class="deflist">
-          <div class="dr"><span class="k">Компаній під моніторингом</span><span class="v">Скільки підприємств Ви зараз відстежуєте.</span></div>
-          <div class="dr"><span class="k">Активних попереджень</span><span class="v">Скільки речей потребують уваги (жовтий).</span></div>
-          <div class="dr"><span class="k">Джерел зі збоєм</span><span class="v">Скільки джерел даних зараз недоступні (червоний).</span></div>
-          <div class="dr"><span class="k">Застарілі дані</span><span class="v">Дані скількох компаній застаріли та потребують оновлення.</span></div>
+          <div class="dr"><span class="k">Компаній на моніторингу</span><span class="v">Скільки підприємств Ви наразі відстежуєте.</span></div>
+          <div class="dr"><span class="k">Знахідок</span><span class="v">Скільки змін потребує уваги (жовтий).</span></div>
+          <div class="dr"><span class="k">Джерел зі збоєм</span><span class="v">Скільки джерел даних наразі недоступні (червоний).</span></div>
+          <div class="dr"><span class="k">Застарілі дані</span><span class="v">У скількох компаній дані застаріли та потребують оновлення.</span></div>
         </div>
         <h3>Вкладки, вигляди та експорт</h3>
         <ul class="plain">
           <li><b>Вкладки</b> <span class="pill sec"><span class="dot"></span>Усі</span> <span class="pill sec"><span class="dot"></span>Моє підприємство</span> <span class="pill sec"><span class="dot"></span>Конкуренти</span> – фільтрують список.</li>
-          <li><b>Таблиця / Картки</b> – перемкніть вигляд списку. Таблиця компактна, картки одразу показують канали кожної компанії розгорнуто.</li>
-          <li><b>Сортувати</b> – упорядкуйте за попередженнями, знахідками, станом або назвою.</li>
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg> Експортувати CSV</span> – завантажує видиму таблицю як файл, що відкривається в Excel.</li>
+          <li><b>Таблиця / Картки</b> – перемкніть форму списку. Таблиця компактна; вигляд карток одразу показує канали й знахідки кожної компанії.</li>
+          <li><b>Сортувати</b> – упорядкуйте за замовчуванням, за знахідками або за назвою.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg> Експорт CSV</span> – завантажує видиму таблицю як файл, що відкривається в Excel.</li>
         </ul>
+        <figure>
+          <img src="l360-firmakaardid.png" alt="Вигляд карток робочого столу: канали й знахідки кожної компанії одразу видно" loading="lazy">
+          <figcaption>Вигляд карток – канали й останні знахідки кожної відстежуваної компанії одним поглядом.</figcaption>
+        </figure>
         <h3>Таблиця компаній</h3>
-        <p>Кожен рядок – це одне відстежуване підприємство. <b>Клацніть рядок</b>, щоб відкрити повний вигляд цієї компанії. Стовпці:</p>
+        <p>Кожен рядок – одне відстежуване підприємство. <b>Натисніть на рядок</b>, щоб відкрити повний вигляд цієї компанії. Стовпці:</p>
         <div class="deflist">
           <div class="dr"><span class="k">Компанія</span><span class="v">Назва та чи це Ваше підприємство, чи конкурент.</span></div>
-          <div class="dr"><span class="k">Статус</span><span class="v"><span class="pill ok"><span class="dot"></span>Усе гаразд</span> · <span class="pill warn"><span class="dot"></span>N попереджень</span> · <span class="pill err"><span class="dot"></span>Збій</span> · <span class="pill sec"><span class="dot"></span>Застаріло / Не виконувалося</span></span></div>
-          <div class="dr"><span class="k">Каналів</span><span class="v">Скільки джерел відстежується в цієї компанії (веб, Facebook тощо).</span></div>
-          <div class="dr"><span class="k">Знахідок</span><span class="v">Скільки змін знайдено в останньому сеансі моніторингу.</span></div>
-          <div class="dr"><span class="k">Попереджень</span><span class="v">Скільки знахідок потребують уваги.</span></div>
+          <div class="dr"><span class="k">Статус</span><span class="v"><span class="pill ok"><span class="dot"></span>N знахідок</span> · <span class="pill err"><span class="dot"></span>Збій</span> · <span class="pill sec"><span class="dot"></span>Застаріло / Не виконувалося / Усе спокійно</span></span></div>
+          <div class="dr"><span class="k">Каналів</span><span class="v">Скільки джерел відстежується у цієї компанії (веб, Facebook тощо).</span></div>
+          <div class="dr"><span class="k">Знахідок</span><span class="v">На скількох каналах є знахідка за останнього моніторингу.</span></div>
           <div class="dr"><span class="k">Свіжість</span><span class="v">Коли дані цієї компанії востаннє оновлювалися.</span></div>
-          <div class="dr"><span class="k">Стан</span><span class="v">Загальна смуга стану 0–100% (зелений добрий, жовтий середній, червоний слабкий).</span></div>
+          <div class="dr"><span class="k">Знахідки</span><span class="v">Швидкий індикатор: <span class="pill ok"><span class="dot"></span>Так</span> – є знахідка, <span class="pill sec"><span class="dot"></span>Ні</span> – усе спокійно.</span></div>
         </div>
         <h3>Додані Вами відстежувані</h3>
-        <p>Якщо Ви самі додали компанію, її стан Ви бачите в окремому розділі. Можливі стани:</p>
+        <p>Якщо Ви самі додали компанію, Ви бачите її стан. Можливі стани:</p>
         <ul class="plain">
-          <li><span class="pill warn"><span class="dot"></span>В очікуванні</span> – очікує підтвердження оператора.</li>
-          <li><span class="pill sec"><span class="dot"></span>Будую… / AI розпізнає…</span> – зчитувач інтернет-магазину налаштовується автоматично.</li>
-          <li><span class="pill warn"><span class="dot"></span>Плата в очікуванні</span> – дані готові, потрібно підтвердити щомісячну плату (див. <a href="#firmavaade">розділ 6</a>).</li>
-          <li><span class="pill err"><span class="dot"></span>Відхилено</span> – запит відхилено (причина вказана).</li>
-          <li><span class="pill ok"><span class="dot"></span>Активна</span> – компанія під моніторингом.</li>
+          <li><span class="pill warn"><span class="dot"></span>Очікує</span> – очікує підтвердження оператора.</li>
+          <li><span class="pill sec"><span class="dot"></span>Будую… / ШІ розпізнає…</span> – зчитувач інтернет-магазину налаштовується автоматично.</li>
+          <li><span class="pill warn"><span class="dot"></span>Очікує оплати</span> – дані готові, потрібно підтвердити місячну плату (див. <a href="#firmavaade">розділ 6</a>).</li>
+          <li><span class="pill err"><span class="dot"></span>Відхилено</span> – заявку відхилено (причину зазначено).</li>
+          <li><span class="pill ok"><span class="dot"></span>Активна</span> – компанія на моніторингу.</li>
         </ul>
-        <h3>Моніторинг Facebook</h3>
-        <p>На окремій картці є останні дописи у Facebook відстежуваних конкурентів, найновіші та нові виділені. Клацання на дописі веде до оригіналу у Facebook.</p>
-        <h3>Усі знахідки та історія звітів</h3>
+        <h3>Моніторинг Facebook, усі знахідки та історія</h3>
         <ul class="plain">
-          <li><b>Усі знахідки</b> – усі зміни останнього сеансу моніторингу одним списком. Прапорець <b>Лише попередження</b> приховує спокійну частину.</li>
-          <li><b>Історія звітів</b> – попередні зведені звіти. Клацання відкриває архівований звіт.</li>
+          <li><b>Моніторинг Facebook</b> – на окремій картці останні дописи відстежуваних конкурентів; натискання веде до оригіналу.</li>
+          <li><b>Усі знахідки</b> – усі зміни за останнього моніторингу одним списком. Позначка <b>Лише попередження</b> приховує спокійну частину.</li>
+          <li><b>Історія звітів</b> – попередні зведені звіти; натискання відкриває архівований звіт.</li>
         </ul>
       </section>
 
@@ -322,134 +353,322 @@
         <h2><span class="num">5</span> Додавання компанії</h2>
         <p>Натисніть на робочому столі <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Додати компанію</span>. Відкриється проста форма.</p>
         <ol class="steps">
-          <li><b>Назва компанії</b> – почніть друкувати та оберіть зі списку компанію з Естонського комерційного реєстру (або введіть назву вручну).</li>
-          <li><b>Вебсайт</b> – достатньо назви без https:// на початку, напр. <b>weekend.ee</b>.</li>
-          <li>За бажанням увімкніть <b>відстежувати ціни та наявність в інтернет-магазині</b> та/або <b>відстежувати також Facebook</b>.</li>
+          <li><b>Назва компанії</b> – почніть набирати та виберіть зі списку компанію з торгового реєстру (або впишіть назву вручну).</li>
+          <li><b>Вебсторінка</b> – достатньо назви без https:// на початку, напр. <b>weekend.ee</b>.</li>
+          <li>За бажанням увімкніть <b>відстежувати ціни та наявність інтернет-магазину</b> та/або <b>відстежувати також Facebook</b>.</li>
           <li>Натисніть <span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Додати відстежувану компанію</span></li>
         </ol>
+        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg> Ту саму компанію двічі не додати</div><p>Якщо компанія з тією самою назвою або вебадресою вже є у Вашому списку, система повідомить – так не виникне подвійного запису чи подвійної місячної плати.</p></div>
         <h3>Моніторинг інтернет-магазину</h3>
-        <p>Якщо Ви оберете моніторинг інтернет-магазину, система спробує сама зчитати товари магазину. У разі успіху моніторинг запускається автоматично; інакше оператор переглядає. Додатково Ви можете відкрити <b>фільтр за ключовими словами</b>: введіть ключове слово та натисніть Enter або <b>+</b>, щоб додати чип (напр. <i>газонокосарка</i>). Якщо залишити порожнім, ми відстежуємо всі товари.</p>
-        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg> Цінова модель</div><p>Моніторинг інтернет-магазину коштує <strong>8 €/міс. за кожні до 2000 відстежуваних товарів</strong>. Усі ціни без ПДВ. Коли система зчитала товари магазину, Ви самі обираєте категорії для відстеження – це визначає кількість товарів і щомісячну плату. Ми показуємо точну суму та запитуємо підтвердження, перш ніж відкрити дані.</p></div>
+        <p>Якщо Ви обираєте моніторинг інтернет-магазину, система намагається сама зчитати товари магазину. У разі успіху моніторинг запускається автоматично; інакше оператор переглядає його. Ви можете додати <b>фільтр за ключовими словами</b>: наберіть ключове слово та натисніть Enter або <b>+</b>, щоб додати чип (напр. <i>газонокосарка</i>). Якщо залишити порожнім, ми відстежуємо всі товари.</p>
+        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg> Модель ціноутворення</div><p>Моніторинг інтернет-магазину коштує <strong>8 € на місяць за кожні до 2000 відстежуваних товарів</strong>. Усі ціни без ПДВ. Коли система зчитала товари магазину, Ви самі обираєте категорії для відстеження – це визначає кількість товарів та місячну плату. Ми показуємо точну суму та просимо підтвердження, перш ніж відкрити дані.</p></div>
         <h3>Моніторинг Facebook</h3>
-        <p>Введіть адресу сторінки у Facebook – достатньо назви сторінки або адреси (напр. <b>facebook.com/konkurent</b> або просто <b>конкурент</b>). Якщо сторінки ще немає у списку моніторингу, вона надходить оператору на підтвердження.</p>
+        <p>Введіть адресу сторінки Facebook – достатньо назви сторінки або адреси (напр. <b>facebook.com/konkurent</b> або просто <b>konkurent</b>). Якщо сторінки ще немає у списку моніторингу, вона надходить оператору на підтвердження. Моніторинг Facebook коштує <strong>3 € на місяць за конкурента</strong>.</p>
       </section>
 
       <!-- 6 -->
       <section class="doc" id="firmavaade">
         <h2><span class="num">6</span> Вигляд компанії та каталог товарів</h2>
-        <p>Клацання на робочому столі на назві компанії відкриває її повний вигляд: усі канали, знахідки та – для інтернет-магазину – увесь каталог товарів.</p>
+        <p>Натискання на назву компанії на робочому столі відкриває її повний вигляд: усі канали, знахідки, стан інтернет-магазину, графіки та – для інтернет-магазину – увесь каталог товарів.</p>
         <figure>
-          <img src="l360-kataloog.png" alt="Вигляд компанії: каталог товарів з категоріями, цінами та наявністю" loading="lazy">
-          <figcaption>Вигляд компанії – каталог товарів із пошуком, категоріями, цінами та наявністю.</figcaption>
+          <img src="l360-firma-tervis.png" alt="Вигляд компанії: стан інтернет-магазину, графік кількості товарів та VIP-товари" loading="lazy">
+          <figcaption>Вигляд компанії – показники стану інтернет-магазину, зміна асортименту в часі та VIP-товари.</figcaption>
         </figure>
+        <h3>Стан інтернет-магазину</h3>
+        <p>На картці Ви бачите одночасно: <b>товарів усього</b>, <b>у наявності</b>, <b>немає в наявності</b>, <b>ціна відсутня</b>, <b>зі знижкою</b> та <b>наявність невідома</b>. Числа обчислені з каталогу цього магазину та є клікабельними.</p>
+        <h3>Кількість товарів у часі</h3>
+        <p>Графік показує, скільки товарів було в каталозі магазину кожного дня моніторингу – чи асортимент зростає, зменшується або залишається сталим. Поруч – <b>зараз</b>, <b>у середньому</b>, <b>діапазон</b> та <b>напрямок</b>.</p>
+        <h3>VIP-товари</h3>
+        <p>Позначте товар у каталозі <b>зірочкою</b>, щоб додати його до VIP-товарів. Для кожного VIP-товару малюється окремий графік: звичайна ціна, ціна зі знижкою та наявність у часі. Одночасно до 10 товарів – тримайте на оці ті, що для Вас найважливіші.</p>
         <h3>Кнопки заголовка</h3>
         <ul class="plain">
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Обрати категорії</span> – оберіть, які категорії магазину відстежувати (див. <a href="#kategooriad">розділ 7</a>).</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Вибрати категорії</span> – виберіть, які категорії магазину відстежувати (див. <a href="#kategooriad">розділ 7</a>).</li>
           <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 6H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4"/><path d="M14 4h6v6m0-6L10 14"/></svg> Відкрити сайт</span> – відкриває інтернет-магазин конкурента в новому вікні.</li>
         </ul>
-        <h3>Повідомлення про стан</h3>
-        <p>У верхній частині вигляду може бути повідомлення: <b>очікує підтвердження оператора</b>, <b>скрейпер будується</b>, <b>розпізнаємо категорії</b>, <b>автоматичне налаштування не вдалося</b> (оператор перегляне) або <b>запит відхилено</b>.</p>
-        <h3>Підтвердження щомісячної плати</h3>
-        <p>Коли товари магазину зчитані, Ви бачите калькулятор: <b>кількість товарів</b>, <b>щаблі</b> (× до 2000 товарів), <b>базова ціна 8 €</b>, можлива доплата та <b>щомісячна плата разом</b>. До підтвердження каталог показано як зразок <b>розмито</b> (blur). Варіанти:</p>
+        <h3>Підтвердження місячної плати</h3>
+        <p>Коли товари магазину зчитано, Ви бачите калькулятор: <b>кількість товарів</b>, <b>щаблі</b> (× до 2000 товарів), <b>базова ціна 8 €</b> та <b>місячна плата разом</b>. До підтвердження каталог показано як приклад <b>розмито</b> (blur). Варіанти:</p>
         <ul class="plain">
-          <li><span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg> Оплатити та відкрити дані</span> – ми спрямовуємо до безпечного платіжного шлюзу (банківське посилання або картка); дані відкриваються одразу.</li>
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg> Оплатити рахунком за переказом</span> – ми надсилаємо рахунок електронною поштою; вміст відкривається після надходження оплати.</li>
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Обрати категорії</span> – зменшіть кількість товарів, щоб щомісячна плата знизилася.</li>
+          <li><span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg> Оплатити та відкрити дані</span> – ми спрямуємо Вас до безпечного платіжного шлюзу (банківське посилання або картка); дані відкриваються одразу.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg> Оплатити рахунком-фактурою</span> – ми надішлемо рахунок електронною поштою; вміст відкриється після надходження оплати.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Вибрати категорії</span> – зменшіть кількість товарів, щоб місячна плата знизилася.</li>
         </ul>
-        <p>Підтвердження моніторингу Facebook відбувається так само (3 €/міс.).</p>
+        <figure>
+          <img src="l360-kataloog.png" alt="Вигляд компанії: каталог товарів з пошуком, категоріями, цінами та наявністю" loading="lazy">
+          <figcaption>Каталог товарів – з пошуком, за категоріями, з ціною та наявністю.</figcaption>
+        </figure>
         <h3>Каталог товарів</h3>
         <ul class="plain">
-          <li><b>Пошук</b> – введіть назву товару, щоб відфільтрувати список.</li>
-          <li><b>Категорії</b> – клацніть на категорії, щоб відкрити підкатегорії та товари.</li>
+          <li><b>Пошук</b> – впишіть назву товару, щоб відфільтрувати список.</li>
+          <li><b>Категорії</b> – натисніть на категорію, щоб відкрити підкатегорії та товари.</li>
           <li><b>Наявність</b> – біля кожного товару <span class="pill ok"><span class="dot"></span>у наявності</span>, <span class="pill err"><span class="dot"></span>немає</span> або <span class="pill sec"><span class="dot"></span>невідомо</span>.</li>
-          <li><b>Ціна</b> – у разі акційної ціни Ви бачите звичайну ціну закресленою, а акційну – червоним.</li>
-          <li><b>Зовнішнє посилання</b> (стрілка) веде до товару в магазині.</li>
-          <li><b>Клацання на рядку товару</b> відкриває <b>графік історії ціни та наявності</b>: поточна ціна та знижка, звичайна ціна пунктирною лінією, наявність у часі смугою та легенда.</li>
+          <li><b>Ціна</b> – за наявності знижки Ви бачите звичайну ціну закресленою, а ціну зі знижкою – червоним.</li>
+          <li><b>Зірочка</b> додає товар до VIP-списку; <b>дзвіночок</b> одразу створює цінове сповіщення; <b>стрілка</b> веде до товару в магазині.</li>
         </ul>
+        <h3>Історія ціни та наявності</h3>
+        <p>Натискання на рядок товару відкриває вікно з графіком: поточна ціна та знижка, звичайна ціна та ціна зі знижкою в часі, а також наявність. Легенда внизу пояснює лінії.</p>
+        <figure>
+          <img src="l360-tootegraafik.png" alt="Графік історії ціни та наявності товару у спливному вікні" loading="lazy">
+          <figcaption>Історія ціни та наявності товару – звичайна ціна (зелений) та ціна зі знижкою (червоний) у часі.</figcaption>
+        </figure>
       </section>
 
       <!-- 7 -->
       <section class="doc" id="kategooriad">
         <h2><span class="num">7</span> Вибір категорій</h2>
-        <p>Кнопка <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Обрати категорії</span> відкриває список усіх категорій магазину. Що менше товарів Ви оберете, то менша щомісячна плата.</p>
+        <p>Кнопка <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Вибрати категорії</span> відкриває список усіх категорій магазину. Чим менше товарів Ви обираєте, тим менша місячна плата.</p>
         <ol class="steps">
-          <li>Позначте прапорцями категорії, які бажаєте відстежувати. На допомогу – <b>Обрати все</b>, <b>Скасувати вибір</b> та <b>пошук</b>.</li>
-          <li>Стежте внизу за <b>калькулятором</b>: обрані товари → щаблі (× до 2000) → щомісячна плата оновлюється одразу.</li>
+          <li>Позначте прапорцем категорії, які хочете відстежувати. На допомогу – <b>Вибрати все</b>, <b>Скасувати вибір</b> та <b>пошук</b>.</li>
+          <li>Стежте внизу за <b>калькулятором</b>: вибрані товари → щаблі (× до 2000) → місячна плата оновлюється одразу.</li>
           <li>Натисніть <span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg> Зберегти вибір</span></li>
         </ol>
-        <p>Ви можете будь-коли пізніше змінити вибір – щомісячна плата відповідно скоригується.</p>
+        <p>Вибір можна будь-коли пізніше змінити – місячна плата відкоригується відповідно.</p>
       </section>
 
       <!-- 8 -->
-      <section class="doc" id="teenused">
-        <h2><span class="num">8</span> Послуги та щомісячна плата</h2>
-        <p>У меню <b>Послуги</b> Ви бачите все, за що платите, і можете дозамовити.</p>
+      <section class="doc" id="hinnavordlus">
+        <h2><span class="num">8</span> Порівняння цін</h2>
+        <p>Пункт меню <b>Порівняння цін</b> бере той самий товар серед усіх відстежуваних магазинів і показує, <strong>де він найдешевший</strong> та як ціна рухалася в часі. Товари пов'язуються між собою за кодом моделі та розміром.</p>
+        <figure>
+          <img src="l360-hinnavordlus.png" alt="Порівняння цін: той самий товар у кількох магазинах, найнижча ціна та графік історії" loading="lazy">
+          <figcaption>Порівняння цін – найдешевший магазин для кожного товару, ціновий діапазон магазинів та графік історії.</figcaption>
+        </figure>
         <ul class="plain">
-          <li><b>Ваша щомісячна плата разом</b> – велике число вгорі. Сума складається з усіх активних послуг. Поруч – дата наступного розрахунку.</li>
-          <li><b>Оплачено – очікує активації</b> – замовлення, перша плата за які сплачена і які оператор незабаром увімкне.</li>
-          <li><b>Ваші послуги</b> – усі активні послуги (зеленим), зокрема моніторинг Facebook та вебу конкурентів. <b>Скасувати</b> завершує послугу; моніторинг конкурентів керується через <b>Додати компанію</b> (кнопка <b>Керувати</b>).</li>
-          <li><b>Дозамовити</b> – біля кожної послуги є ціна €/міс. та перша плата. Натисніть <span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Замовити</span>, підтвердьте у вікні та сплатіть першу плату. Для спеціальних завдань є кнопка <span class="chip">Запитати пропозицію</span>.</li>
-          <li><b>Пакети</b> – замовляють одразу кілька послуг одним платіжним потоком.</li>
+          <li>Угорі – зведення: <b>порівнюваних товарів</b>, <b>графіків історії цін</b> та <b>відстежуваних магазинів</b>.</li>
+          <li>Кожна картка показує <b>найнижчу ціну</b>, <b>ціновий діапазон магазинів</b> у часі та <b>сьогоднішній найдешевший магазин</b>.</li>
+          <li>Унизу зазначено, на скільки відсотків ціна змінилася за відстежуваний період і серед скількох магазинів знайдено найдешевший.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg> CSV (Excel)</span> завантажує все порівняння.</li>
         </ul>
-        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Як обчислюється перша плата</div><p>Замовляючи нову послугу, Ви одразу сплачуєте <strong>пропорційну першу плату</strong> – лише до наступного дня розрахунку. Потім оператор вмикає послугу, і надалі всі послуги розраховуються разом.</p></div>
+        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg> Навіщо</div><p>Ви одразу бачите, чи на якомусь товарі Ви на ринку найдорожчі або найдешевші – хороший вхідний матеріал для ціноутворення (<a href="#hinnastamine">розділ 14</a>) та кампаній.</p></div>
       </section>
 
       <!-- 9 -->
-      <section class="doc" id="maksed">
-        <h2><span class="num">9</span> Як відбувається оплата</h2>
-        <p>Кожна оплата починається з <strong>вікна підтвердження</strong>, де вказано суму та за що Ви платите. Ви завжди можете <b>Скасувати</b>.</p>
+      <section class="doc" id="teavitused">
+        <h2><span class="num">9</span> Сповіщення</h2>
+        <p>Пункт меню <b>Сповіщення</b> дає змогу встановити <strong>правила</strong>, за виконання яких ми одразу надсилаємо повідомлення – як push-сповіщення на телефон та/або електронним листом.</p>
+        <figure>
+          <img src="l360-teavitused.png" alt="Сповіщення: додавання правила цінового сповіщення та список правил" loading="lazy">
+          <figcaption>Сповіщення – додайте правило (умова, магазин, товар, поріг) та виберіть push та/або електронний лист.</figcaption>
+        </figure>
+        <ol class="steps">
+          <li>Виберіть <b>умову</b> – напр. зниження ціни щонайменше на X%, немає в наявності, новий товар, конкурент опустився нижче Вашої ціни.</li>
+          <li>Виберіть <b>магазин</b> (усі відстежувані або один конкретний) та за бажанням <b>конкретний товар</b>.</li>
+          <li>Визначте <b>поріг (%)</b>, якщо умова цього потребує.</li>
+          <li>Позначте <b>Push-сповіщення</b> та/або <b>Електронний лист</b> і натисніть <span class="chip go">Додати правило</span></li>
+        </ol>
         <ul class="plain">
-          <li><b>Сплачуючи одразу</b>, ми спрямовуємо до безпечного платіжного шлюзу – Ви платите <b>банківським посиланням</b> або <b>карткою</b>, і дані/послуга відкриваються одразу після оплати.</li>
-          <li><b>Рахунком за переказом</b> – ми надсилаємо рахунок електронною поштою. Вміст відкривається в повному обсязі тоді, коли оплата надійшла.</li>
-          <li><b>Перша плата</b> завжди пропорційна до наступного дня розрахунку; надалі стягується повна щомісячна плата.</li>
-          <li><b>Розрахунок</b> відбувається за всі послуги одночасно, за річницею Вашого дня приєднання.</li>
+          <li>Правило можна будь-коли тимчасово <b>вимкнути</b> або видалити.</li>
+          <li>Найшвидше сповіщення Ви створюєте прямо з каталогу або з порівняння цін – <b>значок дзвіночка</b> у рядку товару заповнює форму заздалегідь.</li>
+          <li>Щоб отримувати push-сповіщення, натисніть угорі <span class="chip">Дозволити push-сповіщення</span> (на iPhone – після встановлення як застосунку, див. <a href="#seaded">розділ 17</a>).</li>
         </ul>
       </section>
 
       <!-- 10 -->
-      <section class="doc" id="hinnastamine">
-        <h2><span class="num">10</span> Ціноутворення</h2>
-        <p>Пункт меню <b>Ціноутворення</b> видно лише тоді, коли у Вас замовлена послуга <strong>переоцінки цін</strong>. Там Ви бачите рекомендації цін на основі конкуренції для Вашого власного магазину.</p>
+      <section class="doc" id="kuuraportid">
+        <h2><span class="num">10</span> Місячні звіти</h2>
+        <p>Пункт меню <b>Місячні звіти</b> кожного 1-го числа місяця зводить за попередній місяць <strong>PDF-звіт для керівництва</strong>: зміни цін, рух асортименту, Вашу цінову позицію на ринку та порушення захисту бренду.</p>
+        <figure>
+          <img src="l360-kuuraportid.png" alt="Місячні звіти: пояснення місячного зведеного PDF та архів" loading="lazy">
+          <figcaption>Місячні звіти – автоматичний місячний PDF, який можна переслати безпосередньо правлінню або виробнику.</figcaption>
+        </figure>
         <ul class="plain">
-          <li><b>Таблиця рекомендацій</b> – товар, поточна ціна, рекомендована ціна, різниця та причина.</li>
-          <li><span class="chip">Згенерувати заново</span> обчислює рекомендації наново; <span class="chip">Правила</span> та <span class="chip">Історія</span> показують налаштування та попередні зміни.</li>
-          <li>Коли послуга <b>активована</b>, рекомендацію можна одним клацанням записати у Ваш магазин WooCommerce; <b>Залишити так</b> залишає ціну й ігнорує товар протягом обраних днів, <b>Пропустити</b> пропускає рекомендацію.</li>
+          <li><b>Автоматично</b> – звіт готується та надсилається електронною поштою на початку кожного місяця; нічого не потрібно робити вручну.</li>
+          <li><b>Архів</b> – усі попередні місячні звіти доступні тут для завантаження.</li>
+          <li>На відміну від щоранкового листа (див. нижче), місячний звіт – це <b>зведений огляд</b> для особи, що ухвалює рішення, а не денний список змін.</li>
         </ul>
-        <div class="box warn"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg> Безпечно</div><p>Запис зміни ціни в магазин вмикає Look360 разом із Вами. За замовчуванням усе працює в режимі <b>сухого прогону</b> (нічого не змінюється), доки ми не домовимося про live-режим.</p></div>
+        <h3>Щоранковий лист та попередження в реальному часі</h3>
+        <ul class="plain">
+          <li><b>Щоранковий лист</b> – найважливіші зміни надходять до Вашої (та узгоджених контактів) поштової скриньки автоматично. Його можна вмикати/вимикати на сторінці <a href="#konto">Обліковий запис</a>.</li>
+          <li><b>Попередження в реальному часі</b> – найкритичніше (напр. зниження ціни в конкурента, збій інтернет-магазину, закінчення наявності) надходить одразу через правила сповіщень.</li>
+        </ul>
       </section>
 
       <!-- 11 -->
-      <section class="doc" id="raportid">
-        <h2><span class="num">11</span> Звіти</h2>
+      <section class="doc" id="konto">
+        <h2><span class="num">11</span> Обліковий запис та доступ до API</h2>
+        <p>Пункт меню <b>Обліковий запис</b> зводить дані та налаштування Вашого облікового запису.</p>
+        <figure>
+          <img src="l360-konto.png" alt="Обліковий запис: дані облікового запису, пароль, доступ до API та налаштування сповіщень" loading="lazy">
+          <figcaption>Обліковий запис – дані підприємства, зміна пароля, ключ API та перемикач щоранкового листа.</figcaption>
+        </figure>
         <ul class="plain">
-          <li><b>Щоранковий лист</b> – найважливіші зміни надходять до Вашої (та узгоджених контактів) поштової скриньки автоматично.</li>
-          <li><b>Попередження в реальному часі</b> – найкритичніше (напр. зниження ціни в конкурента, збій інтернет-магазину, закінчення наявності) надходить одразу, решта збирається у ранковому звіті.</li>
-          <li><b>Історія звітів</b> – на робочому столі Ви можете відкрити кожен попередній зведений звіт і побачити, що тоді змінилося.</li>
+          <li><b>Дані облікового запису</b> – підприємство, контактна особа та електронна пошта реєстрації.</li>
+          <li><b>Пароль</b> – <span class="chip">Змінити пароль</span>; забутий пароль можна скинути зі сторінки входу.</li>
+          <li><b>Щоранковий звіт моніторингу</b> – перемикач, яким Ви вмикаєте або вимикаєте електронний лист.</li>
         </ul>
+        <h3>Доступ до API (BI, ERP, Excel)</h3>
+        <p>Через REST API Ви можете отримати свої дані моніторингу – магазини, товари, ціни, порівняння цін, знахідки – безпосередньо у свою систему (Power BI, ERP, Excel Power Query).</p>
+        <ol class="steps">
+          <li>Впишіть призначення ключа (напр. „Power BI") та натисніть <span class="chip go">Створити ключ API</span></li>
+          <li>Скопіюйте ключ одразу – його показують лише один раз.</li>
+          <li>Перегляньте за посиланням <b>документацію API</b>, які кінцеві точки доступні.</li>
+        </ol>
       </section>
 
       <!-- 12 -->
-      <section class="doc" id="seaded">
-        <h2><span class="num">12</span> Застосунок, сповіщення та темний режим</h2>
+      <section class="doc" id="teenused">
+        <h2><span class="num">12</span> Усі послуги та місячна плата</h2>
+        <p>У меню <b>Послуги</b> Ви бачите все, за що платите, і можете додатково замовити. Угорі – <b>Ваша місячна плата разом</b> та дата наступного розрахунку.</p>
+        <figure>
+          <img src="l360-teenused.png" alt="Послуги: місячна плата разом та список активних послуг" loading="lazy">
+          <figcaption>Послуги – місячна плата разом, активні послуги та додаткове замовлення.</figcaption>
+        </figure>
+        <p>Нижче – усе, що ми пропонуємо. Усі ціни <b>без ПДВ, за місяць</b>.</p>
+
+        <div class="cat-h">Обслуговування Вашого власного інтернет-магазину</div>
+        <div class="svc">
+          <div class="s"><div class="h"><span class="nm">Перевірка стану інтернет-магазину</span><span class="pr">20 €</span></div><p>Сканує товари Вашого інтернет-магазину та знаходить недоліки: відсутні зображення та alt-тексти, порожні або надто короткі описи, некоректні ціни, дубльовані товари. Дає стан у % та список виправлень.</p></div>
+          <div class="s"><div class="h"><span class="nm">Моніторинг SEO та контентних прогалин</span><span class="pr">від 16 €</span></div><p>Відстежує позиції Ваших ключових слів у Google та знаходить контентні прогалини – теми, за якими у Вас ще немає контенту. Ціна залежить від кількості відстежуваних ключових слів.</p></div>
+          <div class="s"><div class="h"><span class="nm">Надійність вебсайту</span><span class="pr">10 €</span></div><p>Перевіряє, чи Ваш вебсайт/інтернет-магазин працює та як швидко відповідає. Повідомляє, якщо сайт падає або стає повільним.</p></div>
+          <div class="s"><div class="h"><span class="nm">Інтеграція ERP–інтернет-магазин</span><span class="pr">30 €</span></div><p>З'єднує Ваш інтернет-магазин та бухгалтерське програмне забезпечення (напр. Directo) – замовлення, залишки на складі та ціни рухаються автоматично, без ручного перенесення.</p></div>
+          <div class="s"><div class="h"><span class="nm">Переоцінка цін</span><span class="pr">30 €</span></div><p>Цінові рекомендації на основі конкуренції для Вашого власного магазину, які можна одним кліком записати в WooCommerce (див. <a href="#hinnastamine">розділ 14</a>).</p></div>
+        </div>
+
+        <div class="cat-h">Моніторинг конкурентів</div>
+        <div class="svc">
+          <div class="s"><div class="h"><span class="nm">Моніторинг FB конкурентів</span><span class="pr">3 € / конкурент</span></div><p>Відстежує дописи конкурентів у Facebook: нові товари, кампанії, події, цінові оголошення. Усе в одній стрічці, нове виділено.</p></div>
+          <div class="s"><div class="h"><span class="nm">Реклама конкурентів у FB</span><span class="pr">6 €</span></div><p>Відстежує активну рекламу конкурентів у Facebook – що вони рекламують, скільки реклам працює та коли вони стартували чи були зупинені.</p></div>
+          <div class="s"><div class="h"><span class="nm">Моніторинг цін та наявності інтернет-магазину</span><span class="pr">8 € / 2000 товарів</span></div><p>Відстежує ціни, знижки, наявність та асортимент інтернет-магазину конкурента. Дає графіки історії та живить порівняння цін. Щаблево: 8 € за кожні до 2000 товарів.</p></div>
+        </div>
+
+        <div class="cat-h">Власнику бренду та імпортеру</div>
+        <div class="svc">
+          <div class="s"><div class="h"><span class="nm">Ціновий нагляд за дилерами</span><span class="pr">40 €</span></div><p>Ви визначаєте RRP (рекомендовану роздрібну ціну) та MAP (мінімальну дозволену рекламну ціну) для своїх товарів; система відстежує, які дилери їх порушують (див. <a href="#brandivalve">розділ 15</a>).</p></div>
+        </div>
+
+        <div class="cat-h">Додаткові послуги</div>
+        <div class="svc">
+          <div class="s"><div class="h"><span class="nm">Навчання команди</span><span class="pr">40 €</span></div><p>Ми навчаємо Вашу команду роботі із системою та інтернет-магазином, щоб усі вміли поставити моніторинг і дані собі на користь.</p></div>
+          <div class="s"><div class="h"><span class="nm">Автоматизація на замовлення</span><span class="pr">за запитом</span></div><p>На спеціальне замовлення ми автоматизуємо Ваші повторювані завдання – звіти, синхронізації, сповіщення, потоки даних. Натисніть <span class="chip">Запросити пропозицію</span>.</p></div>
+        </div>
+
+        <div class="cat-h">Пакети</div>
+        <div class="svc">
+          <div class="s"><div class="h"><span class="nm">Повний пакет для власного магазину</span></div><p>Перевірка стану + SEO + надійність + переоцінка цін.</p></div>
+          <div class="s"><div class="h"><span class="nm">Стартовий пакет моніторингу</span></div><p>Моніторинг FB конкурентів + перевірка стану інтернет-магазину + надійність.</p></div>
+          <div class="s"><div class="h"><span class="nm">Пакет Обслуговування+</span></div><p>Перевірка стану + надійність + інтеграція ERP.</p></div>
+        </div>
+
+        <h3>Як замовити</h3>
         <ul class="plain">
-          <li><b>Встановити як застосунок</b> – у телефоні Ви можете додати панель на головний екран, як застосунок: відкрийте меню браузера та оберіть «Додати на головний екран». Відтепер Look360 відкривається просто з іконки на весь екран – нічого не потрібно завантажувати.</li>
-          <li><b>Сповіщення на телефон</b> – кнопка <span class="chip">Дозволити сповіщення</span> на робочому столі надсилає важливі зміни цін і наявності push-сповіщенням просто на пристрій. На iPhone це працює після встановлення як застосунку.</li>
-          <li><b>Темний / світлий режим</b> – перемикач на верхній смузі (сонце/місяць) змінює тему. Вибір запам’ятовується.</li>
-          <li><b>У телефоні</b> – меню сховане за кнопкою ☰ у верхньому куті; вміст пристосовується до ширини екрана.</li>
-          <li><b>Вихід</b> – значок «двері назовні» ліворуч унизу біля імені користувача.</li>
+          <li>Біля кожної послуги зазначено ціну €/місяць. Натисніть <span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Замовити</span>, підтвердьте у вікні та сплатіть первинну плату; пакети замовляють кілька послуг одразу.</li>
+          <li>Активні послуги <span class="pill ok"><span class="dot"></span>зелені</span>. <b>Скасувати</b> завершує послугу; моніторингом конкурентів керують через <b>Додати компанію</b> та кнопку <b>Керувати</b>.</li>
+          <li><b>Оплачено – очікує активації</b>: первинну плату сплачено, і оператор незабаром увімкне послугу.</li>
         </ul>
+        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Як обчислюється первинна плата</div><p>При замовленні нової послуги Ви одразу сплачуєте <strong>пропорційну первинну плату</strong> – лише до наступного дня розрахунку. Далі всі послуги розраховуються разом, за річницею дня Вашого приєднання.</p></div>
       </section>
 
       <!-- 13 -->
+      <section class="doc" id="maksed">
+        <h2><span class="num">13</span> Як відбувається оплата</h2>
+        <p>Кожна оплата починається з <strong>вікна підтвердження</strong>, де зазначено суму та за що Ви платите. Ви завжди можете <b>Скасувати</b>.</p>
+        <ul class="plain">
+          <li><b>При негайній оплаті</b> ми спрямуємо Вас до безпечного платіжного шлюзу – Ви платите <b>банківським посиланням</b> або <b>карткою</b>, і дані/послуга відкриваються одразу після оплати.</li>
+          <li><b>Рахунком-фактурою</b> – ми надішлемо рахунок електронною поштою. Вміст відкривається в повному обсязі тоді, коли оплата надійшла.</li>
+          <li><b>Первинна плата</b> завжди пропорційна до наступного дня розрахунку; надалі діє повна місячна плата.</li>
+          <li><b>Розрахунок</b> відбувається за всі послуги одночасно, за річницею дня Вашого приєднання.</li>
+        </ul>
+      </section>
+
+      <!-- 14 -->
+      <section class="doc" id="hinnastamine">
+        <h2><span class="num">14</span> Ціноутворення</h2>
+        <p>Пункт меню <b>Ціноутворення</b> видно лише тоді, коли у Вас замовлено послугу <strong>переоцінки цін</strong>. Там Ви бачите цінові рекомендації на основі конкуренції для Вашого власного магазину.</p>
+        <div class="deflist">
+          <div class="dr"><span class="k">Товар</span><span class="v">Товар та правило, на основі якого зроблено рекомендацію.</span></div>
+          <div class="dr"><span class="k">Поточна</span><span class="v">Поточна ціна товару у Вашому магазині.</span></div>
+          <div class="dr"><span class="k">Рекомендація</span><span class="v">Рекомендована системою нова ціна.</span></div>
+          <div class="dr"><span class="k">Різниця</span><span class="v">Зміна в € та % (напр. −0,22 € · −14,7%).</span></div>
+          <div class="dr"><span class="k">Причина</span><span class="v">Чому: напр. „найдешевший конкурент 1,50 €; правило 3% нижче; нижня межа під захистом".</span></div>
+        </div>
+        <ul class="plain">
+          <li><span class="chip">Згенерувати заново</span> обчислює рекомендації наново; <span class="chip">Правила</span> та <span class="chip">Історія</span> показують налаштування та попередні зміни.</li>
+          <li>Біля кожної рекомендації: <span class="chip go">Записати</span> переносить ціну в магазин, <b>Залишити як є</b> залишає ціну та ігнорує товар протягом вибраних днів, <b>Пропустити</b> пропускає рекомендацію.</li>
+        </ul>
+        <div class="box warn"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg> Безпечно – за замовчуванням „роззброєно"</div><p>За замовчуванням усе в <b>тестовому режимі</b>: рекомендації обчислюються, але жодне „Записати" не змінює Ваш магазин. Живий режим (справжній запис цін) ми вмикаємо разом із Вами. Нижні межі (цінова підлога, MAP) запобігають надто низькій рекомендації.</p></div>
+      </section>
+
+      <!-- 15 -->
+      <section class="doc" id="brandivalve">
+        <h2><span class="num">15</span> Захист бренду</h2>
+        <p>Пункт меню <b>Захист бренду</b> призначений власнику бренду та імпортеру. Якщо у Вас замовлено <strong>ціновий нагляд за дилерами</strong>, Ви тут визначаєте цінові правила для своїх товарів і бачите, хто їх порушує.</p>
+        <ol class="steps">
+          <li>Додайте свої товари разом із <b>RRP</b> (рекомендована роздрібна ціна) та <b>MAP</b> (мінімальна дозволена рекламна ціна). Товари можна додавати по одному або імпортувати.</li>
+          <li>Система порівнює ціни відстежуваних дилерів із Вашими RRP/MAP.</li>
+          <li>Ви бачите список <b>порушень</b> – хто продає нижче MAP або відхиляється від RRP – і можете експортувати <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg> CSV</span>.</li>
+        </ol>
+        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg> Навіщо</div><p>Ви утримуєте ціновий рівень свого бренду – знайшовши порушення, Ви маєте документально підтверджену основу для розмови з дилером.</p></div>
+      </section>
+
+      <!-- 16 -->
+      <section class="doc" id="naited">
+        <h2><span class="num">16</span> Приклади ситуацій</h2>
+        <p>Ось як функції поєднуються в реальну роботу.</p>
+
+        <div class="scn">
+          <h3>1. Конкурент обвалив ціну</h3>
+          <p>Ранковий лист приносить „Конкурент X: 12 знижень цін". Ви відкриваєте <b>Порівняння цін</b> і бачите, що на трьох товарах Ви тепер на ринку найдорожчі. <b>Ціноутворення</b> пропонує нові ціни – Ви записуєте їх у магазин одним кліком.</p>
+          <div class="flow"><span class="st">Ранковий лист</span><span class="ar">→</span><span class="st">Порівняння цін</span><span class="ar">→</span><span class="st">Ціноутворення</span><span class="ar">→</span><span class="st">Записати в магазин</span></div>
+        </div>
+
+        <div class="scn">
+          <h3>2. Товар закінчився в конкурента</h3>
+          <p>Ви встановили правило сповіщення „немає в наявності" для одного ключового товару. Коли він закінчується в конкурента, приходить <b>push на телефон</b>. Ви реагуєте: підвищуєте ціну або рекламуєте, що у Вас товар у наявності.</p>
+          <div class="flow"><span class="st">Правило сповіщення</span><span class="ar">→</span><span class="st">Push на телефон</span><span class="ar">→</span><span class="st">Ви реагуєте</span></div>
+        </div>
+
+        <div class="scn">
+          <h3>3. Новий конкурент на ринку</h3>
+          <p>Ви чуєте про новий магазин. <b>Додати компанію</b> → інтернет-магазин + Facebook → підтверджуєте місячну плату. За кілька хвилин Ви бачите його асортимент, ціни та активність у Facebook.</p>
+          <div class="flow"><span class="st">Додати компанію</span><span class="ar">→</span><span class="st">Підтвердити місячну плату</span><span class="ar">→</span><span class="st">Вигляд компанії</span></div>
+        </div>
+
+        <div class="scn">
+          <h3>4. Стан мого інтернет-магазину кульгає</h3>
+          <p><b>Стан інтернет-магазину</b> показує 109 критичних помилок – відсутні зображення та alt-тексти. Ви проходите список виправлень; на наступному скануванні стан у % зростає.</p>
+          <div class="flow"><span class="st">Стан інтернет-магазину</span><span class="ar">→</span><span class="st">Список виправлень</span><span class="ar">→</span><span class="st">Стан покращується</span></div>
+        </div>
+
+        <div class="scn">
+          <h3>5. Місячний огляд для правління</h3>
+          <p>1-го числа місяця <b>PDF-звіт за місяць</b> автоматично надходить до поштової скриньки. Ви пересилаєте його правлінню – зведення про рух цін, асортимент і ринкову позицію в одному файлі.</p>
+          <div class="flow"><span class="st">Місячний звіт (авто)</span><span class="ar">→</span><span class="st">Переслати правлінню</span></div>
+        </div>
+
+        <div class="scn">
+          <h3>6. Дилер опустився нижче MAP</h3>
+          <p>Ви власник бренду. <b>Захист бренду</b> показує, що один дилер продає товар нижче погодженого MAP. Ви експортуєте порушення та зв'язуєтеся з дилером.</p>
+          <div class="flow"><span class="st">Захист бренду</span><span class="ar">→</span><span class="st">Порушення</span><span class="ar">→</span><span class="st">Зв'язатися</span></div>
+        </div>
+
+        <div class="scn">
+          <h3>7. Дані у Вашу BI-систему</h3>
+          <p>Ви хочете отримати ціни та наявність у свій звіт Power BI. <b>Обліковий запис</b> → <b>Створити ключ API</b> → Ви під'єднуєте REST API через Power Query. Дані оновлюються автоматично.</p>
+          <div class="flow"><span class="st">Обліковий запис</span><span class="ar">→</span><span class="st">Ключ API</span><span class="ar">→</span><span class="st">Power BI</span></div>
+        </div>
+      </section>
+
+      <!-- 17 -->
+      <section class="doc" id="seaded">
+        <h2><span class="num">17</span> Застосунок і темний режим</h2>
+        <ul class="plain">
+          <li><b>Встановити як застосунок</b> – на телефоні Ви можете додати панель на головний екран, як застосунок: відкрийте меню браузера та виберіть „Додати на головний екран". Надалі Look360 відкривається прямо зі значка на весь екран – нічого не потрібно завантажувати.</li>
+          <li><b>Сповіщення на телефон</b> – кнопка <span class="chip">Дозволити push-сповіщення</span> надсилає важливі зміни прямо на пристрій. На iPhone це працює після встановлення як застосунку.</li>
+          <li><b>Темний / світлий режим</b> – перемикач на верхній смузі (сонце/місяць) змінює тему. Вибір запам'ятовується.</li>
+          <li><b>На телефоні</b> – меню приховане за кнопкою ☰ у верхньому куті; вміст адаптується до ширини екрана.</li>
+          <li><b>Вихід</b> – значок дверей із виходом ліворуч унизу поруч з іменем користувача.</li>
+        </ul>
+      </section>
+
+      <!-- 18 -->
       <section class="doc" id="abi">
-        <h2><span class="num">13</span> Допомога та контакти</h2>
-        <p>Якщо у вас виникне запитання чи проблема, ми відповідаємо англійською – жива людина, а не автоматична відповідь.</p>
+        <h2><span class="num">18</span> Допомога та контакти</h2>
+        <p>Якщо у Вас виникне запитання чи проблема, ми відповідаємо англійською – жива людина, а не автоматична відповідь.</p>
         <ul class="plain">
           <li>Електронна пошта: <a href="mailto:info@look360.eu">info@look360.eu</a></li>
           <li>Телефон: <a href="tel:+37253620246">+372 5362 0246</a></li>
-          <li>Поширені запитання: <a href="index.html#kkk">FAQ на головній сторінці</a></li>
+          <li>Часті запитання: <a href="index.html#kkk">FAQ на головній сторінці</a></li>
         </ul>
-        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Коротко</div><p>Увійдіть → подивіться на робочому столі на зелене/жовте/червоне → додавайте компанії та послуги → важливі зміни надходять Вам також листом. Більшого робити не треба.</p></div>
+        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Стисло</div><p>Увійдіть → дивіться на робочому столі зелений/жовтий/червоний → додавайте компанії та послуги → встановіть правила сповіщень → важливі зміни надходять до Вас також листом і push-сповіщенням. Більшого робити не потрібно.</p></div>
       </section>
     </div>
   </div>
