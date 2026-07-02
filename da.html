@@ -1613,6 +1613,13 @@ function revealAll(){
 }
 if(location.hash)revealAll();
 addEventListener('hashchange',revealAll);
+// Ankruga maandumine: pildid laadivad pärast esialgset ankru-hüpet ja nihutavad
+// sihtsektsiooni allapoole — keri pärast täislaadimist sihtmärgile uuesti.
+addEventListener('load',function(){
+  if(!location.hash)return;
+  var el=document.querySelector(location.hash);
+  if(el)setTimeout(function(){el.scrollIntoView({behavior:'auto',block:'start'});},60);
+});
 
 /* scroll-karussell (teenused, portfoolio): autoplay + nooled + punktid + pyyhe */
 document.querySelectorAll('.scrl').forEach(function(scrl){
