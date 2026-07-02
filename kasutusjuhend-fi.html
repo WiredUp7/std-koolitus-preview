@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Käyttöopas – Look360-seurantapaneeli</title>
-<meta name="description" content="Look360-seurantapaneelin käyttöopas asiakkaalle: kirjautuminen, työpöytä, yritysten lisääminen, tuoteluettelo, palvelut, maksut ja raportit – vaihe vaiheelta, mikä painike tekee mitä.">
+<meta name="description" content="Look360-seurantapaneelin käyttöopas asiakkaalle: kirjautuminen, työpöytä, yritysten lisääminen, tuoteluettelo, hintavertailu, ilmoitukset, raportit, palvelut ja maksut – vaihe vaiheelta, kuvien ja esimerkkitilanteiden kera.">
 <meta name="robots" content="index,follow">
 <link rel="alternate" hreflang="et" href="https://look360.eu/kasutusjuhend.html">
 <link rel="alternate" hreflang="en" href="https://look360.eu/kasutusjuhend-en.html">
@@ -60,7 +60,7 @@
   /* Layout: sticky TOC + content */
   main{padding:40px 0 80px}
   .layout{display:grid;grid-template-columns:230px 1fr;gap:48px;align-items:start}
-  .toc{position:sticky;top:90px;font-size:14px}
+  .toc{position:sticky;top:90px;font-size:14px;max-height:calc(100vh - 110px);overflow:auto}
   .toc h4{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:12px}
   .toc a{display:block;color:var(--text-2);text-decoration:none;padding:6px 11px;border-radius:9px;border-left:2px solid transparent;font-weight:300;transition:.15s}
   .toc a:hover{background:var(--paper-2);color:var(--text)}
@@ -132,6 +132,22 @@
   .deflist .dr .k{font-weight:600;color:var(--text)}
   .deflist .dr .v{color:var(--text-2);font-weight:300}
 
+  /* Service cards (teenuste ülevaade) */
+  .svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin:16px 0}
+  .svc .s{border:1px solid var(--line);border-radius:14px;padding:15px 17px;background:var(--paper)}
+  .svc .s .h{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:5px}
+  .svc .s .nm{font-weight:600;color:var(--text);font-size:14.5px}
+  .svc .s .pr{font-weight:600;color:var(--accent-ink);font-size:13px;white-space:nowrap}
+  .svc .s p{margin:0;font-size:13px;color:var(--text-2);font-weight:300;line-height:1.55}
+  .cat-h{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:22px 0 2px}
+
+  /* Scenario cards */
+  .scn{border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:0 14px 14px 0;padding:15px 19px;margin:15px 0;background:var(--paper-2)}
+  .scn h3{margin:0 0 4px;font-size:15.5px}
+  .scn .flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:9px;font-size:12.5px;color:var(--muted)}
+  .scn .flow .st{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:3px 9px;color:var(--text-2);font-weight:500}
+  .scn .flow .ar{color:var(--accent)}
+
   footer{background:var(--ink);color:var(--on-dark-mut);padding:40px 0;font-size:14px;font-weight:300;margin-top:20px}
   footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
   footer a{color:var(--on-dark-mut);text-decoration:none}
@@ -139,10 +155,11 @@
 
   @media(max-width:860px){
     .layout{grid-template-columns:1fr;gap:0}
-    .toc{position:static;margin-bottom:24px;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--paper-2)}
+    .toc{position:static;margin-bottom:24px;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--paper-2);max-height:none}
     .toc a{border-left:0;padding:5px 0}
     .toc a.on{background:none}
     .deflist .dr{grid-template-columns:1fr;gap:2px}
+    .scn .flow{font-size:11.5px}
     header.top nav a:not(.login){display:none}
   }
   /* Keelevaheti (lipud) – jagatud lang.js-iga */
@@ -180,140 +197,154 @@
   <div class="wrap">
     <div class="eyebrow"><span class="pip"></span> Käyttöopas</div>
     <h1>Seurantapaneelin käyttöopas</h1>
-    <p>Vaiheittainen yleiskatsaus kaikkeen, mitä näet ja voit tehdä asiakkaana: kirjautumisesta työpöytään, seurattaviin yrityksiin, tuoteluetteloon, palveluihin, maksuihin ja raportteihin. Jokaisen painikkeen kohdalla kerrotaan, mitä se tekee ja mistä näet tuloksen.</p>
+    <p>Vaiheittainen yleiskatsaus kaikkeen, mitä näet ja voit tehdä asiakkaana – kirjautumisesta työpöytään, seurattaviin yrityksiin, tuoteluetteloon, hintavertailuun, ilmoituksiin, palveluihin, maksuihin ja raportteihin. Jokaisen toiminnon kohdalla on kuva, selitys ja aitoja esimerkkitilanteita.</p>
   </div>
 </section>
 
 <main>
   <div class="wrap layout">
     <aside class="toc" id="toc">
-      <h4>Sisältö</h4>
-      <a href="#algus">1. Mikä seurantapaneeli on</a>
+      <h4>Sisällys</h4>
+      <a href="#algus">1. Mikä on Look360</a>
       <a href="#logimine">2. Kirjautuminen</a>
       <a href="#menuu">3. Valikko ja yleisnäkymä</a>
       <a href="#toolaud">4. Seurantatyöpöytä</a>
       <a href="#lisafirma">5. Yrityksen lisääminen</a>
       <a href="#firmavaade">6. Yritysnäkymä ja luettelo</a>
       <a href="#kategooriad">7. Kategorioiden valinta</a>
-      <a href="#teenused">8. Palvelut ja kuukausimaksu</a>
-      <a href="#maksed">9. Miten maksu toimii</a>
-      <a href="#hinnastamine">10. Hinnoittelu</a>
-      <a href="#raportid">11. Raportit</a>
-      <a href="#seaded">12. Sovellus, ilmoitukset ja tumma tila</a>
-      <a href="#abi">13. Apu ja yhteystiedot</a>
+      <a href="#hinnavordlus">8. Hintavertailu</a>
+      <a href="#teavitused">9. Ilmoitukset</a>
+      <a href="#kuuraportid">10. Kuukausiraportit</a>
+      <a href="#konto">11. Tili ja API</a>
+      <a href="#teenused">12. Kaikki palvelut ja kuukausimaksu</a>
+      <a href="#maksed">13. Miten maksu toimii</a>
+      <a href="#hinnastamine">14. Hinnoittelu</a>
+      <a href="#brandivalve">15. Brändivalvonta</a>
+      <a href="#naited">16. Esimerkkitilanteet</a>
+      <a href="#seaded">17. Sovellus ja tumma tila</a>
+      <a href="#abi">18. Apu ja yhteystiedot</a>
     </aside>
 
     <div class="content">
-      <p class="lead">Look360-seurantapaneeli kokoaa yhteen paikkaan kaiken, mitä seuraamme puolestasi – kilpailijoiden hinnat ja varastotilanteen, Facebook-julkaisut, oman verkkokauppasi kunnon. Sinun ei tarvitse asentaa mitään: kirjaudut sisään, näet tilanteen yhdellä silmäyksellä ja saat tärkeät muutokset myös joka-aamuisella sähköpostilla. Tämä opas käy läpi jokaisen näkymän ja painikkeen.</p>
+      <p class="lead">Look360-seurantapaneeli kokoaa yhteen paikkaan kaiken, mitä seuraamme puolestasi – kilpailijoiden hinnat ja varastotilanteen, Facebook-julkaisut ja -mainokset sekä oman verkkokauppasi kunnon ja toimintavarmuuden. Sinun ei tarvitse asentaa mitään: kirjaudut sisään, näet tilanteen yhdellä silmäyksellä ja saat tärkeimmät muutokset myös joka-aamuisella sähköpostilla. Tämä opas käy läpi jokaisen näkymän ja painikkeen, ja lopussa on esimerkkitilanteita, jotka nivovat toiminnot aidoksi työksi.</p>
 
       <!-- 1 -->
       <section class="doc" id="algus">
-        <h2><span class="num">1</span> Mikä seurantapaneeli on</h2>
-        <p>Seurantapaneeli on yksityinen työpöytäsi osoitteessa, johon kirjaudut sisään sähköpostiosoitteellasi ja salasanallasi. Siellä näet kaikki seurattavat yritykset – sekä oman verkkokauppasi että kilpailijat – ja jokaisen muutoksen, jonka järjestelmä on havainnut: hinnanlasku, varaston loppuminen, uusi Facebook-julkaisu, verkkokaupan häiriö.</p>
-        <p>Kaikki toimii <strong>värilogiikan</strong> mukaan. Samat kolme väriä toistuvat kaikkialla – työpöydällä, yrityskortilla, taulukossa:</p>
+        <h2><span class="num">1</span> Mikä on Look360</h2>
+        <p>Look360 on <strong>seuranta, automaatio ja reagointi</strong> yhdessä paketissa. Seurantapaneeli on sinun yksityinen työpöytäsi osoitteessa, johon kirjaudut sähköpostilla ja salasanalla. Siellä näet kaikki seurattavat yritykset – niin oman verkkokauppasi kuin kilpailijat – ja jokaisen muutoksen, jonka järjestelmä on havainnut: hinnanlasku, varaston loppuminen, uusi Facebook-julkaisu, verkkokaupan häiriö.</p>
+        <p>Kaikki toimii <strong>värilogiikan</strong> mukaan. Samat kolme väriä toistuvat kaikkialla – työpöydällä, yrityskortilla, taulukossa, kaavioissa:</p>
         <div class="legend">
-          <div class="lg"><span class="sw" style="background:var(--accent)"></span><span><b>Vihreä – kaikki kunnossa</b>Muutoksia ei ole tai kaikki on odotetusti. Mitään ei tarvitse tehdä.</span></div>
-          <div class="lg"><span class="sw" style="background:var(--warn)"></span><span><b>Keltainen – vaatii huomiota</b>Varoitus: esim. kilpailijan hinnanmuutos, varaston loppuminen tai vanhentuneet tiedot.</span></div>
-          <div class="lg"><span class="sw" style="background:var(--err)"></span><span><b>Punainen – häiriö</b>Tietolähde jäi hetkeksi tavoittamattomiin. Yleensä palautuu itsestään tai operaattori tarkistaa.</span></div>
+          <div class="lg"><span class="sw" style="background:var(--accent)"></span><span><b>Vihreä – kaikki kunnossa</b>Muutoksia ei ole tai kaikki on odotetunlaista. Mitään ei tarvitse tehdä.</span></div>
+          <div class="lg"><span class="sw" style="background:var(--warn)"></span><span><b>Keltainen – vaatii huomiota</b>Havainto: esim. kilpailijan hinnanmuutos, varaston loppuminen tai vanhentuneet tiedot.</span></div>
+          <div class="lg"><span class="sw" style="background:var(--err)"></span><span><b>Punainen – häiriö</b>Tietolähde jäi hetkellisesti tavoittamattomiin. Yleensä palautuu itsestään tai operaattori tarkistaa sen.</span></div>
         </div>
-        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z"/></svg> Postilaatikkoa ei tarvitse vahtia</div><p>Tärkeimmät muutokset lähetämme myös joka-aamuisella koontiviestillä. Paneelin avaat silloin, kun haluat nähdä enemmän tai muuttaa jotain.</p></div>
+        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z"/></svg> Postilaatikkoa ei tarvitse vahtia</div><p>Tärkeimmät muutokset lähetämme myös joka-aamuisella koostesähköpostilla ja kaikkein kriittisimmät heti. Paneelin avaat silloin, kun haluat nähdä enemmän tai muuttaa jotain.</p></div>
       </section>
 
       <!-- 2 -->
       <section class="doc" id="logimine">
         <h2><span class="num">2</span> Kirjautuminen</h2>
         <ol class="steps">
-          <li>Avaa <b>Kirjaudu sisään</b> – joko etusivun ylänurkasta, tämän oppaan yläreunasta tai suoralinkistä, jonka sinulle lähetimme.</li>
-          <li>Syötä <b>käyttäjätunnus</b> – se on <b>sähköpostiosoitteesi</b> (esim. sinä@yritys.fi).</li>
-          <li>Syötä <b>salasana</b> ja paina <span class="chip go">Kirjaudu</span></li>
+          <li>Avaa <b>Kirjaudu sisään</b> – joko etusivun yläkulmasta, tämän oppaan yläreunasta tai suoralinkistä, jonka lähetimme sinulle.</li>
+          <li>Syötä <b>käyttäjätunnus</b> – se on sinun <b>sähköpostiosoitteesi</b> (esim. sina@yritys.fi).</li>
+          <li>Syötä <b>salasana</b> ja paina <span class="chip go">Sisään</span></li>
         </ol>
         <ul class="plain">
-          <li><b>Unohditko salasanan?</b> – alla olevasta linkistä lähetämme sähköpostilla linkin uuden salasanan asettamiseen.</li>
-          <li><b>Eikö sinulla ole vielä tiliä?</b> – painike <span class="chip">Rekisteröidy</span> vie etusivun hinnastoon, josta voit koota paketin ja liittyä.</li>
-          <li><b>Takaisin etusivulle</b> – ylin linkki vie takaisin look360.eu-sivulle.</li>
+          <li><b>Unohtuiko salasana?</b> – alla olevasta linkistä lähetämme sähköpostilla linkin uuden salasanan asettamiseen.</li>
+          <li><b>Ei vielä tiliä?</b> – painike <span class="chip">Rekisteröidy</span> vie etusivun hinnastoon, jossa voit koota paketin ja liittyä.</li>
+          <li><b>Kokeile ilman tiliä</b> – kirjautumissivulla on julkinen <b>demotili</b>, jolla voit klikata kaikki näkymät läpi aidoilla esimerkkitiedoilla.</li>
         </ul>
-        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg> Hyvä tietää</div><p>Tili on sidottu yritykseesi. Kirjautumisen jälkeen näet vasemmalla ylhäällä vihreällä palkilla yrityksesi nimen – niin tiedät olevasi oikealla tilillä.</p></div>
+        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg> Hyvä tietää</div><p>Tili on sidottu yritykseesi. Kirjautumisen jälkeen näet vasemmalla ylhäällä vihreällä palkilla yrityksesi nimen – näin tiedät olevasi oikealla tilillä.</p></div>
       </section>
 
       <!-- 3 -->
       <section class="doc" id="menuu">
         <h2><span class="num">3</span> Valikko ja yleisnäkymä</h2>
-        <p>Jokaisella sivulla on sama rakenne: <strong>vasen valikko</strong>, <strong>yläpalkki</strong> ja sisältö keskellä.</p>
+        <p>Jokaisella sivulla on sama runko: <strong>vasen valikko</strong>, <strong>yläpalkki</strong> ja sisältö keskellä.</p>
         <h3>Vasen valikko</h3>
-        <ul class="plain">
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="5" rx="1.5"/><rect x="13" y="11" width="8" height="10" rx="1.5"/><rect x="3" y="14" width="8" height="7" rx="1.5"/></svg> Seuranta</span> – päätyöpöytä, jossa ovat kaikki seurattavat yritykset ja havainnot.</li>
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M20 7H4M20 12H4M20 17H4"/></svg> Palvelut</span> – tilaamasi palvelut, kuukausimaksu ja mahdollisuus tilata lisää.</li>
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Hinnoittelu</span> – näkyy vain silloin, kun sinulla on tilattuna <b>hintojen uudelleenhinnoittelun</b> palvelu.</li>
-          <li>Alareunassa ovat käyttäjätunnuksesi, rooli <b>Asiakas</b> ja <b>uloskirjautumisen</b> kuvake (ulos ovesta).</li>
-        </ul>
+        <p>Valikossa ovat kaikki näkymäsi. Osa kohdista näkyy vain, jos sinulla on vastaava palvelu tilattuna.</p>
+        <div class="deflist">
+          <div class="dr"><span class="k">Seuranta</span><span class="v">Pääasiallinen työpöytä – kaikki seurattavat yritykset, havainnot ja trendi.</span></div>
+          <div class="dr"><span class="k">Palvelut</span><span class="v">Tilaamasi palvelut, kuukausimaksu ja lisätilaus.</span></div>
+          <div class="dr"><span class="k">Tili</span><span class="v">Tilin tiedot, salasana, API-pääsy ja joka-aamuisen sähköpostin asetukset.</span></div>
+          <div class="dr"><span class="k">Hintavertailu</span><span class="v">Sama tuote kaikkien seurattavien kauppojen kesken – halvin hinta ja historia.</span></div>
+          <div class="dr"><span class="k">Ilmoitukset</span><span class="v">Hintailmoitusten säännöt ja push-ilmoitukset puhelimeen.</span></div>
+          <div class="dr"><span class="k">Kuukausiraportit</span><span class="v">Kuukausittainen PDF-kooste johdolle.</span></div>
+          <div class="dr"><span class="k">Hinnoittelu</span><span class="v">Näkyy vain <b>hintojen uudelleenhinnoittelun</b> palvelulla – kilpailuun perustuvat hintaehdotukset.</span></div>
+          <div class="dr"><span class="k">Brändivalvonta</span><span class="v">Näkyy vain <b>jälleenmyyjien hintavalvonnan</b> palvelulla – RRP/MAP-rikkomukset.</span></div>
+        </div>
+        <p>Alareunassa ovat käyttäjätunnuksesi, rooli <b>Asiakas</b> ja <b>uloskirjautumisen</b> kuvake (ovesta ulos).</p>
         <h3>Yläpalkki</h3>
         <ul class="plain">
-          <li>Vasemmalla <b>sivun otsikko</b> (esim. yrityksesi nimi) ja sen alla pienellä tekstillä <b>milloin viimeksi päivitettiin</b>.</li>
+          <li>Vasemmalla <b>sivun otsikko</b> ja alla pienellä <b>milloin viimeksi päivitetty</b>.</li>
           <li>Oikealla <b>tumma/vaalea-kytkin</b> (aurinko/kuu) ja kyseisen sivun <b>toimintopainikkeet</b>.</li>
-          <li>Puhelimessa vasemman valikon avaa ylänurkan <b>☰-painike</b>.</li>
+          <li>Puhelimessa vasemman valikon avaa yläkulman <b>☰-painike</b>.</li>
         </ul>
       </section>
 
       <!-- 4 -->
       <section class="doc" id="toolaud">
         <h2><span class="num">4</span> Seurantatyöpöytä</h2>
-        <p>Tämä on kotinäkymä. Yläreunasta löydät tärkeimmät painikkeet, alla on yleiskatsaus ja yritysten luettelo.</p>
+        <p>Tämä on kotinäkymä. Yläreunasta löydät päänpainikkeet, alla ovat trendi, yhteenveto ja yritysten luettelo.</p>
         <figure>
-          <img src="l360-seirepaneel.png" alt="Look360-seurantatyöpöytä: trendikäyrä, yhteenveto ja yritystaulukko" loading="lazy">
-          <figcaption>Seurantatyöpöytä – trendikäyrä, yhteenveto ja seurattavien yritysten taulukko.</figcaption>
+          <img src="l360-seirepaneel.png" alt="Look360-seurantatyöpöytä: trendikaavio, yhteenveto ja yritysten taulukko" loading="lazy">
+          <figcaption>Seurantatyöpöytä – havaintojen trendi, yhteenveto ja seurattavien yritysten taulukko.</figcaption>
         </figure>
         <h3>Yläpalkin painikkeet</h3>
         <ul class="plain">
           <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Lisää yritys</span> – lisää uusi seurattava yritys (ks. <a href="#lisafirma">luku 5</a>).</li>
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 7H4M20 12H4M20 17H4"/></svg> Palvelut</span> – avaa palveluiden ja kuukausimaksun näkymä.</li>
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-2.6-6.4L21 8"/><path d="M21 3v5h-5"/></svg> Päivitä näkymä</span> – lukee viimeisimmät tiedot uudelleen ja päivittää näytön. <b>Ei kaavi</b> sivustoja, vain päivittää näkymän.</li>
-          <li><span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg> Skannaa kaikki uudelleen</span> – näkyy, kun seuraat verkkokauppoja tai Facebookia. Käynnistää <b>oikeat skannaukset</b> (kaapii sivustot), kestää muutaman minuutin. Tämän voi tehdä <b>1 kerran vuorokaudessa</b>.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 7H4M20 12H4M20 17H4"/></svg> Palvelut</span> – avaa palvelujen ja kuukausimaksun näkymä.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-2.6-6.4L21 8"/><path d="M21 3v5h-5"/></svg> Päivitä näkymä</span> – lukee viimeisimmät tiedot uudelleen ja päivittää ruudun. <b>Ei kaavi</b> sivustoja, päivittää vain näkymän.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg> Salli ilmoitukset</span> – ottaa käyttöön push-ilmoitukset puhelimeen (ks. <a href="#teavitused">luku 9</a>).</li>
+          <li><span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg> Skannaa kaikki uudelleen</span> – käynnistää <b>aidot skannaukset</b> (kaapii sivustoja), kestää muutaman minuutin. Tämän voi tehdä <b>kerran vuorokaudessa</b>.</li>
         </ul>
-        <h3>Miten seuranta toimii? – apupalkki</h3>
-        <p>Työpöydän yläosassa on avautuva palkki <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .8-1 1.7M12 17h.01"/></svg> Miten seuranta toimii?</span> Klikkaa lukeaksesi lyhyen väriselityksen. Ensimmäisellä kerralla, kun yhtään yritystä ei vielä ole, se on auki.</p>
-        <h3>Varoitusten trendi</h3>
-        <p>Käyrä näyttää, miten varoitusten määrä on viimeisten seurantojen aikana muuttunut – rauhoittuvatko asiat vai vaativatko ne enemmän huomiota.</p>
+        <h3>Miten seuranta toimii? – ohjepalkki</h3>
+        <p>Työpöydän yläosassa on aukeava palkki <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .8-1 1.7M12 17h.01"/></svg> Miten seuranta toimii?</span> Klikkaa lukeaksesi lyhyen selityksen. Ensimmäisellä kerralla, kun yhtään yritystä ei vielä ole, se on avattuna.</p>
+        <h3>Havaintojen trendi</h3>
+        <p>Kaavio näyttää, miten havaintojen määrä on muuttunut viime seurantojen aikana – rauhoittuvatko asiat vai vaativatko ne enemmän huomiota. Kaikissa kaavioissa on akselin asteikko ja yksikkö merkittynä; liikuta hiirtä viivan päällä nähdäksesi tarkan luvun.</p>
         <h3>Yhteenveto</h3>
         <p>Oikealla on neljä lukua ja tilarivi:</p>
         <div class="deflist">
-          <div class="dr"><span class="k">Yritystä seurannassa</span><span class="v">Kuinka montaa yritystä parhaillaan seuraat.</span></div>
-          <div class="dr"><span class="k">Aktiivista varoitusta</span><span class="v">Kuinka moni asia vaatii huomiota (keltainen).</span></div>
-          <div class="dr"><span class="k">Lähdettä häiriöllä</span><span class="v">Kuinka moni tietolähde on tällä hetkellä tavoittamattomissa (punainen).</span></div>
-          <div class="dr"><span class="k">Vanhentuneet tiedot</span><span class="v">Kuinka monen yrityksen tiedot ovat vanhentuneet ja vaativat päivitystä.</span></div>
+          <div class="dr"><span class="k">Yritystä seurannassa</span><span class="v">Montako yritystä seuraat tällä hetkellä.</span></div>
+          <div class="dr"><span class="k">Havaintoa</span><span class="v">Montako muutosta vaatii huomiota (keltainen).</span></div>
+          <div class="dr"><span class="k">Lähdettä häiriössä</span><span class="v">Montako tietolähdettä on tällä hetkellä tavoittamattomissa (punainen).</span></div>
+          <div class="dr"><span class="k">Vanhentuneet tiedot</span><span class="v">Monenko yrityksen tiedot ovat vanhentuneet ja vaativat päivitystä.</span></div>
         </div>
         <h3>Välilehdet, näkymät ja vienti</h3>
         <ul class="plain">
           <li><b>Välilehdet</b> <span class="pill sec"><span class="dot"></span>Kaikki</span> <span class="pill sec"><span class="dot"></span>Oma yritys</span> <span class="pill sec"><span class="dot"></span>Kilpailijat</span> – suodattavat luetteloa.</li>
-          <li><b>Taulukko / Kortit</b> – vaihda luettelon muotoa. Taulukko on tiivis, kortit näyttävät jokaisen yrityksen kanavat heti auki.</li>
-          <li><b>Lajittele</b> – järjestä varoitusten, havaintojen, kunnon tai nimen mukaan.</li>
+          <li><b>Taulukko / Kortit</b> – vaihda luettelon muoto. Taulukko on kompakti; korttinäkymä näyttää jokaisen yrityksen kanavat ja havainnot heti auki.</li>
+          <li><b>Lajittele</b> – järjestä oletuksena, havaintojen tai nimen mukaan.</li>
           <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg> Vie CSV</span> – lataa näkyvän taulukon Excelissä avattavana tiedostona.</li>
         </ul>
-        <h3>Yritystaulukko</h3>
-        <p>Jokainen rivi on yksi seurattava yritys. <b>Klikkaa riviä</b> avataksesi sen yrityksen koko näkymän. Sarakkeet:</p>
+        <figure>
+          <img src="l360-firmakaardid.png" alt="Työpöydän korttinäkymä: jokaisen yrityksen kanavat ja havainnot heti näkyvillä" loading="lazy">
+          <figcaption>Korttinäkymä – jokaisen seurattavan yrityksen kanavat ja viimeisimmät havainnot yhdellä silmäyksellä.</figcaption>
+        </figure>
+        <h3>Yritysten taulukko</h3>
+        <p>Jokainen rivi on yksi seurattava yritys. <b>Klikkaa riviä</b> avataksesi kyseisen yrityksen täysnäkymän. Sarakkeet:</p>
         <div class="deflist">
-          <div class="dr"><span class="k">Yritys</span><span class="v">Nimi ja se, onko kyseessä oma yrityksesi vai kilpailija.</span></div>
-          <div class="dr"><span class="k">Tila</span><span class="v"><span class="pill ok"><span class="dot"></span>Kaikki kunnossa</span> · <span class="pill warn"><span class="dot"></span>N varoitusta</span> · <span class="pill err"><span class="dot"></span>Häiriö</span> · <span class="pill sec"><span class="dot"></span>Vanhentunut / Ei ajettu</span></span></div>
-          <div class="dr"><span class="k">Kanavia</span><span class="v">Kuinka montaa lähdettä tämän yrityksen kohdalla seurataan (verkko, Facebook jne.).</span></div>
-          <div class="dr"><span class="k">Havaintoja</span><span class="v">Kuinka monta muutosta viimeisimmässä seurannassa löytyi.</span></div>
-          <div class="dr"><span class="k">Varoituksia</span><span class="v">Kuinka moni havainto vaatii huomiota.</span></div>
-          <div class="dr"><span class="k">Tuoreus</span><span class="v">Milloin tämän yrityksen tiedot viimeksi päivitettiin.</span></div>
-          <div class="dr"><span class="k">Kunto</span><span class="v">Yleinen tilapalkki 0–100 % (vihreä hyvä, keltainen keskinkertainen, punainen heikko).</span></div>
+          <div class="dr"><span class="k">Yritys</span><span class="v">Nimi ja onko kyseessä oma yrityksesi vai kilpailija.</span></div>
+          <div class="dr"><span class="k">Tila</span><span class="v"><span class="pill ok"><span class="dot"></span>N havaintoa</span> · <span class="pill err"><span class="dot"></span>Häiriö</span> · <span class="pill sec"><span class="dot"></span>Vanhentunut / Ei ajettu / Kaikki hiljaista</span></span></div>
+          <div class="dr"><span class="k">Kanavia</span><span class="v">Montako lähdettä kyseisen yrityksen kohdalla seurataan (verkko, Facebook jne.).</span></div>
+          <div class="dr"><span class="k">Havaintoja</span><span class="v">Monellako kanavalla on viimeisimmässä seurannassa havainto.</span></div>
+          <div class="dr"><span class="k">Tuoreus</span><span class="v">Milloin kyseisen yrityksen tiedot on viimeksi päivitetty.</span></div>
+          <div class="dr"><span class="k">Havainnot</span><span class="v">Pikamerkki: <span class="pill ok"><span class="dot"></span>Kyllä</span> on havainto, <span class="pill sec"><span class="dot"></span>Ei</span> kaikki hiljaista.</span></div>
         </div>
         <h3>Itse lisäämäsi seurattavat</h3>
-        <p>Jos olet itse lisännyt yrityksen, näet sen tilan erillisessä osiossa. Mahdolliset tilat:</p>
+        <p>Kun olet itse lisännyt yrityksen, näet sen tilan. Mahdolliset tilat:</p>
         <ul class="plain">
           <li><span class="pill warn"><span class="dot"></span>Odottaa</span> – odottaa operaattorin vahvistusta.</li>
-          <li><span class="pill sec"><span class="dot"></span>Rakennan… / AI tunnistaa…</span> – verkkokaupan lukijaa määritetään automaattisesti.</li>
-          <li><span class="pill warn"><span class="dot"></span>Maksu odottaa</span> – tiedot ovat valmiina, kuukausimaksu täytyy vahvistaa (ks. <a href="#firmavaade">luku 6</a>).</li>
-          <li><span class="pill err"><span class="dot"></span>Hylätty</span> – pyyntö hylättiin (syy on kirjattu).</li>
+          <li><span class="pill sec"><span class="dot"></span>Rakennan… / Tekoäly tunnistaa…</span> – verkkokaupan lukijaa määritetään automaattisesti.</li>
+          <li><span class="pill warn"><span class="dot"></span>Maksu odottaa</span> – tiedot ovat valmiina, kuukausimaksu on vielä vahvistettava (ks. <a href="#firmavaade">luku 6</a>).</li>
+          <li><span class="pill err"><span class="dot"></span>Hylätty</span> – pyyntö hylättiin (syy on merkitty).</li>
           <li><span class="pill ok"><span class="dot"></span>Aktiivinen</span> – yritys on seurannassa.</li>
         </ul>
-        <h3>Facebook-seuranta</h3>
-        <p>Erillisellä kortilla ovat seurattavien kilpailijoiden viimeisimmät Facebook-julkaisut, uusimmat ja uudet korostettuina. Julkaisun klikkaus vie alkuperäisen luo Facebookiin.</p>
-        <h3>Kaikki havainnot ja raporttien historia</h3>
+        <h3>Facebook-seuranta, kaikki havainnot ja historia</h3>
         <ul class="plain">
-          <li><b>Kaikki havainnot</b> – viimeisimmän seurannan kaikki muutokset yhtenä listana. Valinta <b>Vain varoitukset</b> piilottaa rauhallisen osan.</li>
-          <li><b>Raporttien historia</b> – aiemmat koontiraportit. Klikkaus avaa arkistoidun raportin.</li>
+          <li><b>Facebook-seuranta</b> – erillisellä kortilla seurattavien kilpailijoiden viimeisimmät julkaisut; klikkaus vie alkuperäisen luo.</li>
+          <li><b>Kaikki havainnot</b> – kaikki viimeisimmän seurannan muutokset yhtenä listana. Valintaruutu <b>Vain varoitukset</b> piilottaa rauhallisen osan.</li>
+          <li><b>Raporttien historia</b> – aiemmat koosteraportit; klikkaus avaa arkistoidun raportin.</li>
         </ul>
       </section>
 
@@ -322,134 +353,322 @@
         <h2><span class="num">5</span> Yrityksen lisääminen</h2>
         <p>Paina työpöydällä <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Lisää yritys</span>. Avautuu yksinkertainen lomake.</p>
         <ol class="steps">
-          <li><b>Yrityksen nimi</b> – ala kirjoittaa ja valitse luettelosta Viron kaupparekisterin yritys (tai kirjoita nimi käsin).</li>
+          <li><b>Yrityksen nimi</b> – ala kirjoittaa ja valitse listasta kaupparekisterin yritys (tai kirjoita nimi käsin).</li>
           <li><b>Verkkosivu</b> – riittää nimi ilman https://-alkua, esim. <b>weekend.ee</b>.</li>
-          <li>Halutessasi kytke päälle <b>seuraa verkkokaupan hintoja ja varastoa</b> ja/tai <b>seuraa myös Facebookia</b>.</li>
+          <li>Halutessasi ota käyttöön <b>seuraa verkkokaupan hintoja ja varastotilannetta</b> ja/tai <b>seuraa myös Facebookia</b>.</li>
           <li>Paina <span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Lisää seurattava yritys</span></li>
         </ol>
+        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg> Samaa yritystä ei lisätä kahdesti</div><p>Jos samalla nimellä tai verkko-osoitteella oleva yritys on jo listassasi, järjestelmä ilmoittaa siitä – näin ei synny kaksoiskirjausta eikä kaksinkertaista kuukausimaksua.</p></div>
         <h3>Verkkokaupan seuranta</h3>
-        <p>Jos valitset verkkokaupan seurannan, järjestelmä yrittää lukea kaupan tuotteet itse. Onnistuessaan seuranta käynnistyy automaattisesti; muutoin operaattori tarkistaa. Lisäksi voit avata <b>avainsanasuodattimen</b>: kirjoita avainsana ja paina Enter tai <b>+</b> lisätäksesi chipin (esim. <i>ruohonleikkuri</i>). Tyhjäksi jättäessäsi seuraamme kaikkia tuotteita.</p>
-        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg> Hinnoittelumalli</div><p>Verkkokaupan seuranta maksaa <strong>8 € / kk jokaista enintään 2000 seurattavaa tuotetta kohti</strong>. Kaikki hinnat ovat arvonlisäverottomia. Kun järjestelmä on lukenut kaupan tuotteet, valitset itse kategoriat, joita seurataan – se määrittää tuotteiden määrän ja kuukausimaksun. Näytämme tarkan summan ja pyydämme vahvistusta ennen kuin avaamme tiedot.</p></div>
+        <p>Kun valitset verkkokaupan seurannan, järjestelmä yrittää lukea kaupan tuotteet itse. Onnistuessa seuranta käynnistyy automaattisesti; muuten operaattori tarkistaa sen. Voit lisätä <b>hakusanasuodattimen</b>: kirjoita hakusana ja paina Enter tai <b>+</b> lisätäksesi sirun (esim. <i>ruohonleikkuri</i>). Tyhjäksi jättämällä seuraamme kaikkia tuotteita.</p>
+        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg> Hintamalli</div><p>Verkkokaupan seuranta maksaa <strong>8 € kuussa kutakin enintään 2000 seurattavaa tuotetta kohti</strong>. Kaikki hinnat ovat arvonlisäverottomia. Kun järjestelmä on lukenut kaupan tuotteet, valitset itse seurattavat kategoriat – se määrittää tuotteiden määrän ja kuukausimaksun. Näytämme tarkan summan ja pyydämme vahvistuksen ennen kuin avaamme tiedot.</p></div>
         <h3>Facebookin seuranta</h3>
-        <p>Syötä Facebook-sivun osoite – riittää sivun nimi tai osoite (esim. <b>facebook.com/konkurent</b> tai pelkkä <b>kilpailija</b>). Jos sivu ei vielä ole seurantalistalla, se menee operaattorille vahvistettavaksi.</p>
+        <p>Syötä Facebook-sivun osoite – riittää sivun nimi tai osoite (esim. <b>facebook.com/kilpailija</b> tai vain <b>kilpailija</b>). Jos sivu ei ole vielä seurantalistalla, se menee operaattorille vahvistettavaksi. Facebook-seuranta maksaa <strong>3 € kuussa kilpailijaa kohti</strong>.</p>
       </section>
 
       <!-- 6 -->
       <section class="doc" id="firmavaade">
         <h2><span class="num">6</span> Yritysnäkymä ja tuoteluettelo</h2>
-        <p>Klikkaus työpöydällä yrityksen nimellä avaa sen koko näkymän: kaikki kanavat, havainnot ja – verkkokaupan tapauksessa – koko tuoteluettelo.</p>
+        <p>Klikkaus työpöydällä yrityksen nimeen avaa sen täysnäkymän: kaikki kanavat, havainnot, verkkokaupan kunnon, kaaviot ja – verkkokaupan tapauksessa – koko tuoteluettelon.</p>
         <figure>
-          <img src="l360-kataloog.png" alt="Yritysnäkymä: tuoteluettelo kategorioineen, hintoineen ja varastotilanteineen" loading="lazy">
-          <figcaption>Yritysnäkymä – haettava tuoteluettelo kategorioineen, hintoineen ja varastotilanteineen.</figcaption>
+          <img src="l360-firma-tervis.png" alt="Yritysnäkymä: verkkokaupan kunto, tuotemäärän kaavio ja VIP-tuotteet" loading="lazy">
+          <figcaption>Yritysnäkymä – verkkokaupan kuntoluvut, valikoiman muutos ajassa ja VIP-tuotteet.</figcaption>
         </figure>
-        <h3>Otsikkorivin painikkeet</h3>
+        <h3>Verkkokaupan kunto</h3>
+        <p>Kortilta näet kerralla: <b>tuotteita yhteensä</b>, <b>varastossa</b>, <b>loppu varastosta</b>, <b>hinta puuttuu</b>, <b>tarjoushinnalla</b> ja <b>varastotilanne tuntematon</b>. Luvut on laskettu kyseisen kaupan luettelosta ja ne ovat klikattavia.</p>
+        <h3>Tuotteiden määrä ajassa</h3>
+        <p>Kaavio näyttää, montako tuotetta kaupan luettelossa oli kunakin seurantapäivänä – kasvaako valikoima, kutistuuko vai pysyykö se ennallaan. Vieressä ovat <b>nyt</b>, <b>keskimäärin</b>, <b>vaihteluväli</b> ja <b>suunta</b>.</p>
+        <h3>VIP-tuotteet</h3>
+        <p>Merkitse luettelossa tuotteeseen <b>tähti</b> lisätäksesi sen VIP-tuotteiden joukkoon. Jokaisesta VIP-tuotteesta piirtyy oma kaavio: normaalihinta, tarjoushinta ja varastotilanne ajassa. Kerralla enintään 10 tuotetta – pidä silmällä niitä, jotka ovat sinulle tärkeimpiä.</p>
+        <h3>Otsikon painikkeet</h3>
         <ul class="plain">
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Valitse kategoriat</span> – valitse, mitä kaupan kategorioita seurata (ks. <a href="#kategooriad">luku 7</a>).</li>
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 6H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4"/><path d="M14 4h6v6m0-6L10 14"/></svg> Avaa sivusto</span> – avaa kilpailijan verkkokaupan uudessa ikkunassa.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Valitse kategoriat</span> – valitse, mitä kaupan kategorioita seurataan (ks. <a href="#kategooriad">luku 7</a>).</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 6H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4"/><path d="M14 4h6v6m0-6L10 14"/></svg> Avaa sivusto</span> – avaa kilpailijan verkkokaupan uuteen ikkunaan.</li>
         </ul>
-        <h3>Tilailmoitukset</h3>
-        <p>Näkymän yläreunassa voi olla ilmoitus: <b>odottaa operaattorin vahvistusta</b>, <b>scraperia rakennetaan</b>, <b>tunnistamme kategorioita</b>, <b>automaattinen määritys ei onnistunut</b> (operaattori tarkistaa) tai <b>pyyntö hylättiin</b>.</p>
         <h3>Kuukausimaksun vahvistaminen</h3>
-        <p>Kun kaupan tuotteet on luettu, näet laskurin: <b>tuotteiden määrä</b>, <b>portaita</b> (× enintään 2000 tuotetta), <b>perushinta 8 €</b>, mahdollinen lisämaksu ja <b>kuukausimaksu yhteensä</b>. Vahvistamiseen asti luettelo on esimerkkinä <b>sumennettuna</b> (blur). Vaihtoehdot:</p>
+        <p>Kun kaupan tuotteet on luettu, näet laskurin: <b>tuotteiden määrä</b>, <b>portaita</b> (× enintään 2000 tuotetta), <b>perushinta 8 €</b> ja <b>kuukausimaksu yhteensä</b>. Vahvistukseen asti luettelo on esimerkkinä <b>sumeana</b> (blur). Vaihtoehdot:</p>
         <ul class="plain">
-          <li><span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg> Maksa ja avaa tiedot</span> – ohjaamme turvalliseen maksuväylään (pankkilinkki tai kortti); tiedot avautuvat heti.</li>
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg> Maksa tilisiirtolaskulla</span> – lähetämme laskun sähköpostilla; sisältö avautuu maksun saavuttua.</li>
+          <li><span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg> Maksa ja avaa tiedot</span> – ohjaamme turvalliseen maksuporttiin (pankkilinkki tai kortti); tiedot avautuvat heti.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg> Maksa laskulla</span> – lähetämme laskun sähköpostilla; sisältö avautuu maksun saavuttua.</li>
           <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Valitse kategoriat</span> – vähennä tuotteita, jotta kuukausimaksu laskee.</li>
         </ul>
-        <p>Facebook-seurannan vahvistaminen toimii samalla tavalla (3 €/kk).</p>
+        <figure>
+          <img src="l360-kataloog.png" alt="Yritysnäkymä: haettava tuoteluettelo kategorioineen, hintoineen ja varastotilanteineen" loading="lazy">
+          <figcaption>Tuoteluettelo – haettava, kategorioittain, hinnan ja varastotilanteen kera.</figcaption>
+        </figure>
         <h3>Tuoteluettelo</h3>
         <ul class="plain">
           <li><b>Haku</b> – kirjoita tuotteen nimi suodattaaksesi luetteloa.</li>
           <li><b>Kategoriat</b> – klikkaa kategoriaa avataksesi alakategoriat ja tuotteet.</li>
           <li><b>Varastotilanne</b> – jokaisen tuotteen kohdalla <span class="pill ok"><span class="dot"></span>varastossa</span>, <span class="pill err"><span class="dot"></span>loppu</span> tai <span class="pill sec"><span class="dot"></span>tuntematon</span>.</li>
-          <li><b>Hinta</b> – alennushinnan tapauksessa näet normaalihinnan yliviivattuna ja alennushinnan punaisella.</li>
-          <li><b>Ulkoinen linkki</b> (nuoli) vie tuotteen luo kaupassa.</li>
-          <li><b>Klikkaus tuoteriviltä</b> avaa <b>hinnan ja varastotilanteen historiakäyrän</b>: nykyinen hinta ja alennus, normaalihinta katkoviivana, varastotilanne ajassa palkkina sekä selite.</li>
+          <li><b>Hinta</b> – tarjoushinnan tapauksessa näet normaalihinnan yliviivattuna ja tarjoushinnan punaisella.</li>
+          <li><b>Tähti</b> lisää tuotteen VIP-listalle; <b>kello</b> luo heti hintailmoituksen; <b>nuoli</b> vie tuotteen luo kaupassa.</li>
         </ul>
+        <h3>Hinnan ja varastotilanteen historia</h3>
+        <p>Klikkaus tuotteen riville avaa kaavioikkunan: nykyinen hinta ja alennus, normaalihinta ja tarjoushinta ajassa sekä varastotilanne. Alla oleva selite selittää viivat.</p>
+        <figure>
+          <img src="l360-tootegraafik.png" alt="Tuotteen hinnan ja varastotilanteen historiakaavio ponnahdusikkunassa" loading="lazy">
+          <figcaption>Tuotteen hinta- ja varastotilanne­historia – normaalihinta (vihreä) ja tarjoushinta (punainen) ajassa.</figcaption>
+        </figure>
       </section>
 
       <!-- 7 -->
       <section class="doc" id="kategooriad">
         <h2><span class="num">7</span> Kategorioiden valinta</h2>
-        <p>Painike <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Valitse kategoriat</span> avaa luettelon kaikista kaupan kategorioista. Mitä vähemmän tuotteita valitset, sitä pienempi on kuukausimaksu.</p>
+        <p>Painike <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Valitse kategoriat</span> avaa listan kaikista kaupan kategorioista. Mitä vähemmän tuotteita valitset, sitä pienempi on kuukausimaksu.</p>
         <ol class="steps">
-          <li>Merkitse valinnalla kategoriat, joita haluat seurata. Apuna ovat <b>Valitse kaikki</b>, <b>Tyhjennä valinta</b> ja <b>haku</b>.</li>
+          <li>Merkitse valintaruuduilla kategoriat, joita haluat seurata. Apuna ovat <b>Valitse kaikki</b>, <b>Peru valinta</b> ja <b>haku</b>.</li>
           <li>Seuraa alla <b>laskuria</b>: valitut tuotteet → portaat (× enintään 2000) → kuukausimaksu päivittyy heti.</li>
           <li>Paina <span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg> Tallenna valinta</span></li>
         </ol>
-        <p>Voit muuttaa valintaa myöhemmin milloin tahansa – kuukausimaksu mukautuu vastaavasti.</p>
+        <p>Voit muuttaa valintaa myöhemmin milloin tahansa – kuukausimaksu mukautuu sen mukaan.</p>
       </section>
 
       <!-- 8 -->
-      <section class="doc" id="teenused">
-        <h2><span class="num">8</span> Palvelut ja kuukausimaksu</h2>
-        <p>Valikon kohdasta <b>Palvelut</b> näet kaiken, mistä maksat, ja voit tilata lisää.</p>
+      <section class="doc" id="hinnavordlus">
+        <h2><span class="num">8</span> Hintavertailu</h2>
+        <p>Valikkokohta <b>Hintavertailu</b> ottaa saman tuotteen kaikkien seurattavien kauppojen kesken ja näyttää, <strong>missä se on halvin</strong> ja miten hinta on liikkunut ajassa. Tuotteet yhdistetään toisiinsa mallikoodin ja mitan mukaan.</p>
+        <figure>
+          <img src="l360-hinnavordlus.png" alt="Hintavertailu: sama tuote useassa kaupassa, halvin hinta ja historiakaavio" loading="lazy">
+          <figcaption>Hintavertailu – jokaisen tuotteen halvin kauppa, kauppojen hintaväli ja historiakaavio.</figcaption>
+        </figure>
         <ul class="plain">
-          <li><b>Kuukausimaksusi yhteensä</b> – iso luku ylhäällä. Summa muodostuu kaikista aktiivisista palveluista. Vieressä on seuraavan laskutuksen päivämäärä.</li>
-          <li><b>Maksettu – odottaa aktivointia</b> – tilaukset, joiden ensimaksu on maksettu ja jotka operaattori pian kytkee päälle.</li>
-          <li><b>Sinun palvelusi</b> – kaikki aktiiviset palvelut (vihreällä), mukaan lukien kilpailijoiden Facebook- ja verkkoseuranta. <b>Peruuta</b> lopettaa palvelun; kilpailijoiden seurantaa hallitaan <b>Lisää yritys</b> -kohdasta (painike <b>Hallinnoi</b>).</li>
-          <li><b>Tilaa lisää</b> – jokaisen palvelun kohdalla on hinta €/kk ja ensimaksu. Paina <span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Tilaa</span>, vahvista ikkunassa ja maksa ensimaksu. Erityistehtävissä on painike <span class="chip">Pyydä tarjous</span>.</li>
-          <li><b>Paketit</b> – tilaavat kerralla useita palveluita samalla maksuvirralla.</li>
+          <li>Ylhäällä on yhteenveto: <b>vertailtavia tuotteita</b>, <b>hintahistoriakaavioita</b> ja <b>seurattavia kauppoja</b>.</li>
+          <li>Jokainen kortti näyttää <b>halvimman hinnan</b>, <b>kauppojen hintavälin</b> ajassa ja <b>tämän päivän halvimman kaupan</b>.</li>
+          <li>Alla on merkitty, montako prosenttia hinta on muuttunut seuratulla jaksolla ja monestako kaupasta halvin löytyi.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg> CSV (Excel)</span> lataa koko vertailun.</li>
         </ul>
-        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Miten ensimaksu lasketaan</div><p>Uutta palvelua tilatessasi maksat heti <strong>suhteutetun ensimaksun</strong> – vain seuraavaan laskutuspäivään asti. Sen jälkeen operaattori kytkee palvelun päälle ja jatkossa kaikki palvelut laskutetaan yhdessä.</p></div>
+        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg> Mihin</div><p>Näet heti, oletko jollain tuotteella markkinan kallein vai halvin – hyvä syöte hinnoittelulle (<a href="#hinnastamine">luku 14</a>) ja kampanjoille.</p></div>
       </section>
 
       <!-- 9 -->
-      <section class="doc" id="maksed">
-        <h2><span class="num">9</span> Miten maksu toimii</h2>
-        <p>Jokainen maksu alkaa <strong>vahvistusikkunasta</strong>, jossa on kirjattuna summa ja se, mistä maksat. Voit aina valita <b>Peruuta</b>.</p>
+      <section class="doc" id="teavitused">
+        <h2><span class="num">9</span> Ilmoitukset</h2>
+        <p>Valikkokohta <b>Ilmoitukset</b> antaa sinun asettaa <strong>sääntöjä</strong>, joiden täyttyessä lähetämme heti ilmoituksen – push-ilmoituksena puhelimeen ja/tai sähköpostilla.</p>
+        <figure>
+          <img src="l360-teavitused.png" alt="Ilmoitukset: hintailmoitussäännön lisääminen ja sääntöjen luettelo" loading="lazy">
+          <figcaption>Ilmoitukset – lisää sääntö (ehto, kauppa, tuote, kynnys) ja valitse push ja/tai sähköposti.</figcaption>
+        </figure>
+        <ol class="steps">
+          <li>Valitse <b>ehto</b> – esim. hinnanlasku vähintään X %, varasto loppu, uusi tuote, kilpailija meni alle sinun hintasi.</li>
+          <li>Valitse <b>kauppa</b> (kaikki seurattavat tai yksi tietty) ja halutessasi <b>tietty tuote</b>.</li>
+          <li>Määritä <b>kynnys (%)</b>, jos ehto sitä vaatii.</li>
+          <li>Merkitse <b>Push-ilmoitus</b> ja/tai <b>Sähköposti</b> ja paina <span class="chip go">Lisää sääntö</span></li>
+        </ol>
         <ul class="plain">
-          <li><b>Heti maksaessasi</b> ohjaamme turvalliseen maksuväylään – maksat <b>pankkilinkillä</b> tai <b>kortilla</b>, ja tiedot/palvelu avautuvat heti maksun jälkeen.</li>
-          <li><b>Tilisiirtolaskulla</b> – lähetämme laskun sähköpostilla. Sisältö avautuu täydessä laajuudessaan, kun maksu on saapunut.</li>
-          <li><b>Ensimaksu</b> on aina suhteutettu seuraavaan laskutuspäivään asti; jatkossa peritään täysi kuukausimaksu.</li>
-          <li><b>Laskutus</b> tapahtuu kaikista palveluista kerralla, liittymispäiväsi vuosipäivän mukaan.</li>
+          <li>Säännön voi milloin tahansa väliaikaisesti <b>kytkeä pois</b> tai poistaa.</li>
+          <li>Nopeimmin luot ilmoituksen suoraan luettelosta tai hintavertailusta – <b>kello-kuvake</b> tuotteen rivillä täyttää lomakkeen valmiiksi.</li>
+          <li>Push-ilmoitusten saamiseksi paina ylhäältä <span class="chip">Salli push-ilmoitukset</span> (iPhonessa sovelluksena asentamisen jälkeen – ks. <a href="#seaded">luku 17</a>).</li>
         </ul>
       </section>
 
       <!-- 10 -->
-      <section class="doc" id="hinnastamine">
-        <h2><span class="num">10</span> Hinnoittelu</h2>
-        <p>Valikkokohta <b>Hinnoittelu</b> näkyy vain silloin, kun sinulla on tilattuna <strong>hintojen uudelleenhinnoittelun</strong> palvelu. Siellä näet kilpailupohjaisia hintasuosituksia omalle kaupallesi.</p>
+      <section class="doc" id="kuuraportid">
+        <h2><span class="num">10</span> Kuukausiraportit</h2>
+        <p>Valikkokohta <b>Kuukausiraportit</b> kokoaa joka kuun 1. päivä edellisen kuun osalta <strong>PDF-koosteen johdolle</strong>: hinnanmuutokset, valikoiman liikkeet, sinun hintapositiosi markkinalla ja brändivalvonnan rikkomukset.</p>
+        <figure>
+          <img src="l360-kuuraportid.png" alt="Kuukausiraportit: kuukauden PDF-koosteen selitys ja arkisto" loading="lazy">
+          <figcaption>Kuukausiraportit – automaattinen kuukausittainen PDF, jonka voi lähettää suoraan johdolle tai valmistajalle.</figcaption>
+        </figure>
         <ul class="plain">
-          <li><b>Suositustaulukko</b> – tuote, nykyinen hinta, suositeltu hinta, erotus ja syy.</li>
-          <li><span class="chip">Luo uudelleen</span> laskee suositukset tuoreeltaan; <span class="chip">Säännöt</span> ja <span class="chip">Historia</span> näyttävät asetukset ja aiemmat muutokset.</li>
-          <li>Kun palvelu on <b>aktivoitu</b>, suosituksen voi yhdellä klikkauksella kirjoittaa omaan WooCommerce-kauppaasi; <b>Jätä ennalleen</b> jättää hinnan ja ohittaa tuotteen valittujen päivien ajaksi, <b>Ohita</b> jättää suosituksen väliin.</li>
+          <li><b>Automaattinen</b> – raportti valmistuu ja lähetetään sähköpostilla jokaisen kuun alussa; mitään ei tarvitse tehdä käsin.</li>
+          <li><b>Arkisto</b> – kaikki aiemmat kuukausiraportit ovat täällä ladattavissa.</li>
+          <li>Toisin kuin joka-aamuinen sähköposti (ks. alla), kuukausiraportti on <b>koosteyleiskatsaus</b> päättäjälle, ei päivittäinen muutoslista.</li>
         </ul>
-        <div class="box warn"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg> Turvallisesti</div><p>Hinnanmuutoksen kirjoittamisen kauppaan kytkee päälle Look360 yhdessä kanssasi. Oletuksena kaikki on <b>kuiva ajo</b> (mitään ei muuteta), kunnes sovimme live-tilasta.</p></div>
+        <h3>Joka-aamuinen sähköposti ja reaaliaikaiset varoitukset</h3>
+        <ul class="plain">
+          <li><b>Joka-aamuinen sähköposti</b> – tärkeimmät muutokset saapuvat sinun (ja sovittujen yhteyshenkilöiden) postilaatikkoon automaattisesti. Sen voi kytkeä päälle/pois <a href="#konto">Tili</a>-sivulla.</li>
+          <li><b>Reaaliaikaiset varoitukset</b> – kaikkein kriittisin (esim. kilpailijan hinnanlasku, verkkokaupan häiriö, varaston loppuminen) saapuu heti ilmoitussääntöjen kautta.</li>
+        </ul>
       </section>
 
       <!-- 11 -->
-      <section class="doc" id="raportid">
-        <h2><span class="num">11</span> Raportit</h2>
+      <section class="doc" id="konto">
+        <h2><span class="num">11</span> Tili ja API-pääsy</h2>
+        <p>Valikkokohta <b>Tili</b> kokoaa tilisi tiedot ja asetukset.</p>
+        <figure>
+          <img src="l360-konto.png" alt="Tili: tilin tiedot, salasana, API-pääsy ja ilmoitusten asetukset" loading="lazy">
+          <figcaption>Tili – yrityksen tiedot, salasanan vaihto, API-avain ja joka-aamuisen sähköpostin kytkin.</figcaption>
+        </figure>
         <ul class="plain">
-          <li><b>Joka-aamuinen sähköposti</b> – tärkeimmät muutokset saapuvat sinun (ja sovittujen yhteyshenkilöiden) postilaatikkoon automaattisesti.</li>
-          <li><b>Reaaliaikaiset varoitukset</b> – kriittisin (esim. kilpailijan hinnanlasku, verkkokaupan häiriö, varaston loppuminen) saapuu heti, loput kootaan aamuraporttiin.</li>
-          <li><b>Raporttien historia</b> – työpöydällä voit avata jokaisen aiemman koontiraportin ja nähdä, mikä silloin muuttui.</li>
+          <li><b>Tilin tiedot</b> – yritys, yhteyshenkilö ja rekisteröinnin sähköposti.</li>
+          <li><b>Salasana</b> – <span class="chip">Vaihda salasana</span>; unohtuneen salasanan voit palauttaa kirjautumissivulta.</li>
+          <li><b>Joka-aamuinen seurantaraportti</b> – kytkin, jolla kytket sähköpostin päälle tai pois.</li>
         </ul>
+        <h3>API-pääsy (BI, ERP, Excel)</h3>
+        <p>REST-API:n kautta saat seurantatietosi – kaupat, tuotteet, hinnat, hintavertailun, havainnot – suoraan omaan järjestelmääsi (Power BI, ERP, Excel Power Query).</p>
+        <ol class="steps">
+          <li>Kirjoita avaimen käyttötarkoitus (esim. ”Power BI”) ja paina <span class="chip go">Luo API-avain</span></li>
+          <li>Kopioi avain heti – se näytetään vain kerran.</li>
+          <li>Katso <b>API-dokumentaatio</b>-linkistä, mitkä päätepisteet ovat saatavilla.</li>
+        </ol>
       </section>
 
       <!-- 12 -->
-      <section class="doc" id="seaded">
-        <h2><span class="num">12</span> Sovellus, ilmoitukset ja tumma tila</h2>
+      <section class="doc" id="teenused">
+        <h2><span class="num">12</span> Kaikki palvelut ja kuukausimaksu</h2>
+        <p>Valikosta <b>Palvelut</b> näet kaiken, mistä maksat, ja voit tilata lisää. Ylhäällä on <b>kuukausimaksusi yhteensä</b> ja seuraavan laskutuksen päivämäärä.</p>
+        <figure>
+          <img src="l360-teenused.png" alt="Palvelut: kuukausimaksu yhteensä ja aktiivisten palvelujen luettelo" loading="lazy">
+          <figcaption>Palvelut – kuukausimaksu yhteensä, aktiiviset palvelut ja lisätilaus.</figcaption>
+        </figure>
+        <p>Alla on kaikki, mitä tarjoamme. Kaikki hinnat ovat <b>arvonlisäverottomia, kuukaudessa</b>.</p>
+
+        <div class="cat-h">Oman verkkokauppasi ylläpito</div>
+        <div class="svc">
+          <div class="s"><div class="h"><span class="nm">Verkkokaupan kuntotarkastus</span><span class="pr">20 €</span></div><p>Skannaa verkkokauppasi tuotteet ja löytää puutteet: puuttuvat kuvat ja alt-tekstit, tyhjät tai liian lyhyet kuvaukset, rikkinäiset hinnat, kahdennetut tuotteet. Antaa kunto-%:n ja korjauslistan.</p></div>
+          <div class="s"><div class="h"><span class="nm">SEO- ja sisältöaukkoseuranta</span><span class="pr">alkaen 16 €</span></div><p>Seuraa hakusanojesi sijoituksia Googlessa ja löytää sisältöaukot – aiheet, joista sinulla ei vielä ole sisältöä. Hinta riippuu seurattavien hakusanojen määrästä.</p></div>
+          <div class="s"><div class="h"><span class="nm">Verkkosivun toimintavarmuus</span><span class="pr">10 €</span></div><p>Tarkistaa, onko kotisivusi/verkkokauppasi pystyssä ja miten nopeasti se vastaa. Ilmoittaa, jos sivusto kaatuu tai muuttuu hitaaksi.</p></div>
+          <div class="s"><div class="h"><span class="nm">ERP–verkkokauppa-integraatio</span><span class="pr">30 €</span></div><p>Yhdistää verkkokauppasi ja taloushallinto-ohjelmistosi (esim. Directo) – tilaukset, varastotilanteet ja hinnat liikkuvat automaattisesti, ilman käsin siirtämistä.</p></div>
+          <div class="s"><div class="h"><span class="nm">Hintojen uudelleenhinnoittelu</span><span class="pr">30 €</span></div><p>Kilpailuun perustuvat hintaehdotukset omalle kaupallesi, jotka voi yhdellä klikkauksella kirjoittaa WooCommerceen (ks. <a href="#hinnastamine">luku 14</a>).</p></div>
+        </div>
+
+        <div class="cat-h">Kilpailijoiden seuranta</div>
+        <div class="svc">
+          <div class="s"><div class="h"><span class="nm">Kilpailijoiden FB-seuranta</span><span class="pr">3 € / kilpailija</span></div><p>Seuraa kilpailijoiden Facebook-julkaisuja: uudet tuotteet, kampanjat, tapahtumat, hintailmoitukset. Kaikki yhdessä virrassa, uudet korostettuina.</p></div>
+          <div class="s"><div class="h"><span class="nm">Kilpailijoiden FB-mainokset</span><span class="pr">6 €</span></div><p>Seuraa kilpailijoiden aktiivisia Facebook-mainoksia – mitä he mainostavat, montako mainosta on käynnissä ja milloin ne alkoivat tai pysäytettiin.</p></div>
+          <div class="s"><div class="h"><span class="nm">Verkkokaupan hinta- ja varastoseuranta</span><span class="pr">8 € / 2000 tuotetta</span></div><p>Seuraa kilpailijan verkkokaupan hintoja, tarjoushintoja, varastotilannetta ja valikoimaa. Antaa historiakaaviot ja syöttää hintavertailua. Portaittainen: 8 € kutakin enintään 2000 tuotetta kohti.</p></div>
+        </div>
+
+        <div class="cat-h">Brändinomistajalle ja maahantuojalle</div>
+        <div class="svc">
+          <div class="s"><div class="h"><span class="nm">Jälleenmyyjien hintavalvonta</span><span class="pr">40 €</span></div><p>Määrität tuotteillesi RRP:n (suositushinta) ja MAP:n (matalin sallittu mainoshinta); järjestelmä seuraa, mitkä jälleenmyyjät niitä rikkovat (ks. <a href="#brandivalve">luku 15</a>).</p></div>
+        </div>
+
+        <div class="cat-h">Lisäpalvelut</div>
+        <div class="svc">
+          <div class="s"><div class="h"><span class="nm">Koulutus tiimille</span><span class="pr">40 €</span></div><p>Koulutamme tiimisi järjestelmän ja verkkokaupan aiheissa, jotta kaikki osaavat valjastaa seurannan ja tiedot hyödyksesi.</p></div>
+          <div class="s"><div class="h"><span class="nm">Tilaustyönä tehty automaatio</span><span class="pr">pyynnöstä</span></div><p>Erikoistilauksesta automatisoimme toistuvat työsi – raportit, synkronoinnit, ilmoitukset, tietovirrat. Paina <span class="chip">Pyydä tarjous</span>.</p></div>
+        </div>
+
+        <div class="cat-h">Paketit</div>
+        <div class="svc">
+          <div class="s"><div class="h"><span class="nm">Oman kaupan täyspaketti</span></div><p>Kuntotarkastus + SEO + toimintavarmuus + hintojen uudelleenhinnoittelu.</p></div>
+          <div class="s"><div class="h"><span class="nm">Seurannan aloituspaketti</span></div><p>Kilpailijoiden FB-seuranta + verkkokaupan kuntotarkastus + toimintavarmuus.</p></div>
+          <div class="s"><div class="h"><span class="nm">Ylläpito+-paketti</span></div><p>Kuntotarkastus + toimintavarmuus + ERP-integraatio.</p></div>
+        </div>
+
+        <h3>Miten tilata</h3>
         <ul class="plain">
-          <li><b>Asenna sovelluksena</b> – puhelimessa voit lisätä paneelin aloitusnäytölle kuin sovelluksen: avaa selaimen valikko ja valitse "Lisää aloitusnäyttöön". Tästä lähtien Look360 avautuu suoraan kuvakkeesta koko näytön tilassa – mitään ei tarvitse ladata.</li>
-          <li><b>Ilmoitukset puhelimeen</b> – työpöydän painike <span class="chip">Salli ilmoitukset</span> lähettää tärkeät hinnan- ja varastomuutokset push-ilmoituksena suoraan laitteeseesi. iPhonessa tämä toimii, kun olet asentanut sovelluksen aloitusnäytölle.</li>
-          <li><b>Tumma / vaalea tila</b> – yläpalkin kytkin (aurinko/kuu) vaihtaa teeman. Valinta jää muistiin.</li>
-          <li><b>Puhelimessa</b> – valikko on piilossa ☰-painikkeen takana ylänurkassa; sisältö mukautuu näytön leveyteen.</li>
-          <li><b>Uloskirjautuminen</b> – vasemmalla alhaalla käyttäjätunnuksen vieressä oleva ulos-ovesta-kuvake.</li>
+          <li>Jokaisen palvelun kohdalla on hinta €/kuukausi. Paina <span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Tilaa</span>, vahvista ikkunassa ja maksa ensimmäinen maksu; paketit tilaavat kerralla useita palveluja.</li>
+          <li>Aktiiviset palvelut ovat <span class="pill ok"><span class="dot"></span>vihreitä</span>. <b>Peruuta</b> lopettaa palvelun; kilpailijoiden seurantaa hallitaan <b>Lisää yritys</b> -toiminnon ja <b>Hallitse</b>-painikkeen kautta.</li>
+          <li><b>Maksettu – odottaa aktivointia</b>: ensimmäinen maksu on maksettu ja operaattori kytkee palvelun pian päälle.</li>
         </ul>
+        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Miten ensimmäinen maksu lasketaan</div><p>Uutta palvelua tilatessa maksat heti <strong>suhteutetun ensimmäisen maksun</strong> – vain seuraavaan laskutuspäivään asti. Sen jälkeen kaikki palvelut laskutetaan yhdessä, liittymispäiväsi vuosipäivän mukaan.</p></div>
       </section>
 
       <!-- 13 -->
+      <section class="doc" id="maksed">
+        <h2><span class="num">13</span> Miten maksu toimii</h2>
+        <p>Jokainen maksu alkaa <strong>vahvistusikkunasta</strong>, jossa on merkitty summa ja mistä maksat. Voit aina <b>Peruuta</b>.</p>
+        <ul class="plain">
+          <li><b>Heti maksettaessa</b> ohjaamme turvalliseen maksuporttiin – maksat <b>pankkilinkillä</b> tai <b>kortilla</b>, ja tiedot/palvelu avautuvat heti maksun jälkeen.</li>
+          <li><b>Laskulla</b> – lähetämme laskun sähköpostilla. Sisältö avautuu täysimääräisenä silloin, kun maksu on saapunut.</li>
+          <li><b>Ensimmäinen maksu</b> on aina suhteutettu seuraavaan laskutuspäivään asti; jatkossa peritään täysi kuukausimaksu.</li>
+          <li><b>Laskutus</b> tapahtuu kaikista palveluista kerralla, liittymispäiväsi vuosipäivän mukaan.</li>
+        </ul>
+      </section>
+
+      <!-- 14 -->
+      <section class="doc" id="hinnastamine">
+        <h2><span class="num">14</span> Hinnoittelu</h2>
+        <p>Valikkokohta <b>Hinnoittelu</b> näkyy vain silloin, kun sinulla on tilattuna <strong>hintojen uudelleenhinnoittelun</strong> palvelu. Siellä näet kilpailuun perustuvia hintaehdotuksia omalle kaupallesi.</p>
+        <div class="deflist">
+          <div class="dr"><span class="k">Tuote</span><span class="v">Tuote ja sääntö, jonka perusteella ehdotus tehtiin.</span></div>
+          <div class="dr"><span class="k">Nykyinen</span><span class="v">Tuotteen nykyinen hinta kaupassasi.</span></div>
+          <div class="dr"><span class="k">Ehdotus</span><span class="v">Järjestelmän ehdottama uusi hinta.</span></div>
+          <div class="dr"><span class="k">Ero</span><span class="v">Muutos € ja % (esim. −0,22 € · −14,7 %).</span></div>
+          <div class="dr"><span class="k">Syy</span><span class="v">Miksi: esim. ”halvin kilpailija 1,50 €; sääntö 3 % alle; alaraja suojassa”.</span></div>
+        </div>
+        <ul class="plain">
+          <li><span class="chip">Luo uudelleen</span> laskee ehdotukset tuoreeltaan; <span class="chip">Säännöt</span> ja <span class="chip">Historia</span> näyttävät asetukset ja aiemmat muutokset.</li>
+          <li>Jokaisen ehdotuksen kohdalla: <span class="chip go">Kirjoita</span> vie hinnan kauppaan, <b>Jätä ennalleen</b> jättää hinnan ja ohittaa tuotteen valittujen päivien ajan, <b>Ohita</b> ohittaa ehdotuksen.</li>
+        </ul>
+        <div class="box warn"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg> Turvallisesti – oletuksena ”riisuttu aseista”</div><p>Oletuksena kaikki on <b>testitilassa</b>: ehdotukset lasketaan, mutta yksikään ”Kirjoita” ei muuta kauppaasi. Live-tilan (aidon hintojen kirjoittamisen) kytkemme päälle yhdessä kanssasi. Alarajat (hintapohja, MAP) estävät liian matalan ehdotuksen.</p></div>
+      </section>
+
+      <!-- 15 -->
+      <section class="doc" id="brandivalve">
+        <h2><span class="num">15</span> Brändivalvonta</h2>
+        <p>Valikkokohta <b>Brändivalvonta</b> on brändinomistajalle ja maahantuojalle. Jos sinulla on tilattuna <strong>jälleenmyyjien hintavalvonta</strong>, määrität täällä tuotteidesi hintasäännöt ja näet, kuka niitä rikkoo.</p>
+        <ol class="steps">
+          <li>Lisää tuotteesi yhdessä <b>RRP</b>:n (suositushinta) ja <b>MAP</b>:n (matalin sallittu mainoshinta) kanssa. Tuotteita voi lisätä yksitellen tai tuoda.</li>
+          <li>Järjestelmä vertaa seurattavien jälleenmyyjien hintoja RRP/MAP-arvoihisi.</li>
+          <li>Näet luettelon <b>rikkomuksista</b> – kuka myy alle MAP:n tai poikkeaa RRP:stä – ja voit viedä <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg> CSV</span>.</li>
+        </ol>
+        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg> Mihin</div><p>Pidät brändisi hintatason – rikkomuksen löytyessä sinulla on dokumentoitu peruste keskustella jälleenmyyjän kanssa.</p></div>
+      </section>
+
+      <!-- 16 -->
+      <section class="doc" id="naited">
+        <h2><span class="num">16</span> Esimerkkitilanteet</h2>
+        <p>Näin toiminnot nivoutuvat aidoksi työksi.</p>
+
+        <div class="scn">
+          <h3>1. Kilpailija pudotti hinnan</h3>
+          <p>Aamusähköposti tuo ”Kilpailija X: 12 hinnanlaskua”. Avaat <b>Hintavertailun</b> ja näet, että kolmella tuotteella olet nyt markkinan kallein. <b>Hinnoittelu</b> ehdottaa uudet hinnat – kirjoitat ne yhdellä klikkauksella kauppaan.</p>
+          <div class="flow"><span class="st">Aamusähköposti</span><span class="ar">→</span><span class="st">Hintavertailu</span><span class="ar">→</span><span class="st">Hinnoittelu</span><span class="ar">→</span><span class="st">Kirjoita kauppaan</span></div>
+        </div>
+
+        <div class="scn">
+          <h3>2. Tuote loppui kilpailijalta</h3>
+          <p>Olet asettanut ilmoitussäännön ”varasto loppu” yhdelle avaintuotteelle. Kun se loppuu kilpailijalta, tulee <b>push puhelimeen</b>. Reagoit: nostat hintaa tai mainostat, että sinulla on tavara varastossa.</p>
+          <div class="flow"><span class="st">Ilmoitussääntö</span><span class="ar">→</span><span class="st">Push puhelimeen</span><span class="ar">→</span><span class="st">Reagoit</span></div>
+        </div>
+
+        <div class="scn">
+          <h3>3. Uusi kilpailija markkinalle</h3>
+          <p>Kuulet uudesta kaupasta. <b>Lisää yritys</b> → verkkokauppa + Facebook → vahvistat kuukausimaksun. Muutamassa minuutissa näet sen valikoiman, hinnat ja Facebook-toiminnan.</p>
+          <div class="flow"><span class="st">Lisää yritys</span><span class="ar">→</span><span class="st">Vahvista kuukausimaksu</span><span class="ar">→</span><span class="st">Yritysnäkymä</span></div>
+        </div>
+
+        <div class="scn">
+          <h3>4. Oman verkkokaupan kunto ontuu</h3>
+          <p><b>Verkkokaupan kunto</b> näyttää 109 kriittistä virhettä – puuttuvat kuvat ja alt-tekstit. Käyt korjauslistan läpi; seuraavassa skannauksessa kunto-% nousee.</p>
+          <div class="flow"><span class="st">Verkkokaupan kunto</span><span class="ar">→</span><span class="st">Korjauslista</span><span class="ar">→</span><span class="st">Kunto paranee</span></div>
+        </div>
+
+        <div class="scn">
+          <h3>5. Kuukausikatsaus johdolle</h3>
+          <p>Kuun 1. päivä tulee <b>PDF-kuukausiraportti</b> automaattisesti postilaatikkoon. Lähetät sen johdolle – yhteenveto hintaliikkeistä, valikoimasta ja markkinapositiosta yhdessä tiedostossa.</p>
+          <div class="flow"><span class="st">Kuukausiraportti (auto)</span><span class="ar">→</span><span class="st">Lähetä johdolle</span></div>
+        </div>
+
+        <div class="scn">
+          <h3>6. Jälleenmyyjä meni alle MAP:n</h3>
+          <p>Olet brändinomistaja. <b>Brändivalvonta</b> näyttää, että yksi jälleenmyyjä myy tuotetta alle sovitun MAP:n. Viet rikkomuksen ja otat jälleenmyyjään yhteyttä.</p>
+          <div class="flow"><span class="st">Brändivalvonta</span><span class="ar">→</span><span class="st">Rikkomus</span><span class="ar">→</span><span class="st">Ota yhteyttä</span></div>
+        </div>
+
+        <div class="scn">
+          <h3>7. Tiedot omaan BI:hin</h3>
+          <p>Haluat hinnat ja varastotilanteen omaan Power BI -raporttiisi. <b>Tili</b> → <b>Luo API-avain</b> → yhdistät REST-API:n Power Queryn kautta. Tiedot päivittyvät automaattisesti.</p>
+          <div class="flow"><span class="st">Tili</span><span class="ar">→</span><span class="st">API-avain</span><span class="ar">→</span><span class="st">Power BI</span></div>
+        </div>
+      </section>
+
+      <!-- 17 -->
+      <section class="doc" id="seaded">
+        <h2><span class="num">17</span> Sovellus ja tumma tila</h2>
+        <ul class="plain">
+          <li><b>Asenna sovelluksena</b> – puhelimessa voit lisätä paneelin aloitusnäytölle kuin sovelluksen: avaa selaimen valikko ja valitse ”Lisää aloitusnäyttöön”. Jatkossa Look360 avautuu suoraan kuvakkeesta ja koko näytöllä – mitään ei tarvitse ladata.</li>
+          <li><b>Ilmoitukset puhelimeen</b> – painike <span class="chip">Salli push-ilmoitukset</span> lähettää tärkeät muutokset suoraan laitteeseen. iPhonessa tämä toimii sovelluksena asentamisen jälkeen.</li>
+          <li><b>Tumma / vaalea tila</b> – yläpalkin kytkin (aurinko/kuu) vaihtaa teeman. Valinta jää muistiin.</li>
+          <li><b>Puhelimessa</b> – valikko on piilossa ☰-painikkeen takana yläkulmassa; sisältö mukautuu näytön leveyteen.</li>
+          <li><b>Uloskirjautuminen</b> – vasemmalla alhaalla käyttäjätunnuksen vieressä oleva ovesta-ulos-kuvake.</li>
+        </ul>
+      </section>
+
+      <!-- 18 -->
       <section class="doc" id="abi">
-        <h2><span class="num">13</span> Apu ja yhteystiedot</h2>
+        <h2><span class="num">18</span> Apu ja yhteystiedot</h2>
         <p>Kysymysten tai huolien tullessa vastaamme englanniksi – oikea ihminen, ei automaattivastaus.</p>
         <ul class="plain">
           <li>Sähköposti: <a href="mailto:info@look360.eu">info@look360.eu</a></li>
           <li>Puhelin: <a href="tel:+37253620246">+372 5362 0246</a></li>
           <li>Usein kysytyt kysymykset: <a href="index.html#kkk">etusivun UKK</a></li>
         </ul>
-        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Lyhyesti</div><p>Kirjaudu sisään → katso työpöydältä vihreää/keltaista/punaista → lisää yrityksiä ja palveluita → tärkeät muutokset saapuvat sinulle myös sähköpostilla. Enempää ei tarvitse tehdä.</p></div>
+        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Lyhyesti</div><p>Kirjaudu sisään → katso työpöydältä vihreä/keltainen/punainen → lisää yrityksiä ja palveluja → aseta ilmoitussäännöt → tärkeät muutokset saapuvat sinulle myös sähköpostilla ja push-ilmoituksena. Enempää ei tarvitse tehdä.</p></div>
       </section>
     </div>
   </div>
@@ -457,7 +676,7 @@
 
 <footer>
   <div class="wrap">
-    <span>© 2026 Look360 · Watchdog OÜ · Y-tunnus 17537572 · ALV-tunnus EE103000237</span>
+    <span>© 2026 Look360 · Watchdog OÜ · Registrikood 17537572 · KMKR EE103000237</span>
     <span><a href="index.html">Etusivu</a> · <a href="index.html#kkk">UKK</a> · <a href="privaatsus.html">Tietosuoja</a> · <a href="tingimused.html">Ehdot</a></span>
   </div>
 </footer>
