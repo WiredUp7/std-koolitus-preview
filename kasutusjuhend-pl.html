@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Instrukcja obsługi – panel monitoringu Look360</title>
-<meta name="description" content="Instrukcja obsługi panelu monitoringu Look360 dla klienta: logowanie, pulpit, dodawanie firm, katalog produktów, usługi, płatności i raporty – krok po kroku, który przycisk co robi.">
+<meta name="description" content="Instrukcja obsługi panelu monitoringu Look360 dla klienta: logowanie, pulpit, dodawanie firm, katalog produktów, porównanie cen, powiadomienia, raporty, usługi i płatności – krok po kroku, z ilustracjami i przykładowymi sytuacjami.">
 <meta name="robots" content="index,follow">
 <link rel="alternate" hreflang="et" href="https://look360.eu/kasutusjuhend.html">
 <link rel="alternate" hreflang="en" href="https://look360.eu/kasutusjuhend-en.html">
@@ -60,7 +60,7 @@
   /* Layout: sticky TOC + content */
   main{padding:40px 0 80px}
   .layout{display:grid;grid-template-columns:230px 1fr;gap:48px;align-items:start}
-  .toc{position:sticky;top:90px;font-size:14px}
+  .toc{position:sticky;top:90px;font-size:14px;max-height:calc(100vh - 110px);overflow:auto}
   .toc h4{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:12px}
   .toc a{display:block;color:var(--text-2);text-decoration:none;padding:6px 11px;border-radius:9px;border-left:2px solid transparent;font-weight:300;transition:.15s}
   .toc a:hover{background:var(--paper-2);color:var(--text)}
@@ -132,6 +132,22 @@
   .deflist .dr .k{font-weight:600;color:var(--text)}
   .deflist .dr .v{color:var(--text-2);font-weight:300}
 
+  /* Service cards (teenuste ülevaade) */
+  .svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin:16px 0}
+  .svc .s{border:1px solid var(--line);border-radius:14px;padding:15px 17px;background:var(--paper)}
+  .svc .s .h{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:5px}
+  .svc .s .nm{font-weight:600;color:var(--text);font-size:14.5px}
+  .svc .s .pr{font-weight:600;color:var(--accent-ink);font-size:13px;white-space:nowrap}
+  .svc .s p{margin:0;font-size:13px;color:var(--text-2);font-weight:300;line-height:1.55}
+  .cat-h{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:22px 0 2px}
+
+  /* Scenario cards */
+  .scn{border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:0 14px 14px 0;padding:15px 19px;margin:15px 0;background:var(--paper-2)}
+  .scn h3{margin:0 0 4px;font-size:15.5px}
+  .scn .flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:9px;font-size:12.5px;color:var(--muted)}
+  .scn .flow .st{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:3px 9px;color:var(--text-2);font-weight:500}
+  .scn .flow .ar{color:var(--accent)}
+
   footer{background:var(--ink);color:var(--on-dark-mut);padding:40px 0;font-size:14px;font-weight:300;margin-top:20px}
   footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
   footer a{color:var(--on-dark-mut);text-decoration:none}
@@ -139,10 +155,11 @@
 
   @media(max-width:860px){
     .layout{grid-template-columns:1fr;gap:0}
-    .toc{position:static;margin-bottom:24px;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--paper-2)}
+    .toc{position:static;margin-bottom:24px;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--paper-2);max-height:none}
     .toc a{border-left:0;padding:5px 0}
     .toc a.on{background:none}
     .deflist .dr{grid-template-columns:1fr;gap:2px}
+    .scn .flow{font-size:11.5px}
     header.top nav a:not(.login){display:none}
   }
   /* Keelevaheti (lipud) – jagatud lang.js-iga */
@@ -180,7 +197,7 @@
   <div class="wrap">
     <div class="eyebrow"><span class="pip"></span> Instrukcja obsługi</div>
     <h1>Instrukcja obsługi panelu monitoringu</h1>
-    <p>Przewodnik krok po kroku po wszystkim, co Państwo jako klient widzą i mogą zrobić: od logowania po pulpit, monitorowane firmy, katalog produktów, usługi, płatności i raporty. Przy każdym przycisku opisano, co on robi i gdzie znajdą Państwo jego wynik.</p>
+    <p>Krok po kroku o wszystkim, co jako klient widzisz i możesz zrobić – od logowania po pulpit, monitorowane firmy, katalog produktów, porównanie cen, powiadomienia, usługi, płatności i raporty. Przy każdej funkcji jest ilustracja, wyjaśnienie i realne przykładowe sytuacje.</p>
   </div>
 </section>
 
@@ -188,268 +205,470 @@
   <div class="wrap layout">
     <aside class="toc" id="toc">
       <h4>Spis treści</h4>
-      <a href="#algus">1. Czym jest panel monitoringu</a>
+      <a href="#algus">1. Czym jest Look360</a>
       <a href="#logimine">2. Logowanie</a>
       <a href="#menuu">3. Menu i widok ogólny</a>
       <a href="#toolaud">4. Pulpit monitoringu</a>
       <a href="#lisafirma">5. Dodawanie firmy</a>
       <a href="#firmavaade">6. Widok firmy i katalog</a>
       <a href="#kategooriad">7. Wybór kategorii</a>
-      <a href="#teenused">8. Usługi i opłata miesięczna</a>
-      <a href="#maksed">9. Jak przebiega płatność</a>
-      <a href="#hinnastamine">10. Ustalanie cen</a>
-      <a href="#raportid">11. Raporty</a>
-      <a href="#seaded">12. Aplikacja, powiadomienia i tryb ciemny</a>
-      <a href="#abi">13. Pomoc i kontakt</a>
+      <a href="#hinnavordlus">8. Porównanie cen</a>
+      <a href="#teavitused">9. Powiadomienia</a>
+      <a href="#kuuraportid">10. Raporty miesięczne</a>
+      <a href="#konto">11. Konto i API</a>
+      <a href="#teenused">12. Wszystkie usługi i opłata miesięczna</a>
+      <a href="#maksed">13. Jak przebiega płatność</a>
+      <a href="#hinnastamine">14. Wycena</a>
+      <a href="#brandivalve">15. Ochrona marki</a>
+      <a href="#naited">16. Przykładowe sytuacje</a>
+      <a href="#seaded">17. Aplikacja i tryb ciemny</a>
+      <a href="#abi">18. Pomoc i kontakt</a>
     </aside>
 
     <div class="content">
-      <p class="lead">Panel monitoringu Look360 gromadzi w jednym miejscu wszystko, co śledzimy w Państwa imieniu – ceny i stany magazynowe konkurencji, posty na Facebooku oraz kondycję Państwa własnego sklepu internetowego. Nie muszą Państwo niczego instalować: logują się Państwo, jednym spojrzeniem widzą Państwo aktualny stan, a o istotnych zmianach informujemy także codzienną poranną wiadomością. Niniejszy przewodnik omawia każdy widok i każdy przycisk.</p>
+      <p class="lead">Panel monitoringu Look360 zbiera w jednym miejscu wszystko, co monitorujemy za Ciebie – ceny i stany magazynowe konkurentów, posty i reklamy na Facebooku oraz kondycję i niezawodność Twojego własnego sklepu internetowego. Nie musisz nic instalować: logujesz się, widzisz stan jednym rzutem oka i otrzymujesz najważniejsze zmiany także w codziennym porannym mailu. Ta instrukcja przechodzi przez każdy widok i przycisk, a na końcu znajdziesz przykładowe sytuacje, które łączą funkcje w realną pracę.</p>
 
       <!-- 1 -->
       <section class="doc" id="algus">
-        <h2><span class="num">1</span> Czym jest panel monitoringu</h2>
-        <p>Panel monitoringu to Państwa prywatny pulpit pod adresem, do którego logują się Państwo swoim adresem e-mail i hasłem. Widzą tam Państwo wszystkie monitorowane przedsiębiorstwa – zarówno własny sklep internetowy, jak i konkurentów – oraz każdą zmianę, którą system wykrył: spadek ceny, wyczerpanie zapasów, nowy post na Facebooku, awarię sklepu internetowego.</p>
-        <p>Wszystko działa według <strong>logiki kolorów</strong>. Te same trzy kolory powtarzają się wszędzie – na pulpicie, na karcie firmy, w tabeli:</p>
+        <h2><span class="num">1</span> Czym jest Look360</h2>
+        <p>Look360 to <strong>monitoring, automatyzacja i reagowanie</strong> w jednym pakiecie. Panel monitoringu to Twój prywatny pulpit pod adresem, do którego logujesz się swoim e-mailem i hasłem. Widzisz tam wszystkie monitorowane firmy – zarówno swój sklep internetowy, jak i konkurentów – oraz każdą zmianę, którą wychwycił system: spadek ceny, koniec stanu magazynowego, nowy post na Facebooku, awaria sklepu.</p>
+        <p>Wszystko działa według <strong>logiki kolorów</strong>. Te same trzy kolory powtarzają się wszędzie – na pulpicie, na karcie firmy, w tabeli, na wykresach:</p>
         <div class="legend">
-          <div class="lg"><span class="sw" style="background:var(--accent)"></span><span><b>Zielony – wszystko w porządku</b>Brak zmian lub wszystko przebiega zgodnie z oczekiwaniami. Nie trzeba nic robić.</span></div>
-          <div class="lg"><span class="sw" style="background:var(--warn)"></span><span><b>Żółty – wymaga uwagi</b>Ostrzeżenie: np. zmiana ceny u konkurenta, wyczerpanie zapasów lub nieaktualne dane.</span></div>
-          <div class="lg"><span class="sw" style="background:var(--err)"></span><span><b>Czerwony – awaria</b>Źródło danych okazało się chwilowo niedostępne. Zwykle przywraca się samo lub sprawdza je operator.</span></div>
+          <div class="lg"><span class="sw" style="background:var(--accent)"></span><span><b>Zielony – wszystko w porządku</b>Brak zmian lub wszystko przebiega zgodnie z oczekiwaniami. Nic nie trzeba robić.</span></div>
+          <div class="lg"><span class="sw" style="background:var(--warn)"></span><span><b>Żółty – wymaga uwagi</b>Znalezisko: np. zmiana ceny u konkurenta, koniec stanu magazynowego lub nieaktualne dane.</span></div>
+          <div class="lg"><span class="sw" style="background:var(--err)"></span><span><b>Czerwony – awaria</b>Źródło danych stało się chwilowo niedostępne. Zazwyczaj przywraca się samo lub sprawdza je operator.</span></div>
         </div>
-        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z"/></svg> Nie trzeba pilnować skrzynki</div><p>Najważniejsze zmiany wysyłamy także codzienną zbiorczą wiadomością poranną. Panel otwierają Państwo wtedy, gdy chcą zobaczyć więcej lub coś zmienić.</p></div>
+        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z"/></svg> Nie musisz pilnować skrzynki</div><p>Ważniejsze zmiany wysyłamy także w codziennym porannym mailu zbiorczym, a te najbardziej krytyczne – od razu. Panel otwierasz wtedy, gdy chcesz zobaczyć więcej lub coś zmienić.</p></div>
       </section>
 
       <!-- 2 -->
       <section class="doc" id="logimine">
         <h2><span class="num">2</span> Logowanie</h2>
         <ol class="steps">
-          <li>Otwórz opcję <b>Zaloguj się</b> – w górnym rogu strony głównej, w nagłówku tego przewodnika lub poprzez bezpośredni link, który Państwu przesłaliśmy.</li>
-          <li>Wpisz <b>nazwę użytkownika</b> – jest nią Państwa <b>adres e-mail</b> (np. ty@firma.pl).</li>
+          <li>Otwórz <b>Zaloguj się</b> – z górnego rogu strony głównej, z górnej części tej instrukcji lub z bezpośredniego linku, który Ci wysłaliśmy.</li>
+          <li>Wpisz <b>nazwę użytkownika</b> – to Twój <b>adres e-mail</b> (np. ty@firma.pl).</li>
           <li>Wpisz <b>hasło</b> i naciśnij <span class="chip go">Wejdź</span></li>
         </ol>
         <ul class="plain">
-          <li><b>Nie pamiętają Państwo hasła?</b> – z linku poniżej wyślemy e-mailem link do ustawienia nowego hasła.</li>
-          <li><b>Nie mają Państwo jeszcze konta?</b> – przycisk <span class="chip">Zarejestruj się</span> przenosi do cennika na stronie głównej, gdzie mogą Państwo skomponować pakiet i przystąpić.</li>
-          <li><b>Powrót na stronę główną</b> – górny link prowadzi z powrotem na look360.eu.</li>
+          <li><b>Nie pamiętasz hasła?</b> – z linku poniżej wyślemy e-mailem link do ustawienia nowego hasła.</li>
+          <li><b>Nie masz jeszcze konta?</b> – przycisk <span class="chip">Zarejestruj się</span> prowadzi do cennika na stronie głównej, gdzie możesz skompletować pakiet i dołączyć.</li>
+          <li><b>Wypróbuj bez konta</b> – na stronie logowania jest publiczne <b>konto demo</b>, na którym możesz przeklikać wszystkie widoki na prawdziwych danych przykładowych.</li>
         </ul>
-        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg> Warto wiedzieć</div><p>Konto jest powiązane z Państwa przedsiębiorstwem. Po zalogowaniu widzą Państwo u góry po lewej, na zielonym pasku, nazwę swojego przedsiębiorstwa – dzięki temu wiedzą Państwo, że są w odpowiednim koncie.</p></div>
+        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg> Warto wiedzieć</div><p>Konto jest powiązane z Twoją firmą. Po zalogowaniu widzisz u góry po lewej na zielonym pasku nazwę swojej firmy – dzięki temu wiesz, że jesteś na właściwym koncie.</p></div>
       </section>
 
       <!-- 3 -->
       <section class="doc" id="menuu">
         <h2><span class="num">3</span> Menu i widok ogólny</h2>
-        <p>Każda strona ma tę samą strukturę: <strong>menu po lewej</strong>, <strong>górny pasek</strong> i treść pośrodku.</p>
-        <h3>Menu po lewej</h3>
-        <ul class="plain">
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="5" rx="1.5"/><rect x="13" y="11" width="8" height="10" rx="1.5"/><rect x="3" y="14" width="8" height="7" rx="1.5"/></svg> Monitoring</span> – główny pulpit ze wszystkimi monitorowanymi przedsiębiorstwami i wykrytymi zmianami.</li>
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M20 7H4M20 12H4M20 17H4"/></svg> Usługi</span> – Państwa zamówione usługi, opłata miesięczna i możliwość domówienia kolejnych.</li>
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Ustalanie cen</span> – pojawia się tylko wtedy, gdy mają Państwo zamówioną usługę <b>przecenienia produktów</b>.</li>
-          <li>U dołu znajdują się Państwa nazwa użytkownika, rola <b>Klient</b> oraz ikona <b>wylogowania</b> (drzwi z wyjściem).</li>
-        </ul>
+        <p>Każda strona ma tę samą ramę: <strong>lewe menu</strong>, <strong>górny pasek</strong> i treść na środku.</p>
+        <h3>Lewe menu</h3>
+        <p>W menu są wszystkie Twoje widoki. Niektóre punkty pojawiają się tylko wtedy, gdy masz zamówioną odpowiednią usługę.</p>
+        <div class="deflist">
+          <div class="dr"><span class="k">Monitoring</span><span class="v">Główny pulpit – wszystkie monitorowane firmy, znaleziska i trend.</span></div>
+          <div class="dr"><span class="k">Usługi</span><span class="v">Twoje zamówione usługi, opłata miesięczna i dozamawianie.</span></div>
+          <div class="dr"><span class="k">Konto</span><span class="v">Dane konta, hasło, dostęp do API i ustawienia codziennego porannego maila.</span></div>
+          <div class="dr"><span class="k">Porównanie cen</span><span class="v">Ten sam produkt we wszystkich monitorowanych sklepach – najniższa cena i historia.</span></div>
+          <div class="dr"><span class="k">Powiadomienia</span><span class="v">Reguły powiadomień cenowych i powiadomienia push na telefon.</span></div>
+          <div class="dr"><span class="k">Raporty miesięczne</span><span class="v">Miesięczny zbiorczy raport PDF dla zarządu.</span></div>
+          <div class="dr"><span class="k">Wycena</span><span class="v">Widoczna tylko z usługą <b>zmiany wyceny</b> – rekomendacje cenowe oparte na konkurencji.</span></div>
+          <div class="dr"><span class="k">Ochrona marki</span><span class="v">Widoczna tylko z usługą <b>nadzoru cen dystrybutorów</b> – naruszenia RRP/MAP.</span></div>
+        </div>
+        <p>Na dole jest Twoja nazwa użytkownika, rola <b>Klient</b> oraz ikona <b>wylogowania</b> (drzwi z wyjściem).</p>
         <h3>Górny pasek</h3>
         <ul class="plain">
-          <li>Po lewej <b>tytuł strony</b> (np. nazwa Państwa przedsiębiorstwa), a pod nim drobnym drukiem <b>kiedy ostatnio aktualizowano</b>.</li>
-          <li>Po prawej <b>przełącznik trybu ciemny/jasny</b> (słońce/księżyc) oraz <b>przyciski czynności</b> danej strony.</li>
-          <li>Na telefonie menu po lewej otwiera <b>przycisk ☰</b> w górnym rogu.</li>
+          <li>Po lewej <b>tytuł strony</b>, a pod nim drobnym drukiem <b>kiedy ostatnio zaktualizowano</b>.</li>
+          <li>Po prawej <b>przełącznik ciemny/jasny</b> (słońce/księżyc) i <b>przyciski akcji</b> konkretnej strony.</li>
+          <li>Na telefonie lewe menu otwiera <b>przycisk ☰</b> w górnym rogu.</li>
         </ul>
       </section>
 
       <!-- 4 -->
       <section class="doc" id="toolaud">
         <h2><span class="num">4</span> Pulpit monitoringu</h2>
-        <p>To widok startowy. U góry znajdują się Państwo główne przyciski, a niżej przegląd i lista firm.</p>
+        <p>To widok domowy. U góry znajdziesz główne przyciski, poniżej trend, podsumowanie i lista firm.</p>
         <figure>
-          <img src="l360-seirepaneel.png" alt="Look360 seire töölaud: trendigraafik, kokkuvõte ja firmade tabel" loading="lazy">
-          <figcaption>Pulpit monitoringu – wykres trendu, podsumowanie i tabela monitorowanych firm.</figcaption>
+          <img src="l360-seirepaneel.png" alt="Pulpit monitoringu Look360: wykres trendu, podsumowanie i tabela firm" loading="lazy">
+          <figcaption>Pulpit monitoringu – trend znalezisk, podsumowanie i tabela monitorowanych firm.</figcaption>
         </figure>
         <h3>Przyciski górnego paska</h3>
         <ul class="plain">
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Dodaj firmę</span> – dodaj nowe monitorowane przedsiębiorstwo (zob. <a href="#lisafirma">rozdział 5</a>).</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Dodaj firmę</span> – dodaj nową monitorowaną firmę (zob. <a href="#lisafirma">rozdział 5</a>).</li>
           <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 7H4M20 12H4M20 17H4"/></svg> Usługi</span> – otwórz widok usług i opłaty miesięcznej.</li>
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-2.6-6.4L21 8"/><path d="M21 3v5h-5"/></svg> Odśwież widok</span> – wczytuje ponownie najnowsze dane i odświeża ekran. <b>Nie skanuje</b> witryn, jedynie odświeża widok.</li>
-          <li><span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg> Przeskanuj wszystko ponownie</span> – pojawia się, gdy monitorują Państwo sklepy internetowe lub Facebooka. Uruchamia <b>rzeczywiste skanowania</b> (pobiera dane z witryn), trwa kilka minut. Można to wykonać <b>1 raz na dobę</b>.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-2.6-6.4L21 8"/><path d="M21 3v5h-5"/></svg> Odśwież widok</span> – ponownie wczytuje najnowsze dane i odświeża ekran. <b>Nie skanuje</b> stron, tylko odświeża widok.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg> Włącz powiadomienia</span> – włącza powiadomienia push na telefon (zob. <a href="#teavitused">rozdział 9</a>).</li>
+          <li><span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg> Skanuj wszystko ponownie</span> – uruchamia <b>prawdziwe skany</b> (skanuje strony), trwa kilka minut. Można to zrobić <b>raz na dobę</b>.</li>
         </ul>
         <h3>Jak działa monitoring? – pasek pomocy</h3>
-        <p>W górnej części pulpitu znajduje się rozwijany pasek <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .8-1 1.7M12 17h.01"/></svg> Jak działa monitoring?</span> Kliknij, aby przeczytać krótkie objaśnienie kolorów. Za pierwszym razem, gdy nie ma jeszcze żadnej firmy, jest on otwarty.</p>
-        <h3>Trend ostrzeżeń</h3>
-        <p>Wykres pokazuje, jak liczba ostrzeżeń zmieniała się w trakcie ostatnich monitorowań – czy sprawy się uspokajają, czy wymagają większej uwagi.</p>
+        <p>W górnej części pulpitu jest rozwijany pasek <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .8-1 1.7M12 17h.01"/></svg> Jak działa monitoring?</span> Kliknij, aby przeczytać krótkie wyjaśnienie. Za pierwszym razem, gdy nie ma jeszcze żadnej firmy, jest on otwarty.</p>
+        <h3>Trend znalezisk</h3>
+        <p>Wykres pokazuje, jak liczba znalezisk zmieniała się w ciągu ostatnich monitoringów – czy sytuacja się uspokaja, czy wymaga większej uwagi. Na wszystkich wykresach podana jest skala osi i jednostka; najedź myszą na linię, aby zobaczyć dokładną liczbę.</p>
         <h3>Podsumowanie</h3>
-        <p>Po prawej znajdują się cztery liczby i wiersz stanu:</p>
+        <p>Po prawej są cztery liczby i wiersz stanu:</p>
         <div class="deflist">
-          <div class="dr"><span class="k">Firm w monitorowaniu</span><span class="v">Ile przedsiębiorstw monitorują Państwo obecnie.</span></div>
-          <div class="dr"><span class="k">Aktywnych ostrzeżeń</span><span class="v">Ile spraw wymaga uwagi (żółty).</span></div>
-          <div class="dr"><span class="k">Źródeł z awarią</span><span class="v">Ile źródeł danych jest w danej chwili niedostępnych (czerwony).</span></div>
+          <div class="dr"><span class="k">Firm monitorowanych</span><span class="v">Ile firm obecnie monitorujesz.</span></div>
+          <div class="dr"><span class="k">Znalezisk</span><span class="v">Ile zmian wymaga uwagi (żółty).</span></div>
+          <div class="dr"><span class="k">Źródeł z awarią</span><span class="v">Ile źródeł danych jest w tej chwili niedostępnych (czerwony).</span></div>
           <div class="dr"><span class="k">Nieaktualne dane</span><span class="v">Dane ilu firm są przestarzałe i wymagają odświeżenia.</span></div>
         </div>
         <h3>Zakładki, widoki i eksport</h3>
         <ul class="plain">
-          <li><b>Zakładki</b> <span class="pill sec"><span class="dot"></span>Wszystkie</span> <span class="pill sec"><span class="dot"></span>Moje przedsiębiorstwo</span> <span class="pill sec"><span class="dot"></span>Konkurenci</span> – filtrują listę.</li>
-          <li><b>Tabela / Karty</b> – przełącz formę listy. Tabela jest kompaktowa, karty od razu pokazują kanały każdej firmy w rozwinięciu.</li>
-          <li><b>Sortuj</b> – uporządkuj według ostrzeżeń, wykrytych zmian, kondycji lub nazwy.</li>
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg> Eksportuj CSV</span> – pobiera widoczną tabelę jako plik otwierany w programie Excel.</li>
+          <li><b>Zakładki</b> <span class="pill sec"><span class="dot"></span>Wszystkie</span> <span class="pill sec"><span class="dot"></span>Moja firma</span> <span class="pill sec"><span class="dot"></span>Konkurenci</span> – filtrują listę.</li>
+          <li><b>Tabela / Karty</b> – przełącz formę listy. Tabela jest kompaktowa; widok kart od razu pokazuje kanały i znaleziska każdej firmy.</li>
+          <li><b>Sortuj</b> – uporządkuj domyślnie, według znalezisk lub według nazwy.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg> Eksportuj CSV</span> – pobiera widoczną tabelę jako plik otwierany w Excelu.</li>
         </ul>
+        <figure>
+          <img src="l360-firmakaardid.png" alt="Widok kart na pulpicie: kanały i znaleziska każdej firmy od razu widoczne" loading="lazy">
+          <figcaption>Widok kart – kanały i najnowsze znaleziska każdej monitorowanej firmy jednym rzutem oka.</figcaption>
+        </figure>
         <h3>Tabela firm</h3>
-        <p>Każdy wiersz to jedno monitorowane przedsiębiorstwo. <b>Kliknij wiersz</b>, aby otworzyć pełny widok danej firmy. Kolumny:</p>
+        <p>Każdy wiersz to jedna monitorowana firma. <b>Kliknij wiersz</b>, aby otworzyć pełny widok tej firmy. Kolumny:</p>
         <div class="deflist">
-          <div class="dr"><span class="k">Firma</span><span class="v">Nazwa oraz to, czy jest to Państwa przedsiębiorstwo, czy konkurent.</span></div>
-          <div class="dr"><span class="k">Status</span><span class="v"><span class="pill ok"><span class="dot"></span>Wszystko w porządku</span> · <span class="pill warn"><span class="dot"></span>N ostrzeżeń</span> · <span class="pill err"><span class="dot"></span>Awaria</span> · <span class="pill sec"><span class="dot"></span>Nieaktualne / Brak uruchomienia</span></span></div>
-          <div class="dr"><span class="k">Kanały</span><span class="v">Ile źródeł jest monitorowanych przy danej firmie (sieć, Facebook itd.).</span></div>
-          <div class="dr"><span class="k">Wykryte zmiany</span><span class="v">Ile zmian wykryto podczas ostatniego monitorowania.</span></div>
-          <div class="dr"><span class="k">Ostrzeżenia</span><span class="v">Ile wykrytych zmian wymaga uwagi.</span></div>
-          <div class="dr"><span class="k">Aktualność</span><span class="v">Kiedy ostatnio aktualizowano dane tej firmy.</span></div>
-          <div class="dr"><span class="k">Kondycja</span><span class="v">Ogólny pasek stanu 0–100% (zielony dobry, żółty średni, czerwony słaby).</span></div>
+          <div class="dr"><span class="k">Firma</span><span class="v">Nazwa oraz czy to Twoja firma, czy konkurent.</span></div>
+          <div class="dr"><span class="k">Status</span><span class="v"><span class="pill ok"><span class="dot"></span>N znalezisk</span> · <span class="pill err"><span class="dot"></span>Awaria</span> · <span class="pill sec"><span class="dot"></span>Nieaktualne / Nie uruchomiono / Cisza</span></span></div>
+          <div class="dr"><span class="k">Kanałów</span><span class="v">Ile źródeł monitorowanych jest przy tej firmie (strona, Facebook itd.).</span></div>
+          <div class="dr"><span class="k">Znalezisk</span><span class="v">Na ilu kanałach jest znalezisko z ostatniego monitoringu.</span></div>
+          <div class="dr"><span class="k">Aktualność</span><span class="v">Kiedy ostatnio zaktualizowano dane tej firmy.</span></div>
+          <div class="dr"><span class="k">Znaleziska</span><span class="v">Szybki sygnał: <span class="pill ok"><span class="dot"></span>Tak</span> jest znalezisko, <span class="pill sec"><span class="dot"></span>Nie</span> wszystko cicho.</span></div>
         </div>
-        <h3>Dodane przez Państwa monitorowane firmy</h3>
-        <p>Jeśli sami dodali Państwo firmę, jej stan widzą Państwo w osobnej sekcji. Możliwe stany:</p>
+        <h3>Firmy dodane przez Ciebie</h3>
+        <p>Gdy sam dodasz firmę, widzisz jej stan. Możliwe stany:</p>
         <ul class="plain">
-          <li><span class="pill warn"><span class="dot"></span>Oczekuje</span> – oczekuje na zatwierdzenie przez operatora.</li>
+          <li><span class="pill warn"><span class="dot"></span>Oczekuje</span> – czeka na zatwierdzenie przez operatora.</li>
           <li><span class="pill sec"><span class="dot"></span>Buduję… / AI rozpoznaje…</span> – czytnik sklepu internetowego jest konfigurowany automatycznie.</li>
-          <li><span class="pill warn"><span class="dot"></span>Oczekuje na opłatę</span> – dane są gotowe, należy zatwierdzić opłatę miesięczną (zob. <a href="#firmavaade">rozdział 6</a>).</li>
+          <li><span class="pill warn"><span class="dot"></span>Oczekuje na opłatę</span> – dane są gotowe, trzeba zatwierdzić opłatę miesięczną (zob. <a href="#firmavaade">rozdział 6</a>).</li>
           <li><span class="pill err"><span class="dot"></span>Odrzucono</span> – wniosek został odrzucony (powód jest podany).</li>
-          <li><span class="pill ok"><span class="dot"></span>Aktywna</span> – firma jest w monitoringu.</li>
+          <li><span class="pill ok"><span class="dot"></span>Aktywna</span> – firma jest pod monitoringiem.</li>
         </ul>
-        <h3>Monitoring Facebooka</h3>
-        <p>Na osobnej karcie znajdują się najnowsze posty na Facebooku monitorowanych konkurentów, z najnowszymi i nowymi wyróżnionymi. Kliknięcie w post przenosi do oryginału na Facebooku.</p>
-        <h3>Wszystkie wykryte zmiany i historia raportów</h3>
+        <h3>Monitoring Facebooka, wszystkie znaleziska i historia</h3>
         <ul class="plain">
-          <li><b>Wszystkie wykryte zmiany</b> – wszystkie zmiany z ostatniego monitorowania w jednej liście. Zaznaczenie <b>Tylko ostrzeżenia</b> ukrywa spokojną część.</li>
-          <li><b>Historia raportów</b> – wcześniejsze raporty zbiorcze. Kliknięcie otwiera zarchiwizowany raport.</li>
+          <li><b>Monitoring Facebooka</b> – na osobnej karcie najnowsze posty monitorowanych konkurentów; kliknięcie prowadzi do oryginału.</li>
+          <li><b>Wszystkie znaleziska</b> – wszystkie zmiany z ostatniego monitoringu na jednej liście. Zaznaczenie <b>Tylko ostrzeżenia</b> ukrywa spokojną część.</li>
+          <li><b>Historia raportów</b> – wcześniejsze raporty zbiorcze; kliknięcie otwiera zarchiwizowany raport.</li>
         </ul>
       </section>
 
       <!-- 5 -->
       <section class="doc" id="lisafirma">
         <h2><span class="num">5</span> Dodawanie firmy</h2>
-        <p>Na pulpicie naciśnij <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Dodaj firmę</span>. Otworzy się prosty formularz.</p>
+        <p>Naciśnij na pulpicie <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Dodaj firmę</span>. Otworzy się prosty formularz.</p>
         <ol class="steps">
-          <li><b>Nazwa firmy</b> – zacznij pisać i wybierz z listy firmę z estońskiego rejestru handlowego (albo wpisz nazwę ręcznie).</li>
-          <li><b>Strona internetowa</b> – wystarczy sama nazwa bez przedrostka https://, np. <b>weekend.ee</b>.</li>
-          <li>W razie potrzeby włącz <b>monitorowanie cen i stanów magazynowych sklepu internetowego</b> oraz/lub <b>monitorowanie także Facebooka</b>.</li>
+          <li><b>Nazwa firmy</b> – zacznij pisać i wybierz z listy firmę z rejestru handlowego (lub wpisz nazwę ręcznie).</li>
+          <li><b>Strona internetowa</b> – wystarczy nazwa bez początku https://, np. <b>weekend.ee</b>.</li>
+          <li>W razie potrzeby włącz <b>monitoruj ceny i stany magazynowe sklepu</b> i/lub <b>monitoruj także Facebooka</b>.</li>
           <li>Naciśnij <span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Dodaj monitorowaną firmę</span></li>
         </ol>
-        <h3>Monitorowanie sklepu internetowego</h3>
-        <p>Jeśli wybiorą Państwo monitorowanie sklepu internetowego, system spróbuje sam wczytać produkty sklepu. Po pomyślnym wczytaniu monitoring uruchamia się automatycznie; w przeciwnym razie sprawdza go operator. Dodatkowo mogą Państwo otworzyć <b>filtr słów kluczowych</b>: wpisz słowo kluczowe i naciśnij Enter lub <b>+</b>, aby dodać chip (np. <i>kosiarka</i>). Pozostawiając pole puste, monitorujemy wszystkie produkty.</p>
-        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg> Model cenowy</div><p>Monitorowanie sklepu internetowego kosztuje <strong>8 €/mies. za każde do 2000 monitorowanych produktów</strong>. Wszystkie ceny bez VAT. Gdy system wczyta produkty sklepu, sami wybierają Państwo kategorie do monitorowania – to określa liczbę produktów i opłatę miesięczną. Pokazujemy dokładną kwotę i prosimy o potwierdzenie, zanim udostępnimy dane.</p></div>
-        <h3>Monitorowanie Facebooka</h3>
-        <p>Wpisz adres strony na Facebooku – wystarczy nazwa strony lub adres (np. <b>facebook.com/konkurent</b> albo po prostu <b>konkurent</b>). Jeśli strona nie znajduje się jeszcze na liście monitoringu, trafia ona do operatora w celu zatwierdzenia.</p>
+        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg> Tej samej firmy nie dodasz dwa razy</div><p>Jeśli firma o tej samej nazwie lub adresie internetowym jest już na Twojej liście, system Cię o tym poinformuje – dzięki temu nie powstaje podwójny wpis ani podwójna opłata miesięczna.</p></div>
+        <h3>Monitoring sklepu internetowego</h3>
+        <p>Gdy wybierzesz monitoring sklepu, system spróbuje sam wczytać produkty sklepu. Po powodzeniu monitoring uruchamia się automatycznie; w przeciwnym razie sprawdza go operator. Możesz dodać <b>filtr słów kluczowych</b>: wpisz słowo kluczowe i naciśnij Enter lub <b>+</b>, aby dodać chip (np. <i>kosiarka</i>). Pozostawiając puste, monitorujemy wszystkie produkty.</p>
+        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg> Model cenowy</div><p>Monitoring sklepu internetowego kosztuje <strong>8 € miesięcznie za każde do 2000 monitorowanych produktów</strong>. Wszystkie ceny są bez VAT. Gdy system wczyta produkty sklepu, sam wybierasz kategorie do monitorowania – to określa liczbę produktów i opłatę miesięczną. Pokazujemy dokładną kwotę i prosimy o potwierdzenie, zanim otworzymy dane.</p></div>
+        <h3>Monitoring Facebooka</h3>
+        <p>Wpisz adres strony na Facebooku – wystarczy nazwa strony lub adres (np. <b>facebook.com/konkurent</b> lub po prostu <b>konkurent</b>). Jeśli strona nie jest jeszcze na liście monitoringu, trafia do operatora do zatwierdzenia. Monitoring Facebooka kosztuje <strong>3 € miesięcznie za konkurenta</strong>.</p>
       </section>
 
       <!-- 6 -->
       <section class="doc" id="firmavaade">
         <h2><span class="num">6</span> Widok firmy i katalog produktów</h2>
-        <p>Kliknięcie w nazwę firmy na pulpicie otwiera jej pełny widok: wszystkie kanały, wykryte zmiany oraz – w przypadku sklepu internetowego – cały katalog produktów.</p>
+        <p>Kliknięcie nazwy firmy na pulpicie otwiera jej pełny widok: wszystkie kanały, znaleziska, kondycję sklepu, wykresy oraz – w przypadku sklepu internetowego – cały katalog produktów.</p>
         <figure>
-          <img src="l360-kataloog.png" alt="Firma vaade: tootekataloog kategooriate, hindade ja laoseisuga" loading="lazy">
-          <figcaption>Widok firmy – przeszukiwalny katalog produktów z kategoriami, cenami i stanami magazynowymi.</figcaption>
+          <img src="l360-firma-tervis.png" alt="Widok firmy: kondycja sklepu, wykres liczby produktów i produkty VIP" loading="lazy">
+          <figcaption>Widok firmy – liczby kondycji sklepu, zmiana asortymentu w czasie i produkty VIP.</figcaption>
         </figure>
+        <h3>Kondycja sklepu</h3>
+        <p>Z karty widzisz naraz: <b>produkty łącznie</b>, <b>na stanie</b>, <b>brak na stanie</b>, <b>brak ceny</b>, <b>w promocji</b> i <b>stan nieznany</b>. Liczby są wyliczone z katalogu tego sklepu i są klikalne.</p>
+        <h3>Liczba produktów w czasie</h3>
+        <p>Wykres pokazuje, ile produktów było w katalogu sklepu w każdym dniu monitoringu – czy asortyment rośnie, maleje, czy pozostaje stały. Obok jest <b>obecnie</b>, <b>średnio</b>, <b>zakres</b> i <b>kierunek</b>.</p>
+        <h3>Produkty VIP</h3>
+        <p>Oznacz produkt w katalogu <b>gwiazdką</b>, aby dodać go do produktów VIP. Dla każdego produktu VIP rysuje się osobny wykres: cena zwykła, cena promocyjna i stan magazynowy w czasie. Naraz do 10 produktów – miej na oku te, które są dla Ciebie najważniejsze.</p>
         <h3>Przyciski nagłówka</h3>
         <ul class="plain">
           <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Wybierz kategorie</span> – wybierz, które kategorie sklepu monitorować (zob. <a href="#kategooriad">rozdział 7</a>).</li>
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 6H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4"/><path d="M14 4h6v6m0-6L10 14"/></svg> Otwórz witrynę</span> – otwiera sklep internetowy konkurenta w nowym oknie.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 6H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4"/><path d="M14 4h6v6m0-6L10 14"/></svg> Otwórz stronę</span> – otwiera sklep internetowy konkurenta w nowym oknie.</li>
         </ul>
-        <h3>Komunikaty o stanie</h3>
-        <p>W górnej części widoku może pojawić się komunikat: <b>oczekuje na zatwierdzenie przez operatora</b>, <b>scraper jest budowany</b>, <b>rozpoznajemy kategorie</b>, <b>automatyczna konfiguracja nie powiodła się</b> (operator sprawdzi) lub <b>wniosek został odrzucony</b>.</p>
-        <h3>Zatwierdzenie opłaty miesięcznej</h3>
-        <p>Gdy produkty sklepu są wczytane, widzą Państwo kalkulator: <b>liczba produktów</b>, <b>progi</b> (× do 2000 produktów), <b>cena bazowa 8 €</b>, ewentualna dopłata oraz <b>opłata miesięczna łącznie</b>. Do momentu zatwierdzenia katalog jest pokazany poglądowo i <b>rozmyty</b> (blur). Opcje:</p>
+        <h3>Zatwierdzanie opłaty miesięcznej</h3>
+        <p>Gdy produkty sklepu są wczytane, widzisz kalkulator: <b>liczba produktów</b>, <b>progi</b> (× do 2000 produktów), <b>cena bazowa 8 €</b> i <b>opłata miesięczna łącznie</b>. Do momentu zatwierdzenia katalog jest jako przykład <b>rozmyty</b> (blur). Opcje:</p>
         <ul class="plain">
-          <li><span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg> Zapłać i odblokuj dane</span> – kierujemy Państwa do bezpiecznej bramki płatniczej (link bankowy lub karta); dane otwierają się od razu.</li>
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg> Zapłać fakturą przelewową</span> – wysyłamy fakturę e-mailem; treść otwiera się po wpłynięciu płatności.</li>
+          <li><span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg> Zapłać i otwórz dane</span> – kierujemy do bezpiecznej bramki płatniczej (link bankowy lub karta); dane otwierają się od razu.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg> Zapłać fakturą przelewową</span> – wysyłamy fakturę e-mailem; treść otwiera się po zaksięgowaniu płatności.</li>
           <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Wybierz kategorie</span> – zmniejsz liczbę produktów, aby obniżyć opłatę miesięczną.</li>
         </ul>
-        <p>Zatwierdzenie monitoringu Facebooka przebiega tak samo (3 €/mies.).</p>
+        <figure>
+          <img src="l360-kataloog.png" alt="Widok firmy: przeszukiwalny katalog produktów z kategoriami, cenami i stanem magazynowym" loading="lazy">
+          <figcaption>Katalog produktów – przeszukiwalny, według kategorii, z ceną i stanem magazynowym.</figcaption>
+        </figure>
         <h3>Katalog produktów</h3>
         <ul class="plain">
           <li><b>Wyszukiwanie</b> – wpisz nazwę produktu, aby przefiltrować listę.</li>
           <li><b>Kategorie</b> – kliknij kategorię, aby otworzyć podkategorie i produkty.</li>
-          <li><b>Stan magazynowy</b> – przy każdym produkcie <span class="pill ok"><span class="dot"></span>w magazynie</span>, <span class="pill err"><span class="dot"></span>wyczerpany</span> lub <span class="pill sec"><span class="dot"></span>nieznany</span>.</li>
-          <li><b>Cena</b> – w przypadku ceny promocyjnej widzą Państwo cenę zwykłą przekreśloną, a cenę promocyjną na czerwono.</li>
-          <li><b>Link zewnętrzny</b> (strzałka) prowadzi do produktu w sklepie.</li>
-          <li><b>Kliknięcie w wiersz produktu</b> otwiera <b>wykres historii ceny i stanu magazynowego</b>: bieżącą cenę i rabat, cenę zwykłą jako linię przerywaną, stan magazynowy w czasie jako pasek oraz legendę.</li>
+          <li><b>Stan magazynowy</b> – przy każdym produkcie <span class="pill ok"><span class="dot"></span>na stanie</span>, <span class="pill err"><span class="dot"></span>brak</span> lub <span class="pill sec"><span class="dot"></span>nieznany</span>.</li>
+          <li><b>Cena</b> – przy cenie promocyjnej widzisz cenę zwykłą przekreśloną, a cenę promocyjną na czerwono.</li>
+          <li><b>Gwiazdka</b> dodaje produkt do listy VIP; <b>dzwonek</b> od razu tworzy powiadomienie cenowe; <b>strzałka</b> prowadzi do produktu w sklepie.</li>
         </ul>
+        <h3>Historia ceny i stanu magazynowego</h3>
+        <p>Kliknięcie wiersza produktu otwiera okno z wykresem: obecna cena i rabat, cena zwykła i promocyjna w czasie oraz stan magazynowy. Legenda na dole objaśnia linie.</p>
+        <figure>
+          <img src="l360-tootegraafik.png" alt="Wykres historii ceny i stanu magazynowego produktu w oknie wyskakującym" loading="lazy">
+          <figcaption>Historia ceny i stanu magazynowego produktu – cena zwykła (zielona) i promocyjna (czerwona) w czasie.</figcaption>
+        </figure>
       </section>
 
       <!-- 7 -->
       <section class="doc" id="kategooriad">
         <h2><span class="num">7</span> Wybór kategorii</h2>
-        <p>Przycisk <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Wybierz kategorie</span> otwiera listę wszystkich kategorii sklepu. Im mniej produktów wybiorą Państwo, tym niższa opłata miesięczna.</p>
+        <p>Przycisk <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Wybierz kategorie</span> otwiera listę wszystkich kategorii sklepu. Im mniej produktów wybierzesz, tym niższa opłata miesięczna.</p>
         <ol class="steps">
-          <li>Zaznacz haczykiem kategorie, które chcą Państwo monitorować. Pomocne są <b>Zaznacz wszystkie</b>, <b>Wyczyść wybór</b> i <b>wyszukiwanie</b>.</li>
-          <li>Śledź u dołu <b>kalkulator</b>: wybrane produkty → progi (× do 2000) → opłata miesięczna aktualizuje się od razu.</li>
+          <li>Zaznacz haczykiem kategorie, które chcesz monitorować. Pomocne są <b>Zaznacz wszystko</b>, <b>Wyczyść zaznaczenie</b> i <b>wyszukiwanie</b>.</li>
+          <li>Śledź na dole <b>kalkulator</b>: wybrane produkty → progi (× do 2000) → opłata miesięczna aktualizuje się od razu.</li>
           <li>Naciśnij <span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg> Zapisz wybór</span></li>
         </ol>
-        <p>Wybór mogą Państwo później zmienić w dowolnej chwili – opłata miesięczna dostosuje się odpowiednio.</p>
+        <p>Wybór możesz zmienić później w dowolnym momencie – opłata miesięczna dostosowuje się odpowiednio.</p>
       </section>
 
       <!-- 8 -->
-      <section class="doc" id="teenused">
-        <h2><span class="num">8</span> Usługi i opłata miesięczna</h2>
-        <p>Z menu <b>Usługi</b> widzą Państwo wszystko, za co płacą, i mogą domówić kolejne.</p>
+      <section class="doc" id="hinnavordlus">
+        <h2><span class="num">8</span> Porównanie cen</h2>
+        <p>Punkt menu <b>Porównanie cen</b> zestawia ten sam produkt we wszystkich monitorowanych sklepach i pokazuje, <strong>gdzie jest najtańszy</strong> oraz jak cena zmieniała się w czasie. Produkty są łączone według kodu modelu i rozmiaru.</p>
+        <figure>
+          <img src="l360-hinnavordlus.png" alt="Porównanie cen: ten sam produkt w wielu sklepach, najniższa cena i wykres historii" loading="lazy">
+          <figcaption>Porównanie cen – najtańszy sklep dla każdego produktu, zakres cen między sklepami i wykres historii.</figcaption>
+        </figure>
         <ul class="plain">
-          <li><b>Państwa opłata miesięczna łącznie</b> – duża liczba u góry. Kwota wynika ze wszystkich aktywnych usług. Obok znajduje się data następnego rozliczenia.</li>
-          <li><b>Opłacone – oczekuje na aktywację</b> – zamówienia, których opłata wstępna została uiszczona i które operator wkrótce włączy.</li>
-          <li><b>Państwa usługi</b> – wszystkie aktywne usługi (na zielono), w tym monitoring Facebooka i sieci u konkurentów. <b>Anuluj</b> kończy usługę; monitoringiem konkurentów zarządza się w sekcji <b>Dodaj firmę</b> (przycisk <b>Zarządzaj</b>).</li>
-          <li><b>Domów</b> – przy każdej usłudze podana jest cena €/mies. i opłata wstępna. Naciśnij <span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Zamów</span>, potwierdź w oknie i opłać opłatę wstępną. Przy zadaniach specjalnych dostępny jest przycisk <span class="chip">Poproś o wycenę</span>.</li>
-          <li><b>Pakiety</b> – zamawiają od razu kilka usług jednym przepływem płatności.</li>
+          <li>U góry jest podsumowanie: <b>produkty porównywalne</b>, <b>wykresy historii cen</b> i <b>monitorowane sklepy</b>.</li>
+          <li>Każda karta pokazuje <b>najniższą cenę</b>, <b>zakres cen między sklepami</b> w czasie i <b>dziś najtańszy sklep</b>.</li>
+          <li>Na dole podano, o ile procent cena zmieniła się w monitorowanym okresie i w ilu sklepach znaleziono najtańszą.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg> CSV (Excel)</span> pobiera całe porównanie.</li>
         </ul>
-        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Jak wyliczana jest opłata wstępna</div><p>Przy zamawianiu nowej usługi płacą Państwo od razu <strong>proporcjonalną opłatę wstępną</strong> – wyłącznie do następnego dnia rozliczenia. Następnie operator włącza usługę, a odtąd wszystkie usługi rozliczane są razem.</p></div>
+        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg> Po co</div><p>Od razu widzisz, czy na jakimś produkcie jesteś na rynku najdroższy, czy najtańszy – dobra podstawa do wyceny (<a href="#hinnastamine">rozdział 14</a>) i kampanii.</p></div>
       </section>
 
       <!-- 9 -->
-      <section class="doc" id="maksed">
-        <h2><span class="num">9</span> Jak przebiega płatność</h2>
-        <p>Każda płatność rozpoczyna się od <strong>okna potwierdzenia</strong>, w którym podana jest kwota i to, za co Państwo płacą. Zawsze mogą Państwo wybrać <b>Anuluj</b>.</p>
+      <section class="doc" id="teavitused">
+        <h2><span class="num">9</span> Powiadomienia</h2>
+        <p>Punkt menu <b>Powiadomienia</b> pozwala Ci ustawić <strong>reguły</strong>, po których spełnieniu od razu wysyłamy komunikat – jako powiadomienie push na telefon i/lub e-mailem.</p>
+        <figure>
+          <img src="l360-teavitused.png" alt="Powiadomienia: dodawanie reguły powiadomienia cenowego i lista reguł" loading="lazy">
+          <figcaption>Powiadomienia – dodaj regułę (warunek, sklep, produkt, próg) i wybierz push i/lub e-mail.</figcaption>
+        </figure>
+        <ol class="steps">
+          <li>Wybierz <b>warunek</b> – np. spadek ceny o co najmniej X%, brak na stanie, nowy produkt, konkurent zszedł poniżej Twojej ceny.</li>
+          <li>Wybierz <b>sklep</b> (wszystkie monitorowane lub jeden konkretny) i w razie potrzeby <b>konkretny produkt</b>.</li>
+          <li>Określ <b>próg (%)</b>, jeśli warunek tego wymaga.</li>
+          <li>Zaznacz <b>Powiadomienie push</b> i/lub <b>E-mail</b> i naciśnij <span class="chip go">Dodaj regułę</span></li>
+        </ol>
         <ul class="plain">
-          <li><b>Płacąc od razu</b> kierujemy Państwa do bezpiecznej bramki płatniczej – płacą Państwo <b>linkiem bankowym</b> lub <b>kartą</b>, a dane/usługa otwierają się od razu po płatności.</li>
-          <li><b>Fakturą przelewową</b> – wysyłamy fakturę e-mailem. Treść otwiera się w pełnym zakresie wtedy, gdy płatność wpłynie.</li>
-          <li><b>Opłata wstępna</b> jest zawsze proporcjonalna do następnego dnia rozliczenia; odtąd obowiązuje pełna opłata miesięczna.</li>
-          <li><b>Rozliczenie</b> odbywa się jednorazowo za wszystkie usługi, według rocznicy dnia Państwa przystąpienia.</li>
+          <li>Regułę można w dowolnym momencie tymczasowo <b>wyłączyć</b> lub usunąć.</li>
+          <li>Najszybciej utworzysz powiadomienie bezpośrednio z katalogu lub porównania cen – <b>ikona dzwonka</b> w wierszu produktu wstępnie wypełnia formularz.</li>
+          <li>Aby otrzymywać powiadomienia push, naciśnij u góry <span class="chip">Włącz powiadomienia push</span> (na iPhonie po zainstalowaniu jako aplikacja – zob. <a href="#seaded">rozdział 17</a>).</li>
         </ul>
       </section>
 
       <!-- 10 -->
-      <section class="doc" id="hinnastamine">
-        <h2><span class="num">10</span> Ustalanie cen</h2>
-        <p>Pozycja menu <b>Ustalanie cen</b> jest widoczna tylko wtedy, gdy mają Państwo zamówioną usługę <strong>przecenienia produktów</strong>. Widzą tam Państwo oparte na konkurencji rekomendacje cenowe dla Państwa własnego sklepu.</p>
+      <section class="doc" id="kuuraportid">
+        <h2><span class="num">10</span> Raporty miesięczne</h2>
+        <p>Punkt menu <b>Raporty miesięczne</b> zbiera 1. dnia każdego miesiąca za miesiąc poprzedni <strong>zbiorczy PDF dla zarządu</strong>: zmiany cen, ruch asortymentu, Twoją pozycję cenową na rynku i naruszenia ochrony marki.</p>
+        <figure>
+          <img src="l360-kuuraportid.png" alt="Raporty miesięczne: wyjaśnienie miesięcznego zbiorczego PDF i archiwum" loading="lazy">
+          <figcaption>Raporty miesięczne – automatyczny miesięczny PDF, który można przekazać bezpośrednio zarządowi lub producentowi.</figcaption>
+        </figure>
         <ul class="plain">
-          <li><b>Tabela rekomendacji</b> – produkt, bieżąca cena, rekomendowana cena, różnica i powód.</li>
-          <li><span class="chip">Wygeneruj ponownie</span> przelicza rekomendacje na nowo; <span class="chip">Reguły</span> i <span class="chip">Historia</span> pokazują ustawienia i wcześniejsze zmiany.</li>
-          <li>Gdy usługa jest <b>aktywowana</b>, rekomendację można jednym kliknięciem zapisać do swojego sklepu WooCommerce; <b>Pozostaw bez zmian</b> zachowuje cenę i pomija produkt przez wybraną liczbę dni, <b>Pomiń</b> pomija rekomendację.</li>
+          <li><b>Automatyczny</b> – raport powstaje i jest wysyłany e-mailem na początku każdego miesiąca; nic nie trzeba robić ręcznie.</li>
+          <li><b>Archiwum</b> – wszystkie wcześniejsze raporty miesięczne są tutaj do pobrania.</li>
+          <li>W odróżnieniu od codziennego porannego maila (zob. poniżej) raport miesięczny to <b>zbiorczy przegląd</b> dla decydenta, a nie dzienna lista zmian.</li>
         </ul>
-        <div class="box warn"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg> Bezpiecznie</div><p>Zapisywanie zmiany ceny do sklepu Look360 włącza wspólnie z Państwem. Domyślnie wszystko działa w trybie <b>próbnym</b> (nic nie jest zmieniane), dopóki nie uzgodnimy trybu na żywo.</p></div>
+        <h3>Codzienny poranny mail i ostrzeżenia w czasie rzeczywistym</h3>
+        <ul class="plain">
+          <li><b>Codzienny poranny mail</b> – ważniejsze zmiany trafiają automatycznie do Twojej (i ustalonych kontaktów) skrzynki. Można go włączyć/wyłączyć na stronie <a href="#konto">Konto</a>.</li>
+          <li><b>Ostrzeżenia w czasie rzeczywistym</b> – to, co najbardziej krytyczne (np. spadek ceny u konkurenta, awaria sklepu, koniec stanu magazynowego), dociera od razu poprzez reguły powiadomień.</li>
+        </ul>
       </section>
 
       <!-- 11 -->
-      <section class="doc" id="raportid">
-        <h2><span class="num">11</span> Raporty</h2>
+      <section class="doc" id="konto">
+        <h2><span class="num">11</span> Konto i dostęp do API</h2>
+        <p>Punkt menu <b>Konto</b> zbiera dane i ustawienia Twojego konta.</p>
+        <figure>
+          <img src="l360-konto.png" alt="Konto: dane konta, hasło, dostęp do API i ustawienia powiadomień" loading="lazy">
+          <figcaption>Konto – dane firmy, zmiana hasła, klucz API i przełącznik codziennego porannego maila.</figcaption>
+        </figure>
         <ul class="plain">
-          <li><b>Codzienna poranna wiadomość</b> – najważniejsze zmiany trafiają automatycznie do Państwa skrzynki (i uzgodnionych kontaktów).</li>
-          <li><b>Ostrzeżenia w czasie rzeczywistym</b> – to, co najbardziej krytyczne (np. spadek ceny u konkurenta, awaria sklepu internetowego, wyczerpanie zapasów), dociera od razu, a pozostałe zbierane jest w porannym raporcie.</li>
-          <li><b>Historia raportów</b> – na pulpicie mogą Państwo otworzyć każdy wcześniejszy raport zbiorczy i zobaczyć, co się wówczas zmieniło.</li>
+          <li><b>Dane konta</b> – firma, osoba kontaktowa i e-mail rejestracji.</li>
+          <li><b>Hasło</b> – <span class="chip">Zmień hasło</span>; zapomniane hasło możesz zresetować ze strony logowania.</li>
+          <li><b>Codzienny poranny raport monitoringu</b> – przełącznik, którym włączasz lub wyłączasz e-mail.</li>
         </ul>
+        <h3>Dostęp do API (BI, ERP, Excel)</h3>
+        <p>Poprzez REST API możesz pobrać swoje dane monitoringu – sklepy, produkty, ceny, porównanie cen, znaleziska – bezpośrednio do swojego systemu (Power BI, ERP, Excel Power Query).</p>
+        <ol class="steps">
+          <li>Wpisz przeznaczenie klucza (np. „Power BI") i naciśnij <span class="chip go">Utwórz klucz API</span></li>
+          <li>Skopiuj klucz od razu – jest pokazywany tylko raz.</li>
+          <li>Zobacz z linku <b>dokumentację API</b>, które punkty końcowe są dostępne.</li>
+        </ol>
       </section>
 
       <!-- 12 -->
-      <section class="doc" id="seaded">
-        <h2><span class="num">12</span> Aplikacja, powiadomienia i tryb ciemny</h2>
+      <section class="doc" id="teenused">
+        <h2><span class="num">12</span> Wszystkie usługi i opłata miesięczna</h2>
+        <p>Z menu <b>Usługi</b> widzisz wszystko, za co płacisz, i możesz dozamówić. U góry jest <b>Twoja opłata miesięczna łącznie</b> i data następnego rozliczenia.</p>
+        <figure>
+          <img src="l360-teenused.png" alt="Usługi: opłata miesięczna łącznie i lista aktywnych usług" loading="lazy">
+          <figcaption>Usługi – opłata miesięczna łącznie, aktywne usługi i dozamawianie.</figcaption>
+        </figure>
+        <p>Poniżej jest wszystko, co oferujemy. Wszystkie ceny są <b>bez VAT, miesięcznie</b>.</p>
+
+        <div class="cat-h">Utrzymanie Twojego własnego sklepu</div>
+        <div class="svc">
+          <div class="s"><div class="h"><span class="nm">Kontrola kondycji sklepu</span><span class="pr">20 €</span></div><p>Skanuje produkty Twojego sklepu i znajduje braki: brakujące zdjęcia i teksty alternatywne, puste lub zbyt krótkie opisy, uszkodzone ceny, zduplikowane produkty. Podaje kondycję w % i listę poprawek.</p></div>
+          <div class="s"><div class="h"><span class="nm">Monitoring SEO i luk w treści</span><span class="pr">od 16 €</span></div><p>Monitoruje pozycje Twoich słów kluczowych w Google i znajduje luki w treści – tematy, dla których nie masz jeszcze treści. Cena zależy od liczby monitorowanych słów kluczowych.</p></div>
+          <div class="s"><div class="h"><span class="nm">Niezawodność strony</span><span class="pr">10 €</span></div><p>Sprawdza, czy Twoja strona/sklep jest dostępna i jak szybko odpowiada. Informuje, gdy strona przestaje działać lub zwalnia.</p></div>
+          <div class="s"><div class="h"><span class="nm">Integracja ERP–sklep</span><span class="pr">30 €</span></div><p>Łączy Twój sklep internetowy z oprogramowaniem księgowym (np. Directo) – zamówienia, stany magazynowe i ceny przenoszą się automatycznie, bez ręcznego przenoszenia.</p></div>
+          <div class="s"><div class="h"><span class="nm">Zmiana wyceny</span><span class="pr">30 €</span></div><p>Rekomendacje cenowe oparte na konkurencji dla Twojego własnego sklepu, które można jednym kliknięciem zapisać w WooCommerce (zob. <a href="#hinnastamine">rozdział 14</a>).</p></div>
+        </div>
+
+        <div class="cat-h">Monitoring konkurentów</div>
+        <div class="svc">
+          <div class="s"><div class="h"><span class="nm">Monitoring FB konkurentów</span><span class="pr">3 € / konkurent</span></div><p>Monitoruje posty konkurentów na Facebooku: nowe produkty, kampanie, wydarzenia, komunikaty cenowe. Wszystko w jednym strumieniu, nowe wyróżnione.</p></div>
+          <div class="s"><div class="h"><span class="nm">Reklamy FB konkurentów</span><span class="pr">6 €</span></div><p>Monitoruje aktywne reklamy konkurentów na Facebooku – co reklamują, ile reklam jest w toku i kiedy się rozpoczęły lub zostały wstrzymane.</p></div>
+          <div class="s"><div class="h"><span class="nm">Monitoring cen i stanów sklepu</span><span class="pr">8 € / 2000 produktów</span></div><p>Monitoruje ceny, ceny promocyjne, stany magazynowe i asortyment sklepu konkurenta. Daje wykresy historii i zasila porównanie cen. Progowo: 8 € za każde do 2000 produktów.</p></div>
+        </div>
+
+        <div class="cat-h">Dla właściciela marki i importera</div>
+        <div class="svc">
+          <div class="s"><div class="h"><span class="nm">Nadzór cen dystrybutorów</span><span class="pr">40 €</span></div><p>Ustalasz RRP (sugerowaną cenę detaliczną) i MAP (minimalną dozwoloną cenę reklamową) swoich produktów; system monitoruje, którzy dystrybutorzy je naruszają (zob. <a href="#brandivalve">rozdział 15</a>).</p></div>
+        </div>
+
+        <div class="cat-h">Usługi dodatkowe</div>
+        <div class="svc">
+          <div class="s"><div class="h"><span class="nm">Szkolenie dla zespołu</span><span class="pr">40 €</span></div><p>Szkolimy Twój zespół z tematów systemu i sklepu, aby wszyscy potrafili wykorzystać monitoring i dane na swoją korzyść.</p></div>
+          <div class="s"><div class="h"><span class="nm">Automatyzacja na zamówienie</span><span class="pr">na zapytanie</span></div><p>Na specjalne zamówienie automatyzujemy Twoje powtarzalne prace – raporty, synchronizacje, powiadomienia, przepływy danych. Naciśnij <span class="chip">Poproś o ofertę</span>.</p></div>
+        </div>
+
+        <div class="cat-h">Pakiety</div>
+        <div class="svc">
+          <div class="s"><div class="h"><span class="nm">Pełny pakiet własnego sklepu</span></div><p>Kontrola kondycji + SEO + niezawodność + zmiana wyceny.</p></div>
+          <div class="s"><div class="h"><span class="nm">Pakiet startowy monitoringu</span></div><p>Monitoring FB konkurentów + kontrola kondycji sklepu + niezawodność.</p></div>
+          <div class="s"><div class="h"><span class="nm">Pakiet Utrzymanie+</span></div><p>Kontrola kondycji + niezawodność + integracja ERP.</p></div>
+        </div>
+
+        <h3>Jak zamówić</h3>
         <ul class="plain">
-          <li><b>Zainstaluj jako aplikację</b> – na telefonie mogą Państwo dodać panel do ekranu głównego jak aplikację: proszę otworzyć menu przeglądarki i wybrać „Dodaj do ekranu głównego". Od tej pory Look360 otwiera się bezpośrednio z ikony i na pełnym ekranie – niczego nie trzeba pobierać.</li>
-          <li><b>Powiadomienia na telefon</b> – przycisk <span class="chip">Włącz powiadomienia</span> na pulpicie wysyła ważne zmiany cen i stanów magazynowych jako powiadomienie push prosto na urządzenie. Na iPhonie działa to po zainstalowaniu jako aplikacji.</li>
-          <li><b>Tryb ciemny / jasny</b> – przełącznik na górnym pasku (słońce/księżyc) zmienia motyw. Wybór zostaje zapamiętany.</li>
-          <li><b>Na telefonie</b> – menu jest ukryte za przyciskiem ☰ w górnym rogu; treść dostosowuje się do szerokości ekranu.</li>
-          <li><b>Wylogowanie</b> – ikona drzwi z wyjściem po lewej u dołu, obok nazwy użytkownika.</li>
+          <li>Przy każdej usłudze jest cena €/miesiąc. Naciśnij <span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Zamów</span>, potwierdź w oknie i zapłać opłatę początkową; pakiety zamawiają kilka usług naraz.</li>
+          <li>Aktywne usługi są <span class="pill ok"><span class="dot"></span>zielone</span>. <b>Anuluj</b> kończy usługę; monitoringiem konkurentów zarządza się przez <b>Dodaj firmę</b> i przycisk <b>Zarządzaj</b>.</li>
+          <li><b>Opłacone – oczekuje na aktywację</b>: opłata początkowa jest opłacona, a operator wkrótce włączy usługę.</li>
         </ul>
+        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Jak wylicza się opłata początkowa</div><p>Przy zamówieniu nowej usługi płacisz od razu <strong>proporcjonalną opłatę początkową</strong> – tylko do następnego dnia rozliczenia. Następnie wszystkie usługi rozliczane są razem, według rocznicy dnia dołączenia.</p></div>
       </section>
 
       <!-- 13 -->
+      <section class="doc" id="maksed">
+        <h2><span class="num">13</span> Jak przebiega płatność</h2>
+        <p>Każda płatność zaczyna się od <strong>okna potwierdzenia</strong>, w którym podana jest kwota i za co płacisz. Zawsze możesz <b>Anuluj</b>.</p>
+        <ul class="plain">
+          <li><b>Płacąc od razu</b> kierujemy do bezpiecznej bramki płatniczej – płacisz <b>linkiem bankowym</b> lub <b>kartą</b>, a dane/usługa otwierają się od razu po płatności.</li>
+          <li><b>Fakturą przelewową</b> – wysyłamy fakturę e-mailem. Treść otwiera się w pełni, gdy płatność zostanie zaksięgowana.</li>
+          <li><b>Opłata początkowa</b> jest zawsze proporcjonalna do następnego dnia rozliczenia; dalej obowiązuje pełna opłata miesięczna.</li>
+          <li><b>Rozliczenie</b> odbywa się dla wszystkich usług naraz, według rocznicy dnia dołączenia.</li>
+        </ul>
+      </section>
+
+      <!-- 14 -->
+      <section class="doc" id="hinnastamine">
+        <h2><span class="num">14</span> Wycena</h2>
+        <p>Punkt menu <b>Wycena</b> jest widoczny tylko wtedy, gdy masz zamówioną usługę <strong>zmiany wyceny</strong>. Widzisz tam rekomendacje cenowe oparte na konkurencji dla Twojego własnego sklepu.</p>
+        <div class="deflist">
+          <div class="dr"><span class="k">Produkt</span><span class="v">Produkt i reguła, na podstawie której powstała rekomendacja.</span></div>
+          <div class="dr"><span class="k">Obecna</span><span class="v">Obecna cena produktu w Twoim sklepie.</span></div>
+          <div class="dr"><span class="k">Rekomendacja</span><span class="v">Nowa cena zalecana przez system.</span></div>
+          <div class="dr"><span class="k">Różnica</span><span class="v">Zmiana € i % (np. −0,22 € · −14,7%).</span></div>
+          <div class="dr"><span class="k">Powód</span><span class="v">Dlaczego: np. „najtańszy konkurent 1,50 €; reguła 3% w dół; dolny limit w ochronie".</span></div>
+        </div>
+        <ul class="plain">
+          <li><span class="chip">Wygeneruj ponownie</span> wylicza rekomendacje na nowo; <span class="chip">Reguły</span> i <span class="chip">Historia</span> pokazują ustawienia i wcześniejsze zmiany.</li>
+          <li>Przy każdej rekomendacji: <span class="chip go">Zapisz</span> przenosi cenę do sklepu, <b>Zostaw</b> pozostawia cenę i pomija produkt przez wybraną liczbę dni, <b>Pomiń</b> pomija rekomendację.</li>
+        </ul>
+        <div class="box warn"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg> Bezpiecznie – domyślnie „rozbrojone"</div><p>Domyślnie wszystko jest w <b>trybie testowym</b>: rekomendacje są wyliczane, ale żaden „Zapisz" nie zmienia Twojego sklepu. Tryb live (prawdziwy zapis cen) włączamy razem z Tobą. Dolne limity (podłoga cenowa, MAP) zapobiegają zbyt niskiej rekomendacji.</p></div>
+      </section>
+
+      <!-- 15 -->
+      <section class="doc" id="brandivalve">
+        <h2><span class="num">15</span> Ochrona marki</h2>
+        <p>Punkt menu <b>Ochrona marki</b> jest dla właściciela marki i importera. Jeśli masz zamówiony <strong>nadzór cen dystrybutorów</strong>, definiujesz tu reguły cenowe swoich produktów i widzisz, kto je narusza.</p>
+        <ol class="steps">
+          <li>Dodaj swoje produkty wraz z <b>RRP</b> (sugerowana cena detaliczna) i <b>MAP</b> (minimalna dozwolona cena reklamowa). Produkty można dodawać pojedynczo lub zaimportować.</li>
+          <li>System porównuje ceny monitorowanych dystrybutorów z Twoim RRP/MAP.</li>
+          <li>Widzisz listę <b>naruszeń</b> – kto sprzedaje poniżej MAP lub odchodzi od RRP – i możesz eksportować <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg> CSV</span>.</li>
+        </ol>
+        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg> Po co</div><p>Utrzymujesz poziom cen swojej marki – znajdując naruszenie, masz udokumentowaną podstawę do rozmowy z dystrybutorem.</p></div>
+      </section>
+
+      <!-- 16 -->
+      <section class="doc" id="naited">
+        <h2><span class="num">16</span> Przykładowe sytuacje</h2>
+        <p>Tak funkcje łączą się w realną pracę.</p>
+
+        <div class="scn">
+          <h3>1. Konkurent obniżył cenę</h3>
+          <p>Poranny mail przynosi „Konkurent X: 12 spadków cen". Otwierasz <b>Porównanie cen</b> i widzisz, że na trzech produktach jesteś teraz na rynku najdroższy. <b>Wycena</b> proponuje nowe ceny – zapisujesz je jednym kliknięciem w sklepie.</p>
+          <div class="flow"><span class="st">Poranny mail</span><span class="ar">→</span><span class="st">Porównanie cen</span><span class="ar">→</span><span class="st">Wycena</span><span class="ar">→</span><span class="st">Zapisz w sklepie</span></div>
+        </div>
+
+        <div class="scn">
+          <h3>2. Konkurentowi skończył się produkt</h3>
+          <p>Ustawiłeś regułę powiadomienia „brak na stanie" dla jednego kluczowego produktu. Gdy konkurentowi się skończy, przychodzi <b>push na telefon</b>. Reagujesz: podnosisz cenę lub reklamujesz, że u Ciebie towar jest na stanie.</p>
+          <div class="flow"><span class="st">Reguła powiadomienia</span><span class="ar">→</span><span class="st">Push na telefon</span><span class="ar">→</span><span class="st">Reagujesz</span></div>
+        </div>
+
+        <div class="scn">
+          <h3>3. Nowy konkurent na rynku</h3>
+          <p>Słyszysz o nowym sklepie. <b>Dodaj firmę</b> → sklep internetowy + Facebook → potwierdzasz opłatę miesięczną. W kilka minut widzisz jego asortyment, ceny i aktywność na Facebooku.</p>
+          <div class="flow"><span class="st">Dodaj firmę</span><span class="ar">→</span><span class="st">Potwierdź opłatę miesięczną</span><span class="ar">→</span><span class="st">Widok firmy</span></div>
+        </div>
+
+        <div class="scn">
+          <h3>4. Kondycja mojego sklepu kuleje</h3>
+          <p><b>Kondycja sklepu</b> pokazuje 109 błędów krytycznych – brakujące zdjęcia i teksty alternatywne. Przechodzisz przez listę poprawek; przy następnym skanie kondycja w % rośnie.</p>
+          <div class="flow"><span class="st">Kondycja sklepu</span><span class="ar">→</span><span class="st">Lista poprawek</span><span class="ar">→</span><span class="st">Kondycja się poprawia</span></div>
+        </div>
+
+        <div class="scn">
+          <h3>5. Przegląd miesięczny dla zarządu</h3>
+          <p>1. dnia miesiąca przychodzi automatycznie <b>miesięczny raport PDF</b> do skrzynki. Przekazujesz go zarządowi – podsumowanie ruchów cenowych, asortymentu i pozycji rynkowej w jednym pliku.</p>
+          <div class="flow"><span class="st">Raport miesięczny (auto)</span><span class="ar">→</span><span class="st">Przekaż zarządowi</span></div>
+        </div>
+
+        <div class="scn">
+          <h3>6. Dystrybutor zszedł poniżej MAP</h3>
+          <p>Jesteś właścicielem marki. <b>Ochrona marki</b> pokazuje, że jeden dystrybutor sprzedaje produkt poniżej uzgodnionego MAP. Eksportujesz naruszenie i kontaktujesz się z dystrybutorem.</p>
+          <div class="flow"><span class="st">Ochrona marki</span><span class="ar">→</span><span class="st">Naruszenie</span><span class="ar">→</span><span class="st">Skontaktuj się</span></div>
+        </div>
+
+        <div class="scn">
+          <h3>7. Dane do Twojego BI</h3>
+          <p>Chcesz mieć ceny i stany magazynowe w swoim raporcie Power BI. <b>Konto</b> → <b>Utwórz klucz API</b> → łączysz REST API przez Power Query. Dane odświeżają się automatycznie.</p>
+          <div class="flow"><span class="st">Konto</span><span class="ar">→</span><span class="st">Klucz API</span><span class="ar">→</span><span class="st">Power BI</span></div>
+        </div>
+      </section>
+
+      <!-- 17 -->
+      <section class="doc" id="seaded">
+        <h2><span class="num">17</span> Aplikacja i tryb ciemny</h2>
+        <ul class="plain">
+          <li><b>Zainstaluj jako aplikację</b> – na telefonie możesz dodać panel na ekran główny jak aplikację: otwórz menu przeglądarki i wybierz „Dodaj do ekranu głównego". Odtąd Look360 otwiera się prosto z ikony i na pełnym ekranie – niczego nie trzeba pobierać.</li>
+          <li><b>Powiadomienia na telefon</b> – przycisk <span class="chip">Włącz powiadomienia push</span> wysyła ważne zmiany prosto na urządzenie. Na iPhonie działa to po zainstalowaniu jako aplikacja.</li>
+          <li><b>Tryb ciemny / jasny</b> – przełącznik na górnym pasku (słońce/księżyc) zmienia motyw. Wybór jest zapamiętywany.</li>
+          <li><b>Na telefonie</b> – menu jest schowane za przyciskiem ☰ w górnym rogu; treść dostosowuje się do szerokości ekranu.</li>
+          <li><b>Wylogowanie</b> – ikona drzwi z wyjściem po lewej na dole obok nazwy użytkownika.</li>
+        </ul>
+      </section>
+
+      <!-- 18 -->
       <section class="doc" id="abi">
-        <h2><span class="num">13</span> Pomoc i kontakt</h2>
-        <p>W razie pytań lub wątpliwości odpowiadamy Państwu po angielsku – prawdziwa osoba, a nie odpowiedź automatyczna.</p>
+        <h2><span class="num">18</span> Pomoc i kontakt</h2>
+        <p>W razie pytań lub wątpliwości odpowiadamy po angielsku – prawdziwa osoba, a nie automatyczna odpowiedź.</p>
         <ul class="plain">
           <li>E-mail: <a href="mailto:info@look360.eu">info@look360.eu</a></li>
           <li>Telefon: <a href="tel:+37253620246">+372 5362 0246</a></li>
           <li>Najczęściej zadawane pytania: <a href="index.html#kkk">FAQ na stronie głównej</a></li>
         </ul>
-        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> W skrócie</div><p>Zaloguj się → spójrz na pulpicie na kolor zielony/żółty/czerwony → dodawaj firmy i usługi → istotne zmiany przychodzą do Państwa także wiadomością. Nic więcej nie trzeba robić.</p></div>
+        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> W skrócie</div><p>Zaloguj się → obserwuj na pulpicie zielony/żółty/czerwony → dodawaj firmy i usługi → ustaw reguły powiadomień → ważne zmiany przychodzą do Ciebie także mailem i powiadomieniem push. Więcej nie musisz robić.</p></div>
       </section>
     </div>
   </div>
@@ -457,8 +676,8 @@
 
 <footer>
   <div class="wrap">
-    <span>© 2026 Look360 · Watchdog OÜ · Numer rejestrowy 17537572 · NIP EE103000237</span>
-    <span><a href="index.html">Strona główna</a> · <a href="index.html#kkk">FAQ</a> · <a href="privaatsus.html">Prywatność</a> · <a href="tingimused.html">Warunki</a></span>
+    <span>© 2026 Look360 · Watchdog OÜ · Registrikood 17537572 · KMKR EE103000237</span>
+    <span><a href="index.html">Strona główna</a> · <a href="index.html#kkk">FAQ</a> · <a href="privaatsus.html">Prywatność</a> · <a href="tingimused.html">Regulamin</a></span>
   </div>
 </footer>
 
