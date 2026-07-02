@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Naudojimo instrukcija – Look360 stebėsenos skydelis</title>
-<meta name="description" content="Look360 stebėsenos skydelio naudojimo instrukcija klientui: prisijungimas, darbalaukis, įmonių pridėjimas, prekių katalogas, paslaugos, mokėjimai ir ataskaitos – žingsnis po žingsnio, kuris mygtukas ką daro.">
+<meta name="description" content="Look360 stebėsenos skydelio naudojimo instrukcija klientui: prisijungimas, darbalaukis, įmonių pridėjimas, prekių katalogas, kainų palyginimas, pranešimai, ataskaitos, paslaugos ir mokėjimai – žingsnis po žingsnio, su paveikslėliais ir pavyzdinėmis situacijomis.">
 <meta name="robots" content="index,follow">
 <link rel="alternate" hreflang="et" href="https://look360.eu/kasutusjuhend.html">
 <link rel="alternate" hreflang="en" href="https://look360.eu/kasutusjuhend-en.html">
@@ -60,7 +60,7 @@
   /* Layout: sticky TOC + content */
   main{padding:40px 0 80px}
   .layout{display:grid;grid-template-columns:230px 1fr;gap:48px;align-items:start}
-  .toc{position:sticky;top:90px;font-size:14px}
+  .toc{position:sticky;top:90px;font-size:14px;max-height:calc(100vh - 110px);overflow:auto}
   .toc h4{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:12px}
   .toc a{display:block;color:var(--text-2);text-decoration:none;padding:6px 11px;border-radius:9px;border-left:2px solid transparent;font-weight:300;transition:.15s}
   .toc a:hover{background:var(--paper-2);color:var(--text)}
@@ -132,6 +132,22 @@
   .deflist .dr .k{font-weight:600;color:var(--text)}
   .deflist .dr .v{color:var(--text-2);font-weight:300}
 
+  /* Service cards (teenuste ülevaade) */
+  .svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin:16px 0}
+  .svc .s{border:1px solid var(--line);border-radius:14px;padding:15px 17px;background:var(--paper)}
+  .svc .s .h{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:5px}
+  .svc .s .nm{font-weight:600;color:var(--text);font-size:14.5px}
+  .svc .s .pr{font-weight:600;color:var(--accent-ink);font-size:13px;white-space:nowrap}
+  .svc .s p{margin:0;font-size:13px;color:var(--text-2);font-weight:300;line-height:1.55}
+  .cat-h{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:22px 0 2px}
+
+  /* Scenario cards */
+  .scn{border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:0 14px 14px 0;padding:15px 19px;margin:15px 0;background:var(--paper-2)}
+  .scn h3{margin:0 0 4px;font-size:15.5px}
+  .scn .flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:9px;font-size:12.5px;color:var(--muted)}
+  .scn .flow .st{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:3px 9px;color:var(--text-2);font-weight:500}
+  .scn .flow .ar{color:var(--accent)}
+
   footer{background:var(--ink);color:var(--on-dark-mut);padding:40px 0;font-size:14px;font-weight:300;margin-top:20px}
   footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
   footer a{color:var(--on-dark-mut);text-decoration:none}
@@ -139,10 +155,11 @@
 
   @media(max-width:860px){
     .layout{grid-template-columns:1fr;gap:0}
-    .toc{position:static;margin-bottom:24px;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--paper-2)}
+    .toc{position:static;margin-bottom:24px;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--paper-2);max-height:none}
     .toc a{border-left:0;padding:5px 0}
     .toc a.on{background:none}
     .deflist .dr{grid-template-columns:1fr;gap:2px}
+    .scn .flow{font-size:11.5px}
     header.top nav a:not(.login){display:none}
   }
   /* Keelevaheti (lipud) – jagatud lang.js-iga */
@@ -180,7 +197,7 @@
   <div class="wrap">
     <div class="eyebrow"><span class="pip"></span> Naudojimo instrukcija</div>
     <h1>Stebėsenos skydelio naudojimo instrukcija</h1>
-    <p>Žingsnis po žingsnio apžvelgiama viskas, ką Jūs, kaip klientas, matote ir galite atlikti: nuo prisijungimo iki darbalaukio, stebimų įmonių, prekių katalogo, paslaugų, mokėjimų ir ataskaitų. Prie kiekvieno mygtuko nurodyta, ką jis daro ir kur matysite rezultatą.</p>
+    <p>Žingsnis po žingsnio apžvalga viso to, ką kaip klientas matai ir gali daryti – nuo prisijungimo iki darbalaukio, stebimų įmonių, prekių katalogo, kainų palyginimo, pranešimų, paslaugų, mokėjimų ir ataskaitų. Prie kiekvienos funkcijos yra paveikslėlis, paaiškinimas ir tikros pavyzdinės situacijos.</p>
   </div>
 </section>
 
@@ -188,68 +205,79 @@
   <div class="wrap layout">
     <aside class="toc" id="toc">
       <h4>Turinys</h4>
-      <a href="#algus">1. Kas yra stebėsenos skydelis</a>
+      <a href="#algus">1. Kas yra Look360</a>
       <a href="#logimine">2. Prisijungimas</a>
       <a href="#menuu">3. Meniu ir bendras vaizdas</a>
       <a href="#toolaud">4. Stebėsenos darbalaukis</a>
       <a href="#lisafirma">5. Įmonės pridėjimas</a>
       <a href="#firmavaade">6. Įmonės vaizdas ir katalogas</a>
       <a href="#kategooriad">7. Kategorijų pasirinkimas</a>
-      <a href="#teenused">8. Paslaugos ir mėnesinis mokestis</a>
-      <a href="#maksed">9. Kaip vyksta mokėjimas</a>
-      <a href="#hinnastamine">10. Kainodara</a>
-      <a href="#raportid">11. Ataskaitos</a>
-      <a href="#seaded">12. Programėlė, pranešimai ir tamsus režimas</a>
-      <a href="#abi">13. Pagalba ir kontaktai</a>
+      <a href="#hinnavordlus">8. Kainų palyginimas</a>
+      <a href="#teavitused">9. Pranešimai</a>
+      <a href="#kuuraportid">10. Mėnesio ataskaitos</a>
+      <a href="#konto">11. Paskyra ir API</a>
+      <a href="#teenused">12. Visos paslaugos ir mėnesio mokestis</a>
+      <a href="#maksed">13. Kaip vyksta mokėjimas</a>
+      <a href="#hinnastamine">14. Kainodara</a>
+      <a href="#brandivalve">15. Prekės ženklo apsauga</a>
+      <a href="#naited">16. Pavyzdinės situacijos</a>
+      <a href="#seaded">17. Programėlė ir tamsus režimas</a>
+      <a href="#abi">18. Pagalba ir kontaktai</a>
     </aside>
 
     <div class="content">
-      <p class="lead">Look360 stebėsenos skydelyje vienoje vietoje sutelkta viskas, ką stebime už Jus – konkurentų kainos ir prekių likučiai, Facebook įrašai, Jūsų pačių el. parduotuvės būklė. Jums nereikia nieko diegti: prisijungiate, vienu žvilgsniu matote būklę, o svarbius pokyčius gaunate ir kasrytiniu laišku. Ši instrukcija peržvelgia kiekvieną vaizdą ir mygtuką.</p>
+      <p class="lead">Look360 stebėsenos skydelis suveda į vieną vietą viską, ką stebime tavo vardu – konkurentų kainas ir atsargas, „Facebook“ įrašus ir reklamas, tavo paties el. parduotuvės būklę ir patikimumą. Nieko diegti nereikia: prisijungi, vienu žvilgsniu matai būklę ir svarbius pokyčius gauni kasrytiniu laišku. Ši instrukcija peržvelgia kiekvieną vaizdą ir mygtuką, o pabaigoje pateikiamos pavyzdinės situacijos, kurios susieja funkcijas į tikrą darbą.</p>
 
       <!-- 1 -->
       <section class="doc" id="algus">
-        <h2><span class="num">1</span> Kas yra stebėsenos skydelis</h2>
-        <p>Stebėsenos skydelis – tai Jūsų privatus darbalaukis adresu, kuriame prisijungiate savo el. paštu ir slaptažodžiu. Ten matote visas stebimas įmones – tiek savo el. parduotuvę, tiek konkurentus – ir kiekvieną pokytį, kurį užfiksavo sistema: kainos kritimą, prekių likučio pabaigą, naują Facebook įrašą, el. parduotuvės triktį.</p>
-        <p>Viskas veikia pagal <strong>spalvų logiką</strong>. Tos pačios trys spalvos kartojasi visur – darbalaukyje, įmonės kortelėje, lentelėje:</p>
+        <h2><span class="num">1</span> Kas yra Look360</h2>
+        <p>Look360 yra <strong>stebėsena, automatika ir reagavimas</strong> viename pakete. Stebėsenos skydelis yra tavo privatus darbalaukis adresu, į kurį prisijungi savo el. paštu ir slaptažodžiu. Ten matai visas stebimas įmones – tiek savo el. parduotuvę, tiek konkurentus – ir kiekvieną pokytį, kurį sistema užfiksavo: kainos kritimą, atsargų pabaigą, naują „Facebook“ įrašą, el. parduotuvės triktį.</p>
+        <p>Viskas veikia pagal <strong>spalvų logiką</strong>. Tos pačios trys spalvos kartojasi visur – darbalaukyje, įmonės kortelėje, lentelėje, grafikuose:</p>
         <div class="legend">
-          <div class="lg"><span class="sw" style="background:var(--accent)"></span><span><b>Žalia – viskas tvarkoje</b>Pokyčių nėra arba viskas, kaip tikėtasi. Nieko daryti nereikia.</span></div>
-          <div class="lg"><span class="sw" style="background:var(--warn)"></span><span><b>Geltona – reikia dėmesio</b>Įspėjimas: pvz., konkurento kainos pokytis, prekių likučio pabaiga ar pasenę duomenys.</span></div>
+          <div class="lg"><span class="sw" style="background:var(--accent)"></span><span><b>Žalia – viskas tvarkoje</b>Pokyčių nėra arba viskas taip, kaip tikėtasi. Nieko daryti nereikia.</span></div>
+          <div class="lg"><span class="sw" style="background:var(--warn)"></span><span><b>Geltona – reikia dėmesio</b>Radinys: pvz., konkurento kainos pokytis, atsargų pabaiga arba pasenę duomenys.</span></div>
           <div class="lg"><span class="sw" style="background:var(--err)"></span><span><b>Raudona – triktis</b>Duomenų šaltinis laikinai tapo nepasiekiamas. Paprastai atsistato pats arba peržiūri operatorius.</span></div>
         </div>
-        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z"/></svg> Pašto dėžutės stebėti nereikia</div><p>Svarbesnius pokyčius siunčiame ir kasrytiniu suvestiniu laišku. Skydelį atveriate tada, kai norite pamatyti daugiau arba ką nors pakeisti.</p></div>
+        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z"/></svg> Pašto dėžutės saugoti nereikia</div><p>Svarbiausius pokyčius siunčiame ir kasrytiniu suvestiniu laišku, o patį kritiškiausią – iškart. Skydelį atveri tada, kai nori pamatyti daugiau arba ką nors pakeisti.</p></div>
       </section>
 
       <!-- 2 -->
       <section class="doc" id="logimine">
         <h2><span class="num">2</span> Prisijungimas</h2>
         <ol class="steps">
-          <li>Atverkite <b>Prisijungti</b> – arba iš pradžios puslapio viršutinio kampo, arba iš šios instrukcijos viršaus, arba iš tiesioginės nuorodos, kurią Jums atsiuntėme.</li>
-          <li>Įveskite <b>naudotojo vardą</b> – tai Jūsų <b>el. pašto adresas</b> (pvz., tu@imone.lt).</li>
-          <li>Įveskite <b>slaptažodį</b> ir spustelėkite <span class="chip go">Įeiti</span></li>
+          <li>Atverk <b>Prisijungti</b> – arba iš pradžios puslapio viršutinio kampo, arba iš šios instrukcijos viršaus, arba iš tiesioginės nuorodos, kurią tau atsiuntėme.</li>
+          <li>Įvesk <b>naudotojo vardą</b> – tai tavo <b>el. pašto adresas</b> (pvz., tu@imone.lt).</li>
+          <li>Įvesk <b>slaptažodį</b> ir spausk <span class="chip go">Įeiti</span></li>
         </ol>
         <ul class="plain">
-          <li><b>Pamiršote slaptažodį?</b> – paspaudę nuorodą apačioje, el. paštu atsiųsime naujo slaptažodžio nustatymo nuorodą.</li>
-          <li><b>Dar neturite paskyros?</b> – mygtukas <span class="chip">Registruotis</span> nuveda į pradžios puslapio kainoraštį, kur galite susidėlioti paketą ir prisijungti.</li>
-          <li><b>Atgal į pradžios puslapį</b> – viršutinė nuoroda grąžina į look360.eu.</li>
+          <li><b>Pamiršai slaptažodį?</b> – iš apačioje esančios nuorodos el. paštu atsiųsime naujo slaptažodžio nustatymo nuorodą.</li>
+          <li><b>Dar neturi paskyros?</b> – mygtukas <span class="chip">Registruotis</span> nuveda prie pradžios puslapio kainoraščio, kur gali susidėti paketą ir prisijungti.</li>
+          <li><b>Išbandyk be paskyros</b> – prisijungimo puslapyje yra viešas <b>demonstracinė paskyra</b>, su kuria gali peržiūrėti visus vaizdus su tikrais pavyzdiniais duomenimis.</li>
         </ul>
-        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg> Verta žinoti</div><p>Paskyra susieta su Jūsų įmone. Prisijungę, viršuje kairėje žalioje juostoje matysite savo įmonės pavadinimą – taip žinosite, kad esate teisingoje paskyroje.</p></div>
+        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg> Naudinga žinoti</div><p>Paskyra susieta su tavo įmone. Prisijungęs viršuje kairėje žalioje juostoje matai savo įmonės pavadinimą – taip žinai, kad esi tinkamoje paskyroje.</p></div>
       </section>
 
       <!-- 3 -->
       <section class="doc" id="menuu">
         <h2><span class="num">3</span> Meniu ir bendras vaizdas</h2>
-        <p>Kiekviename puslapyje yra ta pati sandara: <strong>kairysis meniu</strong>, <strong>viršutinė juosta</strong> ir turinys per vidurį.</p>
+        <p>Kiekviename puslapyje yra tas pats karkasas: <strong>kairysis meniu</strong>, <strong>viršutinė juosta</strong> ir turinys viduryje.</p>
         <h3>Kairysis meniu</h3>
-        <ul class="plain">
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="5" rx="1.5"/><rect x="13" y="11" width="8" height="10" rx="1.5"/><rect x="3" y="14" width="8" height="7" rx="1.5"/></svg> Stebėsena</span> – pagrindinis darbalaukis, kuriame yra visos stebimos įmonės ir radiniai.</li>
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M20 7H4M20 12H4M20 17H4"/></svg> Paslaugos</span> – Jūsų užsakytos paslaugos, mėnesinis mokestis ir galimybė užsisakyti daugiau.</li>
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Kainodara</span> – atsiranda tik tada, kai esate užsisakę <b>kainų perkainojimo</b> paslaugą.</li>
-          <li>Apačioje yra Jūsų naudotojo vardas, vaidmuo <b>Klientas</b> ir <b>atsijungimo</b> piktograma (pro duris lauk).</li>
-        </ul>
+        <p>Meniu yra visi tavo vaizdai. Kai kurie punktai pasirodo tik tada, kai turi užsisakęs atitinkamą paslaugą.</p>
+        <div class="deflist">
+          <div class="dr"><span class="k">Stebėsena</span><span class="v">Pagrindinis darbalaukis – visos stebimos įmonės, radiniai ir tendencija.</span></div>
+          <div class="dr"><span class="k">Paslaugos</span><span class="v">Tavo užsisakytos paslaugos, mėnesio mokestis ir papildomas užsakymas.</span></div>
+          <div class="dr"><span class="k">Paskyra</span><span class="v">Paskyros duomenys, slaptažodis, API prieiga ir kasrytinio laiško nustatymai.</span></div>
+          <div class="dr"><span class="k">Kainų palyginimas</span><span class="v">Ta pati prekė tarp visų stebimų parduotuvių – pigiausia kaina ir istorija.</span></div>
+          <div class="dr"><span class="k">Pranešimai</span><span class="v">Kainų pranešimų taisyklės ir push pranešimai į telefoną.</span></div>
+          <div class="dr"><span class="k">Mėnesio ataskaitos</span><span class="v">Mėnesio PDF suvestinė ataskaita vadovybei.</span></div>
+          <div class="dr"><span class="k">Kainodara</span><span class="v">Matoma tik su <b>kainų perkainojimo</b> paslauga – konkurencija grįsti kainų pasiūlymai.</span></div>
+          <div class="dr"><span class="k">Prekės ženklo apsauga</span><span class="v">Matoma tik su <b>perpardavėjų kainų priežiūros</b> paslauga – RRP/MAP pažeidimai.</span></div>
+        </div>
+        <p>Apačioje yra tavo naudotojo vardas, vaidmuo <b>Klientas</b> ir <b>atsijungimo</b> piktograma (pro duris lauk).</p>
         <h3>Viršutinė juosta</h3>
         <ul class="plain">
-          <li>Kairėje <b>puslapio antraštė</b> (pvz., Jūsų įmonės pavadinimas) ir po ja smulkiu šriftu <b>kada paskutinį kartą atnaujinta</b>.</li>
-          <li>Dešinėje <b>tamsaus / šviesaus režimo jungiklis</b> (saulė / mėnulis) ir konkretaus puslapio <b>veiksmų mygtukai</b>.</li>
+          <li>Kairėje <b>puslapio antraštė</b> ir po ja smulkiu šriftu <b>kada paskutinį kartą atnaujinta</b>.</li>
+          <li>Dešinėje <b>tamsaus/šviesaus režimo jungiklis</b> (saulė/mėnulis) ir konkretaus puslapio <b>veiksmų mygtukai</b>.</li>
           <li>Telefone kairįjį meniu atveria viršutinio kampo <b>☰ mygtukas</b>.</li>
         </ul>
       </section>
@@ -257,199 +285,390 @@
       <!-- 4 -->
       <section class="doc" id="toolaud">
         <h2><span class="num">4</span> Stebėsenos darbalaukis</h2>
-        <p>Tai pradžios vaizdas. Viršuje rasite pagrindinius mygtukus, apačioje – apžvalgą ir įmonių sąrašą.</p>
+        <p>Tai pradinis vaizdas. Viršuje rasi pagrindinius mygtukus, apačioje – tendenciją, suvestinę ir įmonių sąrašą.</p>
         <figure>
-          <img src="l360-seirepaneel.png" alt="Look360 stebėsenos darbalaukis: tendencijų grafikas, suvestinė ir įmonių lentelė" loading="lazy">
-          <figcaption>Stebėsenos darbalaukis – tendencijų grafikas, suvestinė ir stebimų įmonių lentelė.</figcaption>
+          <img src="l360-seirepaneel.png" alt="Look360 stebėsenos darbalaukis: tendencijos grafikas, suvestinė ir įmonių lentelė" loading="lazy">
+          <figcaption>Stebėsenos darbalaukis – radinių tendencija, suvestinė ir stebimų įmonių lentelė.</figcaption>
         </figure>
         <h3>Viršutinės juostos mygtukai</h3>
         <ul class="plain">
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Pridėti įmonę</span> – pridėkite naują stebimą įmonę (žr. <a href="#lisafirma">5 skyrių</a>).</li>
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 7H4M20 12H4M20 17H4"/></svg> Paslaugos</span> – atverkite paslaugų ir mėnesinio mokesčio vaizdą.</li>
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-2.6-6.4L21 8"/><path d="M21 3v5h-5"/></svg> Atnaujinti vaizdą</span> – iš naujo nuskaito naujausius duomenis ir atnaujina ekraną. <b>Svetainių neskenuoja</b>, tik atnaujina vaizdą.</li>
-          <li><span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg> Skenuoti viską iš naujo</span> – atsiranda, kai stebite el. parduotuves arba Facebook. Paleidžia <b>tikrąjį skenavimą</b> (skenuoja svetaines), užtrunka kelias minutes. Tai galima atlikti <b>1 kartą per parą</b>.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Pridėti įmonę</span> – pridėk naują stebimą įmonę (žr. <a href="#lisafirma">5 skyrių</a>).</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 7H4M20 12H4M20 17H4"/></svg> Paslaugos</span> – atverk paslaugų ir mėnesio mokesčio vaizdą.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-2.6-6.4L21 8"/><path d="M21 3v5h-5"/></svg> Atnaujinti vaizdą</span> – iš naujo nuskaito naujausius duomenis ir atnaujina ekraną. <b>Nekrausto</b> svetainių, tik atnaujina vaizdą.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg> Leisti pranešimus</span> – įjungia push pranešimus į telefoną (žr. <a href="#teavitused">9 skyrių</a>).</li>
+          <li><span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg> Skenuoti viską iš naujo</span> – paleidžia <b>tikruosius skenavimus</b> (krausto svetaines), užtrunka kelias minutes. Tai galima daryti <b>1 kartą per parą</b>.</li>
         </ul>
         <h3>Kaip veikia stebėsena? – pagalbos juosta</h3>
-        <p>Darbalaukio viršuje yra išskleidžiama juosta <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .8-1 1.7M12 17h.01"/></svg> Kaip veikia stebėsena?</span> Spustelėkite, kad perskaitytumėte trumpą spalvų paaiškinimą. Pirmą kartą, kai dar nėra nė vienos įmonės, ji yra atverta.</p>
-        <h3>Įspėjimų tendencija</h3>
-        <p>Grafikas rodo, kaip įspėjimų skaičius kito per pastarąsias stebėsenas – ar viskas rimsta, ar reikia daugiau dėmesio.</p>
+        <p>Darbalaukio viršuje yra išskleidžiama juosta <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .8-1 1.7M12 17h.01"/></svg> Kaip veikia stebėsena?</span> Spustelėk, kad perskaitytum trumpą paaiškinimą. Pirmą kartą, kai dar nėra nė vienos įmonės, ji būna atverta.</p>
+        <h3>Radinių tendencija</h3>
+        <p>Grafikas rodo, kaip radinių skaičius keitėsi per paskutines stebėsenas – ar viskas rimsta, ar reikia daugiau dėmesio. Visuose grafikuose yra ašies skalė ir vienetas; užvesk žymeklį ant linijos, kad pamatytum tikslų skaičių.</p>
         <h3>Suvestinė</h3>
         <p>Dešinėje yra keturi skaičiai ir būklės eilutė:</p>
         <div class="deflist">
-          <div class="dr"><span class="k">Stebimų įmonių</span><span class="v">Kiek įmonių šiuo metu stebite.</span></div>
-          <div class="dr"><span class="k">Aktyvių įspėjimų</span><span class="v">Kiek dalykų reikalauja dėmesio (geltona).</span></div>
+          <div class="dr"><span class="k">Įmonių stebima</span><span class="v">Kiek įmonių šiuo metu stebi.</span></div>
+          <div class="dr"><span class="k">Radinių</span><span class="v">Kiek pokyčių reikia dėmesio (geltona).</span></div>
           <div class="dr"><span class="k">Šaltinių su triktimi</span><span class="v">Kiek duomenų šaltinių šiuo metu nepasiekiami (raudona).</span></div>
-          <div class="dr"><span class="k">Pasenę duomenys</span><span class="v">Kelių įmonių duomenys pasenę ir juos reikia atnaujinti.</span></div>
+          <div class="dr"><span class="k">Pasenę duomenys</span><span class="v">Kiek įmonių duomenų pasenę ir reikia atnaujinti.</span></div>
         </div>
-        <h3>Skirtukai, vaizdai ir eksportas</h3>
+        <h3>Kortelės, vaizdai ir eksportas</h3>
         <ul class="plain">
-          <li><b>Skirtukai</b> <span class="pill sec"><span class="dot"></span>Visi</span> <span class="pill sec"><span class="dot"></span>Mano įmonė</span> <span class="pill sec"><span class="dot"></span>Konkurentai</span> – filtruoja sąrašą.</li>
-          <li><b>Lentelė / Kortelės</b> – perjunkite sąrašo formą. Lentelė kompaktiška, kortelės iškart išskleidžia kiekvienos įmonės kanalus.</li>
-          <li><b>Rūšiuoti</b> – išdėstykite pagal įspėjimus, radinius, būklę ar pavadinimą.</li>
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg> Eksportuoti CSV</span> – atsisiunčia matomą lentelę kaip Excel atveriamą failą.</li>
+          <li><b>Kortelės</b> <span class="pill sec"><span class="dot"></span>Visi</span> <span class="pill sec"><span class="dot"></span>Mano įmonė</span> <span class="pill sec"><span class="dot"></span>Konkurentai</span> – filtruoja sąrašą.</li>
+          <li><b>Lentelė / Kortelės</b> – perjunk sąrašo pavidalą. Lentelė kompaktiška; kortelių vaizdas iškart parodo kiekvienos įmonės kanalus ir radinius.</li>
+          <li><b>Rūšiuoti</b> – rikiuok pagal numatytąjį, radinius arba pavadinimą.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg> Eksportuoti CSV</span> – atsisiunčia matomą lentelę kaip „Excel“ atveriamą failą.</li>
         </ul>
+        <figure>
+          <img src="l360-firmakaardid.png" alt="Darbalaukio kortelių vaizdas: kiekvienos įmonės kanalai ir radiniai iškart matomi" loading="lazy">
+          <figcaption>Kortelių vaizdas – kiekvienos stebimos įmonės kanalai ir naujausi radiniai vienu žvilgsniu.</figcaption>
+        </figure>
         <h3>Įmonių lentelė</h3>
-        <p>Kiekviena eilutė – viena stebima įmonė. <b>Spustelėkite eilutę</b>, kad atvertumėte tos įmonės pilną vaizdą. Stulpeliai:</p>
+        <p>Kiekviena eilutė yra viena stebima įmonė. <b>Spustelėk eilutę</b>, kad atvertum tos įmonės pilną vaizdą. Stulpeliai:</p>
         <div class="deflist">
-          <div class="dr"><span class="k">Įmonė</span><span class="v">Pavadinimas ir ar tai Jūsų įmonė, ar konkurentas.</span></div>
-          <div class="dr"><span class="k">Būsena</span><span class="v"><span class="pill ok"><span class="dot"></span>Viskas tvarkoje</span> · <span class="pill warn"><span class="dot"></span>N įspėjimų</span> · <span class="pill err"><span class="dot"></span>Triktis</span> · <span class="pill sec"><span class="dot"></span>Pasenę / Neveikė</span></span></div>
-          <div class="dr"><span class="k">Kanalų</span><span class="v">Kiek šaltinių prie šios įmonės stebima (žiniatinklis, Facebook ir kt.).</span></div>
-          <div class="dr"><span class="k">Radinių</span><span class="v">Kiek pokyčių rasta per paskutinę stebėseną.</span></div>
-          <div class="dr"><span class="k">Įspėjimų</span><span class="v">Kiek radinių reikalauja dėmesio.</span></div>
+          <div class="dr"><span class="k">Įmonė</span><span class="v">Pavadinimas ir ar tai tavo įmonė, ar konkurentas.</span></div>
+          <div class="dr"><span class="k">Būsena</span><span class="v"><span class="pill ok"><span class="dot"></span>N radinių</span> · <span class="pill err"><span class="dot"></span>Triktis</span> · <span class="pill sec"><span class="dot"></span>Pasenę / Nevykdyta / Viskas tylu</span></span></div>
+          <div class="dr"><span class="k">Kanalų</span><span class="v">Kiek šaltinių stebima prie šios įmonės (žiniatinklis, „Facebook“ ir kt.).</span></div>
+          <div class="dr"><span class="k">Radinių</span><span class="v">Keliuose kanaluose paskutinės stebėsenos metu yra radinys.</span></div>
           <div class="dr"><span class="k">Šviežumas</span><span class="v">Kada šios įmonės duomenys paskutinį kartą atnaujinti.</span></div>
-          <div class="dr"><span class="k">Būklė</span><span class="v">Bendra būklės juosta 0–100 % (žalia gera, geltona vidutinė, raudona silpna).</span></div>
+          <div class="dr"><span class="k">Radiniai</span><span class="v">Greita signalinė lemputė: <span class="pill ok"><span class="dot"></span>Taip</span> yra radinys, <span class="pill sec"><span class="dot"></span>Ne</span> viskas tylu.</span></div>
         </div>
-        <h3>Jūsų pridėti stebimi</h3>
-        <p>Jei patys pridėjote įmonę, jos būklę matysite atskirame skyriuje. Galimos būsenos:</p>
+        <h3>Tavo pridėti stebimieji</h3>
+        <p>Jei pats pridėjai įmonę, matai jos būklę. Galimos būsenos:</p>
         <ul class="plain">
           <li><span class="pill warn"><span class="dot"></span>Laukia</span> – laukia operatoriaus patvirtinimo.</li>
-          <li><span class="pill sec"><span class="dot"></span>Kuriu… / AI nustato…</span> – el. parduotuvės skaitytuvas konfigūruojamas automatiškai.</li>
-          <li><span class="pill warn"><span class="dot"></span>Laukia mokesčio</span> – duomenys paruošti, reikia patvirtinti mėnesinį mokestį (žr. <a href="#firmavaade">6 skyrių</a>).</li>
+          <li><span class="pill sec"><span class="dot"></span>Kuriama… / DI aptinka…</span> – el. parduotuvės skaitytuvas nustatomas automatiškai.</li>
+          <li><span class="pill warn"><span class="dot"></span>Laukia apmokėjimo</span> – duomenys paruošti, reikia patvirtinti mėnesio mokestį (žr. <a href="#firmavaade">6 skyrių</a>).</li>
           <li><span class="pill err"><span class="dot"></span>Atmesta</span> – prašymas atmestas (priežastis nurodyta).</li>
-          <li><span class="pill ok"><span class="dot"></span>Aktyvi</span> – įmonė stebima.</li>
+          <li><span class="pill ok"><span class="dot"></span>Aktyvi</span> – įmonė yra stebima.</li>
         </ul>
-        <h3>Facebook stebėsena</h3>
-        <p>Atskiroje kortelėje rodomi stebimų konkurentų naujausi Facebook įrašai, naujausi ir nauji – paryškinti. Spustelėjus įrašą, atveriamas originalas Facebook.</p>
-        <h3>Visi radiniai ir ataskaitų istorija</h3>
+        <h3>„Facebook“ stebėsena, visi radiniai ir istorija</h3>
         <ul class="plain">
-          <li><b>Visi radiniai</b> – visi paskutinės stebėsenos pokyčiai viename sąraše. Varnelė <b>Tik įspėjimai</b> paslepia ramią dalį.</li>
-          <li><b>Ataskaitų istorija</b> – ankstesnės suvestinės ataskaitos. Spustelėjus atveriama suarchyvuota ataskaita.</li>
+          <li><b>„Facebook“ stebėsena</b> – atskiroje kortelėje stebimų konkurentų naujausi įrašai; spustelėjus atveriamas originalas.</li>
+          <li><b>Visi radiniai</b> – visi paskutinės stebėsenos pokyčiai vienu sąrašu. Žymė <b>Tik įspėjimai</b> paslepia ramią dalį.</li>
+          <li><b>Ataskaitų istorija</b> – ankstesnės suvestinės ataskaitos; spustelėjus atveriama archyvuota ataskaita.</li>
         </ul>
       </section>
 
       <!-- 5 -->
       <section class="doc" id="lisafirma">
         <h2><span class="num">5</span> Įmonės pridėjimas</h2>
-        <p>Darbalaukyje spustelėkite <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Pridėti įmonę</span>. Atsivers paprasta forma.</p>
+        <p>Darbalaukyje spausk <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Pridėti įmonę</span>. Atsivers paprasta forma.</p>
         <ol class="steps">
-          <li><b>Įmonės pavadinimas</b> – pradėkite rašyti ir iš sąrašo pasirinkite Estijos verslo registro įmonę (arba įrašykite pavadinimą rankiniu būdu).</li>
-          <li><b>Svetainė</b> – pakanka pavadinimo be https:// pradžioje, pvz., <b>weekend.ee</b>.</li>
-          <li>Jei norite, įjunkite <b>stebėti el. parduotuvės kainas ir prekių likučius</b> ir (arba) <b>stebėti ir Facebook</b>.</li>
-          <li>Spustelėkite <span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Pridėti stebimą įmonę</span></li>
+          <li><b>Įmonės pavadinimas</b> – pradėk rašyti ir iš sąrašo pasirink įmonių registro įmonę (arba įrašyk pavadinimą ranka).</li>
+          <li><b>Žiniatinklio svetainė</b> – pakanka pavadinimo be https:// pradžios, pvz., <b>weekend.ee</b>.</li>
+          <li>Jei nori, įjunk <b>stebėti el. parduotuvės kainas ir atsargas</b> ir (arba) <b>stebėti ir „Facebook“</b>.</li>
+          <li>Spausk <span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Pridėti stebimą įmonę</span></li>
         </ol>
+        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg> Tos pačios įmonės du kartus nepridėsi</div><p>Jei to paties pavadinimo ar žiniatinklio adreso įmonė jau yra tavo sąraše, sistema apie tai praneša – taip neatsiranda dvigubo įrašo nei dvigubo mėnesio mokesčio.</p></div>
         <h3>El. parduotuvės stebėsena</h3>
-        <p>Jei pasirinksite el. parduotuvės stebėseną, sistema bandys nuskaityti parduotuvės prekes pati. Pavykus, stebėsena pasileidžia automatiškai; kitu atveju peržiūri operatorius. Papildomai galite atverti <b>raktažodžių filtrą</b>: įrašykite raktažodį ir spustelėkite Enter arba <b>+</b>, kad pridėtumėte žymą (pvz., <i>vejapjovė</i>). Palikus tuščią, stebime visas prekes.</p>
-        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg> Kainodaros modelis</div><p>El. parduotuvės stebėsena kainuoja <strong>8 €/mėn. už kiekvienas iki 2000 stebimų prekių</strong>. Visos kainos be PVM. Kai sistema nuskaitys parduotuvės prekes, patys pasirinksite kategorijas, kurias stebėti – tai lemia prekių skaičių ir mėnesinį mokestį. Tikslią sumą parodysime ir paprašysime patvirtinimo prieš atverdami duomenis.</p></div>
-        <h3>Facebook stebėsena</h3>
-        <p>Įveskite Facebook puslapio adresą – pakanka puslapio pavadinimo arba adreso (pvz., <b>facebook.com/konkurentas</b> arba tiesiog <b>konkurentas</b>). Jei puslapio dar nėra stebėsenos sąraše, jis perduodamas operatoriui patvirtinti.</p>
+        <p>Jei pasirenki el. parduotuvės stebėseną, sistema bando parduotuvės prekes nuskaityti pati. Pavykus stebėsena pasileidžia automatiškai; kitu atveju peržiūri operatorius. Gali pridėti <b>raktažodžio filtrą</b>: įrašyk raktažodį ir spausk „Enter“ arba <b>+</b>, kad pridėtum žymą (pvz., <i>vejapjovė</i>). Palikus tuščią, stebime visas prekes.</p>
+        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg> Kainodaros modelis</div><p>El. parduotuvės stebėsena kainuoja <strong>8 € per mėnesį už kiekvienas iki 2000 stebimų prekių</strong>. Visos kainos be PVM. Kai sistema parduotuvės prekes nuskaito, pats pasirenki kategorijas, kurias stebėti – tai lemia prekių skaičių ir mėnesio mokestį. Prieš atverdami duomenis parodome tikslią sumą ir paprašome patvirtinimo.</p></div>
+        <h3>„Facebook“ stebėsena</h3>
+        <p>Įvesk „Facebook“ puslapio adresą – pakanka puslapio pavadinimo arba adreso (pvz., <b>facebook.com/konkurentas</b> arba tiesiog <b>konkurentas</b>). Jei puslapio dar nėra stebėsenos sąraše, jis keliauja operatoriui patvirtinti. „Facebook“ stebėsena kainuoja <strong>3 € per mėnesį už konkurentą</strong>.</p>
       </section>
 
       <!-- 6 -->
       <section class="doc" id="firmavaade">
         <h2><span class="num">6</span> Įmonės vaizdas ir prekių katalogas</h2>
-        <p>Spustelėjus įmonės pavadinimą darbalaukyje, atveriamas jos pilnas vaizdas: visi kanalai, radiniai ir – el. parduotuvės atveju – visas prekių katalogas.</p>
+        <p>Spustelėjus darbalaukyje įmonės pavadinimą atsiveria jos pilnas vaizdas: visi kanalai, radiniai, el. parduotuvės būklė, grafikai ir – el. parduotuvės atveju – visas prekių katalogas.</p>
         <figure>
-          <img src="l360-kataloog.png" alt="Įmonės vaizdas: prekių katalogas su kategorijomis, kainomis ir prekių likučiais" loading="lazy">
-          <figcaption>Įmonės vaizdas – ieškomas prekių katalogas su kategorijomis, kainomis ir prekių likučiais.</figcaption>
+          <img src="l360-firma-tervis.png" alt="Įmonės vaizdas: el. parduotuvės būklė, prekių skaičiaus grafikas ir VIP prekės" loading="lazy">
+          <figcaption>Įmonės vaizdas – el. parduotuvės būklės skaičiai, asortimento pokytis laike ir VIP prekės.</figcaption>
         </figure>
+        <h3>El. parduotuvės būklė</h3>
+        <p>Iš kortelės matai iškart: <b>prekių iš viso</b>, <b>sandėlyje</b>, <b>išparduota</b>, <b>nėra kainos</b>, <b>su nuolaida</b> ir <b>atsargos nežinomos</b>. Skaičiai apskaičiuoti iš tos parduotuvės katalogo ir yra spustelimi.</p>
+        <h3>Prekių skaičius laike</h3>
+        <p>Grafikas rodo, kiek prekių parduotuvės kataloge buvo kiekvieną stebėsenos dieną – ar asortimentas auga, mažėja, ar išlieka pastovus. Šalia yra <b>dabar</b>, <b>vidutiniškai</b>, <b>intervalas</b> ir <b>kryptis</b>.</p>
+        <h3>VIP prekės</h3>
+        <p>Kataloge pažymėk prekei <b>žvaigždutę</b>, kad įtrauktum ją tarp VIP prekių. Kiekvienai VIP prekei nubraižomas atskiras grafikas: įprasta kaina, nuolaidos kaina ir atsargos laike. Vienu metu iki 10 prekių – stebėk tas, kurios tau svarbiausios.</p>
         <h3>Antraštės mygtukai</h3>
         <ul class="plain">
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Pasirinkti kategorijas</span> – pasirinkite, kurias parduotuvės kategorijas stebėti (žr. <a href="#kategooriad">7 skyrių</a>).</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Pasirinkti kategorijas</span> – pasirink, kurias parduotuvės kategorijas stebėti (žr. <a href="#kategooriad">7 skyrių</a>).</li>
           <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 6H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4"/><path d="M14 4h6v6m0-6L10 14"/></svg> Atverti svetainę</span> – atveria konkurento el. parduotuvę naujame lange.</li>
         </ul>
-        <h3>Būsenos pranešimai</h3>
-        <p>Vaizdo viršuje gali būti pranešimas: <b>laukia operatoriaus patvirtinimo</b>, <b>kuriamas skaitytuvas</b>, <b>nustatome kategorijas</b>, <b>automatinis konfigūravimas nepavyko</b> (operatorius peržiūri) arba <b>prašymas atmestas</b>.</p>
-        <h3>Mėnesinio mokesčio patvirtinimas</h3>
-        <p>Kai parduotuvės prekės nuskaitytos, matysite skaičiuoklę: <b>prekių skaičius</b>, <b>pakopos</b> (× iki 2000 prekių), <b>bazinė kaina 8 €</b>, galimas papildomas mokestis ir <b>mėnesinis mokestis iš viso</b>. Iki patvirtinimo katalogas kaip pavyzdys yra <b>suliejęs</b> (blur). Pasirinkimai:</p>
+        <h3>Mėnesio mokesčio patvirtinimas</h3>
+        <p>Kai parduotuvės prekės nuskaitytos, matai skaičiuoklę: <b>prekių skaičius</b>, <b>pakopos</b> (× iki 2000 prekių), <b>bazinė kaina 8 €</b> ir <b>mėnesio mokestis iš viso</b>. Iki patvirtinimo katalogas rodomas kaip pavyzdys <b>išsklaidytas</b> (blur). Parinktys:</p>
         <ul class="plain">
-          <li><span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg> Mokėti ir atverti duomenis</span> – nukreipsime į saugų mokėjimo vartų puslapį (banko nuoroda arba kortelė); duomenys atsiveria iškart.</li>
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg> Mokėti pavedimo sąskaita</span> – atsiųsime sąskaitą el. paštu; turinys atsiveria gavus mokėjimą.</li>
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Pasirinkti kategorijas</span> – sumažinkite prekių skaičių, kad mėnesinis mokestis sumažėtų.</li>
+          <li><span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg> Sumokėti ir atverti duomenis</span> – nukreipiame į saugų mokėjimo tinklų sietuvą (banko nuoroda arba kortelė); duomenys atsiveria iškart.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg> Mokėti pavedimo sąskaita</span> – sąskaitą siunčiame el. paštu; turinys atsiveria gavus apmokėjimą.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Pasirinkti kategorijas</span> – sumažink prekių skaičių, kad mėnesio mokestis kristų.</li>
         </ul>
-        <p>Facebook stebėsenos patvirtinimas vyksta lygiai taip pat (3 €/mėn.).</p>
+        <figure>
+          <img src="l360-kataloog.png" alt="Įmonės vaizdas: ieškomas prekių katalogas su kategorijomis, kainomis ir atsargomis" loading="lazy">
+          <figcaption>Prekių katalogas – ieškomas, pagal kategorijas, su kaina ir atsargomis.</figcaption>
+        </figure>
         <h3>Prekių katalogas</h3>
         <ul class="plain">
-          <li><b>Paieška</b> – įrašykite prekės pavadinimą, kad atfiltruotumėte sąrašą.</li>
-          <li><b>Kategorijos</b> – spustelėkite kategoriją, kad atvertumėte subkategorijas ir prekes.</li>
-          <li><b>Prekių likutis</b> – prie kiekvienos prekės <span class="pill ok"><span class="dot"></span>sandėlyje</span>, <span class="pill err"><span class="dot"></span>baigėsi</span> arba <span class="pill sec"><span class="dot"></span>nežinoma</span>.</li>
-          <li><b>Kaina</b> – jei taikoma nuolaida, įprastą kainą matote perbrauktą, o akcijos kainą – raudonai.</li>
-          <li><b>Išorinė nuoroda</b> (rodyklė) nuveda prie prekės parduotuvėje.</li>
-          <li><b>Spustelėjus prekės eilutę</b>, atsiveria <b>kainos ir prekių likučio istorijos grafikas</b>: dabartinė kaina ir nuolaida, įprasta kaina punktyrine linija, prekių likutis laike juosta ir legenda.</li>
+          <li><b>Paieška</b> – įrašyk prekės pavadinimą, kad filtruotum sąrašą.</li>
+          <li><b>Kategorijos</b> – spustelėk kategoriją, kad atvertum pakategores ir prekes.</li>
+          <li><b>Atsargos</b> – prie kiekvienos prekės <span class="pill ok"><span class="dot"></span>sandėlyje</span>, <span class="pill err"><span class="dot"></span>išparduota</span> arba <span class="pill sec"><span class="dot"></span>nežinoma</span>.</li>
+          <li><b>Kaina</b> – esant nuolaidai matai perbrauktą įprastą kainą ir nuolaidos kainą raudonai.</li>
+          <li><b>Žvaigždutė</b> įtraukia prekę į VIP sąrašą; <b>varpelis</b> iškart sukuria kainos pranešimą; <b>rodyklė</b> nuveda prie prekės parduotuvėje.</li>
         </ul>
+        <h3>Kainos ir atsargų istorija</h3>
+        <p>Spustelėjus prekės eilutę atsiveria grafiko langas: dabartinė kaina ir nuolaida, įprasta kaina ir nuolaidos kaina laike bei atsargos. Legenda apačioje paaiškina linijas.</p>
+        <figure>
+          <img src="l360-tootegraafik.png" alt="Prekės kainos ir atsargų istorijos grafikas iškylančiajame lange" loading="lazy">
+          <figcaption>Prekės kainos ir atsargų istorija – įprasta kaina (žalia) ir nuolaidos kaina (raudona) laike.</figcaption>
+        </figure>
       </section>
 
       <!-- 7 -->
       <section class="doc" id="kategooriad">
         <h2><span class="num">7</span> Kategorijų pasirinkimas</h2>
-        <p>Mygtukas <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Pasirinkti kategorijas</span> atveria visų parduotuvės kategorijų sąrašą. Kuo mažiau prekių pasirinksite, tuo mažesnis mėnesinis mokestis.</p>
+        <p>Mygtukas <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Pasirinkti kategorijas</span> atveria visų parduotuvės kategorijų sąrašą. Kuo mažiau prekių pasirenki, tuo mažesnis mėnesio mokestis.</p>
         <ol class="steps">
-          <li>Varnele pažymėkite kategorijas, kurias norite stebėti. Pagelbės <b>Pasirinkti viską</b>, <b>Atšaukti pasirinkimą</b> ir <b>paieška</b>.</li>
-          <li>Stebėkite apačioje <b>skaičiuoklę</b>: pasirinktos prekės → pakopos (× iki 2000) → mėnesinis mokestis iškart atsinaujina.</li>
-          <li>Spustelėkite <span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg> Išsaugoti pasirinkimą</span></li>
+          <li>Žymėmis pažymėk kategorijas, kurias nori stebėti. Padeda <b>Pažymėti viską</b>, <b>Atšaukti pasirinkimą</b> ir <b>paieška</b>.</li>
+          <li>Apačioje sek <b>skaičiuoklę</b>: pasirinktos prekės → pakopos (× iki 2000) → mėnesio mokestis atsinaujina iškart.</li>
+          <li>Spausk <span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg> Išsaugoti pasirinkimą</span></li>
         </ol>
-        <p>Pasirinkimą galite bet kada vėliau pakeisti – mėnesinis mokestis prisitaiko atitinkamai.</p>
+        <p>Pasirinkimą gali bet kada vėliau pakeisti – mėnesio mokestis prisiderina atitinkamai.</p>
       </section>
 
       <!-- 8 -->
-      <section class="doc" id="teenused">
-        <h2><span class="num">8</span> Paslaugos ir mėnesinis mokestis</h2>
-        <p>Meniu punkte <b>Paslaugos</b> matote viską, už ką mokate, ir galite užsisakyti daugiau.</p>
+      <section class="doc" id="hinnavordlus">
+        <h2><span class="num">8</span> Kainų palyginimas</h2>
+        <p>Meniu punktas <b>Kainų palyginimas</b> paima tą pačią prekę tarp visų stebimų parduotuvių ir parodo, <strong>kur ji pigiausia</strong> ir kaip kaina judėjo laike. Prekės susiejamos pagal modelio kodą ir dydį.</p>
+        <figure>
+          <img src="l360-hinnavordlus.png" alt="Kainų palyginimas: ta pati prekė keliose parduotuvėse, pigiausia kaina ir istorijos grafikas" loading="lazy">
+          <figcaption>Kainų palyginimas – kiekvienos prekės pigiausia parduotuvė, parduotuvių kainų intervalas ir istorijos grafikas.</figcaption>
+        </figure>
         <ul class="plain">
-          <li><b>Jūsų mėnesinis mokestis iš viso</b> – didelis skaičius viršuje. Suma susidaro iš visų aktyvių paslaugų. Šalia – kitos sąskaitos data.</li>
-          <li><b>Apmokėta – laukia aktyvavimo</b> – užsakymai, kurių pradinis mokestis sumokėtas ir kuriuos operatorius netrukus įjungs.</li>
-          <li><b>Jūsų paslaugos</b> – visos aktyvios paslaugos (žalia spalva), įskaitant konkurentų Facebook ir žiniatinklio stebėseną. <b>Atšaukti</b> nutraukia paslaugą; konkurentų stebėsena tvarkoma per <b>Pridėti įmonę</b> (mygtukas <b>Tvarkyti</b>).</li>
-          <li><b>Užsisakyti daugiau</b> – prie kiekvienos paslaugos nurodyta kaina €/mėn. ir pradinis mokestis. Spustelėkite <span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Užsisakyti</span>, patvirtinkite lange ir sumokėkite pradinį mokestį. Specialioms užduotims yra mygtukas <span class="chip">Prašyti pasiūlymo</span>.</li>
-          <li><b>Paketai</b> – užsako iškart kelias paslaugas su tuo pačiu mokėjimo srautu.</li>
+          <li>Viršuje yra suvestinė: <b>palyginamų prekių</b>, <b>kainų istorijos grafikų</b> ir <b>stebimų parduotuvių</b>.</li>
+          <li>Kiekviena kortelė rodo <b>pigiausią kainą</b>, <b>parduotuvių kainų intervalą</b> laike ir <b>šiandien pigiausią parduotuvę</b>.</li>
+          <li>Apačioje nurodyta, kiek procentų kaina pasikeitė per stebėtą laikotarpį ir iš kelių parduotuvių rasta pigiausia.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg> CSV (Excel)</span> atsisiunčia visą palyginimą.</li>
         </ul>
-        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Kaip apskaičiuojamas pradinis mokestis</div><p>Užsisakydami naują paslaugą, iškart sumokate <strong>proporcingą pradinį mokestį</strong> – tik iki kitos atsiskaitymo dienos. Tada operatorius įjungia paslaugą, o vėliau visos paslaugos atsiskaitomos kartu.</p></div>
+        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg> Kam to reikia</div><p>Iškart matai, ar kurioje nors prekėje esi rinkoje brangiausias, ar pigiausias – geras įvestis kainodarai (<a href="#hinnastamine">14 skyrius</a>) ir kampanijoms.</p></div>
       </section>
 
       <!-- 9 -->
-      <section class="doc" id="maksed">
-        <h2><span class="num">9</span> Kaip vyksta mokėjimas</h2>
-        <p>Kiekvienas mokėjimas prasideda <strong>patvirtinimo langu</strong>, kuriame nurodyta suma ir už ką mokate. Visada galite <b>Atšaukti</b>.</p>
+      <section class="doc" id="teavitused">
+        <h2><span class="num">9</span> Pranešimai</h2>
+        <p>Meniu punktas <b>Pranešimai</b> leidžia nustatyti <strong>taisykles</strong>, kurioms išsipildžius iškart siunčiame pranešimą – push pranešimu į telefoną ir (arba) el. laišku.</p>
+        <figure>
+          <img src="l360-teavitused.png" alt="Pranešimai: kainos pranešimo taisyklės pridėjimas ir taisyklių sąrašas" loading="lazy">
+          <figcaption>Pranešimai – pridėk taisyklę (sąlyga, parduotuvė, prekė, riba) ir pasirink push ir (arba) el. laišką.</figcaption>
+        </figure>
+        <ol class="steps">
+          <li>Pasirink <b>sąlygą</b> – pvz., kainos kritimas bent X%, atsargos išparduotos, nauja prekė, konkurentas nukrito žemiau tavo kainos.</li>
+          <li>Pasirink <b>parduotuvę</b> (visos stebimos arba viena konkreti) ir, jei nori, <b>konkrečią prekę</b>.</li>
+          <li>Nustatyk <b>ribą (%)</b>, jei sąlygai jos reikia.</li>
+          <li>Pažymėk <b>Push pranešimą</b> ir (arba) <b>El. laišką</b> ir spausk <span class="chip go">Pridėti taisyklę</span></li>
+        </ol>
         <ul class="plain">
-          <li><b>Mokant iškart</b> nukreipiame į saugų mokėjimo vartų puslapį – mokate <b>banko nuoroda</b> arba <b>kortele</b>, o duomenys / paslauga atsiveria iškart po mokėjimo.</li>
-          <li><b>Pavedimo sąskaita</b> – atsiunčiame sąskaitą el. paštu. Turinys atsiveria visa apimtimi, kai mokėjimas gaunamas.</li>
-          <li><b>Pradinis mokestis</b> visada proporcingas iki kitos atsiskaitymo dienos; vėliau taikomas visas mėnesinis mokestis.</li>
-          <li><b>Atsiskaitymas</b> vyksta už visas paslaugas kartu, pagal Jūsų prisijungimo dienos metinę sukaktį.</li>
+          <li>Taisyklę bet kada gali laikinai <b>išjungti</b> arba ištrinti.</li>
+          <li>Greičiausiai pranešimą sukuri tiesiai iš katalogo arba kainų palyginimo – <b>varpelio piktograma</b> prekės eilutėje užpildo formą iš anksto.</li>
+          <li>Kad gautum push pranešimus, viršuje spausk <span class="chip">Leisti push pranešimus</span> (iPhone – po įdiegimo kaip programėlės, žr. <a href="#seaded">17 skyrių</a>).</li>
         </ul>
       </section>
 
       <!-- 10 -->
-      <section class="doc" id="hinnastamine">
-        <h2><span class="num">10</span> Kainodara</h2>
-        <p>Meniu punktas <b>Kainodara</b> matomas tik tada, kai esate užsisakę <strong>kainų perkainojimo</strong> paslaugą. Ten matote konkurencija pagrįstas kainų rekomendacijas savo paties parduotuvei.</p>
+      <section class="doc" id="kuuraportid">
+        <h2><span class="num">10</span> Mėnesio ataskaitos</h2>
+        <p>Meniu punktas <b>Mėnesio ataskaitos</b> kiekvieno mėnesio 1 dieną už praėjusį mėnesį suveda <strong>PDF suvestinę vadovybei</strong>: kainų pokyčiai, asortimento judėjimas, tavo kainos padėtis rinkoje ir prekės ženklo apsaugos pažeidimai.</p>
+        <figure>
+          <img src="l360-kuuraportid.png" alt="Mėnesio ataskaitos: mėnesio PDF suvestinės paaiškinimas ir archyvas" loading="lazy">
+          <figcaption>Mėnesio ataskaitos – automatinis mėnesio PDF, kurį galima tiesiai persiųsti valdybai arba gamintojui.</figcaption>
+        </figure>
         <ul class="plain">
-          <li><b>Rekomendacijų lentelė</b> – prekė, dabartinė kaina, rekomenduojama kaina, skirtumas ir priežastis.</li>
-          <li><span class="chip">Generuoti iš naujo</span> apskaičiuoja rekomendacijas iš naujo; <span class="chip">Taisyklės</span> ir <span class="chip">Istorija</span> rodo nustatymus ir ankstesnius pakeitimus.</li>
-          <li>Kai paslauga <b>aktyvuota</b>, rekomendaciją vienu spustelėjimu galima įrašyti į savo WooCommerce parduotuvę; <b>Palikti taip</b> palieka kainą ir ignoruoja prekę pasirinktą dienų skaičių, <b>Praleisti</b> praleidžia rekomendaciją.</li>
+          <li><b>Automatinė</b> – ataskaita paruošiama ir siunčiama el. paštu kiekvieno mėnesio pradžioje; nieko daryti ranka nereikia.</li>
+          <li><b>Archyvas</b> – visos ankstesnės mėnesio ataskaitos yra čia atsisiuntimui.</li>
+          <li>Skirtingai nuo kasrytinio laiško (žr. žemiau), mėnesio ataskaita yra <b>suvestinė apžvalga</b> sprendimų priėmėjui, o ne dienos pokyčių sąrašas.</li>
         </ul>
-        <div class="box warn"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg> Saugiai</div><p>Kainos pakeitimo įrašymą į parduotuvę Look360 įjungia kartu su Jumis. Pagal numatymą viskas yra <b>bandomasis paleidimas</b> (niekas nekeičiama), kol susitarsime dėl tiesioginio režimo.</p></div>
+        <h3>Kasrytinis laiškas ir realaus laiko įspėjimai</h3>
+        <ul class="plain">
+          <li><b>Kasrytinis laiškas</b> – svarbiausi pokyčiai automatiškai pasiekia tavo (ir sutartų kontaktų) pašto dėžutę. Jį galima įjungti/išjungti <a href="#konto">Paskyros</a> puslapyje.</li>
+          <li><b>Realaus laiko įspėjimai</b> – patys kritiškiausi (pvz., konkurento kainos kritimas, el. parduotuvės triktis, atsargų pabaiga) pasiekia iškart per pranešimų taisykles.</li>
+        </ul>
       </section>
 
       <!-- 11 -->
-      <section class="doc" id="raportid">
-        <h2><span class="num">11</span> Ataskaitos</h2>
+      <section class="doc" id="konto">
+        <h2><span class="num">11</span> Paskyra ir API prieiga</h2>
+        <p>Meniu punktas <b>Paskyra</b> suveda tavo paskyros duomenis ir nustatymus.</p>
+        <figure>
+          <img src="l360-konto.png" alt="Paskyra: paskyros duomenys, slaptažodis, API prieiga ir pranešimų nustatymai" loading="lazy">
+          <figcaption>Paskyra – įmonės duomenys, slaptažodžio keitimas, API raktas ir kasrytinio laiško jungiklis.</figcaption>
+        </figure>
         <ul class="plain">
-          <li><b>Kasrytinis laiškas</b> – svarbesni pokyčiai automatiškai pasiekia Jūsų (ir sutartų kontaktų) pašto dėžutę.</li>
-          <li><b>Realaus laiko įspėjimai</b> – kas svarbiausia (pvz., konkurento kainos kritimas, el. parduotuvės triktis, prekių likučio pabaiga) pasiekia iškart, likusi dalis sutelkiama į rytinę ataskaitą.</li>
-          <li><b>Ataskaitų istorija</b> – darbalaukyje galite atverti kiekvieną ankstesnę suvestinę ataskaitą ir pamatyti, kas tuomet pasikeitė.</li>
+          <li><b>Paskyros duomenys</b> – įmonė, kontaktinis asmuo ir registracijos el. paštas.</li>
+          <li><b>Slaptažodis</b> – <span class="chip">Keisti slaptažodį</span>; pamirštą slaptažodį gali atkurti iš prisijungimo puslapio.</li>
+          <li><b>Kasrytinė stebėsenos ataskaita</b> – jungiklis, kuriuo el. laišką įjungi arba išjungi.</li>
         </ul>
+        <h3>API prieiga (BI, ERP, Excel)</h3>
+        <p>Per REST API gali gauti savo stebėsenos duomenis – parduotuves, prekes, kainas, kainų palyginimą, radinius – tiesiai į savo sistemą (Power BI, ERP, Excel Power Query).</p>
+        <ol class="steps">
+          <li>Įrašyk rakto paskirtį (pvz., „Power BI“) ir spausk <span class="chip go">Sukurti API raktą</span></li>
+          <li>Iškart nukopijuok raktą – jis rodomas tik vieną kartą.</li>
+          <li>Iš nuorodos peržiūrėk <b>API dokumentaciją</b>, kokie galiniai taškai yra prieinami.</li>
+        </ol>
       </section>
 
       <!-- 12 -->
-      <section class="doc" id="seaded">
-        <h2><span class="num">12</span> Programėlė, pranešimai ir tamsus režimas</h2>
+      <section class="doc" id="teenused">
+        <h2><span class="num">12</span> Visos paslaugos ir mėnesio mokestis</h2>
+        <p>Iš meniu <b>Paslaugos</b> matai viską, už ką moki, ir gali papildomai užsisakyti. Viršuje yra <b>tavo mėnesio mokestis iš viso</b> ir kito atsiskaitymo data.</p>
+        <figure>
+          <img src="l360-teenused.png" alt="Paslaugos: mėnesio mokestis iš viso ir aktyvių paslaugų sąrašas" loading="lazy">
+          <figcaption>Paslaugos – mėnesio mokestis iš viso, aktyvios paslaugos ir papildomas užsakymas.</figcaption>
+        </figure>
+        <p>Žemiau yra viskas, ką siūlome. Visos kainos <b>be PVM, per mėnesį</b>.</p>
+
+        <div class="cat-h">Tavo paties el. parduotuvės priežiūra</div>
+        <div class="svc">
+          <div class="s"><div class="h"><span class="nm">El. parduotuvės būklės patikra</span><span class="pr">20 €</span></div><p>Skenuoja tavo el. parduotuvės prekes ir randa trūkumus: trūkstamus paveikslėlius ir alt tekstus, tuščius arba per trumpus aprašymus, sugedusias kainas, dubliuotas prekes. Pateikia būklės % ir taisytinų dalykų sąrašą.</p></div>
+          <div class="s"><div class="h"><span class="nm">SEO ir turinio spragų stebėsena</span><span class="pr">nuo 16 €</span></div><p>Stebi tavo raktažodžių pozicijas „Google“ ir randa turinio spragas – temas, kuriomis dar neturi turinio. Kaina priklauso nuo stebimų raktažodžių skaičiaus.</p></div>
+          <div class="s"><div class="h"><span class="nm">Svetainės patikimumas</span><span class="pr">10 €</span></div><p>Tikrina, ar tavo svetainė / el. parduotuvė veikia ir kaip greitai atsako. Praneša, jei svetainė nukrenta arba tampa lėta.</p></div>
+          <div class="s"><div class="h"><span class="nm">ERP–el. parduotuvės integracija</span><span class="pr">30 €</span></div><p>Sujungia tavo el. parduotuvę ir apskaitos programą (pvz., Directo) – užsakymai, atsargos ir kainos juda automatiškai, be perkėlimo ranka.</p></div>
+          <div class="s"><div class="h"><span class="nm">Kainų perkainojimas</span><span class="pr">30 €</span></div><p>Konkurencija grįsti kainų pasiūlymai tavo paties parduotuvei, kuriuos vienu spustelėjimu galima įrašyti į WooCommerce (žr. <a href="#hinnastamine">14 skyrių</a>).</p></div>
+        </div>
+
+        <div class="cat-h">Konkurentų stebėsena</div>
+        <div class="svc">
+          <div class="s"><div class="h"><span class="nm">Konkurentų FB stebėsena</span><span class="pr">3 € / konkurentas</span></div><p>Stebi konkurentų „Facebook“ įrašus: naujos prekės, kampanijos, renginiai, kainų pranešimai. Viskas viename sraute, nauji išryškinti.</p></div>
+          <div class="s"><div class="h"><span class="nm">Konkurentų FB reklamos</span><span class="pr">6 €</span></div><p>Stebi konkurentų aktyvias „Facebook“ reklamas – ką jie reklamuoja, kiek reklamų veikia ir kada jos prasidėjo ar buvo sustabdytos.</p></div>
+          <div class="s"><div class="h"><span class="nm">El. parduotuvės kainų ir atsargų stebėsena</span><span class="pr">8 € / 2000 prekių</span></div><p>Stebi konkurento el. parduotuvės kainas, nuolaidų kainas, atsargas ir asortimentą. Pateikia istorijos grafikus ir maitina kainų palyginimą. Pakopinė: 8 € už kiekvienas iki 2000 prekių.</p></div>
+        </div>
+
+        <div class="cat-h">Prekės ženklo savininkui ir importuotojui</div>
+        <div class="svc">
+          <div class="s"><div class="h"><span class="nm">Perpardavėjų kainų priežiūra</span><span class="pr">40 €</span></div><p>Nustatai savo prekių RRP (rekomenduojama mažmeninė kaina) ir MAP (mažiausia leidžiama reklaminė kaina); sistema stebi, kurie perpardavėjai jas pažeidžia (žr. <a href="#brandivalve">15 skyrių</a>).</p></div>
+        </div>
+
+        <div class="cat-h">Papildomos paslaugos</div>
+        <div class="svc">
+          <div class="s"><div class="h"><span class="nm">Mokymai komandai</span><span class="pr">40 €</span></div><p>Apmokome tavo komandą sistemos ir el. parduotuvės temomis, kad visi mokėtų stebėseną ir duomenis panaudoti savo naudai.</p></div>
+          <div class="s"><div class="h"><span class="nm">Užsakomoji automatika</span><span class="pr">pagal užklausą</span></div><p>Pagal specialų užsakymą automatizuojame tavo kartotinius darbus – ataskaitas, sinchronizacijas, pranešimus, duomenų srautus. Spausk <span class="chip">Prašyti pasiūlymo</span>.</p></div>
+        </div>
+
+        <div class="cat-h">Paketai</div>
+        <div class="svc">
+          <div class="s"><div class="h"><span class="nm">Savo parduotuvės pilnas paketas</span></div><p>Būklės patikra + SEO + patikimumas + kainų perkainojimas.</p></div>
+          <div class="s"><div class="h"><span class="nm">Stebėsenos pradžios paketas</span></div><p>Konkurentų FB stebėsena + el. parduotuvės būklės patikra + patikimumas.</p></div>
+          <div class="s"><div class="h"><span class="nm">Priežiūros+ paketas</span></div><p>Būklės patikra + patikimumas + ERP integracija.</p></div>
+        </div>
+
+        <h3>Kaip užsisakyti</h3>
         <ul class="plain">
-          <li><b>Įdiegti kaip programėlę</b> – telefone skydelį galite įtraukti į pagrindinį ekraną kaip programėlę: atverkite naršyklės meniu ir pasirinkite „Įtraukti į pagrindinį ekraną". Nuo tada Look360 atsivers tiesiai iš piktogramos ir per visą ekraną – nieko nereikia atsisiųsti.</li>
-          <li><b>Pranešimai į telefoną</b> – darbalaukyje esantis mygtukas <span class="chip">Leisti pranešimus</span> siunčia svarbius kainų ir prekių likučių pokyčius kaip push pranešimą tiesiai į įrenginį. „iPhone" telefone tai veikia įdiegus kaip programėlę.</li>
-          <li><b>Tamsus / šviesus režimas</b> – viršutinės juostos jungiklis (saulė / mėnulis) keičia temą. Pasirinkimas įsimenamas.</li>
-          <li><b>Telefone</b> – meniu paslėptas už ☰ mygtuko viršutiniame kampe; turinys prisitaiko prie ekrano pločio.</li>
-          <li><b>Atsijungimas</b> – kairėje apačioje, šalia naudotojo vardo esanti pro duris lauk piktograma.</li>
+          <li>Prie kiekvienos paslaugos yra kaina €/mėn. Spausk <span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Užsisakyti</span>, patvirtink lange ir sumokėk pradinį mokestį; paketai užsako kelias paslaugas iškart.</li>
+          <li>Aktyvios paslaugos yra <span class="pill ok"><span class="dot"></span>žalios</span>. <b>Atšaukti</b> nutraukia paslaugą; konkurentų stebėsena valdoma per <b>Pridėti įmonę</b> ir mygtuką <b>Tvarkyti</b>.</li>
+          <li><b>Apmokėta – laukia aktyvavimo</b>: pradinis mokestis sumokėtas ir operatorius paslaugą netrukus įjungs.</li>
         </ul>
+        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Kaip apskaičiuojamas pradinis mokestis</div><p>Užsisakant naują paslaugą iškart sumoki <strong>proporcingą pradinį mokestį</strong> – tik iki kitos atsiskaitymo dienos. Vėliau visos paslaugos atsiskaitomos kartu, pagal tavo prisijungimo dienos metines.</p></div>
       </section>
 
       <!-- 13 -->
+      <section class="doc" id="maksed">
+        <h2><span class="num">13</span> Kaip vyksta mokėjimas</h2>
+        <p>Kiekvienas mokėjimas prasideda <strong>patvirtinimo langu</strong>, kuriame nurodyta suma ir už ką moki. Visada gali <b>Atšaukti</b>.</p>
+        <ul class="plain">
+          <li><b>Mokant iškart</b> nukreipiame į saugų mokėjimo tinklų sietuvą – moki <b>banko nuoroda</b> arba <b>kortele</b>, ir duomenys / paslauga atsiveria iškart po mokėjimo.</li>
+          <li><b>Pavedimo sąskaita</b> – sąskaitą siunčiame el. paštu. Turinys atsiveria visa apimtimi tada, kai gaunamas apmokėjimas.</li>
+          <li><b>Pradinis mokestis</b> visada proporcingas iki kitos atsiskaitymo dienos; toliau taikomas pilnas mėnesio mokestis.</li>
+          <li><b>Atsiskaitymas</b> vyksta už visas paslaugas kartu, pagal tavo prisijungimo dienos metines.</li>
+        </ul>
+      </section>
+
+      <!-- 14 -->
+      <section class="doc" id="hinnastamine">
+        <h2><span class="num">14</span> Kainodara</h2>
+        <p>Meniu punktas <b>Kainodara</b> matomas tik tada, kai turi užsisakęs <strong>kainų perkainojimo</strong> paslaugą. Ten matai konkurencija grįstus kainų pasiūlymus tavo paties parduotuvei.</p>
+        <div class="deflist">
+          <div class="dr"><span class="k">Prekė</span><span class="v">Prekė ir taisyklė, kurios pagrindu pateiktas pasiūlymas.</span></div>
+          <div class="dr"><span class="k">Dabartinė</span><span class="v">Dabartinė prekės kaina tavo parduotuvėje.</span></div>
+          <div class="dr"><span class="k">Pasiūlymas</span><span class="v">Sistemos siūloma nauja kaina.</span></div>
+          <div class="dr"><span class="k">Skirtumas</span><span class="v">Pokytis € ir % (pvz., −0,22 € · −14,7%).</span></div>
+          <div class="dr"><span class="k">Priežastis</span><span class="v">Kodėl: pvz., „pigiausias konkurentas 1,50 €; taisyklė 3% žemiau; apatinė riba apsaugotas“.</span></div>
+        </div>
+        <ul class="plain">
+          <li><span class="chip">Generuoti iš naujo</span> apskaičiuoja pasiūlymus iš naujo; <span class="chip">Taisyklės</span> ir <span class="chip">Istorija</span> rodo nustatymus ir ankstesnius pakeitimus.</li>
+          <li>Prie kiekvieno pasiūlymo: <span class="chip go">Įrašyti</span> nuveda kainą į parduotuvę, <b>Palikti kaip yra</b> palieka kainą ir ignoruoja prekę pasirinktą dienų skaičių, <b>Praleisti</b> praleidžia pasiūlymą.</li>
+        </ul>
+        <div class="box warn"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg> Saugiai – pagal numatymą „nuginkluota“</div><p>Pagal numatymą viskas veikia <b>bandymo režimu</b>: pasiūlymai apskaičiuojami, tačiau nė vienas „Įrašyti“ nekeičia tavo parduotuvės. Tiesioginį režimą (tikrą kainų įrašymą) įjungiame kartu su tavimi. Apatinės ribos (kainos grindys, MAP) apsaugo nuo per žemo pasiūlymo.</p></div>
+      </section>
+
+      <!-- 15 -->
+      <section class="doc" id="brandivalve">
+        <h2><span class="num">15</span> Prekės ženklo apsauga</h2>
+        <p>Meniu punktas <b>Prekės ženklo apsauga</b> skirtas prekės ženklo savininkui ir importuotojui. Jei turi užsisakęs <strong>perpardavėjų kainų priežiūrą</strong>, čia apibrėži savo prekių kainų taisykles ir matai, kas jas pažeidžia.</p>
+        <ol class="steps">
+          <li>Pridėk savo prekes su <b>RRP</b> (rekomenduojama mažmeninė kaina) ir <b>MAP</b> (mažiausia leidžiama reklaminė kaina). Prekes galima pridėti po vieną arba importuoti.</li>
+          <li>Sistema lygina stebimų perpardavėjų kainas su tavo RRP/MAP.</li>
+          <li>Matai <b>pažeidimų</b> sąrašą – kas parduoda žemiau MAP arba nukrypsta nuo RRP – ir gali eksportuoti <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg> CSV</span>.</li>
+        </ol>
+        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg> Kam to reikia</div><p>Palaikai savo prekės ženklo kainų lygį – radus pažeidimą turi dokumentuotą pagrindą kalbėtis su perpardavėju.</p></div>
+      </section>
+
+      <!-- 16 -->
+      <section class="doc" id="naited">
+        <h2><span class="num">16</span> Pavyzdinės situacijos</h2>
+        <p>Štai kaip funkcijos susijungia į tikrą darbą.</p>
+
+        <div class="scn">
+          <h3>1. Konkurentas numušė kainą</h3>
+          <p>Rytinis laiškas atneša „Konkurentas X: 12 kainų kritimų“. Atveri <b>Kainų palyginimą</b> ir matai, kad trijose prekėse dabar esi rinkoje brangiausias. <b>Kainodara</b> pasiūlo naujas kainas – jas vienu spustelėjimu įrašai į parduotuvę.</p>
+          <div class="flow"><span class="st">Rytinis laiškas</span><span class="ar">→</span><span class="st">Kainų palyginimas</span><span class="ar">→</span><span class="st">Kainodara</span><span class="ar">→</span><span class="st">Įrašyti į parduotuvę</span></div>
+        </div>
+
+        <div class="scn">
+          <h3>2. Konkurentui baigėsi prekė</h3>
+          <p>Esi nustatęs pranešimo taisyklę „atsargos išparduotos“ vienai raktinei prekei. Kai konkurentui ji baigiasi, gauni <b>push į telefoną</b>. Reaguoji: pakeli kainą arba reklamuoji, kad tu turi prekę sandėlyje.</p>
+          <div class="flow"><span class="st">Pranešimo taisyklė</span><span class="ar">→</span><span class="st">Push į telefoną</span><span class="ar">→</span><span class="st">Reaguoji</span></div>
+        </div>
+
+        <div class="scn">
+          <h3>3. Naujas konkurentas rinkoje</h3>
+          <p>Išgirsti apie naują parduotuvę. <b>Pridėti įmonę</b> → el. parduotuvė + „Facebook“ → patvirtini mėnesio mokestį. Per kelias minutes matai jo asortimentą, kainas ir „Facebook“ veiklą.</p>
+          <div class="flow"><span class="st">Pridėti įmonę</span><span class="ar">→</span><span class="st">Patvirtinti mėnesio mokestį</span><span class="ar">→</span><span class="st">Įmonės vaizdas</span></div>
+        </div>
+
+        <div class="scn">
+          <h3>4. Mano el. parduotuvės būklė šlubuoja</h3>
+          <p><b>El. parduotuvės būklė</b> rodo 109 kritines klaidas – trūkstamus paveikslėlius ir alt tekstus. Pereini taisytinų dalykų sąrašą; kitos stebėsenos metu būklės % pakyla.</p>
+          <div class="flow"><span class="st">El. parduotuvės būklė</span><span class="ar">→</span><span class="st">Taisytinų dalykų sąrašas</span><span class="ar">→</span><span class="st">Būklė gerėja</span></div>
+        </div>
+
+        <div class="scn">
+          <h3>5. Mėnesio apžvalga valdybai</h3>
+          <p>Mėnesio 1 dieną <b>PDF mėnesio ataskaita</b> automatiškai pasiekia pašto dėžutę. Persiunti ją valdybai – kainų judėjimo, asortimento ir rinkos padėties suvestinė viename faile.</p>
+          <div class="flow"><span class="st">Mėnesio ataskaita (auto)</span><span class="ar">→</span><span class="st">Persiųsti valdybai</span></div>
+        </div>
+
+        <div class="scn">
+          <h3>6. Perpardavėjas nukrito žemiau MAP</h3>
+          <p>Esi prekės ženklo savininkas. <b>Prekės ženklo apsauga</b> rodo, kad vienas perpardavėjas parduoda prekę žemiau sutartos MAP. Eksportuoji pažeidimą ir susisieki su perpardavėju.</p>
+          <div class="flow"><span class="st">Prekės ženklo apsauga</span><span class="ar">→</span><span class="st">Pažeidimas</span><span class="ar">→</span><span class="st">Susisiek</span></div>
+        </div>
+
+        <div class="scn">
+          <h3>7. Duomenys į savo BI</h3>
+          <p>Nori kainų ir atsargų savo Power BI ataskaitoje. <b>Paskyra</b> → <b>Sukurti API raktą</b> → sujungi REST API per Power Query. Duomenys atsinaujina automatiškai.</p>
+          <div class="flow"><span class="st">Paskyra</span><span class="ar">→</span><span class="st">API raktas</span><span class="ar">→</span><span class="st">Power BI</span></div>
+        </div>
+      </section>
+
+      <!-- 17 -->
+      <section class="doc" id="seaded">
+        <h2><span class="num">17</span> Programėlė ir tamsus režimas</h2>
+        <ul class="plain">
+          <li><b>Įdiek kaip programėlę</b> – telefone gali pridėti skydelį į pradžios ekraną kaip programą: atverk naršyklės meniu ir pasirink „Pridėti į pradžios ekraną“. Toliau Look360 atsivers tiesiai iš piktogramos ir per visą ekraną – nieko atsisiųsti nereikia.</li>
+          <li><b>Pranešimai į telefoną</b> – mygtukas <span class="chip">Leisti push pranešimus</span> siunčia svarbius pokyčius tiesiai į įrenginį. iPhone tai veikia po įdiegimo kaip programėlės.</li>
+          <li><b>Tamsus / šviesus režimas</b> – viršutinės juostos jungiklis (saulė/mėnulis) keičia temą. Pasirinkimas įsimenamas.</li>
+          <li><b>Telefone</b> – meniu paslėptas už ☰ mygtuko viršutiniame kampe; turinys prisiderina prie ekrano pločio.</li>
+          <li><b>Atsijungimas</b> – kairėje apačioje šalia naudotojo vardo esanti pro-duris-lauk piktograma.</li>
+        </ul>
+      </section>
+
+      <!-- 18 -->
       <section class="doc" id="abi">
-        <h2><span class="num">13</span> Pagalba ir kontaktai</h2>
+        <h2><span class="num">18</span> Pagalba ir kontaktai</h2>
         <p>Iškilus klausimui ar rūpesčiui, atsakome anglų kalba – tikras žmogus, o ne automatinis atsakymas.</p>
         <ul class="plain">
           <li>El. paštas: <a href="mailto:info@look360.eu">info@look360.eu</a></li>
           <li>Telefonas: <a href="tel:+37253620246">+372 5362 0246</a></li>
           <li>Dažnai užduodami klausimai: <a href="index.html#kkk">pradžios puslapio DUK</a></li>
         </ul>
-        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Trumpai</div><p>Prisijunkite → darbalaukyje stebėkite žalią / geltoną / raudoną → pridėkite įmonių ir paslaugų → svarbius pokyčius gausite ir laišku. Daugiau nieko daryti nereikia.</p></div>
+        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Trumpai</div><p>Prisijunk → darbalaukyje stebėk žalią / geltoną / raudoną → pridėk įmonių ir paslaugų → nustatyk pranešimų taisykles → svarbius pokyčius gausi ir laišku bei push pranešimu. Daugiau nieko daryti nereikia.</p></div>
       </section>
     </div>
   </div>
@@ -457,7 +676,7 @@
 
 <footer>
   <div class="wrap">
-    <span>© 2026 Look360 · Watchdog OÜ · Registracijos kodas 17537572 · PVM kodas EE103000237</span>
+    <span>© 2026 Look360 · Watchdog OÜ · Registrikood 17537572 · KMKR EE103000237</span>
     <span><a href="index.html">Pradžia</a> · <a href="index.html#kkk">DUK</a> · <a href="privaatsus.html">Privatumas</a> · <a href="tingimused.html">Sąlygos</a></span>
   </div>
 </footer>
