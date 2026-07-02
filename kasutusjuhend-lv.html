@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lietošanas pamācība – Look360 monitoringa panelis</title>
-<meta name="description" content="Look360 monitoringa paneļa lietošanas pamācība klientam: pieteikšanās, darbvirsma, uzņēmumu pievienošana, produktu katalogs, pakalpojumi, maksājumi un atskaites – soli pa solim, kura poga ko dara.">
+<meta name="description" content="Look360 monitoringa paneļa lietošanas pamācība klientam: pieteikšanās, darbvirsma, uzņēmumu pievienošana, produktu katalogs, cenu salīdzinājums, paziņojumi, atskaites, pakalpojumi un maksājumi – soli pa solim, ar attēliem un piemēriem.">
 <meta name="robots" content="index,follow">
 <link rel="alternate" hreflang="et" href="https://look360.eu/kasutusjuhend.html">
 <link rel="alternate" hreflang="en" href="https://look360.eu/kasutusjuhend-en.html">
@@ -60,7 +60,7 @@
   /* Layout: sticky TOC + content */
   main{padding:40px 0 80px}
   .layout{display:grid;grid-template-columns:230px 1fr;gap:48px;align-items:start}
-  .toc{position:sticky;top:90px;font-size:14px}
+  .toc{position:sticky;top:90px;font-size:14px;max-height:calc(100vh - 110px);overflow:auto}
   .toc h4{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:12px}
   .toc a{display:block;color:var(--text-2);text-decoration:none;padding:6px 11px;border-radius:9px;border-left:2px solid transparent;font-weight:300;transition:.15s}
   .toc a:hover{background:var(--paper-2);color:var(--text)}
@@ -132,6 +132,22 @@
   .deflist .dr .k{font-weight:600;color:var(--text)}
   .deflist .dr .v{color:var(--text-2);font-weight:300}
 
+  /* Service cards (teenuste ülevaade) */
+  .svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin:16px 0}
+  .svc .s{border:1px solid var(--line);border-radius:14px;padding:15px 17px;background:var(--paper)}
+  .svc .s .h{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:5px}
+  .svc .s .nm{font-weight:600;color:var(--text);font-size:14.5px}
+  .svc .s .pr{font-weight:600;color:var(--accent-ink);font-size:13px;white-space:nowrap}
+  .svc .s p{margin:0;font-size:13px;color:var(--text-2);font-weight:300;line-height:1.55}
+  .cat-h{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:22px 0 2px}
+
+  /* Scenario cards */
+  .scn{border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:0 14px 14px 0;padding:15px 19px;margin:15px 0;background:var(--paper-2)}
+  .scn h3{margin:0 0 4px;font-size:15.5px}
+  .scn .flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:9px;font-size:12.5px;color:var(--muted)}
+  .scn .flow .st{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:3px 9px;color:var(--text-2);font-weight:500}
+  .scn .flow .ar{color:var(--accent)}
+
   footer{background:var(--ink);color:var(--on-dark-mut);padding:40px 0;font-size:14px;font-weight:300;margin-top:20px}
   footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
   footer a{color:var(--on-dark-mut);text-decoration:none}
@@ -139,10 +155,11 @@
 
   @media(max-width:860px){
     .layout{grid-template-columns:1fr;gap:0}
-    .toc{position:static;margin-bottom:24px;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--paper-2)}
+    .toc{position:static;margin-bottom:24px;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--paper-2);max-height:none}
     .toc a{border-left:0;padding:5px 0}
     .toc a.on{background:none}
     .deflist .dr{grid-template-columns:1fr;gap:2px}
+    .scn .flow{font-size:11.5px}
     header.top nav a:not(.login){display:none}
   }
   /* Keelevaheti (lipud) – jagatud lang.js-iga */
@@ -168,7 +185,7 @@
       <span class="wm">Look<i>360</i></span>
     </a>
     <nav>
-      <a href="index.html">Sākumlapa</a>
+      <a href="index.html">Sākums</a>
       <a href="index.html#kkk">BUJ</a>
       <a class="login" href="https://scan.look360.eu/accounts/login/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><path d="M10 17l5-5-5-5M15 12H3"/></svg> Pieteikties</a>
       <div class="langsel" id="langsel"></div>
@@ -180,7 +197,7 @@
   <div class="wrap">
     <div class="eyebrow"><span class="pip"></span> Lietošanas pamācība</div>
     <h1>Monitoringa paneļa lietošanas pamācība</h1>
-    <p>Soli pa solim sniegts pārskats par visu, ko Jūs kā klients redzat un varat darīt: no pieteikšanās līdz darbvirsmai, novērojamiem uzņēmumiem, produktu katalogam, pakalpojumiem, maksājumiem un atskaitēm. Pie katras pogas ir aprakstīts, ko tā dara un kur redzams rezultāts.</p>
+    <p>Soli pa solim pārskats par visu, ko tu kā klients redzi un vari darīt – no pieteikšanās līdz darbvirsmai, uzraugāmajiem uzņēmumiem, produktu katalogam, cenu salīdzinājumam, paziņojumiem, pakalpojumiem, maksājumiem un atskaitēm. Pie katras funkcijas ir attēls, skaidrojums un reāli piemēri.</p>
   </div>
 </section>
 
@@ -188,68 +205,79 @@
   <div class="wrap layout">
     <aside class="toc" id="toc">
       <h4>Saturs</h4>
-      <a href="#algus">1. Kas ir monitoringa panelis</a>
+      <a href="#algus">1. Kas ir Look360</a>
       <a href="#logimine">2. Pieteikšanās</a>
-      <a href="#menuu">3. Izvēlne un kopskats</a>
+      <a href="#menuu">3. Izvēlne un vispārīgais skats</a>
       <a href="#toolaud">4. Monitoringa darbvirsma</a>
       <a href="#lisafirma">5. Uzņēmuma pievienošana</a>
       <a href="#firmavaade">6. Uzņēmuma skats un katalogs</a>
       <a href="#kategooriad">7. Kategoriju izvēle</a>
-      <a href="#teenused">8. Pakalpojumi un mēneša maksa</a>
-      <a href="#maksed">9. Kā notiek maksājums</a>
-      <a href="#hinnastamine">10. Cenu noteikšana</a>
-      <a href="#raportid">11. Atskaites</a>
-      <a href="#seaded">12. Lietotne, paziņojumi un tumšais režīms</a>
-      <a href="#abi">13. Palīdzība un kontakti</a>
+      <a href="#hinnavordlus">8. Cenu salīdzinājums</a>
+      <a href="#teavitused">9. Paziņojumi</a>
+      <a href="#kuuraportid">10. Mēneša atskaites</a>
+      <a href="#konto">11. Konts un API</a>
+      <a href="#teenused">12. Visi pakalpojumi un mēneša maksa</a>
+      <a href="#maksed">13. Kā notiek maksājums</a>
+      <a href="#hinnastamine">14. Cenu noteikšana</a>
+      <a href="#brandivalve">15. Zīmola uzraudzība</a>
+      <a href="#naited">16. Piemēri</a>
+      <a href="#seaded">17. Lietotne un tumšais režīms</a>
+      <a href="#abi">18. Palīdzība un kontakti</a>
     </aside>
 
     <div class="content">
-      <p class="lead">Look360 monitoringa panelis vienuviet apkopo visu, ko mēs Jūsu vietā novērojam – konkurentu cenas un noliktavas atlikumu, Facebook ierakstus, Jūsu paša e-veikala stāvokli. Jums nekas nav jāuzstāda: piesakāties, ar vienu skatienu redzat stāvokli un būtiskākās izmaiņas saņemat arī ar ikrīta vēstuli. Šī pamācība soli pa solim iziet cauri katram skatam un pogai.</p>
+      <p class="lead">Look360 monitoringa panelis apkopo vienuviet visu, ko mēs uzraugām tavā vietā – konkurentu cenas un noliktavas atlikumus, Facebook ierakstus un reklāmas, tava paša interneta veikala veselību un darbdrošību. Tev nekas nav jāinstalē: piesakies, redzi stāvokli ar vienu skatienu un svarīgākās izmaiņas saņem arī ar ikrīta e-pastu. Šī pamācība iziet cauri katram skatam un pogai, un beigās ir piemēri, kas sasaista funkcijas reālā darbā.</p>
 
       <!-- 1 -->
       <section class="doc" id="algus">
-        <h2><span class="num">1</span> Kas ir monitoringa panelis</h2>
-        <p>Monitoringa panelis ir Jūsu privātā darbvirsma adresē, kur piesakāties ar savu e-pastu un paroli. Tur Jūs redzat visus novērojamos uzņēmumus – gan savu e-veikalu, gan konkurentus – un katru izmaiņu, ko sistēma ir pamanījusi: cenas kritumu, noliktavas atlikuma izsīkumu, jaunu Facebook ierakstu, e-veikala kļūmi.</p>
-        <p>Viss darbojas pēc <strong>krāsu loģikas</strong>. Vienas un tās pašas trīs krāsas atkārtojas visur – darbvirsmā, uzņēmuma kartē, tabulā:</p>
+        <h2><span class="num">1</span> Kas ir Look360</h2>
+        <p>Look360 ir <strong>monitorings, automatizācija un reaģēšana</strong> vienā paketē. Monitoringa panelis ir tava privātā darbvirsma adresē, kurā piesakies ar savu e-pastu un paroli. Tur tu redzi visus uzraugāmos uzņēmumus – gan savu interneta veikalu, gan konkurentus – un katru izmaiņu, ko sistēma ir pamanījusi: cenas kritumu, noliktavas atlikuma beigas, jaunu Facebook ierakstu, interneta veikala kļūmi.</p>
+        <p>Viss darbojas pēc <strong>krāsu loģikas</strong>. Vienas un tās pašas trīs krāsas atkārtojas visur – darbvirsmā, uzņēmuma kartītē, tabulā, grafikos:</p>
         <div class="legend">
-          <div class="lg"><span class="sw" style="background:var(--accent)"></span><span><b>Zaļš – viss kārtībā</b>Izmaiņu nav vai viss ir kā paredzēts. Nekas nav jādara.</span></div>
-          <div class="lg"><span class="sw" style="background:var(--warn)"></span><span><b>Dzeltens – nepieciešama uzmanība</b>Brīdinājums: piem., konkurenta cenas izmaiņa, noliktavas atlikuma izsīkums vai novecojuši dati.</span></div>
-          <div class="lg"><span class="sw" style="background:var(--err)"></span><span><b>Sarkans – kļūme</b>Datu avots uz brīdi kļuva nepieejams. Parasti atjaunojas pats vai to pārbauda operators.</span></div>
+          <div class="lg"><span class="sw" style="background:var(--accent)"></span><span><b>Zaļa – viss kārtībā</b>Izmaiņu nav vai viss ir gaidāms. Nekas nav jādara.</span></div>
+          <div class="lg"><span class="sw" style="background:var(--warn)"></span><span><b>Dzeltena – nepieciešama uzmanība</b>Atradums: piem., konkurenta cenas izmaiņa, noliktavas atlikuma beigas vai novecojuši dati.</span></div>
+          <div class="lg"><span class="sw" style="background:var(--err)"></span><span><b>Sarkana – kļūme</b>Datu avots uz laiku kļuva nepieejams. Parasti atjaunojas pats vai to pārbauda operators.</span></div>
         </div>
-        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z"/></svg> Pastkaste nav jāuzrauga</div><p>Būtiskākās izmaiņas mēs nosūtām arī ar ikrīta kopsavilkuma vēstuli. Paneli atverat tad, kad vēlaties redzēt vairāk vai kaut ko mainīt.</p></div>
+        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z"/></svg> Pastkaste nav jāuzrauga</div><p>Svarīgākās izmaiņas mēs nosūtām arī ar ikrīta kopsavilkuma e-pastu, bet vissvarīgākās – uzreiz. Paneli atver tad, kad vēlies redzēt vairāk vai kaut ko mainīt.</p></div>
       </section>
 
       <!-- 2 -->
       <section class="doc" id="logimine">
         <h2><span class="num">2</span> Pieteikšanās</h2>
         <ol class="steps">
-          <li>Atveriet <b>Pieteikties</b> – vai nu no sākumlapas augšējā stūra, no šīs pamācības augšmalas vai no tiešās saites, ko mēs Jums nosūtījām.</li>
-          <li>Ievadiet <b>lietotājvārdu</b> – tā ir Jūsu <b>e-pasta adrese</b> (piem., tu@uznemums.lv).</li>
-          <li>Ievadiet <b>paroli</b> un nospiediet <span class="chip go">Ieiet</span></li>
+          <li>Atver <b>Pieteikties</b> – vai nu no sākumlapas augšējā stūra, no šīs pamācības augšmalas, vai no tiešās saites, ko tev nosūtījām.</li>
+          <li>Ievadi <b>lietotājvārdu</b> – tā ir tava <b>e-pasta adrese</b> (piem., tu@uznemums.lv).</li>
+          <li>Ievadi <b>paroli</b> un nospied <span class="chip go">Ienākt</span></li>
         </ol>
         <ul class="plain">
-          <li><b>Aizmirsāt paroli?</b> – pa saiti zemāk nosūtām ar e-pastu jaunas paroles iestatīšanas saiti.</li>
-          <li><b>Vēl nav konta?</b> – poga <span class="chip">Reģistrēties</span> aizved uz sākumlapas cenrādi, kur varat salikt paketi un pievienoties.</li>
-          <li><b>Atpakaļ uz sākumlapu</b> – augšējā saite aizved atpakaļ uz look360.eu.</li>
+          <li><b>Aizmirsi paroli?</b> – no saites zemāk nosūtām e-pastā jaunas paroles iestatīšanas saiti.</li>
+          <li><b>Vēl nav konta?</b> – poga <span class="chip">Reģistrēties</span> aizved uz sākumlapas cenrādi, kur vari salikt paketi un pievienoties.</li>
+          <li><b>Izmēģini bez konta</b> – pieteikšanās lapā ir publisks <b>demokonts</b>, ar kuru vari izklikšķināt visus skatus ar reāliem paraugdatiem.</li>
         </ul>
-        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg> Noderīgi zināt</div><p>Konts ir saistīts ar Jūsu uzņēmumu. Pēc pieteikšanās augšā pa kreisi zaļā joslā redzat sava uzņēmuma nosaukumu – tā Jūs zināt, ka esat pareizajā kontā.</p></div>
+        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg> Noderīgi zināt</div><p>Konts ir saistīts ar tavu uzņēmumu. Pēc pieteikšanās augšpusē pa kreisi zaļajā joslā redzi sava uzņēmuma nosaukumu – tā zini, ka esi pareizajā kontā.</p></div>
       </section>
 
       <!-- 3 -->
       <section class="doc" id="menuu">
-        <h2><span class="num">3</span> Izvēlne un kopskats</h2>
+        <h2><span class="num">3</span> Izvēlne un vispārīgais skats</h2>
         <p>Katrā lapā ir viens un tas pats ietvars: <strong>kreisā izvēlne</strong>, <strong>augšējā josla</strong> un saturs vidū.</p>
         <h3>Kreisā izvēlne</h3>
-        <ul class="plain">
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="5" rx="1.5"/><rect x="13" y="11" width="8" height="10" rx="1.5"/><rect x="3" y="14" width="8" height="7" rx="1.5"/></svg> Monitorings</span> – galvenā darbvirsma, kur ir visi novērojamie uzņēmumi un atradumi.</li>
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M20 7H4M20 12H4M20 17H4"/></svg> Pakalpojumi</span> – Jūsu pasūtītie pakalpojumi, mēneša maksa un iespēja pasūtīt papildus.</li>
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Cenu noteikšana</span> – parādās tikai tad, ja Jums ir pasūtīts <b>cenu pārcenošanas</b> pakalpojums.</li>
-          <li>Apakšmalā ir Jūsu lietotājvārds, loma <b>Klients</b> un <b>izrakstīšanās</b> ikona (pa durvīm ārā).</li>
-        </ul>
+        <p>Izvēlnē ir visi tavi skati. Daži punkti parādās tikai tad, ja tev ir pasūtīts attiecīgais pakalpojums.</p>
+        <div class="deflist">
+          <div class="dr"><span class="k">Monitorings</span><span class="v">Galvenā darbvirsma – visi uzraugāmie uzņēmumi, atradumi un tendence.</span></div>
+          <div class="dr"><span class="k">Pakalpojumi</span><span class="v">Tavi pasūtītie pakalpojumi, mēneša maksa un papildu pasūtīšana.</span></div>
+          <div class="dr"><span class="k">Konts</span><span class="v">Konta dati, parole, API piekļuve un ikrīta e-pasta iestatījumi.</span></div>
+          <div class="dr"><span class="k">Cenu salīdzinājums</span><span class="v">Viens un tas pats produkts starp visiem uzraugāmajiem veikaliem – lētākā cena un vēsture.</span></div>
+          <div class="dr"><span class="k">Paziņojumi</span><span class="v">Cenu paziņojumu noteikumi un push paziņojumi uz telefonu.</span></div>
+          <div class="dr"><span class="k">Mēneša atskaites</span><span class="v">Ikmēneša PDF kopsavilkuma atskaite vadībai.</span></div>
+          <div class="dr"><span class="k">Cenu noteikšana</span><span class="v">Redzama tikai ar <b>cenu pārcenošanas</b> pakalpojumu – uz konkurenci balstīti cenu ieteikumi.</span></div>
+          <div class="dr"><span class="k">Zīmola uzraudzība</span><span class="v">Redzama tikai ar <b>izplatītāju cenu uzraudzības</b> pakalpojumu – RRP/MAP pārkāpumi.</span></div>
+        </div>
+        <p>Lejasmalā ir tavs lietotājvārds, loma <b>Klients</b> un <b>izrakstīšanās</b> ikona (pa durvīm ārā).</p>
         <h3>Augšējā josla</h3>
         <ul class="plain">
-          <li>Pa kreisi <b>lapas virsraksts</b> (piem., Jūsu uzņēmuma nosaukums) un zem tā sīkā drukā <b>kad pēdējoreiz atjaunināts</b>.</li>
-          <li>Pa labi <b>tumšs/gaišs slēdzis</b> (saule/mēness) un konkrētās lapas <b>darbības pogas</b>.</li>
+          <li>Pa kreisi <b>lapas virsraksts</b> un zem tā sīkā drukā <b>kad pēdējoreiz atjaunināts</b>.</li>
+          <li>Pa labi <b>tumšs/gaišs slēdzis</b> (saule/mēness) un konkrētās lapas <b>darbību pogas</b>.</li>
           <li>Telefonā kreiso izvēlni atver augšējā stūra <b>☰ poga</b>.</li>
         </ul>
       </section>
@@ -257,199 +285,390 @@
       <!-- 4 -->
       <section class="doc" id="toolaud">
         <h2><span class="num">4</span> Monitoringa darbvirsma</h2>
-        <p>Šis ir sākumskats. Augšmalā atrodat galvenās pogas, apakšā ir pārskats un uzņēmumu saraksts.</p>
+        <p>Šis ir sākumskats. Augšmalā atrodi galvenās pogas, zemāk ir tendence, kopsavilkums un uzņēmumu saraksts.</p>
         <figure>
-          <img src="l360-seirepaneel.png" alt="Look360 monitoringa darbvirsma: trenda grafiks, kopsavilkums un uzņēmumu tabula" loading="lazy">
-          <figcaption>Monitoringa darbvirsma – trenda grafiks, kopsavilkums un novērojamo uzņēmumu tabula.</figcaption>
+          <img src="l360-seirepaneel.png" alt="Look360 monitoringa darbvirsma: tendenču grafiks, kopsavilkums un uzņēmumu tabula" loading="lazy">
+          <figcaption>Monitoringa darbvirsma – atradumu tendence, kopsavilkums un uzraugāmo uzņēmumu tabula.</figcaption>
         </figure>
         <h3>Augšējās joslas pogas</h3>
         <ul class="plain">
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Pievienot uzņēmumu</span> – pievienojiet jaunu novērojamu uzņēmumu (sk. <a href="#lisafirma">5. nodaļu</a>).</li>
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 7H4M20 12H4M20 17H4"/></svg> Pakalpojumi</span> – atveriet pakalpojumu un mēneša maksas skatu.</li>
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-2.6-6.4L21 8"/><path d="M21 3v5h-5"/></svg> Atsvaidzināt skatu</span> – nolasa pēdējos datus no jauna un atjauno ekrānu. <b>Nepārmeklē</b> vietnes, tikai atsvaidzina skatu.</li>
-          <li><span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg> Skenēt visu no jauna</span> – parādās, ja novērojat tīmekļa veikalus vai Facebook. Palaiž <b>īstos skenējumus</b> (pārmeklē vietnes), aizņem dažas minūtes. To var darīt <b>1 reizi diennaktī</b>.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Pievienot uzņēmumu</span> – pievieno jaunu uzraugāmu uzņēmumu (sk. <a href="#lisafirma">5. nodaļu</a>).</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 7H4M20 12H4M20 17H4"/></svg> Pakalpojumi</span> – atver pakalpojumu un mēneša maksas skatu.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-2.6-6.4L21 8"/><path d="M21 3v5h-5"/></svg> Atsvaidzināt skatu</span> – nolasa jaunākos datus vēlreiz un atsvaidzina ekrānu. <b>Nekasē</b> vietnes, tikai atsvaidzina skatu.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg> Atļaut paziņojumus</span> – ieslēdz push paziņojumus uz telefonu (sk. <a href="#teavitused">9. nodaļu</a>).</li>
+          <li><span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg> Skenēt visu no jauna</span> – palaiž <b>īstos skenējumus</b> (kasē vietnes), aizņem dažas minūtes. To var darīt <b>1 reizi diennaktī</b>.</li>
         </ul>
         <h3>Kā darbojas monitorings? – palīdzības josla</h3>
-        <p>Darbvirsmas augšdaļā ir izvēršama josla <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .8-1 1.7M12 17h.01"/></svg> Kā darbojas monitorings?</span> Noklikšķiniet, lai izlasītu īsu krāsu skaidrojumu. Pirmajā reizē, kad vēl nav neviena uzņēmuma, tā ir atvērta.</p>
-        <h3>Brīdinājumu trends</h3>
-        <p>Grafiks rāda, kā brīdinājumu skaits ir mainījies pēdējo monitoringu laikā – vai lietas norimst, vai prasa vairāk uzmanības.</p>
+        <p>Darbvirsmas augšdaļā ir izvēršama josla <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .8-1 1.7M12 17h.01"/></svg> Kā darbojas monitorings?</span> Uzklikšķini, lai izlasītu īsu skaidrojumu. Pirmajā reizē, kad vēl nav neviena uzņēmuma, tā ir atvērta.</p>
+        <h3>Atradumu tendence</h3>
+        <p>Grafiks rāda, kā atradumu skaits ir mainījies pēdējo monitoringu laikā – vai lietas nomierinās vai prasa vairāk uzmanības. Visiem grafikiem ir ass skala un mērvienība; pārvieto peli pa līniju, lai redzētu precīzu skaitu.</p>
         <h3>Kopsavilkums</h3>
         <p>Pa labi ir četri skaitļi un stāvokļa rinda:</p>
         <div class="deflist">
-          <div class="dr"><span class="k">Uzņēmumu novērošanā</span><span class="v">Cik uzņēmumus pašlaik novērojat.</span></div>
-          <div class="dr"><span class="k">Aktīvu brīdinājumu</span><span class="v">Cik lietas prasa uzmanību (dzeltens).</span></div>
-          <div class="dr"><span class="k">Avotu ar kļūmi</span><span class="v">Cik datu avoti šobrīd ir nepieejami (sarkans).</span></div>
+          <div class="dr"><span class="k">Uzņēmumu uzraudzībā</span><span class="v">Cik uzņēmumu pašlaik uzraugi.</span></div>
+          <div class="dr"><span class="k">Atradumu</span><span class="v">Cik izmaiņu prasa uzmanību (dzeltena).</span></div>
+          <div class="dr"><span class="k">Avotu ar kļūmi</span><span class="v">Cik datu avotu pašlaik ir nepieejami (sarkana).</span></div>
           <div class="dr"><span class="k">Novecojuši dati</span><span class="v">Cik uzņēmumu dati ir novecojuši un prasa atsvaidzināšanu.</span></div>
         </div>
         <h3>Cilnes, skati un eksports</h3>
         <ul class="plain">
           <li><b>Cilnes</b> <span class="pill sec"><span class="dot"></span>Visi</span> <span class="pill sec"><span class="dot"></span>Mans uzņēmums</span> <span class="pill sec"><span class="dot"></span>Konkurenti</span> – filtrē sarakstu.</li>
-          <li><b>Tabula / Kartes</b> – pārslēdziet saraksta izskatu. Tabula ir kompakta, kartes uzreiz rāda katra uzņēmuma kanālus.</li>
-          <li><b>Kārtot</b> – sakārtojiet pēc brīdinājumiem, atradumiem, stāvokļa vai nosaukuma.</li>
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg> Eksportēt CSV</span> – lejupielādē redzamo tabulu kā Excel atveramu failu.</li>
+          <li><b>Tabula / Kartītes</b> – pārslēdz saraksta izskatu. Tabula ir kompakta; kartīšu skats uzreiz atklāj katra uzņēmuma kanālus un atradumus.</li>
+          <li><b>Kārtot</b> – sakārto pēc noklusējuma, atradumiem vai nosaukuma.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg> Eksportēt CSV</span> – lejupielādē redzamo tabulu kā Excel atverama fails.</li>
         </ul>
+        <figure>
+          <img src="l360-firmakaardid.png" alt="Darbvirsmas kartīšu skats: katra uzņēmuma kanāli un atradumi uzreiz redzami" loading="lazy">
+          <figcaption>Kartīšu skats – katra uzraugāmā uzņēmuma kanāli un jaunākie atradumi ar vienu skatienu.</figcaption>
+        </figure>
         <h3>Uzņēmumu tabula</h3>
-        <p>Katra rinda ir viens novērojams uzņēmums. <b>Noklikšķiniet uz rindas</b>, lai atvērtu šī uzņēmuma pilnu skatu. Kolonnas:</p>
+        <p>Katra rinda ir viens uzraugāms uzņēmums. <b>Uzklikšķini uz rindas</b>, lai atvērtu šī uzņēmuma pilno skatu. Kolonnas:</p>
         <div class="deflist">
-          <div class="dr"><span class="k">Uzņēmums</span><span class="v">Nosaukums un vai tas ir Jūsu uzņēmums vai konkurents.</span></div>
-          <div class="dr"><span class="k">Statuss</span><span class="v"><span class="pill ok"><span class="dot"></span>Viss kārtībā</span> · <span class="pill warn"><span class="dot"></span>N brīdinājumu</span> · <span class="pill err"><span class="dot"></span>Kļūme</span> · <span class="pill sec"><span class="dot"></span>Novecojis / Nav darbojies</span></span></div>
-          <div class="dr"><span class="k">Kanālu</span><span class="v">Cik avotus pie šī uzņēmuma novēro (tīmeklis, Facebook utt.).</span></div>
-          <div class="dr"><span class="k">Atradumu</span><span class="v">Cik izmaiņu ir atrasts pēdējā monitoringā.</span></div>
-          <div class="dr"><span class="k">Brīdinājumu</span><span class="v">Cik atradumu prasa uzmanību.</span></div>
-          <div class="dr"><span class="k">Svaigums</span><span class="v">Kad šī uzņēmuma datus pēdējoreiz atjaunināja.</span></div>
-          <div class="dr"><span class="k">Stāvoklis</span><span class="v">Vispārējā stāvokļa josla 0–100% (zaļš labs, dzeltens vidējs, sarkans vājš).</span></div>
+          <div class="dr"><span class="k">Uzņēmums</span><span class="v">Nosaukums un vai tas ir tavs uzņēmums vai konkurents.</span></div>
+          <div class="dr"><span class="k">Statuss</span><span class="v"><span class="pill ok"><span class="dot"></span>N atradumu</span> · <span class="pill err"><span class="dot"></span>Kļūme</span> · <span class="pill sec"><span class="dot"></span>Novecojis / Nav palaists / Viss kluss</span></span></div>
+          <div class="dr"><span class="k">Kanālu</span><span class="v">Cik avotu tiek uzraudzīti pie šī uzņēmuma (tīmeklis, Facebook u.c.).</span></div>
+          <div class="dr"><span class="k">Atradumu</span><span class="v">Cik kanālos ir atradums pēdējā monitoringā.</span></div>
+          <div class="dr"><span class="k">Svaigums</span><span class="v">Kad šī uzņēmuma dati pēdējoreiz atjaunināti.</span></div>
+          <div class="dr"><span class="k">Atradumi</span><span class="v">Ātrā gaisma: <span class="pill ok"><span class="dot"></span>Jā</span> ir atradums, <span class="pill sec"><span class="dot"></span>Nē</span> viss kluss.</span></div>
         </div>
-        <h3>Jūsu pievienotie novērojamie</h3>
-        <p>Ja esat pats pievienojis uzņēmumu, tā stāvokli redzat atsevišķā sadaļā. Iespējamie stāvokļi:</p>
+        <h3>Tavi pievienotie uzraugāmie</h3>
+        <p>Ja esi pats pievienojis uzņēmumu, redzi tā stāvokli. Iespējamie statusi:</p>
         <ul class="plain">
           <li><span class="pill warn"><span class="dot"></span>Gaida</span> – gaida operatora apstiprinājumu.</li>
-          <li><span class="pill sec"><span class="dot"></span>Veidoju… / AI atpazīst…</span> – tīmekļa veikala lasītāju iestata automātiski.</li>
+          <li><span class="pill sec"><span class="dot"></span>Veidoju… / MI atpazīst…</span> – interneta veikala lasītājs tiek iestatīts automātiski.</li>
           <li><span class="pill warn"><span class="dot"></span>Gaida maksu</span> – dati ir gatavi, jāapstiprina mēneša maksa (sk. <a href="#firmavaade">6. nodaļu</a>).</li>
-          <li><span class="pill err"><span class="dot"></span>Noraidīts</span> – pieprasījums tika noraidīts (iemesls ir norādīts).</li>
+          <li><span class="pill err"><span class="dot"></span>Atpakaļ</span> – pieprasījums noraidīts (iemesls ir norādīts).</li>
           <li><span class="pill ok"><span class="dot"></span>Aktīvs</span> – uzņēmums ir monitoringā.</li>
         </ul>
-        <h3>Facebook monitorings</h3>
-        <p>Atsevišķā kartē ir novērojamo konkurentu jaunākie Facebook ieraksti, jaunākie un jaunie izceltā veidā. Klikšķis uz ieraksta aizved pie oriģināla Facebook.</p>
-        <h3>Visi atradumi un atskaišu vēsture</h3>
+        <h3>Facebook monitorings, visi atradumi un vēsture</h3>
         <ul class="plain">
-          <li><b>Visi atradumi</b> – visas pēdējā monitoringa izmaiņas vienā sarakstā. Ķeksītis <b>Tikai brīdinājumi</b> paslēpj mierīgo daļu.</li>
-          <li><b>Atskaišu vēsture</b> – iepriekšējās kopsavilkuma atskaites. Klikšķis atver arhivēto atskaiti.</li>
+          <li><b>Facebook monitorings</b> – atsevišķā kartītē uzraugāmo konkurentu jaunākie ieraksti; klikšķis aizved pie oriģināla.</li>
+          <li><b>Visi atradumi</b> – visas pēdējā monitoringa izmaiņas vienā sarakstā. Atzīme <b>Tikai brīdinājumi</b> paslēpj kluso daļu.</li>
+          <li><b>Atskaišu vēsture</b> – iepriekšējās kopsavilkuma atskaites; klikšķis atver arhivēto atskaiti.</li>
         </ul>
       </section>
 
       <!-- 5 -->
       <section class="doc" id="lisafirma">
         <h2><span class="num">5</span> Uzņēmuma pievienošana</h2>
-        <p>Nospiediet darbvirsmā <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Pievienot uzņēmumu</span>. Atveras vienkārša veidlapa.</p>
+        <p>Nospied darbvirsmā <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Pievienot uzņēmumu</span>. Atveras vienkārša forma.</p>
         <ol class="steps">
-          <li><b>Uzņēmuma nosaukums</b> – sāciet rakstīt un izvēlieties no saraksta Igaunijas uzņēmumu reģistra firmu (vai ierakstiet nosaukumu manuāli).</li>
-          <li><b>Tīmekļa vietne</b> – pietiek ar nosaukumu bez https:// sākumā, piem., <b>weekend.ee</b>.</li>
-          <li>Pēc vēlēšanās ieslēdziet <b>novērot tīmekļa veikala cenas un noliktavas atlikumu</b> un/vai <b>novērot arī Facebook</b>.</li>
-          <li>Nospiediet <span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Pievienot novērojamo uzņēmumu</span></li>
+          <li><b>Uzņēmuma nosaukums</b> – sāc rakstīt un izvēlies no saraksta komercreģistra uzņēmumu (vai ieraksti nosaukumu manuāli).</li>
+          <li><b>Tīmekļa vietne</b> – pietiek ar nosaukumu bez https:// priekšā, piem., <b>weekend.ee</b>.</li>
+          <li>Ja vēlies, ieslēdz <b>uzraudzīt interneta veikala cenas un noliktavas atlikumu</b> un/vai <b>uzraudzīt arī Facebook</b>.</li>
+          <li>Nospied <span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Pievienot uzraugāmo uzņēmumu</span></li>
         </ol>
-        <h3>Tīmekļa veikala novērošana</h3>
-        <p>Ja izvēlaties tīmekļa veikala novērošanu, sistēma cenšas pati nolasīt veikala produktus. Ja izdodas, monitorings sākas automātiski; pretējā gadījumā to pārbauda operators. Papildus varat atvērt <b>atslēgvārdu filtru</b>: ierakstiet atslēgvārdu un nospiediet Enter vai <b>+</b>, lai pievienotu čipu (piem., <i>zāles pļāvējs</i>). Atstājot tukšu, mēs novērojam visus produktus.</p>
-        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg> Cenu modelis</div><p>Tīmekļa veikala novērošana maksā <strong>8 €/mēnesī par katrām līdz 2000 novērojamām precēm</strong>. Visas cenas ir bez PVN. Kad sistēma ir nolasījusi veikala produktus, Jūs pats izvēlaties kategorijas, kuras novērot – tas nosaka produktu skaitu un mēneša maksu. Mēs parādām precīzu summu un lūdzam apstiprinājumu, pirms atveram datus.</p></div>
-        <h3>Facebook novērošana</h3>
-        <p>Ievadiet Facebook lapas adresi – pietiek ar lapas nosaukumu vai adresi (piem., <b>facebook.com/konkurent</b> vai vienkārši <b>konkurents</b>). Ja lapa vēl nav monitoringa sarakstā, tā nonāk pie operatora apstiprināšanai.</p>
+        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg> Vienu uzņēmumu divreiz nepievieno</div><p>Ja uzņēmums ar to pašu nosaukumu vai tīmekļa adresi jau ir tavā sarakstā, sistēma paziņo – tā nerodas dublēts ieraksts vai dubulta mēneša maksa.</p></div>
+        <h3>Interneta veikala uzraudzība</h3>
+        <p>Ja izvēlies interneta veikala uzraudzību, sistēma mēģina nolasīt veikala produktus pati. Ja izdodas, monitorings sākas automātiski; ja ne, to pārbauda operators. Vari pievienot <b>atslēgvārdu filtru</b>: ieraksti atslēgvārdu un nospied Enter vai <b>+</b>, lai pievienotu čipu (piem., <i>zāles pļāvējs</i>). Atstājot tukšu, uzraugām visus produktus.</p>
+        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg> Cenu modelis</div><p>Interneta veikala uzraudzība maksā <strong>8 € mēnesī par katriem līdz 2000 uzraugāmajiem produktiem</strong>. Visas cenas ir bez PVN. Kad sistēma ir nolasījusi veikala produktus, tu pats izvēlies kategorijas, ko uzraudzīt – tas nosaka produktu skaitu un mēneša maksu. Mēs parādām precīzu summu un lūdzam apstiprinājumu, pirms atveram datus.</p></div>
+        <h3>Facebook uzraudzība</h3>
+        <p>Ievadi Facebook lapas adresi – pietiek ar lapas nosaukumu vai adresi (piem., <b>facebook.com/konkurents</b> vai vienkārši <b>konkurents</b>). Ja lapa vēl nav monitoringa sarakstā, tā nonāk pie operatora apstiprināšanai. Facebook monitorings maksā <strong>3 € mēnesī par konkurentu</strong>.</p>
       </section>
 
       <!-- 6 -->
       <section class="doc" id="firmavaade">
         <h2><span class="num">6</span> Uzņēmuma skats un produktu katalogs</h2>
-        <p>Klikšķis darbvirsmā uz uzņēmuma nosaukuma atver tā pilnu skatu: visus kanālus, atradumus un – tīmekļa veikala gadījumā – visu produktu katalogu.</p>
+        <p>Klikšķis darbvirsmā uz uzņēmuma nosaukuma atver tā pilno skatu: visus kanālus, atradumus, interneta veikala veselību, grafikus un – interneta veikala gadījumā – visu produktu katalogu.</p>
         <figure>
-          <img src="l360-kataloog.png" alt="Uzņēmuma skats: produktu katalogs ar kategorijām, cenām un noliktavas atlikumu" loading="lazy">
-          <figcaption>Uzņēmuma skats – meklējams produktu katalogs ar kategorijām, cenām un noliktavas atlikumu.</figcaption>
+          <img src="l360-firma-tervis.png" alt="Uzņēmuma skats: interneta veikala veselība, produktu skaita grafiks un VIP produkti" loading="lazy">
+          <figcaption>Uzņēmuma skats – interneta veikala veselības skaitļi, sortimenta izmaiņas laikā un VIP produkti.</figcaption>
         </figure>
+        <h3>Interneta veikala veselība</h3>
+        <p>No kartītes redzi vienlaikus: <b>produktu kopā</b>, <b>noliktavā</b>, <b>izpārdots</b>, <b>cena trūkst</b>, <b>ar atlaides cenu</b> un <b>noliktavas atlikums nezināms</b>. Skaitļi ir aprēķināti no šī veikala kataloga un ir uzklikšķināmi.</p>
+        <h3>Produktu skaits laikā</h3>
+        <p>Grafiks rāda, cik produktu bija veikala katalogā katrā monitoringa dienā – vai sortiments aug, sarūk vai paliek nemainīgs. Blakus ir <b>pašlaik</b>, <b>vidēji</b>, <b>diapazons</b> un <b>virziens</b>.</p>
+        <h3>VIP produkti</h3>
+        <p>Atzīmē katalogā produktam <b>zvaigznīti</b>, lai pievienotu to VIP produktu vidū. Katram VIP produktam tiek uzzīmēts atsevišķs grafiks: parastā cena, atlaides cena un noliktavas atlikums laikā. Vienlaikus līdz 10 produktiem – seko tiem, kas tev ir vissvarīgākie.</p>
         <h3>Galvenes pogas</h3>
         <ul class="plain">
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Izvēlēties kategorijas</span> – izvēlieties, kuras veikala kategorijas novērot (sk. <a href="#kategooriad">7. nodaļu</a>).</li>
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 6H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4"/><path d="M14 4h6v6m0-6L10 14"/></svg> Atvērt vietni</span> – atver konkurenta tīmekļa veikalu jaunā logā.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Izvēlēties kategorijas</span> – izvēlies, kuras veikala kategorijas uzraudzīt (sk. <a href="#kategooriad">7. nodaļu</a>).</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 6H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4"/><path d="M14 4h6v6m0-6L10 14"/></svg> Atvērt vietni</span> – atver konkurenta interneta veikalu jaunā logā.</li>
         </ul>
-        <h3>Stāvokļa paziņojumi</h3>
-        <p>Skata augšmalā var būt paziņojums: <b>gaida operatora apstiprinājumu</b>, <b>tiek veidots scraperis</b>, <b>atpazīstam kategorijas</b>, <b>automātiskā iestatīšana neizdevās</b> (operators pārbauda) vai <b>pieprasījums tika noraidīts</b>.</p>
         <h3>Mēneša maksas apstiprināšana</h3>
-        <p>Kad veikala produkti ir nolasīti, Jūs redzat kalkulatoru: <b>produktu skaits</b>, <b>pakāpes</b> (× līdz 2000 precēm), <b>bāzes cena 8 €</b>, iespējamā piemaksa un <b>mēneša maksa kopā</b>. Līdz apstiprināšanai katalogs ir kā paraugs <b>aizmiglots</b> (blur). Izvēles:</p>
+        <p>Kad veikala produkti ir nolasīti, redzi kalkulatoru: <b>produktu skaits</b>, <b>pakāpes</b> (× līdz 2000 produktiem), <b>bāzes cena 8 €</b> un <b>mēneša maksa kopā</b>. Līdz apstiprināšanai katalogs kā paraugs ir <b>izplūdis</b> (blur). Izvēles:</p>
         <ul class="plain">
-          <li><span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg> Samaksāt un atvērt datus</span> – mēs novirzām uz drošu maksājumu vārteju (bankas saite vai karte); dati atveras uzreiz.</li>
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg> Maksāt ar pārskaitījuma rēķinu</span> – mēs nosūtām rēķinu ar e-pastu; saturs atveras pēc maksājuma saņemšanas.</li>
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Izvēlēties kategorijas</span> – samaziniet produktus, lai mēneša maksa būtu mazāka.</li>
+          <li><span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg> Maksāt un atvērt datus</span> – novirzām uz drošu maksājumu vārteju (bankas saite vai karte); dati atveras uzreiz.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg> Maksāt ar pārskaitījuma rēķinu</span> – nosūtām rēķinu e-pastā; saturs atveras pēc maksājuma saņemšanas.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Izvēlēties kategorijas</span> – samazini produktus, lai mēneša maksa kristu.</li>
         </ul>
-        <p>Facebook monitoringa apstiprināšana notiek tāpat (3 €/mēn.).</p>
+        <figure>
+          <img src="l360-kataloog.png" alt="Uzņēmuma skats: meklējams produktu katalogs ar kategorijām, cenām un noliktavas atlikumu" loading="lazy">
+          <figcaption>Produktu katalogs – meklējams, pa kategorijām, ar cenu un noliktavas atlikumu.</figcaption>
+        </figure>
         <h3>Produktu katalogs</h3>
         <ul class="plain">
-          <li><b>Meklēšana</b> – ierakstiet produkta nosaukumu, lai filtrētu sarakstu.</li>
-          <li><b>Kategorijas</b> – noklikšķiniet uz kategorijas, lai atvērtu apakškategorijas un produktus.</li>
+          <li><b>Meklēšana</b> – ieraksti produkta nosaukumu, lai filtrētu sarakstu.</li>
+          <li><b>Kategorijas</b> – uzklikšķini uz kategorijas, lai atvērtu apakškategorijas un produktus.</li>
           <li><b>Noliktavas atlikums</b> – pie katra produkta <span class="pill ok"><span class="dot"></span>noliktavā</span>, <span class="pill err"><span class="dot"></span>izpārdots</span> vai <span class="pill sec"><span class="dot"></span>nezināms</span>.</li>
-          <li><b>Cena</b> – atlaides gadījumā Jūs redzat parasto cenu pārsvītrotu un atlaides cenu sarkanā krāsā.</li>
-          <li><b>Ārējā saite</b> (bultiņa) aizved pie produkta veikalā.</li>
-          <li><b>Klikšķis uz produkta rindas</b> atver <b>cenas un noliktavas atlikuma vēstures grafiku</b>: pašreizējo cenu un atlaidi, parasto cenu kā pārtrauktu līniju, noliktavas atlikumu laikā kā joslu un leģendu.</li>
+          <li><b>Cena</b> – atlaides cenas gadījumā redzi parasto cenu pārsvītrotu un atlaides cenu sarkanā krāsā.</li>
+          <li><b>Zvaigznīte</b> pievieno produktu VIP sarakstam; <b>zvaniņš</b> uzreiz izveido cenu paziņojumu; <b>bultiņa</b> aizved pie produkta veikalā.</li>
         </ul>
+        <h3>Cenu un noliktavas atlikuma vēsture</h3>
+        <p>Klikšķis uz produkta rindas atver grafika logu: pašreizējā cena un atlaide, parastā cena un atlaides cena laikā un noliktavas atlikums. Apzīmējumi apakšā izskaidro līnijas.</p>
+        <figure>
+          <img src="l360-tootegraafik.png" alt="Produkta cenas un noliktavas atlikuma vēstures grafiks uznirstošajā logā" loading="lazy">
+          <figcaption>Produkta cenu un noliktavas atlikuma vēsture – parastā cena (zaļa) un atlaides cena (sarkana) laikā.</figcaption>
+        </figure>
       </section>
 
       <!-- 7 -->
       <section class="doc" id="kategooriad">
         <h2><span class="num">7</span> Kategoriju izvēle</h2>
-        <p>Poga <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Izvēlēties kategorijas</span> atver visu veikala kategoriju sarakstu. Jo mazāk produktu izvēlaties, jo mazāka ir mēneša maksa.</p>
+        <p>Poga <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg> Izvēlēties kategorijas</span> atver visu veikala kategoriju sarakstu. Jo mazāk produktu izvēlies, jo mazāka ir mēneša maksa.</p>
         <ol class="steps">
-          <li>Atzīmējiet ar ķeksīti kategorijas, kuras vēlaties novērot. Noder <b>Izvēlēties visu</b>, <b>Atcelt izvēli</b> un <b>meklēšana</b>.</li>
-          <li>Sekojiet apakšā <b>kalkulatoram</b>: izvēlētie produkti → pakāpes (× līdz 2000) → mēneša maksa uzreiz atjaunojas.</li>
-          <li>Nospiediet <span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg> Saglabāt izvēli</span></li>
+          <li>Atzīmē ar ķeksīti kategorijas, ko vēlies uzraudzīt. Palīdz <b>Izvēlēties visu</b>, <b>Atcelt izvēli</b> un <b>meklēšana</b>.</li>
+          <li>Seko apakšā <b>kalkulatoram</b>: izvēlētie produkti → pakāpes (× līdz 2000) → mēneša maksa atjaunojas uzreiz.</li>
+          <li>Nospied <span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg> Saglabāt izvēli</span></li>
         </ol>
-        <p>Izvēli varat vēlāk jebkurā laikā mainīt – mēneša maksa pielāgojas atbilstoši.</p>
+        <p>Izvēli vari vēlāk mainīt jebkurā laikā – mēneša maksa pielāgojas attiecīgi.</p>
       </section>
 
       <!-- 8 -->
-      <section class="doc" id="teenused">
-        <h2><span class="num">8</span> Pakalpojumi un mēneša maksa</h2>
-        <p>Izvēlnē <b>Pakalpojumi</b> Jūs redzat visu, par ko maksājat, un varat pasūtīt papildus.</p>
+      <section class="doc" id="hinnavordlus">
+        <h2><span class="num">8</span> Cenu salīdzinājums</h2>
+        <p>Izvēlnes punkts <b>Cenu salīdzinājums</b> ņem vienu un to pašu produktu starp visiem uzraugāmajiem veikaliem un rāda, <strong>kur tas ir vislētākais</strong> un kā cena ir mainījusies laikā. Produkti tiek sasaistīti pēc modeļa koda un izmēra.</p>
+        <figure>
+          <img src="l360-hinnavordlus.png" alt="Cenu salīdzinājums: viens produkts vairākos veikalos, lētākā cena un vēstures grafiks" loading="lazy">
+          <figcaption>Cenu salīdzinājums – katra produkta lētākais veikals, veikalu cenu diapazons un vēstures grafiks.</figcaption>
+        </figure>
         <ul class="plain">
-          <li><b>Jūsu mēneša maksa kopā</b> – liels skaitlis augšā. Summa veidojas no visiem aktīvajiem pakalpojumiem. Blakus ir nākamā norēķina datums.</li>
-          <li><b>Samaksāts – gaida aktivizēšanu</b> – pasūtījumi, kuru pirmā maksa ir samaksāta un kurus operators drīz ieslēgs.</li>
-          <li><b>Jūsu pakalpojumi</b> – visi aktīvie pakalpojumi (zaļā krāsā), tostarp konkurentu Facebook un tīmekļa monitorings. <b>Atcelt</b> izbeidz pakalpojumu; konkurentu monitoringu pārvalda zem <b>Pievienot uzņēmumu</b> (poga <b>Pārvaldīt</b>).</li>
-          <li><b>Pasūtīt papildus</b> – pie katra pakalpojuma ir cena €/mēnesī un pirmā maksa. Nospiediet <span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Pasūtīt</span>, apstipriniet logā un samaksājiet pirmo maksu. Īpašiem uzdevumiem ir poga <span class="chip">Pieprasīt piedāvājumu</span>.</li>
-          <li><b>Paketes</b> – pasūta vairākus pakalpojumus uzreiz ar vienu maksājuma plūsmu.</li>
+          <li>Augšpusē ir kopsavilkums: <b>salīdzināmo produktu</b>, <b>cenu vēstures grafiku</b> un <b>uzraugāmo veikalu</b>.</li>
+          <li>Katra kartīte rāda <b>lētāko cenu</b>, <b>veikalu cenu diapazonu</b> laikā un <b>šodienas lētāko veikalu</b>.</li>
+          <li>Apakšā ir norādīts, par cik procentiem cena ir mainījusies uzraudzītajā periodā un no cik veikaliem atrasts lētākais.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg> CSV (Excel)</span> lejupielādē visu salīdzinājumu.</li>
         </ul>
-        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Kā tiek aprēķināta pirmā maksa</div><p>Pasūtot jaunu pakalpojumu, Jūs uzreiz maksājat <strong>proporcionālo pirmo maksu</strong> – tikai līdz nākamajai norēķina dienai. Pēc tam operators ieslēdz pakalpojumu un turpmāk visi pakalpojumi tiek norēķināti kopā.</p></div>
+        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg> Kam tas noder</div><p>Uzreiz redzi, vai kādam produktam esi tirgū dārgākais vai lētākais – labs ievaddats cenu noteikšanai (<a href="#hinnastamine">14. nodaļa</a>) un kampaņām.</p></div>
       </section>
 
       <!-- 9 -->
-      <section class="doc" id="maksed">
-        <h2><span class="num">9</span> Kā notiek maksājums</h2>
-        <p>Katrs maksājums sākas ar <strong>apstiprinājuma logu</strong>, kurā ir norādīta summa un par ko maksājat. Jūs vienmēr varat <b>Atcelt</b>.</p>
+      <section class="doc" id="teavitused">
+        <h2><span class="num">9</span> Paziņojumi</h2>
+        <p>Izvēlnes punkts <b>Paziņojumi</b> ļauj tev iestatīt <strong>noteikumus</strong>, kuru izpildes gadījumā mēs uzreiz nosūtām ziņu – kā push paziņojumu uz telefonu un/vai ar e-pastu.</p>
+        <figure>
+          <img src="l360-teavitused.png" alt="Paziņojumi: cenu paziņojuma noteikuma pievienošana un noteikumu saraksts" loading="lazy">
+          <figcaption>Paziņojumi – pievieno noteikumu (nosacījums, veikals, produkts, slieksnis) un izvēlies push un/vai e-pastu.</figcaption>
+        </figure>
+        <ol class="steps">
+          <li>Izvēlies <b>nosacījumu</b> – piem., cenas kritums vismaz par X%, noliktavas atlikums izpārdots, jauns produkts, konkurents nokrita zem tavas cenas.</li>
+          <li>Izvēlies <b>veikalu</b> (visus uzraugāmos vai vienu konkrētu) un, ja vēlies, <b>konkrētu produktu</b>.</li>
+          <li>Nosaki <b>slieksni (%)</b>, ja nosacījums to prasa.</li>
+          <li>Atzīmē <b>Push paziņojumu</b> un/vai <b>E-pastu</b> un nospied <span class="chip go">Pievienot noteikumu</span></li>
+        </ol>
         <ul class="plain">
-          <li><b>Maksājot uzreiz</b> mēs novirzām uz drošu maksājumu vārteju – maksājat ar <b>bankas saiti</b> vai <b>karti</b>, un dati/pakalpojums atveras uzreiz pēc maksājuma.</li>
-          <li><b>Ar pārskaitījuma rēķinu</b> – mēs nosūtām rēķinu ar e-pastu. Saturs atveras pilnā apjomā tad, kad maksājums ir saņemts.</li>
-          <li><b>Pirmā maksa</b> vienmēr ir proporcionāla līdz nākamajai norēķina dienai; turpmāk tiek piemērota pilna mēneša maksa.</li>
-          <li><b>Norēķins</b> notiek par visiem pakalpojumiem uzreiz, pēc Jūsu pievienošanās dienas gadadienas.</li>
+          <li>Noteikumu jebkurā laikā var uz laiku <b>izslēgt</b> vai dzēst.</li>
+          <li>Visātrāk paziņojumu izveido tieši no kataloga vai cenu salīdzinājuma – <b>zvaniņa ikona</b> produkta rindā aizpilda formu iepriekš.</li>
+          <li>Lai saņemtu push paziņojumus, nospied augšpusē <span class="chip">Atļaut push paziņojumus</span> (iPhone tālrunī pēc lietotnes instalēšanas – sk. <a href="#seaded">17. nodaļu</a>).</li>
         </ul>
       </section>
 
       <!-- 10 -->
-      <section class="doc" id="hinnastamine">
-        <h2><span class="num">10</span> Cenu noteikšana</h2>
-        <p>Izvēlnes punkts <b>Cenu noteikšana</b> ir redzams tikai tad, ja Jums ir pasūtīts <strong>cenu pārcenošanas</strong> pakalpojums. Tur Jūs redzat uz konkurenci balstītus cenu ieteikumus savam veikalam.</p>
+      <section class="doc" id="kuuraportid">
+        <h2><span class="num">10</span> Mēneša atskaites</h2>
+        <p>Izvēlnes punkts <b>Mēneša atskaites</b> katra mēneša 1. datumā par iepriekšējo mēnesi apkopo <strong>PDF kopsavilkumu vadībai</strong>: cenu izmaiņas, sortimenta kustību, tavu cenu pozīciju tirgū un zīmola uzraudzības pārkāpumus.</p>
+        <figure>
+          <img src="l360-kuuraportid.png" alt="Mēneša atskaites: mēneša PDF kopsavilkuma skaidrojums un arhīvs" loading="lazy">
+          <figcaption>Mēneša atskaites – automātisks ikmēneša PDF, ko var tieši pārsūtīt valdei vai ražotājam.</figcaption>
+        </figure>
         <ul class="plain">
-          <li><b>Ieteikumu tabula</b> – produkts, pašreizējā cena, ieteiktā cena, starpība un iemesls.</li>
-          <li><span class="chip">Ģenerēt no jauna</span> aprēķina ieteikumus no jauna; <span class="chip">Noteikumi</span> un <span class="chip">Vēsture</span> rāda iestatījumus un iepriekšējās izmaiņas.</li>
-          <li>Ja pakalpojums ir <b>aktivizēts</b>, ieteikumu var ar vienu klikšķi ierakstīt savā WooCommerce veikalā; <b>Atstāt tā</b> saglabā cenu un ignorē produktu izvēlēto dienu skaitu, <b>Izlaist</b> izlaiž ieteikumu.</li>
+          <li><b>Automātisks</b> – atskaite tiek sagatavota un nosūtīta e-pastā katra mēneša sākumā; nekas nav jādara manuāli.</li>
+          <li><b>Arhīvs</b> – visas iepriekšējās mēneša atskaites ir šeit lejupielādei.</li>
+          <li>Atšķirībā no ikrīta e-pasta (sk. zemāk) mēneša atskaite ir <b>kopsavilkuma pārskats</b> lēmumu pieņēmējam, nevis dienas izmaiņu saraksts.</li>
         </ul>
-        <div class="box warn"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg> Droši</div><p>Cenas izmaiņas ierakstīšanu veikalā Look360 ieslēdz kopā ar Jums. Pēc noklusējuma viss ir <b>sausā palaide</b> (nekas netiek mainīts), līdz vienojamies par tiešraides režīmu.</p></div>
+        <h3>Ikrīta e-pasts un reāllaika brīdinājumi</h3>
+        <ul class="plain">
+          <li><b>Ikrīta e-pasts</b> – svarīgākās izmaiņas automātiski nonāk tavā (un saskaņoto kontaktu) pastkastē. To var ieslēgt/izslēgt <a href="#konto">Konta</a> lapā.</li>
+          <li><b>Reāllaika brīdinājumi</b> – vissvarīgākais (piem., konkurenta cenas kritums, interneta veikala kļūme, noliktavas atlikuma beigas) nonāk uzreiz caur paziņojumu noteikumiem.</li>
+        </ul>
       </section>
 
       <!-- 11 -->
-      <section class="doc" id="raportid">
-        <h2><span class="num">11</span> Atskaites</h2>
+      <section class="doc" id="konto">
+        <h2><span class="num">11</span> Konts un API piekļuve</h2>
+        <p>Izvēlnes punkts <b>Konts</b> apkopo tava konta datus un iestatījumus.</p>
+        <figure>
+          <img src="l360-konto.png" alt="Konts: konta dati, parole, API piekļuve un paziņojumu iestatījumi" loading="lazy">
+          <figcaption>Konts – uzņēmuma dati, paroles maiņa, API atslēga un ikrīta e-pasta slēdzis.</figcaption>
+        </figure>
         <ul class="plain">
-          <li><b>Ikrīta vēstule</b> – būtiskākās izmaiņas automātiski nonāk Jūsu (un saskaņoto kontaktpersonu) pastkastē.</li>
-          <li><b>Reāllaika brīdinājumi</b> – pats kritiskākais (piem., konkurenta cenas kritums, e-veikala kļūme, noliktavas atlikuma izsīkums) nonāk uzreiz, pārējais apkopojas rīta atskaitē.</li>
-          <li><b>Atskaišu vēsture</b> – darbvirsmā varat atvērt katru iepriekšējo kopsavilkuma atskaiti un redzēt, kas toreiz mainījās.</li>
+          <li><b>Konta dati</b> – uzņēmums, kontaktpersona un reģistrācijas e-pasts.</li>
+          <li><b>Parole</b> – <span class="chip">Mainīt paroli</span>; aizmirstu paroli vari atiestatīt no pieteikšanās lapas.</li>
+          <li><b>Ikrīta monitoringa atskaite</b> – slēdzis, ar kuru e-pastu ieslēdz vai izslēdz.</li>
         </ul>
+        <h3>API piekļuve (BI, ERP, Excel)</h3>
+        <p>Caur REST API vari savus monitoringa datus – veikalus, produktus, cenas, cenu salīdzinājumu, atradumus – nogādāt tieši savā sistēmā (Power BI, ERP, Excel Power Query).</p>
+        <ol class="steps">
+          <li>Ieraksti atslēgas mērķi (piem., „Power BI") un nospied <span class="chip go">Izveidot API atslēgu</span></li>
+          <li>Nokopē atslēgu uzreiz – to parāda tikai vienu reizi.</li>
+          <li>Skaties <b>API dokumentāciju</b> no saites, kādi galapunkti ir pieejami.</li>
+        </ol>
       </section>
 
       <!-- 12 -->
-      <section class="doc" id="seaded">
-        <h2><span class="num">12</span> Lietotne, paziņojumi un tumšais režīms</h2>
+      <section class="doc" id="teenused">
+        <h2><span class="num">12</span> Visi pakalpojumi un mēneša maksa</h2>
+        <p>No izvēlnes <b>Pakalpojumi</b> redzi visu, par ko maksā, un vari pasūtīt papildu. Augšpusē ir <b>tava mēneša maksa kopā</b> un nākamā norēķina datums.</p>
+        <figure>
+          <img src="l360-teenused.png" alt="Pakalpojumi: mēneša maksa kopā un aktīvo pakalpojumu saraksts" loading="lazy">
+          <figcaption>Pakalpojumi – mēneša maksa kopā, aktīvie pakalpojumi un papildu pasūtīšana.</figcaption>
+        </figure>
+        <p>Zemāk ir viss, ko piedāvājam. Visas cenas ir <b>bez PVN, mēnesī</b>.</p>
+
+        <div class="cat-h">Tava paša interneta veikala apkope</div>
+        <div class="svc">
+          <div class="s"><div class="h"><span class="nm">Interneta veikala veselības pārbaude</span><span class="pr">20 €</span></div><p>Skenē tava interneta veikala produktus un atrod trūkumus: trūkstošus attēlus un alt tekstus, tukšus vai pārāk īsus aprakstus, bojātas cenas, dublētus produktus. Sniedz veselības % un labojumu sarakstu.</p></div>
+          <div class="s"><div class="h"><span class="nm">SEO un satura robu monitorings</span><span class="pr">no 16 €</span></div><p>Uzrauga tavu atslēgvārdu pozīcijas Google un atrod satura robus – tēmas, par kurām tev vēl nav satura. Cena ir atkarīga no uzraugāmo atslēgvārdu skaita.</p></div>
+          <div class="s"><div class="h"><span class="nm">Tīmekļa vietnes darbdrošība</span><span class="pr">10 €</span></div><p>Pārbauda, vai tava mājaslapa/interneta veikals ir tiešsaistē un cik ātri atbild. Paziņo, ja vietne nokrīt vai kļūst lēna.</p></div>
+          <div class="s"><div class="h"><span class="nm">ERP–interneta veikala integrācija</span><span class="pr">30 €</span></div><p>Savieno tavu interneta veikalu un uzskaites programmatūru (piem., Directo) – pasūtījumi, noliktavas atlikumi un cenas pārvietojas automātiski, bez manuālas pārnešanas.</p></div>
+          <div class="s"><div class="h"><span class="nm">Cenu pārcenošana</span><span class="pr">30 €</span></div><p>Uz konkurenci balstīti cenu ieteikumi tava paša veikalam, ko ar vienu klikšķi var ierakstīt WooCommerce (sk. <a href="#hinnastamine">14. nodaļu</a>).</p></div>
+        </div>
+
+        <div class="cat-h">Konkurentu monitorings</div>
+        <div class="svc">
+          <div class="s"><div class="h"><span class="nm">Konkurentu FB monitorings</span><span class="pr">3 € / konkurents</span></div><p>Uzrauga konkurentu Facebook ierakstus: jaunus produktus, kampaņas, pasākumus, cenu paziņojumus. Viss vienā plūsmā, jaunie izcelti.</p></div>
+          <div class="s"><div class="h"><span class="nm">Konkurentu FB reklāmas</span><span class="pr">6 €</span></div><p>Uzrauga konkurentu aktīvās Facebook reklāmas – ko viņi reklamē, cik reklāmu darbojas un kad tās sāktas vai apturētas.</p></div>
+          <div class="s"><div class="h"><span class="nm">Interneta veikala cenu un noliktavas atlikuma monitorings</span><span class="pr">8 € / 2000 produkti</span></div><p>Uzrauga konkurenta interneta veikala cenas, atlaides cenas, noliktavas atlikumu un sortimentu. Sniedz vēstures grafikus un baro cenu salīdzinājumu. Pakāpenisks: 8 € par katriem līdz 2000 produktiem.</p></div>
+        </div>
+
+        <div class="cat-h">Zīmola īpašniekam un izplatītājam</div>
+        <div class="svc">
+          <div class="s"><div class="h"><span class="nm">Izplatītāju cenu uzraudzība</span><span class="pr">40 €</span></div><p>Nosaki savu produktu RRP (ieteicamā mazumtirdzniecības cena) un MAP (minimālā atļautā reklāmas cena); sistēma uzrauga, kuri izplatītāji tos pārkāpj (sk. <a href="#brandivalve">15. nodaļu</a>).</p></div>
+        </div>
+
+        <div class="cat-h">Papildpakalpojumi</div>
+        <div class="svc">
+          <div class="s"><div class="h"><span class="nm">Apmācība komandai</span><span class="pr">40 €</span></div><p>Apmācām tavu komandu sistēmas un interneta veikala jautājumos, lai visi prastu monitoringu un datus izmantot sev par labu.</p></div>
+          <div class="s"><div class="h"><span class="nm">Pasūtījuma automatizācija</span><span class="pr">pēc pieprasījuma</span></div><p>Pēc īpaša pasūtījuma automatizējam tavus atkārtotos darbus – atskaites, sinhronizācijas, paziņojumus, datu plūsmas. Nospied <span class="chip">Pieprasīt piedāvājumu</span>.</p></div>
+        </div>
+
+        <div class="cat-h">Paketes</div>
+        <div class="svc">
+          <div class="s"><div class="h"><span class="nm">Sava veikala pilnā pakete</span></div><p>Veselības pārbaude + SEO + darbdrošība + cenu pārcenošana.</p></div>
+          <div class="s"><div class="h"><span class="nm">Monitoringa sākuma pakete</span></div><p>Konkurentu FB monitorings + interneta veikala veselības pārbaude + darbdrošība.</p></div>
+          <div class="s"><div class="h"><span class="nm">Apkope+ pakete</span></div><p>Veselības pārbaude + darbdrošība + ERP integrācija.</p></div>
+        </div>
+
+        <h3>Kā pasūtīt</h3>
         <ul class="plain">
-          <li><b>Instalējiet kā lietotni</b> – telefonā paneli varat pievienot sākuma ekrānam kā lietotni: atveriet pārlūka izvēlni un izvēlieties „Pievienot sākuma ekrānam". Turpmāk Look360 atveras tieši no ikonas un pilnekrānā – neko nav jālejupielādē.</li>
-          <li><b>Paziņojumi telefonā</b> – darbvirsmas poga <span class="chip">Atļaut paziņojumus</span> nosūta būtiskās cenu un noliktavas atlikuma izmaiņas kā tūlītēju paziņojumu (push) tieši Jūsu ierīcē. iPhone tālrunī tas darbojas pēc lietotnes instalēšanas.</li>
-          <li><b>Tumšs / gaišs režīms</b> – augšējās joslas slēdzis (saule/mēness) maina tēmu. Izvēle tiek saglabāta.</li>
-          <li><b>Telefonā</b> – izvēlne ir paslēpta aiz ☰ pogas augšējā stūrī; saturs pielāgojas ekrāna platumam.</li>
-          <li><b>Izrakstīšanās</b> – pa kreisi apakšā blakus lietotājvārdam esošā pa durvīm ārā ikona.</li>
+          <li>Pie katra pakalpojuma ir cena €/mēnesī. Nospied <span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Pasūtīt</span>, apstiprini logā un samaksā pirmo maksu; paketes pasūta vairākus pakalpojumus vienlaikus.</li>
+          <li>Aktīvie pakalpojumi ir <span class="pill ok"><span class="dot"></span>zaļi</span>. <b>Atcelt</b> beidz pakalpojumu; konkurentu monitoringu pārvalda no <b>Pievienot uzņēmumu</b> un pogas <b>Pārvaldīt</b>.</li>
+          <li><b>Samaksāts – gaida aktivizāciju</b>: pirmā maksa ir samaksāta un operators drīz ieslēgs pakalpojumu.</li>
         </ul>
+        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Kā aprēķina pirmo maksu</div><p>Pasūtot jaunu pakalpojumu, tu uzreiz samaksā <strong>proporcionālu pirmo maksu</strong> – tikai līdz nākamajai norēķina dienai. Pēc tam visi pakalpojumi tiek norēķināti kopā, pēc tavas pievienošanās dienas gadadienas.</p></div>
       </section>
 
       <!-- 13 -->
+      <section class="doc" id="maksed">
+        <h2><span class="num">13</span> Kā notiek maksājums</h2>
+        <p>Katrs maksājums sākas ar <strong>apstiprinājuma logu</strong>, kurā ir norādīta summa un par ko maksā. Vienmēr vari <b>Atcelt</b>.</p>
+        <ul class="plain">
+          <li><b>Maksājot uzreiz</b> novirzām uz drošu maksājumu vārteju – maksā ar <b>bankas saiti</b> vai <b>karti</b>, un dati/pakalpojums atveras uzreiz pēc maksājuma.</li>
+          <li><b>Ar pārskaitījuma rēķinu</b> – nosūtām rēķinu e-pastā. Saturs atveras pilnā apjomā tad, kad maksājums ir saņemts.</li>
+          <li><b>Pirmā maksa</b> vienmēr ir proporcionāla līdz nākamajai norēķina dienai; turpmāk tiek piemērota pilnā mēneša maksa.</li>
+          <li><b>Norēķini</b> notiek par visiem pakalpojumiem vienlaikus, pēc tavas pievienošanās dienas gadadienas.</li>
+        </ul>
+      </section>
+
+      <!-- 14 -->
+      <section class="doc" id="hinnastamine">
+        <h2><span class="num">14</span> Cenu noteikšana</h2>
+        <p>Izvēlnes punkts <b>Cenu noteikšana</b> ir redzams tikai tad, ja tev ir pasūtīts <strong>cenu pārcenošanas</strong> pakalpojums. Tur redzi uz konkurenci balstītus cenu ieteikumus tava paša veikalam.</p>
+        <div class="deflist">
+          <div class="dr"><span class="k">Produkts</span><span class="v">Produkts un noteikums, uz kura pamata ieteikums izveidots.</span></div>
+          <div class="dr"><span class="k">Pašreizējā</span><span class="v">Produkta pašreizējā cena tavā veikalā.</span></div>
+          <div class="dr"><span class="k">Ieteikums</span><span class="v">Sistēmas ieteiktā jaunā cena.</span></div>
+          <div class="dr"><span class="k">Starpība</span><span class="v">Izmaiņas € un % (piem., −0,22 € · −14,7%).</span></div>
+          <div class="dr"><span class="k">Iemesls</span><span class="v">Kāpēc: piem., „lētākais konkurents 1,50 €; noteikums 3% zemāk; apakšējā robeža aizsargāta".</span></div>
+        </div>
+        <ul class="plain">
+          <li><span class="chip">Ģenerēt no jauna</span> aprēķina ieteikumus no jauna; <span class="chip">Noteikumi</span> un <span class="chip">Vēsture</span> rāda iestatījumus un iepriekšējās izmaiņas.</li>
+          <li>Pie katra ieteikuma: <span class="chip go">Ierakstīt</span> nogādā cenu veikalā, <b>Atstāt tā</b> saglabā cenu un ignorē produktu izvēlēto dienu laikā, <b>Izlaist</b> izlaiž ieteikumu.</li>
+        </ul>
+        <div class="box warn"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg> Droši – pēc noklusējuma „atbruņots"</div><p>Pēc noklusējuma viss ir <b>testa režīmā</b>: ieteikumi tiek aprēķināti, bet neviens „Ierakstīt" nemaina tavu veikalu. Live režīmu (īsto cenu ierakstīšanu) mēs ieslēdzam kopā ar tevi. Apakšējās robežas (cenu grīda, MAP) novērš pārāk zemu ieteikumu.</p></div>
+      </section>
+
+      <!-- 15 -->
+      <section class="doc" id="brandivalve">
+        <h2><span class="num">15</span> Zīmola uzraudzība</h2>
+        <p>Izvēlnes punkts <b>Zīmola uzraudzība</b> ir zīmola īpašniekam un izplatītājam. Ja tev ir pasūtīta <strong>izplatītāju cenu uzraudzība</strong>, tu šeit definē savu produktu cenu noteikumus un redzi, kas tos pārkāpj.</p>
+        <ol class="steps">
+          <li>Pievieno savus produktus kopā ar <b>RRP</b> (ieteicamā mazumtirdzniecības cena) un <b>MAP</b> (minimālā atļautā reklāmas cena). Produktus var pievienot pa vienam vai importēt.</li>
+          <li>Sistēma salīdzina uzraugāmo izplatītāju cenas ar tavu RRP/MAP.</li>
+          <li>Redzi <b>pārkāpumu</b> sarakstu – kas pārdod zem MAP vai atkāpjas no RRP – un vari eksportēt <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg> CSV</span>.</li>
+        </ol>
+        <div class="box"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg> Kam tas noder</div><p>Uzturi sava zīmola cenu līmeni – atrodot pārkāpumu, tev ir dokumentēts pamats runāt ar izplatītāju.</p></div>
+      </section>
+
+      <!-- 16 -->
+      <section class="doc" id="naited">
+        <h2><span class="num">16</span> Piemēri</h2>
+        <p>Tā funkcijas sasaistās reālā darbā.</p>
+
+        <div class="scn">
+          <h3>1. Konkurents nolaida cenu</h3>
+          <p>Ikrīta e-pasts atnes „Konkurents X: 12 cenu kritumi". Atver <b>Cenu salīdzinājumu</b> un redzi, ka trīs produktiem tagad esi tirgū dārgākais. <b>Cenu noteikšana</b> piedāvā jaunas cenas – tās ar vienu klikšķi ieraksti veikalā.</p>
+          <div class="flow"><span class="st">Ikrīta e-pasts</span><span class="ar">→</span><span class="st">Cenu salīdzinājums</span><span class="ar">→</span><span class="st">Cenu noteikšana</span><span class="ar">→</span><span class="st">Ierakstīt veikalā</span></div>
+        </div>
+
+        <div class="scn">
+          <h3>2. Konkurentam produkts izpārdots</h3>
+          <p>Esi iestatījis paziņojuma noteikumu „noliktavas atlikums izpārdots" vienam atslēgas produktam. Kad konkurentam tas beidzas, atnāk <b>push uz telefonu</b>. Reaģē: paaugstini cenu vai reklamē, ka tev prece ir noliktavā.</p>
+          <div class="flow"><span class="st">Paziņojuma noteikums</span><span class="ar">→</span><span class="st">Push uz telefonu</span><span class="ar">→</span><span class="st">Reaģē</span></div>
+        </div>
+
+        <div class="scn">
+          <h3>3. Jauns konkurents tirgū</h3>
+          <p>Dzirdi par jaunu veikalu. <b>Pievienot uzņēmumu</b> → interneta veikals + Facebook → apstiprini mēneša maksu. Dažās minūtēs redzi tā sortimentu, cenas un Facebook aktivitāti.</p>
+          <div class="flow"><span class="st">Pievienot uzņēmumu</span><span class="ar">→</span><span class="st">Apstiprināt mēneša maksu</span><span class="ar">→</span><span class="st">Uzņēmuma skats</span></div>
+        </div>
+
+        <div class="scn">
+          <h3>4. Mana interneta veikala veselība klibo</h3>
+          <p><b>Interneta veikala veselība</b> rāda 109 kritiskas kļūdas – trūkstoši attēli un alt teksti. Iziet cauri labojumu sarakstam; nākamajā skenējumā veselības % paaugstinās.</p>
+          <div class="flow"><span class="st">Interneta veikala veselība</span><span class="ar">→</span><span class="st">Labojumu saraksts</span><span class="ar">→</span><span class="st">Veselība uzlabojas</span></div>
+        </div>
+
+        <div class="scn">
+          <h3>5. Mēneša pārskats valdei</h3>
+          <p>Mēneša 1. datumā automātiski nonāk pastkastē <b>PDF mēneša atskaite</b>. Pārsūti to valdei – kopsavilkums par cenu kustībām, sortimentu un tirgus pozīciju vienā failā.</p>
+          <div class="flow"><span class="st">Mēneša atskaite (auto)</span><span class="ar">→</span><span class="st">Pārsūtīt valdei</span></div>
+        </div>
+
+        <div class="scn">
+          <h3>6. Izplatītājs nokrita zem MAP</h3>
+          <p>Esi zīmola īpašnieks. <b>Zīmola uzraudzība</b> rāda, ka viens izplatītājs pārdod produktu zem saskaņotā MAP. Eksportē pārkāpumu un sazinies ar izplatītāju.</p>
+          <div class="flow"><span class="st">Zīmola uzraudzība</span><span class="ar">→</span><span class="st">Pārkāpums</span><span class="ar">→</span><span class="st">Sazināties</span></div>
+        </div>
+
+        <div class="scn">
+          <h3>7. Dati savā BI</h3>
+          <p>Vēlies cenas un noliktavas atlikumu savā Power BI atskaitē. <b>Konts</b> → <b>Izveidot API atslēgu</b> → savieno REST API caur Power Query. Dati atsvaidzinās automātiski.</p>
+          <div class="flow"><span class="st">Konts</span><span class="ar">→</span><span class="st">API atslēga</span><span class="ar">→</span><span class="st">Power BI</span></div>
+        </div>
+      </section>
+
+      <!-- 17 -->
+      <section class="doc" id="seaded">
+        <h2><span class="num">17</span> Lietotne un tumšais režīms</h2>
+        <ul class="plain">
+          <li><b>Instalēt kā lietotni</b> – tālrunī vari pievienot paneli sākumekrānam kā lietotni: atver pārlūka izvēlni un izvēlies „Pievienot sākumekrānam". Turpmāk Look360 atveras tieši no ikonas un pilnekrānā – nekas nav jālejupielādē.</li>
+          <li><b>Paziņojumi uz telefonu</b> – poga <span class="chip">Atļaut push paziņojumus</span> nosūta svarīgākās izmaiņas tieši uz ierīci. iPhone tālrunī tas darbojas pēc lietotnes instalēšanas.</li>
+          <li><b>Tumšais / gaišais režīms</b> – augšējās joslas slēdzis (saule/mēness) maina tēmu. Izvēle tiek saglabāta.</li>
+          <li><b>Tālrunī</b> – izvēlne ir paslēpta aiz ☰ pogas augšējā stūrī; saturs pielāgojas ekrāna platumam.</li>
+          <li><b>Izrakstīšanās</b> – pa kreisi apakšā blakus lietotājvārdam esošā pa-durvīm-ārā ikona.</li>
+        </ul>
+      </section>
+
+      <!-- 18 -->
       <section class="doc" id="abi">
-        <h2><span class="num">13</span> Palīdzība un kontakti</h2>
-        <p>Ja jums ir jautājums vai bažas, mēs atbildam angļu valodā – īsts cilvēks, nevis automātiska atbilde.</p>
+        <h2><span class="num">18</span> Palīdzība un kontakti</h2>
+        <p>Jautājuma vai bažu gadījumā mēs atbildam angļu valodā – īsts cilvēks, nevis automātiska atbilde.</p>
         <ul class="plain">
           <li>E-pasts: <a href="mailto:info@look360.eu">info@look360.eu</a></li>
-          <li>Telefons: <a href="tel:+37253620246">+372 5362 0246</a></li>
+          <li>Tālrunis: <a href="tel:+37253620246">+372 5362 0246</a></li>
           <li>Biežāk uzdotie jautājumi: <a href="index.html#kkk">sākumlapas BUJ</a></li>
         </ul>
-        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Īsumā</div><p>Piesakāties → skatieties darbvirsmā zaļo/dzelteno/sarkano → pievienojiet uzņēmumus un pakalpojumus → būtiskās izmaiņas Jums nonāk arī ar vēstuli. Vairāk nekas nav jādara.</p></div>
+        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Īsumā</div><p>Piesakies → skaties darbvirsmā zaļo/dzelteno/sarkano → pievieno uzņēmumus un pakalpojumus → iestati paziņojumu noteikumus → svarīgākās izmaiņas atnāk tev arī ar e-pastu un push paziņojumu. Vairāk nekas nav jādara.</p></div>
       </section>
     </div>
   </div>
@@ -457,8 +676,8 @@
 
 <footer>
   <div class="wrap">
-    <span>© 2026 Look360 · Watchdog OÜ · Reģistrācijas kods 17537572 · PVN reģ. nr. EE103000237</span>
-    <span><a href="index.html">Sākumlapa</a> · <a href="index.html#kkk">BUJ</a> · <a href="privaatsus.html">Privātums</a> · <a href="tingimused.html">Noteikumi</a></span>
+    <span>© 2026 Look360 · Watchdog OÜ · Reģistrācijas numurs 17537572 · PVN numurs EE103000237</span>
+    <span><a href="index.html">Sākums</a> · <a href="index.html#kkk">BUJ</a> · <a href="privaatsus.html">Privātums</a> · <a href="tingimused.html">Noteikumi</a></span>
   </div>
 </footer>
 
