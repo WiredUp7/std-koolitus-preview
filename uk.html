@@ -272,7 +272,11 @@
 
   /* SCROLL-KARUSSELL (teenused, portfoolio) */
   .scrl{position:relative}
-  .scrl-track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:6px 0}
+  /* Hiirega seadmetel EI OLE snap'i: x-telje snap püüab hiireratta vertikaalse
+     kerimise kinni ja leht jääb karusselli kohal toppama (Chromiumi snap-trap).
+     Puutetundlikel (hover:none) jääb snap pühkimise jaoks alles. */
+  .scrl-track{display:flex;gap:20px;overflow-x:auto;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:6px 0}
+  @media (hover:none){.scrl-track{scroll-snap-type:x proximity}}
   .scrl-track::-webkit-scrollbar{display:none}
   .scrl-track>*{scroll-snap-align:start;flex:0 0 calc((100% - 40px)/3)}
   .cards-scrl .card{border:1px solid var(--line);border-radius:var(--r);background:var(--paper)}
@@ -395,8 +399,11 @@
   .fc-badge .fc-woo{height:25px;width:auto;display:block}
   .fc-more{font-size:13px;color:var(--on-dark-mut);font-weight:300}
 
-  .reveal{opacity:0;transform:translateY(24px);transition:.7s cubic-bezier(.2,.7,.3,1)}
+  .reveal{opacity:0;transform:translateY(24px);transition:.55s cubic-bezier(.2,.7,.3,1)}
   .reveal.in{opacity:1;transform:none}
+  /* Sisu ei tohi kunagi nähtamatuks jääda: ilma JS-ita ja reduced-motion puhul kõik nähtav */
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+  html.no-js .reveal{opacity:1;transform:none}
 
   /* MOBILE MENU */
   .burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:46px;height:46px;flex-shrink:0;border:1px solid var(--line-dark);border-radius:12px;background:rgba(255,255,255,.05);cursor:pointer;padding:0 12px}
@@ -619,6 +626,19 @@
   .ord-foot .oprice .a .save{font-size:11px;color:var(--accent-ink);font-weight:500;margin-left:6px}
   .ord-err{color:#c0556b;font-size:13px;margin-top:4px;display:none}
   .ord-err.show{display:block}
+  /* välja-tasandi veateade: punane ääris + tekst otse välja all (mitte ainult vormi lõpus) */
+  .ofield input.err,.ofield textarea.err,.omod-data input.err,.omod-data textarea.err{border-color:#d24d63;box-shadow:0 0 0 3px rgba(210,77,99,.12)}
+  .ferr2{color:#c0556b;font-size:12.5px;margin-top:5px;display:none}
+  .ferr2.show{display:block}
+  /* kalkulaatorist kaasa tulnud valiku info-riba (samm 1) */
+  .carry{display:none;gap:10px;align-items:flex-start;background:var(--accent-soft);border:1px solid #cdeadd;border-radius:12px;padding:12px 14px;margin-bottom:16px;font-size:13.5px;color:#22614a;line-height:1.5}
+  .carry.show{display:flex}
+  .carry svg{width:18px;height:18px;flex-shrink:0;color:var(--accent-ink);margin-top:2px}
+  .carry b{font-weight:600}
+  /* ülekandearve tee makse-sammul */
+  .pay-alt{margin-top:18px;padding-top:16px;border-top:1px dashed var(--line);text-align:center}
+  .pay-alt .lbl{font-size:12.5px;color:var(--muted);margin-bottom:9px}
+  .pay-alt .btn{font-size:13.5px;padding:10px 18px}
   .ord-vat{font-size:11.5px;color:var(--muted);font-weight:400;margin-top:10px}
   /* view 1 kahe-veeru paigutus + eelvaate galerii */
   .ov1-grid{display:grid;grid-template-columns:minmax(380px,440px) 1fr;gap:30px;align-items:stretch}
@@ -1195,6 +1215,7 @@
     <div class="calc reveal" id="calc">
       <div class="calc-l">
         <button type="button" class="preset-btn" id="presetBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 12h18" stroke-linecap="round"/></svg>Запропонуйте мені стартовий пакет</button>
+        <div id="presetNote" style="display:none;font-size:12.5px;color:#7af0b6;margin:-12px 0 18px;line-height:1.5">Стартовий пакет обрано: 8 конкурентів у Facebook, 3 інтернет-магазини, а також перевірка стану магазину та моніторинг доступності. Змінюйте вільно.</div>
         <div class="cfg-label" style="margin-top:0">1 · Обсяги моніторингу</div>
         <div class="slider">
           <div class="slider-head"><span>Конкурентів у Facebook</span><span class="cnt" id="fbVal">8</span></div>
@@ -1337,9 +1358,10 @@
         <div class="ov1-main">
         <div class="ord-h">Кого ви хочете відстежувати?</div>
         <div class="ord-sub">Додайте компанії для відстеження та виберіть модулі для свого магазину. Щомісячна плата розраховується одразу за введеними компаніями.</div>
+        <div class="carry" id="calcCarry"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v5M12 16.5v.01" stroke-linecap="round"/><circle cx="12" cy="12" r="9"/></svg><span id="calcCarryTxt"></span></div>
 
         <div class="ord-lab">Ваш інтернет-магазин</div>
-        <div class="ofield"><label for="ownSite">Веб-адреса вашого магазину</label><input type="text" id="ownSite" placeholder="напр. myshop.com"></div>
+        <div class="ofield"><label for="ownSite">Веб-адреса вашого магазину</label><input type="text" id="ownSite" placeholder="напр. myshop.com"><div class="ferr2" id="ownSiteErr"></div><div style="color:var(--muted);font-size:12.5px;margin-top:5px">Адреса вашого магазину потрібна для обраних модулів — вона не змінює місячну плату.</div></div>
         <div class="ofield"><label for="ownFb">Facebook вашої компанії</label><input type="text" id="ownFb" placeholder="напр. facebook.com/вашакомпанія"><div style="color:var(--muted);font-size:12.5px;margin-top:5px">Безкоштовно — сторінка вашої компанії.</div></div>
 
         <div class="ord-lab">Кого відстежувати — конкуренти</div>
@@ -1459,12 +1481,16 @@
           <div class="pay-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 5 6v5c0 4.2 2.8 7.3 7 8.8 4.2-1.5 7-4.6 7-8.8V6l-7-3Z" stroke-linejoin="round"/><path d="m9 11.5 2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg><span id="payNote">Ти одразу сплачуєш за перший місяць. Картка лишається надійно прив'язаною, а наступні місяці списуються автоматично — можна скасувати будь-коли.</span></div>
           <div class="pay-logos"><span class="pl">Swedbank</span><span class="pl">SEB</span><span class="pl">LHV</span><span class="pl">Visa</span><span class="pl">Mastercard</span></div>
           <div class="pay-trust"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="4.5" y="10.5" width="15" height="10" rx="2.2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3" stroke-linecap="round"/></svg><span>Платежі обробляє Stripe. Дані вашої картки до нас не потрапляють.</span></div>
+          <div class="pay-alt">
+            <div class="lbl">Бажаєте рахунок для банківського переказу?</div>
+            <button type="button" class="btn btn-out" id="invoiceBtn">Хочу оплатити за рахунком</button>
+          </div>
         </div>
         <div class="ord-done" id="payDone" style="display:none">
           <div id="payOk">
           <div class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m5 13 4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           <h3>Дякуємо! Ваше замовлення прийнято</h3>
-          <p>Ми налаштуємо моніторинг і надішлемо перший звіт. Вам нічого не потрібно встановлювати.</p>
+          <p id="payOkTxt">Ми налаштуємо моніторинг і надішлемо перший звіт. Вам нічого не потрібно встановлювати.</p>
           </div>
           <div class="ord-err" id="payFail" style="margin:6px auto 14px;max-width:360px">Не вдалося автоматично підтвердити ваше замовлення. Надішліть копію електронною поштою (кнопка нижче), і ми зв'яжемося з вами.</div>
           <div class="acct-create" id="acctCreate" style="margin:20px auto 0;max-width:360px;text-align:left;padding-top:18px;border-top:1px solid var(--line)">
@@ -1483,7 +1509,7 @@
       </div>
     </div>
     <div class="ord-foot" id="ordFoot">
-      <div class="oprice"><div class="l">Щомісячна плата</div><div class="a" id="ordPrice">0 €<small>/kuus</small></div></div>
+      <div class="oprice"><div class="l" id="ordPriceLab">Щомісячна плата</div><div class="a" id="ordPrice">0 €<small>/kuus</small></div></div>
       <button type="button" class="btn btn-out" id="ordBack" style="display:none">Назад</button>
       <button type="button" class="btn btn-grad" id="ordNext">Далі →</button>
     </div>
@@ -1494,8 +1520,8 @@
 const nav=document.getElementById('nav');
 addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>12),{passive:true});
 
-/* === i18n: keele-stringid (build_i18n.py asendab {"locale": "uk-UA", "fbLine": "{n} конкурентів у Facebook", "webLineCalc": "{n} інтернет-магазинів у моніторингу цін + залишків", "webLineModal": "{n} інтернет-магазинів у моніторингу цін і залишків", "perMonth": "/міс", "saveAnnual": "{m} місяців безкоштовно – рахунок раз на рік (€{yr}/рік)", "chooseOne": "Виберіть щонайменше один модуль", "billYear": "Оплата: річна €{yr}/рік (≈€{eff}/міс, {m} місяців безкоштовно)", "billMonth": "Оплата: щомісячна €{m}/міс", "mailIntro": "Хочу підключити моніторинг Look360.", "mailChosen": "Вибрано:", "mailQuote": "Примітка: також хочу індивідуальну автоматизацію – надішліть, будь ласка, пропозицію.", "mailSubject": "Запит на підключення – Look360", "quotePrice": "за запитом", "hintWeb": "веб +8 €", "hintFb": "FB +3 €", "perMonthSpaced": "/ міс", "hintEmpty": "Додайте сайт або сторінку Facebook, щоб відстежувати цю компанію", "phName": "Назва конкурента", "phWeb": "Сайт (напр. konkurent.com)", "phFb": "Сторінка Facebook (напр. facebook.com/konkurent)", "remove": "Видалити", "sumEmpty": "Ще нічого не вибрано", "sumTotal": "Разом", "sumYearSuffix": "· річна оплата (2 місяці безкоштовно)", "perMonthUnit": "€/міс", "perYear": "/рік", "perYearUnit": "€/рік", "payNoteYear": "Ти сплачуєш одразу за весь рік (2 місяці безкоштовно). Картка лишається надійно прив'язаною й оновлюється раз на рік — можна скасувати будь-коли.", "twoMonthsFree": "2 місяці безкоштовно", "mlCompany": "Компанія", "mlContact": "Контакт", "mlPhone": "Телефон", "mlEmail": "E-mail", "mlOwnShop": "Власний магазин", "mlOwnFb": "Власний Facebook", "mlWatch": "Відстежувати", "mlPackage": "Пакет", "mlBilling": "Оплата", "unnamed": "(без назви)", "mlWeb": "веб", "totYear": "річна оплата €{yr}/рік (≈€{eff}/міс, 2 місяці безкоштовно)", "totMonth": "щомісячна оплата €{m}/міс", "btnContinuePay": "Перейти до оплати →", "btnPay": "Сплатити", "btnNext": "Далі →", "btnCreateAccount": "Створити обліковий запис і увійти", "btnCreatingAccount": "Створення облікового запису…", "errPassMin": "Пароль має містити щонайменше 8 символів.", "errAcctFail": "Не вдалося створити обліковий запис.", "errConnFail": "Помилка з’єднання. Спробуйте ще раз.", "navToolaud": "Панель", "copySending": "Надсилання…", "copySent": "Копію надіслано на вашу пошту ✓", "copyFail": "Не вдалося надіслати. Спробуйте ще раз.", "svc_req": "обов'язково", "svc_note": "Примітка", "svc_note_ph": "Додаткова інформація (необов'язково)", "svc_words": "{n}/30 слів", "svc_ownshop": "Ми скануємо ваш магазин (адреса в полі «Ваш магазин» вище).", "svc_seo_lbl": "Ключові слова", "svc_seo_ph": "одне ключове слово в рядку, напр. акумуляторний тример", "svc_seo_tier": "{n} ключових слів · {p} €/міс.", "svc_epoe_lbl": "Пріоритетні сторінки чи категорії (необов'язково)", "svc_epoe_ph": "напр. /products/batteries, сторінка кампанії", "svc_uptime_lbl": "Адреси для моніторингу", "svc_uptime_ph": "один URL у рядку (за замовчуванням — ваш магазин)", "svc_erp_lbl": "Яка ERP-система?", "svc_erp_ph": "напр. Directo, Merit, SimplBooks", "svc_erpacc_lbl": "Доступ / примітка щодо API (необов'язково)", "svc_hinnastus_lbl": "Платформа магазину (необов'язково)", "svc_hinnastus_ph": "напр. WooCommerce, Shopify, Magento", "svc_koolitus_size": "Кількість учасників", "svc_koolitus_topic": "Тема або фокус (необов'язково)", "svc_koolitus_time": "Бажаний час (необов'язково)", "svc_auto_lbl": "Що вам потрібно?", "svc_auto_ph": "Опишіть завдання — плагін, скрипт, дашборд", "svc_err_shop": "Додайте адресу свого магазину — вибрана послуга сканує ваш магазин.", "svc_err_req": "Заповніть обов'язкові поля для вибраних послуг."} keele kaupa) === */
-const T = {"locale": "uk-UA", "fbLine": "{n} конкурентів у Facebook", "webLineCalc": "{n} інтернет-магазинів у моніторингу цін + залишків", "webLineModal": "{n} інтернет-магазинів у моніторингу цін і залишків", "perMonth": "/міс", "saveAnnual": "{m} місяців безкоштовно – рахунок раз на рік (€{yr}/рік)", "chooseOne": "Виберіть щонайменше один модуль", "billYear": "Оплата: річна €{yr}/рік (≈€{eff}/міс, {m} місяців безкоштовно)", "billMonth": "Оплата: щомісячна €{m}/міс", "mailIntro": "Хочу підключити моніторинг Look360.", "mailChosen": "Вибрано:", "mailQuote": "Примітка: також хочу індивідуальну автоматизацію – надішліть, будь ласка, пропозицію.", "mailSubject": "Запит на підключення – Look360", "quotePrice": "за запитом", "hintWeb": "веб +8 €", "hintFb": "FB +3 €", "perMonthSpaced": "/ міс", "hintEmpty": "Додайте сайт або сторінку Facebook, щоб відстежувати цю компанію", "phName": "Назва конкурента", "phWeb": "Сайт (напр. konkurent.com)", "phFb": "Сторінка Facebook (напр. facebook.com/konkurent)", "remove": "Видалити", "sumEmpty": "Ще нічого не вибрано", "sumTotal": "Разом", "sumYearSuffix": "· річна оплата (2 місяці безкоштовно)", "perMonthUnit": "€/міс", "perYear": "/рік", "perYearUnit": "€/рік", "payNoteYear": "Ти сплачуєш одразу за весь рік (2 місяці безкоштовно). Картка лишається надійно прив'язаною й оновлюється раз на рік — можна скасувати будь-коли.", "twoMonthsFree": "2 місяці безкоштовно", "mlCompany": "Компанія", "mlContact": "Контакт", "mlPhone": "Телефон", "mlEmail": "E-mail", "mlOwnShop": "Власний магазин", "mlOwnFb": "Власний Facebook", "mlWatch": "Відстежувати", "mlPackage": "Пакет", "mlBilling": "Оплата", "unnamed": "(без назви)", "mlWeb": "веб", "totYear": "річна оплата €{yr}/рік (≈€{eff}/міс, 2 місяці безкоштовно)", "totMonth": "щомісячна оплата €{m}/міс", "btnContinuePay": "Перейти до оплати →", "btnPay": "Сплатити", "btnNext": "Далі →", "btnCreateAccount": "Створити обліковий запис і увійти", "btnCreatingAccount": "Створення облікового запису…", "errPassMin": "Пароль має містити щонайменше 8 символів.", "errAcctFail": "Не вдалося створити обліковий запис.", "errConnFail": "Помилка з’єднання. Спробуйте ще раз.", "navToolaud": "Панель", "copySending": "Надсилання…", "copySent": "Копію надіслано на вашу пошту ✓", "copyFail": "Не вдалося надіслати. Спробуйте ще раз.", "svc_req": "обов'язково", "svc_note": "Примітка", "svc_note_ph": "Додаткова інформація (необов'язково)", "svc_words": "{n}/30 слів", "svc_ownshop": "Ми скануємо ваш магазин (адреса в полі «Ваш магазин» вище).", "svc_seo_lbl": "Ключові слова", "svc_seo_ph": "одне ключове слово в рядку, напр. акумуляторний тример", "svc_seo_tier": "{n} ключових слів · {p} €/міс.", "svc_epoe_lbl": "Пріоритетні сторінки чи категорії (необов'язково)", "svc_epoe_ph": "напр. /products/batteries, сторінка кампанії", "svc_uptime_lbl": "Адреси для моніторингу", "svc_uptime_ph": "один URL у рядку (за замовчуванням — ваш магазин)", "svc_erp_lbl": "Яка ERP-система?", "svc_erp_ph": "напр. Directo, Merit, SimplBooks", "svc_erpacc_lbl": "Доступ / примітка щодо API (необов'язково)", "svc_hinnastus_lbl": "Платформа магазину (необов'язково)", "svc_hinnastus_ph": "напр. WooCommerce, Shopify, Magento", "svc_koolitus_size": "Кількість учасників", "svc_koolitus_topic": "Тема або фокус (необов'язково)", "svc_koolitus_time": "Бажаний час (необов'язково)", "svc_auto_lbl": "Що вам потрібно?", "svc_auto_ph": "Опишіть завдання — плагін, скрипт, дашборд", "svc_err_shop": "Додайте адресу свого магазину — вибрана послуга сканує ваш магазин.", "svc_err_req": "Заповніть обов'язкові поля для вибраних послуг."};
+/* === i18n: keele-stringid (build_i18n.py asendab {"locale": "uk-UA", "fbLine": "{n} конкурентів у Facebook", "webLineCalc": "{n} інтернет-магазинів у моніторингу цін + залишків", "webLineModal": "{n} інтернет-магазинів у моніторингу цін і залишків", "perMonth": "/міс", "saveAnnual": "{m} місяців безкоштовно – рахунок раз на рік (€{yr}/рік)", "chooseOne": "Виберіть щонайменше один модуль", "billYear": "Оплата: річна €{yr}/рік (≈€{eff}/міс, {m} місяців безкоштовно)", "billMonth": "Оплата: щомісячна €{m}/міс", "mailIntro": "Хочу підключити моніторинг Look360.", "mailChosen": "Вибрано:", "mailQuote": "Примітка: також хочу індивідуальну автоматизацію – надішліть, будь ласка, пропозицію.", "mailSubject": "Запит на підключення – Look360", "quotePrice": "за запитом", "hintWeb": "веб +8 €", "hintFb": "FB +3 €", "perMonthSpaced": "/ міс", "hintEmpty": "Додайте сайт або сторінку Facebook, щоб відстежувати цю компанію", "phName": "Назва конкурента", "phWeb": "Сайт (напр. konkurent.com)", "phFb": "Сторінка Facebook (напр. facebook.com/konkurent)", "remove": "Видалити", "sumEmpty": "Ще нічого не вибрано", "sumTotal": "Разом", "sumYearSuffix": "· річна оплата (2 місяці безкоштовно)", "perMonthUnit": "€/міс", "perYear": "/рік", "perYearUnit": "€/рік", "payNoteYear": "Ти сплачуєш одразу за весь рік (2 місяці безкоштовно). Картка лишається надійно прив'язаною й оновлюється раз на рік — можна скасувати будь-коли.", "twoMonthsFree": "2 місяці безкоштовно", "mlCompany": "Компанія", "mlContact": "Контакт", "mlPhone": "Телефон", "mlEmail": "E-mail", "mlOwnShop": "Власний магазин", "mlOwnFb": "Власний Facebook", "mlWatch": "Відстежувати", "mlPackage": "Пакет", "mlBilling": "Оплата", "unnamed": "(без назви)", "mlWeb": "веб", "totYear": "річна оплата €{yr}/рік (≈€{eff}/міс, 2 місяці безкоштовно)", "totMonth": "щомісячна оплата €{m}/міс", "btnContinuePay": "Перейти до оплати →", "btnPay": "Сплатити", "btnNext": "Далі →", "btnCreateAccount": "Створити обліковий запис і увійти", "btnCreatingAccount": "Створення облікового запису…", "errPassMin": "Пароль має містити щонайменше 8 символів.", "errAcctFail": "Не вдалося створити обліковий запис.", "errConnFail": "Помилка з’єднання. Спробуйте ще раз.", "navToolaud": "Панель", "copySending": "Надсилання…", "copySent": "Копію надіслано на вашу пошту ✓", "copyFail": "Не вдалося надіслати. Спробуйте ще раз.", "svc_req": "обов'язково", "svc_note": "Примітка", "svc_note_ph": "Додаткова інформація (необов'язково)", "svc_words": "{n}/30 слів", "svc_ownshop": "Ми скануємо ваш магазин (адреса в полі «Ваш магазин» вище).", "svc_seo_lbl": "Ключові слова", "svc_seo_ph": "одне ключове слово в рядку, напр. акумуляторний тример", "svc_seo_tier": "{n} ключових слів · {p} €/міс.", "svc_epoe_lbl": "Пріоритетні сторінки чи категорії (необов'язково)", "svc_epoe_ph": "напр. /products/batteries, сторінка кампанії", "svc_uptime_lbl": "Адреси для моніторингу", "svc_uptime_ph": "один URL у рядку (за замовчуванням — ваш магазин)", "svc_erp_lbl": "Яка ERP-система?", "svc_erp_ph": "напр. Directo, Merit, SimplBooks", "svc_erpacc_lbl": "Доступ / примітка щодо API (необов'язково)", "svc_hinnastus_lbl": "Платформа магазину (необов'язково)", "svc_hinnastus_ph": "напр. WooCommerce, Shopify, Magento", "svc_koolitus_size": "Кількість учасників", "svc_koolitus_topic": "Тема або фокус (необов'язково)", "svc_koolitus_time": "Бажаний час (необов'язково)", "svc_auto_lbl": "Що вам потрібно?", "svc_auto_ph": "Опишіть завдання — плагін, скрипт, дашборд", "svc_err_shop": "Додайте адресу свого магазину — вибрана послуга сканує ваш магазин.", "svc_err_req": "Заповніть обов'язкові поля для вибраних послуг.", "carryInfo": "У калькуляторі ви обрали: <b>{f} конкурентів у Facebook</b> та <b>{w} інтернет-магазинів</b> (≈ {m} €/міс.). Додайте нижче їхні назви й адреси — місячна плата формується за введеними компаніями.", "labMonthly": "Місячна плата", "labYearly": "Річний платіж", "effMonthly": "= {eff} €/міс.", "sumComp": "Конкурент", "invoiceDone": "Надішлемо рахунок на вашу електронну пошту. Моніторинг розпочнеться щойно надійде оплата — ми повідомимо.", "invoiceSending": "Надсилаємо…", "err_required": "Це поле обов'язкове.", "err_email": "Введіть коректну адресу електронної пошти."} keele kaupa) === */
+const T = {"locale": "uk-UA", "fbLine": "{n} конкурентів у Facebook", "webLineCalc": "{n} інтернет-магазинів у моніторингу цін + залишків", "webLineModal": "{n} інтернет-магазинів у моніторингу цін і залишків", "perMonth": "/міс", "saveAnnual": "{m} місяців безкоштовно – рахунок раз на рік (€{yr}/рік)", "chooseOne": "Виберіть щонайменше один модуль", "billYear": "Оплата: річна €{yr}/рік (≈€{eff}/міс, {m} місяців безкоштовно)", "billMonth": "Оплата: щомісячна €{m}/міс", "mailIntro": "Хочу підключити моніторинг Look360.", "mailChosen": "Вибрано:", "mailQuote": "Примітка: також хочу індивідуальну автоматизацію – надішліть, будь ласка, пропозицію.", "mailSubject": "Запит на підключення – Look360", "quotePrice": "за запитом", "hintWeb": "веб +8 €", "hintFb": "FB +3 €", "perMonthSpaced": "/ міс", "hintEmpty": "Додайте сайт або сторінку Facebook, щоб відстежувати цю компанію", "phName": "Назва конкурента", "phWeb": "Сайт (напр. konkurent.com)", "phFb": "Сторінка Facebook (напр. facebook.com/konkurent)", "remove": "Видалити", "sumEmpty": "Ще нічого не вибрано", "sumTotal": "Разом", "sumYearSuffix": "· річна оплата (2 місяці безкоштовно)", "perMonthUnit": "€/міс", "perYear": "/рік", "perYearUnit": "€/рік", "payNoteYear": "Ти сплачуєш одразу за весь рік (2 місяці безкоштовно). Картка лишається надійно прив'язаною й оновлюється раз на рік — можна скасувати будь-коли.", "twoMonthsFree": "2 місяці безкоштовно", "mlCompany": "Компанія", "mlContact": "Контакт", "mlPhone": "Телефон", "mlEmail": "E-mail", "mlOwnShop": "Власний магазин", "mlOwnFb": "Власний Facebook", "mlWatch": "Відстежувати", "mlPackage": "Пакет", "mlBilling": "Оплата", "unnamed": "(без назви)", "mlWeb": "веб", "totYear": "річна оплата €{yr}/рік (≈€{eff}/міс, 2 місяці безкоштовно)", "totMonth": "щомісячна оплата €{m}/міс", "btnContinuePay": "Перейти до оплати →", "btnPay": "Сплатити", "btnNext": "Далі →", "btnCreateAccount": "Створити обліковий запис і увійти", "btnCreatingAccount": "Створення облікового запису…", "errPassMin": "Пароль має містити щонайменше 8 символів.", "errAcctFail": "Не вдалося створити обліковий запис.", "errConnFail": "Помилка з’єднання. Спробуйте ще раз.", "navToolaud": "Панель", "copySending": "Надсилання…", "copySent": "Копію надіслано на вашу пошту ✓", "copyFail": "Не вдалося надіслати. Спробуйте ще раз.", "svc_req": "обов'язково", "svc_note": "Примітка", "svc_note_ph": "Додаткова інформація (необов'язково)", "svc_words": "{n}/30 слів", "svc_ownshop": "Ми скануємо ваш магазин (адреса в полі «Ваш магазин» вище).", "svc_seo_lbl": "Ключові слова", "svc_seo_ph": "одне ключове слово в рядку, напр. акумуляторний тример", "svc_seo_tier": "{n} ключових слів · {p} €/міс.", "svc_epoe_lbl": "Пріоритетні сторінки чи категорії (необов'язково)", "svc_epoe_ph": "напр. /products/batteries, сторінка кампанії", "svc_uptime_lbl": "Адреси для моніторингу", "svc_uptime_ph": "один URL у рядку (за замовчуванням — ваш магазин)", "svc_erp_lbl": "Яка ERP-система?", "svc_erp_ph": "напр. Directo, Merit, SimplBooks", "svc_erpacc_lbl": "Доступ / примітка щодо API (необов'язково)", "svc_hinnastus_lbl": "Платформа магазину (необов'язково)", "svc_hinnastus_ph": "напр. WooCommerce, Shopify, Magento", "svc_koolitus_size": "Кількість учасників", "svc_koolitus_topic": "Тема або фокус (необов'язково)", "svc_koolitus_time": "Бажаний час (необов'язково)", "svc_auto_lbl": "Що вам потрібно?", "svc_auto_ph": "Опишіть завдання — плагін, скрипт, дашборд", "svc_err_shop": "Додайте адресу свого магазину — вибрана послуга сканує ваш магазин.", "svc_err_req": "Заповніть обов'язкові поля для вибраних послуг.", "carryInfo": "У калькуляторі ви обрали: <b>{f} конкурентів у Facebook</b> та <b>{w} інтернет-магазинів</b> (≈ {m} €/міс.). Додайте нижче їхні назви й адреси — місячна плата формується за введеними компаніями.", "labMonthly": "Місячна плата", "labYearly": "Річний платіж", "effMonthly": "= {eff} €/міс.", "sumComp": "Конкурент", "invoiceDone": "Надішлемо рахунок на вашу електронну пошту. Моніторинг розпочнеться щойно надійде оплата — ми повідомимо.", "invoiceSending": "Надсилаємо…", "err_required": "Це поле обов'язкове.", "err_email": "Введіть коректну адресу електронної пошти."};
 function fmt(s,o){return String(s).replace(/\{(\w+)\}/g,(_,k)=>o[k]!=null?o[k]:'')}
 
 /* === Login-staatus: kui külastaja on äpis juba sisse logitud, vaheta "Logi
@@ -1572,12 +1598,21 @@ function fmt(s,o){return String(s).replace(/\{(\w+)\}/g,(_,k)=>o[k]!=null?o[k]:'
   mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',close));
 })();
 
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+/* Reveal: threshold 0 + rootMargin, et kiirel kerimisel (PageDown/End) sisu kohe ilmuks.
+   Ankruga maandumisel või ankrule hüppamisel näita KÕIK kohe - muidu jääb ekraan valgeks. */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:0,rootMargin:'0px 0px 140px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
 function countUp(el){const t=+el.dataset.count;let c=0;const s=Math.max(1,t/55);const iv=setInterval(()=>{c+=s;if(c>=t){c=t;clearInterval(iv)}el.textContent=Math.floor(c).toLocaleString(T.locale)},22)}
 const cio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){countUp(e.target);cio.unobserve(e.target)}}),{threshold:.6});
 document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
+
+function revealAll(){
+  document.querySelectorAll('.reveal').forEach(el=>{el.classList.add('in');io.unobserve(el)});
+  document.querySelectorAll('[data-count]').forEach(el=>{el.textContent=(+el.dataset.count).toLocaleString(T.locale);cio.unobserve(el)});
+}
+if(location.hash)revealAll();
+addEventListener('hashchange',revealAll);
 
 /* scroll-karussell (teenused, portfoolio): autoplay + nooled + punktid + pyyhe */
 document.querySelectorAll('.scrl').forEach(function(scrl){
@@ -1605,6 +1640,10 @@ document.querySelectorAll('.scrl').forEach(function(scrl){
   function restart(){stop();start();}
   if(next)next.addEventListener('click',function(){go(1);restart();});
   if(prev)prev.addEventListener('click',function(){go(-1);restart();});
+  // Hiireratta vertikaalne kerimine karusselli kohal peab kerima LEHTE, mitte kinni jääma
+  track.addEventListener('wheel',function(e){
+    if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){e.preventDefault();window.scrollBy({top:e.deltaY,behavior:'auto'});}
+  },{passive:false});
   track.addEventListener('scroll',sync,{passive:true});
   scrl.addEventListener('mouseenter',stop); scrl.addEventListener('mouseleave',start);
   scrl.addEventListener('focusin',stop); scrl.addEventListener('focusout',start);
@@ -1659,7 +1698,7 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
   }
   mods.forEach(x=>x.addEventListener('click',()=>{x.classList.toggle('on');upd();}));
   bopts.forEach(b=>b.addEventListener('click',()=>{bopts.forEach(o=>o.classList.remove('on'));b.classList.add('on');upd();}));
-  // E: soovituslik stardipakett
+  // E: soovituslik stardipakett — ütle kasutajale, MIS valiti (mitte hääletu muutus)
   const presetBtn=document.getElementById('presetBtn');
   if(presetBtn)presetBtn.addEventListener('click',()=>{
     fb.value=8;web.value=3;
@@ -1667,6 +1706,7 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
     mods.forEach(x=>x.classList.toggle('on',want.includes(+x.dataset.price)));
     bopts.forEach(o=>o.classList.toggle('on',o.dataset.mode==='month'));
     upd();
+    const pn=document.getElementById('presetNote');if(pn)pn.style.display='block';
   });
   fb.addEventListener('input',upd);web.addEventListener('input',upd);upd();
 })();
@@ -1782,6 +1822,19 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
     }
     return {msg:''};
   }
+  /* Välja-tasandi veateade: punane ääris + tekst otse välja all. Kaob sisestamisel. */
+  function fieldErr(el,msg){
+    if(!el)return;
+    el.classList.add('err');
+    let fe=(el.id==='ownSite')?document.getElementById('ownSiteErr'):el.parentElement.querySelector('.ferr2');
+    if(!fe){fe=document.createElement('div');fe.className='ferr2';el.insertAdjacentElement('afterend',fe);}
+    fe.textContent=msg;fe.classList.add('show');
+    el.addEventListener('input',function h(){el.classList.remove('err');fe.classList.remove('show');el.removeEventListener('input',h);});
+  }
+  function clearFieldErrs(){
+    ov.querySelectorAll('.err').forEach(el=>el.classList.remove('err'));
+    ov.querySelectorAll('.ferr2.show').forEach(el=>el.classList.remove('show'));
+  }
 
   function calc(){
     let web=0,fb=0; const lines=[];
@@ -1799,8 +1852,15 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
   function fmtPrice(){
     if(done)return;
     const {m}=calc();
-    if(isYear()){const yr=m*(12-FREE_MONTHS);priceEl.innerHTML=`${yr} €<small>${T.perYear}</small>${m>0?'<span class="save">'+T.twoMonthsFree+'</span>':''}`;}
-    else priceEl.innerHTML=`${m} €<small>${T.perMonth}</small>`;
+    const lab=document.getElementById('ordPriceLab');
+    if(isYear()){
+      const yr=m*(12-FREE_MONTHS),eff=Math.round(yr/12);
+      if(lab)lab.textContent=T.labYearly||lab.textContent;   // "Щомісячна плата" silt ei tohi seista aastasumma kohal
+      priceEl.innerHTML=`${yr} €<small>${T.perYear}</small>${m>0?'<span class="save">'+T.twoMonthsFree+' · '+fmt(T.effMonthly||'',{eff})+'</span>':''}`;
+    }else{
+      if(lab)lab.textContent=T.labMonthly||lab.textContent;
+      priceEl.innerHTML=`${m} €<small>${T.perMonth}</small>`;
+    }
   }
   function rowHint(c){
     const w=c.querySelector('.c-web').value.trim(), f=c.querySelector('.c-fb').value.trim();
@@ -1821,7 +1881,19 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
   }
   function buildSummary(){
     const {lines,m}=calc();
-    let h=lines.length?lines.map(l=>`<div class="sr"><span>${l[0]}</span><b>${l[1]}</b></div>`).join(''):`<div class="sr"><span>${T.sumEmpty}</span><b></b></div>`;
+    // Jälgitavad firmad: kasutaja peab enne maksmist nägema, KEDA seirama hakatakse
+    let h='';
+    const own=document.getElementById('ownSite').value.trim();
+    const ownf=document.getElementById('ownFb').value.trim();
+    if(own)h+=`<div class="sr"><span>${esc(T.mlOwnShop)}</span><b>${esc(own)}</b></div>`;
+    if(ownf)h+=`<div class="sr"><span>${esc(T.mlOwnFb)}</span><b>${esc(ownf)}</b></div>`;
+    compList.querySelectorAll('.comp').forEach(c=>{
+      const n=c.querySelector('.c-name').value.trim(),w=c.querySelector('.c-web').value.trim(),f=c.querySelector('.c-fb').value.trim();
+      if(!n&&!w&&!f)return;
+      const val=[n,w||f].filter(Boolean).join(' · ')||w||f;
+      h+=`<div class="sr"><span>${esc(T.sumComp||'')}</span><b>${esc(val)}</b></div>`;
+    });
+    h+=lines.length?lines.map(l=>`<div class="sr"><span>${l[0]}</span><b>${l[1]}</b></div>`).join(''):`<div class="sr"><span>${T.sumEmpty}</span><b></b></div>`;
     const y=isYear();const yr=m*(12-FREE_MONTHS);
     h+=`<div class="sr tot"><span>${T.sumTotal}${y?T.sumYearSuffix:''}</span><b>${y?`${yr}${T.perYearUnit}`:`${m}${T.perMonthUnit}`}</b></div>`;
     document.getElementById('osum').innerHTML=h;
@@ -1995,13 +2067,14 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
       mooduli_andmed:collectAndmed(),                              // per-teenus andmevormid -> Moodul.params
       arveldus:y?'aasta':'kuu', kuutasu:m, keel:T.locale};
   }
-  async function postOrder(){
+  async function postOrder(extra){
     // Saadab tellimuse Look360 otspunkti (salvestab + teavitab operaatorit).
     // Tagastab true AINULT serveri kinnitusel; ebaõnnestumisel false (mailto-varu).
+    // extra: lisaväljad (nt makseviis:'ulekandearve' arvega-maksmise tee jaoks).
     try{
       const r=await fetch(ORDER_ENDPOINT,{method:'POST',mode:'cors',
         headers:{'Content-Type':'application/json'},
-        body:JSON.stringify(buildOrder())});
+        body:JSON.stringify(Object.assign(buildOrder(),extra||{}))});
       return !!(r&&r.ok);
     }catch(e){return false;}
   }
@@ -2021,7 +2094,7 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
       return {fail:true};
     }catch(e){return {fail:true};}
   }
-  function naitaPayDone(ok){
+  function naitaPayDone(ok,invoice){
     var mc=document.getElementById('mailCopy');
     if(mc){mc.disabled=false;mc.textContent=mc.dataset.label||mc.textContent;}      // lähtesta koopia-nupp (re-open)
     var mcs=document.getElementById('mailCopyStatus');if(mcs){mcs.style.display='none';mcs.textContent='';}
@@ -2030,19 +2103,36 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
     foot.style.display='none';done=true;
     stepsEl.forEach(s=>s.classList.add('done'));
     var payOk=document.getElementById('payOk'),payFail=document.getElementById('payFail'),ac=document.getElementById('acctCreate');
+    var txt=document.getElementById('payOkTxt');
+    if(txt){if(txt.dataset.orig==null)txt.dataset.orig=txt.textContent;txt.textContent=(invoice&&T.invoiceDone)?T.invoiceDone:txt.dataset.orig;}
     if(ok){ if(payOk)payOk.style.display=''; if(payFail)payFail.classList.remove('show'); if(ac)ac.style.display=''; }
     else  { if(payOk)payOk.style.display='none'; if(payFail)payFail.classList.add('show'); if(ac)ac.style.display='none'; }
   }
   function valid(n){
+    clearFieldErrs();
     if(n===1){
       const e1=document.getElementById('err1');if(e1.dataset.orig==null)e1.dataset.orig=e1.textContent;
       const {m,web,fb,quote}=calc();
-      if(!((web+fb)>0||m>0||quote)){e1.textContent=e1.dataset.orig;e1.classList.add('show');return false;}
+      if(!((web+fb)>0||m>0||quote)){e1.textContent=e1.dataset.orig;e1.classList.add('show');e1.scrollIntoView({block:'center'});return false;}
       const sv=svcViga();
-      if(sv.msg){e1.textContent=sv.msg;e1.classList.add('show');if(sv.el){sv.el.focus();sv.el.scrollIntoView({block:'center'});}return false;}
+      if(sv.msg){e1.textContent=sv.msg;e1.classList.add('show');if(sv.el){fieldErr(sv.el,sv.msg);sv.el.focus();sv.el.scrollIntoView({block:'center'});}return false;}
       e1.textContent=e1.dataset.orig;e1.classList.remove('show');return true;
     }
-    if(n===2){const nm=document.getElementById('cName').value.trim(),co=document.getElementById('cContact').value.trim(),em=document.getElementById('cEmail').value.trim();const ok=!!nm&&!!co&&/^\S+@\S+\.\S+$/.test(em);document.getElementById('err2').classList.toggle('show',!ok);return ok;}
+    if(n===2){
+      const nmEl=document.getElementById('cName'),coEl=document.getElementById('cContact'),emEl=document.getElementById('cEmail');
+      const nm=nmEl.value.trim(),co=coEl.value.trim(),em=emEl.value.trim();
+      const ok=!!nm&&!!co&&/^\S+@\S+\.\S+$/.test(em);
+      document.getElementById('err2').classList.toggle('show',!ok);
+      if(!ok){
+        const msg=document.getElementById('err2').textContent;
+        let first=null;
+        if(!nm){fieldErr(nmEl,tt('err_required')||msg);first=first||nmEl;}
+        if(!co){fieldErr(coEl,tt('err_required')||msg);first=first||coEl;}
+        if(!/^\S+@\S+\.\S+$/.test(em)){fieldErr(emEl,tt('err_email')||msg);first=first||emEl;}
+        if(first){first.focus();first.scrollIntoView({block:'center'});}
+      }
+      return ok;
+    }
     return true;
   }
   function setStep(n){
@@ -2059,11 +2149,25 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
     done=false;
     compList.innerHTML='';addRow();addRow();
     resetPanels();                                   // tühjenda + peida teenuste andmevormid
+    clearFieldErrs();
+    const carry=document.getElementById('calcCarry');
+    if(carry)carry.classList.remove('show');
     if(prefill){
       const onLabels=[...document.querySelectorAll('#calc .modrow.on')].map(x=>x.dataset.label);
       omods.forEach(x=>x.classList.toggle('on',onLabels.includes(x.dataset.label)));
       const calcYear=!!document.querySelector('#billing .bopt.on[data-mode="year"]');
       obill.forEach(b=>b.classList.toggle('on',(b.dataset.mode==='year')===calcYear));
+      // Kalkulaatori mahud EI kandu automaatselt üle (firmade nimed on teadmata) —
+      // ütle see kasutajale selgelt, muidu paistab, et valik läks kaotsi ja hind hüppas.
+      const f=+(document.getElementById('fbRange')||{value:0}).value||0;
+      const w=+(document.getElementById('webRange')||{value:0}).value||0;
+      if(carry&&(f>0||w>0)){
+        const est=+(document.getElementById('calcPrice')||{textContent:0}).textContent||0;
+        document.getElementById('calcCarryTxt').innerHTML=fmt(T.carryInfo||'',{f:f,w:w,m:est});
+        carry.classList.add('show');
+        // lisa kalkulaatori konkurentide arvu jagu tühje ridu (2 on juba ees, lagi 8)
+        for(let i=2;i<Math.min(f,8);i++)addRow();
+      }
     }else{
       omods.forEach(x=>x.classList.remove('on'));
       obill.forEach(b=>b.classList.toggle('on',b.dataset.mode==='month'));
@@ -2090,6 +2194,16 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
   omods.forEach(x=>x.addEventListener('click',()=>{x.classList.toggle('on');syncPanel(x);if(x.classList.contains('on')){const f=x.nextElementSibling&&x.nextElementSibling.querySelector('.svc-f');if(f)f.focus();}fmtPrice();}));
   obill.forEach(b=>b.addEventListener('click',()=>{obill.forEach(o=>o.classList.remove('on'));b.classList.add('on');fmtPrice();}));
   backBtn.addEventListener('click',()=>{if(step>1)setStep(step-1);});
+  // Ülekandearvega maksmine: salvesta tellimus ilma kaardimakseta (operaator saadab arve;
+  // seire käivitub makse laekumise kinnitamisel — sama voog mis operaatori blur-värav).
+  var invoiceBtn=document.getElementById('invoiceBtn');
+  if(invoiceBtn)invoiceBtn.addEventListener('click',async ()=>{
+    if(invoiceBtn.disabled)return;
+    invoiceBtn.disabled=true;var l0=invoiceBtn.textContent;invoiceBtn.textContent=T.invoiceSending||l0;
+    const ok=await postOrder({makseviis:'ulekandearve'});
+    invoiceBtn.disabled=false;invoiceBtn.textContent=l0;
+    naitaPayDone(ok,true);
+  });
   nextBtn.addEventListener('click',async ()=>{
     if(step<4){if(!valid(step))return;setStep(step+1);}
     else{
