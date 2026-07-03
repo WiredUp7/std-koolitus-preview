@@ -748,6 +748,7 @@
       <a href="#portfoolio">Портфоліо</a>
       <a href="#hinnad">Ціни</a>
       <a href="#kkk">FAQ</a>
+      <a href="https://scan.look360.eu/hinnaindeks/" class="js-geo-indeks" hidden>Індекс цін Естонії</a>
     </nav>
     <div class="nav-r">
       <a href="#hinnad" class="btn btn-grad js-order">Підключіться від 3€</a>
@@ -762,6 +763,7 @@
     <a href="#portfoolio">Портфоліо</a>
     <a href="#hinnad">Ціни</a>
     <a href="#kkk">FAQ</a>
+    <a href="https://scan.look360.eu/hinnaindeks/" class="js-geo-indeks" hidden>Індекс цін Естонії</a>
     <a href="https://scan.look360.eu/accounts/login/" class="js-login">Увійти</a>
     <a href="#hinnad" class="btn btn-grad js-order">Підключення від 3€ на місяць</a>
   </div>
@@ -1626,6 +1628,27 @@ function fmt(s,o){return String(s).replace(/\{(\w+)\}/g,(_,k)=>o[k]!=null?o[k]:'
       });
     })
     .catch(function(){});
+})();
+
+/* === Geo-sihitud nav-link: "Індекс цін Естонії" kuvatakse ainult EE-külastajale.
+   Riik samast Cloudflare trace'ist mis keelesuunajal; kui trace ei vasta
+   (adblocker vms), küsime äpi otspunktilt /hinnaindeks/riik.json (CF-IPCountry). */
+(function(){
+  function show(){document.querySelectorAll('.js-geo-indeks').forEach(function(a){a.hidden=false})}
+  function varu(){
+    fetch('https://scan.look360.eu/hinnaindeks/riik.json')
+      .then(function(r){return r.json()})
+      .then(function(d){if(d&&d.riik==='EE')show()})
+      .catch(function(){});
+  }
+  fetch('https://www.cloudflare.com/cdn-cgi/trace',{cache:'no-store'})
+    .then(function(r){return r.text()})
+    .then(function(t){
+      var m=t.match(/loc=([A-Z]{2})/);
+      if(!m){varu();return}
+      if(m[1]==='EE')show();
+    })
+    .catch(varu);
 })();
 
 /* === keelevaheti (lipud) + IP-suunaja (Cloudflare trace) === */
