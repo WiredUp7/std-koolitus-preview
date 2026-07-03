@@ -1602,8 +1602,8 @@
 const nav=document.getElementById('nav');
 addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>12),{passive:true});
 
-/* === i18n: keele-stringid (build_i18n.py asendab {"locale": "sv-SE", "fbLine": "{n} konkurrenter på Facebook", "webLineCalc": "{n} e-butiker i pris- + lagerbevakning", "webLineModal": "{n} e-butiker i pris- och lagerbevakning", "perMonth": "/mån", "saveAnnual": "{m} månader gratis – faktureras en gång per år (€{yr}/år)", "chooseOne": "Välj minst en modul", "billYear": "Fakturering: årsavgift €{yr}/år (≈€{eff}/mån, {m} månader gratis)", "billMonth": "Fakturering: månadsavgift €{m}/mån", "mailIntro": "Jag vill teckna mig för Look360-bevakning.", "mailChosen": "Valt:", "mailQuote": "Obs: jag vill även ha skräddarsydd automatisering – skicka gärna en offert.", "mailSubject": "Anmälan – Look360", "quotePrice": "på begäran", "hintWeb": "webb +8 €", "hintFb": "FB +3 €", "perMonthSpaced": "/ mån", "hintEmpty": "Lägg till en webbplats eller Facebook-sida för att bevaka det här företaget", "phName": "Konkurrentens namn", "phWeb": "Webbplats (t.ex. konkurrent.com)", "phFb": "Facebook-sida (t.ex. facebook.com/konkurrent)", "remove": "Ta bort", "sumEmpty": "Inget valt ännu", "sumTotal": "Totalt", "sumYearSuffix": "· årsavgift (2 månader gratis)", "perMonthUnit": "€/mån", "perYear": "/år", "perYearUnit": "€/år", "payNoteYear": "Du betalar för hela året nu (2 månader gratis). Ditt kort förblir säkert kopplat och förnyas en gång om året — avsluta när du vill.", "twoMonthsFree": "2 månader gratis", "mlCompany": "Företag", "mlContact": "Kontakt", "mlPhone": "Telefon", "mlEmail": "E-post", "mlOwnShop": "Egen butik", "mlOwnFb": "Egen Facebook", "mlWatch": "Att bevaka", "mlPackage": "Paket", "mlBilling": "Fakturering", "unnamed": "(namnlös)", "mlWeb": "webb", "totYear": "årsavgift €{yr}/år (≈€{eff}/mån, 2 månader gratis)", "totMonth": "månadsavgift €{m}/mån", "btnContinuePay": "Gå vidare till betalning →", "btnPay": "Betala", "btnNext": "Nästa →", "btnCreateAccount": "Skapa konto och logga in", "btnCreatingAccount": "Skapar konto…", "errPassMin": "Lösenordet måste vara minst 8 tecken.", "errAcctFail": "Det gick inte att skapa kontot.", "errConnFail": "Anslutningen misslyckades. Försök igen.", "navToolaud": "Kontrollpanel", "copySending": "Skickar…", "copySent": "Kopia skickad till din e-post ✓", "copyFail": "Sändningen misslyckades. Försök igen.", "svc_req": "obligatoriskt", "svc_note": "Anteckning", "svc_note_ph": "Något mer vi bör veta (valfritt)", "svc_words": "{n}/30 ord", "svc_ownshop": "Vi skannar din egen butik (adressen under ”Din e-handel” ovan).", "svc_seo_lbl": "Nyckelord", "svc_seo_ph": "ett nyckelord per rad, t.ex. batteritrimmer", "svc_seo_tier": "{n} nyckelord · {p} €/mån", "svc_epoe_lbl": "Prioriterade sidor eller kategorier (valfritt)", "svc_epoe_ph": "t.ex. /produkter/batterier, kampanjsida", "svc_uptime_lbl": "Adresser att övervaka", "svc_uptime_ph": "en URL per rad (standard: din butik)", "svc_erp_lbl": "Vilket ERP-system?", "svc_erp_ph": "t.ex. Directo, Merit, SimplBooks", "svc_erpacc_lbl": "Åtkomst / API-anteckning (valfritt)", "svc_hinnastus_lbl": "Butiksplattform (valfritt)", "svc_hinnastus_ph": "t.ex. WooCommerce, Shopify, Magento", "svc_koolitus_size": "Antal deltagare", "svc_koolitus_topic": "Ämne eller fokus (valfritt)", "svc_koolitus_time": "Önskad tid (valfritt)", "svc_auto_lbl": "Vad behöver du?", "svc_auto_ph": "Beskriv uppgiften — tillägg, skript, dashboard", "svc_err_shop": "Lägg till din butiksadress — den valda tjänsten skannar din butik.", "svc_err_req": "Fyll i obligatoriska fält för de valda tjänsterna.", "carryInfo": "I kalkylatorn valde du: <b>{f} konkurrenter på Facebook</b> och <b>{w} e-butiker</b> (≈ {m} €/mån). Lägg till deras namn och adresser nedan — månadsavgiften baseras på de företag du anger.", "labMonthly": "Månadsavgift", "labYearly": "Årsbetalning", "effMonthly": "= {eff} €/mån", "sumComp": "Konkurrent", "invoiceDone": "Vi skickar en faktura för banköverföring till din e-post. Bevakningen startar så snart betalningen kommit in — vi hör av oss.", "invoiceSending": "Skickar…", "err_required": "Det här fältet är obligatoriskt.", "err_email": "Ange en giltig e-postadress.", "svc_brand_lbl": "Ditt/dina varumärken (valfritt)", "svc_brand_ph": "t.ex. EGO Power+, STIGA"} keele kaupa) === */
-const T = {"locale": "sv-SE", "fbLine": "{n} konkurrenter på Facebook", "webLineCalc": "{n} e-butiker i pris- + lagerbevakning", "webLineModal": "{n} e-butiker i pris- och lagerbevakning", "perMonth": "/mån", "saveAnnual": "{m} månader gratis – faktureras en gång per år (€{yr}/år)", "chooseOne": "Välj minst en modul", "billYear": "Fakturering: årsavgift €{yr}/år (≈€{eff}/mån, {m} månader gratis)", "billMonth": "Fakturering: månadsavgift €{m}/mån", "mailIntro": "Jag vill teckna mig för Look360-bevakning.", "mailChosen": "Valt:", "mailQuote": "Obs: jag vill även ha skräddarsydd automatisering – skicka gärna en offert.", "mailSubject": "Anmälan – Look360", "quotePrice": "på begäran", "hintWeb": "webb +8 €", "hintFb": "FB +3 €", "perMonthSpaced": "/ mån", "hintEmpty": "Lägg till en webbplats eller Facebook-sida för att bevaka det här företaget", "phName": "Konkurrentens namn", "phWeb": "Webbplats (t.ex. konkurrent.com)", "phFb": "Facebook-sida (t.ex. facebook.com/konkurrent)", "remove": "Ta bort", "sumEmpty": "Inget valt ännu", "sumTotal": "Totalt", "sumYearSuffix": "· årsavgift (2 månader gratis)", "perMonthUnit": "€/mån", "perYear": "/år", "perYearUnit": "€/år", "payNoteYear": "Du betalar för hela året nu (2 månader gratis). Ditt kort förblir säkert kopplat och förnyas en gång om året — avsluta när du vill.", "twoMonthsFree": "2 månader gratis", "mlCompany": "Företag", "mlContact": "Kontakt", "mlPhone": "Telefon", "mlEmail": "E-post", "mlOwnShop": "Egen butik", "mlOwnFb": "Egen Facebook", "mlWatch": "Att bevaka", "mlPackage": "Paket", "mlBilling": "Fakturering", "unnamed": "(namnlös)", "mlWeb": "webb", "totYear": "årsavgift €{yr}/år (≈€{eff}/mån, 2 månader gratis)", "totMonth": "månadsavgift €{m}/mån", "btnContinuePay": "Gå vidare till betalning →", "btnPay": "Betala", "btnNext": "Nästa →", "btnCreateAccount": "Skapa konto och logga in", "btnCreatingAccount": "Skapar konto…", "errPassMin": "Lösenordet måste vara minst 8 tecken.", "errAcctFail": "Det gick inte att skapa kontot.", "errConnFail": "Anslutningen misslyckades. Försök igen.", "navToolaud": "Kontrollpanel", "copySending": "Skickar…", "copySent": "Kopia skickad till din e-post ✓", "copyFail": "Sändningen misslyckades. Försök igen.", "svc_req": "obligatoriskt", "svc_note": "Anteckning", "svc_note_ph": "Något mer vi bör veta (valfritt)", "svc_words": "{n}/30 ord", "svc_ownshop": "Vi skannar din egen butik (adressen under ”Din e-handel” ovan).", "svc_seo_lbl": "Nyckelord", "svc_seo_ph": "ett nyckelord per rad, t.ex. batteritrimmer", "svc_seo_tier": "{n} nyckelord · {p} €/mån", "svc_epoe_lbl": "Prioriterade sidor eller kategorier (valfritt)", "svc_epoe_ph": "t.ex. /produkter/batterier, kampanjsida", "svc_uptime_lbl": "Adresser att övervaka", "svc_uptime_ph": "en URL per rad (standard: din butik)", "svc_erp_lbl": "Vilket ERP-system?", "svc_erp_ph": "t.ex. Directo, Merit, SimplBooks", "svc_erpacc_lbl": "Åtkomst / API-anteckning (valfritt)", "svc_hinnastus_lbl": "Butiksplattform (valfritt)", "svc_hinnastus_ph": "t.ex. WooCommerce, Shopify, Magento", "svc_koolitus_size": "Antal deltagare", "svc_koolitus_topic": "Ämne eller fokus (valfritt)", "svc_koolitus_time": "Önskad tid (valfritt)", "svc_auto_lbl": "Vad behöver du?", "svc_auto_ph": "Beskriv uppgiften — tillägg, skript, dashboard", "svc_err_shop": "Lägg till din butiksadress — den valda tjänsten skannar din butik.", "svc_err_req": "Fyll i obligatoriska fält för de valda tjänsterna.", "carryInfo": "I kalkylatorn valde du: <b>{f} konkurrenter på Facebook</b> och <b>{w} e-butiker</b> (≈ {m} €/mån). Lägg till deras namn och adresser nedan — månadsavgiften baseras på de företag du anger.", "labMonthly": "Månadsavgift", "labYearly": "Årsbetalning", "effMonthly": "= {eff} €/mån", "sumComp": "Konkurrent", "invoiceDone": "Vi skickar en faktura för banköverföring till din e-post. Bevakningen startar så snart betalningen kommit in — vi hör av oss.", "invoiceSending": "Skickar…", "err_required": "Det här fältet är obligatoriskt.", "err_email": "Ange en giltig e-postadress.", "svc_brand_lbl": "Ditt/dina varumärken (valfritt)", "svc_brand_ph": "t.ex. EGO Power+, STIGA"};
+/* === i18n: keele-stringid (build_i18n.py asendab {"locale": "sv-SE", "fbLine": "{n} konkurrenter på Facebook", "webLineCalc": "{n} e-butiker i pris- + lagerbevakning", "webLineModal": "{n} e-butiker i pris- och lagerbevakning", "perMonth": "/mån", "saveAnnual": "{m} månader gratis – faktureras en gång per år (€{yr}/år)", "chooseOne": "Välj minst en modul", "billYear": "Fakturering: årsavgift €{yr}/år (≈€{eff}/mån, {m} månader gratis)", "billMonth": "Fakturering: månadsavgift €{m}/mån", "mailIntro": "Jag vill teckna mig för Look360-bevakning.", "mailChosen": "Valt:", "mailQuote": "Obs: jag vill även ha skräddarsydd automatisering – skicka gärna en offert.", "mailSubject": "Anmälan – Look360", "quotePrice": "på begäran", "hintWeb": "webb +8 €", "hintFb": "FB +3 €", "perMonthSpaced": "/ mån", "hintEmpty": "Lägg till en webbplats eller Facebook-sida för att bevaka det här företaget", "phName": "Konkurrentens namn", "phWeb": "Webbplats (t.ex. konkurrent.com)", "phFb": "Facebook-sida (t.ex. facebook.com/konkurrent)", "remove": "Ta bort", "sumEmpty": "Inget valt ännu", "sumTotal": "Totalt", "sumYearSuffix": "· årsavgift (2 månader gratis)", "perMonthUnit": "€/mån", "perYear": "/år", "perYearUnit": "€/år", "payNoteYear": "Du betalar för hela året nu (2 månader gratis). Ditt kort förblir säkert kopplat och förnyas en gång om året — avsluta när du vill.", "twoMonthsFree": "2 månader gratis", "mlCompany": "Företag", "mlContact": "Kontakt", "mlPhone": "Telefon", "mlEmail": "E-post", "mlOwnShop": "Egen butik", "mlOwnFb": "Egen Facebook", "mlWatch": "Att bevaka", "mlPackage": "Paket", "mlBilling": "Fakturering", "unnamed": "(namnlös)", "mlWeb": "webb", "totYear": "årsavgift €{yr}/år (≈€{eff}/mån, 2 månader gratis)", "totMonth": "månadsavgift €{m}/mån", "btnContinuePay": "Gå vidare till betalning →", "btnPay": "Betala", "btnNext": "Nästa →", "btnCreateAccount": "Skapa konto och logga in", "btnCreatingAccount": "Skapar konto…", "errPassMin": "Lösenordet måste vara minst 8 tecken.", "errAcctFail": "Det gick inte att skapa kontot.", "errConnFail": "Anslutningen misslyckades. Försök igen.", "navToolaud": "Kontrollpanel", "copySending": "Skickar…", "copySent": "Kopia skickad till din e-post ✓", "copyFail": "Sändningen misslyckades. Försök igen.", "svc_req": "obligatoriskt", "svc_note": "Anteckning", "svc_note_ph": "Något mer vi bör veta (valfritt)", "svc_words": "{n}/30 ord", "svc_ownshop": "Vi skannar din egen butik (adressen under ”Din e-handel” ovan).", "svc_seo_lbl": "Nyckelord", "svc_seo_ph": "ett nyckelord per rad, t.ex. batteritrimmer", "svc_seo_tier": "{n} nyckelord · {p} €/mån", "svc_epoe_lbl": "Prioriterade sidor eller kategorier (valfritt)", "svc_epoe_ph": "t.ex. /produkter/batterier, kampanjsida", "svc_uptime_lbl": "Adresser att övervaka", "svc_uptime_ph": "en URL per rad (standard: din butik)", "svc_erp_lbl": "Vilket ERP-system?", "svc_erp_ph": "t.ex. Directo, Merit, SimplBooks", "svc_erpacc_lbl": "Åtkomst / API-anteckning (valfritt)", "svc_hinnastus_lbl": "Butiksplattform (valfritt)", "svc_hinnastus_ph": "t.ex. WooCommerce, Shopify, Magento", "svc_koolitus_size": "Antal deltagare", "svc_koolitus_topic": "Ämne eller fokus (valfritt)", "svc_koolitus_time": "Önskad tid (valfritt)", "svc_auto_lbl": "Vad behöver du?", "svc_auto_ph": "Beskriv uppgiften — tillägg, skript, dashboard", "svc_err_shop": "Lägg till din butiksadress — den valda tjänsten skannar din butik.", "svc_err_req": "Fyll i obligatoriska fält för de valda tjänsterna.", "carryInfo": "I kalkylatorn valde du: <b>{f} konkurrenter på Facebook</b> och <b>{w} e-butiker</b> (≈ {m} €/mån). Lägg till deras namn och adresser nedan — månadsavgiften baseras på de företag du anger.", "labMonthly": "Månadsavgift", "labYearly": "Årsbetalning", "effMonthly": "= {eff} €/mån", "sumComp": "Konkurrent", "invoiceDone": "Vi skickar en faktura för banköverföring till din e-post. Bevakningen startar så snart betalningen kommit in — vi hör av oss.", "invoiceSending": "Skickar…", "err_required": "Det här fältet är obligatoriskt.", "err_email": "Ange en giltig e-postadress.", "svc_brand_lbl": "Ditt/dina varumärken (valfritt)", "svc_brand_ph": "t.ex. EGO Power+, STIGA", "chatTitle": "Kundsupport", "chatSub": "Look360-teamet svarar här", "chatHi": "Hej! Skriv din fråga här — vi svarar så snart vi kan. Lämna din e-post så kan vi även svara när du lämnat sidan.", "chatPh": "Skriv din fråga…", "chatEmailPh": "E-post för svar (valfritt)", "chatSend": "Skicka", "chatErr": "Det gick inte att skicka — försök igen.", "chatNet": "Nätverksfel — försök igen.", "chatOpen": "Öppna kundsupport", "chatClose": "Stäng"} keele kaupa) === */
+const T = {"locale": "sv-SE", "fbLine": "{n} konkurrenter på Facebook", "webLineCalc": "{n} e-butiker i pris- + lagerbevakning", "webLineModal": "{n} e-butiker i pris- och lagerbevakning", "perMonth": "/mån", "saveAnnual": "{m} månader gratis – faktureras en gång per år (€{yr}/år)", "chooseOne": "Välj minst en modul", "billYear": "Fakturering: årsavgift €{yr}/år (≈€{eff}/mån, {m} månader gratis)", "billMonth": "Fakturering: månadsavgift €{m}/mån", "mailIntro": "Jag vill teckna mig för Look360-bevakning.", "mailChosen": "Valt:", "mailQuote": "Obs: jag vill även ha skräddarsydd automatisering – skicka gärna en offert.", "mailSubject": "Anmälan – Look360", "quotePrice": "på begäran", "hintWeb": "webb +8 €", "hintFb": "FB +3 €", "perMonthSpaced": "/ mån", "hintEmpty": "Lägg till en webbplats eller Facebook-sida för att bevaka det här företaget", "phName": "Konkurrentens namn", "phWeb": "Webbplats (t.ex. konkurrent.com)", "phFb": "Facebook-sida (t.ex. facebook.com/konkurrent)", "remove": "Ta bort", "sumEmpty": "Inget valt ännu", "sumTotal": "Totalt", "sumYearSuffix": "· årsavgift (2 månader gratis)", "perMonthUnit": "€/mån", "perYear": "/år", "perYearUnit": "€/år", "payNoteYear": "Du betalar för hela året nu (2 månader gratis). Ditt kort förblir säkert kopplat och förnyas en gång om året — avsluta när du vill.", "twoMonthsFree": "2 månader gratis", "mlCompany": "Företag", "mlContact": "Kontakt", "mlPhone": "Telefon", "mlEmail": "E-post", "mlOwnShop": "Egen butik", "mlOwnFb": "Egen Facebook", "mlWatch": "Att bevaka", "mlPackage": "Paket", "mlBilling": "Fakturering", "unnamed": "(namnlös)", "mlWeb": "webb", "totYear": "årsavgift €{yr}/år (≈€{eff}/mån, 2 månader gratis)", "totMonth": "månadsavgift €{m}/mån", "btnContinuePay": "Gå vidare till betalning →", "btnPay": "Betala", "btnNext": "Nästa →", "btnCreateAccount": "Skapa konto och logga in", "btnCreatingAccount": "Skapar konto…", "errPassMin": "Lösenordet måste vara minst 8 tecken.", "errAcctFail": "Det gick inte att skapa kontot.", "errConnFail": "Anslutningen misslyckades. Försök igen.", "navToolaud": "Kontrollpanel", "copySending": "Skickar…", "copySent": "Kopia skickad till din e-post ✓", "copyFail": "Sändningen misslyckades. Försök igen.", "svc_req": "obligatoriskt", "svc_note": "Anteckning", "svc_note_ph": "Något mer vi bör veta (valfritt)", "svc_words": "{n}/30 ord", "svc_ownshop": "Vi skannar din egen butik (adressen under ”Din e-handel” ovan).", "svc_seo_lbl": "Nyckelord", "svc_seo_ph": "ett nyckelord per rad, t.ex. batteritrimmer", "svc_seo_tier": "{n} nyckelord · {p} €/mån", "svc_epoe_lbl": "Prioriterade sidor eller kategorier (valfritt)", "svc_epoe_ph": "t.ex. /produkter/batterier, kampanjsida", "svc_uptime_lbl": "Adresser att övervaka", "svc_uptime_ph": "en URL per rad (standard: din butik)", "svc_erp_lbl": "Vilket ERP-system?", "svc_erp_ph": "t.ex. Directo, Merit, SimplBooks", "svc_erpacc_lbl": "Åtkomst / API-anteckning (valfritt)", "svc_hinnastus_lbl": "Butiksplattform (valfritt)", "svc_hinnastus_ph": "t.ex. WooCommerce, Shopify, Magento", "svc_koolitus_size": "Antal deltagare", "svc_koolitus_topic": "Ämne eller fokus (valfritt)", "svc_koolitus_time": "Önskad tid (valfritt)", "svc_auto_lbl": "Vad behöver du?", "svc_auto_ph": "Beskriv uppgiften — tillägg, skript, dashboard", "svc_err_shop": "Lägg till din butiksadress — den valda tjänsten skannar din butik.", "svc_err_req": "Fyll i obligatoriska fält för de valda tjänsterna.", "carryInfo": "I kalkylatorn valde du: <b>{f} konkurrenter på Facebook</b> och <b>{w} e-butiker</b> (≈ {m} €/mån). Lägg till deras namn och adresser nedan — månadsavgiften baseras på de företag du anger.", "labMonthly": "Månadsavgift", "labYearly": "Årsbetalning", "effMonthly": "= {eff} €/mån", "sumComp": "Konkurrent", "invoiceDone": "Vi skickar en faktura för banköverföring till din e-post. Bevakningen startar så snart betalningen kommit in — vi hör av oss.", "invoiceSending": "Skickar…", "err_required": "Det här fältet är obligatoriskt.", "err_email": "Ange en giltig e-postadress.", "svc_brand_lbl": "Ditt/dina varumärken (valfritt)", "svc_brand_ph": "t.ex. EGO Power+, STIGA", "chatTitle": "Kundsupport", "chatSub": "Look360-teamet svarar här", "chatHi": "Hej! Skriv din fråga här — vi svarar så snart vi kan. Lämna din e-post så kan vi även svara när du lämnat sidan.", "chatPh": "Skriv din fråga…", "chatEmailPh": "E-post för svar (valfritt)", "chatSend": "Skicka", "chatErr": "Det gick inte att skicka — försök igen.", "chatNet": "Nätverksfel — försök igen.", "chatOpen": "Öppna kundsupport", "chatClose": "Stäng"};
 function fmt(s,o){return String(s).replace(/\{(\w+)\}/g,(_,k)=>o[k]!=null?o[k]:'')}
 
 /* === Login-staatus: kui külastaja on äpis juba sisse logitud, vaheta "Logi
@@ -2393,5 +2393,166 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
   })();
 })();
 </script>
+
+<!-- === Klienditugi-chat (anonuumne kulaline; backend scan.look360.eu/tugi/avalik/) ===
+     Identiteet: kandja-token localStorage'is (l360_tugi_token) - server annab esimese
+     sonumi vastuses. Transport: short polling (5 s lahti / 30 s kinni kui token olemas).
+     TURVE: koik sonumid DOM-i AINULT textContent'i kaudu (XSS-kindel); server piirab
+     sagedust, pikkust ja vestluste arvu (seire/tugi.py). -->
+<style>
+  .tugi-launch{position:fixed;right:22px;bottom:22px;z-index:180;width:56px;height:56px;border-radius:50%;
+    border:0;cursor:pointer;background:var(--grad);box-shadow:0 6px 20px rgba(23,184,106,.38),0 2px 6px rgba(16,18,24,.18);
+    display:flex;align-items:center;justify-content:center;transition:transform .16s,box-shadow .16s}
+  .tugi-launch:hover{transform:translateY(-2px) scale(1.04)}
+  .tugi-launch:active{transform:scale(.97)}
+  .tugi-launch svg{width:25px;height:25px;color:#fff}
+  .tugi-launch .tugi-dot{position:absolute;top:1px;right:1px;width:13px;height:13px;border-radius:50%;
+    background:#e0483f;border:2px solid #fff;display:none}
+  .tugi-launch.on-dot .tugi-dot{display:block;animation:tugipulse 1.4s infinite}
+  @keyframes tugipulse{0%,100%{transform:scale(1)}50%{transform:scale(1.25)}}
+  .tugi-panel{position:fixed;right:22px;bottom:88px;z-index:181;width:360px;max-width:calc(100vw - 28px);
+    height:520px;max-height:calc(100vh - 120px);background:#fff;border:1px solid var(--line);
+    border-radius:18px;box-shadow:0 18px 50px rgba(16,18,24,.22);display:none;flex-direction:column;overflow:hidden}
+  .tugi-panel.on{display:flex;animation:tugipop .18s ease}
+  @keyframes tugipop{from{transform:translateY(12px) scale(.98);opacity:0}to{transform:none;opacity:1}}
+  .tugi-head{display:flex;align-items:center;gap:10px;padding:13px 14px;border-bottom:1px solid var(--line)}
+  .tugi-head .tic{width:34px;height:34px;border-radius:10px;flex:0 0 auto;display:flex;align-items:center;justify-content:center;background:var(--grad)}
+  .tugi-head .tic svg{width:19px;height:19px;color:#fff}
+  .tugi-head .ttt{flex:1;min-width:0}
+  .tugi-head .ttt b{display:block;font-size:14px;color:#14161c;font-weight:700;line-height:1.2}
+  .tugi-head .ttt span{font-size:11px;color:#6b7280}
+  .tugi-head button{background:none;border:0;cursor:pointer;color:#9aa1ad;padding:6px;border-radius:8px;display:flex}
+  .tugi-head button:hover{background:#f3f4f6;color:#374151}
+  .tugi-head button svg{width:18px;height:18px}
+  .tugi-log{flex:1;overflow-y:auto;padding:14px 14px 4px;display:flex;flex-direction:column;gap:10px;background:#f7f8fa}
+  .tugi-hi{margin:auto 0 0;text-align:left;color:#6b7280;font-size:12.5px;line-height:1.6;padding:10px 12px;
+    background:#fff;border:1px solid var(--line);border-radius:12px}
+  .tugi-msg{display:flex;flex-direction:column;max-width:84%}
+  .tugi-msg.sina{align-self:flex-end;align-items:flex-end}
+  .tugi-msg.op{align-self:flex-start;align-items:flex-start}
+  .tugi-msg .bub{border-radius:12px;padding:8px 12px;font-size:13px;line-height:1.55;color:#1f2430;
+    word-wrap:break-word;overflow-wrap:anywhere;white-space:pre-wrap}
+  .tugi-msg.sina .bub{background:var(--accent-soft);border:1px solid #bfe8d2}
+  .tugi-msg.op .bub{background:#fff;border:1px solid var(--line)}
+  .tugi-msg .kell{font-size:10px;color:#9aa1ad;margin-top:3px}
+  .tugi-viga{align-self:center;font-size:11.5px;color:#c23934;padding:2px 6px}
+  .tugi-foot{padding:9px 12px 12px;border-top:1px solid var(--line);background:#fff}
+  .tugi-foot .temail{width:100%;box-sizing:border-box;margin-bottom:7px;padding:7px 10px;border:1px solid var(--line);
+    border-radius:9px;font-size:12px;font-family:inherit;color:#1f2430;background:#f7f8fa}
+  .tugi-foot .temail:focus{outline:2px solid var(--accent);outline-offset:1px}
+  .tugi-form{display:flex;gap:8px;align-items:flex-end}
+  .tugi-form textarea{flex:1;resize:none;padding:9px 11px;border:1px solid var(--line);border-radius:10px;
+    background:#fff;color:#1f2430;font-size:13.5px;font-family:inherit;line-height:1.45;max-height:100px;min-height:38px}
+  .tugi-form textarea:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+  .tugi-form .tsend{height:38px;width:38px;flex:0 0 auto;border:0;border-radius:10px;cursor:pointer;
+    background:var(--grad);color:#fff;display:flex;align-items:center;justify-content:center}
+  .tugi-form .tsend:disabled{opacity:.5;cursor:default}
+  .tugi-form .tsend svg{width:17px;height:17px}
+  @media(max-width:520px){.tugi-panel{right:10px;bottom:80px;height:calc(100vh - 100px)}.tugi-launch{right:14px;bottom:14px}}
+</style>
+<button type="button" class="tugi-launch" id="tugiLaunch" aria-label="Klienditugi">
+  <span class="tugi-dot" id="tugiDot"></span>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+</button>
+<div class="tugi-panel" id="tugiPanel" role="dialog" aria-modal="false">
+  <div class="tugi-head">
+    <span class="tic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>
+    <div class="ttt"><b id="tugiTitle"></b><span id="tugiSub"></span></div>
+    <button type="button" id="tugiClose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+  </div>
+  <div class="tugi-log" id="tugiLog"></div>
+  <div class="tugi-foot">
+    <input type="email" class="temail" id="tugiEmail" maxlength="254" autocomplete="email">
+    <form class="tugi-form" id="tugiForm" autocomplete="off">
+      <textarea id="tugiInput" rows="1" maxlength="2000" required></textarea>
+      <button class="tsend" type="submit" id="tugiSend"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></button>
+    </form>
+  </div>
+</div>
+<script>
+(function(){
+  var APP='https://scan.look360.eu', KEY='l360_tugi_token',
+      launch=document.getElementById('tugiLaunch'),
+      panel=document.getElementById('tugiPanel'),
+      log=document.getElementById('tugiLog'),
+      form=document.getElementById('tugiForm'),
+      inp=document.getElementById('tugiInput'),
+      send=document.getElementById('tugiSend'),
+      email=document.getElementById('tugiEmail'),
+      open=false, timer=null, viimane=0, hiOn=false;
+  document.getElementById('tugiTitle').textContent=T.chatTitle;
+  document.getElementById('tugiSub').textContent=T.chatSub;
+  launch.setAttribute('aria-label',T.chatOpen); launch.setAttribute('title',T.chatOpen);
+  document.getElementById('tugiClose').setAttribute('aria-label',T.chatClose);
+  inp.setAttribute('placeholder',T.chatPh);
+  email.setAttribute('placeholder',T.chatEmailPh);
+  function token(){ try{return localStorage.getItem(KEY)||''}catch(e){return ''} }
+  function tokenSea(t){ try{localStorage.setItem(KEY,t)}catch(e){} }
+  function pohi(){ log.scrollTop=log.scrollHeight }
+  /* TURVE: tekst DOM-i AINULT textContent'i kaudu */
+  function lisaMull(m){
+    if(hiOn){ log.innerHTML=''; hiOn=false }
+    var d=document.createElement('div');
+    d.className='tugi-msg '+(m.saatja==='klient'?'sina':'op');
+    var b=document.createElement('div'); b.className='bub'; b.textContent=m.tekst;
+    var k=document.createElement('div'); k.className='kell';
+    k.textContent=(m.saatja==='operaator'&&m.nimi?m.nimi+' \u00b7 ':'')+(m.aeg||'');
+    d.appendChild(b); d.appendChild(k); log.appendChild(d);
+    if(m.id&&m.id>viimane)viimane=m.id;
+  }
+  function tervitus(){
+    var d=document.createElement('div'); d.className='tugi-hi'; d.textContent=T.chatHi;
+    log.innerHTML=''; log.appendChild(d); hiOn=true;
+  }
+  function viga(t){
+    var d=document.createElement('div'); d.className='tugi-viga'; d.textContent=t;
+    log.appendChild(d); pohi(); setTimeout(function(){d.remove()},5000);
+  }
+  function dotSet(on){ launch.classList.toggle('on-dot',!!on) }
+  function poll(){
+    var tk=token(); if(!tk)return;
+    fetch(APP+'/tugi/avalik/poll/?token='+encodeURIComponent(tk)+'&parast='+viimane+(open?'&nahtav=1':''))
+      .then(function(r){return r.ok?r.json():null})
+      .then(function(d){
+        if(!d)return;
+        if(d.sonumid&&d.sonumid.length){ d.sonumid.forEach(lisaMull); if(open)pohi() }
+        dotSet(!open&&d.uusi>0);
+      }).catch(function(){});
+  }
+  function takt(){ if(timer)clearInterval(timer);
+    if(open)timer=setInterval(poll,5000);
+    else if(token())timer=setInterval(poll,30000); else timer=null }
+  function ava(){ open=true; panel.classList.add('on'); dotSet(false);
+    if(!log.childElementCount)tervitus();
+    poll(); takt(); inp.focus() }
+  function sulge(){ open=false; panel.classList.remove('on'); takt() }
+  launch.addEventListener('click',function(){ open?sulge():ava() });
+  document.getElementById('tugiClose').addEventListener('click',sulge);
+  inp.addEventListener('input',function(){ inp.style.height='auto'; inp.style.height=Math.min(inp.scrollHeight,100)+'px' });
+  inp.addEventListener('keydown',function(e){ if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();form.requestSubmit()} });
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var t=inp.value.trim(); if(!t)return;
+    send.disabled=true;
+    var keha={tekst:t};
+    if(token())keha.token=token();
+    var em=email.value.trim(); if(em)keha.epost=em;
+    fetch(APP+'/tugi/avalik/saada/',{method:'POST',mode:'cors',
+      headers:{'Content-Type':'application/json'},body:JSON.stringify(keha)})
+      .then(function(r){return r.json().then(function(d){return {ok:r.ok,d:d}})})
+      .then(function(res){
+        send.disabled=false;
+        if(res.ok&&res.d.sonum){
+          if(res.d.token)tokenSea(res.d.token);
+          lisaMull(res.d.sonum); pohi(); inp.value=''; inp.style.height='auto';
+          takt(); inp.focus();
+        } else viga(res.d&&res.d.viga||T.chatErr);
+      })
+      .catch(function(){ send.disabled=false; viga(T.chatNet) });
+  });
+  takt();          /* olemasoleva tokeni taustapoll (badge vastuse saabudes) */
+})();
+</script>
+
 </body>
 </html>
