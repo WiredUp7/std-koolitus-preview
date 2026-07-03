@@ -368,6 +368,11 @@
   .cta{position:relative;background:var(--ink);color:#fff;border-radius:28px;padding:80px 40px;text-align:center;overflow:hidden}
   .cta .hero-bg{-webkit-mask-image:radial-gradient(ellipse 70% 80% at 50% 50%,#000,transparent 72%);mask-image:radial-gradient(ellipse 70% 80% at 50% 50%,#000,transparent 72%)}
   .cta .hero-glow{top:50%}
+  .cta-radar{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(600px,88%);aspect-ratio:1/1;z-index:0;pointer-events:none;opacity:.6;
+    -webkit-mask-image:radial-gradient(circle at 50% 50%,#000 26%,transparent 72%);
+    mask-image:radial-gradient(circle at 50% 50%,#000 26%,transparent 72%)}
+  .cta-radar .radar-rings{position:absolute;inset:0;width:100%;height:100%}
+  .cta-radar .radar-sweep{animation-duration:7s}
   .cta h2{position:relative;font-weight:400;font-size:clamp(32px,5vw,60px);letter-spacing:-.03em;line-height:1.02;margin-bottom:18px}
   .cta h2 .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-weight:500}
   .cta p{position:relative;color:var(--on-dark-mut);font-size:18px;font-weight:300;max-width:540px;margin:0 auto 30px;line-height:1.6}
@@ -1338,6 +1343,14 @@
   <div class="wrap reveal">
     <div class="cta">
       <div class="hero-bg"></div>
+      <div class="cta-radar" aria-hidden="true">
+        <svg class="radar-rings" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+          <circle cx="50" cy="50" r="47"/><circle cx="50" cy="50" r="33"/><circle cx="50" cy="50" r="19"/>
+          <line x1="50" y1="3" x2="50" y2="97"/><line x1="3" y1="50" x2="97" y2="50"/>
+          <circle cx="50" cy="50" r="1.4" fill="#17b86a" stroke="none"/>
+        </svg>
+        <div class="radar-sweep"></div>
+      </div>
       <div class="hero-glow"></div>
       <h2>Складіть пакет і<br><span class="g">підключіться вже сьогодні.</span></h2>
       <p>Виберіть модулі, одразу побачте щомісячну плату й підключіться – без зобов'язань.</p>
