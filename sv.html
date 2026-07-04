@@ -2028,10 +2028,15 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
     return {teema:T.mailSubject, tekst:body};   // koopia-kiri: teema + lokaliseeritud keha (saadetakse serveri kaudu kliendi e-postile)
   }
   var ORDER_ENDPOINT='https://scan.look360.eu/api/tellimus/';
-  // Firma-nime autocomplete (Eesti äriregister) - AINULT eestikeelne sait.
+  // Firma-nime autocomplete - RIIGIPÕHINE äriregister (lehe keel määrab riigi).
+  // Serveril on baasid: EE, FI, LV, NO (laadi_ariregister); inglise leht saab
+  // Eesti registri (= serveri vaikeriik). Keeled, mille riigil baasi pole
+  // (sv/da/lt/pl/uk), jäävad autocomplete'ita - vorm töötab vabatekstiga.
   // Taaskasutatav: nii kliendi enda ettevõtte nimi (#cName) kui konkurentide
   // nimed (.c-name, dünaamilised read - vt addRow + window.L360auto).
-  if(T.locale==='et-EE'){(function(){
+  var AC_RIIK=(function(){var r=(T.locale||'').split('-')[1]||'EE';if(r==='GB')r='EE';
+    return ['EE','FI','LV','NO'].indexOf(r)>=0?r:null;})();
+  if(AC_RIIK){(function(){
     var OTSING=ORDER_ENDPOINT.replace('/api/tellimus/','/api/firma-otsing-avalik/');
     function mkAuto(inp,reg){
       if(!inp||inp.dataset.acOn)return; inp.dataset.acOn='1'; inp.setAttribute('autocomplete','off');
@@ -2057,7 +2062,7 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
         if(q===viimaneQ)return;viimaneQ=q;
         if(ctrl)try{ctrl.abort();}catch(e){}
         ctrl=('AbortController'in window)?new AbortController():null;
-        fetch(OTSING+'?q='+encodeURIComponent(q),{mode:'cors',signal:ctrl?ctrl.signal:undefined,headers:{}})
+        fetch(OTSING+'?q='+encodeURIComponent(q)+'&riik='+AC_RIIK,{mode:'cors',signal:ctrl?ctrl.signal:undefined,headers:{}})
           .then(function(r){return r.json();}).then(function(d){if(inp.value.trim()===q)naita(d.tulemused||[],q);})
           .catch(function(){});}
       inp.addEventListener('input',function(){clearTimeout(tmr);tmr=setTimeout(otsi,140);});
