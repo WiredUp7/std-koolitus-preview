@@ -453,6 +453,13 @@
     .hero-stats .s{border-right:0;border-bottom:1px solid var(--line-dark);padding:16px 0}
     .blip b{display:none}   /* hinnasildid kattuksid kitsal ekraanil pealkirjaga — jäta ainult punktid */
   }
+  @media(max-width:430px){
+    /* Kitsal telefonil ei mahu logo + login + keelevalik + hamburger ühte ritta ->
+       login lükkas hamburgeri poolenisti ekraanilt välja. Login kolib hamburgeri-menüüsse
+       (seal juba markupis olemas); ülaribale jäävad logo, keelevalik ja hamburger. */
+    .nav-r{display:none}
+    .mobile-menu a.js-login{display:block}
+  }
 
   /* === ERISTUS (G) === */
   .why{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
