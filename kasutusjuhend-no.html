@@ -267,7 +267,7 @@
         <div class="deflist">
           <div class="dr"><span class="k">Overvåking</span><span class="v">Hoveddashbordet – alle firmaene som overvåkes, varslene og trenden.</span></div>
           <div class="dr"><span class="k">Tjenester</span><span class="v">Tjenestene du har bestilt, månedsprisen og muligheten til å bestille mer.</span></div>
-          <div class="dr"><span class="k">Konto</span><span class="v">Kontodata, passord, API-tilgang og innstillinger for e-posten hver morgen.</span></div>
+          <div class="dr"><span class="k">Konto</span><span class="v">Kontodata, passord, tilkobling av egen nettbutikk, API-tilgang og innstillinger for e-postrapporter.</span></div>
           <div class="dr"><span class="k">Prissammenligning</span><span class="v">Samme produkt på tvers av alle overvåkede butikker – laveste pris og historikk.</span></div>
           <div class="dr"><span class="k">Varsler</span><span class="v">Regler for prisvarsler og push-varsler til telefonen.</span></div>
           <div class="dr"><span class="k">Månedsrapporter</span><span class="v">Månedlig PDF-samlerapport til ledelsen.</span></div>
@@ -289,18 +289,25 @@
         <p>Dette er startvisningen. Øverst finner du hovedknappene, under ligger trenden, sammendraget og firmalisten.</p>
         <figure>
           <img src="l360-seirepaneel.png" alt="Look360 overvåkingsdashbord: trendgraf, sammendrag og firmatabell" loading="lazy">
-          <figcaption>Overvåkingsdashbordet – varseltrend, sammendrag og tabell over firmaene som overvåkes.</figcaption>
+          <figcaption>Overvåkingsdashbordet – statuslinje, „Krever oppmerksomhet", prisposisjon, trend og tabell over firmaene som overvåkes.</figcaption>
         </figure>
         <h3>Knapper på topplinjen</h3>
         <ul class="plain">
           <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Legg til firma</span> – legg til et nytt firma å overvåke (se <a href="#lisafirma">kapittel 5</a>).</li>
           <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 7H4M20 12H4M20 17H4"/></svg> Tjenester</span> – åpne visningen med tjenester og månedspris.</li>
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-2.6-6.4L21 8"/><path d="M21 3v5h-5"/></svg> Oppdater visning</span> – leser de siste dataene på nytt og oppdaterer skjermen. <b>Skraper ikke</b> nettsteder, bare oppdaterer visningen.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-2.6-6.4L21 8"/><path d="M21 3v5h-5"/></svg> Oppdater visning</span> – leser de siste dataene på nytt og oppdaterer skjermen. <b>Starter ikke en ny skanning</b>, bare oppdaterer visningen.</li>
           <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg> Tillat varsler</span> – slår på push-varsler til telefonen (se <a href="#teavitused">kapittel 9</a>).</li>
-          <li><span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg> Skann alt på nytt</span> – starter <b>ekte skanninger</b> (skraper nettsteder), tar noen minutter. Dette kan gjøres <b>1 gang i døgnet</b>.</li>
+          <li><span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg> Skann alt på nytt</span> – starter <b>ekte skanninger</b> (en ny grundig skanning av nettstedene), tar noen minutter. Dette kan gjøres <b>1 gang i døgnet</b>.</li>
         </ul>
         <h3>Hvordan fungerer overvåkingen? – hjelpelinje</h3>
         <p>Øverst på dashbordet er det en utfellbar linje <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .8-1 1.7M12 17h.01"/></svg> Hvordan fungerer overvåkingen?</span> Klikk for å lese en kort forklaring. Første gang, når du ennå ikke har lagt til noen firmaer, er den åpen.</p>
+        <h3>Hurtigoversikt øverst</h3>
+        <p>Når du åpner dashbordet, ser du med en gang det viktigste – før grafene og tabellen:</p>
+        <ul class="plain">
+          <li><b>Statuslinje</b> – tre brikker med ett blikk: <span class="pill warn"><span class="dot"></span>N krever oppmerksomhet</span> (klikk ruller til listen), <span class="pill ok"><span class="dot"></span>N rolige</span> og <b>N firmaer overvåkes</b>.</li>
+          <li><b>Krever oppmerksomhet</b> – de viktigste varslene på tvers av alle firmaer, ett om gangen og i prioritert rekkefølge. <span class="pill err"><span class="dot"></span>Rød prikk</span> er en kritisk feil i din egen butikk, <span class="pill warn"><span class="dot"></span>gul</span> en endring hos en konkurrent. Et klikk tar deg rett til firmaet eller til prissammenligningen. Øverst til høyre er en <b>delta</b>: „Siden ditt forrige besøk: N nye varsler". Er det ingenting som venter, står det her et grønt „Alt rolig".</li>
+          <li><b>Din prisposisjon</b> – én oppsummerende linje: „Av N sammenlignbare produkter er du billigst på X, dyrere på Y". Et klikk åpner <a href="#hinnavordlus">prissammenligningen</a>.</li>
+        </ul>
         <h3>Varseltrend</h3>
         <p>Grafen viser hvordan antall varsler har endret seg gjennom de siste overvåkingene – om ting roer seg eller krever mer oppmerksomhet. Alle grafene har akseskala og enhet påført; før musen langs linjen for å se det nøyaktige tallet.</p>
         <h3>Sammendrag</h3>
@@ -332,6 +339,7 @@
           <div class="dr"><span class="k">Friskhet</span><span class="v">Når dataene for dette firmaet sist ble oppdatert.</span></div>
           <div class="dr"><span class="k">Varsler</span><span class="v">Rask indikator: <span class="pill ok"><span class="dot"></span>Ja</span> betyr varsel, <span class="pill sec"><span class="dot"></span>Nei</span> alt rolig.</span></div>
         </div>
+        <p>Under firmanavnet ser du et kort <b>endringshint</b> (f.eks. „3 lavere priser"), slik at du ikke alltid trenger å klikke deg inn i firmaet for å se hva som skjedde der.</p>
         <h3>Dine egne overvåkede firmaer</h3>
         <p>Hvis du selv har lagt til et firma, ser du statusen. Mulige tilstander:</p>
         <ul class="plain">
@@ -474,6 +482,7 @@
         <ul class="plain">
           <li><b>Automatisk</b> – rapporten lages og sendes på e-post i begynnelsen av hver måned; ingenting må gjøres manuelt.</li>
           <li><b>Arkiv</b> – alle tidligere månedsrapporter ligger her for nedlasting.</li>
+          <li><b>E-posten kan slås av</b> på <a href="#konto">Konto</a>-siden – PDF-en lages og arkiveres likevel, det er bare e-posten som da ikke sendes.</li>
           <li>I motsetning til e-posten hver morgen (se nedenfor) er månedsrapporten en <b>samlet oversikt</b> for beslutningstakeren, ikke en daglig liste over endringer.</li>
         </ul>
         <h3>E-post hver morgen og sanntidsvarsler</h3>
@@ -486,16 +495,33 @@
       <!-- 11 -->
       <section class="doc" id="konto">
         <h2><span class="num">11</span> Konto og API-tilgang</h2>
-        <p>Menypunktet <b>Konto</b> samler kontodataene og innstillingene dine.</p>
+        <p>Menypunktet <b>Konto</b> samler kontodataene dine, tilkoblingen av egen nettbutikk, innstillingene for e-postrapporter og API-tilgangen.</p>
         <figure>
-          <img src="l360-konto.png" alt="Konto: kontodata, passord, API-tilgang og varselinnstillinger" loading="lazy">
-          <figcaption>Konto – firmadata, endring av passord, API-nøkkel og bryteren for e-posten hver morgen.</figcaption>
+          <img src="l360-konto.png" alt="Konto: kontodata, tilkobling av egen nettbutikk, e-postrapporter og API-tilgang" loading="lazy">
+          <figcaption>Konto – firmadata, passord, tilkobling av egen nettbutikk, e-postrapporter og API-nøkkel.</figcaption>
         </figure>
         <ul class="plain">
           <li><b>Kontodata</b> – firma, kontaktperson og e-postadressen ved registrering.</li>
           <li><b>Passord</b> – <span class="chip">Endre passord</span>; glemt passord kan du tilbakestille fra innloggingssiden.</li>
-          <li><b>Overvåkingsrapport hver morgen</b> – bryteren som slår e-posten på eller av.</li>
         </ul>
+
+        <h3>Koble til egen nettbutikk (WooCommerce)</h3>
+        <p>For at tjenestene for <b>din egen butikk</b> – nettbutikkens helse, helsesjekk og prissetting – skal få reelle data, kobler du til WooCommerce-nettbutikken din. Look360 leser prisene og <b>den reelle lagerstatusen via det offisielle API-et</b> (ikke ved å skanne siden), og de oppdateres hver natt. Du kan koble til på to måter:</p>
+        <ul class="plain">
+          <li><b>Direkte med API-nøkkel</b> – i butikkadministrasjonen <i>WooCommerce → Settings → Advanced → REST API → Add key</i>, med tillatelsen <b>Read</b> (lesing). Kopier <b>Consumer key</b>, <b>Consumer secret</b> og nettbutikkadressen inn i skjemaet på konto-siden.</li>
+          <li><b>Med Look360-pluginen</b> – en enklere vei uten å kopiere nøkler manuelt: trykk <span class="chip">Opprett tilkoblingskode</span>, åpne plugin-siden <i>WooCommerce → Look360</i> i butikkadministrasjonen og lim inn koden. Koden er gyldig i 30 minutter.</li>
+        </ul>
+        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Tilkoblet butikk</div><p>Når butikken er tilkoblet, ser du et grønt merke „Nettbutikk tilkoblet". Dataene oppdateres hver natt; nøklene kan du senere bytte via det samme skjemaet.</p></div>
+
+        <h3>E-postrapporter</h3>
+        <p>Fra ett sted styrer du hvilke rapporter som sendes på e-post, og til hvem:</p>
+        <div class="deflist">
+          <div class="dr"><span class="k">Overvåkingsrapport hver morgen</span><span class="v">Hver morgen kl. 7 en e-post med de siste 24 timenes endringer for alle tjenestene dine. Slå av hvis du ikke ønsker denne e-posten.</span></div>
+          <div class="dr"><span class="k">Månedlig ledelsesrapport</span><span class="v">Den 1. i hver måned et PDF-sammendrag av forrige måned. Slås den av, blir PDF-en likevel liggende i kontoarkivet (se <a href="#kuuraportid">kapittel 10</a>).</span></div>
+          <div class="dr"><span class="k">Rapportmottakere</span><span class="v">E-postadressene som rapporter og varsler sendes til – legg til kolleger atskilt med komma.</span></div>
+        </div>
+        <p>Produktbaserte prisvarsler (prisfall, lagerstatus, nytt produkt) styrer du på den egne siden <a href="#teavitused">Varsler</a> (kapittel 9).</p>
+
         <h3>API-tilgang (BI, ERP, Excel)</h3>
         <p>Via REST-API-et får du overvåkingsdataene dine – butikker, produkter, priser, prissammenligning, varsler – rett inn i ditt eget system (Power BI, ERP, Excel Power Query).</p>
         <ol class="steps">

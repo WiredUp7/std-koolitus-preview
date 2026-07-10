@@ -266,7 +266,7 @@
         <div class="deflist">
           <div class="dr"><span class="k">Seire</span><span class="v">Peamine töölaud – kõik jälgitavad ettevõtted, leiud ja trend.</span></div>
           <div class="dr"><span class="k">Teenused</span><span class="v">Sinu tellitud teenused, kuutasu ja juurdetellimine.</span></div>
-          <div class="dr"><span class="k">Konto</span><span class="v">Konto andmed, parool, API-ligipääs ja igahommikuse kirja seaded.</span></div>
+          <div class="dr"><span class="k">Konto</span><span class="v">Konto andmed, parool, oma e-poe ühendus, API-ligipääs ja e-posti raportite seaded.</span></div>
           <div class="dr"><span class="k">Hinnavõrdlus</span><span class="v">Sama toode kõigi jälgitavate poodide vahel – odavaim hind ja ajalugu.</span></div>
           <div class="dr"><span class="k">Teavitused</span><span class="v">Hinnateavituste reeglid ja push-teated telefoni.</span></div>
           <div class="dr"><span class="k">Kuuraportid</span><span class="v">Kuine PDF-koondraport juhtkonnale.</span></div>
@@ -288,18 +288,25 @@
         <p>See on koduvaade. Ülaservast leiad peamised nupud, all on trend, kokkuvõte ja firmade nimekiri.</p>
         <figure>
           <img src="l360-seirepaneel.png" alt="Look360 seire töölaud: trendigraafik, kokkuvõte ja firmade tabel" loading="lazy">
-          <figcaption>Seire töölaud – leidude trend, kokkuvõte ja jälgitavate firmade tabel.</figcaption>
+          <figcaption>Seire töölaud – seisuriba, „Vajab tähelepanu", hinnapositsioon, trend ja jälgitavate firmade tabel.</figcaption>
         </figure>
         <h3>Ülariba nupud</h3>
         <ul class="plain">
           <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Lisa firma</span> – lisa uus jälgitav ettevõte (vt <a href="#lisafirma">5. peatükk</a>).</li>
           <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 7H4M20 12H4M20 17H4"/></svg> Teenused</span> – ava teenuste ja kuutasu vaade.</li>
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-2.6-6.4L21 8"/><path d="M21 3v5h-5"/></svg> Värskenda vaade</span> – loeb viimased andmed uuesti ja värskendab ekraani. <b>Ei kraabi</b> saite, ainult värskendab vaate.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-2.6-6.4L21 8"/><path d="M21 3v5h-5"/></svg> Värskenda vaade</span> – loeb viimased andmed uuesti ja värskendab ekraani. <b>Ei käivita uut skanni</b>, ainult värskendab vaate.</li>
           <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg> Luba teavitused</span> – lülitab sisse push-teated telefoni (vt <a href="#teavitused">9. peatükk</a>).</li>
-          <li><span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg> Skanni kõik uuesti</span> – käivitab <b>päris-skännid</b> (kraabib saite), võtab mõne minuti. Seda saab teha <b>1 kord ööpäevas</b>.</li>
+          <li><span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg> Skanni kõik uuesti</span> – käivitab <b>päris-skännid</b> (uus põhjalik skann saitidelt), võtab mõne minuti. Seda saab teha <b>1 kord ööpäevas</b>.</li>
         </ul>
         <h3>Kuidas seire töötab? – abiriba</h3>
         <p>Töölaua ülaosas on lahtikäiv riba <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .8-1 1.7M12 17h.01"/></svg> Kuidas seire töötab?</span> Klõpsa, et lugeda lühikest selgitust. Esimesel korral, kui veel ühtegi firmat pole, on see avatud.</p>
+        <h3>Kiirülevaade ülaservas</h3>
+        <p>Töölaua avades näed kohe kõige olulisemat – enne graafikuid ja tabelit:</p>
+        <ul class="plain">
+          <li><b>Seisuriba</b> – kolm kiipi ühe pilguga: <span class="pill warn"><span class="dot"></span>N vajab tähelepanu</span> (klõps kerib nimekirjani), <span class="pill ok"><span class="dot"></span>N rahulik</span> ja <b>N firmat jälgimisel</b>.</li>
+          <li><b>Vajab tähelepanu</b> – tähtsaimad leiud üle kõigi firmade, ükshaaval ja olulisuse järjekorras. <span class="pill err"><span class="dot"></span>Punane täpp</span> on sinu enda poe kriitiline viga, <span class="pill warn"><span class="dot"></span>kollane</span> konkurendi muutus. Klõps viib otse firma juurde või hinnavõrdlusse. Üleval paremal on <b>delta</b>: „Sinu eelmisest külastusest: N uut leidu". Kui midagi ei oota, on siin roheline „Kõik vaikne".</li>
+          <li><b>Sinu hinnapositsioon</b> – üks kokkuvõttev rida: „N võrreldavast tootest oled odavaim X, kallim Y". Klõps avab <a href="#hinnavordlus">hinnavõrdluse</a>.</li>
+        </ul>
         <h3>Leidude trend</h3>
         <p>Graafik näitab, kuidas leidude arv on viimaste seirete jooksul muutunud – kas asjad rahunevad või vajavad rohkem tähelepanu. Kõigil graafikutel on telje-skaala ja ühik kirjas; liigu joonel hiirega, et näha täpset arvu.</p>
         <h3>Kokkuvõte</h3>
@@ -331,6 +338,7 @@
           <div class="dr"><span class="k">Värskus</span><span class="v">Millal selle firma andmeid viimati uuendati.</span></div>
           <div class="dr"><span class="k">Leiud</span><span class="v">Kiire tuli: <span class="pill ok"><span class="dot"></span>Jah</span> on leid, <span class="pill sec"><span class="dot"></span>Ei</span> kõik vaikne.</span></div>
         </div>
+        <p>Firma nime all näed lühikest <b>muutuse-vihjet</b> (nt „3 odavamat hinda"), nii et sa ei pea alati firmasse klõpsama, et näha, mis seal juhtus.</p>
         <h3>Sinu lisatud jälgitavad</h3>
         <p>Kui oled ise firma lisanud, näed selle seisu. Võimalikud olekud:</p>
         <ul class="plain">
@@ -473,6 +481,7 @@
         <ul class="plain">
           <li><b>Automaatne</b> – raport valmib ja saadetakse e-postiga iga kuu alguses; midagi ei pea käsitsi tegema.</li>
           <li><b>Arhiiv</b> – kõik varasemad kuuraportid on siin alla laadimiseks.</li>
+          <li><b>E-kirja saab välja lülitada</b> <a href="#konto">Konto</a> lehel – PDF valmib ja jääb arhiivi ikka, ainult e-kirja siis ei saadeta.</li>
           <li>Erinevalt igahommikusest kirjast (vt allpool) on kuuraport <b>koondülevaade</b> otsustajale, mitte päevane muutuste nimekiri.</li>
         </ul>
         <h3>Igahommikune kiri ja reaalajas hoiatused</h3>
@@ -485,16 +494,33 @@
       <!-- 11 -->
       <section class="doc" id="konto">
         <h2><span class="num">11</span> Konto ja API-ligipääs</h2>
-        <p>Menüüpunkt <b>Konto</b> koondab sinu konto andmed ja seaded.</p>
+        <p>Menüüpunkt <b>Konto</b> koondab sinu konto andmed, oma e-poe ühenduse, e-posti raportite seaded ja API-ligipääsu.</p>
         <figure>
-          <img src="l360-konto.png" alt="Konto: konto andmed, parool, API-ligipääs ja teavituste seaded" loading="lazy">
-          <figcaption>Konto – ettevõtte andmed, parooli muutmine, API-võti ja igahommikuse kirja lüliti.</figcaption>
+          <img src="l360-konto.png" alt="Konto: konto andmed, oma e-poe ühendus, e-posti raportid ja API-ligipääs" loading="lazy">
+          <figcaption>Konto – ettevõtte andmed, parool, oma e-poe ühendus, e-posti raportid ja API-võti.</figcaption>
         </figure>
         <ul class="plain">
           <li><b>Konto andmed</b> – ettevõte, kontaktisik ja registreerimise e-post.</li>
           <li><b>Parool</b> – <span class="chip">Muuda parooli</span>; unustatud parooli saad lähtestada sisselogimislehelt.</li>
-          <li><b>Igahommikune seireraport</b> – lüliti, millega e-kirja sisse või välja lülitad.</li>
         </ul>
+
+        <h3>Oma e-poe ühendamine (WooCommerce)</h3>
+        <p>Et sinu <b>enda poe</b> teenused – e-poe tervis, tervisekontroll ja hinnastamine – saaksid päris andmed, ühenda oma WooCommerce-e-pood. Look360 loeb hinnad ja <b>tõelise laoseisu ametliku API kaudu</b> (mitte lehte skannides) ning need uuenevad igal ööl. Ühendada saab kahel viisil:</p>
+        <ul class="plain">
+          <li><b>Otse API-võtmega</b> – poe halduses <i>WooCommerce → Seaded → Täpsem → REST API → Lisa võti</i>, õiguseks <b>Lugemine (Read)</b>. Kopeeri <b>Consumer key</b>, <b>Consumer secret</b> ja e-poe aadress konto-lehe vormi.</li>
+          <li><b>Look360 pluginaga</b> – lihtsam tee ilma võtmeid käsitsi kopeerimata: vajuta <span class="chip">Loo ühenduskood</span>, ava poe halduses <i>WooCommerce → Look360</i> plugina leht ja kleebi kood. Kood kehtib 30 minutit.</li>
+        </ul>
+        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Ühendatud pood</div><p>Kui pood on ühendatud, näed rohelist märget „E-pood ühendatud". Andmed uuenevad igal ööl; võtmeid saab hiljem sama vormi kaudu vahetada.</p></div>
+
+        <h3>E-posti raportid</h3>
+        <p>Ühest kohast hallad, millised raportid ja kellele e-postiga lähevad:</p>
+        <div class="deflist">
+          <div class="dr"><span class="k">Igahommikune seireraport</span><span class="v">Iga hommik kell 7 kiri viimase 24 tunni muutustega kõigi sinu teenuste kohta. Lülita välja, kui seda kirja ei soovi.</span></div>
+          <div class="dr"><span class="k">Kuine juhtkonnaraport</span><span class="v">Iga kuu 1. kuupäeval PDF-kokkuvõte eelmisest kuust. Väljalülitamisel jääb PDF ikka konto arhiivi (vt <a href="#kuuraportid">10. peatükk</a>).</span></div>
+          <div class="dr"><span class="k">Raportite saajad</span><span class="v">E-posti aadressid, kuhu raportid ja teavitused lähevad – lisa kolleege komaga eraldades.</span></div>
+        </div>
+        <p>Toote-põhiseid hinnateavitusi (hinnalangus, laoseis, uus toode) halda eraldi lehel <a href="#teavitused">Teavitused</a> (9. peatükk).</p>
+
         <h3>API-ligipääs (BI, ERP, Excel)</h3>
         <p>REST API kaudu saad oma seire-andmed – poed, tooted, hinnad, hinnavõrdlus, leiud – otse oma süsteemi (Power BI, ERP, Excel Power Query).</p>
         <ol class="steps">

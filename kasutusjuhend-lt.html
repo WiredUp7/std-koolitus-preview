@@ -267,7 +267,7 @@
         <div class="deflist">
           <div class="dr"><span class="k">Stebėsena</span><span class="v">Pagrindinis darbalaukis – visos stebimos įmonės, radiniai ir tendencija.</span></div>
           <div class="dr"><span class="k">Paslaugos</span><span class="v">Tavo užsisakytos paslaugos, mėnesio mokestis ir papildomas užsakymas.</span></div>
-          <div class="dr"><span class="k">Paskyra</span><span class="v">Paskyros duomenys, slaptažodis, API prieiga ir kasrytinio laiško nustatymai.</span></div>
+          <div class="dr"><span class="k">Paskyra</span><span class="v">Paskyros duomenys, slaptažodis, savo el. parduotuvės ryšys, API prieiga ir el. pašto ataskaitų nustatymai.</span></div>
           <div class="dr"><span class="k">Kainų palyginimas</span><span class="v">Ta pati prekė tarp visų stebimų parduotuvių – pigiausia kaina ir istorija.</span></div>
           <div class="dr"><span class="k">Pranešimai</span><span class="v">Kainų pranešimų taisyklės ir push pranešimai į telefoną.</span></div>
           <div class="dr"><span class="k">Mėnesio ataskaitos</span><span class="v">Mėnesio PDF suvestinė ataskaita vadovybei.</span></div>
@@ -289,18 +289,25 @@
         <p>Tai pradinis vaizdas. Viršuje rasi pagrindinius mygtukus, apačioje – tendenciją, suvestinę ir įmonių sąrašą.</p>
         <figure>
           <img src="l360-seirepaneel.png" alt="Look360 stebėsenos darbalaukis: tendencijos grafikas, suvestinė ir įmonių lentelė" loading="lazy">
-          <figcaption>Stebėsenos darbalaukis – radinių tendencija, suvestinė ir stebimų įmonių lentelė.</figcaption>
+          <figcaption>Stebėsenos darbalaukis – būklės juosta, „Reikia dėmesio“, kainos padėtis, tendencija ir stebimų įmonių lentelė.</figcaption>
         </figure>
         <h3>Viršutinės juostos mygtukai</h3>
         <ul class="plain">
           <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Pridėti įmonę</span> – pridėk naują stebimą įmonę (žr. <a href="#lisafirma">5 skyrių</a>).</li>
           <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 7H4M20 12H4M20 17H4"/></svg> Paslaugos</span> – atverk paslaugų ir mėnesio mokesčio vaizdą.</li>
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-2.6-6.4L21 8"/><path d="M21 3v5h-5"/></svg> Atnaujinti vaizdą</span> – iš naujo nuskaito naujausius duomenis ir atnaujina ekraną. <b>Nekrausto</b> svetainių, tik atnaujina vaizdą.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-2.6-6.4L21 8"/><path d="M21 3v5h-5"/></svg> Atnaujinti vaizdą</span> – iš naujo nuskaito naujausius duomenis ir atnaujina ekraną. <b>Nepaleidžia naujo skenavimo</b>, tik atnaujina vaizdą.</li>
           <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg> Leisti pranešimus</span> – įjungia push pranešimus į telefoną (žr. <a href="#teavitused">9 skyrių</a>).</li>
-          <li><span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg> Skenuoti viską iš naujo</span> – paleidžia <b>tikruosius skenavimus</b> (krausto svetaines), užtrunka kelias minutes. Tai galima daryti <b>1 kartą per parą</b>.</li>
+          <li><span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg> Skenuoti viską iš naujo</span> – paleidžia <b>tikruosius skenavimus</b> (naujas nuodugnus svetainių skenavimas), užtrunka kelias minutes. Tai galima daryti <b>1 kartą per parą</b>.</li>
         </ul>
         <h3>Kaip veikia stebėsena? – pagalbos juosta</h3>
         <p>Darbalaukio viršuje yra išskleidžiama juosta <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .8-1 1.7M12 17h.01"/></svg> Kaip veikia stebėsena?</span> Spustelėk, kad perskaitytum trumpą paaiškinimą. Pirmą kartą, kai dar nėra nė vienos įmonės, ji būna atverta.</p>
+        <h3>Greita apžvalga viršuje</h3>
+        <p>Atvėręs darbalaukį iškart matai svarbiausia – prieš grafikus ir lentelę:</p>
+        <ul class="plain">
+          <li><b>Būklės juosta</b> – trys ženkleliai vienu žvilgsniu: <span class="pill warn"><span class="dot"></span>N reikia dėmesio</span> (spustelėjus nuslenka iki sąrašo), <span class="pill ok"><span class="dot"></span>N ramu</span> ir <b>N įmonių stebima</b>.</li>
+          <li><b>Reikia dėmesio</b> – svarbiausi radiniai iš visų įmonių, po vieną ir pagal svarbą. <span class="pill err"><span class="dot"></span>Raudonas taškas</span> yra tavo paties parduotuvės kritinė klaida, <span class="pill warn"><span class="dot"></span>geltonas</span> – konkurento pokytis. Spustelėjus pateksi tiesiai prie įmonės arba į kainų palyginimą. Viršuje dešinėje yra <b>delta</b>: „Nuo tavo paskutinio apsilankymo: N naujų radinių“. Jei niekas nelaukia, čia yra žalia „Viskas tylu“.</li>
+          <li><b>Tavo kainos padėtis</b> – viena apibendrinanti eilutė: „Iš N palyginamų prekių esi pigiausias X, brangesnis Y“. Spustelėjus atsiveria <a href="#hinnavordlus">kainų palyginimas</a>.</li>
+        </ul>
         <h3>Radinių tendencija</h3>
         <p>Grafikas rodo, kaip radinių skaičius keitėsi per paskutines stebėsenas – ar viskas rimsta, ar reikia daugiau dėmesio. Visuose grafikuose yra ašies skalė ir vienetas; užvesk žymeklį ant linijos, kad pamatytum tikslų skaičių.</p>
         <h3>Suvestinė</h3>
@@ -332,6 +339,7 @@
           <div class="dr"><span class="k">Šviežumas</span><span class="v">Kada šios įmonės duomenys paskutinį kartą atnaujinti.</span></div>
           <div class="dr"><span class="k">Radiniai</span><span class="v">Greita signalinė lemputė: <span class="pill ok"><span class="dot"></span>Taip</span> yra radinys, <span class="pill sec"><span class="dot"></span>Ne</span> viskas tylu.</span></div>
         </div>
+        <p>Po įmonės pavadinimu matai trumpą <b>pokyčio užuominą</b> (pvz., „3 pigesnės kainos“), tad nebūtina visada spustelėti įmonės, kad pamatytum, kas ten įvyko.</p>
         <h3>Tavo pridėti stebimieji</h3>
         <p>Jei pats pridėjai įmonę, matai jos būklę. Galimos būsenos:</p>
         <ul class="plain">
@@ -474,6 +482,7 @@
         <ul class="plain">
           <li><b>Automatinė</b> – ataskaita paruošiama ir siunčiama el. paštu kiekvieno mėnesio pradžioje; nieko daryti ranka nereikia.</li>
           <li><b>Archyvas</b> – visos ankstesnės mėnesio ataskaitos yra čia atsisiuntimui.</li>
+          <li><b>El. laišką galima išjungti</b> <a href="#konto">Paskyros</a> puslapyje – PDF vis tiek paruošiamas ir lieka archyve, tik el. laiškas tada nesiunčiamas.</li>
           <li>Skirtingai nuo kasrytinio laiško (žr. žemiau), mėnesio ataskaita yra <b>suvestinė apžvalga</b> sprendimų priėmėjui, o ne dienos pokyčių sąrašas.</li>
         </ul>
         <h3>Kasrytinis laiškas ir realaus laiko įspėjimai</h3>
@@ -486,16 +495,32 @@
       <!-- 11 -->
       <section class="doc" id="konto">
         <h2><span class="num">11</span> Paskyra ir API prieiga</h2>
-        <p>Meniu punktas <b>Paskyra</b> suveda tavo paskyros duomenis ir nustatymus.</p>
+        <p>Meniu punktas <b>Paskyra</b> suveda tavo paskyros duomenis, savo el. parduotuvės ryšį, el. pašto ataskaitų nustatymus ir API prieigą.</p>
         <figure>
-          <img src="l360-konto.png" alt="Paskyra: paskyros duomenys, slaptažodis, API prieiga ir pranešimų nustatymai" loading="lazy">
-          <figcaption>Paskyra – įmonės duomenys, slaptažodžio keitimas, API raktas ir kasrytinio laiško jungiklis.</figcaption>
+          <img src="l360-konto.png" alt="Paskyra: paskyros duomenys, savo el. parduotuvės ryšys, el. pašto ataskaitos ir API prieiga" loading="lazy">
+          <figcaption>Paskyra – įmonės duomenys, slaptažodis, savo el. parduotuvės ryšys, el. pašto ataskaitos ir API raktas.</figcaption>
         </figure>
         <ul class="plain">
           <li><b>Paskyros duomenys</b> – įmonė, kontaktinis asmuo ir registracijos el. paštas.</li>
           <li><b>Slaptažodis</b> – <span class="chip">Keisti slaptažodį</span>; pamirštą slaptažodį gali atkurti iš prisijungimo puslapio.</li>
-          <li><b>Kasrytinė stebėsenos ataskaita</b> – jungiklis, kuriuo el. laišką įjungi arba išjungi.</li>
         </ul>
+
+        <h3>Savo el. parduotuvės prijungimas (WooCommerce)</h3>
+        <p>Kad tavo <b>paties parduotuvės</b> paslaugos – el. parduotuvės būklė, būklės patikra ir kainodara – gautų tikrus duomenis, prijunk savo WooCommerce el. parduotuvę. Look360 skaito kainas ir <b>tikrąsias atsargas per oficialų API</b> (o ne skenuodamas puslapį), ir jie atnaujinami kiekvieną naktį. Prijungti galima dviem būdais:</p>
+        <ul class="plain">
+          <li><b>Tiesiogiai su API raktu</b> – parduotuvės administravime <i>WooCommerce → Settings → Advanced → REST API → Add key</i>, teisė <b>Read (skaitymas)</b>. Nukopijuok <b>Consumer key</b>, <b>Consumer secret</b> ir el. parduotuvės adresą į paskyros puslapio formą.</li>
+          <li><b>Su Look360 papildiniu</b> – paprastesnis būdas be raktų kopijavimo ranka: spausk <span class="chip">Sukurti ryšio kodą</span>, parduotuvės administravime atverk <i>WooCommerce → Look360</i> papildinio puslapį ir įklijuok kodą. Kodas galioja 30 minučių.</li>
+        </ul>
+        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Prijungta parduotuvė</div><p>Kai parduotuvė prijungta, matai žalią žymą „El. parduotuvė prijungta“. Duomenys atnaujinami kiekvieną naktį; raktus vėliau galima pakeisti per tą pačią formą.</p></div>
+
+        <h3>El. pašto ataskaitos</h3>
+        <p>Vienoje vietoje valdai, kokios ataskaitos ir kam siunčiamos el. paštu:</p>
+        <div class="deflist">
+          <div class="dr"><span class="k">Kasrytinė stebėsenos ataskaita</span><span class="v">Kiekvieną rytą 7 val. laiškas su paskutinių 24 valandų pokyčiais apie visas tavo paslaugas. Išjunk, jei šio laiško nenori.</span></div>
+          <div class="dr"><span class="k">Mėnesio vadovybės ataskaita</span><span class="v">Kiekvieno mėnesio 1 dieną PDF suvestinė apie praėjusį mėnesį. Išjungus PDF vis tiek lieka paskyros archyve (žr. <a href="#kuuraportid">10 skyrių</a>).</span></div>
+          <div class="dr"><span class="k">Ataskaitų gavėjai</span><span class="v">El. pašto adresai, kuriais siunčiamos ataskaitos ir pranešimai – pridėk kolegų atskirdamas kableliu.</span></div>
+        </div>
+        <p>Prekės lygio kainų pranešimus (kainos kritimas, atsargos, nauja prekė) valdyk atskirame puslapyje <a href="#teavitused">Pranešimai</a> (9 skyrius).</p>
         <h3>API prieiga (BI, ERP, Excel)</h3>
         <p>Per REST API gali gauti savo stebėsenos duomenis – parduotuves, prekes, kainas, kainų palyginimą, radinius – tiesiai į savo sistemą (Power BI, ERP, Excel Power Query).</p>
         <ol class="steps">

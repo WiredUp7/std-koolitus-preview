@@ -267,7 +267,7 @@
         <div class="deflist">
           <div class="dr"><span class="k">Seuranta</span><span class="v">Pääasiallinen työpöytä – kaikki seurattavat yritykset, havainnot ja trendi.</span></div>
           <div class="dr"><span class="k">Palvelut</span><span class="v">Tilaamasi palvelut, kuukausimaksu ja lisätilaus.</span></div>
-          <div class="dr"><span class="k">Tili</span><span class="v">Tilin tiedot, salasana, API-pääsy ja joka-aamuisen sähköpostin asetukset.</span></div>
+          <div class="dr"><span class="k">Tili</span><span class="v">Tilin tiedot, salasana, oman verkkokaupan yhteys, API-pääsy ja sähköpostiraporttien asetukset.</span></div>
           <div class="dr"><span class="k">Hintavertailu</span><span class="v">Sama tuote kaikkien seurattavien kauppojen kesken – halvin hinta ja historia.</span></div>
           <div class="dr"><span class="k">Ilmoitukset</span><span class="v">Hintailmoitusten säännöt ja push-ilmoitukset puhelimeen.</span></div>
           <div class="dr"><span class="k">Kuukausiraportit</span><span class="v">Kuukausittainen PDF-kooste johdolle.</span></div>
@@ -289,18 +289,25 @@
         <p>Tämä on kotinäkymä. Yläreunasta löydät päänpainikkeet, alla ovat trendi, yhteenveto ja yritysten luettelo.</p>
         <figure>
           <img src="l360-seirepaneel.png" alt="Look360-seurantatyöpöytä: trendikaavio, yhteenveto ja yritysten taulukko" loading="lazy">
-          <figcaption>Seurantatyöpöytä – havaintojen trendi, yhteenveto ja seurattavien yritysten taulukko.</figcaption>
+          <figcaption>Seurantatyöpöytä – tilapalkki, ”Vaatii huomiota”, hintapositio, trendi ja seurattavien yritysten taulukko.</figcaption>
         </figure>
         <h3>Yläpalkin painikkeet</h3>
         <ul class="plain">
           <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Lisää yritys</span> – lisää uusi seurattava yritys (ks. <a href="#lisafirma">luku 5</a>).</li>
           <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 7H4M20 12H4M20 17H4"/></svg> Palvelut</span> – avaa palvelujen ja kuukausimaksun näkymä.</li>
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-2.6-6.4L21 8"/><path d="M21 3v5h-5"/></svg> Päivitä näkymä</span> – lukee viimeisimmät tiedot uudelleen ja päivittää ruudun. <b>Ei kaavi</b> sivustoja, päivittää vain näkymän.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-2.6-6.4L21 8"/><path d="M21 3v5h-5"/></svg> Päivitä näkymä</span> – lukee viimeisimmät tiedot uudelleen ja päivittää ruudun. <b>Ei käynnistä uutta skannausta</b>, päivittää vain näkymän.</li>
           <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg> Salli ilmoitukset</span> – ottaa käyttöön push-ilmoitukset puhelimeen (ks. <a href="#teavitused">luku 9</a>).</li>
-          <li><span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg> Skannaa kaikki uudelleen</span> – käynnistää <b>aidot skannaukset</b> (kaapii sivustoja), kestää muutaman minuutin. Tämän voi tehdä <b>kerran vuorokaudessa</b>.</li>
+          <li><span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg> Skannaa kaikki uudelleen</span> – käynnistää <b>aidot skannaukset</b> (uusi perusteellinen skannaus sivustoilta), kestää muutaman minuutin. Tämän voi tehdä <b>kerran vuorokaudessa</b>.</li>
         </ul>
         <h3>Miten seuranta toimii? – ohjepalkki</h3>
         <p>Työpöydän yläosassa on aukeava palkki <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .8-1 1.7M12 17h.01"/></svg> Miten seuranta toimii?</span> Klikkaa lukeaksesi lyhyen selityksen. Ensimmäisellä kerralla, kun yhtään yritystä ei vielä ole, se on avattuna.</p>
+        <h3>Pikakatsaus yläreunassa</h3>
+        <p>Työpöydän avatessasi näet heti tärkeimmän – ennen kaavioita ja taulukkoa:</p>
+        <ul class="plain">
+          <li><b>Tilapalkki</b> – kolme sirua yhdellä silmäyksellä: <span class="pill warn"><span class="dot"></span>N vaatii huomiota</span> (klikkaus vierittää luetteloon), <span class="pill ok"><span class="dot"></span>N rauhallista</span> ja <b>N yritystä seurannassa</b>.</li>
+          <li><b>Vaatii huomiota</b> – tärkeimmät havainnot kaikista yrityksistä, yksitellen ja tärkeysjärjestyksessä. <span class="pill err"><span class="dot"></span>Punainen piste</span> on oman kauppasi kriittinen virhe, <span class="pill warn"><span class="dot"></span>keltainen</span> kilpailijan muutos. Klikkaus vie suoraan yrityksen luo tai hintavertailuun. Ylhäällä oikealla on <b>delta</b>: ”Edellisestä käynnistäsi: N uutta havaintoa”. Jos mitään ei ole odotettavissa, tässä on vihreä ”Kaikki hiljaista”.</li>
+          <li><b>Hintapositiosi</b> – yksi tiivistävä rivi: ”N vertailtavasta tuotteesta olet halvin X, kallein Y”. Klikkaus avaa <a href="#hinnavordlus">hintavertailun</a>.</li>
+        </ul>
         <h3>Havaintojen trendi</h3>
         <p>Kaavio näyttää, miten havaintojen määrä on muuttunut viime seurantojen aikana – rauhoittuvatko asiat vai vaativatko ne enemmän huomiota. Kaikissa kaavioissa on akselin asteikko ja yksikkö merkittynä; liikuta hiirtä viivan päällä nähdäksesi tarkan luvun.</p>
         <h3>Yhteenveto</h3>
@@ -332,6 +339,7 @@
           <div class="dr"><span class="k">Tuoreus</span><span class="v">Milloin kyseisen yrityksen tiedot on viimeksi päivitetty.</span></div>
           <div class="dr"><span class="k">Havainnot</span><span class="v">Pikamerkki: <span class="pill ok"><span class="dot"></span>Kyllä</span> on havainto, <span class="pill sec"><span class="dot"></span>Ei</span> kaikki hiljaista.</span></div>
         </div>
+        <p>Yrityksen nimen alla näet lyhyen <b>muutosvihjeen</b> (esim. ”3 halvempaa hintaa”), joten sinun ei tarvitse aina klikata yritystä nähdäksesi, mitä siellä tapahtui.</p>
         <h3>Itse lisäämäsi seurattavat</h3>
         <p>Kun olet itse lisännyt yrityksen, näet sen tilan. Mahdolliset tilat:</p>
         <ul class="plain">
@@ -474,6 +482,7 @@
         <ul class="plain">
           <li><b>Automaattinen</b> – raportti valmistuu ja lähetetään sähköpostilla jokaisen kuun alussa; mitään ei tarvitse tehdä käsin.</li>
           <li><b>Arkisto</b> – kaikki aiemmat kuukausiraportit ovat täällä ladattavissa.</li>
+          <li><b>Sähköpostin voi kytkeä pois</b> <a href="#konto">Tili</a>-sivulla – PDF valmistuu ja jää arkistoon silti, vain sähköpostia ei silloin lähetetä.</li>
           <li>Toisin kuin joka-aamuinen sähköposti (ks. alla), kuukausiraportti on <b>koosteyleiskatsaus</b> päättäjälle, ei päivittäinen muutoslista.</li>
         </ul>
         <h3>Joka-aamuinen sähköposti ja reaaliaikaiset varoitukset</h3>
@@ -486,16 +495,33 @@
       <!-- 11 -->
       <section class="doc" id="konto">
         <h2><span class="num">11</span> Tili ja API-pääsy</h2>
-        <p>Valikkokohta <b>Tili</b> kokoaa tilisi tiedot ja asetukset.</p>
+        <p>Valikkokohta <b>Tili</b> kokoaa tilisi tiedot, oman verkkokaupan yhteyden, sähköpostiraporttien asetukset ja API-pääsyn.</p>
         <figure>
-          <img src="l360-konto.png" alt="Tili: tilin tiedot, salasana, API-pääsy ja ilmoitusten asetukset" loading="lazy">
-          <figcaption>Tili – yrityksen tiedot, salasanan vaihto, API-avain ja joka-aamuisen sähköpostin kytkin.</figcaption>
+          <img src="l360-konto.png" alt="Tili: tilin tiedot, oman verkkokaupan yhteys, sähköpostiraportit ja API-pääsy" loading="lazy">
+          <figcaption>Tili – yrityksen tiedot, salasana, oman verkkokaupan yhteys, sähköpostiraportit ja API-avain.</figcaption>
         </figure>
         <ul class="plain">
           <li><b>Tilin tiedot</b> – yritys, yhteyshenkilö ja rekisteröinnin sähköposti.</li>
           <li><b>Salasana</b> – <span class="chip">Vaihda salasana</span>; unohtuneen salasanan voit palauttaa kirjautumissivulta.</li>
-          <li><b>Joka-aamuinen seurantaraportti</b> – kytkin, jolla kytket sähköpostin päälle tai pois.</li>
         </ul>
+
+        <h3>Oman verkkokaupan yhdistäminen (WooCommerce)</h3>
+        <p>Jotta <b>oman kauppasi</b> palvelut – verkkokaupan kunto, kuntotarkastus ja hinnoittelu – saisivat aidot tiedot, yhdistä oma WooCommerce-verkkokauppasi. Look360 lukee hinnat ja <b>todellisen varastotilanteen virallisen API:n kautta</b> (ei sivua skannaamalla), ja ne päivittyvät joka yö. Yhdistää voi kahdella tavalla:</p>
+        <ul class="plain">
+          <li><b>Suoraan API-avaimella</b> – kaupan hallinnassa <i>WooCommerce → Settings → Advanced → REST API → Add key</i>, oikeudeksi <b>Read</b>. Kopioi <b>Consumer key</b>, <b>Consumer secret</b> ja verkkokaupan osoite tili-sivun lomakkeeseen.</li>
+          <li><b>Look360-liitännäisellä</b> – helpompi tapa ilman avainten käsin kopiointia: paina <span class="chip">Luo yhteyskoodi</span>, avaa kaupan hallinnassa liitännäisen sivu <i>WooCommerce → Look360</i> ja liitä koodi. Koodi on voimassa 30 minuuttia.</li>
+        </ul>
+        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Yhdistetty kauppa</div><p>Kun kauppa on yhdistetty, näet vihreän merkinnän ”Verkkokauppa yhdistetty”. Tiedot päivittyvät joka yö; avaimet voi myöhemmin vaihtaa saman lomakkeen kautta.</p></div>
+
+        <h3>Sähköpostiraportit</h3>
+        <p>Yhdestä paikasta hallitset, mitkä raportit ja kenelle lähtevät sähköpostilla:</p>
+        <div class="deflist">
+          <div class="dr"><span class="k">Joka-aamuinen seurantaraportti</span><span class="v">Joka aamu kello 7 sähköposti viimeisen 24 tunnin muutoksista kaikista palveluistasi. Kytke pois, jos et halua tätä kirjettä.</span></div>
+          <div class="dr"><span class="k">Kuukausittainen johdon raportti</span><span class="v">Joka kuun 1. päivä PDF-yhteenveto edellisestä kuusta. Pois kytkettäessä PDF jää silti tilin arkistoon (ks. <a href="#kuuraportid">luku 10</a>).</span></div>
+          <div class="dr"><span class="k">Raporttien vastaanottajat</span><span class="v">Sähköpostiosoitteet, joihin raportit ja ilmoitukset lähtevät – lisää kollegoita pilkulla erottaen.</span></div>
+        </div>
+        <p>Tuotekohtaisia hintailmoituksia (hinnanlasku, varastotilanne, uusi tuote) hallitset erillisellä <a href="#teavitused">Ilmoitukset</a>-sivulla (luku 9).</p>
+
         <h3>API-pääsy (BI, ERP, Excel)</h3>
         <p>REST-API:n kautta saat seurantatietosi – kaupat, tuotteet, hinnat, hintavertailun, havainnot – suoraan omaan järjestelmääsi (Power BI, ERP, Excel Power Query).</p>
         <ol class="steps">

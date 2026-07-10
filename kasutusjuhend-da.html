@@ -267,7 +267,7 @@
         <div class="deflist">
           <div class="dr"><span class="k">Overvågning</span><span class="v">Hoveddashboardet – alle overvågede virksomheder, fund og tendens.</span></div>
           <div class="dr"><span class="k">Tjenester</span><span class="v">Dine bestilte tjenester, månedspris og tilkøb.</span></div>
-          <div class="dr"><span class="k">Konto</span><span class="v">Kontooplysninger, adgangskode, API-adgang og indstillinger for morgenmailen.</span></div>
+          <div class="dr"><span class="k">Konto</span><span class="v">Kontooplysninger, adgangskode, tilslutning af din egen webshop, API-adgang og indstillinger for e-mailrapporter.</span></div>
           <div class="dr"><span class="k">Prissammenligning</span><span class="v">Det samme produkt på tværs af alle overvågede shops – laveste pris og historik.</span></div>
           <div class="dr"><span class="k">Notifikationer</span><span class="v">Regler for prisnotifikationer og push-beskeder til telefonen.</span></div>
           <div class="dr"><span class="k">Månedsrapporter</span><span class="v">Månedlig samlet PDF-rapport til ledelsen.</span></div>
@@ -289,18 +289,25 @@
         <p>Dette er startvisningen. Øverst finder du de vigtigste knapper, nedenunder er tendens, resumé og listen over virksomheder.</p>
         <figure>
           <img src="l360-seirepaneel.png" alt="Look360 overvågnings-dashboard: tendensgraf, resumé og virksomhedstabel" loading="lazy">
-          <figcaption>Overvågnings-dashboard – fundenes tendens, resumé og tabel over overvågede virksomheder.</figcaption>
+          <figcaption>Overvågnings-dashboard – statuslinje, „Kræver opmærksomhed", prisposition, tendens og tabel over overvågede virksomheder.</figcaption>
         </figure>
         <h3>Knapper i topbjælken</h3>
         <ul class="plain">
           <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Tilføj virksomhed</span> – tilføj en ny overvåget virksomhed (se <a href="#lisafirma">kapitel 5</a>).</li>
           <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 7H4M20 12H4M20 17H4"/></svg> Tjenester</span> – åbn visningen over tjenester og månedspris.</li>
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-2.6-6.4L21 8"/><path d="M21 3v5h-5"/></svg> Opdater visning</span> – indlæser de seneste data igen og opdaterer skærmen. <b>Skraber ikke</b> sider, opdaterer kun visningen.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-2.6-6.4L21 8"/><path d="M21 3v5h-5"/></svg> Opdater visning</span> – indlæser de seneste data igen og opdaterer skærmen. <b>Starter ikke en ny skanning</b>, opdaterer kun visningen.</li>
           <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg> Tillad notifikationer</span> – slår push-beskeder til telefonen til (se <a href="#teavitused">kapitel 9</a>).</li>
-          <li><span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg> Skan alt igen</span> – starter <b>rigtige skanninger</b> (skraber sider), tager et par minutter. Dette kan gøres <b>1 gang i døgnet</b>.</li>
+          <li><span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg> Skan alt igen</span> – starter <b>rigtige skanninger</b> (en ny grundig skanning af siderne), tager et par minutter. Dette kan gøres <b>1 gang i døgnet</b>.</li>
         </ul>
         <h3>Hvordan fungerer overvågningen? – hjælpebjælke</h3>
         <p>Øverst på dashboardet er der en udfoldelig bjælke <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .8-1 1.7M12 17h.01"/></svg> Hvordan fungerer overvågningen?</span> Klik for at læse en kort forklaring. Første gang, hvor du endnu ikke har nogen virksomhed, er den åben.</p>
+        <h3>Hurtigt overblik øverst</h3>
+        <p>Når du åbner dashboardet, ser du straks det vigtigste – før graferne og tabellen:</p>
+        <ul class="plain">
+          <li><b>Statuslinje</b> – tre chips på ét blik: <span class="pill warn"><span class="dot"></span>N kræver opmærksomhed</span> (et klik ruller ned til listen), <span class="pill ok"><span class="dot"></span>N rolige</span> og <b>N virksomheder under overvågning</b>.</li>
+          <li><b>Kræver opmærksomhed</b> – de vigtigste fund på tværs af alle virksomheder, ét ad gangen og i rækkefølge efter vigtighed. <span class="pill err"><span class="dot"></span>Rød prik</span> er en kritisk fejl i din egen shop, <span class="pill warn"><span class="dot"></span>gul</span> en ændring hos en konkurrent. Et klik fører direkte til virksomheden eller til prissammenligningen. Øverst til højre står <b>delta</b>: „Siden dit sidste besøg: N nye fund". Er der ikke noget at afvente, står her et grønt „Alt stille".</li>
+          <li><b>Din prisposition</b> – én opsummerende linje: „Af N sammenlignelige produkter er du billigst på X, dyrest på Y". Et klik åbner <a href="#hinnavordlus">prissammenligningen</a>.</li>
+        </ul>
         <h3>Fundenes tendens</h3>
         <p>Grafen viser, hvordan antallet af fund har ændret sig under de seneste overvågninger – om tingene falder til ro eller kræver mere opmærksomhed. Alle grafer har akseskala og enhed angivet; før musen hen over linjen for at se det præcise tal.</p>
         <h3>Resumé</h3>
@@ -332,6 +339,7 @@
           <div class="dr"><span class="k">Friskhed</span><span class="v">Hvornår den pågældende virksomheds data senest blev opdateret.</span></div>
           <div class="dr"><span class="k">Fund</span><span class="v">Hurtigt lys: <span class="pill ok"><span class="dot"></span>Ja</span> der er et fund, <span class="pill sec"><span class="dot"></span>Nej</span> alt er stille.</span></div>
         </div>
+        <p>Under virksomhedens navn ser du et kort <b>ændringstip</b> (fx „3 billigere priser"), så du ikke altid behøver at klikke ind i virksomheden for at se, hvad der skete der.</p>
         <h3>Dine tilføjede overvågede</h3>
         <p>Hvis du selv har tilføjet en virksomhed, ser du dens status. Mulige tilstande:</p>
         <ul class="plain">
@@ -474,6 +482,7 @@
         <ul class="plain">
           <li><b>Automatisk</b> – rapporten bliver klar og sendes med e-mail i begyndelsen af hver måned; der er ikke noget, du skal gøre manuelt.</li>
           <li><b>Arkiv</b> – alle tidligere månedsrapporter er her til download.</li>
+          <li><b>E-mailen kan slås fra</b> på siden <a href="#konto">Konto</a> – PDF'en bliver stadig genereret og gemt i arkivet, kun selve e-mailen sendes ikke.</li>
           <li>I modsætning til morgenmailen (se nedenfor) er månedsrapporten en <b>samlet oversigt</b> til beslutningstageren, ikke en daglig liste over ændringer.</li>
         </ul>
         <h3>Morgenmail og advarsler i realtid</h3>
@@ -486,16 +495,33 @@
       <!-- 11 -->
       <section class="doc" id="konto">
         <h2><span class="num">11</span> Konto og API-adgang</h2>
-        <p>Menupunktet <b>Konto</b> samler dine kontooplysninger og indstillinger.</p>
+        <p>Menupunktet <b>Konto</b> samler dine kontooplysninger, tilslutningen af din egen webshop, indstillingerne for e-mailrapporter og API-adgangen.</p>
         <figure>
-          <img src="l360-konto.png" alt="Konto: kontooplysninger, adgangskode, API-adgang og indstillinger for notifikationer" loading="lazy">
-          <figcaption>Konto – virksomhedens oplysninger, ændring af adgangskode, API-nøgle og kontakten til morgenmailen.</figcaption>
+          <img src="l360-konto.png" alt="Konto: kontooplysninger, tilslutning af din egen webshop, e-mailrapporter og API-adgang" loading="lazy">
+          <figcaption>Konto – virksomhedens oplysninger, adgangskode, tilslutning af din egen webshop, e-mailrapporter og API-nøgle.</figcaption>
         </figure>
         <ul class="plain">
           <li><b>Kontooplysninger</b> – virksomhed, kontaktperson og den e-mail, du er registreret med.</li>
           <li><b>Adgangskode</b> – <span class="chip">Skift adgangskode</span>; en glemt adgangskode kan du nulstille fra login-siden.</li>
-          <li><b>Daglig overvågningsrapport om morgenen</b> – kontakten, hvormed du slår e-mailen til eller fra.</li>
         </ul>
+
+        <h3>Tilslutning af din egen webshop (WooCommerce)</h3>
+        <p>For at tjenesterne for din <b>egen shop</b> – webshoppens sundhed, sundhedstjek og prissætning – kan få rigtige data, skal du tilslutte din WooCommerce-webshop. Look360 læser priserne og <b>den reelle lagerbeholdning via det officielle API</b> (ikke ved at skrabe siden), og de opdateres hver nat. Du kan tilslutte på to måder:</p>
+        <ul class="plain">
+          <li><b>Direkte med en API-nøgle</b> – i shoppens administration <i>WooCommerce → Settings → Advanced → REST API → Add key</i>, med tilladelsen <b>Read</b>. Kopiér <b>Consumer key</b>, <b>Consumer secret</b> og webshoppens adresse ind i formularen på kontosiden.</li>
+          <li><b>Med Look360-pluginet</b> – en enklere vej uden manuelt at kopiere nøgler: tryk på <span class="chip">Opret tilslutningskode</span>, åbn plugin-siden <i>WooCommerce → Look360</i> i shoppens administration og indsæt koden. Koden er gyldig i 30 minutter.</li>
+        </ul>
+        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Tilsluttet webshop</div><p>Når webshoppen er tilsluttet, ser du en grøn markering „Webshop tilsluttet". Dataene opdateres hver nat; nøglerne kan senere skiftes via samme formular.</p></div>
+
+        <h3>E-mailrapporter</h3>
+        <p>Fra ét sted styrer du, hvilke rapporter der sendes med e-mail, og til hvem:</p>
+        <div class="deflist">
+          <div class="dr"><span class="k">Daglig overvågningsrapport</span><span class="v">Hver morgen kl. 7 en mail med de seneste 24 timers ændringer for alle dine tjenester. Slå fra, hvis du ikke ønsker denne mail.</span></div>
+          <div class="dr"><span class="k">Månedlig ledelsesrapport</span><span class="v">Den 1. i hver måned en PDF-opsummering af den foregående måned. Slås den fra, forbliver PDF'en stadig i kontoens arkiv (se <a href="#kuuraportid">kapitel 10</a>).</span></div>
+          <div class="dr"><span class="k">Rapportmodtagere</span><span class="v">E-mailadresser, som rapporter og notifikationer sendes til – tilføj kolleger adskilt med komma.</span></div>
+        </div>
+        <p>Produktbaserede prisnotifikationer (prisfald, lagerbeholdning, nyt produkt) styrer du på den separate side <a href="#teavitused">Notifikationer</a> (kapitel 9).</p>
+
         <h3>API-adgang (BI, ERP, Excel)</h3>
         <p>Via REST API kan du få dine overvågningsdata – shops, produkter, priser, prissammenligning, fund – direkte ind i dit eget system (Power BI, ERP, Excel Power Query).</p>
         <ol class="steps">

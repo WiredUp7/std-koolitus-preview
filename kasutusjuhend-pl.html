@@ -267,7 +267,7 @@
         <div class="deflist">
           <div class="dr"><span class="k">Monitoring</span><span class="v">Główny pulpit – wszystkie monitorowane firmy, znaleziska i trend.</span></div>
           <div class="dr"><span class="k">Usługi</span><span class="v">Twoje zamówione usługi, opłata miesięczna i dozamawianie.</span></div>
-          <div class="dr"><span class="k">Konto</span><span class="v">Dane konta, hasło, dostęp do API i ustawienia codziennego porannego maila.</span></div>
+          <div class="dr"><span class="k">Konto</span><span class="v">Dane konta, hasło, połączenie własnego sklepu internetowego, dostęp do API i ustawienia raportów e-mail.</span></div>
           <div class="dr"><span class="k">Porównanie cen</span><span class="v">Ten sam produkt we wszystkich monitorowanych sklepach – najniższa cena i historia.</span></div>
           <div class="dr"><span class="k">Powiadomienia</span><span class="v">Reguły powiadomień cenowych i powiadomienia push na telefon.</span></div>
           <div class="dr"><span class="k">Raporty miesięczne</span><span class="v">Miesięczny zbiorczy raport PDF dla zarządu.</span></div>
@@ -289,18 +289,25 @@
         <p>To widok domowy. U góry znajdziesz główne przyciski, poniżej trend, podsumowanie i lista firm.</p>
         <figure>
           <img src="l360-seirepaneel.png" alt="Pulpit monitoringu Look360: wykres trendu, podsumowanie i tabela firm" loading="lazy">
-          <figcaption>Pulpit monitoringu – trend znalezisk, podsumowanie i tabela monitorowanych firm.</figcaption>
+          <figcaption>Pulpit monitoringu – pasek stanu, „Wymaga uwagi", pozycja cenowa, trend i tabela monitorowanych firm.</figcaption>
         </figure>
         <h3>Przyciski górnego paska</h3>
         <ul class="plain">
           <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Dodaj firmę</span> – dodaj nową monitorowaną firmę (zob. <a href="#lisafirma">rozdział 5</a>).</li>
           <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 7H4M20 12H4M20 17H4"/></svg> Usługi</span> – otwórz widok usług i opłaty miesięcznej.</li>
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-2.6-6.4L21 8"/><path d="M21 3v5h-5"/></svg> Odśwież widok</span> – ponownie wczytuje najnowsze dane i odświeża ekran. <b>Nie skanuje</b> stron, tylko odświeża widok.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-2.6-6.4L21 8"/><path d="M21 3v5h-5"/></svg> Odśwież widok</span> – ponownie wczytuje najnowsze dane i odświeża ekran. <b>Nie uruchamia nowego skanu</b>, tylko odświeża widok.</li>
           <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg> Włącz powiadomienia</span> – włącza powiadomienia push na telefon (zob. <a href="#teavitused">rozdział 9</a>).</li>
-          <li><span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg> Skanuj wszystko ponownie</span> – uruchamia <b>prawdziwe skany</b> (skanuje strony), trwa kilka minut. Można to zrobić <b>raz na dobę</b>.</li>
+          <li><span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg> Skanuj wszystko ponownie</span> – uruchamia <b>prawdziwe skany</b> (nowy dokładny skan stron), trwa kilka minut. Można to zrobić <b>raz na dobę</b>.</li>
         </ul>
         <h3>Jak działa monitoring? – pasek pomocy</h3>
         <p>W górnej części pulpitu jest rozwijany pasek <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .8-1 1.7M12 17h.01"/></svg> Jak działa monitoring?</span> Kliknij, aby przeczytać krótkie wyjaśnienie. Za pierwszym razem, gdy nie ma jeszcze żadnej firmy, jest on otwarty.</p>
+        <h3>Szybki przegląd u góry</h3>
+        <p>Po otwarciu pulpitu od razu widzisz to, co najważniejsze – przed wykresami i tabelą:</p>
+        <ul class="plain">
+          <li><b>Pasek stanu</b> – trzy chipy jednym rzutem oka: <span class="pill warn"><span class="dot"></span>N wymaga uwagi</span> (kliknięcie przewija do listy), <span class="pill ok"><span class="dot"></span>N spokojnych</span> i <b>N firm monitorowanych</b>.</li>
+          <li><b>Wymaga uwagi</b> – najważniejsze znaleziska ze wszystkich firm, pojedynczo i w kolejności ważności. <span class="pill err"><span class="dot"></span>Czerwona kropka</span> to krytyczny błąd Twojego własnego sklepu, <span class="pill warn"><span class="dot"></span>żółta</span> zmiana u konkurenta. Kliknięcie prowadzi prosto do firmy lub do porównania cen. U góry po prawej jest <b>delta</b>: „Od Twojej poprzedniej wizyty: N nowych znalezisk". Gdy nic nie czeka, jest tu zielone „Cisza".</li>
+          <li><b>Twoja pozycja cenowa</b> – jeden podsumowujący wiersz: „Z N porównywalnych produktów jesteś najtańszy na X, droższy na Y". Kliknięcie otwiera <a href="#hinnavordlus">porównanie cen</a>.</li>
+        </ul>
         <h3>Trend znalezisk</h3>
         <p>Wykres pokazuje, jak liczba znalezisk zmieniała się w ciągu ostatnich monitoringów – czy sytuacja się uspokaja, czy wymaga większej uwagi. Na wszystkich wykresach podana jest skala osi i jednostka; najedź myszą na linię, aby zobaczyć dokładną liczbę.</p>
         <h3>Podsumowanie</h3>
@@ -332,6 +339,7 @@
           <div class="dr"><span class="k">Aktualność</span><span class="v">Kiedy ostatnio zaktualizowano dane tej firmy.</span></div>
           <div class="dr"><span class="k">Znaleziska</span><span class="v">Szybki sygnał: <span class="pill ok"><span class="dot"></span>Tak</span> jest znalezisko, <span class="pill sec"><span class="dot"></span>Nie</span> wszystko cicho.</span></div>
         </div>
+        <p>Pod nazwą firmy widzisz krótką <b>wskazówkę o zmianie</b> (np. „3 tańsze ceny"), dzięki czemu nie musisz za każdym razem klikać w firmę, aby zobaczyć, co się tam wydarzyło.</p>
         <h3>Firmy dodane przez Ciebie</h3>
         <p>Gdy sam dodasz firmę, widzisz jej stan. Możliwe stany:</p>
         <ul class="plain">
@@ -474,6 +482,7 @@
         <ul class="plain">
           <li><b>Automatyczny</b> – raport powstaje i jest wysyłany e-mailem na początku każdego miesiąca; nic nie trzeba robić ręcznie.</li>
           <li><b>Archiwum</b> – wszystkie wcześniejsze raporty miesięczne są tutaj do pobrania.</li>
+          <li><b>E-mail można wyłączyć</b> na stronie <a href="#konto">Konto</a> – PDF i tak powstaje i pozostaje w archiwum, tylko e-mail wtedy nie jest wysyłany.</li>
           <li>W odróżnieniu od codziennego porannego maila (zob. poniżej) raport miesięczny to <b>zbiorczy przegląd</b> dla decydenta, a nie dzienna lista zmian.</li>
         </ul>
         <h3>Codzienny poranny mail i ostrzeżenia w czasie rzeczywistym</h3>
@@ -486,16 +495,33 @@
       <!-- 11 -->
       <section class="doc" id="konto">
         <h2><span class="num">11</span> Konto i dostęp do API</h2>
-        <p>Punkt menu <b>Konto</b> zbiera dane i ustawienia Twojego konta.</p>
+        <p>Punkt menu <b>Konto</b> zbiera dane Twojego konta, połączenie własnego sklepu internetowego, ustawienia raportów e-mail i dostęp do API.</p>
         <figure>
-          <img src="l360-konto.png" alt="Konto: dane konta, hasło, dostęp do API i ustawienia powiadomień" loading="lazy">
-          <figcaption>Konto – dane firmy, zmiana hasła, klucz API i przełącznik codziennego porannego maila.</figcaption>
+          <img src="l360-konto.png" alt="Konto: dane konta, połączenie własnego sklepu internetowego, raporty e-mail i dostęp do API" loading="lazy">
+          <figcaption>Konto – dane firmy, hasło, połączenie własnego sklepu internetowego, raporty e-mail i klucz API.</figcaption>
         </figure>
         <ul class="plain">
           <li><b>Dane konta</b> – firma, osoba kontaktowa i e-mail rejestracji.</li>
           <li><b>Hasło</b> – <span class="chip">Zmień hasło</span>; zapomniane hasło możesz zresetować ze strony logowania.</li>
-          <li><b>Codzienny poranny raport monitoringu</b> – przełącznik, którym włączasz lub wyłączasz e-mail.</li>
         </ul>
+
+        <h3>Podłączenie własnego sklepu internetowego (WooCommerce)</h3>
+        <p>Aby usługi Twojego <b>własnego sklepu</b> – kondycja sklepu, kontrola kondycji i wycena – otrzymywały prawdziwe dane, podłącz swój sklep WooCommerce. Look360 odczytuje ceny i <b>prawdziwy stan magazynowy przez oficjalne API</b> (a nie skanując stronę), a dane odświeżają się co noc. Podłączyć można na dwa sposoby:</p>
+        <ul class="plain">
+          <li><b>Bezpośrednio kluczem API</b> – w panelu sklepu <i>WooCommerce → Settings → Advanced → REST API → Add key</i>, z uprawnieniem <b>Read</b> (odczyt). Skopiuj <b>Consumer key</b>, <b>Consumer secret</b> i adres sklepu do formularza na stronie konta.</li>
+          <li><b>Wtyczką Look360</b> – prostsza droga bez ręcznego kopiowania kluczy: naciśnij <span class="chip">Utwórz kod połączenia</span>, otwórz w panelu sklepu stronę wtyczki <i>WooCommerce → Look360</i> i wklej kod. Kod jest ważny 30 minut.</li>
+        </ul>
+        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Podłączony sklep</div><p>Gdy sklep jest podłączony, widzisz zielone oznaczenie „Sklep podłączony". Dane odświeżają się co noc; klucze można później wymienić przez ten sam formularz.</p></div>
+
+        <h3>Raporty e-mail</h3>
+        <p>Z jednego miejsca zarządzasz, które raporty i do kogo są wysyłane e-mailem:</p>
+        <div class="deflist">
+          <div class="dr"><span class="k">Codzienny poranny raport monitoringu</span><span class="v">Codziennie o 7 rano mail ze zmianami z ostatnich 24 godzin dotyczącymi wszystkich Twoich usług. Wyłącz, jeśli nie chcesz tego maila.</span></div>
+          <div class="dr"><span class="k">Miesięczny raport dla zarządu</span><span class="v">1. dnia każdego miesiąca podsumowanie PDF za miesiąc poprzedni. Po wyłączeniu PDF i tak pozostaje w archiwum konta (zob. <a href="#kuuraportid">rozdział 10</a>).</span></div>
+          <div class="dr"><span class="k">Odbiorcy raportów</span><span class="v">Adresy e-mail, na które wysyłane są raporty i powiadomienia – dodaj współpracowników, oddzielając przecinkami.</span></div>
+        </div>
+        <p>Powiadomieniami cenowymi dla poszczególnych produktów (spadek ceny, stan magazynowy, nowy produkt) zarządzaj na osobnej stronie <a href="#teavitused">Powiadomienia</a> (rozdział 9).</p>
+
         <h3>Dostęp do API (BI, ERP, Excel)</h3>
         <p>Poprzez REST API możesz pobrać swoje dane monitoringu – sklepy, produkty, ceny, porównanie cen, znaleziska – bezpośrednio do swojego systemu (Power BI, ERP, Excel Power Query).</p>
         <ol class="steps">

@@ -267,7 +267,7 @@
         <div class="deflist">
           <div class="dr"><span class="k">Övervakning</span><span class="v">Huvudinstrumentpanelen – alla bevakade företag, fynd och trend.</span></div>
           <div class="dr"><span class="k">Tjänster</span><span class="v">Dina beställda tjänster, månadsavgift och tilläggsbeställning.</span></div>
-          <div class="dr"><span class="k">Konto</span><span class="v">Kontouppgifter, lösenord, API-åtkomst och inställningar för morgonmejlet.</span></div>
+          <div class="dr"><span class="k">Konto</span><span class="v">Kontouppgifter, lösenord, anslutning av din egen webbutik, API-åtkomst och inställningar för e-postrapporter.</span></div>
           <div class="dr"><span class="k">Prisjämförelse</span><span class="v">Samma produkt mellan alla bevakade butiker – lägsta pris och historik.</span></div>
           <div class="dr"><span class="k">Aviseringar</span><span class="v">Regler för prisaviseringar och push-notiser till telefonen.</span></div>
           <div class="dr"><span class="k">Månadsrapporter</span><span class="v">Månatlig samlad PDF-rapport till ledningen.</span></div>
@@ -289,18 +289,25 @@
         <p>Detta är hemvyn. Överst hittar du de viktigaste knapparna, nedanför finns trenden, sammanfattningen och företagslistan.</p>
         <figure>
           <img src="l360-seirepaneel.png" alt="Look360 övervakningens instrumentpanel: trenddiagram, sammanfattning och företagstabell" loading="lazy">
-          <figcaption>Övervakningens instrumentpanel – trend för fynd, sammanfattning och tabell över de bevakade företagen.</figcaption>
+          <figcaption>Övervakningens instrumentpanel – statusrad, ”Kräver uppmärksamhet”, prisposition, trend och tabell över de bevakade företagen.</figcaption>
         </figure>
         <h3>Knappar i toppmenyn</h3>
         <ul class="plain">
           <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Lägg till företag</span> – lägg till ett nytt företag att bevaka (se <a href="#lisafirma">kapitel 5</a>).</li>
           <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 7H4M20 12H4M20 17H4"/></svg> Tjänster</span> – öppna vyn för tjänster och månadsavgift.</li>
-          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-2.6-6.4L21 8"/><path d="M21 3v5h-5"/></svg> Uppdatera vyn</span> – läser in de senaste uppgifterna på nytt och uppdaterar skärmen. <b>Skrapar inte</b> webbplatserna, utan uppdaterar bara vyn.</li>
+          <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-2.6-6.4L21 8"/><path d="M21 3v5h-5"/></svg> Uppdatera vyn</span> – läser in de senaste uppgifterna på nytt och uppdaterar skärmen. <b>Kör ingen ny skanning</b>, utan uppdaterar bara vyn.</li>
           <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg> Tillåt aviseringar</span> – slår på push-notiser till telefonen (se <a href="#teavitused">kapitel 9</a>).</li>
-          <li><span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg> Skanna om allt</span> – kör de <b>riktiga skanningarna</b> (skrapar webbplatserna), tar några minuter. Detta går att göra <b>1 gång per dygn</b>.</li>
+          <li><span class="chip go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg> Skanna om allt</span> – kör de <b>riktiga skanningarna</b> (en ny grundlig skanning av webbplatserna), tar några minuter. Detta går att göra <b>1 gång per dygn</b>.</li>
         </ul>
         <h3>Hur fungerar övervakningen? – hjälplisten</h3>
         <p>Överst på instrumentpanelen finns en utfällbar list <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .8-1 1.7M12 17h.01"/></svg> Hur fungerar övervakningen?</span> Klicka för att läsa en kort förklaring. Första gången, när du ännu inte har något företag, är den öppen.</p>
+        <h3>Snabböversikt högst upp</h3>
+        <p>När du öppnar instrumentpanelen ser du genast det viktigaste – före diagrammen och tabellen:</p>
+        <ul class="plain">
+          <li><b>Statusrad</b> – tre chippar med en blick: <span class="pill warn"><span class="dot"></span>N kräver uppmärksamhet</span> (ett klick rullar till listan), <span class="pill ok"><span class="dot"></span>N lugna</span> och <b>N företag under bevakning</b>.</li>
+          <li><b>Kräver uppmärksamhet</b> – de viktigaste fynden från alla företag, ett i taget och i prioritetsordning. <span class="pill err"><span class="dot"></span>Röd prick</span> är ett kritiskt fel i din egen butik, <span class="pill warn"><span class="dot"></span>gul</span> en konkurrents förändring. Ett klick tar dig direkt till företaget eller till prisjämförelsen. Uppe till höger finns en <b>delta</b>: ”Sedan ditt förra besök: N nya fynd”. Om inget väntar finns här ett grönt ”Allt tyst”.</li>
+          <li><b>Din prisposition</b> – en sammanfattande rad: ”Av N jämförbara produkter är du billigast på X, dyrare på Y”. Ett klick öppnar <a href="#hinnavordlus">prisjämförelsen</a>.</li>
+        </ul>
         <h3>Trend för fynd</h3>
         <p>Diagrammet visar hur antalet fynd har förändrats under de senaste övervakningarna – om läget lugnar sig eller kräver mer uppmärksamhet. Alla diagram har axelskala och enhet angivna; för muspekaren längs linjen för att se det exakta antalet.</p>
         <h3>Sammanfattning</h3>
@@ -332,6 +339,7 @@
           <div class="dr"><span class="k">Aktualitet</span><span class="v">När företagets data senast uppdaterades.</span></div>
           <div class="dr"><span class="k">Fynd</span><span class="v">Snabb indikation: <span class="pill ok"><span class="dot"></span>Ja</span> det finns ett fynd, <span class="pill sec"><span class="dot"></span>Nej</span> allt tyst.</span></div>
         </div>
+        <p>Under företagets namn ser du en kort <b>ändringsvink</b> (t.ex. ”3 billigare priser”), så att du inte alltid behöver klicka dig in i företaget för att se vad som hänt där.</p>
         <h3>Dina tillagda bevakade företag</h3>
         <p>Om du själv har lagt till ett företag ser du dess status. Möjliga lägen:</p>
         <ul class="plain">
@@ -474,6 +482,7 @@
         <ul class="plain">
           <li><b>Automatisk</b> – rapporten skapas och skickas med e-post i början av varje månad; inget behöver göras manuellt.</li>
           <li><b>Arkiv</b> – alla tidigare månadsrapporter finns här för nedladdning.</li>
+          <li><b>Mejlet kan stängas av</b> på sidan <a href="#konto">Konto</a> – PDF:en skapas och sparas ändå i arkivet, bara att mejlet då inte skickas.</li>
           <li>Till skillnad från morgonmejlet (se nedan) är månadsrapporten en <b>samlad översikt</b> för beslutsfattaren, inte en daglig lista över förändringar.</li>
         </ul>
         <h3>Morgonmejl och varningar i realtid</h3>
@@ -486,16 +495,33 @@
       <!-- 11 -->
       <section class="doc" id="konto">
         <h2><span class="num">11</span> Konto och API-åtkomst</h2>
-        <p>Menypunkten <b>Konto</b> samlar dina kontouppgifter och inställningar.</p>
+        <p>Menypunkten <b>Konto</b> samlar dina kontouppgifter, anslutningen av din egen webbutik, inställningarna för e-postrapporter och API-åtkomsten.</p>
         <figure>
-          <img src="l360-konto.png" alt="Konto: kontouppgifter, lösenord, API-åtkomst och aviseringsinställningar" loading="lazy">
-          <figcaption>Konto – företagsuppgifter, byte av lösenord, API-nyckel och omkopplaren för morgonmejlet.</figcaption>
+          <img src="l360-konto.png" alt="Konto: kontouppgifter, anslutning av din egen webbutik, e-postrapporter och API-åtkomst" loading="lazy">
+          <figcaption>Konto – företagsuppgifter, lösenord, anslutning av din egen webbutik, e-postrapporter och API-nyckel.</figcaption>
         </figure>
         <ul class="plain">
           <li><b>Kontouppgifter</b> – företag, kontaktperson och registrerings-e-post.</li>
           <li><b>Lösenord</b> – <span class="chip">Ändra lösenord</span>; glömt lösenord kan återställas från inloggningssidan.</li>
-          <li><b>Övervakningsrapport varje morgon</b> – en omkopplare för att slå på eller av mejlet.</li>
         </ul>
+
+        <h3>Ansluta din egen webbutik (WooCommerce)</h3>
+        <p>För att tjänsterna för din <b>egna webbutik</b> – webbutikens hälsa, hälsokontroll och prissättning – ska få riktiga data, anslut din WooCommerce-webbutik. Look360 läser priserna och <b>det verkliga lagersaldot via det officiella API:et</b> (inte genom att skanna sidan) och de uppdateras varje natt. Du kan ansluta på två sätt:</p>
+        <ul class="plain">
+          <li><b>Direkt med en API-nyckel</b> – i butikens administration <i>WooCommerce → Settings → Advanced → REST API → Add key</i>, behörighet <b>Read</b>. Kopiera <b>Consumer key</b>, <b>Consumer secret</b> och webbutikens adress till formuläret på konto-sidan.</li>
+          <li><b>Med Look360-pluginet</b> – en enklare väg utan att kopiera nycklar manuellt: tryck på <span class="chip">Skapa anslutningskod</span>, öppna pluginets sida <i>WooCommerce → Look360</i> i butikens administration och klistra in koden. Koden är giltig i 30 minuter.</li>
+        </ul>
+        <div class="box green"><div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Ansluten webbutik</div><p>När butiken är ansluten ser du en grön markering ”Webbutik ansluten”. Data uppdateras varje natt; nycklarna kan senare bytas via samma formulär.</p></div>
+
+        <h3>E-postrapporter</h3>
+        <p>Från ett ställe hanterar du vilka rapporter som skickas med e-post och till vem:</p>
+        <div class="deflist">
+          <div class="dr"><span class="k">Övervakningsrapport varje morgon</span><span class="v">Varje morgon kl. 7 ett mejl med de senaste 24 timmarnas förändringar för alla dina tjänster. Stäng av om du inte vill ha det mejlet.</span></div>
+          <div class="dr"><span class="k">Månatlig ledningsrapport</span><span class="v">Den 1:a varje månad en PDF-sammanfattning av föregående månad. Om du stänger av den stannar PDF:en ändå i kontots arkiv (se <a href="#kuuraportid">kapitel 10</a>).</span></div>
+          <div class="dr"><span class="k">Rapportmottagare</span><span class="v">E-postadresser dit rapporter och aviseringar skickas – lägg till kollegor åtskilda med kommatecken.</span></div>
+        </div>
+        <p>Produktspecifika prisaviseringar (prissänkning, lagersaldo, ny produkt) hanterar du på den separata sidan <a href="#teavitused">Aviseringar</a> (kapitel 9).</p>
+
         <h3>API-åtkomst (BI, ERP, Excel)</h3>
         <p>Via REST-API:et får du dina övervakningsdata – butiker, produkter, priser, prisjämförelse, fynd – direkt in i ditt eget system (Power BI, ERP, Excel Power Query).</p>
         <ol class="steps">
