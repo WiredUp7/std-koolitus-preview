@@ -1453,6 +1453,8 @@
         <div class="ord-sub">Lägg till de företag du vill bevaka och välj moduler för din butik. Månadsavgiften räknas ut direkt utifrån de företag du anger.</div>
         <div class="carry" id="calcCarry"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v5M12 16.5v.01" stroke-linecap="round"/><circle cx="12" cy="12" r="9"/></svg><span id="calcCarryTxt"></span></div>
 
+        <button type="button" class="preset-btn" id="modPresetBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 12h18" stroke-linecap="round"/></svg>Föreslå ett startpaket åt mig</button>
+        <div id="modPresetNote" style="display:none;font-size:12.5px;color:#7af0b6;margin:2px 0 16px;line-height:1.5">Stardipakett: e-poe tervisekontroll ja töökindluse seire valitud. Lisa alla ~8 konkurenti Facebook-seiresse ja ~3 e-poodi hinnaseiresse. Muuda vabalt - hinnang ~78 €/kuus (KM-ta).</div>
         <div class="ord-lab">Din e-handel</div>
         <div class="ofield"><label for="ownSite">Din butiks webbadress</label><input type="text" id="ownSite" placeholder="t.ex. minbutik.com"><div class="ferr2" id="ownSiteErr"></div><div style="color:var(--muted);font-size:12.5px;margin-top:5px">Vi behöver din butiks adress för de valda modulerna — den ändrar inte månadsavgiften.</div></div>
         <div class="ofield"><label for="ownFb">Ditt företags Facebook</label><input type="text" id="ownFb" placeholder="t.ex. facebook.com/dittforetag"><div style="color:var(--muted);font-size:12.5px;margin-top:5px">Gratis — din egen företagssida.</div></div>
@@ -2320,6 +2322,17 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
   ov.addEventListener('click',e=>{if(e.target===ov)close();});
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&ov.classList.contains('open'))close();});
   document.getElementById('addComp').addEventListener('click',addRow);
+  // Soovituslik stardipakett tellimusmodaalis (otse-voo klient ei käi kalkulaatorist läbi).
+  // FB/veebi mahud on nimelised (kasutaja täidab ise), seega lülita oma-poe moodulid + juhis + ava read.
+  const modPreset=document.getElementById('modPresetBtn');
+  if(modPreset)modPreset.addEventListener('click',()=>{
+    const want=['epoe_tervis','uptime'];
+    omods.forEach(x=>{x.classList.toggle('on',want.includes(x.dataset.kood));syncPanel(x);});
+    obill.forEach(b=>b.classList.toggle('on',b.dataset.mode==='month'));
+    while(compList.querySelectorAll('.comp').length<8)addRow();
+    const pn=document.getElementById('modPresetNote');if(pn)pn.style.display='block';
+    fmtPrice();
+  });
   buildPanels();                                     // teenuste andmevormid (üks kord)
   omods.forEach(x=>x.addEventListener('click',()=>{x.classList.toggle('on');syncPanel(x);if(x.classList.contains('on')){const f=x.nextElementSibling&&x.nextElementSibling.querySelector('.svc-f');if(f)f.focus();}fmtPrice();}));
   obill.forEach(b=>b.addEventListener('click',()=>{obill.forEach(o=>o.classList.remove('on'));b.classList.add('on');fmtPrice();}));
