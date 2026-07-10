@@ -141,6 +141,146 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.look360.eu/en.html"/>
   </url>
   <url>
+    <loc>https://www.look360.eu/brandivalve.html</loc>
+    <xhtml:link rel="alternate" hreflang="et" href="https://www.look360.eu/brandivalve.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.look360.eu/brandivalve-en.html"/>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://www.look360.eu/brandivalve-fi.html"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.look360.eu/brandivalve-sv.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://www.look360.eu/brandivalve-no.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://www.look360.eu/brandivalve-da.html"/>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://www.look360.eu/brandivalve-lv.html"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://www.look360.eu/brandivalve-lt.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.look360.eu/brandivalve-pl.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://www.look360.eu/brandivalve-uk.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.look360.eu/brandivalve-en.html"/>
+  </url>
+  <url>
+    <loc>https://www.look360.eu/brandivalve-en.html</loc>
+    <xhtml:link rel="alternate" hreflang="et" href="https://www.look360.eu/brandivalve.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.look360.eu/brandivalve-en.html"/>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://www.look360.eu/brandivalve-fi.html"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.look360.eu/brandivalve-sv.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://www.look360.eu/brandivalve-no.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://www.look360.eu/brandivalve-da.html"/>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://www.look360.eu/brandivalve-lv.html"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://www.look360.eu/brandivalve-lt.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.look360.eu/brandivalve-pl.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://www.look360.eu/brandivalve-uk.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.look360.eu/brandivalve-en.html"/>
+  </url>
+  <url>
+    <loc>https://www.look360.eu/brandivalve-fi.html</loc>
+    <xhtml:link rel="alternate" hreflang="et" href="https://www.look360.eu/brandivalve.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.look360.eu/brandivalve-en.html"/>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://www.look360.eu/brandivalve-fi.html"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.look360.eu/brandivalve-sv.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://www.look360.eu/brandivalve-no.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://www.look360.eu/brandivalve-da.html"/>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://www.look360.eu/brandivalve-lv.html"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://www.look360.eu/brandivalve-lt.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.look360.eu/brandivalve-pl.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://www.look360.eu/brandivalve-uk.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.look360.eu/brandivalve-en.html"/>
+  </url>
+  <url>
+    <loc>https://www.look360.eu/brandivalve-sv.html</loc>
+    <xhtml:link rel="alternate" hreflang="et" href="https://www.look360.eu/brandivalve.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.look360.eu/brandivalve-en.html"/>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://www.look360.eu/brandivalve-fi.html"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.look360.eu/brandivalve-sv.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://www.look360.eu/brandivalve-no.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://www.look360.eu/brandivalve-da.html"/>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://www.look360.eu/brandivalve-lv.html"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://www.look360.eu/brandivalve-lt.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.look360.eu/brandivalve-pl.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://www.look360.eu/brandivalve-uk.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.look360.eu/brandivalve-en.html"/>
+  </url>
+  <url>
+    <loc>https://www.look360.eu/brandivalve-no.html</loc>
+    <xhtml:link rel="alternate" hreflang="et" href="https://www.look360.eu/brandivalve.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.look360.eu/brandivalve-en.html"/>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://www.look360.eu/brandivalve-fi.html"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.look360.eu/brandivalve-sv.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://www.look360.eu/brandivalve-no.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://www.look360.eu/brandivalve-da.html"/>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://www.look360.eu/brandivalve-lv.html"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://www.look360.eu/brandivalve-lt.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.look360.eu/brandivalve-pl.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://www.look360.eu/brandivalve-uk.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.look360.eu/brandivalve-en.html"/>
+  </url>
+  <url>
+    <loc>https://www.look360.eu/brandivalve-da.html</loc>
+    <xhtml:link rel="alternate" hreflang="et" href="https://www.look360.eu/brandivalve.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.look360.eu/brandivalve-en.html"/>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://www.look360.eu/brandivalve-fi.html"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.look360.eu/brandivalve-sv.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://www.look360.eu/brandivalve-no.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://www.look360.eu/brandivalve-da.html"/>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://www.look360.eu/brandivalve-lv.html"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://www.look360.eu/brandivalve-lt.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.look360.eu/brandivalve-pl.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://www.look360.eu/brandivalve-uk.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.look360.eu/brandivalve-en.html"/>
+  </url>
+  <url>
+    <loc>https://www.look360.eu/brandivalve-lv.html</loc>
+    <xhtml:link rel="alternate" hreflang="et" href="https://www.look360.eu/brandivalve.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.look360.eu/brandivalve-en.html"/>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://www.look360.eu/brandivalve-fi.html"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.look360.eu/brandivalve-sv.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://www.look360.eu/brandivalve-no.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://www.look360.eu/brandivalve-da.html"/>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://www.look360.eu/brandivalve-lv.html"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://www.look360.eu/brandivalve-lt.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.look360.eu/brandivalve-pl.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://www.look360.eu/brandivalve-uk.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.look360.eu/brandivalve-en.html"/>
+  </url>
+  <url>
+    <loc>https://www.look360.eu/brandivalve-lt.html</loc>
+    <xhtml:link rel="alternate" hreflang="et" href="https://www.look360.eu/brandivalve.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.look360.eu/brandivalve-en.html"/>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://www.look360.eu/brandivalve-fi.html"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.look360.eu/brandivalve-sv.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://www.look360.eu/brandivalve-no.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://www.look360.eu/brandivalve-da.html"/>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://www.look360.eu/brandivalve-lv.html"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://www.look360.eu/brandivalve-lt.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.look360.eu/brandivalve-pl.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://www.look360.eu/brandivalve-uk.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.look360.eu/brandivalve-en.html"/>
+  </url>
+  <url>
+    <loc>https://www.look360.eu/brandivalve-pl.html</loc>
+    <xhtml:link rel="alternate" hreflang="et" href="https://www.look360.eu/brandivalve.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.look360.eu/brandivalve-en.html"/>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://www.look360.eu/brandivalve-fi.html"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.look360.eu/brandivalve-sv.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://www.look360.eu/brandivalve-no.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://www.look360.eu/brandivalve-da.html"/>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://www.look360.eu/brandivalve-lv.html"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://www.look360.eu/brandivalve-lt.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.look360.eu/brandivalve-pl.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://www.look360.eu/brandivalve-uk.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.look360.eu/brandivalve-en.html"/>
+  </url>
+  <url>
+    <loc>https://www.look360.eu/brandivalve-uk.html</loc>
+    <xhtml:link rel="alternate" hreflang="et" href="https://www.look360.eu/brandivalve.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.look360.eu/brandivalve-en.html"/>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://www.look360.eu/brandivalve-fi.html"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.look360.eu/brandivalve-sv.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://www.look360.eu/brandivalve-no.html"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://www.look360.eu/brandivalve-da.html"/>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://www.look360.eu/brandivalve-lv.html"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://www.look360.eu/brandivalve-lt.html"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.look360.eu/brandivalve-pl.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://www.look360.eu/brandivalve-uk.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.look360.eu/brandivalve-en.html"/>
+  </url>
+  <url>
     <loc>https://www.look360.eu/privaatsus.html</loc>
     <xhtml:link rel="alternate" hreflang="et" href="https://www.look360.eu/privaatsus.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.look360.eu/privaatsus-en.html"/>
