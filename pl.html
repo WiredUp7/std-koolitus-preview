@@ -1329,7 +1329,7 @@
     <div class="sec-head center reveal">
       <div class="eyebrow"><span class="dot"></span> Cennik</div>
       <h2>Złóż własny pakiet</h2>
-      <p>Monitoring Facebooka konkurencji od €3/mies., monitoring cen i stanów e-sklepu €8/mies. za sklep. Wybierz moduły i wolumeny - opłata miesięczna wylicza się od razu, bez żadnych ukrytych kosztów. Wszystkie ceny są bez VAT.</p>
+      <p>Konkurendi Facebook-seire alates 3 €/kuus, e-poe hinna- ja laoseire alates 8 €/kuus poe kohta — 8 € katab kuni 2000 toodet, suurem kataloog astmeliselt rohkem. Vali moodulid ja mahud - kuutasu kujuneb kohe, ühtegi peidetud tasu pole. Kõik hinnad on käibemaksuta.</p>
     </div>
     <div class="calc reveal" id="calc">
       <div class="calc-l">
@@ -1368,7 +1368,7 @@
         <div class="calc-save" id="calcSave"></div>
         <div class="calc-break" id="calcBreak"></div>
         <button type="button" class="btn btn-grad js-order" id="joinBtn" data-prefill="1" style="width:100%;justify-content:center">Dołącz teraz →</button>
-        <div class="calc-note"><b style="color:#fff;font-weight:600">Pierwszy raport gratis.</b> Obejmuje panel monitoringu, raport każdego ranka i powiadomienia. Można anulować w dowolnym momencie. Ceny orientacyjne.</div>
+        <div class="calc-note"><b style="color:#fff;font-weight:600">Esimene raport juba järgmisel hommikul.</b> Sisaldab seirepaneeli, igahommikust raportit ja hoiatusi. Tühista igal ajal.</div>
       </div>
     </div>
   </div>
@@ -1617,7 +1617,7 @@
       <!-- VIEW 3: kinnita -->
       <div class="ord-view" data-v="3">
         <div class="ord-h">Potwierdź zamówienie</div>
-        <div class="ord-sub">Sprawdź, co zamawiasz. <b>Pierwszy raport jest gratis.</b> Brak długoterminowego zobowiązania — rezygnacja następuje po prostym wypowiedzeniu.</div>
+        <div class="ord-sub">Vaata üle, mida tellid. Pikaajalist kohustust pole — tühistad lihtsa etteteatamisega.</div>
         <div class="osum" id="osum"></div>
         <div class="osec">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 5 6v5c0 4.2 2.8 7.3 7 8.8 4.2-1.5 7-4.6 7-8.8V6l-7-3Z" stroke-linejoin="round"/><path d="m9 11.5 2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1794,13 +1794,24 @@ function revealAll(){
 }
 if(location.hash)revealAll();
 addEventListener('hashchange',revealAll);
-// Ankruga maandumine: pildid laadivad pärast esialgset ankru-hüpet ja nihutavad
-// sihtsektsiooni allapoole — keri pärast täislaadimist sihtmärgile uuesti.
-addEventListener('load',function(){
+// Ankruga maandumine: lazy-pildid ja fondid laadivad pärast esialgset ankru-hüpet
+// ja nihutavad sihtsektsiooni — re-ankurda mitu korda, kuni layout settib.
+// Katkesta kohe, kui kasutaja ise kerima hakkab (wheel/touch/klaviatuur).
+(function(){
   if(!location.hash)return;
-  var el=document.querySelector(location.hash);
-  if(el)setTimeout(function(){el.scrollIntoView({behavior:'auto',block:'start'});},60);
-});
+  var kasutajaKeris=false;
+  ['wheel','touchstart','keydown'].forEach(function(t){
+    addEventListener(t,function(){kasutajaKeris=true;},{passive:true,once:true});
+  });
+  function ankurda(){
+    if(kasutajaKeris)return;
+    var el=document.querySelector(location.hash);
+    if(el)el.scrollIntoView({behavior:'instant',block:'start'});
+  }
+  addEventListener('load',function(){
+    [0,250,700,1400].forEach(function(ms){setTimeout(ankurda,ms);});
+  });
+})();
 
 /* scroll-karussell (teenused, portfoolio): autoplay + nooled + punktid + pyyhe */
 document.querySelectorAll('.scrl').forEach(function(scrl){
@@ -1830,7 +1841,9 @@ document.querySelectorAll('.scrl').forEach(function(scrl){
   if(prev)prev.addEventListener('click',function(){go(-1);restart();});
   // Hiireratta vertikaalne kerimine karusselli kohal peab kerima LEHTE, mitte kinni jääma
   track.addEventListener('wheel',function(e){
-    if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){e.preventDefault();window.scrollBy({top:e.deltaY,behavior:'auto'});}
+    // 'instant', sest 'auto' allub html{scroll-behavior:smooth}-ile: iga tikk
+    // taaskäivitaks sujuva animatsiooni ja leht roomaks (kinnijäämise tunne).
+    if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){e.preventDefault();window.scrollBy({top:e.deltaY,behavior:'instant'});}
   },{passive:false});
   track.addEventListener('scroll',sync,{passive:true});
   scrl.addEventListener('mouseenter',stop); scrl.addEventListener('mouseleave',start);
