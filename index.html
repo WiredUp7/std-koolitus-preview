@@ -106,7 +106,7 @@
   /* NAV */
   header.nav{position:fixed;top:0;left:0;right:0;z-index:60;background:rgba(10,11,14,.55);-webkit-backdrop-filter:blur(22px) saturate(125%);backdrop-filter:blur(22px) saturate(125%);border-bottom:1px solid rgba(255,255,255,.06);transition:.3s}
   header.nav.scrolled{background:rgba(10,11,14,.72);border-bottom:1px solid var(--line-dark)}
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:88px;gap:30px}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:88px;gap:18px}
   .logo{display:flex;align-items:center;gap:14px}
   .logo .brand{display:flex;flex-direction:column;gap:4px;line-height:1.05}
   .logo .wm{font-family:var(--f);font-weight:700;font-size:21px;letter-spacing:-.02em;color:#fff}
@@ -122,15 +122,24 @@
   .foot .logo{gap:12px}
   .foot .eye{height:42px;width:auto;transform:scaleX(-1)}
   .foot-name{font-weight:700;font-size:19px;color:#fff;letter-spacing:-.01em}
-  .nav-links{display:flex;gap:32px}
+  .nav-links{display:flex;gap:22px}
   .nav-links a{color:var(--on-dark-mut);font-size:14.5px;font-weight:400;transition:.2s;white-space:nowrap}
   .nav-links a:hover{color:#fff}
   .nav-r{display:flex;gap:12px;align-items:center;flex-shrink:0}
-  /* Kui tapisnav (logo + lingid + parem plokk + keelevalik) ei mahu uhele reale, koondab
-     fitNav() JS lingid hamburgeri alla (klass .nav-compact). Nii jaavad keelevalik ja
-     "Logi sisse" ALATI nahtavaks - soltub keelest/sessioonist, mitte fikseeritud murdepunktist. */
+  /* Ulariba mahutamine (fitNav JS). Pikkades keeltes / sisselogitud sessioonis ei mahu
+     tais nav 1180px reale. Kaheastmeline lahendus (mootmise pohjal):
+       1) kui KEELEVALIK ei mahu -> vii see fikseeritult alla-vasakusse nurka (.lang-corner);
+       2) kui LINGIDKI ei mahu -> koonda nad hamburgeri alla (.nav-compact).
+     Nii jaavad nii navi-lingid kui keelevalik alati kattesaadavaks. */
   header.nav.nav-compact .nav-links{display:none}
   header.nav.nav-compact .burger{display:flex}
+  /* Keelevalik alla-vasakusse nurka (ujuv). fitNav TÕSTAB #langsel <body>'sse, sest header'i
+     backdrop-filter loob fixed-lastele oma konteineri (muidu ei pääseks viewporti serva). Menüü
+     avaneb üles; loetav heledal ja tumedal sektsioonil. Alt-paremal on tugividin -> alt-vasak vaba. */
+  .langsel.langsel-corner{position:fixed;left:16px;bottom:16px;z-index:75}
+  .langsel.langsel-corner .langbtn{background:rgba(10,11,14,.86);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-color:rgba(255,255,255,.2);box-shadow:0 10px 28px -8px rgba(0,0,0,.6)}
+  .langsel.langsel-corner .langbtn .chev{color:#cbd3da}
+  .langsel.langsel-corner .langmenu{top:auto;bottom:calc(100% + 9px);left:0;right:auto}
 
   /* HERO */
   .hero{position:relative;background:var(--ink);color:var(--on-dark);min-height:100vh;display:flex;align-items:center;padding:120px 0 80px;overflow:hidden}
@@ -1870,10 +1879,19 @@ function fmt(s,o){return String(s).replace(/\{(\w+)\}/g,(_,k)=>o[k]!=null?o[k]:'
    MÕÕDAME: kui rida ei mahu, koondame lingid hamburgeri alla (.nav-compact). */
 (function(){
   const nav=document.getElementById('nav'), inner=nav&&nav.querySelector('.nav-inner');
-  if(!nav||!inner)return;
-  let t;
+  const ls=document.getElementById('langsel'), burger=document.getElementById('burger');
+  if(!nav||!inner||!ls)return;
+  let t, cornered=false;
+  function toCorner(){ if(cornered)return; ls.classList.add('langsel-corner'); document.body.appendChild(ls); cornered=true; }
+  function toBar(){ if(!cornered)return; ls.classList.remove('langsel-corner'); inner.insertBefore(ls, burger); cornered=false; }
   function fit(){
-    nav.classList.remove('nav-compact');                 // mõõda alati täislaiuses
+    // 0) lähtesta: keelevalik ülaribale, lingid nähtaval -> mõõda täisnav
+    toBar();
+    nav.classList.remove('nav-compact');
+    if(inner.scrollWidth<=inner.clientWidth+1) return;   // täisnav mahub -> kõik ülaribal
+    // 1) keelevalik ei mahu -> vii alla-vasakusse nurka (fikseeritud, flex-voost väljas)
+    toCorner();
+    // 2) kui lingidki ei mahu (nüüd, keelevalikuta) -> koonda hamburgeri alla
     if(inner.scrollWidth>inner.clientWidth+1) nav.classList.add('nav-compact');
   }
   window.fitNav=fit;
