@@ -194,6 +194,41 @@
   .hero-stats .v{font-weight:300;font-size:34px;color:#fff;line-height:1}
   .hero-stats .l{font-size:12.5px;color:var(--on-dark-mut);margin-top:8px}
 
+  /* HERO SPLIT (kopia + elav signaalivoog) */
+  .hero-split{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;text-align:left;margin-bottom:56px}
+  .hero-copy{max-width:560px}
+  .hero-copy .eyebrow{margin-bottom:22px}
+  .hero-copy .eyebrow .dot{position:relative}
+  .hero-copy .eyebrow .dot::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--accent);animation:ping 1.9s cubic-bezier(0,0,.2,1) infinite}
+  .hero-copy h1{margin-bottom:22px}
+  .hero-copy .lead{margin:0 0 30px;max-width:520px}
+  .hero-copy .hero-actions{justify-content:flex-start;margin-bottom:30px}
+  .hf-chips{display:flex;gap:9px;flex-wrap:wrap}
+  .hf-chip{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;font-weight:500;color:var(--on-dark-mut);background:rgba(255,255,255,.05);border:1px solid var(--line-dark);padding:7px 14px;border-radius:999px}
+  .hf-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 6px rgba(23,184,106,.7)}
+  .hf-feedwrap{position:relative;height:460px;overflow:hidden;-webkit-mask-image:linear-gradient(to bottom,transparent,#000 10%,#000 88%,transparent);mask-image:linear-gradient(to bottom,transparent,#000 10%,#000 88%,transparent)}
+  .hf-feed{display:flex;flex-direction:column;gap:14px;animation:hfup 24s linear infinite}
+  @keyframes hfup{to{transform:translateY(-50%)}}
+  .hf-card{display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,.045);border:1px solid var(--line-dark);border-radius:14px;padding:15px 18px;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+  .hf-ic{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;font-size:14px;flex-shrink:0;line-height:1}
+  .hf-ic.red{color:#ff8080;background:rgba(255,77,77,.14);border:1px solid rgba(255,77,77,.35)}
+  .hf-ic.grn{color:#6dffac;background:rgba(23,184,106,.14);border:1px solid rgba(23,184,106,.4)}
+  .hf-ic.blu{color:#7de3e3;background:rgba(6,182,182,.14);border:1px solid rgba(6,182,182,.4)}
+  .hf-card h4{font-size:14.5px;font-weight:600;color:#fff;line-height:1.3}
+  .hf-card p{font-size:13px;color:var(--on-dark-mut);margin-top:3px}
+  .hf-card .t{margin-left:auto;font-family:var(--mono);font-size:11.5px;color:#6b7480;white-space:nowrap;padding-top:2px}
+  @media(prefers-reduced-motion:reduce){.hf-feed{animation:none}.hero-copy .eyebrow .dot::after{animation:none}}
+  @media(max-width:900px){
+    .hero-split{grid-template-columns:1fr;gap:36px;text-align:center}
+    .hero-copy{max-width:640px;margin:0 auto}
+    .hero-copy .eyebrow{justify-content:center}
+    .hero-copy h1{max-width:none!important}
+    .hero-copy .lead{margin:0 auto 30px}
+    .hero-copy .hero-actions{justify-content:center}
+    .hf-chips{justify-content:center}
+    .hf-feedwrap{height:300px}
+  }
+
 
   /* SECTIONS */
   section{position:relative;padding:104px 0}
@@ -830,13 +865,36 @@
   </div>
   <div class="hero-glow"></div>
   <div class="wrap hero-inner">
-    <span class="badge-live"><span class="ldot"></span><span class="bl-txt">Bądź o krok przed konkurencją dzięki silnikowi AI Look360</span></span>
-    <script>(function(){var p=document.querySelector('.badge-live .bl-txt');if(p)p.innerHTML=p.innerHTML.replace(/Look360/g,'Look<i class="b360">360</i>');})();</script>
-    <h1 style="font-size:clamp(30px,5.2vw,60px);line-height:1.07;max-width:1020px;margin-left:auto;margin-right:auto">Wykrywamy zmiany cen, problemy ze stanami i błędy w e-sklepie <span class="g">zanim wpłyną na Twoją sprzedaż.</span></h1>
-    <p class="lead">Stały monitoring konkurencji, cen, stanów magazynowych, e-sklepu i SEO — zebrany w jednym widoku i w jednym raporcie każdego ranka. Zmiany widzisz szybko, a nie wtedy, gdy klienta przejęła już konkurencja.</p>
-    <div class="hero-actions">
-      <a href="#hinnad" class="btn btn-grad js-order">Dołącz <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      <a href="https://scan.look360.eu/proov7/" class="btn btn-out on-dark js-proov7"><span>Wypróbuj 7 dni za darmo — bez karty</span></a>
+    <div class="hero-split">
+      <div class="hero-copy">
+        <div class="eyebrow on-dark"><span class="dot"></span> Monitorowanie konkurencji · 24/7</div>
+        <h1 style="font-size:clamp(30px,3.6vw,52px);line-height:1.12;max-width:560px">Konkurencja zmienia się każdego dnia. <span class="g">Look360 zauważa to jako pierwszy.</span></h1>
+        <p class="lead">Stały monitoring konkurencji, cen, stanów magazynowych, e-sklepu i SEO — zebrany w jednym widoku i w jednym raporcie każdego ranka. Zmiany widzisz szybko, a nie wtedy, gdy klienta przejęła już konkurencja.</p>
+        <div class="hero-actions">
+          <a href="#hinnad" class="btn btn-grad js-order">Dołącz <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="https://scan.look360.eu/proov7/" class="btn btn-out on-dark js-proov7"><span>Wypróbuj 7 dni za darmo — bez karty</span></a>
+        </div>
+        <div class="hf-chips">
+          <span class="hf-chip"><span class="hf-dot"></span>Cennik</span>
+          <span class="hf-chip"><span class="hf-dot"></span>Reklamy</span>
+          <span class="hf-chip"><span class="hf-dot"></span>Stan magazynowy</span>
+          <span class="hf-chip"><span class="hf-dot"></span>SEO</span>
+        </div>
+      </div>
+      <div class="hf-feedwrap" aria-hidden="true">
+        <div class="hf-feed">
+          <div class="hf-card"><span class="hf-ic red">▼</span><div><h4>Konkurent obniżył cenę</h4><p>Wiertarka akumulatorowa · −12% w nocy</p></div><span class="t">2 min</span></div>
+          <div class="hf-card"><span class="hf-ic blu">▲</span><div><h4>Konkurent uruchomił nową kampanię reklamową</h4><p>3 nowe reklamy na Facebooku</p></div><span class="t">18 min</span></div>
+          <div class="hf-card"><span class="hf-ic grn">●</span><div><h4>Konkurentowi skończył się towar</h4><p>Dobry moment, by sprzedać</p></div><span class="t">41 min</span></div>
+          <div class="hf-card"><span class="hf-ic red">▼</span><div><h4>Konkurent wyprzedził Cię w wyszukiwarce</h4><p>Słowo kluczowe „wiertarka akumulatorowa” straciło pozycję</p></div><span class="t">1 h</span></div>
+          <div class="hf-card"><span class="hf-ic blu">●</span><div><h4>Poranny raport już w skrzynce</h4><p>Wszystkie dzisiejsze zmiany w jednej wiadomości</p></div><span class="t">8:00</span></div>
+          <div class="hf-card"><span class="hf-ic red">▼</span><div><h4>Konkurent obniżył cenę</h4><p>Wiertarka akumulatorowa · −12% w nocy</p></div><span class="t">2 min</span></div>
+          <div class="hf-card"><span class="hf-ic blu">▲</span><div><h4>Konkurent uruchomił nową kampanię reklamową</h4><p>3 nowe reklamy na Facebooku</p></div><span class="t">18 min</span></div>
+          <div class="hf-card"><span class="hf-ic grn">●</span><div><h4>Konkurentowi skończył się towar</h4><p>Dobry moment, by sprzedać</p></div><span class="t">41 min</span></div>
+          <div class="hf-card"><span class="hf-ic red">▼</span><div><h4>Konkurent wyprzedził Cię w wyszukiwarce</h4><p>Słowo kluczowe „wiertarka akumulatorowa” straciło pozycję</p></div><span class="t">1 h</span></div>
+          <div class="hf-card"><span class="hf-ic blu">●</span><div><h4>Poranny raport już w skrzynce</h4><p>Wszystkie dzisiejsze zmiany w jednej wiadomości</p></div><span class="t">8:00</span></div>
+        </div>
+      </div>
     </div>
     <div class="hero-stats">
       <div class="s reveal"><div class="v"><span data-count="200">200</span>+</div><div class="l">monitorowanych źródeł</div></div>
