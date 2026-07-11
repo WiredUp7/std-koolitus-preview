@@ -133,6 +133,7 @@
      Nii jaavad nii navi-lingid kui keelevalik alati kattesaadavaks. */
   header.nav.nav-compact .nav-links{display:none}
   header.nav.nav-compact .burger{display:flex}
+  header.nav.nav-notag .logo .tag{display:none}
   /* Keelevalik alla-vasakusse nurka (ujuv). fitNav TÕSTAB #langsel <body>'sse, sest header'i
      backdrop-filter loob fixed-lastele oma konteineri (muidu ei pääseks viewporti serva). Menüü
      avaneb üles; loetav heledal ja tumedal sektsioonil. Alt-paremal on tugividin -> alt-vasak vaba. */
@@ -1894,6 +1895,9 @@ function fmt(s,o){return String(s).replace(/\{(\w+)\}/g,(_,k)=>o[k]!=null?o[k]:'
     // 0) lähtesta: keelevalik ülaribale, lingid nähtaval -> mõõda täisnav
     toBar();
     nav.classList.remove('nav-compact');
+    nav.classList.remove('nav-notag');
+    if(inner.scrollWidth<=inner.clientWidth+1) return;
+    nav.classList.add('nav-notag');
     if(inner.scrollWidth<=inner.clientWidth+1) return;   // täisnav mahub -> kõik ülaribal
     // 1) keelevalik ei mahu -> vii alla-vasakusse nurka (fikseeritud, flex-voost väljas)
     toCorner();
