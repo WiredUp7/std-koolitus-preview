@@ -489,7 +489,7 @@
   .rely .r p{color:var(--muted);font-size:14px;font-weight:300;line-height:1.55}
 
   /* preset + ankur (E) */
-  .preset-btn{display:inline-flex;align-items:center;gap:9px;background:rgba(23,184,106,.12);border:1px solid rgba(23,184,106,.42);color:#7af0b6;font-family:var(--f);font-weight:500;font-size:13px;padding:9px 15px;border-radius:10px;cursor:pointer;margin-bottom:22px;transition:.2s}
+  .preset-btn{display:inline-flex;align-items:center;gap:9px;background:rgba(23,184,106,.12);border:1px solid rgba(23,184,106,.42);color:var(--accent-ink);font-family:var(--f);font-weight:500;font-size:13px;padding:9px 15px;border-radius:10px;cursor:pointer;margin-bottom:22px;transition:.2s}
   .preset-btn:hover{background:rgba(23,184,106,.2)}
   .preset-btn svg{width:15px;height:15px}
   .calc-anchor{font-size:12.5px;color:var(--on-dark-mut);margin:-8px 0 18px}
@@ -1520,8 +1520,8 @@
         <div class="carry" id="calcCarry"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v5M12 16.5v.01" stroke-linecap="round"/><circle cx="12" cy="12" r="9"/></svg><span id="calcCarryTxt"></span></div>
 
         <button type="button" class="preset-btn" id="modPresetBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 12h18" stroke-linecap="round"/></svg>Виберіть рекомендований стартовий пакет</button>
-        <div id="modPresetNote" style="display:none;font-size:12.5px;color:#7af0b6;margin:2px 0 16px;line-height:1.5">Стартовий пакет: обрано перевірку стану інтернет-магазину та моніторинг надійності. Додайте до ~8 конкурентів у моніторинг Facebook та ~3 інтернет-магазини в моніторинг цін. Змінюйте вільно - орієнтовно ~78 €/міс. (без ПДВ).</div>
-        <div id="modPresetBrandNote" style="display:none;font-size:12.5px;color:#7af0b6;margin:2px 0 16px;line-height:1.5">Обрано пакет для імпортера: захист бренду, що стежить за Вашими цінами в магазинах реселерів. Додайте товари свого бренду на наступному кроці. Ціна 40 €/міс. (без ПДВ).</div>
+        <div id="modPresetNote" style="display:none;font-size:12.5px;color:var(--accent-ink);margin:2px 0 16px;line-height:1.5">Стартовий пакет: обрано перевірку стану інтернет-магазину та моніторинг надійності (30 €/міс.). Додайте до ~8 конкурентів у моніторинг Facebook та ~3 інтернет-магазини в моніторинг цін — після заповнення це буде близько 78 €/міс. (без ПДВ).</div>
+        <div id="modPresetBrandNote" style="display:none;font-size:12.5px;color:var(--accent-ink);margin:2px 0 16px;line-height:1.5">Обрано пакет для імпортера: захист бренду, що стежить за Вашими цінами в магазинах реселерів. Додайте товари свого бренду на наступному кроці. Ціна 40 €/міс. (без ПДВ).</div>
         <div class="ord-lab">Ваш інтернет-магазин</div>
         <div class="ofield"><label for="ownSite">Веб-адреса вашого магазину</label><input type="text" id="ownSite" placeholder="напр. myshop.com"><div class="ferr2" id="ownSiteErr"></div><div style="color:var(--muted);font-size:12.5px;margin-top:5px">Адреса вашого магазину потрібна для обраних модулів — вона не змінює місячну плату.</div></div>
         <div class="ofield"><label for="ownFb">Facebook вашої компанії</label><input type="text" id="ownFb" placeholder="напр. facebook.com/вашакомпанія"><div style="color:var(--muted);font-size:12.5px;margin-top:5px">Безкоштовно — сторінка вашої компанії.</div></div>

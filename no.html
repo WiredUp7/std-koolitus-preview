@@ -489,7 +489,7 @@
   .rely .r p{color:var(--muted);font-size:14px;font-weight:300;line-height:1.55}
 
   /* preset + ankur (E) */
-  .preset-btn{display:inline-flex;align-items:center;gap:9px;background:rgba(23,184,106,.12);border:1px solid rgba(23,184,106,.42);color:#7af0b6;font-family:var(--f);font-weight:500;font-size:13px;padding:9px 15px;border-radius:10px;cursor:pointer;margin-bottom:22px;transition:.2s}
+  .preset-btn{display:inline-flex;align-items:center;gap:9px;background:rgba(23,184,106,.12);border:1px solid rgba(23,184,106,.42);color:var(--accent-ink);font-family:var(--f);font-weight:500;font-size:13px;padding:9px 15px;border-radius:10px;cursor:pointer;margin-bottom:22px;transition:.2s}
   .preset-btn:hover{background:rgba(23,184,106,.2)}
   .preset-btn svg{width:15px;height:15px}
   .calc-anchor{font-size:12.5px;color:var(--on-dark-mut);margin:-8px 0 18px}
@@ -1520,8 +1520,8 @@
         <div class="carry" id="calcCarry"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v5M12 16.5v.01" stroke-linecap="round"/><circle cx="12" cy="12" r="9"/></svg><span id="calcCarryTxt"></span></div>
 
         <button type="button" class="preset-btn" id="modPresetBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 12h18" stroke-linecap="round"/></svg>Velg anbefalt startpakke</button>
-        <div id="modPresetNote" style="display:none;font-size:12.5px;color:#7af0b6;margin:2px 0 16px;line-height:1.5">Startpakke: helsesjekk av nettbutikken og oppetidsovervåking valgt. Legg til inntil ~8 konkurrenter i Facebook-overvåkingen og ~3 nettbutikker i prisovervåkingen. Endre fritt - estimat ~78 €/mnd (ekskl. mva).</div>
-        <div id="modPresetBrandNote" style="display:none;font-size:12.5px;color:#7af0b6;margin:2px 0 16px;line-height:1.5">Importørpakke valgt: merkevareovervåking som følger prisene dine i forhandlernes butikker. Legg til merkevareproduktene dine i neste steg. Pris 40 €/mnd (ekskl. mva).</div>
+        <div id="modPresetNote" style="display:none;font-size:12.5px;color:var(--accent-ink);margin:2px 0 16px;line-height:1.5">Startpakke: helsesjekk av nettbutikken og oppetidsovervåking valgt (30 €/mnd). Legg til inntil ~8 konkurrenter i Facebook-overvåkingen og ~3 nettbutikker i prisovervåkingen — fylt ut blir det ca. 78 €/mnd (ekskl. mva).</div>
+        <div id="modPresetBrandNote" style="display:none;font-size:12.5px;color:var(--accent-ink);margin:2px 0 16px;line-height:1.5">Importørpakke valgt: merkevareovervåking som følger prisene dine i forhandlernes butikker. Legg til merkevareproduktene dine i neste steg. Pris 40 €/mnd (ekskl. mva).</div>
         <div class="ord-lab">Din nettbutikk</div>
         <div class="ofield"><label for="ownSite">Butikkens nettadresse</label><input type="text" id="ownSite" placeholder="f.eks. minbutikk.no"><div class="ferr2" id="ownSiteErr"></div><div style="color:var(--muted);font-size:12.5px;margin-top:5px">Vi trenger butikkens adresse for de valgte modulene — den endrer ikke månedsprisen.</div></div>
         <div class="ofield"><label for="ownFb">Bedriftens Facebook</label><input type="text" id="ownFb" placeholder="f.eks. facebook.com/bedriften"><div style="color:var(--muted);font-size:12.5px;margin-top:5px">Gratis — din egen bedriftsside.</div></div>
