@@ -147,8 +147,29 @@
   .tools{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
   .tool{display:block;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:24px 22px;text-decoration:none;box-shadow:var(--shadow);transition:transform .15s,border-color .15s}
   .tool:hover{transform:translateY(-2px);border-color:var(--accent)}
-  .tool .ic{width:42px;height:42px;border-radius:12px;background:var(--accent-soft);color:var(--accent-ink);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
-  .tool .ic svg{width:22px;height:22px}
+  .viz{background:var(--paper-2);border-radius:12px;padding:13px 14px;margin-bottom:14px;min-height:80px;display:flex;flex-direction:column;justify-content:center;gap:9px}
+  .viz-cap{font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+  .viz-bar{display:flex;height:26px;border-radius:8px;overflow:hidden;font-size:11.5px;font-weight:700}
+  .viz-bar .seg{display:flex;align-items:center;justify-content:center;white-space:nowrap}
+  .seg.cost{background:#3c424d;color:#e7eaef}
+  .seg.gain{background:var(--grad);color:#04241a}
+  .viz-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .viz-row .arr{color:var(--muted);font-weight:700}
+  .pill{padding:4px 10px;border-radius:999px;font-size:12.5px;font-weight:700}
+  .pill.red{background:var(--red-soft);color:var(--red)}
+  .pill.grn{background:var(--accent-soft);color:var(--accent-ink)}
+  .viz-big{font-size:28px;font-weight:700;line-height:1;letter-spacing:-.02em;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .viz-track{position:relative;height:10px;border-radius:999px;background:var(--line);margin-top:18px}
+  .viz-track .fill{position:absolute;left:0;top:0;bottom:0;border-radius:999px;background:var(--grad)}
+  .viz-track .flag{position:absolute;top:-15px;transform:translateX(-50%);background:#0a0b0e;border:1px solid rgba(255,255,255,.14);color:#fff;font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:999px;white-space:nowrap}
+  .viz-cols{display:flex;gap:16px;align-items:flex-end;height:58px}
+  .viz-cols .col{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:3px;font-size:10.5px;font-weight:600;color:var(--muted)}
+  .viz-cols .col i{display:block;width:28px;border-radius:5px 5px 2px 2px;background:var(--line)}
+  .viz-cols .col.win i{background:var(--grad)}
+  .viz-cols .col.win{color:var(--accent-ink)}
+  .viz-seg4{display:flex;gap:4px;height:22px}
+  .viz-seg4 span{flex:1;border-radius:6px;background:var(--grad)}
+  .viz svg.mini{display:block;width:100%;height:42px}
   .tool h3{font-size:16.5px;margin-bottom:6px}
   .tool p{color:var(--text-2);font-size:14px}
   .tool .go{display:inline-block;margin-top:12px;font-size:13.5px;font-weight:600;color:var(--accent-ink)}
@@ -163,6 +184,7 @@
     :root{--paper:#0f1116;--paper-2:#14161c;--text:#e7eaef;--text-2:#b3bac6;--muted:#8b93a1;--line:#242832}
     body{background:var(--paper)}
     .calc,.qa,.tool{background:#161a21}
+    .viz{background:#10131a}
     .r{background:#14161c}
     table.mat th{background:#14161c}
     .f input[type=text]{background:#14161c}
@@ -205,13 +227,27 @@
       <p>Iga kalkulaator töötab otse brauseris - sisesta numbrid ja vastus tuleb kohe.</p>
     </div>
     <div class="tools">
-      <a class="tool" href="/marginaalikalkulaator"><span class="ic"><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h16M8 15l3-4 3 2 4-6" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>Marginaali ja juurdehindluse kalkulaator</h3><p>Arvuta kasum, marginaal ja juurdehindlus või leia soovitud marginaaliga müügihind.</p><span class="go">Ava kalkulaator &rarr;</span></a>
-      <a class="tool" href="/allahindluse-kalkulaator"><span class="ic"><svg viewBox="0 0 24 24"><path d="M19 5 5 19M6.5 9a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Zm11 11a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linecap="round"/></svg></span><h3>Allahindluse tasuvuskalkulaator</h3><p>Mitu protsenti rohkem pead kampaania ajal müüma, et sama kasum kätte saada.</p><span class="go">Ava kalkulaator &rarr;</span></a>
-      <a class="tool" href="/kasumilave-kalkulaator"><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 12h18M12 3v18" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7" fill="none"/></svg></span><h3>Kasumiläve kalkulaator</h3><p>Kui suur kuukäive katab püsikulud ja mitu tellimust see tähendab.</p><span class="go">Ava kalkulaator &rarr;</span></a>
-      <a class="tool" href="/roas-kalkulaator"><span class="ic"><svg viewBox="0 0 24 24"><path d="m3 11 18-8-8 18-2-8-8-2Z" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>Reklaamitasuvuse (ROAS) kalkulaator</h3><p>Milline ROAS on sinu marginaali juures nullpunkt ja kui palju tohib kliendi saamine maksta.</p><span class="go">Ava kalkulaator &rarr;</span></a>
-      <a class="tool" href="/tasuta-tarne-kalkulaator"><span class="ic"><svg viewBox="0 0 24 24"><path d="M1 7h13v10H1zM14 10h4l3 3v4h-7z" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6" cy="19" r="1.8" stroke="currentColor" stroke-width="1.7" fill="none"/><circle cx="17" cy="19" r="1.8" stroke="currentColor" stroke-width="1.7" fill="none"/></svg></span><h3>Tasuta tarne läve kalkulaator</h3><p>Kust maalt tasuta tarne end ära tasub ja millist lävendit seada.</p><span class="go">Ava kalkulaator &rarr;</span></a>
-      <a class="tool" href="/maksetasude-vordlus"><span class="ic"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2.5" stroke="currentColor" stroke-width="1.7" fill="none"/><path d="M2 10h20" stroke="currentColor" stroke-width="1.7"/></svg></span><h3>Maksetasude võrdlus</h3><p>Montonio, Maksekeskus või Stripe - tegelik kuukulu sinu käibe pealt.</p><span class="go">Ava kalkulaator &rarr;</span></a>
-      <a class="tool" href="/laokaibe-kalkulaator"><span class="ic"><svg viewBox="0 0 24 24"><path d="M21 8 12 3 3 8v8l9 5 9-5V8Z" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="m3 8 9 5 9-5M12 13v8" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linejoin="round"/></svg></span><h3>Laokäibe kalkulaator</h3><p>Kui kiiresti ladu end läbi müüb ja kui palju raha kiirem käive vabastaks.</p><span class="go">Ava kalkulaator &rarr;</span></a>
+      <a class="tool" href="/marginaalikalkulaator">
+        <div class="viz"><div class="viz-bar"><span class="seg cost" style="width:60%">ost 60 €</span><span class="seg gain" style="width:40%">+40 €</span></div><div class="viz-cap">marginaal 40% · juurdehindlus 67%</div></div>
+        <h3>Marginaali ja juurdehindluse kalkulaator</h3><p>Arvuta kasum, marginaal ja juurdehindlus või leia soovitud marginaaliga müügihind.</p><span class="go">Ava kalkulaator &rarr;</span></a>
+      <a class="tool" href="/allahindluse-kalkulaator">
+        <div class="viz"><div class="viz-row"><span class="pill red">hind −10%</span><span class="arr">&rarr;</span><span class="pill grn">maht +50%</span></div><div class="viz-cap">et kasum ei väheneks</div></div>
+        <h3>Allahindluse tasuvuskalkulaator</h3><p>Mitu protsenti rohkem pead kampaania ajal müüma, et sama kasum kätte saada.</p><span class="go">Ava kalkulaator &rarr;</span></a>
+      <a class="tool" href="/kasumilave-kalkulaator">
+        <div class="viz"><svg class="mini" viewBox="0 0 220 44" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="vgA" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1fd07a"/><stop offset="1" stop-color="#06b6b6"/></linearGradient></defs><line x1="4" y1="22" x2="216" y2="22" stroke="#8b93a1" stroke-width="2" stroke-dasharray="5 5"/><path d="M4 42 L216 4" stroke="url(#vgA)" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="110" cy="23" r="5" fill="#17b86a"/></svg><div class="viz-cap">punktist paremal algab kasum</div></div>
+        <h3>Kasumiläve kalkulaator</h3><p>Kui suur kuukäive katab püsikulud ja mitu tellimust see tähendab.</p><span class="go">Ava kalkulaator &rarr;</span></a>
+      <a class="tool" href="/roas-kalkulaator">
+        <div class="viz"><div class="viz-big">ROAS 2,5</div><div class="viz-cap">nullpunkt 40% marginaali juures</div></div>
+        <h3>Reklaamitasuvuse (ROAS) kalkulaator</h3><p>Milline ROAS on sinu marginaali juures nullpunkt ja kui palju tohib kliendi saamine maksta.</p><span class="go">Ava kalkulaator &rarr;</span></a>
+      <a class="tool" href="/tasuta-tarne-kalkulaator">
+        <div class="viz"><div class="viz-track"><span class="fill" style="width:82%"></span><span class="flag" style="left:82%">lävi 50 €</span></div><div class="viz-cap">korv 41 € - puudu 9 €</div></div>
+        <h3>Tasuta tarne läve kalkulaator</h3><p>Kust maalt tasuta tarne end ära tasub ja millist lävendit seada.</p><span class="go">Ava kalkulaator &rarr;</span></a>
+      <a class="tool" href="/maksetasude-vordlus">
+        <div class="viz"><div class="viz-cols"><div class="col win"><i style="height:14px"></i>95 €</div><div class="col"><i style="height:19px"></i>129 €</div><div class="col"><i style="height:27px"></i>184 €</div><div class="col"><i style="height:42px"></i>283 €</div></div><div class="viz-cap">sama käive, neli pakkujat</div></div>
+        <h3>Maksetasude võrdlus</h3><p>Montonio, Maksekeskus või Stripe - tegelik kuukulu sinu käibe pealt.</p><span class="go">Ava kalkulaator &rarr;</span></a>
+      <a class="tool" href="/laokaibe-kalkulaator">
+        <div class="viz"><div class="viz-seg4"><span></span><span style="opacity:.76"></span><span style="opacity:.54"></span><span style="opacity:.32"></span></div><div class="viz-cap">ladu müüb läbi 4× aastas · 91 päeva</div></div>
+        <h3>Laokäibe kalkulaator</h3><p>Kui kiiresti ladu end läbi müüb ja kui palju raha kiirem käive vabastaks.</p><span class="go">Ava kalkulaator &rarr;</span></a>
     </div>
   </div>
 </section>
@@ -222,7 +258,15 @@
       <h2>Vaata oma poodi kõrvalt</h2>
     </div>
     <div class="tools" style="grid-template-columns:repeat(2,1fr);max-width:780px;margin:0 auto">
-      <a class="tool" href="https://scan.look360.eu/tervisekontroll/"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 2.7 5 5.7v5.6c0 4.3 2.9 7.4 7 9 4.1-1.6 7-4.7 7-9V5.7l-7-3Z" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="m8.8 12 2.1 2.1 4.3-4.3" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>E-poe tasuta tervisekontroll</h3><p>Sisesta oma e-poe aadress ja saa kohe skoor: kiirus, SEO, mobiilivaade, tootelehtede vead ja muu.</p><span class="go">Kontrolli oma poodi &rarr;</span></a><a class="tool" href="https://scan.look360.eu/hinnaindeks/"><span class="ic"><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h16M7 14l4-5 3 3 5-7" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>Eesti e-kaubanduse hinnaindeks</h3><p>Tuntud toodete hinnad Eesti e-poodides iga päev - vaata, kuhu suunas turg liigub.</p><span class="go">Vaata indeksit &rarr;</span></a>
+      <a class="tool" href="https://scan.look360.eu/tervisekontroll/">
+        <div class="viz" style="flex-direction:row;align-items:center;gap:14px">
+          <svg width="52" height="52" viewBox="0 0 52 52" aria-hidden="true" style="flex:0 0 auto"><defs><linearGradient id="vgC" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1fd07a"/><stop offset="1" stop-color="#06b6b6"/></linearGradient></defs><circle cx="26" cy="26" r="21" stroke="var(--line)" stroke-width="6" fill="none"/><circle cx="26" cy="26" r="21" stroke="url(#vgC)" stroke-width="6" fill="none" stroke-linecap="round" stroke-dasharray="105.6 132" transform="rotate(-90 26 26)"/><text x="26" y="31" text-anchor="middle" font-size="15" font-weight="700" fill="var(--text)" font-family="inherit">80</text></svg>
+          <div class="viz-cap" style="text-transform:none;font-size:12.5px">Sinu poe skoor sekunditega -<br>15 kontrolli, ilma registreerimiseta</div>
+        </div>
+        <h3>E-poe tasuta tervisekontroll</h3><p>Sisesta oma e-poe aadress ja saa kohe skoor: kiirus, SEO, mobiilivaade, tootelehtede vead ja muu.</p><span class="go">Kontrolli oma poodi &rarr;</span></a>
+      <a class="tool" href="https://scan.look360.eu/hinnaindeks/">
+        <div class="viz"><svg class="mini" viewBox="0 0 220 44" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="vgB" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1fd07a"/><stop offset="1" stop-color="#06b6b6"/></linearGradient></defs><path d="M4 30 L36 26 L68 32 L100 20 L132 24 L164 12 L196 16 L212 8" stroke="url(#vgB)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="212" cy="8" r="4.5" fill="#17b86a"/></svg><div class="viz-cap">33 toodet · hinnad iga päev</div></div>
+        <h3>Eesti e-kaubanduse hinnaindeks</h3><p>Tuntud toodete hinnad Eesti e-poodides iga päev - vaata, kuhu suunas turg liigub.</p><span class="go">Vaata indeksit &rarr;</span></a>
     </div>
   </div>
 </section>
