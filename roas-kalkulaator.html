@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Analytics 4 + Consent Mode v2. Default = denied (GDPR-ohutu). -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied',
+    'wait_for_update': 500
+  });
+  gtag('js', new Date());
+  gtag('config', 'G-W6YLWPV030', { 'anonymize_ip': true });
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W6YLWPV030"></script>
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a727ab18678b4a07846b0016b3c003b7"}'></script>
+<title>ROAS-i kalkulaator - kas su reklaam teenib päriselt kasumit? | Look360</title>
+<meta name="description" content="Arvuta kasumliku reklaami piir: milline ROAS on sinu marginaali juures nullpunkt ja kui palju tohib uue kliendi saamine maksimaalselt maksta. Tasuta kalkulaator.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="canonical" href="https://www.look360.eu/roas-kalkulaator">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.look360.eu/roas-kalkulaator">
+<meta property="og:title" content="ROAS-i kalkulaator - kas su reklaam teenib päriselt kasumit? | Look360">
+<meta property="og:description" content="Arvuta kasumliku reklaami piir: milline ROAS on sinu marginaali juures nullpunkt ja kui palju tohib uue kliendi saamine maksimaalselt maksta. Tasuta kalkulaator.">
+<meta property="og:image" content="https://www.look360.eu/og-cover.png?v=2">
+<meta property="og:site_name" content="Look360">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.look360.eu/#organization",
+      "name": "Look360",
+      "legalName": "Watchdog OÜ",
+      "url": "https://www.look360.eu/",
+      "logo": { "@type": "ImageObject", "url": "https://www.look360.eu/favicon.svg" },
+      "email": "info@look360.eu",
+      "address": { "@type": "PostalAddress", "postalCode": "71003", "addressLocality": "Viljandi", "addressCountry": "EE" }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://www.look360.eu/roas-kalkulaator#webpage",
+      "url": "https://www.look360.eu/roas-kalkulaator",
+      "name": "ROAS-i kalkulaator - kas su reklaam teenib päriselt kasumit? | Look360",
+      "isPartOf": { "@id": "https://www.look360.eu/#website" },
+      "inLanguage": "et",
+      "description": "Arvuta kasumliku reklaami piir: milline ROAS on sinu marginaali juures nullpunkt ja kui palju tohib uue kliendi saamine maksimaalselt maksta. Tasuta kalkulaator."
+    }
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0a0b0e;--dark-card:#16181f;--paper:#fff;--paper-2:#f4f5f7;
+    --text:#15171c;--text-2:#3c424d;--muted:#646e7c;--on-dark:#eef0f4;--on-dark-mut:#9aa1ad;
+    --line:#e7e9ee;--line-dark:rgba(255,255,255,.09);
+    --accent:#17b86a;--accent-ink:#0c8f4f;--accent-soft:#e7f6ee;
+    --grad:linear-gradient(120deg,#1fd07a,#06b6b6);
+    --amber:#b06a0a;--amber-soft:#f7eddc;--red:#c2410c;--red-soft:#fbe6dc;
+    --shadow:0 14px 36px -16px rgba(16,18,24,.22),0 4px 10px -6px rgba(16,18,24,.08);
+    --maxw:1120px;--r:16px;--f:"Poppins",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--f);color:var(--text);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+  a{color:inherit}
+  h1,h2,h3,h4{letter-spacing:-.02em;line-height:1.12;font-weight:600}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:15px;padding:13px 22px;border-radius:12px;border:0;cursor:pointer;text-decoration:none;transition:transform .15s,box-shadow .15s}
+  .btn svg{width:18px;height:18px}
+  .btn-grad{background:var(--grad);color:#04241a;box-shadow:0 10px 24px -10px rgba(31,208,122,.6)}
+  .btn-grad:hover{transform:translateY(-1px)}
+  .btn-out{background:transparent;border:1.5px solid var(--line);color:var(--text)}
+  .btn-lg{padding:15px 28px;font-size:16px}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--accent-ink)}
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--accent)}
+  section{padding:64px 0}
+  .sec-head{max-width:720px;margin:0 auto 40px;text-align:center}
+  .sec-head h2{font-size:clamp(24px,3.4vw,34px);margin:14px 0 12px}
+  .sec-head p{color:var(--text-2);font-size:16.5px}
+  .nav{position:sticky;top:0;z-index:30;background:rgba(10,11,14,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line-dark)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:70px;gap:18px}
+  .logo{display:flex;align-items:center;gap:11px;text-decoration:none}
+  .logo .eye{width:40px;height:33px}
+  .logo .wm{font-weight:700;font-size:20px;color:#fff}
+  .logo .wm i{font-style:normal;color:var(--accent)}
+  .nav .actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:flex-end}
+  .nav .login{color:#cbd3da;text-decoration:none;font-weight:600;font-size:14px}
+  .hero{background:var(--ink);color:var(--on-dark);padding:58px 0 62px;text-align:center;position:relative;overflow:hidden}
+  .hero .crumb{display:inline-block;margin-bottom:14px;color:#7af0b6;font-size:13.5px;font-weight:600;text-decoration:none}
+  .hero .eyebrow{color:#7af0b6}
+  .hero h1{font-size:clamp(28px,4.4vw,46px);font-weight:700;margin:14px auto 16px;max-width:860px}
+  .hero .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .hero .lead{color:var(--on-dark-mut);font-size:17px;max-width:660px;margin:0 auto}
+  .calc{max-width:780px;margin:0 auto;background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:30px 28px;box-shadow:var(--shadow)}
+  .tabs{display:flex;gap:8px;margin-bottom:22px;flex-wrap:wrap}
+  .tab{padding:9px 16px;border-radius:999px;border:1.5px solid var(--line);background:transparent;font:inherit;font-size:14px;font-weight:600;cursor:pointer;color:var(--text-2)}
+  .tab.on{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-ink)}
+  .fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px}
+  .f label{display:block;font-size:13px;font-weight:600;color:var(--text-2);margin-bottom:6px}
+  .f input[type=text]{width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:11px;font:inherit;font-size:16px;background:var(--paper);color:var(--text)}
+  .f input:focus{outline:none;border-color:var(--accent)}
+  .checkrow{display:flex;align-items:center;gap:9px;margin-top:14px;font-size:14px;color:var(--text-2)}
+  .checkrow input{width:17px;height:17px;accent-color:var(--accent)}
+  .res{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-top:22px}
+  .r{background:var(--paper-2);border-radius:14px;padding:16px 18px}
+  .r .v{font-size:25px;font-weight:700;letter-spacing:-.02em}
+  .r .l{font-size:12.5px;color:var(--muted);margin-top:3px;line-height:1.4}
+  .r.good .v{color:var(--accent-ink)}
+  .r.bad .v{color:var(--red)}
+  .warn{margin-top:16px;background:var(--red-soft);color:var(--red);border-radius:12px;padding:12px 16px;font-size:14px;font-weight:500;display:none}
+  .note{font-size:12.5px;color:var(--muted);margin-top:16px;line-height:1.55}
+  .note a{color:inherit}
+  .tbl-wrap{overflow-x:auto;margin-top:8px}
+  table.mat{border-collapse:collapse;width:100%;font-size:14px;min-width:520px}
+  table.mat th,table.mat td{padding:9px 12px;text-align:center;border:1px solid var(--line)}
+  table.mat th{background:var(--paper-2);font-weight:600}
+  table.mat td.k{color:var(--red);font-weight:500}
+  table.mat td.best{background:var(--accent-soft);color:var(--accent-ink);font-weight:700}
+  table.mat td.nm,table.mat th.nm{text-align:left;white-space:nowrap}
+  .prose{max-width:780px;margin:0 auto}
+  .prose h2{font-size:23px;margin:36px 0 10px}
+  .prose p{color:var(--text-2);margin-bottom:12px;font-size:15.5px}
+  .prose ul{margin:0 0 12px 20px;color:var(--text-2);font-size:15.5px}
+  .prose li{margin-bottom:5px}
+  .formula{background:var(--paper-2);border-radius:10px;padding:9px 16px;font-weight:600;display:inline-block;margin:2px 0 10px;font-size:15px}
+  .faq{max-width:780px;margin:0 auto;display:grid;gap:12px}
+  .qa{border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--paper)}
+  .qa h3{font-size:16px;margin-bottom:7px}
+  .qa p{color:var(--text-2);font-size:14.5px}
+  .alt{background:var(--paper-2)}
+  .cta{background:var(--ink);color:var(--on-dark);border-radius:22px;padding:52px 32px;text-align:center;max-width:var(--maxw);margin:0 auto}
+  .cta h2{font-size:clamp(24px,3.4vw,34px);margin-bottom:12px}
+  .cta .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .cta p{color:var(--on-dark-mut);margin-bottom:24px;max-width:640px;margin-left:auto;margin-right:auto}
+  .cta .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .tools{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .tool{display:block;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:24px 22px;text-decoration:none;box-shadow:var(--shadow);transition:transform .15s,border-color .15s}
+  .tool:hover{transform:translateY(-2px);border-color:var(--accent)}
+  .tool .ic{width:42px;height:42px;border-radius:12px;background:var(--accent-soft);color:var(--accent-ink);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+  .tool .ic svg{width:22px;height:22px}
+  .tool h3{font-size:16.5px;margin-bottom:6px}
+  .tool p{color:var(--text-2);font-size:14px}
+  .tool .go{display:inline-block;margin-top:12px;font-size:13.5px;font-weight:600;color:var(--accent-ink)}
+  footer{background:#0c0d11;color:#9aa1ad;padding:44px 0 30px;font-size:14px}
+  footer a{color:inherit;text-decoration:none}
+  .foot-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:center;padding-bottom:22px;border-bottom:1px solid var(--line-dark)}
+  .foot-tools{margin-top:18px;display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12.5px;opacity:.85}
+  .foot-tools a{text-decoration:underline}
+  .foot-bottom{margin-top:18px;font-size:12px;opacity:.7;display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:space-between}
+  @media(max-width:860px){.tools{grid-template-columns:1fr}.nav .actions .hide-m{display:none}}
+  @media(prefers-color-scheme:dark){
+    :root{--paper:#0f1116;--paper-2:#14161c;--text:#e7eaef;--text-2:#b3bac6;--muted:#8b93a1;--line:#242832}
+    body{background:var(--paper)}
+    .calc,.qa,.tool{background:#161a21}
+    .r{background:#14161c}
+    table.mat th{background:#14161c}
+    .f input[type=text]{background:#14161c}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="/" class="logo" aria-label="Look360">
+      <svg class="eye" viewBox="0 0 76 62" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="gLidT" x1="0" y1="0" x2="1" y2="0.7"><stop offset="0" stop-color="#46ec9f"/><stop offset="1" stop-color="#0bc8c8"/></linearGradient><clipPath id="clipIrisT"><circle cx="27" cy="39" r="14"/></clipPath></defs><path d="M5 35 C 18 14, 47 6, 72 9 C 53 16, 31 23, 5 35 Z" fill="url(#gLidT)"/><path d="M9 47 C 24 58, 47 56, 67 45 C 50 51, 29 53, 9 47 Z" fill="url(#gLidT)" opacity="0.92"/><circle cx="27" cy="39" r="14" fill="#0c8f5f"/><g clip-path="url(#clipIrisT)"><circle cx="37" cy="38" r="13" fill="#37e3a2"/></g><circle cx="22.5" cy="33.5" r="3.2" fill="#ffffff"/></svg>
+      <span class="wm">Look<i>360</i></span>
+    </a>
+    <div class="actions">
+      <a href="/tooriistad" class="login hide-m">Kõik tööriistad</a>
+      <a href="https://scan.look360.eu/accounts/login/" class="login hide-m">Logi sisse</a>
+      <a href="https://scan.look360.eu/tervisekontroll/" class="btn btn-grad">Tasuta tervisekontroll</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="wrap">
+    <a class="crumb" href="/tooriistad">&larr; Kõik tööriistad</a>
+    <div class="eyebrow" style="justify-content:center;display:flex"><span class="dot"></span> Tasuta tööriist</div>
+    <h1>Kas su reklaam teenib <span class="g">päriselt kasumit?</span></h1>
+    <p class="lead">Reklaamiplatvorm näitab ROAS-i käibe pealt. Kasum tekib aga marginaali pealt - ja nende kahe vahel on suur vahe.</p>
+  </div>
+</section>
+
+
+<section>
+  <div class="wrap">
+    <div class="calc">
+      <div class="fields">
+        <div class="f"><label for="r_marg">Keskmine marginaal (%)</label><input type="text" id="r_marg" inputmode="decimal" placeholder="30"></div>
+        <div class="f"><label for="r_tell">Keskmine tellimus (€, valikuline)</label><input type="text" id="r_tell" inputmode="decimal" placeholder="65"></div>
+        <div class="f"><label for="r_roas">Sinu praegune ROAS (valikuline)</label><input type="text" id="r_roas" inputmode="decimal" placeholder="4"></div>
+      </div>
+      <div class="res">
+        <div class="r"><div class="v" id="r_be">–</div><div class="l">Nullpunkti ROAS - sellest allpool maksad reklaami eest peale</div></div>
+        <div class="r"><div class="v" id="r_cac">–</div><div class="l">Suurim lubatav kliendihankekulu tellimuse kohta (CAC)</div></div>
+        <div class="r" id="r_box"><div class="v" id="r_kasum">–</div><div class="l">Kasum või kahjum iga 100 € reklaamikulu kohta sinu ROAS-i juures</div></div>
+      </div>
+      <p class="note">ROAS (return on ad spend) = reklaamist tulnud käive &divide; reklaamikulu. Arvuta käive KM-ta, sest ka marginaal on KM-ta hindadest.</p>
+    </div>
+  </div>
+</section>
+<section class="alt">
+  <div class="wrap">
+    <div class="prose">
+      <h2>Miks "hea" ROAS võib olla kahjumlik?</h2>
+      <p>ROAS 4 kõlab hästi: iga reklaamieuro toob 4 € käivet. Aga kui su marginaal on 20%, jääb sellest 4 eurost kasumiks vaid 0,80 € - vähem, kui reklaam maksis. Sa maksad iga müügi eest peale, ja mida paremini reklaam "töötab", seda rohkem kaotad.</p>
+      <p class="formula">Nullpunkti ROAS = 100 &divide; marginaal %</p>
+      <p>Marginaal 20% &rarr; nullpunkt on ROAS 5. Marginaal 30% &rarr; nullpunkt 3,3. Marginaal 50% &rarr; nullpunkt 2. Kõik, mis jääb nullpunktist allapoole, on käibe ostmine oma raha eest.</p>
+      <h2>Mida nullpunkti kõrval veel vaadata?</h2>
+      <ul>
+        <li><b>Korduvostud.</b> Kui klient tuleb tagasi, võib esimene ost olla nullis või kergelt miinuses - aga siis pead korduvostude määra päriselt teadma, mitte lootma.</li>
+        <li><b>Brändiotsingud.</b> Osa "reklaami toodud" käibest oleks tulnud niikuinii. Kampaaniate ROAS näeb sageli parem välja kui juurdekasv, mille reklaam tegelikult andis.</li>
+        <li><b>Hinnakonkurents.</b> Kui konkurent müüb sama toodet odavamalt, maksab iga klikk sulle rohkem, sest osa külastajaid võrdleb ja lahkub. Reklaamitasuvuse kõrval hoia silma peal ka hinnapositsioonil.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="cta">
+    <h2>Reklaam toob kliendi kohale. <span class="g">Hind otsustab, kas ta ostab.</span></h2>
+    <p>Look360 näitab, kus su hinnad konkurentidega võrreldes päriselt on - enne kui reklaamieelarvet suurendad. Alusta tasuta tervisekontrolliga.</p>
+    <div class="cta-row">
+      <a href="https://scan.look360.eu/tervisekontroll/" class="btn btn-grad btn-lg">Tee tasuta tervisekontroll <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="/#teenused" class="btn btn-out btn-lg" style="border-color:var(--line-dark);color:var(--on-dark)">Vaata Look360 teenuseid</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <a href="/" class="logo"><span class="wm" style="font-size:18px">Look<i style="color:var(--accent);font-style:normal">360</i></span></a>
+      <div style="display:flex;gap:18px;flex-wrap:wrap">
+        <a href="/">Avaleht</a>
+        <a href="/tooriistad">Tasuta tööriistad</a>
+        <a href="https://scan.look360.eu/tervisekontroll/">Tervisekontroll</a>
+        <a href="https://scan.look360.eu/hinnaindeks/">Hinnaindeks</a>
+        <a href="mailto:info@look360.eu">info@look360.eu</a>
+      </div>
+    </div>
+    <div class="foot-tools">
+      <a href="/marginaalikalkulaator">Marginaali ja juurdehindluse kalkulaator</a>
+      <a href="/allahindluse-kalkulaator">Allahindluse tasuvuskalkulaator</a>
+      <a href="/kasumilave-kalkulaator">Kasumiläve kalkulaator</a>
+      <a href="/roas-kalkulaator">Reklaamitasuvuse (ROAS) kalkulaator</a>
+      <a href="/tasuta-tarne-kalkulaator">Tasuta tarne läve kalkulaator</a>
+      <a href="/maksetasude-vordlus">Maksetasude võrdlus</a>
+      <a href="/laokaibe-kalkulaator">Laokäibe kalkulaator</a>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Look360 · Watchdog OÜ · Registrikood 17537572 · KMKR EE103000237</span>
+      <span><a href="/privaatsus" style="text-decoration:underline">Privaatsus</a> · <a href="/tingimused" style="text-decoration:underline">Kasutustingimused</a> · Tehtud Eestis</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+function V(id){var el=document.getElementById(id);if(!el)return NaN;var v=el.value.trim().replace(/\s/g,'').replace(',','.');var n=parseFloat(v);return isFinite(n)?n:NaN}
+function NF(d){return new Intl.NumberFormat('et-EE',{minimumFractionDigits:0,maximumFractionDigits:d})}
+function fmt(n,d){return NF(d===undefined?1:d).format(n)}
+function eur(n,d){return NF(d===undefined?2:d).format(n)+'\u00a0\u20ac'}
+function pct(n,d){return NF(d===undefined?1:d).format(n)+'%'}
+function set(id,t){document.getElementById(id).textContent=t}
+function bind(fn){document.querySelectorAll('.calc input, .calc select').forEach(function(e){e.addEventListener('input',fn);e.addEventListener('change',fn)});fn()}
+function calc(){
+  var m=V('r_marg'),tell=V('r_tell'),roas=V('r_roas');
+  var ok=!isNaN(m)&&m>0&&m<100;
+  set('r_be',ok?fmt(100/m,1):'–');
+  set('r_cac',ok&&!isNaN(tell)&&tell>0?eur(tell*m/100):'–');
+  var box=document.getElementById('r_box');
+  box.classList.remove('good','bad');
+  if(ok&&!isNaN(roas)&&roas>0){
+    var kasum=100*(roas*m/100-1);
+    set('r_kasum',(kasum>=0?'+':'')+eur(kasum,0));
+    box.classList.add(kasum>=0?'good':'bad');
+  }else set('r_kasum','–');
+}
+bind(calc);
+</script>
+</body>
+</html>
