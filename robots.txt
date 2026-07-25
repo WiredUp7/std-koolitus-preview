@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://www.look360.eu/sitemap.xml
+Sitemap: https://www.look360.eu/sitemap-2.xml
