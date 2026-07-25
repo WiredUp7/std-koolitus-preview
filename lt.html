@@ -2320,10 +2320,12 @@ document.querySelectorAll('.js-proov7').forEach(a=>{try{var k=(T.locale||'et').s
     if(isYear()){
       const yr=m*(12-FREE_MONTHS),eff=Math.round(yr/12);
       if(lab)lab.textContent=T.labYearly||lab.textContent;   // "Mėnesinis mokestis" silt ei tohi seista aastasumma kohal
-      priceEl.innerHTML=`${yr} €<small>${T.perYear}</small>${m>0?'<span class="save">'+T.twoMonthsFree+' · '+fmt(T.effMonthly||'',{eff})+'</span>':''}`;
+      // Tühja tellimuse "0 €" nägi välja nagu katkine kalkulaator (kasutaja tuli
+      // kalkulaatorist, kus seisis 11 €) - enne valikut näita kriipsu, mitte nulli.
+      priceEl.innerHTML=m>0?`${yr} €<small>${T.perYear}</small><span class="save">${T.twoMonthsFree} · ${fmt(T.effMonthly||'',{eff})}</span>`:`—<small>${T.perYear}</small>`;
     }else{
       if(lab)lab.textContent=T.labMonthly||lab.textContent;
-      priceEl.innerHTML=`${m} €<small>${T.perMonth}</small>`;
+      priceEl.innerHTML=m>0?`${m} €<small>${T.perMonth}</small>`:`—<small>${T.perMonth}</small>`;
     }
   }
   function rowHint(c){
