@@ -1699,8 +1699,8 @@
       <div class="ord-view on" data-v="1">
        <div class="ov1-grid">
         <div class="ov1-main">
-        <div class="ord-h">Ketä haluat seurata?</div>
-        <div class="ord-sub">Lisää seurattavat yritykset ja valitse kauppasi moduulit. Kuukausimaksu lasketaan heti syöttämiesi yritysten mukaan.</div>
+        <div class="ord-h" id="ordH1">Ketä haluat seurata?</div>
+        <div class="ord-sub" id="ordSub1">Lisää seurattavat yritykset ja valitse kauppasi moduulit. Kuukausimaksu lasketaan heti syöttämiesi yritysten mukaan.</div>
         <div class="carry" id="calcCarry"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v5M12 16.5v.01" stroke-linecap="round"/><circle cx="12" cy="12" r="9"/></svg><span id="calcCarryTxt"></span></div>
 
         <button type="button" class="preset-btn" id="modPresetBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 12h18" stroke-linecap="round"/></svg>Valitse suositeltu aloituspaketti</button>
@@ -2641,6 +2641,7 @@ document.querySelectorAll('.js-proov7').forEach(a=>{try{var k=(T.locale||'et').s
     // Taasta tavavoo vaade (maaletooja-voog peidab konkurendid ja stardipaketi)
     const kb0=document.getElementById('konkBlokk');if(kb0)kb0.style.display='';
     const mp0=document.getElementById('modPresetBtn');if(mp0)mp0.style.display='';
+    const sub0=document.getElementById('ordSub1');if(sub0)sub0.style.display='';
     compList.innerHTML='';addRow();addRow();
     resetPanels();                                   // tühjenda + peida teenuste andmevormid
     clearFieldErrs();
@@ -2688,6 +2689,7 @@ document.querySelectorAll('.js-proov7').forEach(a=>{try{var k=(T.locale||'et').s
     const pn=document.getElementById('modPresetNote');if(pn)pn.style.display='none';
     const pb=document.getElementById('modPresetBrandNote');if(pb)pb.style.display='block';
     const kb=document.getElementById('konkBlokk');if(kb)kb.style.display='none';
+    const sub=document.getElementById('ordSub1');if(sub)sub.style.display='none';
     const mp=document.getElementById('modPresetBtn');if(mp)mp.style.display='none';
     fmtPrice();
   }
