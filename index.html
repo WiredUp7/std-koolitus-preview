@@ -2156,7 +2156,10 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
 })();
 
 /* proov7 CTA-d: kanna lehe keel äppi kaasa (KeelMiddleware loeb ?keel=) */
-document.querySelectorAll('.js-proov7').forEach(a=>{try{a.href='https://scan.look360.eu/proov7/?keel='+((T.locale||'et').slice(0,2));}catch(e){}});
+/* Äpi avalikel lehtedel on keelel oma URL (/fi/proov7/); eesti oma on prefiksita
+   ja kanooniline. Varem saatsime ?keel= - see töötab edasi, aga viib mitte-
+   kanoonilisele aadressile, seega ehitame nüüd prefiksiga URL-i. */
+document.querySelectorAll('.js-proov7').forEach(a=>{try{var k=(T.locale||'et').slice(0,2);a.href='https://scan.look360.eu/'+(k==='et'?'':k+'/')+'proov7/';}catch(e){}});
 
 /* === TELLIMUSVOOG (modaal) === */
 (function(){
