@@ -1955,6 +1955,10 @@ function fmt(s,o){return String(s).replace(/\{(\w+)\}/g,(_,k)=>o[k]!=null?o[k]:'
   if(forced){const fc=CC[forced.toUpperCase()]||forced; if(LANGS.some(l=>l[0]===fc)&&fc!==cur){go(fc);return} }
   let stored=null;try{stored=localStorage.getItem(KEY)}catch(e){}
   if(stored){if(stored!==cur&&LANGS.some(l=>l[0]===stored))go(stored);return}
+  /* Otsimootorite robotid EI tohi geo-suunajat saada. Googlebot roomab USA-st,
+     mille CC-kaardis vastet pole -> want='en' -> iga keeleleht suunaks /en peale
+     ja Google märgiks selle "Page with redirect" = indekseerimata. */
+  if(/bot|crawl|spider|slurp|mediapartners|inspectiontool|headlesschrome/i.test(navigator.userAgent||''))return;
   let did=null;try{did=sessionStorage.getItem(GK)}catch(e){}
   if(did)return;
   try{sessionStorage.setItem(GK,'1')}catch(e){}
