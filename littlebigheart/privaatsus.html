@@ -49,7 +49,7 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin-top:24px}
 
 <article id="et" data-lang="et" lang="et">
 <h1>Privaatsuspoliitika</h1>
-<p class="meta">Kehtib alates 21.10.2026</p>
+<p class="meta">Kehtib alates 21.10.2026, muudetud 21.10.2026 (sisselogimine e-posti, parooli või Google'i kontoga)</p>
 
 <p>See dokument selgitab, milliseid andmeid little big heart rakenduse ja karbi kasutamisel kogutakse, miks, kui kaua neid hoitakse ja millised õigused Sul oma andmete suhtes on. Kehtib nii veebirakendusele kui ka Google Plays avaldatud Androidi rakendusele.</p>
 <p>little big heart on sõnumikarp täiskasvanutele ja peredele. See ei ole turva-, valve- ega jälgimisseade. Kõik siin kirjeldatud andmed on vajalikud selleks, et Sinu sõnum ja pilt jõuaksid karpi ning et Sa saaksid teada, kas see jõudis kohale.</p>
@@ -64,6 +64,10 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin-top:24px}
 <li>Nimi, mille ise liitumisel sisestad või hiljem seadetes muudad.</li>
 <li>Profiilipilt, kui selle ise lisad (valikuline). Pilt salvestatakse ruudukujulise JPEG-failina ilma algse foto lisaandmeteta (nt EXIF). Pilti näidatakse karbi ekraanil Sinu nime kõrval.</li>
 <li>Sisselogimistoken: juhuslik pikk tunnus, mis toimib parooli asemel. Serveris hoitakse ainult selle räsi, mitte tunnust ennast.</li>
+<li>E-posti aadress, kui selle ise Seadetes lisad (valikuline). Aadressi kinnitamiseks ja sisselogimiseks saadame sinna 6-kohalise koodi. Muid kirju me sellele aadressile ei saada.</li>
+<li>Parool, kui selle ise määrad (valikuline). Parooli ennast me ei hoia, ainult sellest arvutatud räsi.</li>
+<li>Google'i konto tunnus ja selle e-posti aadress, kui seod oma konto Google'iga (valikuline).</li>
+<li>Sisselogitud seadmed: sisselogimise viis (e-posti kood, parool või Google), sisselogimise ja viimase kasutamise aeg. Seadme tunnusest hoiame ainult räsi.</li>
 <li>Millistesse karpidesse kuulud ja mis rollis (omanik või saatja), liitumise aeg ja täisealisuse kinnituse aeg.</li>
 <li>Rakenduse viimase kasutamise aeg.</li>
 </ul>
@@ -83,11 +87,11 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin-top:24px}
 <h3>2.4 Mida karp ise serverile saadab</h3>
 <p>Karp küsib serverilt uusi sõnumeid umbes iga 10 sekundi järel ja saadab umbes iga 10 minuti järel tehnilise olekuteate: püsivara versioon, tööaeg, WiFi signaali tugevus, viimase taaskäivituse põhjus, vaba mälu, mälukaardi olek ning sõnumite ja lemmikute arv kaardil (arvuna, mitte sisuna) ja lühikesed tehnilised logiread. Karp ei saada kaane avamise ega puudutuste andmeid.</p>
 <h3>2.5 Teavitused</h3>
-<p>Kui lubad teavitused, salvestame Sinu seadme teavitustellimuse aadressi, et saaksime Sulle teada anda, kui sõnum loeti, süda saadeti tagasi või sõnum sai lemmikuks.</p>
+<p>Kui lubad teavitused, salvestame Sinu seadme teavitustellimuse aadressi (Google Play rakenduses Firebase Cloud Messagingu antud seadme tunnuse), et saaksime Sulle teada anda, kui sõnum loeti, süda saadeti tagasi või sõnum sai lemmikuks.</p>
 <h3>2.6 Serveri logi</h3>
 <p>Server salvestab iga päringu kohta IP-aadressi, aja ja aadressi. Seda kasutame turvalisuse ja tõrgete uurimiseks ning liigsete päringute tõkestamiseks.</p>
 <h3>2.7 Mida me ei kogu</h3>
-<p>Me ei küsi e-posti aadressi ega telefoninumbrit. Me ei kogu asukohta ega kontakte. Rakenduses ei ole analüütika- ega reklaamikoodi. Me ei müü ega jaga Sinu andmeid turunduseks.</p>
+<p>E-posti aadressi küsime ainult siis, kui soovid sisselogimist (punkt 2.1). Telefoninumbrit me ei küsi. Me ei kogu asukohta ega kontakte. Rakenduses ei ole analüütika- ega reklaamikoodi. Me ei müü ega jaga Sinu andmeid turunduseks.</p>
 
 <h2>3. Eesmärgid ja õiguslik alus</h2>
 <div class="table"><table>
@@ -96,6 +100,7 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin-top:24px}
 <tr><td>Profiilipilt</td><td>Pildi näitamine karbi ekraanil Sinu nime kõrval</td><td>GDPR art 6(1)(a), nõusolek (lisad ja eemaldad ise)</td></tr>
 <tr><td>Sõnumid, pildid, videod</td><td>Sõnumi edastamine karpi ja kuvamine</td><td>GDPR art 6(1)(b), lepingu täitmine</td></tr>
 <tr><td>Sündmused (loetud, süda, lemmik)</td><td>Saadetud sõnumite vaade ja teavitused</td><td>GDPR art 6(1)(b), lepingu täitmine</td></tr>
+<tr><td>E-post, parooli räsi, Google'i konto, sisselogitud seadmed</td><td>Sisselogimine, sh teises seadmes või pärast väljalogimist</td><td>GDPR art 6(1)(b), lepingu täitmine (lisad ja eemaldad ise)</td></tr>
 <tr><td>Teavitustellimus</td><td>Teavituse saatmine Sinu seadmesse</td><td>GDPR art 6(1)(a), nõusolek (seadme teavitusluba)</td></tr>
 <tr><td>Karbi tehniline olek ja logi</td><td>Teenuse töös hoidmine ja rikete uurimine</td><td>GDPR art 6(1)(f), õigustatud huvi</td></tr>
 <tr><td>Serveri logi (IP-aadress)</td><td>Turvalisus ja kuritarvituse tõkestamine</td><td>GDPR art 6(1)(f), õigustatud huvi</td></tr>
@@ -105,7 +110,9 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin-top:24px}
 <ul>
 <li>Karbi omanik ja karbi juures olijad näevad karpi saadetud sõnumeid. See on teenuse olemus.</li>
 <li>Server asub Eestis ja on meie hallata. Ühendus serverini käib Tailscale Inc. teenuse kaudu, mis edastab krüpteeritud ühenduse sisu nägemata. Tailscale näeb ühenduse tehnilisi andmeid, nt IP-aadressi ja aega.</li>
-<li>Teavitused edastab Sinu seadme või brauseri teavitusteenus (Androidis ja Chrome'is Google, Apple'i seadmetes Apple, Firefoxis Mozilla, Edge'is Microsoft). Teavituse sisu on krüpteeritud, teenus näeb saatmise aega ja sihtseadet.</li>
+<li>Teavitused edastab Sinu seadme või brauseri teavitusteenus (Androidis ja Chrome'is Google, Apple'i seadmetes Apple, Firefoxis Mozilla, Edge'is Microsoft). Teavituse sisu on krüpteeritud, teenus näeb saatmise aega ja sihtseadet. Google Play rakenduses edastab teavitused Google'i Firebase Cloud Messaging, mis näeb teavituse pealkirja ja teksti.</li>
+<li>Sisselogimiskoodiga e-kirjad saadetakse meie e-posti teenusepakkuja Elkdata OÜ (veebimajutus.ee, Eesti) kaudu.</li>
+<li>Kui logid sisse Google'iga, kinnitab Google meile Sinu konto tunnuse ja e-posti aadressi. Google'ile ei saada me Sinu sõnumeid ega muid andmeid.</li>
 </ul>
 <p>Need teenusepakkujad võivad andmeid töödelda ka väljaspool Euroopa Liitu. Kui Sa teavitusi ei luba, ei liigu teavitusteenustesse midagi ja ülejäänud rakendus töötab samamoodi.</p>
 
@@ -117,6 +124,9 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin-top:24px}
 <tr><td>Karbi tehniline logi</td><td>180 päeva, kuni 500 rida karbi kohta</td></tr>
 <tr><td>Kutselingid</td><td>30 päeva pärast aegumist või ärakasutamist</td></tr>
 <tr><td>Teavitustellimus</td><td>Kuni lülitad teavitused välja või teavitusteenus teatab, et tellimus ei kehti; kui 12 kuu jooksul ei jõua kohale ühtegi teavitust, kustub tellimus ise</td></tr>
+<tr><td>E-post, parooli räsi, Google'i konto</td><td>Kuni eemaldad need Seadetes või kustutad konto</td></tr>
+<tr><td>Sisselogitud seadmed</td><td>Kuni logid välja, karbi omanik uuendab Sinu lingi või kustutad konto</td></tr>
+<tr><td>Sisselogimiskood</td><td>Kehtib 10 minutit, kustutatakse hiljemalt 6 tundi pärast aegumist</td></tr>
 <tr><td>Serveri logi (IP-aadress)</td><td>90 päeva</td></tr>
 </table></div>
 <p>Karbi mälukaardile jõudnud pildid jäävad karpi, kuni saaja need seal kustutab või karbi tehaseseadetele lähtestab.</p>
@@ -138,7 +148,7 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin-top:24px}
 <p>Konto on mõeldud täiskasvanutele. Liitudes kinnitad, et oled vähemalt 18-aastane. Sünnikuupäeva me ei küsi. Lapsed võivad pere karbi ekraanilt sõnumeid vaadata, kuid nad ei loo kontot ega edasta meile andmeid.</p>
 
 <h2>9. Andmed Sinu seadmes ja karbis</h2>
-<p>Rakendus hoiab sisselogimistokenit ja keelevalikut Sinu seadme brauseri mälus (Androidi rakenduses Chrome'i mälus). Väljalogimisel või brauseri andmete kustutamisel need kaovad. Karp hoiab viimaseid sõnumeid ja lemmikuid oma mälukaardil, et neid saaks galeriis vaadata.</p>
+<p>Rakendus hoiab sisselogimistokenit ja keelevalikut Sinu seadme brauseri mälus (Google Play rakenduses rakenduse enda mälus). Väljalogimisel, brauseri andmete kustutamisel või rakenduse eemaldamisel need kaovad. Google Play rakendus hoiab oma mälus ka rakenduse veebikoodi uuemat versiooni, mille see laeb meie serverist. Karp hoiab viimaseid sõnumeid ja lemmikuid oma mälukaardil, et neid saaks galeriis vaadata.</p>
 
 <h2>10. Turvalisus</h2>
 <p>Ühendus rakenduse, karbi ja serveri vahel on krüpteeritud (https). Sisselogimistokenid, kutselingid ja karpide võtmed on serveris räsitud või krüpteeritud. Sõnumeid näevad ainult karbi liikmed, kellel on selleks õigus. Liigsete päringute vastu on piirangud.</p>
@@ -149,7 +159,7 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin-top:24px}
 
 <article id="en" data-lang="en" lang="en-GB">
 <h1>Privacy policy</h1>
-<p class="meta">Effective from 21 October 2026</p>
+<p class="meta">Effective from 21 October 2026, updated 21 October 2026 (signing in with email, password or Google)</p>
 
 <p>This policy explains what data is collected when you use the little big heart app and box, why, how long it is kept and what rights you have over your data. It applies to the web app and to the Android app published on Google Play.</p>
 <p>little big heart is a message box for adults and families. It is not a security, surveillance or tracking device. All data described here is needed so that your message and photo reach the box and so that you can see whether it arrived.</p>
@@ -164,6 +174,10 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin-top:24px}
 <li>The name you enter when joining or change later in settings.</li>
 <li>A profile picture, if you add one (optional). It is stored as a square JPEG without the original photo's metadata (such as EXIF) and shown on the box screen next to your name.</li>
 <li>A sign-in token: a long random code that works instead of a password. The server only keeps a hash of it, not the code itself.</li>
+<li>Your email address, if you add it in Settings (optional). We send a 6-digit code to it to confirm the address and to sign you in. We do not send any other emails to this address.</li>
+<li>A password, if you set one (optional). We do not keep the password itself, only a hash calculated from it.</li>
+<li>Your Google account ID and its email address, if you link your account with Google (optional).</li>
+<li>Signed-in devices: how you signed in (email code, password or Google), when you signed in and when the device was last used. We only keep a hash of the device's sign-in code.</li>
 <li>Which boxes you belong to and in what role (owner or sender), when you joined and when you confirmed that you are an adult.</li>
 <li>When you last used the app.</li>
 </ul>
@@ -183,11 +197,11 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin-top:24px}
 <h3>2.4 What the box sends to the server</h3>
 <p>The box checks for new messages about every 10 seconds and sends a technical status report about every 10 minutes: firmware version, uptime, Wi-Fi signal strength, the reason for the last restart, free memory, memory card status, the number of messages and favourites on the card (as a count, not content) and short technical log lines. The box does not send data about opening the lid or touches.</p>
 <h3>2.5 Notifications</h3>
-<p>If you allow notifications, we store your device's notification subscription address so that we can tell you when a message was read, a heart was sent back or a message became a favourite.</p>
+<p>If you allow notifications, we store your device's notification subscription address (in the Google Play app, the Firebase Cloud Messaging registration token) so that we can tell you when a message was read, a heart was sent back or a message became a favourite.</p>
 <h3>2.6 Server log</h3>
 <p>For each request the server records the IP address, the time and the address requested. We use this for security, troubleshooting and limiting excessive requests.</p>
 <h3>2.7 What we do not collect</h3>
-<p>We do not ask for your email address or phone number. We do not collect location or contacts. The app contains no analytics or advertising code. We do not sell your data or share it for marketing.</p>
+<p>We only ask for your email address if you want to be able to sign in (section 2.1). We do not ask for your phone number. We do not collect location or contacts. The app contains no analytics or advertising code. We do not sell your data or share it for marketing.</p>
 
 <h2>3. Purposes and legal basis</h2>
 <div class="table"><table>
@@ -196,6 +210,7 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin-top:24px}
 <tr><td>Profile picture</td><td>Showing your picture next to your name on the box screen</td><td>GDPR Art. 6(1)(a), consent (you add and remove it yourself)</td></tr>
 <tr><td>Messages, photos, videos</td><td>Delivering the message to the box and showing it</td><td>GDPR Art. 6(1)(b), performance of a contract</td></tr>
 <tr><td>Events (read, heart, favourite)</td><td>The sent messages view and notifications</td><td>GDPR Art. 6(1)(b), performance of a contract</td></tr>
+<tr><td>Email, password hash, Google account, signed-in devices</td><td>Signing in, including on another device or after signing out</td><td>GDPR Art. 6(1)(b), performance of a contract (you add and remove them yourself)</td></tr>
 <tr><td>Notification subscription</td><td>Sending notifications to your device</td><td>GDPR Art. 6(1)(a), consent (the device's notification permission)</td></tr>
 <tr><td>Box technical status and log</td><td>Keeping the service running and investigating faults</td><td>GDPR Art. 6(1)(f), legitimate interest</td></tr>
 <tr><td>Server log (IP address)</td><td>Security and preventing misuse</td><td>GDPR Art. 6(1)(f), legitimate interest</td></tr>
@@ -205,7 +220,9 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin-top:24px}
 <ul>
 <li>The box owner and the people near the box see the messages sent to it. That is what the service is for.</li>
 <li>The server is located in Estonia and run by us. The connection to the server goes through Tailscale Inc., which forwards the encrypted connection without seeing its content. Tailscale sees technical connection data such as the IP address and time.</li>
-<li>Notifications are delivered by your device's or browser's push service (Google on Android and in Chrome, Apple on Apple devices, Mozilla in Firefox, Microsoft in Edge). The notification content is encrypted; the service sees the time of sending and the target device.</li>
+<li>Notifications are delivered by your device's or browser's push service (Google on Android and in Chrome, Apple on Apple devices, Mozilla in Firefox, Microsoft in Edge). The notification content is encrypted; the service sees the time of sending and the target device. In the Google Play app, notifications are delivered by Google's Firebase Cloud Messaging, which sees the notification title and text.</li>
+<li>Emails with sign-in codes are sent through our email provider Elkdata OÜ (veebimajutus.ee, Estonia).</li>
+<li>If you sign in with Google, Google confirms your account ID and email address to us. We do not send your messages or any other data to Google.</li>
 </ul>
 <p>These providers may process data outside the European Union. If you do not allow notifications, nothing is sent to push services and the rest of the app works the same.</p>
 
@@ -217,6 +234,9 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin-top:24px}
 <tr><td>Box technical log</td><td>180 days, up to 500 lines per box</td></tr>
 <tr><td>Invite links</td><td>30 days after they expire or are used up</td></tr>
 <tr><td>Notification subscription</td><td>Until you turn notifications off or the push service reports that the subscription is no longer valid; if no notification is delivered for 12 months, it is deleted automatically</td></tr>
+<tr><td>Email, password hash, Google account</td><td>Until you remove them in Settings or delete your account</td></tr>
+<tr><td>Signed-in devices</td><td>Until you sign out, the box owner renews your link or you delete your account</td></tr>
+<tr><td>Sign-in code</td><td>Valid for 10 minutes, deleted at the latest 6 hours after it expires</td></tr>
 <tr><td>Server log (IP address)</td><td>90 days</td></tr>
 </table></div>
 <p>Photos already saved on the box's memory card stay on the box until the recipient deletes them there or resets the box to factory settings.</p>
@@ -238,7 +258,7 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin-top:24px}
 <p>Accounts are for adults. When joining, you confirm that you are at least 18 years old. We do not ask for a date of birth. Children may look at messages on the family box screen, but they do not create accounts or send us any data.</p>
 
 <h2>9. Data on your device and on the box</h2>
-<p>The app keeps your sign-in token and language choice in your device's browser storage (in the Android app, in Chrome's storage). They are removed when you sign out or clear the browser data. The box keeps recent messages and favourites on its memory card so they can be viewed in the gallery.</p>
+<p>The app keeps your sign-in token and language choice in your device's browser storage (in the Google Play app, in the app's own storage). They are removed when you sign out, clear the browser data or uninstall the app. The Google Play app also keeps a newer version of the app's web code, which it downloads from our server. The box keeps recent messages and favourites on its memory card so they can be viewed in the gallery.</p>
 
 <h2>10. Security</h2>
 <p>The connection between the app, the box and the server is encrypted (https). Sign-in tokens, invite links and box keys are stored hashed or encrypted on the server. Messages can only be seen by box members who are entitled to see them. Excessive requests are rate-limited.</p>
