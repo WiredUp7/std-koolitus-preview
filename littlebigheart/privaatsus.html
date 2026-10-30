@@ -49,7 +49,7 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin-top:24px}
 
 <article id="et" data-lang="et" lang="et">
 <h1>Privaatsuspoliitika</h1>
-<p class="meta">Kehtib alates 21.10.2026, muudetud 23.10.2026 (e-pood littlebigheart.store, rakenduse keel, teatekirjad, varukoopiad)</p>
+<p class="meta">Kehtib alates 21.10.2026, muudetud 30.10.2026 (serveri asukoht, varukoopiad)</p>
 <p>Sama privaatsuspoliitika on 9 keeles kodulehel <a href="https://littlebigheart.store/privaatsus/">littlebigheart.store/privaatsus</a>.</p>
 
 <p>See dokument selgitab, milliseid andmeid little big heart rakenduse ja karbi kasutamisel kogutakse, miks, kui kaua neid hoitakse ja millised õigused Sul oma andmete suhtes on. Kehtib veebirakendusele, Google Plays avaldatud Androidi rakendusele ning kodulehele ja e-poele littlebigheart.store.</p>
@@ -126,8 +126,8 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin-top:24px}
 <ul>
 <li>Karbi omanik ja karbi juures olijad näevad karpi saadetud sõnumeid. See on teenuse olemus.</li>
 <li>Kui küsid kutset, näeb karbi omanik Sinu nime, e-posti ja sõnumit (punkt 2.4).</li>
-<li>Server asub Eestis ja on meie hallata. Ühendus serverini käib Tailscale Inc. ja Cloudflare Inc. teenuse kaudu. Cloudflare'i kaudu käiv ühendus (app.littlebigheart.store) avatakse Cloudflare'i serveris, et see serverini edasi saata; mõlemad näevad ühenduse tehnilisi andmeid, nt IP-aadressi ja aega.</li>
-<li>Serveri andmetest (kontod, sõnumid, pildid ja videod, e-poe tellimused) teeme igal ööl varukoopia. Varukoopia krüpteeritakse enne serverist lahkumist meie võtmega (AES-256) ja seda hoitakse Oracle'i pilveteenuse (Oracle Cloud Infrastructure) Stockholmi andmekeskuses Rootsis. Oracle hoiab ainult krüpteeritud faili ega näe selle sisu.</li>
+<li>Server asub Oracle'i pilveteenuse (Oracle Cloud Infrastructure) Stockholmi andmekeskuses Rootsis ja on meie hallata. Ühendus serverini käib Tailscale Inc. ja Cloudflare Inc. teenuse kaudu. Cloudflare'i kaudu käiv ühendus (app.littlebigheart.store) avatakse Cloudflare'i serveris, et see serverini edasi saata; mõlemad näevad ühenduse tehnilisi andmeid, nt IP-aadressi ja aega.</li>
+<li>Serveri andmetest (kontod, sõnumid, pildid ja videod, e-poe tellimused) teeme igal ööl varukoopia. Server hoiab viimase 14 päeva koopiaid. Lisaks tuuakse koopia krüpteeritud ühenduse kaudu meie arvutisse, kus seda hoitakse kuni 14 päeva; sealt läheb see meie võtmega (AES-256) krüpteerituna Oracle'i pilveteenuse (Oracle Cloud Infrastructure) Stockholmi andmekeskusesse Rootsis. Oracle hoiab ainult krüpteeritud faili ega näe selle sisu.</li>
 <li>E-poe makseid töötleb Stripe (Stripe Payments Europe Ltd, Iirimaa), mis saab tellimuse ja makse andmed (punkt 2.9). Stripe töötleb andmeid ka ise vastutava töötlejana, nt pettuste tõkestamiseks.</li>
 <li>Paki kohaletoimetamiseks edastame nime, telefoninumbri, e-posti ja pakiautomaadi Omnivale (AS Eesti Post).</li>
 <li>Kodulehe külastuse tehnilisi andmeid näeb kodulehe majutaja GitHub Inc. (punkt 2.11).</li>
@@ -184,7 +184,7 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin-top:24px}
 
 <article id="en" data-lang="en" lang="en-GB">
 <h1>Privacy policy</h1>
-<p class="meta">Effective from 21 October 2026, updated 23 October 2026 (online shop littlebigheart.store, app language, notice emails, backups)</p>
+<p class="meta">Effective from 21 October 2026, updated 30 October 2026 (server location, backups)</p>
 <p>The same privacy policy is available in 9 languages on the website at <a href="https://littlebigheart.store/en/privacy/">littlebigheart.store/en/privacy</a>.</p>
 
 <p>This policy explains what data is collected when you use the little big heart app and box, why, how long it is kept and what rights you have over your data. It applies to the web app, the Android app published on Google Play, and the website and online shop littlebigheart.store.</p>
@@ -261,8 +261,8 @@ footer{color:var(--dim);font-size:13px;text-align:center;margin-top:24px}
 <ul>
 <li>The box owner and the people near the box see the messages sent to it. That is what the service is for.</li>
 <li>If you ask for an invite, the box owner sees your name, email and message (section 2.4).</li>
-<li>The server is located in Estonia and run by us. The connection to the server goes through Tailscale Inc. and Cloudflare Inc. A connection through Cloudflare (app.littlebigheart.store) is opened on Cloudflare's server so that it can be passed on to our server; both see technical connection data such as the IP address and time.</li>
-<li>Every night we make a backup of the server data (accounts, messages, photos and videos, shop orders). The backup is encrypted with our key (AES-256) before it leaves the server and is stored in a data centre of Oracle's cloud service (Oracle Cloud Infrastructure) in Stockholm, Sweden. Oracle only stores the encrypted file and cannot see its contents.</li>
+<li>The server is located in a data centre of Oracle's cloud service (Oracle Cloud Infrastructure) in Stockholm, Sweden, and is run by us. The connection to the server goes through Tailscale Inc. and Cloudflare Inc. A connection through Cloudflare (app.littlebigheart.store) is opened on Cloudflare's server so that it can be passed on to our server; both see technical connection data such as the IP address and time.</li>
+<li>Every night we make a backup of the server data (accounts, messages, photos and videos, shop orders). The server keeps the backups of the last 14 days. A copy is also transferred over an encrypted connection to our computer, where it is kept for up to 14 days; from there it is encrypted with our key (AES-256) and stored in a data centre of Oracle's cloud service (Oracle Cloud Infrastructure) in Stockholm, Sweden. Oracle only stores the encrypted file and cannot see its contents.</li>
 <li>Payments in the online shop are processed by Stripe (Stripe Payments Europe Ltd, Ireland), which receives the order and payment data (section 2.9). Stripe also processes data as an independent controller, for example to prevent fraud.</li>
 <li>For parcel delivery we pass your name, phone number, email and parcel locker to Omniva (AS Eesti Post).</li>
 <li>Technical data about website visits is seen by the website host GitHub Inc. (section 2.11).</li>
